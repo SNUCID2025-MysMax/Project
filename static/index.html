@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI Frontend</title>
+</head>
+<body>
+    <h1>FastAPI Frontend</h1>
+
+    <h2>Convert Sentence to Scenario</h2>
+    <input type="text" id="sentenceInput" placeholder="Enter a sentence">
+    <button onclick="convertToScenario()">Convert</button>
+    <p id="scenarioOutput"></p>
+
+ 
+
+
+    <script>
+        async function convertToScenario() {
+            const sentence = document.getElementById("sentenceInput").value;
+            const response = await fetch('/api/sentence_to_scenario', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ sentence })
+            });
+            const data = await response.json();
+            document.getElementById("scenarioOutput").innerText = data.scenario;
+        }
+
+        async function convertToSentence() {
+            const scenario = document.getElementById("scenarioInput").value;
+            const response = await fetch('/api/scenario_to_sentence', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ scenario })
+            });
+            const data = await response.json();
+            document.getElementById("sentenceOutput").innerText = data.sentence;
+        }
+
+        async function translateSentence() {
+            const sentence = document.getElementById("translateInput").value;
+            const response = await fetch('/api/translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ sentence })
+            });
+            const data = await response.json();
+            document.getElementById("translateOutput").innerText = data.translated_sentence;
+        }
+    </script>
+</body>
+</html>
