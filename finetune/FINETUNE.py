@@ -25,6 +25,7 @@ fourbit_models = [
 
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name = "unsloth/llama-3-8b-Instruct-bnb-4bit", # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
+    # model_name = "unsloth/codellama-7b-bnb-4bit",
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -62,8 +63,8 @@ from data_location_dh import data_location_dh
 from data_location_sw import data_location_sw
 from data_total import data_total
 
-# MY_DATASET = data_all + data_location_dh + data_location_sw + data_total
-MY_DATASET = data_all
+MY_DATASET = data_all + data_location_dh + data_location_sw + data_total
+# MY_DATASET = data_all
 MY_DATASET = Dataset.from_dict({'conversations': MY_DATASET})
 print(MY_DATASET)
 MY_DATASET = MY_DATASET.map(formatting_prompts_func, batched=True,)
@@ -94,5 +95,6 @@ trainer = SFTTrainer(
         output_dir = "outputs",
     ),
 )
-# trainer_stats = trainer.train()
+trainer_stats = trainer.train()
+tokenizer.chat_template = None
 model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m",)

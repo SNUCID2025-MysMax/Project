@@ -2,7 +2,7 @@
 # To build a new Modelfile based on this, replace FROM with:
 # FROM llama3:instruct
 
-FROM ./models/model-unsloth.Q4_K_M.gguf
+FROM ./models/codellama-7b-bnb-4bit-250328-unsloth.Q4_K_M.gguf
 PARAMETER temperature 0
 TEMPLATE "{{ if .System }}<|start_header_id|>system<|end_header_id|>
 

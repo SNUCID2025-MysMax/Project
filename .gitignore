@@ -196,3 +196,4 @@ models/
 # finetune에서 py 이외 파일 무시
 finetune/*
 !finetune/*.py
+nohup.out
