@@ -8,7 +8,8 @@ import requests
 import json
 from fastapi.staticfiles import StaticFiles
 
-from pipeline import run
+from pipeline_KO import run
+# from pipeline import run
 from time import time
 def generate_code(sentence):
     return run.pipeline(sentence)
