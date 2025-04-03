@@ -3,10 +3,11 @@ import ollama
 from .device_mapping import google_translate,Device_Mapping
 from .SERVICE_DESCRIPTION_FINAL import description
 from .fix_code import fix_code2
+from .code_prompt import grammar, samples
 
 import time
 def generate_code(sentence,needed_services):
-    prompt = f"Input: {sentence}\n\n services: {needed_services}"
+    prompt = f"Grammar:{grammar}\n\n Samples:{samples}, Input: {sentence}\n\n services: {needed_services}"
     response = ollama.chat(model='soplang', messages=[
   {
     'role': 'user',

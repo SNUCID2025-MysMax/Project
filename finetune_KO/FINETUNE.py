@@ -1,163 +1,223 @@
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
-from trl import SFTTrainer
 from datasets import Dataset
+from transformers import (
+    AutoConfig,
+    AutoModelForCausalLM, 
+    AutoTokenizer, 
+    TrainingArguments, 
+    Trainer, 
+    DataCollatorForLanguageModeling
+)
+from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+import os
+import subprocess
 
-# 모델 로딩 설정
-model_name = "LGAI-EXAONE/EXAONE-Deep-7.8B"
-max_seq_length = 2048
-load_in_4bit = True  # 메모리 사용량 줄이기 위한 4비트 양자화
+# 1. 데이터 준비
+data_all = [
+    [
+        {
+            "from": "human",
+            "value": "Input: 조명 켜줘\n\nServices: {'Clock': 'Functions : []\\nValues : [\\n    day : int [1~31]\\n    hour : int [0~23]\\n    minute : int [0~59]\\n    month : int [1~12]\\n    second : int [0~59]\\n    weekday : string {\"monday\"|\"tuesday\"|\"wednesday\"|\"thursday\"|\"friday\"|\"saturday\"|\"sunday\"}\\n    year : int [0 ~ 100000]\\n    isHoliday : bool {true|false}\\n    timestamp : double : unixTime\\n]\\nTags : []', 'Light': 'Functions : [\\n    on(),\\n\\toff(),\\n\\tsetColor(color: string {\"{hue}|{saturation}|{brightness}\"})\\n\\tsetLevel(level int [0 ~ 100])\\n]\\nValues : [\\n\\tswitch : string {\"on\"|\"off\"},\\n\\tlight : double\\n]\\nTags : [\\n    entrance,\\n    livingroom,\\n    bedroom\\n]'}"
+        },
+        {
+            "from": "gpt",
+            "value": "(#Light).on()"
+        }
+    ],
+    # 여기에 더 많은 데이터 추가
+]
 
-# 토크나이저 로드
-tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+# 데이터를 변환하여 Dataset 생성
+formatted_data = []
+for conversation in data_all:
+    human_message = next((msg for msg in conversation if msg["from"] == "human"), None)
+    gpt_message = next((msg for msg in conversation if msg["from"] == "gpt"), None)
+    
+    if human_message and gpt_message:
+        formatted_data.append({
+            "input": human_message["value"],
+            "output": gpt_message["value"]
+        })
 
-# 모델 로드
+dataset = Dataset.from_list(formatted_data)
+
+# 2. 모델 및 토크나이저 로드
+model_name = "LGAI-EXAONE/EXAONE-Deep-2.4B"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+# 모델 로드 (4비트 양자화 사용)
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     torch_dtype=torch.bfloat16,
     trust_remote_code=True,
     device_map="auto",
-    load_in_4bit=load_in_4bit
+    load_in_4bit=True,
 )
 
-# 그래디언트 체크포인팅 활성화 및 4비트 학습 준비
-model.gradient_checkpointing_enable()
-if load_in_4bit:
-    model = prepare_model_for_kbit_training(model)
+# 3. LoRA 설정 및 적용
+model = prepare_model_for_kbit_training(model)
 
-# LoRA 설정
 lora_config = LoraConfig(
-    r=16,  # LoRA 랭크
+    r=16,
     lora_alpha=32,
-    target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
     lora_dropout=0.05,
     bias="none",
-    task_type="CAUSAL_LM"
-)
-
-# LoRA 모델 생성
-model = get_peft_model(model, lora_config)
-print(model.print_trainable_parameters())
-
-# 데이터 포맷팅 함수
-def formatting_prompts_func(examples):
-    convos = examples["conversations"]
-    texts = []
-    
-    for convo in convos:
-        formatted_convo = []
-        for turn in convo:
-            if turn["from"] == "human":
-                formatted_convo.append({"role": "user", "content": turn["value"]})
-            elif turn["from"] == "gpt":
-                formatted_convo.append({"role": "assistant", "content": turn["value"]})
-        
-        # EXAONE 모델의 채팅 템플릿 적용
-        text = tokenizer.apply_chat_template(
-            formatted_convo,
-            tokenize=False,
-            add_generation_prompt=False
-        )
-        texts.append(text)
-    
-    return {"text": texts}
-
-# 데이터셋 준비 (예시 데이터)
-MY_DATASET = [
-    [
-        {"from": "human", "value": "수학 문제를 풀어줄래? x^2 + 5x + 6 = 0의 해는?"},
-        {"from": "gpt", "value": "<thought>\n이 문제는 이차방정식을 풀어야 합니다. x^2 + 5x + 6 = 0의 해를 구하기 위해 인수분해를 사용할 수 있습니다.\n\nx^2 + 5x + 6 = 0\n(x + a)(x + b) = 0 형태로 나타내려면 a + b = 5이고 a * b = 6을 만족해야 합니다.\n\na = 2, b = 3이면 a + b = 5이고 a * b = 6이므로 적합합니다.\n\n따라서 x^2 + 5x + 6 = (x + 2)(x + 3) = 0\n\n이 방정식의 해는 x + 2 = 0 또는 x + 3 = 0\nx = -2 또는 x = -3\n</thought>\n\n이 이차방정식을 풀기 위해 인수분해를 사용하겠습니다.\n\nx^2 + 5x + 6 = 0\n\n이 식을 (x + p)(x + q) 형태로 인수분해하려면, p + q = 5이고 p × q = 6을 만족하는 두 수 p, q를 찾아야 합니다.\n\np = 2, q = 3이면 두 조건을 모두 만족합니다.\n\n따라서 x^2 + 5x + 6 = (x + 2)(x + 3) = 0\n\n이 방정식의 해는:\nx + 2 = 0 또는 x + 3 = 0\nx = -2 또는 x = -3\n\n따라서 주어진 이차방정식의 해는 x = -2 또는 x = -3입니다."}
+    task_type="CAUSAL_LM",
+    target_modules=[
+        "q_proj", "k_proj", "v_proj", "o_proj",
+        "gate_proj", "up_proj", "down_proj"
     ],
-    # 더 많은 대화 예시 추가
-]
+)
 
-# 데이터셋 변환
-MY_DATASET = Dataset.from_dict({'conversations': MY_DATASET})
-MY_DATASET = MY_DATASET.map(formatting_prompts_func, batched=True)
+model = get_peft_model(model, lora_config)
 
-# 학습 설정
+# 4. 데이터 전처리 함수
+def preprocess_function(examples):
+    # EXAONE Deep 모델은 <thought>로 시작하는 것이 권장됨
+    prompts = []
+    for i in range(len(examples["input"])):
+        prompt = f"[|user|]{examples['input'][i]}[|endofturn|]\n[|assistant|]<thought>\n"
+        prompts.append(prompt)
+    
+    # 출력 데이터 준비
+    responses = [f"{output}\n</thought>{output}[|endofturn|]" for output in examples["output"]]
+    
+    # 입력과 출력 결합
+    texts = [prompt + response for prompt, response in zip(prompts, responses)]
+    
+    # 토큰화
+    encodings = tokenizer(texts, truncation=True, padding="max_length", max_length=2048)
+    
+    # 입력 ID 생성
+    input_ids = encodings["input_ids"]
+    attention_mask = encodings["attention_mask"]
+    
+    # 레이블 설정 (입력 ID와 동일하게 설정)
+    labels = input_ids.copy()
+    
+    return {
+        "input_ids": input_ids,
+        "attention_mask": attention_mask,
+        "labels": labels
+    }
+
+# 데이터셋 전처리
+tokenized_dataset = dataset.map(
+    preprocess_function,
+    batched=True,
+    remove_columns=dataset.column_names
+)
+
+# 5. 학습 설정
+output_dir = "./exaone-deep-finetune"
 training_args = TrainingArguments(
-    output_dir="outputs_exaone_deep",
-    per_device_train_batch_size=4,
+    output_dir=output_dir,
+    per_device_train_batch_size=2,
     gradient_accumulation_steps=4,
-    warmup_steps=10,
-    num_train_epochs=2,
     learning_rate=2e-4,
-    fp16=False,
-    bf16=True,  # bfloat16 사용
-    logging_steps=5,
-    optim="paged_adamw_32bit",
+    num_train_epochs=3,
     weight_decay=0.01,
-    lr_scheduler_type="constant",
-    seed=3407,
-    max_grad_norm=0.3,
-    group_by_length=True
+    warmup_ratio=0.03,
+    logging_steps=10,
+    save_steps=100,
+    fp16=True,
+    report_to="none",
 )
 
-# 트레이너 설정
-trainer = SFTTrainer(
-    model=model,
+# 6. 데이터 콜레이터 설정
+data_collator = DataCollatorForLanguageModeling(
     tokenizer=tokenizer,
-    train_dataset=MY_DATASET,
-    dataset_text_field="text",
-    max_seq_length=max_seq_length,
-    dataset_num_proc=2,
-    packing=False,
-    args=training_args
+    mlm=False
 )
 
-# 학습 실행
-trainer_stats = trainer.train()
+# 7. 트레이너 설정 및 학습
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized_dataset,
+    data_collator=data_collator,
+)
 
-# 모델 저장
-model.save_pretrained("exaone_deep_finetuned")
-tokenizer.save_pretrained("exaone_deep_finetuned")
+# 학습 시작
+trainer.train()
 
-# 추론 코드 (학습 후)
-def inference():
-    # 기본 모델 로드
-    base_model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        torch_dtype=torch.bfloat16,
-        trust_remote_code=True,
-        device_map="auto"
-    )
-    
-    # LoRA 어댑터 로드
-    from peft import PeftModel
-    model = PeftModel.from_pretrained(base_model, "exaone_deep_finetuned")
-    tokenizer = AutoTokenizer.from_pretrained("exaone_deep_finetuned", trust_remote_code=True)
-    
-    # 추론 예시
-    prompt = "x^2 - 4 = 0의 해는?"
-    messages = [{"role": "user", "content": prompt}]
-    input_ids = tokenizer.apply_chat_template(
-        messages,
-        tokenize=True,
-        add_generation_prompt=True,
-        return_tensors="pt"
-    )
-    
-    # 생성
-    from transformers import TextIteratorStreamer
-    from threading import Thread
-    
-    streamer = TextIteratorStreamer(tokenizer)
-    thread = Thread(target=model.generate, kwargs=dict(
-        input_ids=input_ids.to("cuda"),
-        eos_token_id=tokenizer.eos_token_id,
-        max_new_tokens=1024,
-        do_sample=True,
-        temperature=0.6,
-        top_p=0.95,
-        streamer=streamer
-    ))
-    thread.start()
-    
-    # 결과 출력
-    for text in streamer:
-        print(text, end="", flush=True)
+# 8. 모델 저장 (수정된 부분)
+final_model_dir = "./exaone-deep-finetune-final"
 
-# 필요시 추론 실행
-# inference()
+# LoRA 어댑터와 기본 모델 병합
+print("LoRA 어댑터와 기본 모델 병합 중...")
+merged_model = model.merge_and_unload()  # LoRA 가중치를 기본 모델에 병합
+
+# 병합된 전체 모델 저장
+merged_model.save_pretrained(final_model_dir)
+tokenizer.save_pretrained(final_model_dir)
+
+
+# HF 모델을 GGUF로 변환
+subprocess.run(f"python llama.cpp/convert_hf_to_gguf.py {final_model_dir} --outfile {final_model_dir}/model.gguf --outtype f16", shell=True)
+
+# 양자화 옵션 (선택적)
+print("모델 양자화 중...")
+quantization_types = ["q4_k_m"]  # 다양한 양자화 옵션
+
+for quant_type in quantization_types:
+    output_file = f"{final_model_dir}/model-{quant_type}.gguf"
+    subprocess.run(f"cd llama.cpp && ./quantize ../{final_model_dir}/model.gguf ../{output_file} {quant_type.upper()}", shell=True)
+    print(f"{quant_type} 양자화 완료: {output_file}")
+
+print("GGUF 변환 및 양자화 완료!")
+
+# # 9. 모델을 GGUF 형식으로 변환
+# print("모델을 GGUF 형식으로 변환 중...")
+
+# # 먼저 F16 GGUF 형식으로 변환
+# llama_cpp_dir = "./llama.cpp"  # llama.cpp 디렉토리 경로
+# convert_script = os.path.join(llama_cpp_dir, "convert_hf_to_gguf.py")
+
+# gguf_output_dir = "./gguf_models"
+# os.makedirs(gguf_output_dir, exist_ok=True)
+# f16_gguf_path = os.path.join(gguf_output_dir, "exaone-deep-finetune-f16.gguf")
+
+# # 원본 모델의 config.json 가져오기
+# config = AutoConfig.from_pretrained(
+#     model_name,
+#     trust_remote_code=True,
+# )
+
+# # 파인튜닝된 모델 디렉토리에 config.json 저장
+# output_dir = "./exaone-deep-finetune-final"
+# os.makedirs(output_dir, exist_ok=True)
+# config.to_json_file(os.path.join(output_dir, "config.json"))
+
+# convert_cmd = [
+#     "python", convert_script,
+#     final_model_dir,
+#     "--outfile", f16_gguf_path,
+#     "--outtype", "f16"
+# ]
+
+# print("F16 GGUF 변환 명령어:", " ".join(convert_cmd))
+# subprocess.run(convert_cmd, check=True)
+# print(f"F16 GGUF 변환 완료: {f16_gguf_path}")
+
+# # 10. Q4 양자화 수행
+# print("Q4 양자화 수행 중...")
+# q4_gguf_path = os.path.join(gguf_output_dir, "exaone-deep-finetune-q4_k_m.gguf")
+# quantize_path = os.path.join(llama_cpp_dir, "quantize")
+
+# # 양자화 수행 (Q4_K_M 형식 사용)
+# quantize_cmd = [
+#     quantize_path,
+#     f16_gguf_path,
+#     q4_gguf_path,
+#     "Q4_K_M"
+# ]
+
+# print("Q4 양자화 명령어:", " ".join(quantize_cmd))
+# subprocess.run(quantize_cmd, check=True)
+# print(f"Q4 양자화 완료: {q4_gguf_path}")
+
+# print("모든 과정이 완료되었습니다.")
+# print(f"파인튜닝된 모델: {final_model_dir}")
+# print(f"F16 GGUF 모델: {f16_gguf_path}")
+# print(f"Q4 GGUF 모델: {q4_gguf_path}")
