@@ -1,23 +1,19 @@
 import ollama
 import time
+import json
 import pprint
 from prompt_info import grammar, samples, description
 
-def main():
-    # models = ollama.list()
-    # model = models.models[0].model
-    # print([m.model for m in models.models], model)
-    
-    # model = "exaone-deep:7.8b"
-    # model = "llama3.2:3B"
-    # model = "codellama:7b"
-    model = "qwen2.5-coder:7b"
+def load_test_cases(filename="test_cases.json"):
+    with open(filename, "r", encoding="utf-8") as f:
+        return json.load(f)
 
-    try:
-        print("\n모델에 질문을 보냅니다...")
-        start_time = time.time()
+def save_test_results(results, filename="test_results.json"):
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=2, ensure_ascii=False)
 
-        prompt = f"""
+def make_prompt(user_command):
+    return f"""
 You are a helpful assistant that generates SoPlang code for user_command based on the given grammar and samples.
 ----------------------------------------------------------------------
 [Grammar]
@@ -44,44 +40,68 @@ Let's think step by step.
 PLEASE GENERATE SoPLANG CODE ONLY, NOT PYTHON CODE.
 Do not give any other description.
 
-user_command = "I'm too hot."
+user_command = "{user_command}"
 """
-                
-        response = ollama.chat(
-            model= model,
-            messages=[
-                {
-                    'role': 'user',
-                    'content': prompt
-                }
-            ],
-            stream=True
-        )
 
-        full_response = ""
-    
-        # 스트리밍 응답 처리
-        for chunk in response:
-            if 'message' in chunk and 'content' in chunk['message']:
-                content = chunk['message']['content']
-                print(content, end='', flush=True)
-                full_response += content
-        
-        end_time = time.time()
-        
-        print("\n=== 모델 응답 ===")
-        # print(response['message']['content'])
-        print("\n=== 응답 완료 ===")
-        print(f"응답 시간: {end_time - start_time:.2f}초")
-        
-        # 추가 정보 출력
-        if 'prompt_eval_count' in response:
-            print(f"프롬프트 평가 토큰 수: {response['prompt_eval_count']}")
-        if 'eval_count' in response:
-            print(f"생성된 토큰 수: {response['eval_count']}")
-        
+def run_test_case(model, user_command, use_stream=True):
+    prompt = make_prompt(user_command)
+    start_time = time.time()
+
+    try:
+        if use_stream:
+            response = ollama.chat(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                stream=True
+            )
+
+            full_response = ""
+            for chunk in response:
+                if 'message' in chunk and 'content' in chunk['message']:
+                    content = chunk['message']['content']
+                    full_response += content
+
+            elapsed = time.time() - start_time
+            return full_response.strip(), round(elapsed, 2), None  # 토큰 수 없음 (stream 모드)
+
+        else:
+            response = ollama.chat(
+                model=model,
+                messages=[{"role": "user", "content": prompt}]
+            )
+
+            full_response = response['message']['content']
+            elapsed = time.time() - start_time
+
+            generated_tokens = response.get("eval_count", None)
+            return full_response.strip(), round(elapsed, 2), generated_tokens
+
     except Exception as e:
-        print(f"모델 호출 중 오류 발생: {e}")
+        return f"Error: {e}", None, None
+
+def main():
+    model = "qwen2.5-coder:7b"
+    test_cases = load_test_cases()
+    test_results = []
+
+    for idx, pair in enumerate(test_cases):
+        human_input = pair[0]["value"].replace("Input: ", "")
+        print(f"\n[{idx+1}/{len(test_cases)}] Testing: {human_input}")
+
+        result, elapsed_time, generated_tokens = run_test_case(model, human_input, use_stream=use_stream)
+
+        test_results.append([
+            pair[0],
+            pair[1],
+            {
+                "result": result,
+                "elapsed_time": elapsed_time,
+                "generated_tokens": generated_tokens
+            }
+        ])
+
+    save_test_results(test_results)
+    print("\n✅ All test cases completed and saved to test_results.json.")
 
 if __name__ == "__main__":
     main()
