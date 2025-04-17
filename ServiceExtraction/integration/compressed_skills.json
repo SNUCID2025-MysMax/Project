@@ -1,0 +1,2138 @@
+{
+  "airConditionerMode": {
+    "info": "Allows for the control of the air conditioner.",
+    "values": {
+      "airConditionerMode": {
+        "info": "Current mode of the air conditioner",
+        "type": "ENUM",
+        "format": "airConditionerModeEnum"
+      },
+      "supportedAcModes": {
+        "info": "Supported states for this air conditioner to be in",
+        "type": "LIST",
+        "format": "list[airConditionerModeEnum]"
+      },
+      "targetTemperature": {
+        "info": "Current temperature status of the air conditioner",
+        "type": "INTEGER"
+      }
+    },
+    "functions": {
+      "setAirConditionerMode": {
+        "info": "Set the air conditioner mode",
+        "arguements": [
+          {
+            "id": "mode",
+            "descriptor": "Set the air conditioner mode",
+            "type": "ENUM",
+            "format": "airConditionerModeEnum"
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "setTemperature": {
+        "info": "Set the air conditioner temperature",
+        "arguements": [
+          {
+            "id": "temperature",
+            "descriptor": "Set the air conditioner temperature",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "airConditionerModeEnum": {
+        "auto": "The fan is on auto",
+        "cool": "The fan is in sleep mode to reduce noise",
+        "heat": "The fan is on low"
+      }
+    }
+  },
+  "switch": {
+    "info": "Allows for the control of a switch device",
+    "values": {
+      "switch": {
+        "info": "A string representation of whether the switch is on or off",
+        "type": "ENUM",
+        "format": "switchEnum"
+      }
+    },
+    "functions": {
+      "off": {
+        "info": "Turn a switch off",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "on": {
+        "info": "Turn a switch on",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "toggle": {
+        "info": "Toggle a switch",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "switchEnum": {
+        "on": "The value of the ``switch`` attribute if the switch is on",
+        "off": "The value of the ``switch`` attribute if the switch is off"
+      }
+    }
+  },
+  "airPurifierFanMode": {
+    "info": "Maintains and sets the state of an air purifier's fan",
+    "values": {
+      "airPurifierFanMode": {
+        "info": "The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree",
+        "type": "ENUM",
+        "format": "airPurifierFanModeEnum"
+      },
+      "supportedAirPurifierFanModes": {
+        "info": "Supported states for this air purifier fan to be in",
+        "type": "LIST",
+        "format": "list[airPurifierFanModeEnum]"
+      }
+    },
+    "functions": {
+      "setAirPurifierFanMode": {
+        "info": "Set the air purifier fan's mode",
+        "arguements": [
+          {
+            "id": "mode",
+            "descriptor": "Set the air purifier fan's mode",
+            "type": "ENUM",
+            "format": "airPurifierFanModeEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "airPurifierFanModeEnum": {
+        "auto": "The fan is on auto",
+        "sleep": "The fan is in sleep mode to reduce noise",
+        "low": "The fan is on low",
+        "medium": "The fan is on medium",
+        "high": "The fan is on high",
+        "quiet": "The fan is on quiet mode to reduce noise",
+        "windFree": "The fan is on wind free mode to reduce the feeling of cold air",
+        "off": "The fan is off"
+      }
+    }
+  },
+  "tvocMeasurement": {
+    "info": "Measure total volatile organic compound levels",
+    "values": {
+      "tvocLevel": {
+        "info": "The level of total volatile organic compounds detected",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "carbonDioxideMeasurement": {
+    "info": "Measure carbon dioxide levels",
+    "values": {
+      "carbonDioxide": {
+        "info": "The level of carbon dioxide detected",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "dustSensor": {
+    "info": "Gets the reading of the dust sensor.",
+    "values": {
+      "dustLevel": {
+        "info": "Current dust level -- also refered to as PM10, measured in micrograms per cubic meter",
+        "type": "INTEGER"
+      },
+      "fineDustLevel": {
+        "info": "Current level of fine dust -- also refered to as PM2.5, measured in micrograms per cubic meter",
+        "type": "INTEGER"
+      },
+      "veryFineDustLevel": {
+        "info": "Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter",
+        "type": "INTEGER"
+      }
+    }
+  },
+  "relativeHumidityMeasurement": {
+    "info": "Allow reading the relative humidity from devices that support it",
+    "values": {
+      "humidity": {
+        "info": "A numerical representation of the relative humidity measurement taken by the device",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "temperatureMeasurement": {
+    "info": "Get the temperature from a Device that reports current temperature",
+    "values": {
+      "temperature": {
+        "info": "A number that usually represents the current temperature",
+        "type": "DOUBLE"
+      },
+      "temperatureRange": {
+        "info": "Constraints on the temperature value",
+        "type": "DICT"
+      }
+    }
+  },
+  "alarm": {
+    "info": "The Alarm skill allows for interacting with devices that serve as alarms",
+    "values": {
+      "alarm": {
+        "info": "A string representation of whether the switch is on or off",
+        "type": "ENUM",
+        "format": "alarmEnum"
+      },
+      "alarmVolume": {
+        "info": "A string representation of the volume of the alarm",
+        "type": "ENUM",
+        "format": "alarmVolumeEnum"
+      }
+    },
+    "functions": {
+      "both": {
+        "info": "Strobe and sound the alarm",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "off": {
+        "info": "Turn the alarm (siren and strobe) off",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "setAlarmVolume": {
+        "info": "Set the volume of the alarm",
+        "arguements": [
+          {
+            "id": "alarmVolume",
+            "descriptor": "Set the volume of the alarm to \"mute\", \"low\", \"medium\", or \"high\"",
+            "type": "ENUM",
+            "format": "alarmVolumeEnum"
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "siren": {
+        "info": "Sound the siren on the alarm",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "strobe": {
+        "info": "Strobe the alarm",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "alarmVolumeEnum": {
+        "both": "if the alarm is strobing and sounding the alarm",
+        "off": "if the alarm is turned off",
+        "siren": "if the alarm is sounding the siren",
+        "strobe": "if the alarm is strobing"
+      }
+    }
+  },
+  "battery": {
+    "info": "Defines that the device has a battery",
+    "values": {
+      "battery": {
+        "info": "An indication of the status of the battery",
+        "type": "INTEGER"
+      }
+    }
+  },
+  "blindLevel": {
+    "info": "Allows for the control of the level of a blind.",
+    "values": {
+      "blindLevel": {
+        "info": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+        "type": "INTEGER"
+      }
+    },
+    "functions": {
+      "setBlindLevel": {
+        "info": "Set the blind level to the given value.",
+        "arguements": [
+          {
+            "id": "blindLevel",
+            "descriptor": "The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    }
+  },
+  "blind": {
+    "info": "Allows for the control of the blind.",
+    "values": {
+      "blind": {
+        "info": "A string representation of whether the blind is open or closed",
+        "type": "ENUM",
+        "format": "blindEnum"
+      }
+    },
+    "functions": {
+      "close": {
+        "info": "Close the blind",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "open": {
+        "info": "Open the blind",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "pause": {
+        "info": "Pause opening or closing the blind",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "blindEnum": {
+        "closed": "closed",
+        "closing": "closing…",
+        "open": "open",
+        "opening": "opening…",
+        "partially open": "partially open",
+        "unknown": "unknown"
+      }
+    }
+  },
+  "button": {
+    "info": "A device with one or more buttons",
+    "values": {
+      "button": {
+        "info": "The state of the buttons",
+        "type": "ENUM",
+        "format": "buttonEnum"
+      },
+      "numberOfButtons": {
+        "info": "The number of buttons on the device",
+        "type": "INTEGER"
+      },
+      "supportedButtonValues": {
+        "info": "List of valid button attribute values",
+        "type": "LIST",
+        "format": "list[buttonEnum]"
+      }
+    },
+    "enum": {
+      "buttonEnum": {
+        "pushed": "The value if the button is pushed",
+        "held": "The value if the button is held",
+        "double": "The value if the button is pushed twice",
+        "pushed_2x": "The value if the button is pushed twice",
+        "pushed_3x": "The value if the button is pushed three times",
+        "pushed_4x": "The value if the button is pushed four times",
+        "pushed_5x": "The value if the button is pushed five times",
+        "pushed_6x": "The value if the button is pushed six times",
+        "down": "The value if the button is clicked down",
+        "down_2x": "The value if the button is clicked down twice",
+        "down_3x": "The value if the button is clicked down three times",
+        "down_4x": "The value if the button is clicked down four times",
+        "down_5x": "The value if the button is clicked down five times",
+        "down_6x": "The value if the button is clicked down six times",
+        "down_hold": "The value if the button is clicked down and held",
+        "up": "The value if the button is clicked up",
+        "up_2x": "The value if the button is clicked up twice",
+        "up_3x": "The value if the button is clicked up three times",
+        "up_4x": "The value if the button is clicked up four times",
+        "up_5x": "The value if the button is clicked up five times",
+        "up_6x": "The value if the button is clicked up six times",
+        "up_hold": "The value if the button is clicked up and held",
+        "swipe_up": "The value if the button is swiped up from botton to top",
+        "swipe_down": "The value if the button is swiped down from top to bottom",
+        "swipe_left": "The value if the button is swiped from right to left",
+        "swipe_right": "The value if the button is swiped from left to right"
+      }
+    }
+  },
+  "buttonx4": {
+    "info": "A device with four buttons",
+    "values": {
+      "button1": {
+        "info": "The state of the button1",
+        "type": "ENUM",
+        "format": "buttonEnum"
+      },
+      "button2": {
+        "info": "The state of the button2",
+        "type": "ENUM",
+        "format": "buttonEnum"
+      },
+      "button3": {
+        "info": "The state of the button3",
+        "type": "ENUM",
+        "format": "buttonEnum"
+      },
+      "button4": {
+        "info": "The state of the button4",
+        "type": "ENUM",
+        "format": "buttonEnum"
+      },
+      "numberOfButtons": {
+        "info": "The number of buttons on the device",
+        "type": "INTEGER"
+      },
+      "supportedButtonValues": {
+        "info": "List of valid button attribute values",
+        "type": "LIST",
+        "format": "list[buttonEnum]"
+      }
+    },
+    "enum": {
+      "buttonEnum": {
+        "pushed": "The value if the button is pushed",
+        "held": "The value if the button is held",
+        "double": "The value if the button is pushed twice",
+        "pushed_2x": "The value if the button is pushed twice",
+        "pushed_3x": "The value if the button is pushed three times",
+        "pushed_4x": "The value if the button is pushed four times",
+        "pushed_5x": "The value if the button is pushed five times",
+        "pushed_6x": "The value if the button is pushed six times",
+        "down": "The value if the button is clicked down",
+        "down_2x": "The value if the button is clicked down twice",
+        "down_3x": "The value if the button is clicked down three times",
+        "down_4x": "The value if the button is clicked down four times",
+        "down_5x": "The value if the button is clicked down five times",
+        "down_6x": "The value if the button is clicked down six times",
+        "down_hold": "The value if the button is clicked down and held",
+        "up": "The value if the button is clicked up",
+        "up_2x": "The value if the button is clicked up twice",
+        "up_3x": "The value if the button is clicked up three times",
+        "up_4x": "The value if the button is clicked up four times",
+        "up_5x": "The value if the button is clicked up five times",
+        "up_6x": "The value if the button is clicked up six times",
+        "up_hold": "The value if the button is clicked up and held",
+        "swipe_up": "The value if the button is swiped up from botton to top",
+        "swipe_down": "The value if the button is swiped down from top to bottom",
+        "swipe_left": "The value if the button is swiped from right to left",
+        "swipe_right": "The value if the button is swiped from left to right"
+      }
+    }
+  },
+  "calculator": {
+    "info": "Provides calculation services",
+    "functions": {
+      "add": {
+        "info": "Add two numbers",
+        "arguements": [
+          {
+            "id": "a",
+            "descriptor": "The first number to add",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "b",
+            "descriptor": "The second number to add",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "DOUBLE"
+      },
+      "div": {
+        "info": "Divide two numbers",
+        "arguements": [
+          {
+            "id": "a",
+            "descriptor": "The first number to add",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "b",
+            "descriptor": "The second number to add",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "DOUBLE"
+      },
+      "mod": {
+        "info": "Modulo two numbers",
+        "arguements": [
+          {
+            "id": "a",
+            "descriptor": "The first number to add",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "b",
+            "descriptor": "The second number to add",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "DOUBLE"
+      },
+      "mul": {
+        "info": "Multiply two numbers",
+        "arguements": [
+          {
+            "id": "a",
+            "descriptor": "The first number to add",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "b",
+            "descriptor": "The second number to add",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "DOUBLE"
+      },
+      "sub": {
+        "info": "Subtract two numbers",
+        "arguements": [
+          {
+            "id": "a",
+            "descriptor": "The first number to add",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "b",
+            "descriptor": "The second number to add",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "DOUBLE"
+      }
+    }
+  },
+  "camera": {
+    "info": "Allows for the control of a camera device",
+    "values": {
+      "image": {
+        "info": "The latest image captured by the camera",
+        "type": "BINARY"
+      },
+      "video": {
+        "info": "The latest video captured by the camera",
+        "type": "BINARY"
+      }
+    },
+    "functions": {
+      "take": {
+        "info": "Take a picture with the camera - Return the image as binary data",
+        "arguements": [],
+        "return_type": "BINARY"
+      },
+      "takeTimelapse": {
+        "info": "Take a picture with the camera - Return the video as binary data",
+        "arguements": [
+          {
+            "id": "duration",
+            "descriptor": "The duration of the timelapse in seconds",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "speed",
+            "descriptor": "The speed of the timelapse",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "BINARY"
+      }
+    }
+  },
+  "chargingState": {
+    "info": "The current status of battery charging",
+    "values": {
+      "chargingState": {
+        "info": "The current charging state of the device",
+        "type": "ENUM",
+        "format": "chargingStateEnum"
+      },
+      "supportedChargingStates": {
+        "info": "The list of charging states that the device supports. Optional, defaults to all states if not set.",
+        "type": "LIST",
+        "format": "list[chargingStateEnum]"
+      }
+    },
+    "enum": {
+      "chargingStateEnum": {
+        "charging": "charging",
+        "discharging": "discharging",
+        "stopped": "stopped",
+        "fullyCharged": "fully charged",
+        "error": "error"
+      }
+    }
+  },
+  "voltageMeasurement": {
+    "info": "Get the value of voltage measured from devices that support it",
+    "values": {
+      "voltage": {
+        "info": "A number representing the current voltage measured",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "currentMeasurement": {
+    "info": "Get the value of electrical current measured from a device.",
+    "values": {
+      "current": {
+        "info": "A number representing the current measured.",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "clock": {
+    "info": "Provide current date and time",
+    "values": {
+      "date": {
+        "info": "Current date as double number - format: YYYYMMdd",
+        "type": "DOUBLE"
+      },
+      "datetime": {
+        "info": "Current date and time as double number - format: YYYYMMddhhmm",
+        "type": "DOUBLE"
+      },
+      "day": {
+        "info": "Current day",
+        "type": "INTEGER"
+      },
+      "hour": {
+        "info": "Current hour",
+        "type": "INTEGER"
+      },
+      "isHoliday": {
+        "info": "today is holiday or not",
+        "type": "BOOL"
+      },
+      "minute": {
+        "info": "Current minute",
+        "type": "INTEGER"
+      },
+      "month": {
+        "info": "Current month",
+        "type": "INTEGER"
+      },
+      "second": {
+        "info": "Current second",
+        "type": "INTEGER"
+      },
+      "time": {
+        "info": "Current time as double number - format: hhmm",
+        "type": "DOUBLE"
+      },
+      "timestamp": {
+        "info": "Current timestamp (return current unix time - unit: seconds with floating point)",
+        "type": "DOUBLE"
+      },
+      "weekday": {
+        "info": "Current weekday",
+        "type": "ENUM",
+        "format": "weekdayEnum"
+      },
+      "year": {
+        "info": "Current year",
+        "type": "INTEGER"
+      }
+    },
+    "functions": {
+      "delay": {
+        "info": "delay for a given amount of time",
+        "arguements": [
+          {
+            "id": "hour",
+            "descriptor": "hour",
+            "type": "INTEGER",
+            "format": null
+          },
+          {
+            "id": "minute",
+            "descriptor": "minute",
+            "type": "INTEGER",
+            "format": null
+          },
+          {
+            "id": "second",
+            "descriptor": "second",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "weekdayEnum": {}
+    }
+  },
+  "contactSensor": {
+    "info": "Allows reading the value of a contact sensor device",
+    "values": {
+      "contact": {
+        "info": "The current state of the contact sensor",
+        "type": "ENUM",
+        "format": "contactEnum"
+      }
+    },
+    "enum": {
+      "contactEnum": {
+        "closed": "The value if closed",
+        "open": "The value if open"
+      }
+    }
+  },
+  "curtain": {
+    "info": "Allows for the control of the curtain.",
+    "values": {
+      "curtain": {
+        "info": "A string representation of whether the curtain is open or closed",
+        "type": "ENUM",
+        "format": "curtainEnum"
+      },
+      "supportedCurtainCommands": {
+        "info": "Curtain commands supported by this instance of Curtain",
+        "type": "LIST",
+        "format": "list[curtainEnum]"
+      }
+    },
+    "functions": {
+      "close": {
+        "info": "Close the curtain",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "open": {
+        "info": "Open the curtain",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "pause": {
+        "info": "Pause opening or closing the curtain",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "curtainEnum": {
+        "closed": "closed",
+        "closing": "closing…",
+        "open": "open",
+        "opening": "opening…",
+        "partially open": "partially open",
+        "unknown": "unknown"
+      }
+    }
+  },
+  "dehumidifierMode": {
+    "info": "Allows for the control of the dehumidifier mode.",
+    "values": {
+      "dehumidifierMode": {
+        "info": "Current mode of the dehumidifier",
+        "type": "ENUM",
+        "format": "dehumidifierModeEnum"
+      }
+    },
+    "functions": {
+      "setDehumidifierMode": {
+        "info": "Set the dehumidifier mode",
+        "arguements": [
+          {
+            "id": "mode",
+            "descriptor": "Set the dehumidifier mode",
+            "type": "ENUM",
+            "format": "dehumidifierModeEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "dehumidifierModeEnum": {}
+    }
+  },
+  "dishwasherMode": {
+    "info": "Allows for the control of the dishwasher mode.",
+    "values": {
+      "dishwasherMode": {
+        "info": "Current mode of the dishwasher",
+        "type": "ENUM",
+        "format": "dishwasherModeEnum"
+      }
+    },
+    "functions": {
+      "setDishwasherMode": {
+        "info": "Set the dishwasher mode",
+        "arguements": [
+          {
+            "id": "mode",
+            "descriptor": "Set the dishwasher mode to \"eco\", \"intense\", \"auto\", \"quick\", \"rinse\", or \"dry\" mode",
+            "type": "ENUM",
+            "format": "dishwasherModeEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "dishwasherModeEnum": {
+        "eco": "The dishwasher is in \"eco\" mode",
+        "intense": "The dishwasher is in \"intense\" mode",
+        "auto": "The dishwasher is in \"auto\" mode",
+        "quick": "The dishwasher is in \"quick\" mode",
+        "rinse": "The dishwasher is in \"rinse\" mode",
+        "dry": "The dishwasher is in \"dry\" mode"
+      }
+    }
+  },
+  "doorControl": {
+    "info": "Allow for the control of a door",
+    "values": {
+      "door": {
+        "info": "The current state of the door",
+        "type": "ENUM",
+        "format": "doorEnum"
+      }
+    },
+    "functions": {
+      "close": {
+        "info": "Close the door",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "open": {
+        "info": "Open the door",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "doorEnum": {
+        "closed": "The door is closed",
+        "closing": "The door is closing",
+        "open": "The door is open",
+        "opening": "The door is opening",
+        "unknown": "The current state of the door is unknown"
+      }
+    }
+  },
+  "emailProvider": {
+    "info": "Provides email services",
+    "functions": {
+      "sendMail": {
+        "info": "Send an email",
+        "arguements": [
+          {
+            "id": "toAddress",
+            "descriptor": "The email address of the recipient",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "title",
+            "descriptor": "The title of the email",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "text",
+            "descriptor": "The text of the email",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "sendMailWithFile": {
+        "info": "Send an email with an attachment",
+        "arguements": [
+          {
+            "id": "toAddress",
+            "descriptor": "The email address of the recipient",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "title",
+            "descriptor": "The title of the email",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "text",
+            "descriptor": "The text of the email",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "file",
+            "descriptor": "The path to the file to be attached",
+            "type": "BINARY",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    }
+  },
+  "fanControl": {
+    "info": "Allows for the control of the fan.",
+    "values": {
+      "fanSpeed": {
+        "info": "The current fan speed represented as a integer value. - unit: RPM",
+        "type": "INTEGER"
+      },
+      "percent": {
+        "info": "The current fan speed represented as a percent value.",
+        "type": "INTEGER"
+      }
+    },
+    "functions": {
+      "setFanSpeed": {
+        "info": "Set the fan speed",
+        "arguements": [
+          {
+            "id": "speed",
+            "descriptor": "Set the fan to this speed",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "setPercent": {
+        "info": "Set the fan speed percent.",
+        "arguements": [
+          {
+            "id": "percent",
+            "descriptor": "The percent value to set the fan speed to.",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    }
+  },
+  "feederOperatingState": {
+    "info": "Allows for the control of a feeder device.",
+    "values": {
+      "feederOperatingState": {
+        "info": "The current state of the feeder.",
+        "type": "ENUM",
+        "format": "feederOperatingStateEnum"
+      }
+    },
+    "functions": {
+      "startFeeding": {
+        "info": "Begin the feeding process.",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "feederOperatingStateEnum": {
+        "idle": "idle",
+        "feeding": "feeding",
+        "error": "error"
+      }
+    }
+  },
+  "feederPortion": {
+    "info": "Allows for the portion control of a feeder device.",
+    "values": {
+      "feedPortion": {
+        "info": "A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense.",
+        "type": "DOUBLE"
+      }
+    },
+    "functions": {
+      "setFeedPortion": {
+        "info": "Set the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.",
+        "arguements": [
+          {
+            "id": "portion",
+            "descriptor": "The portion (in grams, pounds, ounces, or servings) to dispense.",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "unit",
+            "descriptor": "",
+            "type": "ENUM",
+            "format": "unitEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "unitEnum": {}
+    }
+  },
+  "gasMeter": {
+    "info": "Read the gas consumption of an energy metering device",
+    "values": {
+      "gasMeter": {
+        "info": "the gas energy reported by the metering device. unit: kWh",
+        "type": "DOUBLE"
+      },
+      "gasMeterCalorific": {
+        "info": "a measure of the available heat energy, used as part of the calculation to convert gas volume to gas energy. - unit: kcal",
+        "type": "DOUBLE"
+      },
+      "gasMeterTime": {
+        "info": "The cumulative gas use time reported by the metering device. - unit: seconds",
+        "type": "DOUBLE"
+      },
+      "gasMeterVolume": {
+        "info": "the cumulative gas volume reported by the metering device. - unit: cubic meters",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "valve": {
+    "info": "Allows for the control of a valve device",
+    "values": {
+      "valve": {
+        "info": "A string representation of whether the valve is open or closed",
+        "type": "ENUM",
+        "format": "valveEnum"
+      }
+    },
+    "functions": {
+      "close": {
+        "info": "Close the valve",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "open": {
+        "info": "Open the valve",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "valveEnum": {
+        "closed": "The value of the ``valve`` attribute if the valve is closed",
+        "open": "The value of the ``valve`` attribute if the valve is open"
+      }
+    }
+  },
+  "humidifierMode": {
+    "info": "Maintains and sets the state of an humidifier",
+    "values": {
+      "humidifierMode": {
+        "info": "Current mode of the humidifier",
+        "type": "ENUM",
+        "format": "humidifierModeEnum"
+      }
+    },
+    "functions": {
+      "setHumidifierMode": {
+        "info": "Set the humidifier mode",
+        "arguements": [
+          {
+            "id": "mode",
+            "descriptor": "Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode",
+            "type": "ENUM",
+            "format": "humidifierModeEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "humidifierModeEnum": {}
+    }
+  },
+  "irrigatorOperatingState": {
+    "info": "Allows for the control of a irrigator device.",
+    "values": {
+      "irrigatorOperatingState": {
+        "info": "The current state of the irrigator.",
+        "type": "ENUM",
+        "format": "irrigatorOperatingStateEnum"
+      }
+    },
+    "functions": {
+      "startWatering": {
+        "info": "Begin the watering process.",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "irrigatorOperatingStateEnum": {
+        "idle": "idle",
+        "watering": "watering",
+        "error": "error"
+      }
+    }
+  },
+  "irrigatorPortion": {
+    "info": "Allows for the portion control of a irrigator device.",
+    "values": {
+      "waterPortion": {
+        "info": "A number that represents the portion (in liters, milliliters, gallons, or ounces) that will dispense.",
+        "type": "DOUBLE"
+      }
+    },
+    "functions": {
+      "setWaterPortion": {
+        "info": "Set the portion (in liters, milliliters, gallons, or ounces) that the irrigator will dispense.",
+        "arguements": [
+          {
+            "id": "portion",
+            "descriptor": "The portion (in grams, pounds, ounces, or servings) to dispense.",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "unit",
+            "descriptor": "",
+            "type": "ENUM",
+            "format": "unitEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "unitEnum": {}
+    }
+  },
+  "leakSensor": {
+    "info": "A Device that senses water leakage",
+    "values": {
+      "leakage": {
+        "info": "Whether or not water leakage was detected by the Device",
+        "type": "ENUM",
+        "format": "presenceEnum"
+      }
+    },
+    "enum": {
+      "presenceEnum": {
+        "detected": "water leak is detected",
+        "not detected": "no leak"
+      }
+    }
+  },
+  "colorControl": {
+    "info": "Allows for control of a color changing device by setting its hue, saturation, and color values",
+    "values": {
+      "color": {
+        "info": "``{\"hue\":\"0-100 (percent)\", \"saturation\":\"0-100 (percent)\"}``",
+        "type": "STRING"
+      },
+      "hue": {
+        "info": "``0-100`` (percent)",
+        "type": "DOUBLE"
+      },
+      "saturation": {
+        "info": "``0-100`` (percent)",
+        "type": "DOUBLE"
+      }
+    },
+    "functions": {
+      "setColor": {
+        "info": "Sets the color based on the values passed in with the given map",
+        "arguements": [
+          {
+            "id": "color",
+            "descriptor": "The color map supports the following key/value pairs:",
+            "type": "DICT",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "setHue": {
+        "info": "Set the hue value of the color",
+        "arguements": [
+          {
+            "id": "hue",
+            "descriptor": "A number in the range ``0-100`` representing the hue as a value of percent",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "setSaturation": {
+        "info": "Set the saturation value of the color",
+        "arguements": [
+          {
+            "id": "saturation",
+            "descriptor": "A number in the range ``0-100`` representing the saturation as a value of percent",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    }
+  },
+  "switchLevel": {
+    "info": "Allows for the control of the level of a device like a light or a dimmer switch.",
+    "values": {
+      "level": {
+        "info": "A number that represents the current level, usually ``0-100`` in percent",
+        "type": "INTEGER"
+      },
+      "levelRange": {
+        "info": "Constraints on the level value",
+        "type": "DICT"
+      }
+    },
+    "functions": {
+      "alert": {
+        "info": "Alert with dimming",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "setLevel": {
+        "info": "Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.",
+        "arguements": [
+          {
+            "id": "level",
+            "descriptor": "The level value, usually ``0-100`` in percent",
+            "type": "INTEGER",
+            "format": null
+          },
+          {
+            "id": "rate",
+            "descriptor": "The rate at which to change the level",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    }
+  },
+  "lightLevel": {
+    "info": "A numerical representation of the brightness intensity",
+    "values": {
+      "light": {
+        "info": "brightness intensity (Unit: lux)",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "menuProvider": {
+    "info": "Provides menu information services",
+    "functions": {
+      "menu": {
+        "info": "Get the menu - Return the menu list",
+        "arguements": [
+          {
+            "id": "command",
+            "descriptor": "The command to get the menu - format: [오늘|내일] [학생식당|수의대식당|전망대(3식당)|예술계식당(아름드리)|기숙사식당|아워홈|동원관식당(113동)|웰스토리(220동)|투굿(공대간이식당)|자하연식당|301동식당] [아침|점심|저녁]",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "STRING"
+      },
+      "todayMenu": {
+        "info": "Get today's menu randomly - Return the menu list",
+        "arguements": [],
+        "return_type": "STRING"
+      },
+      "todayPlace": {
+        "info": "Get today's restaurant randomly - Return the restaurant name",
+        "arguements": [],
+        "return_type": "STRING"
+      }
+    }
+  },
+  "motionSensor": {
+    "info": "• active - The value when motion is detected\n• inactive - The value when no motion is detected",
+    "values": {
+      "motion": {
+        "info": "The current state of the motion sensor",
+        "type": "ENUM",
+        "format": "motionEnum"
+      }
+    },
+    "enum": {
+      "motionEnum": {}
+    }
+  },
+  "presenceSensor": {
+    "info": "The ability to see the current status of a presence sensor device",
+    "values": {
+      "presence": {
+        "info": "The current state of the presence sensor",
+        "type": "ENUM",
+        "format": "presenceEnum"
+      }
+    },
+    "enum": {
+      "presenceEnum": {
+        "present": "The device is present",
+        "not present": "left"
+      }
+    }
+  },
+  "pump": {
+    "info": "Allows for the control of a pump device",
+    "values": {
+      "pump": {
+        "info": "A string representation of whether the pump is open or closed",
+        "type": "ENUM",
+        "format": "pumpEnum"
+      }
+    },
+    "functions": {
+      "close": {
+        "info": "Close the pump",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "open": {
+        "info": "Open the pump",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "pumpEnum": {
+        "closed": "The value of the ``pump`` attribute if the pump is closed",
+        "open": "The value of the ``pump`` attribute if the pump is open"
+      }
+    }
+  },
+  "pumpOperationMode": {
+    "info": "Allows for setting the operation mode on a pump.",
+    "values": {
+      "currentOperationMode": {
+        "info": "The current effective operation mode of the pump",
+        "type": "ENUM",
+        "format": "pumpOperationModeEnum"
+      },
+      "operationMode": {
+        "info": "The operation mode of the pump",
+        "type": "ENUM",
+        "format": "pumpOperationModeEnum"
+      },
+      "supportedOperationModes": {
+        "info": "Supported operation modes for this device to be in",
+        "type": "LIST",
+        "format": "list[pumpOperationModeEnum]"
+      }
+    },
+    "functions": {
+      "setOperationMode": {
+        "info": "Set the operation mode",
+        "arguements": [
+          {
+            "id": "operationMode",
+            "descriptor": "The operation mode to set the device to",
+            "type": "ENUM",
+            "format": "pumpOperationModeEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "pumpOperationModeEnum": {
+        "normal": "The pump is controlled by a setpoint.",
+        "minimum": "This value sets the pump to run at the minimum possible speed it can without being stopped.",
+        "maximum": "This value sets the pump to run at its maximum possible speed.",
+        "localSetting": "This value sets the pump to run with the local settings of the pump."
+      }
+    }
+  },
+  "refrigeration": {
+    "info": "Allows for the control of the refrigeration.",
+    "values": {
+      "defrost": {
+        "info": "Status of the defrost",
+        "type": "ENUM",
+        "format": "defrostEnum"
+      },
+      "rapidCooling": {
+        "info": "Status of the rapid cooling",
+        "type": "ENUM",
+        "format": "rapidCoolingEnum"
+      },
+      "rapidFreezing": {
+        "info": "Status of the rapid freezing",
+        "type": "ENUM",
+        "format": "rapidFreezingEnum"
+      }
+    },
+    "functions": {
+      "setDefrost": {
+        "info": "Sets the defrost on or off",
+        "arguements": [
+          {
+            "id": "defrost",
+            "descriptor": "The on or off value for the defrost",
+            "type": "ENUM",
+            "format": "defrostEnum"
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "setRapidCooling": {
+        "info": "Sets the rapid cooling on or off",
+        "arguements": [
+          {
+            "id": "rapidCooling",
+            "descriptor": "The on or off value for the rapid cooling",
+            "type": "ENUM",
+            "format": "rapidCoolingEnum"
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "setRapidFreezing": {
+        "info": "Sets the rapid freezing on or off",
+        "arguements": [
+          {
+            "id": "rapidFreezing",
+            "descriptor": "The on or off value for the rapid freezing",
+            "type": "ENUM",
+            "format": "rapidFreezingEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "rapidFreezingEnum": {
+        "on": "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on",
+        "off": "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
+      }
+    }
+  },
+  "robotCleanerCleaningMode": {
+    "info": "Allows for the control of the robot cleaner cleaning mode.",
+    "values": {
+      "robotCleanerCleaningMode": {
+        "info": "Current status of the robot cleaner cleaning mode",
+        "type": "ENUM",
+        "format": "robotCleanerCleaningModeEnum"
+      }
+    },
+    "functions": {
+      "setRobotCleanerCleaningMode": {
+        "info": "Set the robot cleaner cleaning mode",
+        "arguements": [
+          {
+            "id": "mode",
+            "descriptor": "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes",
+            "type": "ENUM",
+            "format": "robotCleanerCleaningModeEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "robotCleanerCleaningModeEnum": {
+        "auto": "The robot cleaner cleaning mode is in \"auto\" mode",
+        "part": "The robot cleaner cleaning mode is in \"part\" mode",
+        "repeat": "The robot cleaner cleaning mode is in \"repeat\" mode",
+        "manual": "The robot cleaner cleaning mode is in \"manual\" mode",
+        "stop": "The robot cleaner cleaning mode is in \"stop\" mode",
+        "map": "The robot cleaner cleaning mode is in \"map\" mode"
+      }
+    }
+  },
+  "windowShadeLevel": {
+    "info": "Allows for the control of the level of a window shade.",
+    "values": {
+      "shadeLevel": {
+        "info": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+        "type": "INTEGER"
+      }
+    },
+    "functions": {
+      "setShadeLevel": {
+        "info": "Set the shade level to the given value.",
+        "arguements": [
+          {
+            "id": "shadeLevel",
+            "descriptor": "The level to which the shade should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    }
+  },
+  "windowShade": {
+    "info": "Allows for the control of the window shade.",
+    "values": {
+      "supportedWindowShadeCommands": {
+        "info": "Window shade commands supported by this instance of Window Shade",
+        "type": "LIST",
+        "format": "list[windowShadeEnum]"
+      },
+      "windowShade": {
+        "info": "A string representation of whether the window shade is open or closed",
+        "type": "ENUM",
+        "format": "windowShadeEnum"
+      }
+    },
+    "functions": {
+      "close": {
+        "info": "Close the window shade",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "open": {
+        "info": "Open the window shade",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "pause": {
+        "info": "Pause opening or closing the window shade",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "windowShadeEnum": {
+        "closed": "closed",
+        "closing": "closing…",
+        "open": "open",
+        "opening": "opening…",
+        "partially open": "partially open",
+        "unknown": "unknown"
+      }
+    }
+  },
+  "sirenMode": {
+    "info": "Allows for the control of the siren.",
+    "values": {
+      "sirenMode": {
+        "info": "Current mode of the siren",
+        "type": "ENUM",
+        "format": "sirenModeEnum"
+      }
+    },
+    "functions": {
+      "setSirenMode": {
+        "info": "Set the siren mode",
+        "arguements": [
+          {
+            "id": "mode",
+            "descriptor": "Set the siren mode",
+            "type": "ENUM",
+            "format": "sirenModeEnum"
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "sirenModeEnum": {}
+    }
+  },
+  "powerMeter": {
+    "info": "Allows for reading the power consumption from devices that report it",
+    "values": {
+      "power": {
+        "info": "A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts",
+        "type": "DOUBLE"
+      },
+      "powerConsumption": {
+        "info": "energy and power consumption during specific time period - unit: Wh",
+        "type": "DICT"
+      }
+    }
+  },
+  "smokeDetector": {
+    "info": "A device that detects the presence or absence of smoke.",
+    "values": {
+      "smoke": {
+        "info": "The state of the smoke detection device",
+        "type": "ENUM",
+        "format": "smokeEnum"
+      }
+    },
+    "enum": {
+      "smokeEnum": {
+        "clear": "No smoke detected",
+        "detected": "Smoke detected",
+        "tested": "Smoke detector test button was activated"
+      }
+    }
+  },
+  "soilHumidityMeasurement": {
+    "info": "Allow reading the soil humidity from devices that support it",
+    "values": {
+      "soilHumidity": {
+        "info": "A numerical representation of the soil humidity measurement taken by the device",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "soundPressureLevel": {
+    "info": "Gets the value of the sound pressure level.",
+    "values": {
+      "soundPressureLevel": {
+        "info": "Level of the sound pressure",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "soundSensor": {
+    "info": "A Device that senses sound",
+    "values": {
+      "sound": {
+        "info": "Whether or not sound was detected by the Device",
+        "type": "ENUM",
+        "format": "soundEnum"
+      }
+    },
+    "enum": {
+      "soundEnum": {
+        "detected": "Sound is detected",
+        "not detected": "no sound"
+      }
+    }
+  },
+  "mediaPlayback": {
+    "info": "Allows for the control of the media playback.",
+    "values": {
+      "playbackStatus": {
+        "info": "Status of the media playback",
+        "type": "ENUM",
+        "format": "mediaPlaybackEnum"
+      },
+      "supportedPlaybackCommands": {
+        "info": "Media playback commands which are supported",
+        "type": "LIST",
+        "format": "list[mediaPlaybackEnum]"
+      }
+    },
+    "functions": {
+      "fastForward": {
+        "info": "Fast forward the media playback",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "pause": {
+        "info": "Pause the media playback",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "play": {
+        "info": "Play the media playback",
+        "arguements": [
+          {
+            "id": "source",
+            "descriptor": "The source of the media playback",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "rewind": {
+        "info": "Rewind the media playback",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "setPlaybackStatus": {
+        "info": "Set the playback status",
+        "arguements": [
+          {
+            "id": "status",
+            "descriptor": "Set the playback status to \"paused\", \"playing\", \"stopped\", \"fast forwarding\" or \"rewinding\" state.",
+            "type": "ENUM",
+            "format": "mediaPlaybackEnum"
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "speak": {
+        "info": "TTS feature",
+        "arguements": [
+          {
+            "id": "text",
+            "descriptor": "The text to be spoken",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "stop": {
+        "info": "Stop the media playback",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "mediaPlaybackEnum": {
+        "paused": "Media playback is in a \"paused\" state",
+        "playing": "Media playback is in a \"playing\" state",
+        "stopped": "Media playback is in a \"stopped\" state",
+        "fast forwarding": "Media playback is in a \"fast forwarding\" state",
+        "rewinding": "Media playback is in a \"rewinding\" state",
+        "buffering": "Media playback is in a \"buffering\" state"
+      }
+    }
+  },
+  "audioRecord": {
+    "info": "Record audio",
+    "values": {
+      "recordStatus": {
+        "info": "The current status of the audio recorder",
+        "type": "ENUM",
+        "format": "recordStatusEnum"
+      }
+    },
+    "functions": {
+      "record": {
+        "info": "Record audio",
+        "arguements": [
+          {
+            "id": "file",
+            "descriptor": "The file to record to",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "duration",
+            "descriptor": "The duration to record for",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "recordStatusEnum": {
+        "idle": "The audio recorder is idle",
+        "recording": "The audio recorder is recording"
+      }
+    }
+  },
+  "audioMute": {
+    "info": "Allows for the control of audio mute.",
+    "values": {
+      "muteStatus": {
+        "info": "Current status of the audio mute",
+        "type": "ENUM",
+        "format": "muteEnum"
+      }
+    },
+    "functions": {
+      "mute": {
+        "info": "Set the audio to mute state",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "setMute": {
+        "info": "Set the state of the audio mute",
+        "arguements": [
+          {
+            "id": "state",
+            "descriptor": "Set the audio mute state to \"muted\" or \"unmuted\"",
+            "type": "ENUM",
+            "format": "muteEnum"
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "unmute": {
+        "info": "Set the audio to unmute state",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "muteEnum": {
+        "muted": "The audio is in \"muted\" state",
+        "unmuted": "The audio is in \"unmuted\" state"
+      }
+    }
+  },
+  "tvChannel": {
+    "info": "Allows for the control of the TV channel.",
+    "values": {
+      "tvChannel": {
+        "info": "Current status of the TV channel",
+        "type": "INTEGER"
+      },
+      "tvChannelName": {
+        "info": "Current status of the TV channel name",
+        "type": "STRING"
+      }
+    },
+    "functions": {
+      "channelDown": {
+        "info": "Move the TV channel down",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "channelUp": {
+        "info": "Move the TV channel up",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "setTvChannel": {
+        "info": "Set the TV channel",
+        "arguements": [
+          {
+            "id": "tvChannel",
+            "descriptor": "",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "setTvChannelName": {
+        "info": "Set the TV channel Name",
+        "arguements": [
+          {
+            "id": "tvChannelName",
+            "descriptor": "",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    }
+  },
+  "audioVolume": {
+    "info": "Allows for the control of audio volume.",
+    "values": {
+      "volume": {
+        "info": "The current volume setting of the audio",
+        "type": "INTEGER"
+      }
+    },
+    "functions": {
+      "setVolume": {
+        "info": "Set the audio volume level",
+        "arguements": [
+          {
+            "id": "volume",
+            "descriptor": "A value to which the audio volume level should be set",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "volumeDown": {
+        "info": "Turn the audio volume down",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "volumeUp": {
+        "info": "Turn the audio volume up",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    }
+  },
+  "testSkill": {
+    "info": "testSkill",
+    "values": {
+      "testSkillValue": {
+        "info": "testSkillValue",
+        "type": "STRING"
+      }
+    },
+    "functions": {
+      "testSkillFunction": {
+        "info": "testSkillFunction",
+        "arguements": [
+          {
+            "id": "testArgument",
+            "descriptor": "testArgument",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "STRING"
+      }
+    },
+    "enum": {
+      "testSkillEnum": {}
+    }
+  },
+  "weatherProvider": {
+    "info": "Provides weather information",
+    "values": {
+      "humidityWeather": {
+        "info": "Current humidity level",
+        "type": "DOUBLE"
+      },
+      "pm10Weather": {
+        "info": "Current pm10 level",
+        "type": "DOUBLE"
+      },
+      "pm25Weather": {
+        "info": "Current pm25 level",
+        "type": "DOUBLE"
+      },
+      "pressureWeather": {
+        "info": "Current pressure level",
+        "type": "DOUBLE"
+      },
+      "temperatureWeather": {
+        "info": "Current temperature level",
+        "type": "DOUBLE"
+      },
+      "weather": {
+        "info": "Current weather condition",
+        "type": "ENUM",
+        "format": "weatherEnum"
+      }
+    },
+    "functions": {
+      "getWeatherInfo": {
+        "info": "Get the current weather information - Return whole weather information, format: \"temperature, humidity, pressure, pm25, pm10, weather, weather_string, icon_id, location\"",
+        "arguements": [
+          {
+            "id": "lat",
+            "descriptor": "The latitude of the location",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "lon",
+            "descriptor": "The longitude of the location",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "STRING"
+      }
+    },
+    "enum": {
+      "weatherEnum": {
+        "thunderstorm": "thunderstorm",
+        "drizzle": "drizzle",
+        "rain": "rain",
+        "snow": "snow",
+        "mist": "mist",
+        "smoke": "smoke",
+        "haze": "haze",
+        "dust": "dust",
+        "fog": "fog",
+        "sand": "sand",
+        "ash": "ash",
+        "squall": "squall",
+        "tornado": "tornado",
+        "clear": "clear",
+        "clouds": "clouds"
+      }
+    }
+  },
+  "windowControl": {
+    "info": "Allows for the control of the window shade.",
+    "values": {
+      "window": {
+        "info": "A string representation of whether the window is open or closed",
+        "type": "ENUM",
+        "format": "windowEnum"
+      }
+    },
+    "functions": {
+      "close": {
+        "info": "Close the window",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "open": {
+        "info": "Open the window",
+        "arguements": [],
+        "return_type": "VOID"
+      }
+    },
+    "enum": {
+      "windowEnum": {
+        "closed": "closed",
+        "open": "open",
+        "unknown": "unknown"
+      }
+    }
+  },
+  "fallDetection": {
+    "info": "Detects if a fall has occurred",
+    "values": {
+      "fall": {
+        "info": "Whether or not a fall was detected",
+        "type": "ENUM",
+        "format": "fallEnum"
+      }
+    },
+    "enum": {
+      "fallEnum": {
+        "fall": "fall detected",
+        "normal": "no fall detected"
+      }
+    }
+  },
+  "timer": {
+    "info": "The Timer allows for interacting with devices that serve as timers",
+    "functions": {
+      "add": {
+        "info": "Add a timer",
+        "arguements": [
+          {
+            "id": "name",
+            "descriptor": "The time name",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "timeout",
+            "descriptor": "The time at which the timer should expire",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "isExist": {
+        "info": "Check if a timer is exist",
+        "arguements": [
+          {
+            "id": "name",
+            "descriptor": "The time name",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "BOOL"
+      },
+      "isSet": {
+        "info": "Check if a timer is set",
+        "arguements": [
+          {
+            "id": "name",
+            "descriptor": "The time name",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "BOOL"
+      },
+      "reset": {
+        "info": "Reset a timer",
+        "arguements": [
+          {
+            "id": "name",
+            "descriptor": "The time name",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "set": {
+        "info": "Set a timer",
+        "arguements": [
+          {
+            "id": "name",
+            "descriptor": "The time name",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "timeout",
+            "descriptor": "The time at which the timer should expire",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "start": {
+        "info": "Start a timer",
+        "arguements": [
+          {
+            "id": "name",
+            "descriptor": "The time name",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    }
+  },
+  "manager": {
+    "info": "Allow Manager Thing's features",
+    "functions": {
+      "add_thing": {
+        "info": "Add staff thing - Return error string",
+        "arguements": [
+          {
+            "id": "parameter",
+            "descriptor": "Staff thing's parameter",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "client_id",
+            "descriptor": "Requester's client id",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "name",
+            "descriptor": "Staff thing's name",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "STRING"
+      },
+      "delete_thing": {
+        "info": "Delete staff thing - Return error string",
+        "arguements": [
+          {
+            "id": "name",
+            "descriptor": "Staff thing's name",
+            "type": "STRING",
+            "format": null
+          },
+          {
+            "id": "client_id",
+            "descriptor": "Requester's client id",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "STRING"
+      },
+      "discover": {
+        "info": "Discover local devices - Return device list with json format",
+        "arguements": [],
+        "return_type": "STRING"
+      }
+    }
+  }
+}
