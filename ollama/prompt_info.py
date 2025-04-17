@@ -472,3 +472,138 @@ Values : [
 ]
 Tags : []''',
 }
+
+grammar_revised = '''
+SoPLang Grammar Specification
+-------------------------------------------------------------------------------
+
+1. Lexical Rules (Token Definitions)
+-------------------------------------
+Literals:
+  - Integer:             [+-]?[0-9]+              => INTEGER
+  - Floating-point:      [-+]?([0-9]*\.[0-9]+|[0-9]+) => DOUBLE
+  - String literal:      ".*?"                    => STRING_LITERAL
+  - Identifier:          [a-zA-Z][_a-zA-Z0-9]*    => IDENTIFIER
+
+Keywords:
+  "wait until" => WAIT_UNTIL
+  "loop"       => LOOP
+  "if"         => IF
+  "else"       => ELSE
+  "not"        => NOT
+  "all"        => ALL
+  "or"         => OR
+  "and"        => AND
+
+Operators and Punctuation:
+  >=  => GE        <= => LE        == => EQ         != => NE
+   =  => ASSIGN     : => COLON      , => COMMA       ; => SEMICOLON
+   [  => LBRACKET   ] => RBRACKET   . => DOT         # => HASH
+   +  => PLUS       - => MINUS      * => MULT        / => DIV
+
+Time Units:
+  MSEC, SEC, MIN, HOUR, DAY
+
+Line Terminators and Comments:
+  // comment until newline
+  "\n", "\r\n" as line breaks
+
+
+2. Grammar Rules (BNF-style)
+-----------------------------
+
+scenario            ::= statement_list
+
+statement_list      ::= statement
+                      | statement blank statement_list
+
+statement           ::= action_behavior
+                      | if_statement
+                      | loop_statement
+                      | wait_statement
+                      | compound_statement
+
+compound_statement  ::= '{' blank statement_list blank '}'
+
+action_behavior     ::= function_call
+                      | value_read
+                      | function_call_with_output
+
+function_call       ::= '(' device_id ')' DOT skill_function_name '(' argument_list ')'
+value_read          ::= '(' device_id ')' DOT skill_value_name
+function_call_with_output ::= IDENTIFIER ASSIGN '(' device_id ')' DOT skill_function_name '(' argument_list ')'
+
+device_id        ::= HASH IDENTIFIER        
+device_id_list   ::= device_id
+
+skill_function_name ::= IDENTIFIER UNDERSCORE IDENTIFIER    // e.g., airConditionerMode_setAirConditionerMode
+skill_value_name    ::= IDENTIFIER UNDERSCORE IDENTIFIER    // e.g., airConditionerMode_airConditionerMode
+
+argument_list       ::= empty
+                      | argument
+                      | argument_list blank COMMA blank argument
+
+argument            ::= primary_expression
+
+primary_expression  ::= IDENTIFIER
+                      | INTEGER
+                      | DOUBLE
+                      | STRING_LITERAL
+                      | STRING_LITERAL PLUS STRING_LITERAL
+
+if_statement        ::= IF '(' condition_list ')' blank statement blank else_clause
+else_clause         ::= empty
+                      | ELSE blank statement
+
+condition_list      ::= condition
+                      | '(' condition_list ')'
+                      | condition_list blank OR blank condition_list
+                      | condition_list blank AND blank condition_list
+                      | NOT condition blank
+
+condition           ::= '(' device_id ')' DOT skill_function_name '(' ')' EQ expression_value
+                      | '(' device_id ')' DOT skill_value_name comparison_operator expression_value
+
+expression_value    ::= INTEGER | DOUBLE | STRING_LITERAL | IDENTIFIER
+
+comparison_operator ::= EQ | NE | GE | LE | '>' | '<'
+
+loop_statement      ::= LOOP '(' loop_condition ')' blank statement
+loop_condition      ::= empty
+                      | period_time COMMA condition_list
+                      | period_time
+                      | condition_list
+
+period_time         ::= INTEGER time_unit
+time_unit           ::= MSEC | SEC | MIN | HOUR | DAY
+
+wait_statement      ::= WAIT_UNTIL '(' condition_list ')'
+                      | WAIT_UNTIL '(' period_time ')'
+
+
+3. Semantic Notes
+------------------
+
+- All service accesses use full skill prefix: skill_function_name = skillId_functionId
+- Value reads must use full skill prefix: skill_value_name = skillId_valueId
+- Action calls cannot be assigned to variables unless explicitly allowed (e.g., output assignment is only syntactic, not semantic unless device allows).
+- No arbitrary assignment like `x = (#Device).skill_value` is permitted.
+- No method chaining; only one function/value call per action.
+- Concatenation is allowed in argument expressions: "a" + "b"
+- Output device like Speaker must be used explicitly to produce output: e.g., `(#Speaker).speak("a" + "b")`
+
+4. Example Usage
+-----------------
+
+Valid:
+  (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+  (#AirConditioner).airConditionerMode_setTemperature(26)
+  (#Speaker).speak("현재 온도는 " + "26도입니다")
+  loop(5000 MSEC, (#Button).buttonStatus_isPressed()) { (#Light).lightControl_blink("green") }
+
+Invalid:
+  x = (#AirConditioner).airConditionerMode_airConditionerMode       // assignment not allowed
+  (#Device).skillId.functionId()                                     // wrong format
+  (#Speaker).speak("온도: " + (#Sensor).temperature_getValue())      // function call as expression not allowed
+
+'''
