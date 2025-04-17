@@ -194,8 +194,8 @@ pyrightconfig.json
 **/models/
 
 # finetune에서 py 이외 파일 무시
-finetune/*
-!finetune/*.py
+finetune_old/*
+!finetune_old/*.py
 
 finetune_KO/*
 !finetune_KO/*.py
