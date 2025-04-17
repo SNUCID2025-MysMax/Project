@@ -2,7 +2,7 @@ import ollama
 import time
 import json
 import pprint
-from prompt_info import grammar, samples, description
+from prompt_info import grammar, services
 
 def load_test_cases(filename="test_cases.json"):
     with open(filename, "r", encoding="utf-8") as f:
@@ -14,32 +14,43 @@ def save_test_results(results, filename="test_results.json"):
 
 def make_prompt(user_command):
     return f"""
-You are a helpful assistant that generates SoPlang code for user_command based on the given grammar and samples.
-----------------------------------------------------------------------
-[Grammar]
-grammar = {grammar},
-[/Grammar]
-----------------------------------------------------------------------
-[Samples]
-samples = {samples},
-[/Samples]
-----------------------------------------------------------------------
-[Services]
-services = {pprint.pformat(description)},
-[/Services]
-----------------------------------------------------------------------
+You are a domain-specific language assistant specialized in generating SoPLang code based on user commands.
 
-Let's think step by step.
+-------------------------------------------------------------------------------
+[Grammar Specification]
+Below is the complete SoPLang grammar definition. Use it as the only valid syntax reference.
 
-#Step1. You have to find the best solution for the user. If the command is too vague, you MUST find the best solution within a limited list of services
+grammar = {grammar}
+[/Grammar Specification]
+-------------------------------------------------------------------------------
+[Device and Skills]
+Below is the list of available devices, their skill functions, and value accessors.
 
-#Step2. generate SoPlang code for user_command based on given services.
+Only use the device and their skills defined here. Select the most relevant action from this list.
 
-#Step3. Check whether the code has appropriate, corrrect services and SoPlang grammar. If not, you MUST fix it.
+devices and skills = {services}
+[/Device and Skills]
+-------------------------------------------------------------------------------
 
-PLEASE GENERATE SoPLANG CODE ONLY, NOT PYTHON CODE.
-Do not give any other description.
+Your task consists of the following steps:
 
+Step 1. Interpret the `user_command` and determine the best matching device, function, and parameters using ONLY the provided services.
+
+Step 2. Generate a complete SoPLang script in correct syntax using the grammar definition.
+
+Step 3. Validate that:
+  - All device references (e.g., (#AirConditioner)) use the correct device and skill_function/value_id format.
+  - The structure follows the grammar rules exactly.
+  - All arguments are used properly.
+If there is any mismatch, you MUST correct it before final output.
+
+STRICT RULES:
+- Only return SoPLang code as your final answer.
+- Do NOT return Python code.
+- Do NOT return any explanation, reasoning, or additional text.
+- All device calls must follow this format: `(#DeviceName).skillId_functionId(arg)` or `(#DeviceName).skillId_valueId`
+
+-------------------------------------------------------------------------------
 user_command = "{user_command}"
 """
 
