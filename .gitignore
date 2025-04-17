@@ -191,7 +191,7 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/linux,python
 
 # custom
-models/
+**/models/
 
 # finetune에서 py 이외 파일 무시
 finetune/*
