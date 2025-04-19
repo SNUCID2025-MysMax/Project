@@ -1,0 +1,253 @@
+{
+  "airConditionerModeEnum": {
+    "auto": "The fan is on auto",
+    "cool": "The fan is in sleep mode to reduce noise",
+    "heat": "The fan is on low",
+    "fanonly": "",
+    "dehumidify": ""
+  },
+  "switchEnum": {
+    "on": "The value of the ``switch`` attribute if the switch is on",
+    "off": "The value of the ``switch`` attribute if the switch is off"
+  },
+  "airPurifierFanModeEnum": {
+    "auto": "The fan is on auto",
+    "sleep": "The fan is in sleep mode to reduce noise",
+    "low": "The fan is on low",
+    "medium": "The fan is on medium",
+    "high": "The fan is on high",
+    "quiet": "The fan is on quiet mode to reduce noise",
+    "windFree": "The fan is on wind free mode to reduce the feeling of cold air",
+    "off": "The fan is off"
+  },
+  "alarmVolumeEnum": {
+    "mute": "",
+    "low": "",
+    "medium": "",
+    "high": ""
+  },
+  "blindEnum": {
+    "closed": "closed",
+    "closing": "closing…",
+    "open": "open",
+    "opening": "opening…",
+    "partially": "",
+    "paused": "",
+    "unknown": "unknown"
+  },
+  "buttonEnum": {
+    "pushed": "The value if the button is pushed",
+    "held": "The value if the button is held",
+    "double": "The value if the button is pushed twice",
+    "pushed_2x": "The value if the button is pushed twice",
+    "pushed_3x": "The value if the button is pushed three times",
+    "pushed_4x": "The value if the button is pushed four times",
+    "pushed_5x": "The value if the button is pushed five times",
+    "pushed_6x": "The value if the button is pushed six times",
+    "down": "The value if the button is clicked down",
+    "down_2x": "The value if the button is clicked down twice",
+    "down_3x": "The value if the button is clicked down three times",
+    "down_4x": "The value if the button is clicked down four times",
+    "down_5x": "The value if the button is clicked down five times",
+    "down_6x": "The value if the button is clicked down six times",
+    "down_hold": "The value if the button is clicked down and held",
+    "up": "The value if the button is clicked up",
+    "up_2x": "The value if the button is clicked up twice",
+    "up_3x": "The value if the button is clicked up three times",
+    "up_4x": "The value if the button is clicked up four times",
+    "up_5x": "The value if the button is clicked up five times",
+    "up_6x": "The value if the button is clicked up six times",
+    "up_hold": "The value if the button is clicked up and held",
+    "swipe_up": "The value if the button is swiped up from botton to top",
+    "swipe_down": "The value if the button is swiped down from top to bottom",
+    "swipe_left": "The value if the button is swiped from right to left",
+    "swipe_right": "The value if the button is swiped from left to right"
+  },
+  "chargingStateEnum": {
+    "charging": "charging",
+    "discharging": "discharging",
+    "stopped": "stopped",
+    "fullyCharged": "fully charged",
+    "error": "error"
+  },
+  "weekdayEnum": {
+    "monday": "",
+    "tuesday": "",
+    "wednesday": "",
+    "thursday": "",
+    "friday": "",
+    "saturday": "",
+    "sunday": ""
+  },
+  "contactEnum": {
+    "open": "The value if open",
+    "closed": "The value if closed"
+  },
+  "curtainEnum": {
+    "closed": "closed",
+    "closing": "closing…",
+    "open": "open",
+    "opening": "opening…",
+    "partially": "",
+    "paused": "",
+    "unknown": "unknown"
+  },
+  "dehumidifierModeEnum": {
+    "cooling": "",
+    "delayWash": "",
+    "drying": "",
+    "finished": "",
+    "refreshing": "",
+    "weightSensing": "",
+    "wrinklePrevent": "",
+    "dehumidifying": "",
+    "AIDrying": "",
+    "sanitizing": "",
+    "internalCare": "",
+    "freezeProtection": "",
+    "continuousDehumidifying": "",
+    "thawingFrozenInside": ""
+  },
+  "dishwasherModeEnum": {
+    "eco": "The dishwasher is in \"eco\" mode",
+    "intense": "The dishwasher is in \"intense\" mode",
+    "auto": "The dishwasher is in \"auto\" mode",
+    "quick": "The dishwasher is in \"quick\" mode",
+    "rinse": "The dishwasher is in \"rinse\" mode",
+    "dry": "The dishwasher is in \"dry\" mode"
+  },
+  "doorEnum": {
+    "closed": "The door is closed",
+    "closing": "The door is closing",
+    "open": "The door is open",
+    "opening": "The door is opening",
+    "unknown": "The current state of the door is unknown"
+  },
+  "unitEnum": {
+    "liters": "",
+    "milliliters": "",
+    "gallons": "",
+    "ounces": ""
+  },
+  "feederOperatingStateEnum": {
+    "idle": "idle",
+    "feeding": "feeding",
+    "error": "error"
+  },
+  "valveEnum": {
+    "open": "The value of the ``valve`` attribute if the valve is open",
+    "closed": "The value of the ``valve`` attribute if the valve is closed"
+  },
+  "humidifierModeEnum": {
+    "auto": "",
+    "low": "",
+    "medium": "",
+    "high": ""
+  },
+  "irrigatorOperatingStateEnum": {
+    "idle": "idle",
+    "watering": "watering",
+    "error": "error"
+  },
+  "presenceEnum": {
+    "present": "The device is present",
+    "not_present": ""
+  },
+  "motionEnum": {
+    "active": "",
+    "inactive": ""
+  },
+  "pumpOperationModeEnum": {
+    "normal": "The pump is controlled by a setpoint.",
+    "minimum": "This value sets the pump to run at the minimum possible speed it can without being stopped.",
+    "maximum": "This value sets the pump to run at its maximum possible speed.",
+    "localSetting": "This value sets the pump to run with the local settings of the pump."
+  },
+  "pumpEnum": {
+    "open": "The value of the ``pump`` attribute if the pump is open",
+    "closed": "The value of the ``pump`` attribute if the pump is closed"
+  },
+  "rapidFreezingEnum": {
+    "on": "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on",
+    "off": "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
+  },
+  "robotCleanerCleaningModeEnum": {
+    "auto": "The robot cleaner cleaning mode is in \"auto\" mode",
+    "part": "The robot cleaner cleaning mode is in \"part\" mode",
+    "repeat": "The robot cleaner cleaning mode is in \"repeat\" mode",
+    "manual": "The robot cleaner cleaning mode is in \"manual\" mode",
+    "stop": "The robot cleaner cleaning mode is in \"stop\" mode",
+    "map": "The robot cleaner cleaning mode is in \"map\" mode"
+  },
+  "windowShadeEnum": {
+    "closed": "closed",
+    "closing": "closing…",
+    "open": "open",
+    "opening": "opening…",
+    "partially": "",
+    "paused": "",
+    "unknown": "unknown"
+  },
+  "sirenModeEnum": {
+    "both": "",
+    "off": "",
+    "siren": "",
+    "strobe": ""
+  },
+  "smokeEnum": {
+    "clear": "No smoke detected",
+    "detected": "Smoke detected",
+    "tested": "Smoke detector test button was activated"
+  },
+  "soundEnum": {
+    "detected": "Sound is detected",
+    "not_detected": ""
+  },
+  "mediaPlaybackEnum": {
+    "paused": "Media playback is in a \"paused\" state",
+    "playing": "Media playback is in a \"playing\" state",
+    "stopped": "Media playback is in a \"stopped\" state",
+    "fast": "",
+    "rewinding": "Media playback is in a \"rewinding\" state",
+    "buffering": "Media playback is in a \"buffering\" state"
+  },
+  "recordStatusEnum": {
+    "idle": "The audio recorder is idle",
+    "recording": "The audio recorder is recording"
+  },
+  "muteEnum": {
+    "muted": "The audio is in \"muted\" state",
+    "unmuted": "The audio is in \"unmuted\" state"
+  },
+  "testSkillEnum": {
+    "enum1": "",
+    "enum2": "",
+    "enum3": ""
+  },
+  "weatherEnum": {
+    "thunderstorm": "thunderstorm",
+    "drizzle": "drizzle",
+    "rain": "rain",
+    "snow": "snow",
+    "mist": "mist",
+    "smoke": "smoke",
+    "haze": "haze",
+    "dust": "dust",
+    "fog": "fog",
+    "sand": "sand",
+    "ash": "ash",
+    "squall": "squall",
+    "tornado": "tornado",
+    "clear": "clear",
+    "clouds": "clouds"
+  },
+  "windowEnum": {
+    "closed": "closed",
+    "open": "open",
+    "unknown": "unknown"
+  },
+  "fallEnum": {
+    "fall": "fall detected",
+    "normal": "no fall detected"
+  }
+}

@@ -1,0 +1,1629 @@
+{
+  "airConditionerMode": {
+    "info": "Allows for the control of the air conditioner.",
+    "Attributes": {
+      "airConditionerMode_airConditionerMode": {
+        "info": "Current mode of the air conditioner",
+        "type": "airConditionerModeEnum"
+      },
+      "airConditionerMode_supportedAcModes": {
+        "info": "Supported states for this air conditioner to be in",
+        "type": "list[airConditionerModeEnum]"
+      },
+      "airConditionerMode_targetTemperature": {
+        "info": "Current temperature status of the air conditioner",
+        "type": "INTEGER"
+      }
+    },
+    "Methods": {
+      "airConditionerMode_setAirConditionerMode": {
+        "info": "Set the air conditioner mode",
+        "args": {
+          "mode": {
+            "info": "Set the air conditioner mode",
+            "type": "airConditionerModeEnum"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "airConditionerMode_setTemperature": {
+        "info": "Set the air conditioner temperature",
+        "args": {
+          "temperature": {
+            "info": "Set the air conditioner temperature",
+            "type": "INTEGER"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "switch": {
+    "info": "Allows for the control of a switch device",
+    "Attributes": {
+      "switch_switch": {
+        "info": "A string representation of whether the switch is on or off",
+        "type": "switchEnum"
+      }
+    },
+    "Methods": {
+      "switch_off": {
+        "info": "Turn a switch off",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "switch_on": {
+        "info": "Turn a switch on",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "switch_toggle": {
+        "info": "Toggle a switch",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "airPurifierFanMode": {
+    "info": "Maintains and sets the state of an air purifier's fan",
+    "Attributes": {
+      "airPurifierFanMode_airPurifierFanMode": {
+        "info": "The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree",
+        "type": "airPurifierFanModeEnum"
+      },
+      "airPurifierFanMode_supportedAirPurifierFanModes": {
+        "info": "Supported states for this air purifier fan to be in",
+        "type": "list[airPurifierFanModeEnum]"
+      }
+    },
+    "Methods": {
+      "airPurifierFanMode_setAirPurifierFanMode": {
+        "info": "Set the air purifier fan's mode",
+        "args": {
+          "mode": {
+            "info": "Set the air purifier fan's mode",
+            "type": "airPurifierFanModeEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "tvocMeasurement": {
+    "info": "Measure total volatile organic compound levels",
+    "Attributes": {
+      "tvocMeasurement_tvocLevel": {
+        "info": "The level of total volatile organic compounds detected",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "temperatureMeasurement": {
+    "info": "Get the temperature from a Device that reports current temperature",
+    "Attributes": {
+      "temperatureMeasurement_temperature": {
+        "info": "A number that usually represents the current temperature",
+        "type": "DOUBLE"
+      },
+      "temperatureMeasurement_temperatureRange": {
+        "info": "Constraints on the temperature value",
+        "type": "DICT"
+      }
+    }
+  },
+  "carbonDioxideMeasurement": {
+    "info": "Measure carbon dioxide levels",
+    "Attributes": {
+      "carbonDioxideMeasurement_carbonDioxide": {
+        "info": "The level of carbon dioxide detected",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "dustSensor": {
+    "info": "Gets the reading of the dust sensor.",
+    "Attributes": {
+      "dustSensor_dustLevel": {
+        "info": "Current dust level -- also refered to as PM10, measured in micrograms per cubic meter",
+        "type": "INTEGER"
+      },
+      "dustSensor_fineDustLevel": {
+        "info": "Current level of fine dust -- also refered to as PM2.5, measured in micrograms per cubic meter",
+        "type": "INTEGER"
+      },
+      "dustSensor_veryFineDustLevel": {
+        "info": "Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter",
+        "type": "INTEGER"
+      }
+    }
+  },
+  "relativeHumidityMeasurement": {
+    "info": "Allow reading the relative humidity from devices that support it",
+    "Attributes": {
+      "relativeHumidityMeasurement_humidity": {
+        "info": "A numerical representation of the relative humidity measurement taken by the device",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "alarm": {
+    "info": "The Alarm skill allows for interacting with devices that serve as alarms",
+    "Attributes": {
+      "alarm_alarm": {
+        "info": "A string representation of whether the switch is on or off",
+        "type": "alarmEnum"
+      },
+      "alarm_alarmVolume": {
+        "info": "A string representation of the volume of the alarm",
+        "type": "alarmVolumeEnum"
+      }
+    },
+    "Methods": {
+      "alarm_both": {
+        "info": "Strobe and sound the alarm",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "alarm_off": {
+        "info": "Turn the alarm (siren and strobe) off",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "alarm_setAlarmVolume": {
+        "info": "Set the volume of the alarm",
+        "args": {
+          "alarmVolume": {
+            "info": "Set the volume of the alarm to \"mute\", \"low\", \"medium\", or \"high\"",
+            "type": "alarmVolumeEnum"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "alarm_siren": {
+        "info": "Sound the siren on the alarm",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "alarm_strobe": {
+        "info": "Strobe the alarm",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "battery": {
+    "info": "Defines that the device has a battery",
+    "Attributes": {
+      "battery_battery": {
+        "info": "An indication of the status of the battery",
+        "type": "INTEGER"
+      }
+    }
+  },
+  "blindLevel": {
+    "info": "Allows for the control of the level of a blind.",
+    "Attributes": {
+      "blindLevel_blindLevel": {
+        "info": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+        "type": "INTEGER"
+      }
+    },
+    "Methods": {
+      "blindLevel_setBlindLevel": {
+        "info": "Set the blind level to the given value.",
+        "args": {
+          "blindLevel": {
+            "info": "The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+            "type": "INTEGER"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "blind": {
+    "info": "Allows for the control of the blind.",
+    "Attributes": {
+      "blind_blind": {
+        "info": "A string representation of whether the blind is open or closed",
+        "type": "blindEnum"
+      }
+    },
+    "Methods": {
+      "blind_close": {
+        "info": "Close the blind",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "blind_open": {
+        "info": "Open the blind",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "blind_pause": {
+        "info": "Pause opening or closing the blind",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "button": {
+    "info": "A device with one or more buttons",
+    "Attributes": {
+      "button_button": {
+        "info": "The state of the buttons",
+        "type": "buttonEnum"
+      },
+      "button_numberOfButtons": {
+        "info": "The number of buttons on the device",
+        "type": "INTEGER"
+      },
+      "button_supportedButtonValues": {
+        "info": "List of valid button attribute values",
+        "type": "list[buttonEnum]"
+      }
+    }
+  },
+  "buttonx4": {
+    "info": "A device with four buttons",
+    "Attributes": {
+      "buttonx4_button1": {
+        "info": "The state of the button1",
+        "type": "buttonEnum"
+      },
+      "buttonx4_button2": {
+        "info": "The state of the button2",
+        "type": "buttonEnum"
+      },
+      "buttonx4_button3": {
+        "info": "The state of the button3",
+        "type": "buttonEnum"
+      },
+      "buttonx4_button4": {
+        "info": "The state of the button4",
+        "type": "buttonEnum"
+      },
+      "buttonx4_numberOfButtons": {
+        "info": "The number of buttons on the device",
+        "type": "INTEGER"
+      },
+      "buttonx4_supportedButtonValues": {
+        "info": "List of valid button attribute values",
+        "type": "list[buttonEnum]"
+      }
+    }
+  },
+  "calculator": {
+    "info": "Provides calculation services",
+    "Methods": {
+      "calculator_add": {
+        "info": "Add two numbers",
+        "args": {
+          "a": {
+            "info": "The first number to add",
+            "type": "DOUBLE"
+          },
+          "b": {
+            "info": "The second number to add",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "DOUBLE"
+      },
+      "calculator_div": {
+        "info": "Divide two numbers",
+        "args": {
+          "a": {
+            "info": "The first number to add",
+            "type": "DOUBLE"
+          },
+          "b": {
+            "info": "The second number to add",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "DOUBLE"
+      },
+      "calculator_mod": {
+        "info": "Modulo two numbers",
+        "args": {
+          "a": {
+            "info": "The first number to add",
+            "type": "DOUBLE"
+          },
+          "b": {
+            "info": "The second number to add",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "DOUBLE"
+      },
+      "calculator_mul": {
+        "info": "Multiply two numbers",
+        "args": {
+          "a": {
+            "info": "The first number to add",
+            "type": "DOUBLE"
+          },
+          "b": {
+            "info": "The second number to add",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "DOUBLE"
+      },
+      "calculator_sub": {
+        "info": "Subtract two numbers",
+        "args": {
+          "a": {
+            "info": "The first number to add",
+            "type": "DOUBLE"
+          },
+          "b": {
+            "info": "The second number to add",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "DOUBLE"
+      }
+    }
+  },
+  "camera": {
+    "info": "Allows for the control of a camera device",
+    "Attributes": {
+      "camera_image": {
+        "info": "The latest image captured by the camera",
+        "type": "BINARY"
+      },
+      "camera_video": {
+        "info": "The latest video captured by the camera",
+        "type": "BINARY"
+      }
+    },
+    "Methods": {
+      "camera_take": {
+        "info": "Take a picture with the camera - Return the image as binary data",
+        "args": {},
+        "return_type": "BINARY"
+      },
+      "camera_takeTimelapse": {
+        "info": "Take a picture with the camera - Return the video as binary data",
+        "args": {
+          "duration": {
+            "info": "The duration of the timelapse in seconds",
+            "type": "DOUBLE"
+          },
+          "speed": {
+            "info": "The speed of the timelapse",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "BINARY"
+      }
+    }
+  },
+  "voltageMeasurement": {
+    "info": "Get the value of voltage measured from devices that support it",
+    "Attributes": {
+      "voltageMeasurement_voltage": {
+        "info": "A number representing the current voltage measured",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "currentMeasurement": {
+    "info": "Get the value of electrical current measured from a device.",
+    "Attributes": {
+      "currentMeasurement_current": {
+        "info": "A number representing the current measured.",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "chargingState": {
+    "info": "The current status of battery charging",
+    "Attributes": {
+      "chargingState_chargingState": {
+        "info": "The current charging state of the device",
+        "type": "chargingStateEnum"
+      },
+      "chargingState_supportedChargingStates": {
+        "info": "The list of charging states that the device supports. Optional, defaults to all states if not set.",
+        "type": "list[chargingStateEnum]"
+      }
+    }
+  },
+  "clock": {
+    "info": "Provide current date and time",
+    "Attributes": {
+      "clock_date": {
+        "info": "Current date as double number - format: YYYYMMdd",
+        "type": "DOUBLE"
+      },
+      "clock_datetime": {
+        "info": "Current date and time as double number - format: YYYYMMddhhmm",
+        "type": "DOUBLE"
+      },
+      "clock_day": {
+        "info": "Current day",
+        "type": "INTEGER"
+      },
+      "clock_hour": {
+        "info": "Current hour",
+        "type": "INTEGER"
+      },
+      "clock_isHoliday": {
+        "info": "today is holiday or not",
+        "type": "BOOL"
+      },
+      "clock_minute": {
+        "info": "Current minute",
+        "type": "INTEGER"
+      },
+      "clock_month": {
+        "info": "Current month",
+        "type": "INTEGER"
+      },
+      "clock_second": {
+        "info": "Current second",
+        "type": "INTEGER"
+      },
+      "clock_time": {
+        "info": "Current time as double number - format: hhmm",
+        "type": "DOUBLE"
+      },
+      "clock_timestamp": {
+        "info": "Current timestamp (return current unix time - unit: seconds with floating point)",
+        "type": "DOUBLE"
+      },
+      "clock_weekday": {
+        "info": "Current weekday",
+        "type": "weekdayEnum"
+      },
+      "clock_year": {
+        "info": "Current year",
+        "type": "INTEGER"
+      }
+    },
+    "Methods": {
+      "clock_delay": {
+        "info": "delay for a given amount of time",
+        "args": {
+          "hour": {
+            "info": "hour",
+            "type": "INTEGER"
+          },
+          "minute": {
+            "info": "minute",
+            "type": "INTEGER"
+          },
+          "second": {
+            "info": "second",
+            "type": "INTEGER"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "contactSensor": {
+    "info": "Allows reading the value of a contact sensor device",
+    "Attributes": {
+      "contactSensor_contact": {
+        "info": "The current state of the contact sensor",
+        "type": "contactEnum"
+      }
+    }
+  },
+  "curtain": {
+    "info": "Allows for the control of the curtain.",
+    "Attributes": {
+      "curtain_curtain": {
+        "info": "A string representation of whether the curtain is open or closed",
+        "type": "curtainEnum"
+      },
+      "curtain_supportedCurtainCommands": {
+        "info": "Curtain commands supported by this instance of Curtain",
+        "type": "list[curtainEnum]"
+      }
+    },
+    "Methods": {
+      "curtain_close": {
+        "info": "Close the curtain",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "curtain_open": {
+        "info": "Open the curtain",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "curtain_pause": {
+        "info": "Pause opening or closing the curtain",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "dehumidifierMode": {
+    "info": "Allows for the control of the dehumidifier mode.",
+    "Attributes": {
+      "dehumidifierMode_dehumidifierMode": {
+        "info": "Current mode of the dehumidifier",
+        "type": "dehumidifierModeEnum"
+      }
+    },
+    "Methods": {
+      "dehumidifierMode_setDehumidifierMode": {
+        "info": "Set the dehumidifier mode",
+        "args": {
+          "mode": {
+            "info": "Set the dehumidifier mode",
+            "type": "dehumidifierModeEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "dishwasherMode": {
+    "info": "Allows for the control of the dishwasher mode.",
+    "Attributes": {
+      "dishwasherMode_dishwasherMode": {
+        "info": "Current mode of the dishwasher",
+        "type": "dishwasherModeEnum"
+      }
+    },
+    "Methods": {
+      "dishwasherMode_setDishwasherMode": {
+        "info": "Set the dishwasher mode",
+        "args": {
+          "mode": {
+            "info": "Set the dishwasher mode to \"eco\", \"intense\", \"auto\", \"quick\", \"rinse\", or \"dry\" mode",
+            "type": "dishwasherModeEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "doorControl": {
+    "info": "Allow for the control of a door",
+    "Attributes": {
+      "doorControl_door": {
+        "info": "The current state of the door",
+        "type": "doorEnum"
+      }
+    },
+    "Methods": {
+      "doorControl_close": {
+        "info": "Close the door",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "doorControl_open": {
+        "info": "Open the door",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "emailProvider": {
+    "info": "Provides email services",
+    "Methods": {
+      "emailProvider_sendMail": {
+        "info": "Send an email",
+        "args": {
+          "toAddress": {
+            "info": "The email address of the recipient",
+            "type": "STRING"
+          },
+          "title": {
+            "info": "The title of the email",
+            "type": "STRING"
+          },
+          "text": {
+            "info": "The text of the email",
+            "type": "STRING"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "emailProvider_sendMailWithFile": {
+        "info": "Send an email with an attachment",
+        "args": {
+          "toAddress": {
+            "info": "The email address of the recipient",
+            "type": "STRING"
+          },
+          "title": {
+            "info": "The title of the email",
+            "type": "STRING"
+          },
+          "text": {
+            "info": "The text of the email",
+            "type": "STRING"
+          },
+          "file": {
+            "info": "The path to the file to be attached",
+            "type": "BINARY"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "fanControl": {
+    "info": "Allows for the control of the fan.",
+    "Attributes": {
+      "fanControl_fanSpeed": {
+        "info": "The current fan speed represented as a integer value. - unit: RPM",
+        "type": "INTEGER"
+      },
+      "fanControl_percent": {
+        "info": "The current fan speed represented as a percent value.",
+        "type": "INTEGER"
+      }
+    },
+    "Methods": {
+      "fanControl_setFanSpeed": {
+        "info": "Set the fan speed",
+        "args": {
+          "speed": {
+            "info": "Set the fan to this speed",
+            "type": "INTEGER"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "fanControl_setPercent": {
+        "info": "Set the fan speed percent.",
+        "args": {
+          "percent": {
+            "info": "The percent value to set the fan speed to.",
+            "type": "INTEGER"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "feederPortion": {
+    "info": "Allows for the portion control of a feeder device.",
+    "Attributes": {
+      "feederPortion_feedPortion": {
+        "info": "A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense.",
+        "type": "DOUBLE"
+      }
+    },
+    "Methods": {
+      "feederPortion_setFeedPortion": {
+        "info": "Set the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.",
+        "args": {
+          "portion": {
+            "info": "The portion (in grams, pounds, ounces, or servings) to dispense.",
+            "type": "DOUBLE"
+          },
+          "unit": {
+            "info": "",
+            "type": "unitEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "feederOperatingState": {
+    "info": "Allows for the control of a feeder device.",
+    "Attributes": {
+      "feederOperatingState_feederOperatingState": {
+        "info": "The current state of the feeder.",
+        "type": "feederOperatingStateEnum"
+      }
+    },
+    "Methods": {
+      "feederOperatingState_startFeeding": {
+        "info": "Begin the feeding process.",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "gasMeter": {
+    "info": "Read the gas consumption of an energy metering device",
+    "Attributes": {
+      "gasMeter_gasMeter": {
+        "info": "the gas energy reported by the metering device. unit: kWh",
+        "type": "DOUBLE"
+      },
+      "gasMeter_gasMeterCalorific": {
+        "info": "a measure of the available heat energy, used as part of the calculation to convert gas volume to gas energy. - unit: kcal",
+        "type": "DOUBLE"
+      },
+      "gasMeter_gasMeterTime": {
+        "info": "The cumulative gas use time reported by the metering device. - unit: seconds",
+        "type": "DOUBLE"
+      },
+      "gasMeter_gasMeterVolume": {
+        "info": "the cumulative gas volume reported by the metering device. - unit: cubic meters",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "valve": {
+    "info": "Allows for the control of a valve device",
+    "Attributes": {
+      "valve_valve": {
+        "info": "A string representation of whether the valve is open or closed",
+        "type": "valveEnum"
+      }
+    },
+    "Methods": {
+      "valve_close": {
+        "info": "Close the valve",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "valve_open": {
+        "info": "Open the valve",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "humidifierMode": {
+    "info": "Maintains and sets the state of an humidifier",
+    "Attributes": {
+      "humidifierMode_humidifierMode": {
+        "info": "Current mode of the humidifier",
+        "type": "humidifierModeEnum"
+      }
+    },
+    "Methods": {
+      "humidifierMode_setHumidifierMode": {
+        "info": "Set the humidifier mode",
+        "args": {
+          "mode": {
+            "info": "Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode",
+            "type": "humidifierModeEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "irrigatorOperatingState": {
+    "info": "Allows for the control of a irrigator device.",
+    "Attributes": {
+      "irrigatorOperatingState_irrigatorOperatingState": {
+        "info": "The current state of the irrigator.",
+        "type": "irrigatorOperatingStateEnum"
+      }
+    },
+    "Methods": {
+      "irrigatorOperatingState_startWatering": {
+        "info": "Begin the watering process.",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "irrigatorPortion": {
+    "info": "Allows for the portion control of a irrigator device.",
+    "Attributes": {
+      "irrigatorPortion_waterPortion": {
+        "info": "A number that represents the portion (in liters, milliliters, gallons, or ounces) that will dispense.",
+        "type": "DOUBLE"
+      }
+    },
+    "Methods": {
+      "irrigatorPortion_setWaterPortion": {
+        "info": "Set the portion (in liters, milliliters, gallons, or ounces) that the irrigator will dispense.",
+        "args": {
+          "portion": {
+            "info": "The portion (in grams, pounds, ounces, or servings) to dispense.",
+            "type": "DOUBLE"
+          },
+          "unit": {
+            "info": "",
+            "type": "unitEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "leakSensor": {
+    "info": "A Device that senses water leakage",
+    "Attributes": {
+      "leakSensor_leakage": {
+        "info": "Whether or not water leakage was detected by the Device",
+        "type": "presenceEnum"
+      }
+    }
+  },
+  "switchLevel": {
+    "info": "Allows for the control of the level of a device like a light or a dimmer switch.",
+    "Attributes": {
+      "switchLevel_level": {
+        "info": "A number that represents the current level, usually ``0-100`` in percent",
+        "type": "INTEGER"
+      },
+      "switchLevel_levelRange": {
+        "info": "Constraints on the level value",
+        "type": "DICT"
+      }
+    },
+    "Methods": {
+      "switchLevel_alert": {
+        "info": "Alert with dimming",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "switchLevel_setLevel": {
+        "info": "Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.",
+        "args": {
+          "level": {
+            "info": "The level value, usually ``0-100`` in percent",
+            "type": "INTEGER"
+          },
+          "rate": {
+            "info": "The rate at which to change the level",
+            "type": "INTEGER"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "colorControl": {
+    "info": "Allows for control of a color changing device by setting its hue, saturation, and color values",
+    "Attributes": {
+      "colorControl_color": {
+        "info": "``{\"hue\":\"0-100 (percent)\", \"saturation\":\"0-100 (percent)\"}``",
+        "type": "STRING"
+      },
+      "colorControl_hue": {
+        "info": "``0-100`` (percent)",
+        "type": "DOUBLE"
+      },
+      "colorControl_saturation": {
+        "info": "``0-100`` (percent)",
+        "type": "DOUBLE"
+      }
+    },
+    "Methods": {
+      "colorControl_setColor": {
+        "info": "Sets the color based on the values passed in with the given map",
+        "args": {
+          "color": {
+            "info": "The color map supports the following key/value pairs:",
+            "type": "DICT"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "colorControl_setHue": {
+        "info": "Set the hue value of the color",
+        "args": {
+          "hue": {
+            "info": "A number in the range ``0-100`` representing the hue as a value of percent",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "colorControl_setSaturation": {
+        "info": "Set the saturation value of the color",
+        "args": {
+          "saturation": {
+            "info": "A number in the range ``0-100`` representing the saturation as a value of percent",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "lightLevel": {
+    "info": "A numerical representation of the brightness intensity",
+    "Attributes": {
+      "lightLevel_light": {
+        "info": "brightness intensity (Unit: lux)",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "menuProvider": {
+    "info": "Provides menu information services",
+    "Methods": {
+      "menuProvider_menu": {
+        "info": "Get the menu - Return the menu list",
+        "args": {
+          "command": {
+            "info": "The command to get the menu - format: [오늘|내일] [학생식당|수의대식당|전망대(3식당)|예술계식당(아름드리)|기숙사식당|아워홈|동원관식당(113동)|웰스토리(220동)|투굿(공대간이식당)|자하연식당|301동식당] [아침|점심|저녁]",
+            "type": "STRING"
+          }
+        },
+        "return_type": "STRING"
+      },
+      "menuProvider_todayMenu": {
+        "info": "Get today's menu randomly - Return the menu list",
+        "args": {},
+        "return_type": "STRING"
+      },
+      "menuProvider_todayPlace": {
+        "info": "Get today's restaurant randomly - Return the restaurant name",
+        "args": {},
+        "return_type": "STRING"
+      }
+    }
+  },
+  "motionSensor": {
+    "info": "• active - The value when motion is detected\n• inactive - The value when no motion is detected",
+    "Attributes": {
+      "motionSensor_motion": {
+        "info": "The current state of the motion sensor",
+        "type": "motionEnum"
+      }
+    }
+  },
+  "presenceSensor": {
+    "info": "The ability to see the current status of a presence sensor device",
+    "Attributes": {
+      "presenceSensor_presence": {
+        "info": "The current state of the presence sensor",
+        "type": "presenceEnum"
+      }
+    }
+  },
+  "pumpOperationMode": {
+    "info": "Allows for setting the operation mode on a pump.",
+    "Attributes": {
+      "pumpOperationMode_currentOperationMode": {
+        "info": "The current effective operation mode of the pump",
+        "type": "pumpOperationModeEnum"
+      },
+      "pumpOperationMode_operationMode": {
+        "info": "The operation mode of the pump",
+        "type": "pumpOperationModeEnum"
+      },
+      "pumpOperationMode_supportedOperationModes": {
+        "info": "Supported operation modes for this device to be in",
+        "type": "list[pumpOperationModeEnum]"
+      }
+    },
+    "Methods": {
+      "pumpOperationMode_setOperationMode": {
+        "info": "Set the operation mode",
+        "args": {
+          "operationMode": {
+            "info": "The operation mode to set the device to",
+            "type": "pumpOperationModeEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "pump": {
+    "info": "Allows for the control of a pump device",
+    "Attributes": {
+      "pump_pump": {
+        "info": "A string representation of whether the pump is open or closed",
+        "type": "pumpEnum"
+      }
+    },
+    "Methods": {
+      "pump_close": {
+        "info": "Close the pump",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "pump_open": {
+        "info": "Open the pump",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "refrigeration": {
+    "info": "Allows for the control of the refrigeration.",
+    "Attributes": {
+      "refrigeration_defrost": {
+        "info": "Status of the defrost",
+        "type": "defrostEnum"
+      },
+      "refrigeration_rapidCooling": {
+        "info": "Status of the rapid cooling",
+        "type": "rapidCoolingEnum"
+      },
+      "refrigeration_rapidFreezing": {
+        "info": "Status of the rapid freezing",
+        "type": "rapidFreezingEnum"
+      }
+    },
+    "Methods": {
+      "refrigeration_setDefrost": {
+        "info": "Sets the defrost on or off",
+        "args": {
+          "defrost": {
+            "info": "The on or off value for the defrost",
+            "type": "defrostEnum"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "refrigeration_setRapidCooling": {
+        "info": "Sets the rapid cooling on or off",
+        "args": {
+          "rapidCooling": {
+            "info": "The on or off value for the rapid cooling",
+            "type": "rapidCoolingEnum"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "refrigeration_setRapidFreezing": {
+        "info": "Sets the rapid freezing on or off",
+        "args": {
+          "rapidFreezing": {
+            "info": "The on or off value for the rapid freezing",
+            "type": "rapidFreezingEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "robotCleanerCleaningMode": {
+    "info": "Allows for the control of the robot cleaner cleaning mode.",
+    "Attributes": {
+      "robotCleanerCleaningMode_robotCleanerCleaningMode": {
+        "info": "Current status of the robot cleaner cleaning mode",
+        "type": "robotCleanerCleaningModeEnum"
+      }
+    },
+    "Methods": {
+      "robotCleanerCleaningMode_setRobotCleanerCleaningMode": {
+        "info": "Set the robot cleaner cleaning mode",
+        "args": {
+          "mode": {
+            "info": "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes",
+            "type": "robotCleanerCleaningModeEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "windowShadeLevel": {
+    "info": "Allows for the control of the level of a window shade.",
+    "Attributes": {
+      "windowShadeLevel_shadeLevel": {
+        "info": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+        "type": "INTEGER"
+      }
+    },
+    "Methods": {
+      "windowShadeLevel_setShadeLevel": {
+        "info": "Set the shade level to the given value.",
+        "args": {
+          "shadeLevel": {
+            "info": "The level to which the shade should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+            "type": "INTEGER"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "windowShade": {
+    "info": "Allows for the control of the window shade.",
+    "Attributes": {
+      "windowShade_supportedWindowShadeCommands": {
+        "info": "Window shade commands supported by this instance of Window Shade",
+        "type": "list[windowShadeEnum]"
+      },
+      "windowShade_windowShade": {
+        "info": "A string representation of whether the window shade is open or closed",
+        "type": "windowShadeEnum"
+      }
+    },
+    "Methods": {
+      "windowShade_close": {
+        "info": "Close the window shade",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "windowShade_open": {
+        "info": "Open the window shade",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "windowShade_pause": {
+        "info": "Pause opening or closing the window shade",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "sirenMode": {
+    "info": "Allows for the control of the siren.",
+    "Attributes": {
+      "sirenMode_sirenMode": {
+        "info": "Current mode of the siren",
+        "type": "sirenModeEnum"
+      }
+    },
+    "Methods": {
+      "sirenMode_setSirenMode": {
+        "info": "Set the siren mode",
+        "args": {
+          "mode": {
+            "info": "Set the siren mode",
+            "type": "sirenModeEnum"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "powerMeter": {
+    "info": "Allows for reading the power consumption from devices that report it",
+    "Attributes": {
+      "powerMeter_power": {
+        "info": "A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts",
+        "type": "DOUBLE"
+      },
+      "powerMeter_powerConsumption": {
+        "info": "energy and power consumption during specific time period - unit: Wh",
+        "type": "DICT"
+      }
+    }
+  },
+  "smokeDetector": {
+    "info": "A device that detects the presence or absence of smoke.",
+    "Attributes": {
+      "smokeDetector_smoke": {
+        "info": "The state of the smoke detection device",
+        "type": "smokeEnum"
+      }
+    }
+  },
+  "soilHumidityMeasurement": {
+    "info": "Allow reading the soil humidity from devices that support it",
+    "Attributes": {
+      "soilHumidityMeasurement_soilHumidity": {
+        "info": "A numerical representation of the soil humidity measurement taken by the device",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "soundSensor": {
+    "info": "A Device that senses sound",
+    "Attributes": {
+      "soundSensor_sound": {
+        "info": "Whether or not sound was detected by the Device",
+        "type": "soundEnum"
+      }
+    }
+  },
+  "soundPressureLevel": {
+    "info": "Gets the value of the sound pressure level.",
+    "Attributes": {
+      "soundPressureLevel_soundPressureLevel": {
+        "info": "Level of the sound pressure",
+        "type": "DOUBLE"
+      }
+    }
+  },
+  "mediaPlayback": {
+    "info": "Allows for the control of the media playback.",
+    "Attributes": {
+      "mediaPlayback_playbackStatus": {
+        "info": "Status of the media playback",
+        "type": "mediaPlaybackEnum"
+      },
+      "mediaPlayback_supportedPlaybackCommands": {
+        "info": "Media playback commands which are supported",
+        "type": "list[mediaPlaybackEnum]"
+      }
+    },
+    "Methods": {
+      "mediaPlayback_fastForward": {
+        "info": "Fast forward the media playback",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "mediaPlayback_pause": {
+        "info": "Pause the media playback",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "mediaPlayback_play": {
+        "info": "Play the media playback",
+        "args": {
+          "source": {
+            "info": "The source of the media playback",
+            "type": "STRING"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "mediaPlayback_rewind": {
+        "info": "Rewind the media playback",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "mediaPlayback_setPlaybackStatus": {
+        "info": "Set the playback status",
+        "args": {
+          "status": {
+            "info": "Set the playback status to \"paused\", \"playing\", \"stopped\", \"fast forwarding\" or \"rewinding\" state.",
+            "type": "mediaPlaybackEnum"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "mediaPlayback_speak": {
+        "info": "TTS feature",
+        "args": {
+          "text": {
+            "info": "The text to be spoken",
+            "type": "STRING"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "mediaPlayback_stop": {
+        "info": "Stop the media playback",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "audioRecord": {
+    "info": "Record audio",
+    "Attributes": {
+      "audioRecord_recordStatus": {
+        "info": "The current status of the audio recorder",
+        "type": "recordStatusEnum"
+      }
+    },
+    "Methods": {
+      "audioRecord_record": {
+        "info": "Record audio",
+        "args": {
+          "file": {
+            "info": "The file to record to",
+            "type": "STRING"
+          },
+          "duration": {
+            "info": "The duration to record for",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "tvChannel": {
+    "info": "Allows for the control of the TV channel.",
+    "Attributes": {
+      "tvChannel_tvChannel": {
+        "info": "Current status of the TV channel",
+        "type": "INTEGER"
+      },
+      "tvChannel_tvChannelName": {
+        "info": "Current status of the TV channel name",
+        "type": "STRING"
+      }
+    },
+    "Methods": {
+      "tvChannel_channelDown": {
+        "info": "Move the TV channel down",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "tvChannel_channelUp": {
+        "info": "Move the TV channel up",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "tvChannel_setTvChannel": {
+        "info": "Set the TV channel",
+        "args": {
+          "tvChannel": {
+            "info": "",
+            "type": "INTEGER"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "tvChannel_setTvChannelName": {
+        "info": "Set the TV channel Name",
+        "args": {
+          "tvChannelName": {
+            "info": "",
+            "type": "STRING"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "audioMute": {
+    "info": "Allows for the control of audio mute.",
+    "Attributes": {
+      "audioMute_muteStatus": {
+        "info": "Current status of the audio mute",
+        "type": "muteEnum"
+      }
+    },
+    "Methods": {
+      "audioMute_mute": {
+        "info": "Set the audio to mute state",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "audioMute_setMute": {
+        "info": "Set the state of the audio mute",
+        "args": {
+          "state": {
+            "info": "Set the audio mute state to \"muted\" or \"unmuted\"",
+            "type": "muteEnum"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "audioMute_unmute": {
+        "info": "Set the audio to unmute state",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "audioVolume": {
+    "info": "Allows for the control of audio volume.",
+    "Attributes": {
+      "audioVolume_volume": {
+        "info": "The current volume setting of the audio",
+        "type": "INTEGER"
+      }
+    },
+    "Methods": {
+      "audioVolume_setVolume": {
+        "info": "Set the audio volume level",
+        "args": {
+          "volume": {
+            "info": "A value to which the audio volume level should be set",
+            "type": "INTEGER"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "audioVolume_volumeDown": {
+        "info": "Turn the audio volume down",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "audioVolume_volumeUp": {
+        "info": "Turn the audio volume up",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "testSkill": {
+    "info": "testSkill",
+    "Attributes": {
+      "testSkill_testSkillValue": {
+        "info": "testSkillValue",
+        "type": "STRING"
+      }
+    },
+    "Methods": {
+      "testSkill_testSkillFunction": {
+        "info": "testSkillFunction",
+        "args": {
+          "testArgument": {
+            "info": "testArgument",
+            "type": "STRING"
+          }
+        },
+        "return_type": "STRING"
+      }
+    }
+  },
+  "weatherProvider": {
+    "info": "Provides weather information",
+    "Attributes": {
+      "weatherProvider_humidityWeather": {
+        "info": "Current humidity level",
+        "type": "DOUBLE"
+      },
+      "weatherProvider_pm10Weather": {
+        "info": "Current pm10 level",
+        "type": "DOUBLE"
+      },
+      "weatherProvider_pm25Weather": {
+        "info": "Current pm25 level",
+        "type": "DOUBLE"
+      },
+      "weatherProvider_pressureWeather": {
+        "info": "Current pressure level",
+        "type": "DOUBLE"
+      },
+      "weatherProvider_temperatureWeather": {
+        "info": "Current temperature level",
+        "type": "DOUBLE"
+      },
+      "weatherProvider_weather": {
+        "info": "Current weather condition",
+        "type": "weatherEnum"
+      }
+    },
+    "Methods": {
+      "weatherProvider_getWeatherInfo": {
+        "info": "Get the current weather information - Return whole weather information, format: \"temperature, humidity, pressure, pm25, pm10, weather, weather_string, icon_id, location\"",
+        "args": {
+          "lat": {
+            "info": "The latitude of the location",
+            "type": "DOUBLE"
+          },
+          "lon": {
+            "info": "The longitude of the location",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "STRING"
+      }
+    }
+  },
+  "windowControl": {
+    "info": "Allows for the control of the window shade.",
+    "Attributes": {
+      "windowControl_window": {
+        "info": "A string representation of whether the window is open or closed",
+        "type": "windowEnum"
+      }
+    },
+    "Methods": {
+      "windowControl_close": {
+        "info": "Close the window",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "windowControl_open": {
+        "info": "Open the window",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "fallDetection": {
+    "info": "Detects if a fall has occurred",
+    "Attributes": {
+      "fallDetection_fall": {
+        "info": "Whether or not a fall was detected",
+        "type": "fallEnum"
+      }
+    }
+  },
+  "timer": {
+    "info": "The Timer allows for interacting with devices that serve as timers",
+    "Methods": {
+      "timer_add": {
+        "info": "Add a timer",
+        "args": {
+          "name": {
+            "info": "The time name",
+            "type": "STRING"
+          },
+          "timeout": {
+            "info": "The time at which the timer should expire",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "timer_isExist": {
+        "info": "Check if a timer is exist",
+        "args": {
+          "name": {
+            "info": "The time name",
+            "type": "STRING"
+          }
+        },
+        "return_type": "BOOL"
+      },
+      "timer_isSet": {
+        "info": "Check if a timer is set",
+        "args": {
+          "name": {
+            "info": "The time name",
+            "type": "STRING"
+          }
+        },
+        "return_type": "BOOL"
+      },
+      "timer_reset": {
+        "info": "Reset a timer",
+        "args": {
+          "name": {
+            "info": "The time name",
+            "type": "STRING"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "timer_set": {
+        "info": "Set a timer",
+        "args": {
+          "name": {
+            "info": "The time name",
+            "type": "STRING"
+          },
+          "timeout": {
+            "info": "The time at which the timer should expire",
+            "type": "DOUBLE"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "timer_start": {
+        "info": "Start a timer",
+        "args": {
+          "name": {
+            "info": "The time name",
+            "type": "STRING"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "manager": {
+    "info": "Allow Manager Thing's features",
+    "Methods": {
+      "manager_add_thing": {
+        "info": "Add staff thing - Return error string",
+        "args": {
+          "parameter": {
+            "info": "Staff thing's parameter",
+            "type": "STRING"
+          },
+          "client_id": {
+            "info": "Requester's client id",
+            "type": "STRING"
+          },
+          "name": {
+            "info": "Staff thing's name",
+            "type": "STRING"
+          }
+        },
+        "return_type": "STRING"
+      },
+      "manager_delete_thing": {
+        "info": "Delete staff thing - Return error string",
+        "args": {
+          "name": {
+            "info": "Staff thing's name",
+            "type": "STRING"
+          },
+          "client_id": {
+            "info": "Requester's client id",
+            "type": "STRING"
+          }
+        },
+        "return_type": "STRING"
+      },
+      "manager_discover": {
+        "info": "Discover local devices - Return device list with json format",
+        "args": {},
+        "return_type": "STRING"
+      }
+    }
+  }
+}

@@ -1,0 +1,1622 @@
+class AirConditioner:
+	"""
+	Note: This class has a pre-existing instance named `(#AirConditioner)`. Do NOT create a new instance.
+
+	Enums:
+		airConditionerModeEnum (Enum):
+			auto: The fan is on auto
+			cool: The fan is in sleep mode to reduce noise
+			heat: The fan is on low
+			fanonly
+			dehumidify
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner
+		airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in
+		airConditionerMode_targetTemperature (INTEGER): Current temperature status of the air conditioner
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+
+	Methods:
+		airConditionerMode_setAirConditionerMode(mode: airConditionerModeEnum) -> VOID:
+			Set the air conditioner mode
+	
+			Args:
+				mode (airConditionerModeEnum): Set the air conditioner mode
+	
+		airConditionerMode_setTemperature(temperature: INTEGER) -> VOID:
+			Set the air conditioner temperature
+	
+			Args:
+				temperature (INTEGER): Set the air conditioner temperature
+	
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+	"""
+
+class AirPurifier:
+	"""
+	Note: This class has a pre-existing instance named `(#AirPurifier)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		airPurifierFanModeEnum (Enum):
+			auto: The fan is on auto
+			sleep: The fan is in sleep mode to reduce noise
+			low: The fan is on low
+			medium: The fan is on medium
+			high: The fan is on high
+			quiet: The fan is on quiet mode to reduce noise
+			windFree: The fan is on wind free mode to reduce the feeling of cold air
+			off: The fan is off
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		airPurifierFanMode_airPurifierFanMode (airPurifierFanModeEnum): The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree
+		airPurifierFanMode_supportedAirPurifierFanModes (list[airPurifierFanModeEnum]): Supported states for this air purifier fan to be in
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		airPurifierFanMode_setAirPurifierFanMode(mode: airPurifierFanModeEnum) -> VOID:
+			Set the air purifier fan's mode
+	
+			Args:
+				mode (airPurifierFanModeEnum): Set the air purifier fan's mode
+	
+	"""
+
+class AirQualityDetector:
+	"""
+	Note: This class has a pre-existing instance named `(#AirQualityDetector)`. Do NOT create a new instance.
+
+	Attributes:
+		tvocMeasurement_tvocLevel (DOUBLE): The level of total volatile organic compounds detected
+		temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature
+		temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value
+		carbonDioxideMeasurement_carbonDioxide (DOUBLE): The level of carbon dioxide detected
+		dustSensor_dustLevel (INTEGER): Current dust level -- also refered to as PM10, measured in micrograms per cubic meter
+		dustSensor_fineDustLevel (INTEGER): Current level of fine dust -- also refered to as PM2.5, measured in micrograms per cubic meter
+		dustSensor_veryFineDustLevel (INTEGER): Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter
+		relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device
+	"""
+
+class Alarm:
+	"""
+	Note: This class has a pre-existing instance named `(#Alarm)`. Do NOT create a new instance.
+
+	Enums:
+		alarmVolumeEnum (Enum):
+			mute
+			low
+			medium
+			high
+
+	Attributes:
+		alarm_alarm (alarmEnum): A string representation of whether the switch is on or off
+		alarm_alarmVolume (alarmVolumeEnum): A string representation of the volume of the alarm
+		battery_battery (INTEGER): An indication of the status of the battery
+
+	Methods:
+		alarm_both() -> VOID:
+			Strobe and sound the alarm
+	
+		alarm_off() -> VOID:
+			Turn the alarm (siren and strobe) off
+	
+		alarm_setAlarmVolume(alarmVolume: alarmVolumeEnum) -> VOID:
+			Set the volume of the alarm
+	
+			Args:
+				alarmVolume (alarmVolumeEnum): Set the volume of the alarm to "mute", "low", "medium", or "high"
+	
+		alarm_siren() -> VOID:
+			Sound the siren on the alarm
+	
+		alarm_strobe() -> VOID:
+			Strobe the alarm
+	
+	"""
+
+class Blind:
+	"""
+	Note: This class has a pre-existing instance named `(#Blind)`. Do NOT create a new instance.
+
+	Enums:
+		blindEnum (Enum):
+			closed: closed
+			closing: closing…
+			open: open
+			opening: opening…
+			partially
+			paused
+			unknown: unknown
+
+	Attributes:
+		blindLevel_blindLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
+		blind_blind (blindEnum): A string representation of whether the blind is open or closed
+
+	Methods:
+		blindLevel_setBlindLevel(blindLevel: INTEGER) -> VOID:
+			Set the blind level to the given value.
+	
+			Args:
+				blindLevel (INTEGER): The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
+	
+		blind_close() -> VOID:
+			Close the blind
+	
+		blind_open() -> VOID:
+			Open the blind
+	
+		blind_pause() -> VOID:
+			Pause opening or closing the blind
+	
+	"""
+
+class Button:
+	"""
+	Note: This class has a pre-existing instance named `(#Button)`. Do NOT create a new instance.
+
+	Enums:
+		buttonEnum (Enum):
+			pushed: The value if the button is pushed
+			held: The value if the button is held
+			double: The value if the button is pushed twice
+			pushed_2x: The value if the button is pushed twice
+			pushed_3x: The value if the button is pushed three times
+			pushed_4x: The value if the button is pushed four times
+			pushed_5x: The value if the button is pushed five times
+			pushed_6x: The value if the button is pushed six times
+			down: The value if the button is clicked down
+			down_2x: The value if the button is clicked down twice
+			down_3x: The value if the button is clicked down three times
+			down_4x: The value if the button is clicked down four times
+			down_5x: The value if the button is clicked down five times
+			down_6x: The value if the button is clicked down six times
+			down_hold: The value if the button is clicked down and held
+			up: The value if the button is clicked up
+			up_2x: The value if the button is clicked up twice
+			up_3x: The value if the button is clicked up three times
+			up_4x: The value if the button is clicked up four times
+			up_5x: The value if the button is clicked up five times
+			up_6x: The value if the button is clicked up six times
+			up_hold: The value if the button is clicked up and held
+			swipe_up: The value if the button is swiped up from botton to top
+			swipe_down: The value if the button is swiped down from top to bottom
+			swipe_left: The value if the button is swiped from right to left
+			swipe_right: The value if the button is swiped from left to right
+
+	Attributes:
+		button_button (buttonEnum): The state of the buttons
+		button_numberOfButtons (INTEGER): The number of buttons on the device
+		button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values
+	"""
+
+class Buttonx4:
+	"""
+	Note: This class has a pre-existing instance named `(#Buttonx4)`. Do NOT create a new instance.
+
+	Enums:
+		buttonEnum (Enum):
+			pushed: The value if the button is pushed
+			held: The value if the button is held
+			double: The value if the button is pushed twice
+			pushed_2x: The value if the button is pushed twice
+			pushed_3x: The value if the button is pushed three times
+			pushed_4x: The value if the button is pushed four times
+			pushed_5x: The value if the button is pushed five times
+			pushed_6x: The value if the button is pushed six times
+			down: The value if the button is clicked down
+			down_2x: The value if the button is clicked down twice
+			down_3x: The value if the button is clicked down three times
+			down_4x: The value if the button is clicked down four times
+			down_5x: The value if the button is clicked down five times
+			down_6x: The value if the button is clicked down six times
+			down_hold: The value if the button is clicked down and held
+			up: The value if the button is clicked up
+			up_2x: The value if the button is clicked up twice
+			up_3x: The value if the button is clicked up three times
+			up_4x: The value if the button is clicked up four times
+			up_5x: The value if the button is clicked up five times
+			up_6x: The value if the button is clicked up six times
+			up_hold: The value if the button is clicked up and held
+			swipe_up: The value if the button is swiped up from botton to top
+			swipe_down: The value if the button is swiped down from top to bottom
+			swipe_left: The value if the button is swiped from right to left
+			swipe_right: The value if the button is swiped from left to right
+
+	Attributes:
+		buttonx4_button1 (buttonEnum): The state of the button1
+		buttonx4_button2 (buttonEnum): The state of the button2
+		buttonx4_button3 (buttonEnum): The state of the button3
+		buttonx4_button4 (buttonEnum): The state of the button4
+		buttonx4_numberOfButtons (INTEGER): The number of buttons on the device
+		buttonx4_supportedButtonValues (list[buttonEnum]): List of valid button attribute values
+	"""
+
+class Calculator:
+	"""
+	Note: This class has a pre-existing instance named `(#Calculator)`. Do NOT create a new instance.
+
+	Methods:
+		calculator_add(a: DOUBLE, b: DOUBLE) -> DOUBLE:
+			Add two numbers
+	
+			Args:
+				a (DOUBLE): The first number to add
+				b (DOUBLE): The second number to add
+	
+		calculator_div(a: DOUBLE, b: DOUBLE) -> DOUBLE:
+			Divide two numbers
+	
+			Args:
+				a (DOUBLE): The first number to add
+				b (DOUBLE): The second number to add
+	
+		calculator_mod(a: DOUBLE, b: DOUBLE) -> DOUBLE:
+			Modulo two numbers
+	
+			Args:
+				a (DOUBLE): The first number to add
+				b (DOUBLE): The second number to add
+	
+		calculator_mul(a: DOUBLE, b: DOUBLE) -> DOUBLE:
+			Multiply two numbers
+	
+			Args:
+				a (DOUBLE): The first number to add
+				b (DOUBLE): The second number to add
+	
+		calculator_sub(a: DOUBLE, b: DOUBLE) -> DOUBLE:
+			Subtract two numbers
+	
+			Args:
+				a (DOUBLE): The first number to add
+				b (DOUBLE): The second number to add
+	
+	"""
+
+class Camera:
+	"""
+	Note: This class has a pre-existing instance named `(#Camera)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		camera_image (BINARY): The latest image captured by the camera
+		camera_video (BINARY): The latest video captured by the camera
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		camera_take() -> BINARY:
+			Take a picture with the camera - Return the image as binary data
+	
+		camera_takeTimelapse(duration: DOUBLE, speed: DOUBLE) -> BINARY:
+			Take a picture with the camera - Return the video as binary data
+	
+			Args:
+				duration (DOUBLE): The duration of the timelapse in seconds
+				speed (DOUBLE): The speed of the timelapse
+	
+	"""
+
+class Charger:
+	"""
+	Note: This class has a pre-existing instance named `(#Charger)`. Do NOT create a new instance.
+
+	Enums:
+		chargingStateEnum (Enum):
+			charging: charging
+			discharging: discharging
+			stopped: stopped
+			fullyCharged: fully charged
+			error: error
+
+	Attributes:
+		voltageMeasurement_voltage (DOUBLE): A number representing the current voltage measured
+		currentMeasurement_current (DOUBLE): A number representing the current measured.
+		chargingState_chargingState (chargingStateEnum): The current charging state of the device
+		chargingState_supportedChargingStates (list[chargingStateEnum]): The list of charging states that the device supports. Optional, defaults to all states if not set.
+	"""
+
+class Clock:
+	"""
+	Note: This class has a pre-existing instance named `(#Clock)`. Do NOT create a new instance.
+
+	Enums:
+		weekdayEnum (Enum):
+			monday
+			tuesday
+			wednesday
+			thursday
+			friday
+			saturday
+			sunday
+
+	Attributes:
+		clock_date (DOUBLE): Current date as double number - format: YYYYMMdd
+		clock_datetime (DOUBLE): Current date and time as double number - format: YYYYMMddhhmm
+		clock_day (INTEGER): Current day
+		clock_hour (INTEGER): Current hour
+		clock_isHoliday (BOOL): today is holiday or not
+		clock_minute (INTEGER): Current minute
+		clock_month (INTEGER): Current month
+		clock_second (INTEGER): Current second
+		clock_time (DOUBLE): Current time as double number - format: hhmm
+		clock_timestamp (DOUBLE): Current timestamp (return current unix time - unit: seconds with floating point)
+		clock_weekday (weekdayEnum): Current weekday
+		clock_year (INTEGER): Current year
+
+	Methods:
+		clock_delay(hour: INTEGER, minute: INTEGER, second: INTEGER) -> VOID:
+			delay for a given amount of time
+	
+			Args:
+				hour (INTEGER): hour
+				minute (INTEGER): minute
+				second (INTEGER): second
+	
+	"""
+
+class ContactSensor:
+	"""
+	Note: This class has a pre-existing instance named `(#ContactSensor)`. Do NOT create a new instance.
+
+	Enums:
+		contactEnum (Enum):
+			open: The value if open
+			closed: The value if closed
+
+	Attributes:
+		contactSensor_contact (contactEnum): The current state of the contact sensor
+	"""
+
+class Curtain:
+	"""
+	Note: This class has a pre-existing instance named `(#Curtain)`. Do NOT create a new instance.
+
+	Enums:
+		curtainEnum (Enum):
+			closed: closed
+			closing: closing…
+			open: open
+			opening: opening…
+			partially
+			paused
+			unknown: unknown
+
+	Attributes:
+		curtain_curtain (curtainEnum): A string representation of whether the curtain is open or closed
+		curtain_supportedCurtainCommands (list[curtainEnum]): Curtain commands supported by this instance of Curtain
+
+	Methods:
+		curtain_close() -> VOID:
+			Close the curtain
+	
+		curtain_open() -> VOID:
+			Open the curtain
+	
+		curtain_pause() -> VOID:
+			Pause opening or closing the curtain
+	
+	"""
+
+class Dehumidifier:
+	"""
+	Note: This class has a pre-existing instance named `(#Dehumidifier)`. Do NOT create a new instance.
+
+	Enums:
+		dehumidifierModeEnum (Enum):
+			cooling
+			delayWash
+			drying
+			finished
+			refreshing
+			weightSensing
+			wrinklePrevent
+			dehumidifying
+			AIDrying
+			sanitizing
+			internalCare
+			freezeProtection
+			continuousDehumidifying
+			thawingFrozenInside
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		dehumidifierMode_dehumidifierMode (dehumidifierModeEnum): Current mode of the dehumidifier
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+
+	Methods:
+		dehumidifierMode_setDehumidifierMode(mode: dehumidifierModeEnum) -> VOID:
+			Set the dehumidifier mode
+	
+			Args:
+				mode (dehumidifierModeEnum): Set the dehumidifier mode
+	
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+	"""
+
+class Dishwasher:
+	"""
+	Note: This class has a pre-existing instance named `(#Dishwasher)`. Do NOT create a new instance.
+
+	Enums:
+		dishwasherModeEnum (Enum):
+			eco: The dishwasher is in "eco" mode
+			intense: The dishwasher is in "intense" mode
+			auto: The dishwasher is in "auto" mode
+			quick: The dishwasher is in "quick" mode
+			rinse: The dishwasher is in "rinse" mode
+			dry: The dishwasher is in "dry" mode
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		dishwasherMode_dishwasherMode (dishwasherModeEnum): Current mode of the dishwasher
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+
+	Methods:
+		dishwasherMode_setDishwasherMode(mode: dishwasherModeEnum) -> VOID:
+			Set the dishwasher mode
+	
+			Args:
+				mode (dishwasherModeEnum): Set the dishwasher mode to "eco", "intense", "auto", "quick", "rinse", or "dry" mode
+	
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+	"""
+
+class DoorLock:
+	"""
+	Note: This class has a pre-existing instance named `(#DoorLock)`. Do NOT create a new instance.
+
+	Enums:
+		doorEnum (Enum):
+			closed: The door is closed
+			closing: The door is closing
+			open: The door is open
+			opening: The door is opening
+			unknown: The current state of the door is unknown
+
+	Attributes:
+		doorControl_door (doorEnum): The current state of the door
+
+	Methods:
+		doorControl_close() -> VOID:
+			Close the door
+	
+		doorControl_open() -> VOID:
+			Open the door
+	
+	"""
+
+class EmailProvider:
+	"""
+	Note: This class has a pre-existing instance named `(#EmailProvider)`. Do NOT create a new instance.
+
+	Methods:
+		emailProvider_sendMail(toAddress: STRING, title: STRING, text: STRING) -> VOID:
+			Send an email
+	
+			Args:
+				toAddress (STRING): The email address of the recipient
+				title (STRING): The title of the email
+				text (STRING): The text of the email
+	
+		emailProvider_sendMailWithFile(toAddress: STRING, title: STRING, text: STRING, file: BINARY) -> VOID:
+			Send an email with an attachment
+	
+			Args:
+				toAddress (STRING): The email address of the recipient
+				title (STRING): The title of the email
+				text (STRING): The text of the email
+				file (BINARY): The path to the file to be attached
+	
+	"""
+
+class Fan:
+	"""
+	Note: This class has a pre-existing instance named `(#Fan)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		fanControl_fanSpeed (INTEGER): The current fan speed represented as a integer value. - unit: RPM
+		fanControl_percent (INTEGER): The current fan speed represented as a percent value.
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		fanControl_setFanSpeed(speed: INTEGER) -> VOID:
+			Set the fan speed
+	
+			Args:
+				speed (INTEGER): Set the fan to this speed
+	
+		fanControl_setPercent(percent: INTEGER) -> VOID:
+			Set the fan speed percent.
+	
+			Args:
+				percent (INTEGER): The percent value to set the fan speed to.
+	
+	"""
+
+class Feeder:
+	"""
+	Note: This class has a pre-existing instance named `(#Feeder)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		unitEnum (Enum):
+			grams
+			pounds
+			ounces
+			servings
+		feederOperatingStateEnum (Enum):
+			idle: idle
+			feeding: feeding
+			error: error
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		feederPortion_feedPortion (DOUBLE): A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense.
+		feederOperatingState_feederOperatingState (feederOperatingStateEnum): The current state of the feeder.
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		feederPortion_setFeedPortion(portion: DOUBLE, unit: unitEnum) -> VOID:
+			Set the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.
+	
+			Args:
+				portion (DOUBLE): The portion (in grams, pounds, ounces, or servings) to dispense.
+				unit (unitEnum): 
+	
+		feederOperatingState_startFeeding() -> VOID:
+			Begin the feeding process.
+	
+	"""
+
+class GasMeter:
+	"""
+	Note: This class has a pre-existing instance named `(#GasMeter)`. Do NOT create a new instance.
+
+	Attributes:
+		gasMeter_gasMeter (DOUBLE): the gas energy reported by the metering device. unit: kWh
+		gasMeter_gasMeterCalorific (DOUBLE): a measure of the available heat energy, used as part of the calculation to convert gas volume to gas energy. - unit: kcal
+		gasMeter_gasMeterTime (DOUBLE): The cumulative gas use time reported by the metering device. - unit: seconds
+		gasMeter_gasMeterVolume (DOUBLE): the cumulative gas volume reported by the metering device. - unit: cubic meters
+	"""
+
+class GasValve:
+	"""
+	Note: This class has a pre-existing instance named `(#GasValve)`. Do NOT create a new instance.
+
+	Enums:
+		valveEnum (Enum):
+			open: The value of the ``valve`` attribute if the valve is open
+			closed: The value of the ``valve`` attribute if the valve is closed
+
+	Attributes:
+		gasMeter_gasMeter (DOUBLE): the gas energy reported by the metering device. unit: kWh
+		gasMeter_gasMeterCalorific (DOUBLE): a measure of the available heat energy, used as part of the calculation to convert gas volume to gas energy. - unit: kcal
+		gasMeter_gasMeterTime (DOUBLE): The cumulative gas use time reported by the metering device. - unit: seconds
+		gasMeter_gasMeterVolume (DOUBLE): the cumulative gas volume reported by the metering device. - unit: cubic meters
+		valve_valve (valveEnum): A string representation of whether the valve is open or closed
+
+	Methods:
+		valve_close() -> VOID:
+			Close the valve
+	
+		valve_open() -> VOID:
+			Open the valve
+	
+	"""
+
+class Humidifier:
+	"""
+	Note: This class has a pre-existing instance named `(#Humidifier)`. Do NOT create a new instance.
+
+	Enums:
+		humidifierModeEnum (Enum):
+			auto
+			low
+			medium
+			high
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		humidifierMode_humidifierMode (humidifierModeEnum): Current mode of the humidifier
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+
+	Methods:
+		humidifierMode_setHumidifierMode(mode: humidifierModeEnum) -> VOID:
+			Set the humidifier mode
+	
+			Args:
+				mode (humidifierModeEnum): Set the humidifier mode to "auto", "low", "medium", or "high" mode
+	
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+	"""
+
+class HumiditySensor:
+	"""
+	Note: This class has a pre-existing instance named `(#HumiditySensor)`. Do NOT create a new instance.
+
+	Attributes:
+		relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device
+	"""
+
+class Irrigator:
+	"""
+	Note: This class has a pre-existing instance named `(#Irrigator)`. Do NOT create a new instance.
+
+	Enums:
+		irrigatorOperatingStateEnum (Enum):
+			idle: idle
+			watering: watering
+			error: error
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		unitEnum (Enum):
+			liters
+			milliliters
+			gallons
+			ounces
+
+	Attributes:
+		irrigatorOperatingState_irrigatorOperatingState (irrigatorOperatingStateEnum): The current state of the irrigator.
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		irrigatorPortion_waterPortion (DOUBLE): A number that represents the portion (in liters, milliliters, gallons, or ounces) that will dispense.
+
+	Methods:
+		irrigatorOperatingState_startWatering() -> VOID:
+			Begin the watering process.
+	
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		irrigatorPortion_setWaterPortion(portion: DOUBLE, unit: unitEnum) -> VOID:
+			Set the portion (in liters, milliliters, gallons, or ounces) that the irrigator will dispense.
+	
+			Args:
+				portion (DOUBLE): The portion (in grams, pounds, ounces, or servings) to dispense.
+				unit (unitEnum): 
+	
+	"""
+
+class LeakSensor:
+	"""
+	Note: This class has a pre-existing instance named `(#LeakSensor)`. Do NOT create a new instance.
+
+	Enums:
+		presenceEnum (Enum):
+			detected: water leak is detected
+			not_detected
+
+	Attributes:
+		leakSensor_leakage (presenceEnum): Whether or not water leakage was detected by the Device
+	"""
+
+class Light:
+	"""
+	Note: This class has a pre-existing instance named `(#Light)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		switchLevel_level (INTEGER): A number that represents the current level, usually ``0-100`` in percent
+		switchLevel_levelRange (DICT): Constraints on the level value
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		colorControl_color (STRING): ``{"hue":"0-100 (percent)", "saturation":"0-100 (percent)"}``
+		colorControl_hue (DOUBLE): ``0-100`` (percent)
+		colorControl_saturation (DOUBLE): ``0-100`` (percent)
+
+	Methods:
+		switchLevel_alert() -> VOID:
+			Alert with dimming
+	
+		switchLevel_setLevel(level: INTEGER, rate: INTEGER) -> VOID:
+			Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.
+	
+			Args:
+				level (INTEGER): The level value, usually ``0-100`` in percent
+				rate (INTEGER): The rate at which to change the level
+	
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		colorControl_setColor(color: DICT) -> VOID:
+			Sets the color based on the values passed in with the given map
+	
+			Args:
+				color (DICT): The color map supports the following key/value pairs:
+	
+		colorControl_setHue(hue: DOUBLE) -> VOID:
+			Set the hue value of the color
+	
+			Args:
+				hue (DOUBLE): A number in the range ``0-100`` representing the hue as a value of percent
+	
+		colorControl_setSaturation(saturation: DOUBLE) -> VOID:
+			Set the saturation value of the color
+	
+			Args:
+				saturation (DOUBLE): A number in the range ``0-100`` representing the saturation as a value of percent
+	
+	"""
+
+class LightSensor:
+	"""
+	Note: This class has a pre-existing instance named `(#LightSensor)`. Do NOT create a new instance.
+
+	Attributes:
+		lightLevel_light (DOUBLE): brightness intensity (Unit: lux)
+	"""
+
+class MenuProvider:
+	"""
+	Note: This class has a pre-existing instance named `(#MenuProvider)`. Do NOT create a new instance.
+
+	Methods:
+		menuProvider_menu(command: STRING) -> STRING:
+			Get the menu - Return the menu list
+	
+			Args:
+				command (STRING): The command to get the menu - format: [오늘|내일] [학생식당|수의대식당|전망대(3식당)|예술계식당(아름드리)|기숙사식당|아워홈|동원관식당(113동)|웰스토리(220동)|투굿(공대간이식당)|자하연식당|301동식당] [아침|점심|저녁]
+	
+		menuProvider_todayMenu() -> STRING:
+			Get today's menu randomly - Return the menu list
+	
+		menuProvider_todayPlace() -> STRING:
+			Get today's restaurant randomly - Return the restaurant name
+	
+	"""
+
+class MotionSensor:
+	"""
+	Note: This class has a pre-existing instance named `(#MotionSensor)`. Do NOT create a new instance.
+
+	Enums:
+		motionEnum (Enum):
+			active
+			inactive
+
+	Attributes:
+		motionSensor_motion (motionEnum): The current state of the motion sensor
+	"""
+
+class PresenceSensor:
+	"""
+	Note: This class has a pre-existing instance named `(#PresenceSensor)`. Do NOT create a new instance.
+
+	Enums:
+		presenceEnum (Enum):
+			present: The device is present
+			not_present
+
+	Attributes:
+		presenceSensor_presence (presenceEnum): The current state of the presence sensor
+	"""
+
+class Pump:
+	"""
+	Note: This class has a pre-existing instance named `(#Pump)`. Do NOT create a new instance.
+
+	Enums:
+		pumpOperationModeEnum (Enum):
+			normal: The pump is controlled by a setpoint.
+			minimum: This value sets the pump to run at the minimum possible speed it can without being stopped.
+			maximum: This value sets the pump to run at its maximum possible speed.
+			localSetting: This value sets the pump to run with the local settings of the pump.
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		pumpEnum (Enum):
+			open: The value of the ``pump`` attribute if the pump is open
+			closed: The value of the ``pump`` attribute if the pump is closed
+
+	Attributes:
+		pumpOperationMode_currentOperationMode (pumpOperationModeEnum): The current effective operation mode of the pump
+		pumpOperationMode_operationMode (pumpOperationModeEnum): The operation mode of the pump
+		pumpOperationMode_supportedOperationModes (list[pumpOperationModeEnum]): Supported operation modes for this device to be in
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		pump_pump (pumpEnum): A string representation of whether the pump is open or closed
+
+	Methods:
+		pumpOperationMode_setOperationMode(operationMode: pumpOperationModeEnum) -> VOID:
+			Set the operation mode
+	
+			Args:
+				operationMode (pumpOperationModeEnum): The operation mode to set the device to
+	
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		pump_close() -> VOID:
+			Close the pump
+	
+		pump_open() -> VOID:
+			Open the pump
+	
+	"""
+
+class Refrigerator:
+	"""
+	Note: This class has a pre-existing instance named `(#Refrigerator)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		rapidFreezingEnum (Enum):
+			on: The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on
+			off: The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		refrigeration_defrost (defrostEnum): Status of the defrost
+		refrigeration_rapidCooling (rapidCoolingEnum): Status of the rapid cooling
+		refrigeration_rapidFreezing (rapidFreezingEnum): Status of the rapid freezing
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		refrigeration_setDefrost(defrost: defrostEnum) -> VOID:
+			Sets the defrost on or off
+	
+			Args:
+				defrost (defrostEnum): The on or off value for the defrost
+	
+		refrigeration_setRapidCooling(rapidCooling: rapidCoolingEnum) -> VOID:
+			Sets the rapid cooling on or off
+	
+			Args:
+				rapidCooling (rapidCoolingEnum): The on or off value for the rapid cooling
+	
+		refrigeration_setRapidFreezing(rapidFreezing: rapidFreezingEnum) -> VOID:
+			Sets the rapid freezing on or off
+	
+			Args:
+				rapidFreezing (rapidFreezingEnum): The on or off value for the rapid freezing
+	
+	"""
+
+class RobotCleaner:
+	"""
+	Note: This class has a pre-existing instance named `(#RobotCleaner)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		robotCleanerCleaningModeEnum (Enum):
+			auto: The robot cleaner cleaning mode is in "auto" mode
+			part: The robot cleaner cleaning mode is in "part" mode
+			repeat: The robot cleaner cleaning mode is in "repeat" mode
+			manual: The robot cleaner cleaning mode is in "manual" mode
+			stop: The robot cleaner cleaning mode is in "stop" mode
+			map: The robot cleaner cleaning mode is in "map" mode
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		robotCleanerCleaningMode_robotCleanerCleaningMode (robotCleanerCleaningModeEnum): Current status of the robot cleaner cleaning mode
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		robotCleanerCleaningMode_setRobotCleanerCleaningMode(mode: robotCleanerCleaningModeEnum) -> VOID:
+			Set the robot cleaner cleaning mode
+	
+			Args:
+				mode (robotCleanerCleaningModeEnum): Set the robot cleaner cleaning mode, to "auto", "part", "repeat", "manual" or "stop" modes
+	
+	"""
+
+class Shade:
+	"""
+	Note: This class has a pre-existing instance named `(#Shade)`. Do NOT create a new instance.
+
+	Enums:
+		windowShadeEnum (Enum):
+			closed: closed
+			closing: closing…
+			open: open
+			opening: opening…
+			partially
+			paused
+			unknown: unknown
+
+	Attributes:
+		windowShadeLevel_shadeLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
+		windowShade_supportedWindowShadeCommands (list[windowShadeEnum]): Window shade commands supported by this instance of Window Shade
+		windowShade_windowShade (windowShadeEnum): A string representation of whether the window shade is open or closed
+
+	Methods:
+		windowShadeLevel_setShadeLevel(shadeLevel: INTEGER) -> VOID:
+			Set the shade level to the given value.
+	
+			Args:
+				shadeLevel (INTEGER): The level to which the shade should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
+	
+		windowShade_close() -> VOID:
+			Close the window shade
+	
+		windowShade_open() -> VOID:
+			Open the window shade
+	
+		windowShade_pause() -> VOID:
+			Pause opening or closing the window shade
+	
+	"""
+
+class Siren:
+	"""
+	Note: This class has a pre-existing instance named `(#Siren)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		sirenModeEnum (Enum):
+			both
+			off
+			siren
+			strobe
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		sirenMode_sirenMode (sirenModeEnum): Current mode of the siren
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		sirenMode_setSirenMode(mode: sirenModeEnum) -> VOID:
+			Set the siren mode
+	
+			Args:
+				mode (sirenModeEnum): Set the siren mode
+	
+	"""
+
+class SmartPlug:
+	"""
+	Note: This class has a pre-existing instance named `(#SmartPlug)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		voltageMeasurement_voltage (DOUBLE): A number representing the current voltage measured
+		currentMeasurement_current (DOUBLE): A number representing the current measured.
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		powerMeter_power (DOUBLE): A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts
+		powerMeter_powerConsumption (DICT): energy and power consumption during specific time period - unit: Wh
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+	"""
+
+class SmokeDetector:
+	"""
+	Note: This class has a pre-existing instance named `(#SmokeDetector)`. Do NOT create a new instance.
+
+	Enums:
+		smokeEnum (Enum):
+			clear: No smoke detected
+			detected: Smoke detected
+			tested: Smoke detector test button was activated
+
+	Attributes:
+		smokeDetector_smoke (smokeEnum): The state of the smoke detection device
+	"""
+
+class SoilMoistureSensor:
+	"""
+	Note: This class has a pre-existing instance named `(#SoilMoistureSensor)`. Do NOT create a new instance.
+
+	Attributes:
+		soilHumidityMeasurement_soilHumidity (DOUBLE): A numerical representation of the soil humidity measurement taken by the device
+	"""
+
+class SoundSensor:
+	"""
+	Note: This class has a pre-existing instance named `(#SoundSensor)`. Do NOT create a new instance.
+
+	Enums:
+		soundEnum (Enum):
+			detected: Sound is detected
+			not_detected
+
+	Attributes:
+		soundSensor_sound (soundEnum): Whether or not sound was detected by the Device
+		soundPressureLevel_soundPressureLevel (DOUBLE): Level of the sound pressure
+	"""
+
+class Speaker:
+	"""
+	Note: This class has a pre-existing instance named `(#Speaker)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		mediaPlaybackEnum (Enum):
+			paused: Media playback is in a "paused" state
+			playing: Media playback is in a "playing" state
+			stopped: Media playback is in a "stopped" state
+			fast
+			rewinding: Media playback is in a "rewinding" state
+			buffering: Media playback is in a "buffering" state
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		mediaPlayback_playbackStatus (mediaPlaybackEnum): Status of the media playback
+		mediaPlayback_supportedPlaybackCommands (list[mediaPlaybackEnum]): Media playback commands which are supported
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		mediaPlayback_fastForward() -> VOID:
+			Fast forward the media playback
+	
+		mediaPlayback_pause() -> VOID:
+			Pause the media playback
+	
+		mediaPlayback_play(source: STRING) -> VOID:
+			Play the media playback
+	
+			Args:
+				source (STRING): The source of the media playback
+	
+		mediaPlayback_rewind() -> VOID:
+			Rewind the media playback
+	
+		mediaPlayback_setPlaybackStatus(status: mediaPlaybackEnum) -> VOID:
+			Set the playback status
+	
+			Args:
+				status (mediaPlaybackEnum): Set the playback status to "paused", "playing", "stopped", "fast forwarding" or "rewinding" state.
+	
+		mediaPlayback_speak(text: STRING) -> VOID:
+			TTS feature
+	
+			Args:
+				text (STRING): The text to be spoken
+	
+		mediaPlayback_stop() -> VOID:
+			Stop the media playback
+	
+	"""
+
+class Recorder:
+	"""
+	Note: This class has a pre-existing instance named `(#Recorder)`. Do NOT create a new instance.
+
+	Enums:
+		recordStatusEnum (Enum):
+			idle: The audio recorder is idle
+			recording: The audio recorder is recording
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		audioRecord_recordStatus (recordStatusEnum): The current status of the audio recorder
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+
+	Methods:
+		audioRecord_record(file: STRING, duration: DOUBLE) -> VOID:
+			Record audio
+	
+			Args:
+				file (STRING): The file to record to
+				duration (DOUBLE): The duration to record for
+	
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+	"""
+
+class Switch:
+	"""
+	Note: This class has a pre-existing instance named `(#Switch)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+	"""
+
+class Television:
+	"""
+	Note: This class has a pre-existing instance named `(#Television)`. Do NOT create a new instance.
+
+	Enums:
+		muteEnum (Enum):
+			muted: The audio is in "muted" state
+			unmuted: The audio is in "unmuted" state
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		tvChannel_tvChannel (INTEGER): Current status of the TV channel
+		tvChannel_tvChannelName (STRING): Current status of the TV channel name
+		audioMute_muteStatus (muteEnum): Current status of the audio mute
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		audioVolume_volume (INTEGER): The current volume setting of the audio
+
+	Methods:
+		tvChannel_channelDown() -> VOID:
+			Move the TV channel down
+	
+		tvChannel_channelUp() -> VOID:
+			Move the TV channel up
+	
+		tvChannel_setTvChannel(tvChannel: INTEGER) -> VOID:
+			Set the TV channel
+	
+			Args:
+				tvChannel (INTEGER): 
+	
+		tvChannel_setTvChannelName(tvChannelName: STRING) -> VOID:
+			Set the TV channel Name
+	
+			Args:
+				tvChannelName (STRING): 
+	
+		audioMute_mute() -> VOID:
+			Set the audio to mute state
+	
+		audioMute_setMute(state: muteEnum) -> VOID:
+			Set the state of the audio mute
+	
+			Args:
+				state (muteEnum): Set the audio mute state to "muted" or "unmuted"
+	
+		audioMute_unmute() -> VOID:
+			Set the audio to unmute state
+	
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		audioVolume_setVolume(volume: INTEGER) -> VOID:
+			Set the audio volume level
+	
+			Args:
+				volume (INTEGER): A value to which the audio volume level should be set
+	
+		audioVolume_volumeDown() -> VOID:
+			Turn the audio volume down
+	
+		audioVolume_volumeUp() -> VOID:
+			Turn the audio volume up
+	
+	"""
+
+class TemperatureSensor:
+	"""
+	Note: This class has a pre-existing instance named `(#TemperatureSensor)`. Do NOT create a new instance.
+
+	Attributes:
+		temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature
+		temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value
+	"""
+
+class TestDevice:
+	"""
+	Note: This class has a pre-existing instance named `(#TestDevice)`. Do NOT create a new instance.
+
+	Enums:
+		testSkillEnum (Enum):
+			enum1
+			enum2
+			enum3
+
+	Attributes:
+		testSkill_testSkillValue (STRING): testSkillValue
+
+	Methods:
+		testSkill_testSkillFunction(testArgument: STRING) -> STRING:
+			testSkillFunction
+	
+			Args:
+				testArgument (STRING): testArgument
+	
+	"""
+
+class Valve:
+	"""
+	Note: This class has a pre-existing instance named `(#Valve)`. Do NOT create a new instance.
+
+	Enums:
+		valveEnum (Enum):
+			open: The value of the ``valve`` attribute if the valve is open
+			closed: The value of the ``valve`` attribute if the valve is closed
+
+	Attributes:
+		valve_valve (valveEnum): A string representation of whether the valve is open or closed
+
+	Methods:
+		valve_close() -> VOID:
+			Close the valve
+	
+		valve_open() -> VOID:
+			Open the valve
+	
+	"""
+
+class WeatherProvider:
+	"""
+	Note: This class has a pre-existing instance named `(#WeatherProvider)`. Do NOT create a new instance.
+
+	Enums:
+		weatherEnum (Enum):
+			thunderstorm: thunderstorm
+			drizzle: drizzle
+			rain: rain
+			snow: snow
+			mist: mist
+			smoke: smoke
+			haze: haze
+			dust: dust
+			fog: fog
+			sand: sand
+			ash: ash
+			squall: squall
+			tornado: tornado
+			clear: clear
+			clouds: clouds
+
+	Attributes:
+		weatherProvider_humidityWeather (DOUBLE): Current humidity level
+		weatherProvider_pm10Weather (DOUBLE): Current pm10 level
+		weatherProvider_pm25Weather (DOUBLE): Current pm25 level
+		weatherProvider_pressureWeather (DOUBLE): Current pressure level
+		weatherProvider_temperatureWeather (DOUBLE): Current temperature level
+		weatherProvider_weather (weatherEnum): Current weather condition
+
+	Methods:
+		weatherProvider_getWeatherInfo(lat: DOUBLE, lon: DOUBLE) -> STRING:
+			Get the current weather information - Return whole weather information, format: "temperature, humidity, pressure, pm25, pm10, weather, weather_string, icon_id, location"
+	
+			Args:
+				lat (DOUBLE): The latitude of the location
+				lon (DOUBLE): The longitude of the location
+	
+	"""
+
+class Window:
+	"""
+	Note: This class has a pre-existing instance named `(#Window)`. Do NOT create a new instance.
+
+	Enums:
+		windowEnum (Enum):
+			closed: closed
+			open: open
+			unknown: unknown
+
+	Attributes:
+		windowControl_window (windowEnum): A string representation of whether the window is open or closed
+
+	Methods:
+		windowControl_close() -> VOID:
+			Close the window
+	
+		windowControl_open() -> VOID:
+			Open the window
+	
+	"""
+
+class FallDetector:
+	"""
+	Note: This class has a pre-existing instance named `(#FallDetector)`. Do NOT create a new instance.
+
+	Enums:
+		fallEnum (Enum):
+			fall: fall detected
+			normal: no fall detected
+
+	Attributes:
+		fallDetection_fall (fallEnum): Whether or not a fall was detected
+	"""
+
+class FaceRecognizer:
+	"""
+	Note: This class has a pre-existing instance named `(#FaceRecognizer)`. Do NOT create a new instance.
+	"""
+
+class CloudServiceProvider:
+	"""
+	Note: This class has a pre-existing instance named `(#CloudServiceProvider)`. Do NOT create a new instance.
+	"""
+
+class NewsProvider:
+	"""
+	Note: This class has a pre-existing instance named `(#NewsProvider)`. Do NOT create a new instance.
+	"""
+
+class OccupancySensor:
+	"""
+	Note: This class has a pre-existing instance named `(#OccupancySensor)`. Do NOT create a new instance.
+
+	Enums:
+		presenceEnum (Enum):
+			present: The device is present
+			not_present
+
+	Attributes:
+		presenceSensor_presence (presenceEnum): The current state of the presence sensor
+	"""
+
+class Relay:
+	"""
+	Note: This class has a pre-existing instance named `(#Relay)`. Do NOT create a new instance.
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+	"""
+
+class Timer:
+	"""
+	Note: This class has a pre-existing instance named `(#Timer)`. Do NOT create a new instance.
+
+	Methods:
+		timer_add(name: STRING, timeout: DOUBLE) -> VOID:
+			Add a timer
+	
+			Args:
+				name (STRING): The time name
+				timeout (DOUBLE): The time at which the timer should expire
+	
+		timer_isExist(name: STRING) -> BOOL:
+			Check if a timer is exist
+	
+			Args:
+				name (STRING): The time name
+	
+		timer_isSet(name: STRING) -> BOOL:
+			Check if a timer is set
+	
+			Args:
+				name (STRING): The time name
+	
+		timer_reset(name: STRING) -> VOID:
+			Reset a timer
+	
+			Args:
+				name (STRING): The time name
+	
+		timer_set(name: STRING, timeout: DOUBLE) -> VOID:
+			Set a timer
+	
+			Args:
+				name (STRING): The time name
+				timeout (DOUBLE): The time at which the timer should expire
+	
+		timer_start(name: STRING) -> VOID:
+			Start a timer
+	
+			Args:
+				name (STRING): The time name
+	
+	"""
+
+class ManagerThing:
+	"""
+	Note: This class has a pre-existing instance named `(#ManagerThing)`. Do NOT create a new instance.
+
+	Methods:
+		manager_add_thing(parameter: STRING, client_id: STRING, name: STRING) -> STRING:
+			Add staff thing - Return error string
+	
+			Args:
+				parameter (STRING): Staff thing's parameter
+				client_id (STRING): Requester's client id
+				name (STRING): Staff thing's name
+	
+		manager_delete_thing(name: STRING, client_id: STRING) -> STRING:
+			Delete staff thing - Return error string
+	
+			Args:
+				name (STRING): Staff thing's name
+				client_id (STRING): Requester's client id
+	
+		manager_discover() -> STRING:
+			Discover local devices - Return device list with json format
+	
+	"""
+
+class SuperThing:
+	"""
+	Note: This class has a pre-existing instance named `(#SuperThing)`. Do NOT create a new instance.
+	"""
+
+class Undefined:
+	"""
+	Note: This class has a pre-existing instance named `(#Undefined)`. Do NOT create a new instance.
+	"""
+

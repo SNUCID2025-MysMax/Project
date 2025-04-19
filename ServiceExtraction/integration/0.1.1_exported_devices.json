@@ -1,0 +1,589 @@
+{
+  "AirConditioner": {
+    "skills": [
+      {
+        "id": "airConditionerMode",
+        "descriptor": "Allows for the control of the air conditioner."
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      }
+    ]
+  },
+  "AirPurifier": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "airPurifierFanMode",
+        "descriptor": "Maintains and sets the state of an air purifier's fan"
+      }
+    ]
+  },
+  "AirQualityDetector": {
+    "skills": [
+      {
+        "id": "tvocMeasurement",
+        "descriptor": "Measure total volatile organic compound levels"
+      },
+      {
+        "id": "temperatureMeasurement",
+        "descriptor": "Get the temperature from a Device that reports current temperature"
+      },
+      {
+        "id": "carbonDioxideMeasurement",
+        "descriptor": "Measure carbon dioxide levels"
+      },
+      {
+        "id": "dustSensor",
+        "descriptor": "Gets the reading of the dust sensor."
+      },
+      {
+        "id": "relativeHumidityMeasurement",
+        "descriptor": "Allow reading the relative humidity from devices that support it"
+      }
+    ]
+  },
+  "Alarm": {
+    "skills": [
+      {
+        "id": "alarm",
+        "descriptor": "The Alarm skill allows for interacting with devices that serve as alarms"
+      },
+      {
+        "id": "battery",
+        "descriptor": "Defines that the device has a battery"
+      }
+    ]
+  },
+  "Blind": {
+    "skills": [
+      {
+        "id": "blindLevel",
+        "descriptor": "Allows for the control of the level of a blind."
+      },
+      {
+        "id": "blind",
+        "descriptor": "Allows for the control of the blind."
+      }
+    ]
+  },
+  "Button": {
+    "skills": [
+      {
+        "id": "button",
+        "descriptor": "A device with one or more buttons"
+      }
+    ]
+  },
+  "Buttonx4": {
+    "skills": [
+      {
+        "id": "buttonx4",
+        "descriptor": "A device with four buttons"
+      }
+    ]
+  },
+  "Calculator": {
+    "skills": [
+      {
+        "id": "calculator",
+        "descriptor": "Provides calculation services"
+      }
+    ]
+  },
+  "Camera": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "camera",
+        "descriptor": "Allows for the control of a camera device"
+      }
+    ]
+  },
+  "Charger": {
+    "skills": [
+      {
+        "id": "voltageMeasurement",
+        "descriptor": "Get the value of voltage measured from devices that support it"
+      },
+      {
+        "id": "currentMeasurement",
+        "descriptor": "Get the value of electrical current measured from a device."
+      },
+      {
+        "id": "chargingState",
+        "descriptor": "The current status of battery charging"
+      }
+    ]
+  },
+  "Clock": {
+    "skills": [
+      {
+        "id": "clock",
+        "descriptor": "Provide current date and time"
+      }
+    ]
+  },
+  "ContactSensor": {
+    "skills": [
+      {
+        "id": "contactSensor",
+        "descriptor": "Allows reading the value of a contact sensor device"
+      }
+    ]
+  },
+  "Curtain": {
+    "skills": [
+      {
+        "id": "curtain",
+        "descriptor": "Allows for the control of the curtain."
+      }
+    ]
+  },
+  "Dehumidifier": {
+    "skills": [
+      {
+        "id": "dehumidifierMode",
+        "descriptor": "Allows for the control of the dehumidifier mode."
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      }
+    ]
+  },
+  "Dishwasher": {
+    "skills": [
+      {
+        "id": "dishwasherMode",
+        "descriptor": "Allows for the control of the dishwasher mode."
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      }
+    ]
+  },
+  "DoorLock": {
+    "skills": [
+      {
+        "id": "doorControl",
+        "descriptor": "Allow for the control of a door"
+      }
+    ]
+  },
+  "EmailProvider": {
+    "skills": [
+      {
+        "id": "emailProvider",
+        "descriptor": "Provides email services"
+      }
+    ]
+  },
+  "Fan": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "fanControl",
+        "descriptor": "Allows for the control of the fan."
+      }
+    ]
+  },
+  "Feeder": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "feederPortion",
+        "descriptor": "Allows for the portion control of a feeder device."
+      },
+      {
+        "id": "feederOperatingState",
+        "descriptor": "Allows for the control of a feeder device."
+      }
+    ]
+  },
+  "GasMeter": {
+    "skills": [
+      {
+        "id": "gasMeter",
+        "descriptor": "Read the gas consumption of an energy metering device"
+      }
+    ]
+  },
+  "GasValve": {
+    "skills": [
+      {
+        "id": "gasMeter",
+        "descriptor": "Read the gas consumption of an energy metering device"
+      },
+      {
+        "id": "valve",
+        "descriptor": "Allows for the control of a valve device"
+      }
+    ]
+  },
+  "Humidifier": {
+    "skills": [
+      {
+        "id": "humidifierMode",
+        "descriptor": "Maintains and sets the state of an humidifier"
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      }
+    ]
+  },
+  "HumiditySensor": {
+    "skills": [
+      {
+        "id": "relativeHumidityMeasurement",
+        "descriptor": "Allow reading the relative humidity from devices that support it"
+      }
+    ]
+  },
+  "Irrigator": {
+    "skills": [
+      {
+        "id": "irrigatorOperatingState",
+        "descriptor": "Allows for the control of a irrigator device."
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "irrigatorPortion",
+        "descriptor": "Allows for the portion control of a irrigator device."
+      }
+    ]
+  },
+  "LeakSensor": {
+    "skills": [
+      {
+        "id": "leakSensor",
+        "descriptor": "A Device that senses water leakage"
+      }
+    ]
+  },
+  "Light": {
+    "skills": [
+      {
+        "id": "switchLevel",
+        "descriptor": "Allows for the control of the level of a device like a light or a dimmer switch."
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "colorControl",
+        "descriptor": "Allows for control of a color changing device by setting its hue, saturation, and color values"
+      }
+    ]
+  },
+  "LightSensor": {
+    "skills": [
+      {
+        "id": "lightLevel",
+        "descriptor": "A numerical representation of the brightness intensity"
+      }
+    ]
+  },
+  "MenuProvider": {
+    "skills": [
+      {
+        "id": "menuProvider",
+        "descriptor": "Provides menu information services"
+      }
+    ]
+  },
+  "MotionSensor": {
+    "skills": [
+      {
+        "id": "motionSensor",
+        "descriptor": "• active - The value when motion is detected\n• inactive - The value when no motion is detected"
+      }
+    ]
+  },
+  "PresenceSensor": {
+    "skills": [
+      {
+        "id": "presenceSensor",
+        "descriptor": "The ability to see the current status of a presence sensor device"
+      }
+    ]
+  },
+  "Pump": {
+    "skills": [
+      {
+        "id": "pumpOperationMode",
+        "descriptor": "Allows for setting the operation mode on a pump."
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "pump",
+        "descriptor": "Allows for the control of a pump device"
+      }
+    ]
+  },
+  "Refrigerator": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "refrigeration",
+        "descriptor": "Allows for the control of the refrigeration."
+      }
+    ]
+  },
+  "RobotCleaner": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "robotCleanerCleaningMode",
+        "descriptor": "Allows for the control of the robot cleaner cleaning mode."
+      }
+    ]
+  },
+  "Shade": {
+    "skills": [
+      {
+        "id": "windowShadeLevel",
+        "descriptor": "Allows for the control of the level of a window shade."
+      },
+      {
+        "id": "windowShade",
+        "descriptor": "Allows for the control of the window shade."
+      }
+    ]
+  },
+  "Siren": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "sirenMode",
+        "descriptor": "Allows for the control of the siren."
+      }
+    ]
+  },
+  "SmartPlug": {
+    "skills": [
+      {
+        "id": "voltageMeasurement",
+        "descriptor": "Get the value of voltage measured from devices that support it"
+      },
+      {
+        "id": "currentMeasurement",
+        "descriptor": "Get the value of electrical current measured from a device."
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "powerMeter",
+        "descriptor": "Allows for reading the power consumption from devices that report it"
+      }
+    ]
+  },
+  "SmokeDetector": {
+    "skills": [
+      {
+        "id": "smokeDetector",
+        "descriptor": "A device that detects the presence or absence of smoke."
+      }
+    ]
+  },
+  "SoilMoistureSensor": {
+    "skills": [
+      {
+        "id": "soilHumidityMeasurement",
+        "descriptor": "Allow reading the soil humidity from devices that support it"
+      }
+    ]
+  },
+  "SoundSensor": {
+    "skills": [
+      {
+        "id": "soundSensor",
+        "descriptor": "A Device that senses sound"
+      },
+      {
+        "id": "soundPressureLevel",
+        "descriptor": "Gets the value of the sound pressure level."
+      }
+    ]
+  },
+  "Speaker": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "mediaPlayback",
+        "descriptor": "Allows for the control of the media playback."
+      }
+    ]
+  },
+  "Recorder": {
+    "skills": [
+      {
+        "id": "audioRecord",
+        "descriptor": "Record audio"
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      }
+    ]
+  },
+  "Switch": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      }
+    ]
+  },
+  "Television": {
+    "skills": [
+      {
+        "id": "tvChannel",
+        "descriptor": "Allows for the control of the TV channel."
+      },
+      {
+        "id": "audioMute",
+        "descriptor": "Allows for the control of audio mute."
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "audioVolume",
+        "descriptor": "Allows for the control of audio volume."
+      }
+    ]
+  },
+  "TemperatureSensor": {
+    "skills": [
+      {
+        "id": "temperatureMeasurement",
+        "descriptor": "Get the temperature from a Device that reports current temperature"
+      }
+    ]
+  },
+  "TestDevice": {
+    "skills": [
+      {
+        "id": "testSkill",
+        "descriptor": "testSkill"
+      }
+    ]
+  },
+  "Valve": {
+    "skills": [
+      {
+        "id": "valve",
+        "descriptor": "Allows for the control of a valve device"
+      }
+    ]
+  },
+  "WeatherProvider": {
+    "skills": [
+      {
+        "id": "weatherProvider",
+        "descriptor": "Provides weather information"
+      }
+    ]
+  },
+  "Window": {
+    "skills": [
+      {
+        "id": "windowControl",
+        "descriptor": "Allows for the control of the window shade."
+      }
+    ]
+  },
+  "FallDetector": {
+    "skills": [
+      {
+        "id": "fallDetection",
+        "descriptor": "Detects if a fall has occurred"
+      }
+    ]
+  },
+  "FaceRecognizer": {
+    "skills": []
+  },
+  "CloudServiceProvider": {
+    "skills": []
+  },
+  "NewsProvider": {
+    "skills": []
+  },
+  "OccupancySensor": {
+    "skills": [
+      {
+        "id": "presenceSensor",
+        "descriptor": "The ability to see the current status of a presence sensor device"
+      }
+    ]
+  },
+  "Relay": {
+    "skills": [
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
+      }
+    ]
+  },
+  "Timer": {
+    "skills": [
+      {
+        "id": "timer",
+        "descriptor": "The Timer allows for interacting with devices that serve as timers"
+      }
+    ]
+  },
+  "ManagerThing": {
+    "skills": [
+      {
+        "id": "manager",
+        "descriptor": "Allow Manager Thing's features"
+      }
+    ]
+  },
+  "SuperThing": {
+    "skills": []
+  },
+  "Undefined": {
+    "skills": []
+  }
+}

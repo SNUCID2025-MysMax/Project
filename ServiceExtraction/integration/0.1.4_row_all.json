@@ -1,0 +1,1907 @@
+{
+  "interfaces": {
+    "(#AirConditioner).airConditionerMode_airConditionerMode": {
+      "info": "Current mode of the air conditioner",
+      "type": "airConditionerModeEnum"
+    },
+    "(#AirConditioner).airConditionerMode_supportedAcModes": {
+      "info": "Supported states for this air conditioner to be in",
+      "type": "list[airConditionerModeEnum]"
+    },
+    "(#AirConditioner).airConditionerMode_targetTemperature": {
+      "info": "Current temperature status of the air conditioner",
+      "type": "INTEGER"
+    },
+    "(#AirConditioner).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#AirConditioner).airConditionerMode_setAirConditionerMode(mode)": {
+      "info": "Set the air conditioner mode",
+      "args": {
+        "mode": {
+          "info": "Set the air conditioner mode",
+          "type": "airConditionerModeEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#AirConditioner).airConditionerMode_setTemperature(temperature)": {
+      "info": "Set the air conditioner temperature",
+      "args": {
+        "temperature": {
+          "info": "Set the air conditioner temperature",
+          "type": "INTEGER"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#AirConditioner).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#AirConditioner).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#AirConditioner).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#AirPurifier).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#AirPurifier).airPurifierFanMode_airPurifierFanMode": {
+      "info": "The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree",
+      "type": "airPurifierFanModeEnum"
+    },
+    "(#AirPurifier).airPurifierFanMode_supportedAirPurifierFanModes": {
+      "info": "Supported states for this air purifier fan to be in",
+      "type": "list[airPurifierFanModeEnum]"
+    },
+    "(#AirPurifier).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#AirPurifier).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#AirPurifier).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#AirPurifier).airPurifierFanMode_setAirPurifierFanMode(mode)": {
+      "info": "Set the air purifier fan's mode",
+      "args": {
+        "mode": {
+          "info": "Set the air purifier fan's mode",
+          "type": "airPurifierFanModeEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#AirQualityDetector).tvocMeasurement_tvocLevel": {
+      "info": "The level of total volatile organic compounds detected",
+      "type": "DOUBLE"
+    },
+    "(#AirQualityDetector).temperatureMeasurement_temperature": {
+      "info": "A number that usually represents the current temperature",
+      "type": "DOUBLE"
+    },
+    "(#AirQualityDetector).temperatureMeasurement_temperatureRange": {
+      "info": "Constraints on the temperature value",
+      "type": "DICT"
+    },
+    "(#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide": {
+      "info": "The level of carbon dioxide detected",
+      "type": "DOUBLE"
+    },
+    "(#AirQualityDetector).dustSensor_dustLevel": {
+      "info": "Current dust level -- also refered to as PM10, measured in micrograms per cubic meter",
+      "type": "INTEGER"
+    },
+    "(#AirQualityDetector).dustSensor_fineDustLevel": {
+      "info": "Current level of fine dust -- also refered to as PM2.5, measured in micrograms per cubic meter",
+      "type": "INTEGER"
+    },
+    "(#AirQualityDetector).dustSensor_veryFineDustLevel": {
+      "info": "Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter",
+      "type": "INTEGER"
+    },
+    "(#AirQualityDetector).relativeHumidityMeasurement_humidity": {
+      "info": "A numerical representation of the relative humidity measurement taken by the device",
+      "type": "DOUBLE"
+    },
+    "(#Alarm).alarm_alarm": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "alarmEnum"
+    },
+    "(#Alarm).alarm_alarmVolume": {
+      "info": "A string representation of the volume of the alarm",
+      "type": "alarmVolumeEnum"
+    },
+    "(#Alarm).battery_battery": {
+      "info": "An indication of the status of the battery",
+      "type": "INTEGER"
+    },
+    "(#Alarm).alarm_both()": {
+      "info": "Strobe and sound the alarm",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Alarm).alarm_off()": {
+      "info": "Turn the alarm (siren and strobe) off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Alarm).alarm_setAlarmVolume(alarmVolume)": {
+      "info": "Set the volume of the alarm",
+      "args": {
+        "alarmVolume": {
+          "info": "Set the volume of the alarm to \"mute\", \"low\", \"medium\", or \"high\"",
+          "type": "alarmVolumeEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Alarm).alarm_siren()": {
+      "info": "Sound the siren on the alarm",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Alarm).alarm_strobe()": {
+      "info": "Strobe the alarm",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Blind).blindLevel_blindLevel": {
+      "info": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+      "type": "INTEGER"
+    },
+    "(#Blind).blind_blind": {
+      "info": "A string representation of whether the blind is open or closed",
+      "type": "blindEnum"
+    },
+    "(#Blind).blindLevel_setBlindLevel(blindLevel)": {
+      "info": "Set the blind level to the given value.",
+      "args": {
+        "blindLevel": {
+          "info": "The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+          "type": "INTEGER"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Blind).blind_close()": {
+      "info": "Close the blind",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Blind).blind_open()": {
+      "info": "Open the blind",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Blind).blind_pause()": {
+      "info": "Pause opening or closing the blind",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Button).button_button": {
+      "info": "The state of the buttons",
+      "type": "buttonEnum"
+    },
+    "(#Button).button_numberOfButtons": {
+      "info": "The number of buttons on the device",
+      "type": "INTEGER"
+    },
+    "(#Button).button_supportedButtonValues": {
+      "info": "List of valid button attribute values",
+      "type": "list[buttonEnum]"
+    },
+    "(#Buttonx4).buttonx4_button1": {
+      "info": "The state of the button1",
+      "type": "buttonEnum"
+    },
+    "(#Buttonx4).buttonx4_button2": {
+      "info": "The state of the button2",
+      "type": "buttonEnum"
+    },
+    "(#Buttonx4).buttonx4_button3": {
+      "info": "The state of the button3",
+      "type": "buttonEnum"
+    },
+    "(#Buttonx4).buttonx4_button4": {
+      "info": "The state of the button4",
+      "type": "buttonEnum"
+    },
+    "(#Buttonx4).buttonx4_numberOfButtons": {
+      "info": "The number of buttons on the device",
+      "type": "INTEGER"
+    },
+    "(#Buttonx4).buttonx4_supportedButtonValues": {
+      "info": "List of valid button attribute values",
+      "type": "list[buttonEnum]"
+    },
+    "(#Calculator).calculator_add(a, b)": {
+      "info": "Add two numbers",
+      "args": {
+        "a": {
+          "info": "The first number to add",
+          "type": "DOUBLE"
+        },
+        "b": {
+          "info": "The second number to add",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "DOUBLE"
+    },
+    "(#Calculator).calculator_div(a, b)": {
+      "info": "Divide two numbers",
+      "args": {
+        "a": {
+          "info": "The first number to add",
+          "type": "DOUBLE"
+        },
+        "b": {
+          "info": "The second number to add",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "DOUBLE"
+    },
+    "(#Calculator).calculator_mod(a, b)": {
+      "info": "Modulo two numbers",
+      "args": {
+        "a": {
+          "info": "The first number to add",
+          "type": "DOUBLE"
+        },
+        "b": {
+          "info": "The second number to add",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "DOUBLE"
+    },
+    "(#Calculator).calculator_mul(a, b)": {
+      "info": "Multiply two numbers",
+      "args": {
+        "a": {
+          "info": "The first number to add",
+          "type": "DOUBLE"
+        },
+        "b": {
+          "info": "The second number to add",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "DOUBLE"
+    },
+    "(#Calculator).calculator_sub(a, b)": {
+      "info": "Subtract two numbers",
+      "args": {
+        "a": {
+          "info": "The first number to add",
+          "type": "DOUBLE"
+        },
+        "b": {
+          "info": "The second number to add",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "DOUBLE"
+    },
+    "(#Camera).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Camera).camera_image": {
+      "info": "The latest image captured by the camera",
+      "type": "BINARY"
+    },
+    "(#Camera).camera_video": {
+      "info": "The latest video captured by the camera",
+      "type": "BINARY"
+    },
+    "(#Camera).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Camera).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Camera).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Camera).camera_take()": {
+      "info": "Take a picture with the camera - Return the image as binary data",
+      "args": {},
+      "return_type": "BINARY"
+    },
+    "(#Camera).camera_takeTimelapse(duration, speed)": {
+      "info": "Take a picture with the camera - Return the video as binary data",
+      "args": {
+        "duration": {
+          "info": "The duration of the timelapse in seconds",
+          "type": "DOUBLE"
+        },
+        "speed": {
+          "info": "The speed of the timelapse",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "BINARY"
+    },
+    "(#Charger).voltageMeasurement_voltage": {
+      "info": "A number representing the current voltage measured",
+      "type": "DOUBLE"
+    },
+    "(#Charger).currentMeasurement_current": {
+      "info": "A number representing the current measured.",
+      "type": "DOUBLE"
+    },
+    "(#Charger).chargingState_chargingState": {
+      "info": "The current charging state of the device",
+      "type": "chargingStateEnum"
+    },
+    "(#Charger).chargingState_supportedChargingStates": {
+      "info": "The list of charging states that the device supports. Optional, defaults to all states if not set.",
+      "type": "list[chargingStateEnum]"
+    },
+    "(#Clock).clock_date": {
+      "info": "Current date as double number - format: YYYYMMdd",
+      "type": "DOUBLE"
+    },
+    "(#Clock).clock_datetime": {
+      "info": "Current date and time as double number - format: YYYYMMddhhmm",
+      "type": "DOUBLE"
+    },
+    "(#Clock).clock_day": {
+      "info": "Current day",
+      "type": "INTEGER"
+    },
+    "(#Clock).clock_hour": {
+      "info": "Current hour",
+      "type": "INTEGER"
+    },
+    "(#Clock).clock_isHoliday": {
+      "info": "today is holiday or not",
+      "type": "BOOL"
+    },
+    "(#Clock).clock_minute": {
+      "info": "Current minute",
+      "type": "INTEGER"
+    },
+    "(#Clock).clock_month": {
+      "info": "Current month",
+      "type": "INTEGER"
+    },
+    "(#Clock).clock_second": {
+      "info": "Current second",
+      "type": "INTEGER"
+    },
+    "(#Clock).clock_time": {
+      "info": "Current time as double number - format: hhmm",
+      "type": "DOUBLE"
+    },
+    "(#Clock).clock_timestamp": {
+      "info": "Current timestamp (return current unix time - unit: seconds with floating point)",
+      "type": "DOUBLE"
+    },
+    "(#Clock).clock_weekday": {
+      "info": "Current weekday",
+      "type": "weekdayEnum"
+    },
+    "(#Clock).clock_year": {
+      "info": "Current year",
+      "type": "INTEGER"
+    },
+    "(#Clock).clock_delay(hour, minute, second)": {
+      "info": "delay for a given amount of time",
+      "args": {
+        "hour": {
+          "info": "hour",
+          "type": "INTEGER"
+        },
+        "minute": {
+          "info": "minute",
+          "type": "INTEGER"
+        },
+        "second": {
+          "info": "second",
+          "type": "INTEGER"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#ContactSensor).contactSensor_contact": {
+      "info": "The current state of the contact sensor",
+      "type": "contactEnum"
+    },
+    "(#Curtain).curtain_curtain": {
+      "info": "A string representation of whether the curtain is open or closed",
+      "type": "curtainEnum"
+    },
+    "(#Curtain).curtain_supportedCurtainCommands": {
+      "info": "Curtain commands supported by this instance of Curtain",
+      "type": "list[curtainEnum]"
+    },
+    "(#Curtain).curtain_close()": {
+      "info": "Close the curtain",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Curtain).curtain_open()": {
+      "info": "Open the curtain",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Curtain).curtain_pause()": {
+      "info": "Pause opening or closing the curtain",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Dehumidifier).dehumidifierMode_dehumidifierMode": {
+      "info": "Current mode of the dehumidifier",
+      "type": "dehumidifierModeEnum"
+    },
+    "(#Dehumidifier).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Dehumidifier).dehumidifierMode_setDehumidifierMode(mode)": {
+      "info": "Set the dehumidifier mode",
+      "args": {
+        "mode": {
+          "info": "Set the dehumidifier mode",
+          "type": "dehumidifierModeEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Dehumidifier).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Dehumidifier).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Dehumidifier).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Dishwasher).dishwasherMode_dishwasherMode": {
+      "info": "Current mode of the dishwasher",
+      "type": "dishwasherModeEnum"
+    },
+    "(#Dishwasher).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Dishwasher).dishwasherMode_setDishwasherMode(mode)": {
+      "info": "Set the dishwasher mode",
+      "args": {
+        "mode": {
+          "info": "Set the dishwasher mode to \"eco\", \"intense\", \"auto\", \"quick\", \"rinse\", or \"dry\" mode",
+          "type": "dishwasherModeEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Dishwasher).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Dishwasher).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Dishwasher).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#DoorLock).doorControl_door": {
+      "info": "The current state of the door",
+      "type": "doorEnum"
+    },
+    "(#DoorLock).doorControl_close()": {
+      "info": "Close the door",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#DoorLock).doorControl_open()": {
+      "info": "Open the door",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#EmailProvider).emailProvider_sendMail(toAddress, title, text)": {
+      "info": "Send an email",
+      "args": {
+        "toAddress": {
+          "info": "The email address of the recipient",
+          "type": "STRING"
+        },
+        "title": {
+          "info": "The title of the email",
+          "type": "STRING"
+        },
+        "text": {
+          "info": "The text of the email",
+          "type": "STRING"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#EmailProvider).emailProvider_sendMailWithFile(toAddress, title, text, file)": {
+      "info": "Send an email with an attachment",
+      "args": {
+        "toAddress": {
+          "info": "The email address of the recipient",
+          "type": "STRING"
+        },
+        "title": {
+          "info": "The title of the email",
+          "type": "STRING"
+        },
+        "text": {
+          "info": "The text of the email",
+          "type": "STRING"
+        },
+        "file": {
+          "info": "The path to the file to be attached",
+          "type": "BINARY"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Fan).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Fan).fanControl_fanSpeed": {
+      "info": "The current fan speed represented as a integer value. - unit: RPM",
+      "type": "INTEGER"
+    },
+    "(#Fan).fanControl_percent": {
+      "info": "The current fan speed represented as a percent value.",
+      "type": "INTEGER"
+    },
+    "(#Fan).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Fan).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Fan).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Fan).fanControl_setFanSpeed(speed)": {
+      "info": "Set the fan speed",
+      "args": {
+        "speed": {
+          "info": "Set the fan to this speed",
+          "type": "INTEGER"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Fan).fanControl_setPercent(percent)": {
+      "info": "Set the fan speed percent.",
+      "args": {
+        "percent": {
+          "info": "The percent value to set the fan speed to.",
+          "type": "INTEGER"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Feeder).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Feeder).feederPortion_feedPortion": {
+      "info": "A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense.",
+      "type": "DOUBLE"
+    },
+    "(#Feeder).feederOperatingState_feederOperatingState": {
+      "info": "The current state of the feeder.",
+      "type": "feederOperatingStateEnum"
+    },
+    "(#Feeder).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Feeder).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Feeder).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Feeder).feederPortion_setFeedPortion(portion, unit)": {
+      "info": "Set the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.",
+      "args": {
+        "portion": {
+          "info": "The portion (in grams, pounds, ounces, or servings) to dispense.",
+          "type": "DOUBLE"
+        },
+        "unit": {
+          "info": "",
+          "type": "unitEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Feeder).feederOperatingState_startFeeding()": {
+      "info": "Begin the feeding process.",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#GasMeter).gasMeter_gasMeter": {
+      "info": "the gas energy reported by the metering device. unit: kWh",
+      "type": "DOUBLE"
+    },
+    "(#GasMeter).gasMeter_gasMeterCalorific": {
+      "info": "a measure of the available heat energy, used as part of the calculation to convert gas volume to gas energy. - unit: kcal",
+      "type": "DOUBLE"
+    },
+    "(#GasMeter).gasMeter_gasMeterTime": {
+      "info": "The cumulative gas use time reported by the metering device. - unit: seconds",
+      "type": "DOUBLE"
+    },
+    "(#GasMeter).gasMeter_gasMeterVolume": {
+      "info": "the cumulative gas volume reported by the metering device. - unit: cubic meters",
+      "type": "DOUBLE"
+    },
+    "(#GasValve).gasMeter_gasMeter": {
+      "info": "the gas energy reported by the metering device. unit: kWh",
+      "type": "DOUBLE"
+    },
+    "(#GasValve).gasMeter_gasMeterCalorific": {
+      "info": "a measure of the available heat energy, used as part of the calculation to convert gas volume to gas energy. - unit: kcal",
+      "type": "DOUBLE"
+    },
+    "(#GasValve).gasMeter_gasMeterTime": {
+      "info": "The cumulative gas use time reported by the metering device. - unit: seconds",
+      "type": "DOUBLE"
+    },
+    "(#GasValve).gasMeter_gasMeterVolume": {
+      "info": "the cumulative gas volume reported by the metering device. - unit: cubic meters",
+      "type": "DOUBLE"
+    },
+    "(#GasValve).valve_valve": {
+      "info": "A string representation of whether the valve is open or closed",
+      "type": "valveEnum"
+    },
+    "(#GasValve).valve_close()": {
+      "info": "Close the valve",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#GasValve).valve_open()": {
+      "info": "Open the valve",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Humidifier).humidifierMode_humidifierMode": {
+      "info": "Current mode of the humidifier",
+      "type": "humidifierModeEnum"
+    },
+    "(#Humidifier).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Humidifier).humidifierMode_setHumidifierMode(mode)": {
+      "info": "Set the humidifier mode",
+      "args": {
+        "mode": {
+          "info": "Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode",
+          "type": "humidifierModeEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Humidifier).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Humidifier).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Humidifier).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#HumiditySensor).relativeHumidityMeasurement_humidity": {
+      "info": "A numerical representation of the relative humidity measurement taken by the device",
+      "type": "DOUBLE"
+    },
+    "(#Irrigator).irrigatorOperatingState_irrigatorOperatingState": {
+      "info": "The current state of the irrigator.",
+      "type": "irrigatorOperatingStateEnum"
+    },
+    "(#Irrigator).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Irrigator).irrigatorPortion_waterPortion": {
+      "info": "A number that represents the portion (in liters, milliliters, gallons, or ounces) that will dispense.",
+      "type": "DOUBLE"
+    },
+    "(#Irrigator).irrigatorOperatingState_startWatering()": {
+      "info": "Begin the watering process.",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Irrigator).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Irrigator).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Irrigator).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Irrigator).irrigatorPortion_setWaterPortion(portion, unit)": {
+      "info": "Set the portion (in liters, milliliters, gallons, or ounces) that the irrigator will dispense.",
+      "args": {
+        "portion": {
+          "info": "The portion (in grams, pounds, ounces, or servings) to dispense.",
+          "type": "DOUBLE"
+        },
+        "unit": {
+          "info": "",
+          "type": "unitEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#LeakSensor).leakSensor_leakage": {
+      "info": "Whether or not water leakage was detected by the Device",
+      "type": "presenceEnum"
+    },
+    "(#Light).switchLevel_level": {
+      "info": "A number that represents the current level, usually ``0-100`` in percent",
+      "type": "INTEGER"
+    },
+    "(#Light).switchLevel_levelRange": {
+      "info": "Constraints on the level value",
+      "type": "DICT"
+    },
+    "(#Light).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Light).colorControl_color": {
+      "info": "``{\"hue\":\"0-100 (percent)\", \"saturation\":\"0-100 (percent)\"}``",
+      "type": "STRING"
+    },
+    "(#Light).colorControl_hue": {
+      "info": "``0-100`` (percent)",
+      "type": "DOUBLE"
+    },
+    "(#Light).colorControl_saturation": {
+      "info": "``0-100`` (percent)",
+      "type": "DOUBLE"
+    },
+    "(#Light).switchLevel_alert()": {
+      "info": "Alert with dimming",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Light).switchLevel_setLevel(level, rate)": {
+      "info": "Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.",
+      "args": {
+        "level": {
+          "info": "The level value, usually ``0-100`` in percent",
+          "type": "INTEGER"
+        },
+        "rate": {
+          "info": "The rate at which to change the level",
+          "type": "INTEGER"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Light).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Light).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Light).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Light).colorControl_setColor(color)": {
+      "info": "Sets the color based on the values passed in with the given map",
+      "args": {
+        "color": {
+          "info": "The color map supports the following key/value pairs:",
+          "type": "DICT"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Light).colorControl_setHue(hue)": {
+      "info": "Set the hue value of the color",
+      "args": {
+        "hue": {
+          "info": "A number in the range ``0-100`` representing the hue as a value of percent",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Light).colorControl_setSaturation(saturation)": {
+      "info": "Set the saturation value of the color",
+      "args": {
+        "saturation": {
+          "info": "A number in the range ``0-100`` representing the saturation as a value of percent",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#LightSensor).lightLevel_light": {
+      "info": "brightness intensity (Unit: lux)",
+      "type": "DOUBLE"
+    },
+    "(#MenuProvider).menuProvider_menu(command)": {
+      "info": "Get the menu - Return the menu list",
+      "args": {
+        "command": {
+          "info": "The command to get the menu - format: [오늘|내일] [학생식당|수의대식당|전망대(3식당)|예술계식당(아름드리)|기숙사식당|아워홈|동원관식당(113동)|웰스토리(220동)|투굿(공대간이식당)|자하연식당|301동식당] [아침|점심|저녁]",
+          "type": "STRING"
+        }
+      },
+      "return_type": "STRING"
+    },
+    "(#MenuProvider).menuProvider_todayMenu()": {
+      "info": "Get today's menu randomly - Return the menu list",
+      "args": {},
+      "return_type": "STRING"
+    },
+    "(#MenuProvider).menuProvider_todayPlace()": {
+      "info": "Get today's restaurant randomly - Return the restaurant name",
+      "args": {},
+      "return_type": "STRING"
+    },
+    "(#MotionSensor).motionSensor_motion": {
+      "info": "The current state of the motion sensor",
+      "type": "motionEnum"
+    },
+    "(#PresenceSensor).presenceSensor_presence": {
+      "info": "The current state of the presence sensor",
+      "type": "presenceEnum"
+    },
+    "(#Pump).pumpOperationMode_currentOperationMode": {
+      "info": "The current effective operation mode of the pump",
+      "type": "pumpOperationModeEnum"
+    },
+    "(#Pump).pumpOperationMode_operationMode": {
+      "info": "The operation mode of the pump",
+      "type": "pumpOperationModeEnum"
+    },
+    "(#Pump).pumpOperationMode_supportedOperationModes": {
+      "info": "Supported operation modes for this device to be in",
+      "type": "list[pumpOperationModeEnum]"
+    },
+    "(#Pump).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Pump).pump_pump": {
+      "info": "A string representation of whether the pump is open or closed",
+      "type": "pumpEnum"
+    },
+    "(#Pump).pumpOperationMode_setOperationMode(operationMode)": {
+      "info": "Set the operation mode",
+      "args": {
+        "operationMode": {
+          "info": "The operation mode to set the device to",
+          "type": "pumpOperationModeEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Pump).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Pump).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Pump).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Pump).pump_close()": {
+      "info": "Close the pump",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Pump).pump_open()": {
+      "info": "Open the pump",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Refrigerator).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Refrigerator).refrigeration_defrost": {
+      "info": "Status of the defrost",
+      "type": "defrostEnum"
+    },
+    "(#Refrigerator).refrigeration_rapidCooling": {
+      "info": "Status of the rapid cooling",
+      "type": "rapidCoolingEnum"
+    },
+    "(#Refrigerator).refrigeration_rapidFreezing": {
+      "info": "Status of the rapid freezing",
+      "type": "rapidFreezingEnum"
+    },
+    "(#Refrigerator).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Refrigerator).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Refrigerator).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Refrigerator).refrigeration_setDefrost(defrost)": {
+      "info": "Sets the defrost on or off",
+      "args": {
+        "defrost": {
+          "info": "The on or off value for the defrost",
+          "type": "defrostEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Refrigerator).refrigeration_setRapidCooling(rapidCooling)": {
+      "info": "Sets the rapid cooling on or off",
+      "args": {
+        "rapidCooling": {
+          "info": "The on or off value for the rapid cooling",
+          "type": "rapidCoolingEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Refrigerator).refrigeration_setRapidFreezing(rapidFreezing)": {
+      "info": "Sets the rapid freezing on or off",
+      "args": {
+        "rapidFreezing": {
+          "info": "The on or off value for the rapid freezing",
+          "type": "rapidFreezingEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#RobotCleaner).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode": {
+      "info": "Current status of the robot cleaner cleaning mode",
+      "type": "robotCleanerCleaningModeEnum"
+    },
+    "(#RobotCleaner).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#RobotCleaner).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#RobotCleaner).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode(mode)": {
+      "info": "Set the robot cleaner cleaning mode",
+      "args": {
+        "mode": {
+          "info": "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes",
+          "type": "robotCleanerCleaningModeEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Shade).windowShadeLevel_shadeLevel": {
+      "info": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+      "type": "INTEGER"
+    },
+    "(#Shade).windowShade_supportedWindowShadeCommands": {
+      "info": "Window shade commands supported by this instance of Window Shade",
+      "type": "list[windowShadeEnum]"
+    },
+    "(#Shade).windowShade_windowShade": {
+      "info": "A string representation of whether the window shade is open or closed",
+      "type": "windowShadeEnum"
+    },
+    "(#Shade).windowShadeLevel_setShadeLevel(shadeLevel)": {
+      "info": "Set the shade level to the given value.",
+      "args": {
+        "shadeLevel": {
+          "info": "The level to which the shade should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+          "type": "INTEGER"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Shade).windowShade_close()": {
+      "info": "Close the window shade",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Shade).windowShade_open()": {
+      "info": "Open the window shade",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Shade).windowShade_pause()": {
+      "info": "Pause opening or closing the window shade",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Siren).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Siren).sirenMode_sirenMode": {
+      "info": "Current mode of the siren",
+      "type": "sirenModeEnum"
+    },
+    "(#Siren).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Siren).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Siren).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Siren).sirenMode_setSirenMode(mode)": {
+      "info": "Set the siren mode",
+      "args": {
+        "mode": {
+          "info": "Set the siren mode",
+          "type": "sirenModeEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#SmartPlug).voltageMeasurement_voltage": {
+      "info": "A number representing the current voltage measured",
+      "type": "DOUBLE"
+    },
+    "(#SmartPlug).currentMeasurement_current": {
+      "info": "A number representing the current measured.",
+      "type": "DOUBLE"
+    },
+    "(#SmartPlug).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#SmartPlug).powerMeter_power": {
+      "info": "A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts",
+      "type": "DOUBLE"
+    },
+    "(#SmartPlug).powerMeter_powerConsumption": {
+      "info": "energy and power consumption during specific time period - unit: Wh",
+      "type": "DICT"
+    },
+    "(#SmartPlug).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#SmartPlug).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#SmartPlug).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#SmokeDetector).smokeDetector_smoke": {
+      "info": "The state of the smoke detection device",
+      "type": "smokeEnum"
+    },
+    "(#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity": {
+      "info": "A numerical representation of the soil humidity measurement taken by the device",
+      "type": "DOUBLE"
+    },
+    "(#SoundSensor).soundSensor_sound": {
+      "info": "Whether or not sound was detected by the Device",
+      "type": "soundEnum"
+    },
+    "(#SoundSensor).soundPressureLevel_soundPressureLevel": {
+      "info": "Level of the sound pressure",
+      "type": "DOUBLE"
+    },
+    "(#Speaker).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Speaker).mediaPlayback_playbackStatus": {
+      "info": "Status of the media playback",
+      "type": "mediaPlaybackEnum"
+    },
+    "(#Speaker).mediaPlayback_supportedPlaybackCommands": {
+      "info": "Media playback commands which are supported",
+      "type": "list[mediaPlaybackEnum]"
+    },
+    "(#Speaker).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Speaker).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Speaker).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Speaker).mediaPlayback_fastForward()": {
+      "info": "Fast forward the media playback",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Speaker).mediaPlayback_pause()": {
+      "info": "Pause the media playback",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Speaker).mediaPlayback_play(source)": {
+      "info": "Play the media playback",
+      "args": {
+        "source": {
+          "info": "The source of the media playback",
+          "type": "STRING"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Speaker).mediaPlayback_rewind()": {
+      "info": "Rewind the media playback",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Speaker).mediaPlayback_setPlaybackStatus(status)": {
+      "info": "Set the playback status",
+      "args": {
+        "status": {
+          "info": "Set the playback status to \"paused\", \"playing\", \"stopped\", \"fast forwarding\" or \"rewinding\" state.",
+          "type": "mediaPlaybackEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Speaker).mediaPlayback_speak(text)": {
+      "info": "TTS feature",
+      "args": {
+        "text": {
+          "info": "The text to be spoken",
+          "type": "STRING"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Speaker).mediaPlayback_stop()": {
+      "info": "Stop the media playback",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Recorder).audioRecord_recordStatus": {
+      "info": "The current status of the audio recorder",
+      "type": "recordStatusEnum"
+    },
+    "(#Recorder).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Recorder).audioRecord_record(file, duration)": {
+      "info": "Record audio",
+      "args": {
+        "file": {
+          "info": "The file to record to",
+          "type": "STRING"
+        },
+        "duration": {
+          "info": "The duration to record for",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Recorder).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Recorder).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Recorder).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Switch).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Switch).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Switch).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Switch).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Television).tvChannel_tvChannel": {
+      "info": "Current status of the TV channel",
+      "type": "INTEGER"
+    },
+    "(#Television).tvChannel_tvChannelName": {
+      "info": "Current status of the TV channel name",
+      "type": "STRING"
+    },
+    "(#Television).audioMute_muteStatus": {
+      "info": "Current status of the audio mute",
+      "type": "muteEnum"
+    },
+    "(#Television).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Television).audioVolume_volume": {
+      "info": "The current volume setting of the audio",
+      "type": "INTEGER"
+    },
+    "(#Television).tvChannel_channelDown()": {
+      "info": "Move the TV channel down",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Television).tvChannel_channelUp()": {
+      "info": "Move the TV channel up",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Television).tvChannel_setTvChannel(tvChannel)": {
+      "info": "Set the TV channel",
+      "args": {
+        "tvChannel": {
+          "info": "",
+          "type": "INTEGER"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Television).tvChannel_setTvChannelName(tvChannelName)": {
+      "info": "Set the TV channel Name",
+      "args": {
+        "tvChannelName": {
+          "info": "",
+          "type": "STRING"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Television).audioMute_mute()": {
+      "info": "Set the audio to mute state",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Television).audioMute_setMute(state)": {
+      "info": "Set the state of the audio mute",
+      "args": {
+        "state": {
+          "info": "Set the audio mute state to \"muted\" or \"unmuted\"",
+          "type": "muteEnum"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Television).audioMute_unmute()": {
+      "info": "Set the audio to unmute state",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Television).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Television).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Television).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Television).audioVolume_setVolume(volume)": {
+      "info": "Set the audio volume level",
+      "args": {
+        "volume": {
+          "info": "A value to which the audio volume level should be set",
+          "type": "INTEGER"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Television).audioVolume_volumeDown()": {
+      "info": "Turn the audio volume down",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Television).audioVolume_volumeUp()": {
+      "info": "Turn the audio volume up",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#TemperatureSensor).temperatureMeasurement_temperature": {
+      "info": "A number that usually represents the current temperature",
+      "type": "DOUBLE"
+    },
+    "(#TemperatureSensor).temperatureMeasurement_temperatureRange": {
+      "info": "Constraints on the temperature value",
+      "type": "DICT"
+    },
+    "(#TestDevice).testSkill_testSkillValue": {
+      "info": "testSkillValue",
+      "type": "STRING"
+    },
+    "(#TestDevice).testSkill_testSkillFunction(testArgument)": {
+      "info": "testSkillFunction",
+      "args": {
+        "testArgument": {
+          "info": "testArgument",
+          "type": "STRING"
+        }
+      },
+      "return_type": "STRING"
+    },
+    "(#Valve).valve_valve": {
+      "info": "A string representation of whether the valve is open or closed",
+      "type": "valveEnum"
+    },
+    "(#Valve).valve_close()": {
+      "info": "Close the valve",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Valve).valve_open()": {
+      "info": "Open the valve",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#WeatherProvider).weatherProvider_humidityWeather": {
+      "info": "Current humidity level",
+      "type": "DOUBLE"
+    },
+    "(#WeatherProvider).weatherProvider_pm10Weather": {
+      "info": "Current pm10 level",
+      "type": "DOUBLE"
+    },
+    "(#WeatherProvider).weatherProvider_pm25Weather": {
+      "info": "Current pm25 level",
+      "type": "DOUBLE"
+    },
+    "(#WeatherProvider).weatherProvider_pressureWeather": {
+      "info": "Current pressure level",
+      "type": "DOUBLE"
+    },
+    "(#WeatherProvider).weatherProvider_temperatureWeather": {
+      "info": "Current temperature level",
+      "type": "DOUBLE"
+    },
+    "(#WeatherProvider).weatherProvider_weather": {
+      "info": "Current weather condition",
+      "type": "weatherEnum"
+    },
+    "(#WeatherProvider).weatherProvider_getWeatherInfo(lat, lon)": {
+      "info": "Get the current weather information - Return whole weather information, format: \"temperature, humidity, pressure, pm25, pm10, weather, weather_string, icon_id, location\"",
+      "args": {
+        "lat": {
+          "info": "The latitude of the location",
+          "type": "DOUBLE"
+        },
+        "lon": {
+          "info": "The longitude of the location",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "STRING"
+    },
+    "(#Window).windowControl_window": {
+      "info": "A string representation of whether the window is open or closed",
+      "type": "windowEnum"
+    },
+    "(#Window).windowControl_close()": {
+      "info": "Close the window",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Window).windowControl_open()": {
+      "info": "Open the window",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#FallDetector).fallDetection_fall": {
+      "info": "Whether or not a fall was detected",
+      "type": "fallEnum"
+    },
+    "(#OccupancySensor).presenceSensor_presence": {
+      "info": "The current state of the presence sensor",
+      "type": "presenceEnum"
+    },
+    "(#Relay).switch_switch": {
+      "info": "A string representation of whether the switch is on or off",
+      "type": "switchEnum"
+    },
+    "(#Relay).switch_off()": {
+      "info": "Turn a switch off",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Relay).switch_on()": {
+      "info": "Turn a switch on",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Relay).switch_toggle()": {
+      "info": "Toggle a switch",
+      "args": {},
+      "return_type": "VOID"
+    },
+    "(#Timer).timer_add(name, timeout)": {
+      "info": "Add a timer",
+      "args": {
+        "name": {
+          "info": "The time name",
+          "type": "STRING"
+        },
+        "timeout": {
+          "info": "The time at which the timer should expire",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Timer).timer_isExist(name)": {
+      "info": "Check if a timer is exist",
+      "args": {
+        "name": {
+          "info": "The time name",
+          "type": "STRING"
+        }
+      },
+      "return_type": "BOOL"
+    },
+    "(#Timer).timer_isSet(name)": {
+      "info": "Check if a timer is set",
+      "args": {
+        "name": {
+          "info": "The time name",
+          "type": "STRING"
+        }
+      },
+      "return_type": "BOOL"
+    },
+    "(#Timer).timer_reset(name)": {
+      "info": "Reset a timer",
+      "args": {
+        "name": {
+          "info": "The time name",
+          "type": "STRING"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Timer).timer_set(name, timeout)": {
+      "info": "Set a timer",
+      "args": {
+        "name": {
+          "info": "The time name",
+          "type": "STRING"
+        },
+        "timeout": {
+          "info": "The time at which the timer should expire",
+          "type": "DOUBLE"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#Timer).timer_start(name)": {
+      "info": "Start a timer",
+      "args": {
+        "name": {
+          "info": "The time name",
+          "type": "STRING"
+        }
+      },
+      "return_type": "VOID"
+    },
+    "(#ManagerThing).manager_add_thing(parameter, client_id, name)": {
+      "info": "Add staff thing - Return error string",
+      "args": {
+        "parameter": {
+          "info": "Staff thing's parameter",
+          "type": "STRING"
+        },
+        "client_id": {
+          "info": "Requester's client id",
+          "type": "STRING"
+        },
+        "name": {
+          "info": "Staff thing's name",
+          "type": "STRING"
+        }
+      },
+      "return_type": "STRING"
+    },
+    "(#ManagerThing).manager_delete_thing(name, client_id)": {
+      "info": "Delete staff thing - Return error string",
+      "args": {
+        "name": {
+          "info": "Staff thing's name",
+          "type": "STRING"
+        },
+        "client_id": {
+          "info": "Requester's client id",
+          "type": "STRING"
+        }
+      },
+      "return_type": "STRING"
+    },
+    "(#ManagerThing).manager_discover()": {
+      "info": "Discover local devices - Return device list with json format",
+      "args": {},
+      "return_type": "STRING"
+    }
+  },
+  "enums": {
+    "airConditionerModeEnum": {
+      "auto": "The fan is on auto",
+      "cool": "The fan is in sleep mode to reduce noise",
+      "heat": "The fan is on low",
+      "fanonly": "",
+      "dehumidify": ""
+    },
+    "switchEnum": {
+      "on": "The value of the ``switch`` attribute if the switch is on",
+      "off": "The value of the ``switch`` attribute if the switch is off"
+    },
+    "airPurifierFanModeEnum": {
+      "auto": "The fan is on auto",
+      "sleep": "The fan is in sleep mode to reduce noise",
+      "low": "The fan is on low",
+      "medium": "The fan is on medium",
+      "high": "The fan is on high",
+      "quiet": "The fan is on quiet mode to reduce noise",
+      "windFree": "The fan is on wind free mode to reduce the feeling of cold air",
+      "off": "The fan is off"
+    },
+    "alarmVolumeEnum": {
+      "mute": "",
+      "low": "",
+      "medium": "",
+      "high": ""
+    },
+    "blindEnum": {
+      "closed": "closed",
+      "closing": "closing…",
+      "open": "open",
+      "opening": "opening…",
+      "partially": "",
+      "paused": "",
+      "unknown": "unknown"
+    },
+    "buttonEnum": {
+      "pushed": "The value if the button is pushed",
+      "held": "The value if the button is held",
+      "double": "The value if the button is pushed twice",
+      "pushed_2x": "The value if the button is pushed twice",
+      "pushed_3x": "The value if the button is pushed three times",
+      "pushed_4x": "The value if the button is pushed four times",
+      "pushed_5x": "The value if the button is pushed five times",
+      "pushed_6x": "The value if the button is pushed six times",
+      "down": "The value if the button is clicked down",
+      "down_2x": "The value if the button is clicked down twice",
+      "down_3x": "The value if the button is clicked down three times",
+      "down_4x": "The value if the button is clicked down four times",
+      "down_5x": "The value if the button is clicked down five times",
+      "down_6x": "The value if the button is clicked down six times",
+      "down_hold": "The value if the button is clicked down and held",
+      "up": "The value if the button is clicked up",
+      "up_2x": "The value if the button is clicked up twice",
+      "up_3x": "The value if the button is clicked up three times",
+      "up_4x": "The value if the button is clicked up four times",
+      "up_5x": "The value if the button is clicked up five times",
+      "up_6x": "The value if the button is clicked up six times",
+      "up_hold": "The value if the button is clicked up and held",
+      "swipe_up": "The value if the button is swiped up from botton to top",
+      "swipe_down": "The value if the button is swiped down from top to bottom",
+      "swipe_left": "The value if the button is swiped from right to left",
+      "swipe_right": "The value if the button is swiped from left to right"
+    },
+    "chargingStateEnum": {
+      "charging": "charging",
+      "discharging": "discharging",
+      "stopped": "stopped",
+      "fullyCharged": "fully charged",
+      "error": "error"
+    },
+    "weekdayEnum": {
+      "monday": "",
+      "tuesday": "",
+      "wednesday": "",
+      "thursday": "",
+      "friday": "",
+      "saturday": "",
+      "sunday": ""
+    },
+    "contactEnum": {
+      "open": "The value if open",
+      "closed": "The value if closed"
+    },
+    "curtainEnum": {
+      "closed": "closed",
+      "closing": "closing…",
+      "open": "open",
+      "opening": "opening…",
+      "partially": "",
+      "paused": "",
+      "unknown": "unknown"
+    },
+    "dehumidifierModeEnum": {
+      "cooling": "",
+      "delayWash": "",
+      "drying": "",
+      "finished": "",
+      "refreshing": "",
+      "weightSensing": "",
+      "wrinklePrevent": "",
+      "dehumidifying": "",
+      "AIDrying": "",
+      "sanitizing": "",
+      "internalCare": "",
+      "freezeProtection": "",
+      "continuousDehumidifying": "",
+      "thawingFrozenInside": ""
+    },
+    "dishwasherModeEnum": {
+      "eco": "The dishwasher is in \"eco\" mode",
+      "intense": "The dishwasher is in \"intense\" mode",
+      "auto": "The dishwasher is in \"auto\" mode",
+      "quick": "The dishwasher is in \"quick\" mode",
+      "rinse": "The dishwasher is in \"rinse\" mode",
+      "dry": "The dishwasher is in \"dry\" mode"
+    },
+    "doorEnum": {
+      "closed": "The door is closed",
+      "closing": "The door is closing",
+      "open": "The door is open",
+      "opening": "The door is opening",
+      "unknown": "The current state of the door is unknown"
+    },
+    "unitEnum": {
+      "liters": "",
+      "milliliters": "",
+      "gallons": "",
+      "ounces": ""
+    },
+    "feederOperatingStateEnum": {
+      "idle": "idle",
+      "feeding": "feeding",
+      "error": "error"
+    },
+    "valveEnum": {
+      "open": "The value of the ``valve`` attribute if the valve is open",
+      "closed": "The value of the ``valve`` attribute if the valve is closed"
+    },
+    "humidifierModeEnum": {
+      "auto": "",
+      "low": "",
+      "medium": "",
+      "high": ""
+    },
+    "irrigatorOperatingStateEnum": {
+      "idle": "idle",
+      "watering": "watering",
+      "error": "error"
+    },
+    "presenceEnum": {
+      "present": "The device is present",
+      "not_present": ""
+    },
+    "motionEnum": {
+      "active": "",
+      "inactive": ""
+    },
+    "pumpOperationModeEnum": {
+      "normal": "The pump is controlled by a setpoint.",
+      "minimum": "This value sets the pump to run at the minimum possible speed it can without being stopped.",
+      "maximum": "This value sets the pump to run at its maximum possible speed.",
+      "localSetting": "This value sets the pump to run with the local settings of the pump."
+    },
+    "pumpEnum": {
+      "open": "The value of the ``pump`` attribute if the pump is open",
+      "closed": "The value of the ``pump`` attribute if the pump is closed"
+    },
+    "rapidFreezingEnum": {
+      "on": "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on",
+      "off": "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
+    },
+    "robotCleanerCleaningModeEnum": {
+      "auto": "The robot cleaner cleaning mode is in \"auto\" mode",
+      "part": "The robot cleaner cleaning mode is in \"part\" mode",
+      "repeat": "The robot cleaner cleaning mode is in \"repeat\" mode",
+      "manual": "The robot cleaner cleaning mode is in \"manual\" mode",
+      "stop": "The robot cleaner cleaning mode is in \"stop\" mode",
+      "map": "The robot cleaner cleaning mode is in \"map\" mode"
+    },
+    "windowShadeEnum": {
+      "closed": "closed",
+      "closing": "closing…",
+      "open": "open",
+      "opening": "opening…",
+      "partially": "",
+      "paused": "",
+      "unknown": "unknown"
+    },
+    "sirenModeEnum": {
+      "both": "",
+      "off": "",
+      "siren": "",
+      "strobe": ""
+    },
+    "smokeEnum": {
+      "clear": "No smoke detected",
+      "detected": "Smoke detected",
+      "tested": "Smoke detector test button was activated"
+    },
+    "soundEnum": {
+      "detected": "Sound is detected",
+      "not_detected": ""
+    },
+    "mediaPlaybackEnum": {
+      "paused": "Media playback is in a \"paused\" state",
+      "playing": "Media playback is in a \"playing\" state",
+      "stopped": "Media playback is in a \"stopped\" state",
+      "fast": "",
+      "rewinding": "Media playback is in a \"rewinding\" state",
+      "buffering": "Media playback is in a \"buffering\" state"
+    },
+    "recordStatusEnum": {
+      "idle": "The audio recorder is idle",
+      "recording": "The audio recorder is recording"
+    },
+    "muteEnum": {
+      "muted": "The audio is in \"muted\" state",
+      "unmuted": "The audio is in \"unmuted\" state"
+    },
+    "testSkillEnum": {
+      "enum1": "",
+      "enum2": "",
+      "enum3": ""
+    },
+    "weatherEnum": {
+      "thunderstorm": "thunderstorm",
+      "drizzle": "drizzle",
+      "rain": "rain",
+      "snow": "snow",
+      "mist": "mist",
+      "smoke": "smoke",
+      "haze": "haze",
+      "dust": "dust",
+      "fog": "fog",
+      "sand": "sand",
+      "ash": "ash",
+      "squall": "squall",
+      "tornado": "tornado",
+      "clear": "clear",
+      "clouds": "clouds"
+    },
+    "windowEnum": {
+      "closed": "closed",
+      "open": "open",
+      "unknown": "unknown"
+    },
+    "fallEnum": {
+      "fall": "fall detected",
+      "normal": "no fall detected"
+    }
+  }
+}

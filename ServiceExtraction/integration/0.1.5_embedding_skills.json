@@ -1,0 +1,1107 @@
+{
+  "airConditionerMode": {
+    "airConditionerMode_airConditionerMode": [
+      "airConditionerMode",
+      "airConditionerMode",
+      "Current mode of the air conditioner",
+      "auto",
+      "The fan is on auto",
+      "cool",
+      "The fan is in sleep mode to reduce noise",
+      "heat",
+      "The fan is on low"
+    ],
+    "airConditionerMode_supportedAcModes": [
+      "airConditionerMode",
+      "supportedAcModes",
+      "Supported states for this air conditioner to be in",
+      "auto",
+      "The fan is on auto",
+      "cool",
+      "The fan is in sleep mode to reduce noise",
+      "heat",
+      "The fan is on low"
+    ],
+    "airConditionerMode_targetTemperature": [
+      "airConditionerMode",
+      "targetTemperature",
+      "Current temperature status of the air conditioner"
+    ],
+    "setAirConditionerMode": [
+      "Set the air conditioner mode",
+      "mode",
+      "Set the air conditioner mode",
+      "auto",
+      "The fan is on auto",
+      "cool",
+      "The fan is in sleep mode to reduce noise",
+      "heat",
+      "The fan is on low"
+    ],
+    "setTemperature": [
+      "Set the air conditioner temperature",
+      "temperature",
+      "Set the air conditioner temperature"
+    ]
+  },
+  "switch": {
+    "switch_switch": [
+      "switch",
+      "switch",
+      "A string representation of whether the switch is on or off"
+    ],
+    "off": [
+      "Turn a switch off"
+    ],
+    "on": [
+      "Turn a switch on"
+    ],
+    "toggle": [
+      "Toggle a switch"
+    ]
+  },
+  "airPurifierFanMode": {
+    "airPurifierFanMode_airPurifierFanMode": [
+      "airPurifierFanMode",
+      "airPurifierFanMode",
+      "The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree"
+    ],
+    "airPurifierFanMode_supportedAirPurifierFanModes": [
+      "airPurifierFanMode",
+      "supportedAirPurifierFanModes",
+      "Supported states for this air purifier fan to be in"
+    ],
+    "setAirPurifierFanMode": [
+      "Set the air purifier fan's mode",
+      "mode",
+      "Set the air purifier fan's mode"
+    ]
+  },
+  "tvocMeasurement": {
+    "tvocMeasurement_tvocLevel": [
+      "tvocMeasurement",
+      "tvocLevel",
+      "The level of total volatile organic compounds detected"
+    ]
+  },
+  "temperatureMeasurement": {
+    "temperatureMeasurement_temperature": [
+      "temperatureMeasurement",
+      "temperature",
+      "A number that usually represents the current temperature"
+    ],
+    "temperatureMeasurement_temperatureRange": [
+      "temperatureMeasurement",
+      "temperatureRange",
+      "Constraints on the temperature value"
+    ]
+  },
+  "carbonDioxideMeasurement": {
+    "carbonDioxideMeasurement_carbonDioxide": [
+      "carbonDioxideMeasurement",
+      "carbonDioxide",
+      "The level of carbon dioxide detected"
+    ]
+  },
+  "dustSensor": {
+    "dustSensor_dustLevel": [
+      "dustSensor",
+      "dustLevel",
+      "Current dust level -- also refered to as PM10, measured in micrograms per cubic meter"
+    ],
+    "dustSensor_fineDustLevel": [
+      "dustSensor",
+      "fineDustLevel",
+      "Current level of fine dust -- also refered to as PM2.5, measured in micrograms per cubic meter"
+    ],
+    "dustSensor_veryFineDustLevel": [
+      "dustSensor",
+      "veryFineDustLevel",
+      "Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter"
+    ]
+  },
+  "relativeHumidityMeasurement": {
+    "relativeHumidityMeasurement_humidity": [
+      "relativeHumidityMeasurement",
+      "humidity",
+      "A numerical representation of the relative humidity measurement taken by the device"
+    ]
+  },
+  "alarm": {
+    "alarm_alarm": [
+      "alarm",
+      "alarm",
+      "A string representation of whether the switch is on or off"
+    ],
+    "alarm_alarmVolume": [
+      "alarm",
+      "alarmVolume",
+      "A string representation of the volume of the alarm"
+    ],
+    "both": [
+      "Strobe and sound the alarm"
+    ],
+    "off": [
+      "Turn the alarm (siren and strobe) off"
+    ],
+    "setAlarmVolume": [
+      "Set the volume of the alarm",
+      "alarmVolume",
+      "Set the volume of the alarm to \"mute\", \"low\", \"medium\", or \"high\""
+    ],
+    "siren": [
+      "Sound the siren on the alarm"
+    ],
+    "strobe": [
+      "Strobe the alarm"
+    ]
+  },
+  "battery": {
+    "battery_battery": [
+      "battery",
+      "battery",
+      "An indication of the status of the battery"
+    ]
+  },
+  "blindLevel": {
+    "blindLevel_blindLevel": [
+      "blindLevel",
+      "blindLevel",
+      "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
+    ],
+    "setBlindLevel": [
+      "Set the blind level to the given value.",
+      "blindLevel",
+      "The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
+    ]
+  },
+  "blind": {
+    "blind_blind": [
+      "blind",
+      "blind",
+      "A string representation of whether the blind is open or closed"
+    ],
+    "close": [
+      "Close the blind"
+    ],
+    "open": [
+      "Open the blind"
+    ],
+    "pause": [
+      "Pause opening or closing the blind"
+    ]
+  },
+  "button": {
+    "button_button": [
+      "button",
+      "button",
+      "The state of the buttons"
+    ],
+    "button_numberOfButtons": [
+      "button",
+      "numberOfButtons",
+      "The number of buttons on the device"
+    ],
+    "button_supportedButtonValues": [
+      "button",
+      "supportedButtonValues",
+      "List of valid button attribute values"
+    ]
+  },
+  "buttonx4": {
+    "buttonx4_button1": [
+      "buttonx4",
+      "button1",
+      "The state of the button1"
+    ],
+    "buttonx4_button2": [
+      "buttonx4",
+      "button2",
+      "The state of the button2"
+    ],
+    "buttonx4_button3": [
+      "buttonx4",
+      "button3",
+      "The state of the button3"
+    ],
+    "buttonx4_button4": [
+      "buttonx4",
+      "button4",
+      "The state of the button4"
+    ],
+    "buttonx4_numberOfButtons": [
+      "buttonx4",
+      "numberOfButtons",
+      "The number of buttons on the device"
+    ],
+    "buttonx4_supportedButtonValues": [
+      "buttonx4",
+      "supportedButtonValues",
+      "List of valid button attribute values"
+    ]
+  },
+  "calculator": {
+    "add": [
+      "Add two numbers",
+      "a",
+      "The first number to add",
+      "b",
+      "The second number to add"
+    ],
+    "div": [
+      "Divide two numbers",
+      "a",
+      "The first number to add",
+      "b",
+      "The second number to add"
+    ],
+    "mod": [
+      "Modulo two numbers",
+      "a",
+      "The first number to add",
+      "b",
+      "The second number to add"
+    ],
+    "mul": [
+      "Multiply two numbers",
+      "a",
+      "The first number to add",
+      "b",
+      "The second number to add"
+    ],
+    "sub": [
+      "Subtract two numbers",
+      "a",
+      "The first number to add",
+      "b",
+      "The second number to add"
+    ]
+  },
+  "camera": {
+    "camera_image": [
+      "camera",
+      "image",
+      "The latest image captured by the camera"
+    ],
+    "camera_video": [
+      "camera",
+      "video",
+      "The latest video captured by the camera"
+    ],
+    "take": [
+      "Take a picture with the camera - Return the image as binary data"
+    ],
+    "takeTimelapse": [
+      "Take a picture with the camera - Return the video as binary data",
+      "duration",
+      "The duration of the timelapse in seconds",
+      "speed",
+      "The speed of the timelapse"
+    ]
+  },
+  "voltageMeasurement": {
+    "voltageMeasurement_voltage": [
+      "voltageMeasurement",
+      "voltage",
+      "A number representing the current voltage measured"
+    ]
+  },
+  "currentMeasurement": {
+    "currentMeasurement_current": [
+      "currentMeasurement",
+      "current",
+      "A number representing the current measured."
+    ]
+  },
+  "chargingState": {
+    "chargingState_chargingState": [
+      "chargingState",
+      "chargingState",
+      "The current charging state of the device"
+    ],
+    "chargingState_supportedChargingStates": [
+      "chargingState",
+      "supportedChargingStates",
+      "The list of charging states that the device supports. Optional, defaults to all states if not set."
+    ]
+  },
+  "clock": {
+    "clock_date": [
+      "clock",
+      "date",
+      "Current date as double number - format: YYYYMMdd"
+    ],
+    "clock_datetime": [
+      "clock",
+      "datetime",
+      "Current date and time as double number - format: YYYYMMddhhmm"
+    ],
+    "clock_day": [
+      "clock",
+      "day",
+      "Current day"
+    ],
+    "clock_hour": [
+      "clock",
+      "hour",
+      "Current hour"
+    ],
+    "clock_isHoliday": [
+      "clock",
+      "isHoliday",
+      "today is holiday or not"
+    ],
+    "clock_minute": [
+      "clock",
+      "minute",
+      "Current minute"
+    ],
+    "clock_month": [
+      "clock",
+      "month",
+      "Current month"
+    ],
+    "clock_second": [
+      "clock",
+      "second",
+      "Current second"
+    ],
+    "clock_time": [
+      "clock",
+      "time",
+      "Current time as double number - format: hhmm"
+    ],
+    "clock_timestamp": [
+      "clock",
+      "timestamp",
+      "Current timestamp (return current unix time - unit: seconds with floating point)"
+    ],
+    "clock_weekday": [
+      "clock",
+      "weekday",
+      "Current weekday"
+    ],
+    "clock_year": [
+      "clock",
+      "year",
+      "Current year"
+    ],
+    "delay": [
+      "delay for a given amount of time",
+      "hour",
+      "hour",
+      "minute",
+      "minute",
+      "second",
+      "second"
+    ]
+  },
+  "contactSensor": {
+    "contactSensor_contact": [
+      "contactSensor",
+      "contact",
+      "The current state of the contact sensor"
+    ]
+  },
+  "curtain": {
+    "curtain_curtain": [
+      "curtain",
+      "curtain",
+      "A string representation of whether the curtain is open or closed"
+    ],
+    "curtain_supportedCurtainCommands": [
+      "curtain",
+      "supportedCurtainCommands",
+      "Curtain commands supported by this instance of Curtain"
+    ],
+    "close": [
+      "Close the curtain"
+    ],
+    "open": [
+      "Open the curtain"
+    ],
+    "pause": [
+      "Pause opening or closing the curtain"
+    ]
+  },
+  "dehumidifierMode": {
+    "dehumidifierMode_dehumidifierMode": [
+      "dehumidifierMode",
+      "dehumidifierMode",
+      "Current mode of the dehumidifier"
+    ],
+    "setDehumidifierMode": [
+      "Set the dehumidifier mode",
+      "mode",
+      "Set the dehumidifier mode"
+    ]
+  },
+  "dishwasherMode": {
+    "dishwasherMode_dishwasherMode": [
+      "dishwasherMode",
+      "dishwasherMode",
+      "Current mode of the dishwasher"
+    ],
+    "setDishwasherMode": [
+      "Set the dishwasher mode",
+      "mode",
+      "Set the dishwasher mode to \"eco\", \"intense\", \"auto\", \"quick\", \"rinse\", or \"dry\" mode"
+    ]
+  },
+  "doorControl": {
+    "doorControl_door": [
+      "doorControl",
+      "door",
+      "The current state of the door"
+    ],
+    "close": [
+      "Close the door"
+    ],
+    "open": [
+      "Open the door"
+    ]
+  },
+  "emailProvider": {
+    "sendMail": [
+      "Send an email",
+      "toAddress",
+      "The email address of the recipient",
+      "title",
+      "The title of the email",
+      "text",
+      "The text of the email"
+    ],
+    "sendMailWithFile": [
+      "Send an email with an attachment",
+      "toAddress",
+      "The email address of the recipient",
+      "title",
+      "The title of the email",
+      "text",
+      "The text of the email",
+      "file",
+      "The path to the file to be attached"
+    ]
+  },
+  "fanControl": {
+    "fanControl_fanSpeed": [
+      "fanControl",
+      "fanSpeed",
+      "The current fan speed represented as a integer value. - unit: RPM"
+    ],
+    "fanControl_percent": [
+      "fanControl",
+      "percent",
+      "The current fan speed represented as a percent value."
+    ],
+    "setFanSpeed": [
+      "Set the fan speed",
+      "speed",
+      "Set the fan to this speed"
+    ],
+    "setPercent": [
+      "Set the fan speed percent.",
+      "percent",
+      "The percent value to set the fan speed to."
+    ]
+  },
+  "feederPortion": {
+    "feederPortion_feedPortion": [
+      "feederPortion",
+      "feedPortion",
+      "A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense."
+    ],
+    "setFeedPortion": [
+      "Set the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.",
+      "portion",
+      "The portion (in grams, pounds, ounces, or servings) to dispense.",
+      "unit",
+      ""
+    ]
+  },
+  "feederOperatingState": {
+    "feederOperatingState_feederOperatingState": [
+      "feederOperatingState",
+      "feederOperatingState",
+      "The current state of the feeder."
+    ],
+    "startFeeding": [
+      "Begin the feeding process."
+    ]
+  },
+  "gasMeter": {
+    "gasMeter_gasMeter": [
+      "gasMeter",
+      "gasMeter",
+      "the gas energy reported by the metering device. unit: kWh"
+    ],
+    "gasMeter_gasMeterCalorific": [
+      "gasMeter",
+      "gasMeterCalorific",
+      "a measure of the available heat energy, used as part of the calculation to convert gas volume to gas energy. - unit: kcal"
+    ],
+    "gasMeter_gasMeterTime": [
+      "gasMeter",
+      "gasMeterTime",
+      "The cumulative gas use time reported by the metering device. - unit: seconds"
+    ],
+    "gasMeter_gasMeterVolume": [
+      "gasMeter",
+      "gasMeterVolume",
+      "the cumulative gas volume reported by the metering device. - unit: cubic meters"
+    ]
+  },
+  "valve": {
+    "valve_valve": [
+      "valve",
+      "valve",
+      "A string representation of whether the valve is open or closed"
+    ],
+    "close": [
+      "Close the valve"
+    ],
+    "open": [
+      "Open the valve"
+    ]
+  },
+  "humidifierMode": {
+    "humidifierMode_humidifierMode": [
+      "humidifierMode",
+      "humidifierMode",
+      "Current mode of the humidifier"
+    ],
+    "setHumidifierMode": [
+      "Set the humidifier mode",
+      "mode",
+      "Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode"
+    ]
+  },
+  "irrigatorOperatingState": {
+    "irrigatorOperatingState_irrigatorOperatingState": [
+      "irrigatorOperatingState",
+      "irrigatorOperatingState",
+      "The current state of the irrigator."
+    ],
+    "startWatering": [
+      "Begin the watering process."
+    ]
+  },
+  "irrigatorPortion": {
+    "irrigatorPortion_waterPortion": [
+      "irrigatorPortion",
+      "waterPortion",
+      "A number that represents the portion (in liters, milliliters, gallons, or ounces) that will dispense."
+    ],
+    "setWaterPortion": [
+      "Set the portion (in liters, milliliters, gallons, or ounces) that the irrigator will dispense.",
+      "portion",
+      "The portion (in grams, pounds, ounces, or servings) to dispense.",
+      "unit",
+      ""
+    ]
+  },
+  "leakSensor": {
+    "leakSensor_leakage": [
+      "leakSensor",
+      "leakage",
+      "Whether or not water leakage was detected by the Device"
+    ]
+  },
+  "switchLevel": {
+    "switchLevel_level": [
+      "switchLevel",
+      "level",
+      "A number that represents the current level, usually ``0-100`` in percent"
+    ],
+    "switchLevel_levelRange": [
+      "switchLevel",
+      "levelRange",
+      "Constraints on the level value"
+    ],
+    "alert": [
+      "Alert with dimming"
+    ],
+    "setLevel": [
+      "Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.",
+      "level",
+      "The level value, usually ``0-100`` in percent",
+      "rate",
+      "The rate at which to change the level"
+    ]
+  },
+  "colorControl": {
+    "colorControl_color": [
+      "colorControl",
+      "color",
+      "``{\"hue\":\"0-100 (percent)\", \"saturation\":\"0-100 (percent)\"}``"
+    ],
+    "colorControl_hue": [
+      "colorControl",
+      "hue",
+      "``0-100`` (percent)"
+    ],
+    "colorControl_saturation": [
+      "colorControl",
+      "saturation",
+      "``0-100`` (percent)"
+    ],
+    "setColor": [
+      "Sets the color based on the values passed in with the given map",
+      "color",
+      "The color map supports the following key/value pairs:"
+    ],
+    "setHue": [
+      "Set the hue value of the color",
+      "hue",
+      "A number in the range ``0-100`` representing the hue as a value of percent"
+    ],
+    "setSaturation": [
+      "Set the saturation value of the color",
+      "saturation",
+      "A number in the range ``0-100`` representing the saturation as a value of percent"
+    ]
+  },
+  "lightLevel": {
+    "lightLevel_light": [
+      "lightLevel",
+      "light",
+      "brightness intensity (Unit: lux)"
+    ]
+  },
+  "menuProvider": {
+    "menu": [
+      "Get the menu - Return the menu list",
+      "command",
+      "The command to get the menu - format: [오늘|내일] [학생식당|수의대식당|전망대(3식당)|예술계식당(아름드리)|기숙사식당|아워홈|동원관식당(113동)|웰스토리(220동)|투굿(공대간이식당)|자하연식당|301동식당] [아침|점심|저녁]"
+    ],
+    "todayMenu": [
+      "Get today's menu randomly - Return the menu list"
+    ],
+    "todayPlace": [
+      "Get today's restaurant randomly - Return the restaurant name"
+    ]
+  },
+  "motionSensor": {
+    "motionSensor_motion": [
+      "motionSensor",
+      "motion",
+      "The current state of the motion sensor"
+    ]
+  },
+  "presenceSensor": {
+    "presenceSensor_presence": [
+      "presenceSensor",
+      "presence",
+      "The current state of the presence sensor"
+    ]
+  },
+  "pumpOperationMode": {
+    "pumpOperationMode_currentOperationMode": [
+      "pumpOperationMode",
+      "currentOperationMode",
+      "The current effective operation mode of the pump"
+    ],
+    "pumpOperationMode_operationMode": [
+      "pumpOperationMode",
+      "operationMode",
+      "The operation mode of the pump"
+    ],
+    "pumpOperationMode_supportedOperationModes": [
+      "pumpOperationMode",
+      "supportedOperationModes",
+      "Supported operation modes for this device to be in"
+    ],
+    "setOperationMode": [
+      "Set the operation mode",
+      "operationMode",
+      "The operation mode to set the device to"
+    ]
+  },
+  "pump": {
+    "pump_pump": [
+      "pump",
+      "pump",
+      "A string representation of whether the pump is open or closed"
+    ],
+    "close": [
+      "Close the pump"
+    ],
+    "open": [
+      "Open the pump"
+    ]
+  },
+  "refrigeration": {
+    "refrigeration_defrost": [
+      "refrigeration",
+      "defrost",
+      "Status of the defrost"
+    ],
+    "refrigeration_rapidCooling": [
+      "refrigeration",
+      "rapidCooling",
+      "Status of the rapid cooling"
+    ],
+    "refrigeration_rapidFreezing": [
+      "refrigeration",
+      "rapidFreezing",
+      "Status of the rapid freezing"
+    ],
+    "setDefrost": [
+      "Sets the defrost on or off",
+      "defrost",
+      "The on or off value for the defrost"
+    ],
+    "setRapidCooling": [
+      "Sets the rapid cooling on or off",
+      "rapidCooling",
+      "The on or off value for the rapid cooling"
+    ],
+    "setRapidFreezing": [
+      "Sets the rapid freezing on or off",
+      "rapidFreezing",
+      "The on or off value for the rapid freezing"
+    ]
+  },
+  "robotCleanerCleaningMode": {
+    "robotCleanerCleaningMode_robotCleanerCleaningMode": [
+      "robotCleanerCleaningMode",
+      "robotCleanerCleaningMode",
+      "Current status of the robot cleaner cleaning mode"
+    ],
+    "setRobotCleanerCleaningMode": [
+      "Set the robot cleaner cleaning mode",
+      "mode",
+      "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes"
+    ]
+  },
+  "windowShadeLevel": {
+    "windowShadeLevel_shadeLevel": [
+      "windowShadeLevel",
+      "shadeLevel",
+      "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
+    ],
+    "setShadeLevel": [
+      "Set the shade level to the given value.",
+      "shadeLevel",
+      "The level to which the shade should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
+    ]
+  },
+  "windowShade": {
+    "windowShade_supportedWindowShadeCommands": [
+      "windowShade",
+      "supportedWindowShadeCommands",
+      "Window shade commands supported by this instance of Window Shade"
+    ],
+    "windowShade_windowShade": [
+      "windowShade",
+      "windowShade",
+      "A string representation of whether the window shade is open or closed"
+    ],
+    "close": [
+      "Close the window shade"
+    ],
+    "open": [
+      "Open the window shade"
+    ],
+    "pause": [
+      "Pause opening or closing the window shade"
+    ]
+  },
+  "sirenMode": {
+    "sirenMode_sirenMode": [
+      "sirenMode",
+      "sirenMode",
+      "Current mode of the siren"
+    ],
+    "setSirenMode": [
+      "Set the siren mode",
+      "mode",
+      "Set the siren mode"
+    ]
+  },
+  "powerMeter": {
+    "powerMeter_power": [
+      "powerMeter",
+      "power",
+      "A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts"
+    ],
+    "powerMeter_powerConsumption": [
+      "powerMeter",
+      "powerConsumption",
+      "energy and power consumption during specific time period - unit: Wh"
+    ]
+  },
+  "smokeDetector": {
+    "smokeDetector_smoke": [
+      "smokeDetector",
+      "smoke",
+      "The state of the smoke detection device"
+    ]
+  },
+  "soilHumidityMeasurement": {
+    "soilHumidityMeasurement_soilHumidity": [
+      "soilHumidityMeasurement",
+      "soilHumidity",
+      "A numerical representation of the soil humidity measurement taken by the device"
+    ]
+  },
+  "soundSensor": {
+    "soundSensor_sound": [
+      "soundSensor",
+      "sound",
+      "Whether or not sound was detected by the Device"
+    ]
+  },
+  "soundPressureLevel": {
+    "soundPressureLevel_soundPressureLevel": [
+      "soundPressureLevel",
+      "soundPressureLevel",
+      "Level of the sound pressure"
+    ]
+  },
+  "mediaPlayback": {
+    "mediaPlayback_playbackStatus": [
+      "mediaPlayback",
+      "playbackStatus",
+      "Status of the media playback"
+    ],
+    "mediaPlayback_supportedPlaybackCommands": [
+      "mediaPlayback",
+      "supportedPlaybackCommands",
+      "Media playback commands which are supported"
+    ],
+    "fastForward": [
+      "Fast forward the media playback"
+    ],
+    "pause": [
+      "Pause the media playback"
+    ],
+    "play": [
+      "Play the media playback",
+      "source",
+      "The source of the media playback"
+    ],
+    "rewind": [
+      "Rewind the media playback"
+    ],
+    "setPlaybackStatus": [
+      "Set the playback status",
+      "status",
+      "Set the playback status to \"paused\", \"playing\", \"stopped\", \"fast forwarding\" or \"rewinding\" state."
+    ],
+    "speak": [
+      "TTS feature",
+      "text",
+      "The text to be spoken"
+    ],
+    "stop": [
+      "Stop the media playback"
+    ]
+  },
+  "audioRecord": {
+    "audioRecord_recordStatus": [
+      "audioRecord",
+      "recordStatus",
+      "The current status of the audio recorder"
+    ],
+    "record": [
+      "Record audio",
+      "file",
+      "The file to record to",
+      "duration",
+      "The duration to record for"
+    ]
+  },
+  "tvChannel": {
+    "tvChannel_tvChannel": [
+      "tvChannel",
+      "tvChannel",
+      "Current status of the TV channel"
+    ],
+    "tvChannel_tvChannelName": [
+      "tvChannel",
+      "tvChannelName",
+      "Current status of the TV channel name"
+    ],
+    "channelDown": [
+      "Move the TV channel down"
+    ],
+    "channelUp": [
+      "Move the TV channel up"
+    ],
+    "setTvChannel": [
+      "Set the TV channel",
+      "tvChannel",
+      ""
+    ],
+    "setTvChannelName": [
+      "Set the TV channel Name",
+      "tvChannelName",
+      ""
+    ]
+  },
+  "audioMute": {
+    "audioMute_muteStatus": [
+      "audioMute",
+      "muteStatus",
+      "Current status of the audio mute"
+    ],
+    "mute": [
+      "Set the audio to mute state"
+    ],
+    "setMute": [
+      "Set the state of the audio mute",
+      "state",
+      "Set the audio mute state to \"muted\" or \"unmuted\""
+    ],
+    "unmute": [
+      "Set the audio to unmute state"
+    ]
+  },
+  "audioVolume": {
+    "audioVolume_volume": [
+      "audioVolume",
+      "volume",
+      "The current volume setting of the audio"
+    ],
+    "setVolume": [
+      "Set the audio volume level",
+      "volume",
+      "A value to which the audio volume level should be set"
+    ],
+    "volumeDown": [
+      "Turn the audio volume down"
+    ],
+    "volumeUp": [
+      "Turn the audio volume up"
+    ]
+  },
+  "testSkill": {
+    "testSkill_testSkillValue": [
+      "testSkill",
+      "testSkillValue",
+      "testSkillValue"
+    ],
+    "testSkillFunction": [
+      "testSkillFunction",
+      "testArgument",
+      "testArgument"
+    ]
+  },
+  "weatherProvider": {
+    "weatherProvider_humidityWeather": [
+      "weatherProvider",
+      "humidityWeather",
+      "Current humidity level"
+    ],
+    "weatherProvider_pm10Weather": [
+      "weatherProvider",
+      "pm10Weather",
+      "Current pm10 level"
+    ],
+    "weatherProvider_pm25Weather": [
+      "weatherProvider",
+      "pm25Weather",
+      "Current pm25 level"
+    ],
+    "weatherProvider_pressureWeather": [
+      "weatherProvider",
+      "pressureWeather",
+      "Current pressure level"
+    ],
+    "weatherProvider_temperatureWeather": [
+      "weatherProvider",
+      "temperatureWeather",
+      "Current temperature level"
+    ],
+    "weatherProvider_weather": [
+      "weatherProvider",
+      "weather",
+      "Current weather condition"
+    ],
+    "getWeatherInfo": [
+      "Get the current weather information - Return whole weather information, format: \"temperature, humidity, pressure, pm25, pm10, weather, weather_string, icon_id, location\"",
+      "lat",
+      "The latitude of the location",
+      "lon",
+      "The longitude of the location"
+    ]
+  },
+  "windowControl": {
+    "windowControl_window": [
+      "windowControl",
+      "window",
+      "A string representation of whether the window is open or closed"
+    ],
+    "close": [
+      "Close the window"
+    ],
+    "open": [
+      "Open the window"
+    ]
+  },
+  "fallDetection": {
+    "fallDetection_fall": [
+      "fallDetection",
+      "fall",
+      "Whether or not a fall was detected"
+    ]
+  },
+  "timer": {
+    "add": [
+      "Add a timer",
+      "name",
+      "The time name",
+      "timeout",
+      "The time at which the timer should expire"
+    ],
+    "isExist": [
+      "Check if a timer is exist",
+      "name",
+      "The time name"
+    ],
+    "isSet": [
+      "Check if a timer is set",
+      "name",
+      "The time name"
+    ],
+    "reset": [
+      "Reset a timer",
+      "name",
+      "The time name"
+    ],
+    "set": [
+      "Set a timer",
+      "name",
+      "The time name",
+      "timeout",
+      "The time at which the timer should expire"
+    ],
+    "start": [
+      "Start a timer",
+      "name",
+      "The time name"
+    ]
+  },
+  "manager": {
+    "add_thing": [
+      "Add staff thing - Return error string",
+      "parameter",
+      "Staff thing's parameter",
+      "client_id",
+      "Requester's client id",
+      "name",
+      "Staff thing's name"
+    ],
+    "delete_thing": [
+      "Delete staff thing - Return error string",
+      "name",
+      "Staff thing's name",
+      "client_id",
+      "Requester's client id"
+    ],
+    "discover": [
+      "Discover local devices - Return device list with json format"
+    ]
+  }
+}

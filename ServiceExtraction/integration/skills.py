@@ -3860,7 +3860,7 @@ class calculator(Skill):
                 class a(SkillFunctionArgument):
                     @MXClassproperty
                     def descriptor(cls) -> str:
-                        return 'The first number to add'
+                        return 'The first number to subtract'
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
@@ -3870,7 +3870,7 @@ class calculator(Skill):
                 class b(SkillFunctionArgument):
                     @MXClassproperty
                     def descriptor(cls) -> str:
-                        return 'The second number to add'
+                        return 'The second number to subtract'
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
@@ -3891,7 +3891,7 @@ class calculator(Skill):
                 class a(SkillFunctionArgument):
                     @MXClassproperty
                     def descriptor(cls) -> str:
-                        return 'The first number to add'
+                        return 'The first number to multiply'
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
@@ -3901,7 +3901,7 @@ class calculator(Skill):
                 class b(SkillFunctionArgument):
                     @MXClassproperty
                     def descriptor(cls) -> str:
-                        return 'The second number to add'
+                        return 'The second number to multiply'
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
@@ -3922,7 +3922,7 @@ class calculator(Skill):
                 class a(SkillFunctionArgument):
                     @MXClassproperty
                     def descriptor(cls) -> str:
-                        return 'The first number to add'
+                        return 'The first number to divide'
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
@@ -3932,7 +3932,7 @@ class calculator(Skill):
                 class b(SkillFunctionArgument):
                     @MXClassproperty
                     def descriptor(cls) -> str:
-                        return 'The second number to add'
+                        return 'The second number to divide'
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
@@ -3953,7 +3953,7 @@ class calculator(Skill):
                 class a(SkillFunctionArgument):
                     @MXClassproperty
                     def descriptor(cls) -> str:
-                        return 'The first number to add'
+                        return 'The first number to modulo'
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
@@ -3963,7 +3963,7 @@ class calculator(Skill):
                 class b(SkillFunctionArgument):
                     @MXClassproperty
                     def descriptor(cls) -> str:
-                        return 'The second number to add'
+                        return 'The second number to modulo'
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
