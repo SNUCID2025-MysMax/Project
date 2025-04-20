@@ -27,7 +27,7 @@
       "targetTemperature",
       "Current temperature status of the air conditioner"
     ],
-    "setAirConditionerMode": [
+    "airConditionerMode_setAirConditionerMode": [
       "Set the air conditioner mode",
       "mode",
       "Set the air conditioner mode",
@@ -38,7 +38,7 @@
       "heat",
       "The fan is on low"
     ],
-    "setTemperature": [
+    "airConditionerMode_setTemperature": [
       "Set the air conditioner temperature",
       "temperature",
       "Set the air conditioner temperature"
@@ -48,15 +48,19 @@
     "switch_switch": [
       "switch",
       "switch",
-      "A string representation of whether the switch is on or off"
+      "A string representation of whether the switch is on or off",
+      "on",
+      "The value of the ``switch`` attribute if the switch is on",
+      "off",
+      "The value of the ``switch`` attribute if the switch is off"
     ],
-    "off": [
+    "switch_off": [
       "Turn a switch off"
     ],
-    "on": [
+    "switch_on": [
       "Turn a switch on"
     ],
-    "toggle": [
+    "switch_toggle": [
       "Toggle a switch"
     ]
   },
@@ -64,17 +68,65 @@
     "airPurifierFanMode_airPurifierFanMode": [
       "airPurifierFanMode",
       "airPurifierFanMode",
-      "The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree"
+      "The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree",
+      "auto",
+      "The fan is on auto",
+      "sleep",
+      "The fan is in sleep mode to reduce noise",
+      "low",
+      "The fan is on low",
+      "medium",
+      "The fan is on medium",
+      "high",
+      "The fan is on high",
+      "quiet",
+      "The fan is on quiet mode to reduce noise",
+      "windFree",
+      "The fan is on wind free mode to reduce the feeling of cold air",
+      "off",
+      "The fan is off"
     ],
     "airPurifierFanMode_supportedAirPurifierFanModes": [
       "airPurifierFanMode",
       "supportedAirPurifierFanModes",
-      "Supported states for this air purifier fan to be in"
+      "Supported states for this air purifier fan to be in",
+      "auto",
+      "The fan is on auto",
+      "sleep",
+      "The fan is in sleep mode to reduce noise",
+      "low",
+      "The fan is on low",
+      "medium",
+      "The fan is on medium",
+      "high",
+      "The fan is on high",
+      "quiet",
+      "The fan is on quiet mode to reduce noise",
+      "windFree",
+      "The fan is on wind free mode to reduce the feeling of cold air",
+      "off",
+      "The fan is off"
     ],
-    "setAirPurifierFanMode": [
+    "airPurifierFanMode_setAirPurifierFanMode": [
       "Set the air purifier fan's mode",
       "mode",
-      "Set the air purifier fan's mode"
+      "Set the air purifier fan's mode",
+      "auto",
+      "The fan is on auto",
+      "sleep",
+      "The fan is in sleep mode to reduce noise",
+      "low",
+      "The fan is on low",
+      "medium",
+      "The fan is on medium",
+      "high",
+      "The fan is on high",
+      "quiet",
+      "The fan is on quiet mode to reduce noise",
+      "windFree",
+      "The fan is on wind free mode to reduce the feeling of cold air",
+      "off",
+      "The fan is off"
     ]
   },
   "tvocMeasurement": {
@@ -131,28 +183,36 @@
     "alarm_alarm": [
       "alarm",
       "alarm",
-      "A string representation of whether the switch is on or off"
+      "A string representation of whether the switch is on or off",
+      "both",
+      "if the alarm is strobing and sounding the alarm",
+      "off",
+      "if the alarm is turned off",
+      "siren",
+      "if the alarm is sounding the siren",
+      "strobe",
+      "if the alarm is strobing"
     ],
     "alarm_alarmVolume": [
       "alarm",
       "alarmVolume",
       "A string representation of the volume of the alarm"
     ],
-    "both": [
+    "alarm_both": [
       "Strobe and sound the alarm"
     ],
-    "off": [
+    "alarm_off": [
       "Turn the alarm (siren and strobe) off"
     ],
-    "setAlarmVolume": [
+    "alarm_setAlarmVolume": [
       "Set the volume of the alarm",
       "alarmVolume",
       "Set the volume of the alarm to \"mute\", \"low\", \"medium\", or \"high\""
     ],
-    "siren": [
+    "alarm_siren": [
       "Sound the siren on the alarm"
     ],
-    "strobe": [
+    "alarm_strobe": [
       "Strobe the alarm"
     ]
   },
@@ -169,7 +229,7 @@
       "blindLevel",
       "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
     ],
-    "setBlindLevel": [
+    "blindLevel_setBlindLevel": [
       "Set the blind level to the given value.",
       "blindLevel",
       "The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
@@ -179,15 +239,29 @@
     "blind_blind": [
       "blind",
       "blind",
-      "A string representation of whether the blind is open or closed"
+      "A string representation of whether the blind is open or closed",
+      "closed",
+      "closed",
+      "closing",
+      "closing…",
+      "open",
+      "open",
+      "opening",
+      "opening…",
+      "partially open",
+      "partially open",
+      "paused",
+      "",
+      "unknown",
+      "unknown"
     ],
-    "close": [
+    "blind_close": [
       "Close the blind"
     ],
-    "open": [
+    "blind_open": [
       "Open the blind"
     ],
-    "pause": [
+    "blind_pause": [
       "Pause opening or closing the blind"
     ]
   },
@@ -195,7 +269,59 @@
     "button_button": [
       "button",
       "button",
-      "The state of the buttons"
+      "The state of the buttons",
+      "pushed",
+      "The value if the button is pushed",
+      "held",
+      "The value if the button is held",
+      "double",
+      "The value if the button is pushed twice",
+      "pushed_2x",
+      "The value if the button is pushed twice",
+      "pushed_3x",
+      "The value if the button is pushed three times",
+      "pushed_4x",
+      "The value if the button is pushed four times",
+      "pushed_5x",
+      "The value if the button is pushed five times",
+      "pushed_6x",
+      "The value if the button is pushed six times",
+      "down",
+      "The value if the button is clicked down",
+      "down_2x",
+      "The value if the button is clicked down twice",
+      "down_3x",
+      "The value if the button is clicked down three times",
+      "down_4x",
+      "The value if the button is clicked down four times",
+      "down_5x",
+      "The value if the button is clicked down five times",
+      "down_6x",
+      "The value if the button is clicked down six times",
+      "down_hold",
+      "The value if the button is clicked down and held",
+      "up",
+      "The value if the button is clicked up",
+      "up_2x",
+      "The value if the button is clicked up twice",
+      "up_3x",
+      "The value if the button is clicked up three times",
+      "up_4x",
+      "The value if the button is clicked up four times",
+      "up_5x",
+      "The value if the button is clicked up five times",
+      "up_6x",
+      "The value if the button is clicked up six times",
+      "up_hold",
+      "The value if the button is clicked up and held",
+      "swipe_up",
+      "The value if the button is swiped up from botton to top",
+      "swipe_down",
+      "The value if the button is swiped down from top to bottom",
+      "swipe_left",
+      "The value if the button is swiped from right to left",
+      "swipe_right",
+      "The value if the button is swiped from left to right"
     ],
     "button_numberOfButtons": [
       "button",
@@ -205,29 +331,289 @@
     "button_supportedButtonValues": [
       "button",
       "supportedButtonValues",
-      "List of valid button attribute values"
+      "List of valid button attribute values",
+      "pushed",
+      "The value if the button is pushed",
+      "held",
+      "The value if the button is held",
+      "double",
+      "The value if the button is pushed twice",
+      "pushed_2x",
+      "The value if the button is pushed twice",
+      "pushed_3x",
+      "The value if the button is pushed three times",
+      "pushed_4x",
+      "The value if the button is pushed four times",
+      "pushed_5x",
+      "The value if the button is pushed five times",
+      "pushed_6x",
+      "The value if the button is pushed six times",
+      "down",
+      "The value if the button is clicked down",
+      "down_2x",
+      "The value if the button is clicked down twice",
+      "down_3x",
+      "The value if the button is clicked down three times",
+      "down_4x",
+      "The value if the button is clicked down four times",
+      "down_5x",
+      "The value if the button is clicked down five times",
+      "down_6x",
+      "The value if the button is clicked down six times",
+      "down_hold",
+      "The value if the button is clicked down and held",
+      "up",
+      "The value if the button is clicked up",
+      "up_2x",
+      "The value if the button is clicked up twice",
+      "up_3x",
+      "The value if the button is clicked up three times",
+      "up_4x",
+      "The value if the button is clicked up four times",
+      "up_5x",
+      "The value if the button is clicked up five times",
+      "up_6x",
+      "The value if the button is clicked up six times",
+      "up_hold",
+      "The value if the button is clicked up and held",
+      "swipe_up",
+      "The value if the button is swiped up from botton to top",
+      "swipe_down",
+      "The value if the button is swiped down from top to bottom",
+      "swipe_left",
+      "The value if the button is swiped from right to left",
+      "swipe_right",
+      "The value if the button is swiped from left to right"
     ]
   },
   "buttonx4": {
     "buttonx4_button1": [
       "buttonx4",
       "button1",
-      "The state of the button1"
+      "The state of the button1",
+      "pushed",
+      "The value if the button is pushed",
+      "held",
+      "The value if the button is held",
+      "double",
+      "The value if the button is pushed twice",
+      "pushed_2x",
+      "The value if the button is pushed twice",
+      "pushed_3x",
+      "The value if the button is pushed three times",
+      "pushed_4x",
+      "The value if the button is pushed four times",
+      "pushed_5x",
+      "The value if the button is pushed five times",
+      "pushed_6x",
+      "The value if the button is pushed six times",
+      "down",
+      "The value if the button is clicked down",
+      "down_2x",
+      "The value if the button is clicked down twice",
+      "down_3x",
+      "The value if the button is clicked down three times",
+      "down_4x",
+      "The value if the button is clicked down four times",
+      "down_5x",
+      "The value if the button is clicked down five times",
+      "down_6x",
+      "The value if the button is clicked down six times",
+      "down_hold",
+      "The value if the button is clicked down and held",
+      "up",
+      "The value if the button is clicked up",
+      "up_2x",
+      "The value if the button is clicked up twice",
+      "up_3x",
+      "The value if the button is clicked up three times",
+      "up_4x",
+      "The value if the button is clicked up four times",
+      "up_5x",
+      "The value if the button is clicked up five times",
+      "up_6x",
+      "The value if the button is clicked up six times",
+      "up_hold",
+      "The value if the button is clicked up and held",
+      "swipe_up",
+      "The value if the button is swiped up from botton to top",
+      "swipe_down",
+      "The value if the button is swiped down from top to bottom",
+      "swipe_left",
+      "The value if the button is swiped from right to left",
+      "swipe_right",
+      "The value if the button is swiped from left to right"
     ],
     "buttonx4_button2": [
       "buttonx4",
       "button2",
-      "The state of the button2"
+      "The state of the button2",
+      "pushed",
+      "The value if the button is pushed",
+      "held",
+      "The value if the button is held",
+      "double",
+      "The value if the button is pushed twice",
+      "pushed_2x",
+      "The value if the button is pushed twice",
+      "pushed_3x",
+      "The value if the button is pushed three times",
+      "pushed_4x",
+      "The value if the button is pushed four times",
+      "pushed_5x",
+      "The value if the button is pushed five times",
+      "pushed_6x",
+      "The value if the button is pushed six times",
+      "down",
+      "The value if the button is clicked down",
+      "down_2x",
+      "The value if the button is clicked down twice",
+      "down_3x",
+      "The value if the button is clicked down three times",
+      "down_4x",
+      "The value if the button is clicked down four times",
+      "down_5x",
+      "The value if the button is clicked down five times",
+      "down_6x",
+      "The value if the button is clicked down six times",
+      "down_hold",
+      "The value if the button is clicked down and held",
+      "up",
+      "The value if the button is clicked up",
+      "up_2x",
+      "The value if the button is clicked up twice",
+      "up_3x",
+      "The value if the button is clicked up three times",
+      "up_4x",
+      "The value if the button is clicked up four times",
+      "up_5x",
+      "The value if the button is clicked up five times",
+      "up_6x",
+      "The value if the button is clicked up six times",
+      "up_hold",
+      "The value if the button is clicked up and held",
+      "swipe_up",
+      "The value if the button is swiped up from botton to top",
+      "swipe_down",
+      "The value if the button is swiped down from top to bottom",
+      "swipe_left",
+      "The value if the button is swiped from right to left",
+      "swipe_right",
+      "The value if the button is swiped from left to right"
     ],
     "buttonx4_button3": [
       "buttonx4",
       "button3",
-      "The state of the button3"
+      "The state of the button3",
+      "pushed",
+      "The value if the button is pushed",
+      "held",
+      "The value if the button is held",
+      "double",
+      "The value if the button is pushed twice",
+      "pushed_2x",
+      "The value if the button is pushed twice",
+      "pushed_3x",
+      "The value if the button is pushed three times",
+      "pushed_4x",
+      "The value if the button is pushed four times",
+      "pushed_5x",
+      "The value if the button is pushed five times",
+      "pushed_6x",
+      "The value if the button is pushed six times",
+      "down",
+      "The value if the button is clicked down",
+      "down_2x",
+      "The value if the button is clicked down twice",
+      "down_3x",
+      "The value if the button is clicked down three times",
+      "down_4x",
+      "The value if the button is clicked down four times",
+      "down_5x",
+      "The value if the button is clicked down five times",
+      "down_6x",
+      "The value if the button is clicked down six times",
+      "down_hold",
+      "The value if the button is clicked down and held",
+      "up",
+      "The value if the button is clicked up",
+      "up_2x",
+      "The value if the button is clicked up twice",
+      "up_3x",
+      "The value if the button is clicked up three times",
+      "up_4x",
+      "The value if the button is clicked up four times",
+      "up_5x",
+      "The value if the button is clicked up five times",
+      "up_6x",
+      "The value if the button is clicked up six times",
+      "up_hold",
+      "The value if the button is clicked up and held",
+      "swipe_up",
+      "The value if the button is swiped up from botton to top",
+      "swipe_down",
+      "The value if the button is swiped down from top to bottom",
+      "swipe_left",
+      "The value if the button is swiped from right to left",
+      "swipe_right",
+      "The value if the button is swiped from left to right"
     ],
     "buttonx4_button4": [
       "buttonx4",
       "button4",
-      "The state of the button4"
+      "The state of the button4",
+      "pushed",
+      "The value if the button is pushed",
+      "held",
+      "The value if the button is held",
+      "double",
+      "The value if the button is pushed twice",
+      "pushed_2x",
+      "The value if the button is pushed twice",
+      "pushed_3x",
+      "The value if the button is pushed three times",
+      "pushed_4x",
+      "The value if the button is pushed four times",
+      "pushed_5x",
+      "The value if the button is pushed five times",
+      "pushed_6x",
+      "The value if the button is pushed six times",
+      "down",
+      "The value if the button is clicked down",
+      "down_2x",
+      "The value if the button is clicked down twice",
+      "down_3x",
+      "The value if the button is clicked down three times",
+      "down_4x",
+      "The value if the button is clicked down four times",
+      "down_5x",
+      "The value if the button is clicked down five times",
+      "down_6x",
+      "The value if the button is clicked down six times",
+      "down_hold",
+      "The value if the button is clicked down and held",
+      "up",
+      "The value if the button is clicked up",
+      "up_2x",
+      "The value if the button is clicked up twice",
+      "up_3x",
+      "The value if the button is clicked up three times",
+      "up_4x",
+      "The value if the button is clicked up four times",
+      "up_5x",
+      "The value if the button is clicked up five times",
+      "up_6x",
+      "The value if the button is clicked up six times",
+      "up_hold",
+      "The value if the button is clicked up and held",
+      "swipe_up",
+      "The value if the button is swiped up from botton to top",
+      "swipe_down",
+      "The value if the button is swiped down from top to bottom",
+      "swipe_left",
+      "The value if the button is swiped from right to left",
+      "swipe_right",
+      "The value if the button is swiped from left to right"
     ],
     "buttonx4_numberOfButtons": [
       "buttonx4",
@@ -237,39 +623,91 @@
     "buttonx4_supportedButtonValues": [
       "buttonx4",
       "supportedButtonValues",
-      "List of valid button attribute values"
+      "List of valid button attribute values",
+      "pushed",
+      "The value if the button is pushed",
+      "held",
+      "The value if the button is held",
+      "double",
+      "The value if the button is pushed twice",
+      "pushed_2x",
+      "The value if the button is pushed twice",
+      "pushed_3x",
+      "The value if the button is pushed three times",
+      "pushed_4x",
+      "The value if the button is pushed four times",
+      "pushed_5x",
+      "The value if the button is pushed five times",
+      "pushed_6x",
+      "The value if the button is pushed six times",
+      "down",
+      "The value if the button is clicked down",
+      "down_2x",
+      "The value if the button is clicked down twice",
+      "down_3x",
+      "The value if the button is clicked down three times",
+      "down_4x",
+      "The value if the button is clicked down four times",
+      "down_5x",
+      "The value if the button is clicked down five times",
+      "down_6x",
+      "The value if the button is clicked down six times",
+      "down_hold",
+      "The value if the button is clicked down and held",
+      "up",
+      "The value if the button is clicked up",
+      "up_2x",
+      "The value if the button is clicked up twice",
+      "up_3x",
+      "The value if the button is clicked up three times",
+      "up_4x",
+      "The value if the button is clicked up four times",
+      "up_5x",
+      "The value if the button is clicked up five times",
+      "up_6x",
+      "The value if the button is clicked up six times",
+      "up_hold",
+      "The value if the button is clicked up and held",
+      "swipe_up",
+      "The value if the button is swiped up from botton to top",
+      "swipe_down",
+      "The value if the button is swiped down from top to bottom",
+      "swipe_left",
+      "The value if the button is swiped from right to left",
+      "swipe_right",
+      "The value if the button is swiped from left to right"
     ]
   },
   "calculator": {
-    "add": [
+    "calculator_add": [
       "Add two numbers",
       "a",
       "The first number to add",
       "b",
       "The second number to add"
     ],
-    "div": [
+    "calculator_div": [
       "Divide two numbers",
       "a",
       "The first number to add",
       "b",
       "The second number to add"
     ],
-    "mod": [
+    "calculator_mod": [
       "Modulo two numbers",
       "a",
       "The first number to add",
       "b",
       "The second number to add"
     ],
-    "mul": [
+    "calculator_mul": [
       "Multiply two numbers",
       "a",
       "The first number to add",
       "b",
       "The second number to add"
     ],
-    "sub": [
+    "calculator_sub": [
       "Subtract two numbers",
       "a",
       "The first number to add",
@@ -288,10 +726,10 @@
       "video",
       "The latest video captured by the camera"
     ],
-    "take": [
+    "camera_take": [
       "Take a picture with the camera - Return the image as binary data"
     ],
-    "takeTimelapse": [
+    "camera_takeTimelapse": [
       "Take a picture with the camera - Return the video as binary data",
       "duration",
       "The duration of the timelapse in seconds",
@@ -317,12 +755,32 @@
     "chargingState_chargingState": [
       "chargingState",
       "chargingState",
-      "The current charging state of the device"
+      "The current charging state of the device",
+      "charging",
+      "charging",
+      "discharging",
+      "discharging",
+      "stopped",
+      "stopped",
+      "fullyCharged",
+      "fully charged",
+      "error",
+      "error"
     ],
     "chargingState_supportedChargingStates": [
       "chargingState",
       "supportedChargingStates",
-      "The list of charging states that the device supports. Optional, defaults to all states if not set."
+      "The list of charging states that the device supports. Optional, defaults to all states if not set.",
+      "charging",
+      "charging",
+      "discharging",
+      "discharging",
+      "stopped",
+      "stopped",
+      "fullyCharged",
+      "fully charged",
+      "error",
+      "error"
     ]
   },
   "clock": {
@@ -386,7 +844,7 @@
       "year",
       "Current year"
     ],
-    "delay": [
+    "clock_delay": [
       "delay for a given amount of time",
       "hour",
       "hour",
@@ -400,27 +858,59 @@
     "contactSensor_contact": [
       "contactSensor",
       "contact",
-      "The current state of the contact sensor"
+      "The current state of the contact sensor",
+      "closed",
+      "The value if closed",
+      "open",
+      "The value if open"
     ]
   },
   "curtain": {
     "curtain_curtain": [
       "curtain",
       "curtain",
-      "A string representation of whether the curtain is open or closed"
+      "A string representation of whether the curtain is open or closed",
+      "closed",
+      "closed",
+      "closing",
+      "closing…",
+      "open",
+      "open",
+      "opening",
+      "opening…",
+      "partially open",
+      "partially open",
+      "paused",
+      "",
+      "unknown",
+      "unknown"
     ],
     "curtain_supportedCurtainCommands": [
       "curtain",
       "supportedCurtainCommands",
-      "Curtain commands supported by this instance of Curtain"
+      "Curtain commands supported by this instance of Curtain",
+      "closed",
+      "closed",
+      "closing",
+      "closing…",
+      "open",
+      "open",
+      "opening",
+      "opening…",
+      "partially open",
+      "partially open",
+      "paused",
+      "",
+      "unknown",
+      "unknown"
     ],
-    "close": [
+    "curtain_close": [
       "Close the curtain"
     ],
-    "open": [
+    "curtain_open": [
       "Open the curtain"
     ],
-    "pause": [
+    "curtain_pause": [
       "Pause opening or closing the curtain"
     ]
   },
@@ -430,7 +920,7 @@
       "dehumidifierMode",
       "Current mode of the dehumidifier"
     ],
-    "setDehumidifierMode": [
+    "dehumidifierMode_setDehumidifierMode": [
       "Set the dehumidifier mode",
       "mode",
       "Set the dehumidifier mode"
@@ -440,29 +930,63 @@
     "dishwasherMode_dishwasherMode": [
       "dishwasherMode",
       "dishwasherMode",
-      "Current mode of the dishwasher"
+      "Current mode of the dishwasher",
+      "eco",
+      "The dishwasher is in \"eco\" mode",
+      "intense",
+      "The dishwasher is in \"intense\" mode",
+      "auto",
+      "The dishwasher is in \"auto\" mode",
+      "quick",
+      "The dishwasher is in \"quick\" mode",
+      "rinse",
+      "The dishwasher is in \"rinse\" mode",
+      "dry",
+      "The dishwasher is in \"dry\" mode"
     ],
-    "setDishwasherMode": [
+    "dishwasherMode_setDishwasherMode": [
       "Set the dishwasher mode",
       "mode",
-      "Set the dishwasher mode to \"eco\", \"intense\", \"auto\", \"quick\", \"rinse\", or \"dry\" mode"
+      "Set the dishwasher mode to \"eco\", \"intense\", \"auto\", \"quick\", \"rinse\", or \"dry\" mode",
+      "eco",
+      "The dishwasher is in \"eco\" mode",
+      "intense",
+      "The dishwasher is in \"intense\" mode",
+      "auto",
+      "The dishwasher is in \"auto\" mode",
+      "quick",
+      "The dishwasher is in \"quick\" mode",
+      "rinse",
+      "The dishwasher is in \"rinse\" mode",
+      "dry",
+      "The dishwasher is in \"dry\" mode"
     ]
   },
   "doorControl": {
     "doorControl_door": [
       "doorControl",
       "door",
-      "The current state of the door"
+      "The current state of the door",
+      "closed",
+      "The door is closed",
+      "closing",
+      "The door is closing",
+      "open",
+      "The door is open",
+      "opening",
+      "The door is opening",
+      "unknown",
+      "The current state of the door is unknown"
     ],
-    "close": [
+    "doorControl_close": [
       "Close the door"
     ],
-    "open": [
+    "doorControl_open": [
       "Open the door"
     ]
   },
   "emailProvider": {
-    "sendMail": [
+    "emailProvider_sendMail": [
       "Send an email",
       "toAddress",
       "The email address of the recipient",
@@ -471,7 +995,7 @@
       "text",
       "The text of the email"
     ],
-    "sendMailWithFile": [
+    "emailProvider_sendMailWithFile": [
       "Send an email with an attachment",
       "toAddress",
       "The email address of the recipient",
@@ -494,12 +1018,12 @@
       "percent",
       "The current fan speed represented as a percent value."
     ],
-    "setFanSpeed": [
+    "fanControl_setFanSpeed": [
       "Set the fan speed",
       "speed",
       "Set the fan to this speed"
     ],
-    "setPercent": [
+    "fanControl_setPercent": [
       "Set the fan speed percent.",
       "percent",
       "The percent value to set the fan speed to."
@@ -511,7 +1035,7 @@
       "feedPortion",
       "A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense."
     ],
-    "setFeedPortion": [
+    "feederPortion_setFeedPortion": [
       "Set the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.",
       "portion",
       "The portion (in grams, pounds, ounces, or servings) to dispense.",
@@ -523,9 +1047,15 @@
     "feederOperatingState_feederOperatingState": [
       "feederOperatingState",
       "feederOperatingState",
-      "The current state of the feeder."
+      "The current state of the feeder.",
+      "idle",
+      "idle",
+      "feeding",
+      "feeding",
+      "error",
+      "error"
     ],
-    "startFeeding": [
+    "feederOperatingState_startFeeding": [
       "Begin the feeding process."
     ]
   },
@@ -555,12 +1085,16 @@
     "valve_valve": [
       "valve",
       "valve",
-      "A string representation of whether the valve is open or closed"
+      "A string representation of whether the valve is open or closed",
+      "closed",
+      "The value of the ``valve`` attribute if the valve is closed",
+      "open",
+      "The value of the ``valve`` attribute if the valve is open"
     ],
-    "close": [
+    "valve_close": [
       "Close the valve"
     ],
-    "open": [
+    "valve_open": [
       "Open the valve"
     ]
   },
@@ -568,21 +1102,43 @@
     "humidifierMode_humidifierMode": [
       "humidifierMode",
       "humidifierMode",
-      "Current mode of the humidifier"
+      "Current mode of the humidifier",
+      "auto",
+      "",
+      "low",
+      "",
+      "medium",
+      "",
+      "high",
+      ""
     ],
-    "setHumidifierMode": [
+    "humidifierMode_setHumidifierMode": [
       "Set the humidifier mode",
       "mode",
-      "Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode"
+      "Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode",
+      "auto",
+      "",
+      "low",
+      "",
+      "medium",
+      "",
+      "high",
+      ""
     ]
   },
   "irrigatorOperatingState": {
     "irrigatorOperatingState_irrigatorOperatingState": [
       "irrigatorOperatingState",
       "irrigatorOperatingState",
-      "The current state of the irrigator."
+      "The current state of the irrigator.",
+      "idle",
+      "idle",
+      "watering",
+      "watering",
+      "error",
+      "error"
     ],
-    "startWatering": [
+    "irrigatorOperatingState_startWatering": [
       "Begin the watering process."
     ]
   },
@@ -592,7 +1148,7 @@
       "waterPortion",
       "A number that represents the portion (in liters, milliliters, gallons, or ounces) that will dispense."
     ],
-    "setWaterPortion": [
+    "irrigatorPortion_setWaterPortion": [
       "Set the portion (in liters, milliliters, gallons, or ounces) that the irrigator will dispense.",
       "portion",
       "The portion (in grams, pounds, ounces, or servings) to dispense.",
@@ -604,7 +1160,11 @@
     "leakSensor_leakage": [
       "leakSensor",
       "leakage",
-      "Whether or not water leakage was detected by the Device"
+      "Whether or not water leakage was detected by the Device",
+      "detected",
+      "water leak is detected",
+      "not detected",
+      "no leak"
     ]
   },
   "switchLevel": {
@@ -618,10 +1178,10 @@
       "levelRange",
       "Constraints on the level value"
     ],
-    "alert": [
+    "switchLevel_alert": [
       "Alert with dimming"
     ],
-    "setLevel": [
+    "switchLevel_setLevel": [
       "Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.",
       "level",
       "The level value, usually ``0-100`` in percent",
@@ -645,17 +1205,17 @@
       "saturation",
       "``0-100`` (percent)"
     ],
-    "setColor": [
+    "colorControl_setColor": [
       "Sets the color based on the values passed in with the given map",
       "color",
       "The color map supports the following key/value pairs:"
     ],
-    "setHue": [
+    "colorControl_setHue": [
       "Set the hue value of the color",
       "hue",
       "A number in the range ``0-100`` representing the hue as a value of percent"
     ],
-    "setSaturation": [
+    "colorControl_setSaturation": [
       "Set the saturation value of the color",
       "saturation",
       "A number in the range ``0-100`` representing the saturation as a value of percent"
@@ -669,15 +1229,15 @@
     ]
   },
   "menuProvider": {
-    "menu": [
+    "menuProvider_menu": [
       "Get the menu - Return the menu list",
       "command",
       "The command to get the menu - format: [오늘|내일] [학생식당|수의대식당|전망대(3식당)|예술계식당(아름드리)|기숙사식당|아워홈|동원관식당(113동)|웰스토리(220동)|투굿(공대간이식당)|자하연식당|301동식당] [아침|점심|저녁]"
     ],
-    "todayMenu": [
+    "menuProvider_todayMenu": [
       "Get today's menu randomly - Return the menu list"
     ],
-    "todayPlace": [
+    "menuProvider_todayPlace": [
       "Get today's restaurant randomly - Return the restaurant name"
     ]
   },
@@ -692,41 +1252,81 @@
     "presenceSensor_presence": [
       "presenceSensor",
       "presence",
-      "The current state of the presence sensor"
+      "The current state of the presence sensor",
+      "present",
+      "The device is present",
+      "not present",
+      "left"
     ]
   },
   "pumpOperationMode": {
     "pumpOperationMode_currentOperationMode": [
       "pumpOperationMode",
       "currentOperationMode",
-      "The current effective operation mode of the pump"
+      "The current effective operation mode of the pump",
+      "normal",
+      "The pump is controlled by a setpoint.",
+      "minimum",
+      "This value sets the pump to run at the minimum possible speed it can without being stopped.",
+      "maximum",
+      "This value sets the pump to run at its maximum possible speed.",
+      "localSetting",
+      "This value sets the pump to run with the local settings of the pump."
     ],
     "pumpOperationMode_operationMode": [
       "pumpOperationMode",
       "operationMode",
-      "The operation mode of the pump"
+      "The operation mode of the pump",
+      "normal",
+      "The pump is controlled by a setpoint.",
+      "minimum",
+      "This value sets the pump to run at the minimum possible speed it can without being stopped.",
+      "maximum",
+      "This value sets the pump to run at its maximum possible speed.",
+      "localSetting",
+      "This value sets the pump to run with the local settings of the pump."
     ],
     "pumpOperationMode_supportedOperationModes": [
       "pumpOperationMode",
       "supportedOperationModes",
-      "Supported operation modes for this device to be in"
+      "Supported operation modes for this device to be in",
+      "normal",
+      "The pump is controlled by a setpoint.",
+      "minimum",
+      "This value sets the pump to run at the minimum possible speed it can without being stopped.",
+      "maximum",
+      "This value sets the pump to run at its maximum possible speed.",
+      "localSetting",
+      "This value sets the pump to run with the local settings of the pump."
     ],
-    "setOperationMode": [
+    "pumpOperationMode_setOperationMode": [
       "Set the operation mode",
       "operationMode",
-      "The operation mode to set the device to"
+      "The operation mode to set the device to",
+      "normal",
+      "The pump is controlled by a setpoint.",
+      "minimum",
+      "This value sets the pump to run at the minimum possible speed it can without being stopped.",
+      "maximum",
+      "This value sets the pump to run at its maximum possible speed.",
+      "localSetting",
+      "This value sets the pump to run with the local settings of the pump."
     ]
   },
   "pump": {
     "pump_pump": [
       "pump",
       "pump",
-      "A string representation of whether the pump is open or closed"
+      "A string representation of whether the pump is open or closed",
+      "closed",
+      "The value of the ``pump`` attribute if the pump is closed",
+      "open",
+      "The value of the ``pump`` attribute if the pump is open"
     ],
-    "close": [
+    "pump_close": [
       "Close the pump"
     ],
-    "open": [
+    "pump_open": [
       "Open the pump"
     ]
   },
@@ -734,44 +1334,92 @@
     "refrigeration_defrost": [
       "refrigeration",
       "defrost",
-      "Status of the defrost"
+      "Status of the defrost",
+      "on",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on",
+      "off",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
     ],
     "refrigeration_rapidCooling": [
       "refrigeration",
       "rapidCooling",
-      "Status of the rapid cooling"
+      "Status of the rapid cooling",
+      "on",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on",
+      "off",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
     ],
     "refrigeration_rapidFreezing": [
       "refrigeration",
       "rapidFreezing",
-      "Status of the rapid freezing"
+      "Status of the rapid freezing",
+      "on",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on",
+      "off",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
     ],
-    "setDefrost": [
+    "refrigeration_setDefrost": [
       "Sets the defrost on or off",
       "defrost",
-      "The on or off value for the defrost"
+      "The on or off value for the defrost",
+      "on",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on",
+      "off",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
     ],
-    "setRapidCooling": [
+    "refrigeration_setRapidCooling": [
       "Sets the rapid cooling on or off",
       "rapidCooling",
-      "The on or off value for the rapid cooling"
+      "The on or off value for the rapid cooling",
+      "on",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on",
+      "off",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
     ],
-    "setRapidFreezing": [
+    "refrigeration_setRapidFreezing": [
       "Sets the rapid freezing on or off",
       "rapidFreezing",
-      "The on or off value for the rapid freezing"
+      "The on or off value for the rapid freezing",
+      "on",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on",
+      "off",
+      "The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
     ]
   },
   "robotCleanerCleaningMode": {
     "robotCleanerCleaningMode_robotCleanerCleaningMode": [
       "robotCleanerCleaningMode",
       "robotCleanerCleaningMode",
-      "Current status of the robot cleaner cleaning mode"
+      "Current status of the robot cleaner cleaning mode",
+      "auto",
+      "The robot cleaner cleaning mode is in \"auto\" mode",
+      "part",
+      "The robot cleaner cleaning mode is in \"part\" mode",
+      "repeat",
+      "The robot cleaner cleaning mode is in \"repeat\" mode",
+      "manual",
+      "The robot cleaner cleaning mode is in \"manual\" mode",
+      "stop",
+      "The robot cleaner cleaning mode is in \"stop\" mode",
+      "map",
+      "The robot cleaner cleaning mode is in \"map\" mode"
     ],
-    "setRobotCleanerCleaningMode": [
+    "robotCleanerCleaningMode_setRobotCleanerCleaningMode": [
       "Set the robot cleaner cleaning mode",
       "mode",
-      "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes"
+      "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes",
+      "auto",
+      "The robot cleaner cleaning mode is in \"auto\" mode",
+      "part",
+      "The robot cleaner cleaning mode is in \"part\" mode",
+      "repeat",
+      "The robot cleaner cleaning mode is in \"repeat\" mode",
+      "manual",
+      "The robot cleaner cleaning mode is in \"manual\" mode",
+      "stop",
+      "The robot cleaner cleaning mode is in \"stop\" mode",
+      "map",
+      "The robot cleaner cleaning mode is in \"map\" mode"
     ]
   },
   "windowShadeLevel": {
@@ -780,7 +1428,7 @@
       "shadeLevel",
       "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
     ],
-    "setShadeLevel": [
+    "windowShadeLevel_setShadeLevel": [
       "Set the shade level to the given value.",
       "shadeLevel",
       "The level to which the shade should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
@@ -790,20 +1438,48 @@
     "windowShade_supportedWindowShadeCommands": [
       "windowShade",
       "supportedWindowShadeCommands",
-      "Window shade commands supported by this instance of Window Shade"
+      "Window shade commands supported by this instance of Window Shade",
+      "closed",
+      "closed",
+      "closing",
+      "closing…",
+      "open",
+      "open",
+      "opening",
+      "opening…",
+      "partially open",
+      "partially open",
+      "paused",
+      "",
+      "unknown",
+      "unknown"
     ],
     "windowShade_windowShade": [
       "windowShade",
       "windowShade",
-      "A string representation of whether the window shade is open or closed"
+      "A string representation of whether the window shade is open or closed",
+      "closed",
+      "closed",
+      "closing",
+      "closing…",
+      "open",
+      "open",
+      "opening",
+      "opening…",
+      "partially open",
+      "partially open",
+      "paused",
+      "",
+      "unknown",
+      "unknown"
     ],
-    "close": [
+    "windowShade_close": [
       "Close the window shade"
     ],
-    "open": [
+    "windowShade_open": [
       "Open the window shade"
     ],
-    "pause": [
+    "windowShade_pause": [
       "Pause opening or closing the window shade"
     ]
   },
@@ -811,12 +1487,28 @@
     "sirenMode_sirenMode": [
       "sirenMode",
       "sirenMode",
-      "Current mode of the siren"
+      "Current mode of the siren",
+      "both",
+      "",
+      "off",
+      "",
+      "siren",
+      "",
+      "strobe",
+      ""
     ],
-    "setSirenMode": [
+    "sirenMode_setSirenMode": [
       "Set the siren mode",
       "mode",
-      "Set the siren mode"
+      "Set the siren mode",
+      "both",
+      "",
+      "off",
+      "",
+      "siren",
+      "",
+      "strobe",
+      ""
     ]
   },
   "powerMeter": {
@@ -835,7 +1527,13 @@
     "smokeDetector_smoke": [
       "smokeDetector",
       "smoke",
-      "The state of the smoke detection device"
+      "The state of the smoke detection device",
+      "clear",
+      "No smoke detected",
+      "detected",
+      "Smoke detected",
+      "tested",
+      "Smoke detector test button was activated"
     ]
   },
   "soilHumidityMeasurement": {
@@ -849,7 +1547,11 @@
     "soundSensor_sound": [
       "soundSensor",
       "sound",
-      "Whether or not sound was detected by the Device"
+      "Whether or not sound was detected by the Device",
+      "detected",
+      "Sound is detected",
+      "not detected",
+      "no sound"
     ]
   },
   "soundPressureLevel": {
@@ -863,38 +1565,74 @@
     "mediaPlayback_playbackStatus": [
       "mediaPlayback",
       "playbackStatus",
-      "Status of the media playback"
+      "Status of the media playback",
+      "paused",
+      "Media playback is in a \"paused\" state",
+      "playing",
+      "Media playback is in a \"playing\" state",
+      "stopped",
+      "Media playback is in a \"stopped\" state",
+      "fast forwarding",
+      "Media playback is in a \"fast forwarding\" state",
+      "rewinding",
+      "Media playback is in a \"rewinding\" state",
+      "buffering",
+      "Media playback is in a \"buffering\" state"
     ],
     "mediaPlayback_supportedPlaybackCommands": [
       "mediaPlayback",
       "supportedPlaybackCommands",
-      "Media playback commands which are supported"
+      "Media playback commands which are supported",
+      "paused",
+      "Media playback is in a \"paused\" state",
+      "playing",
+      "Media playback is in a \"playing\" state",
+      "stopped",
+      "Media playback is in a \"stopped\" state",
+      "fast forwarding",
+      "Media playback is in a \"fast forwarding\" state",
+      "rewinding",
+      "Media playback is in a \"rewinding\" state",
+      "buffering",
+      "Media playback is in a \"buffering\" state"
     ],
-    "fastForward": [
+    "mediaPlayback_fastForward": [
       "Fast forward the media playback"
     ],
-    "pause": [
+    "mediaPlayback_pause": [
       "Pause the media playback"
     ],
-    "play": [
+    "mediaPlayback_play": [
       "Play the media playback",
       "source",
       "The source of the media playback"
     ],
-    "rewind": [
+    "mediaPlayback_rewind": [
       "Rewind the media playback"
     ],
-    "setPlaybackStatus": [
+    "mediaPlayback_setPlaybackStatus": [
       "Set the playback status",
       "status",
-      "Set the playback status to \"paused\", \"playing\", \"stopped\", \"fast forwarding\" or \"rewinding\" state."
+      "Set the playback status to \"paused\", \"playing\", \"stopped\", \"fast forwarding\" or \"rewinding\" state.",
+      "paused",
+      "Media playback is in a \"paused\" state",
+      "playing",
+      "Media playback is in a \"playing\" state",
+      "stopped",
+      "Media playback is in a \"stopped\" state",
+      "fast forwarding",
+      "Media playback is in a \"fast forwarding\" state",
+      "rewinding",
+      "Media playback is in a \"rewinding\" state",
+      "buffering",
+      "Media playback is in a \"buffering\" state"
     ],
-    "speak": [
+    "mediaPlayback_speak": [
       "TTS feature",
       "text",
       "The text to be spoken"
     ],
-    "stop": [
+    "mediaPlayback_stop": [
       "Stop the media playback"
     ]
   },
@@ -902,9 +1640,13 @@
     "audioRecord_recordStatus": [
       "audioRecord",
       "recordStatus",
-      "The current status of the audio recorder"
+      "The current status of the audio recorder",
+      "idle",
+      "The audio recorder is idle",
+      "recording",
+      "The audio recorder is recording"
     ],
-    "record": [
+    "audioRecord_record": [
       "Record audio",
       "file",
       "The file to record to",
@@ -923,18 +1665,18 @@
       "tvChannelName",
       "Current status of the TV channel name"
     ],
-    "channelDown": [
+    "tvChannel_channelDown": [
       "Move the TV channel down"
     ],
-    "channelUp": [
+    "tvChannel_channelUp": [
       "Move the TV channel up"
     ],
-    "setTvChannel": [
+    "tvChannel_setTvChannel": [
       "Set the TV channel",
       "tvChannel",
       ""
     ],
-    "setTvChannelName": [
+    "tvChannel_setTvChannelName": [
       "Set the TV channel Name",
       "tvChannelName",
       ""
@@ -944,17 +1686,25 @@
     "audioMute_muteStatus": [
       "audioMute",
       "muteStatus",
-      "Current status of the audio mute"
+      "Current status of the audio mute",
+      "muted",
+      "The audio is in \"muted\" state",
+      "unmuted",
+      "The audio is in \"unmuted\" state"
     ],
-    "mute": [
+    "audioMute_mute": [
       "Set the audio to mute state"
     ],
-    "setMute": [
+    "audioMute_setMute": [
       "Set the state of the audio mute",
       "state",
-      "Set the audio mute state to \"muted\" or \"unmuted\""
+      "Set the audio mute state to \"muted\" or \"unmuted\"",
+      "muted",
+      "The audio is in \"muted\" state",
+      "unmuted",
+      "The audio is in \"unmuted\" state"
     ],
-    "unmute": [
+    "audioMute_unmute": [
       "Set the audio to unmute state"
     ]
   },
@@ -964,15 +1714,15 @@
       "volume",
       "The current volume setting of the audio"
     ],
-    "setVolume": [
+    "audioVolume_setVolume": [
       "Set the audio volume level",
       "volume",
       "A value to which the audio volume level should be set"
     ],
-    "volumeDown": [
+    "audioVolume_volumeDown": [
       "Turn the audio volume down"
     ],
-    "volumeUp": [
+    "audioVolume_volumeUp": [
       "Turn the audio volume up"
     ]
   },
@@ -982,7 +1732,7 @@
       "testSkillValue",
       "testSkillValue"
     ],
-    "testSkillFunction": [
+    "testSkill_testSkillFunction": [
       "testSkillFunction",
       "testArgument",
       "testArgument"
@@ -1017,9 +1767,39 @@
     "weatherProvider_weather": [
       "weatherProvider",
       "weather",
-      "Current weather condition"
+      "Current weather condition",
+      "thunderstorm",
+      "thunderstorm",
+      "drizzle",
+      "drizzle",
+      "rain",
+      "rain",
+      "snow",
+      "snow",
+      "mist",
+      "mist",
+      "smoke",
+      "smoke",
+      "haze",
+      "haze",
+      "dust",
+      "dust",
+      "fog",
+      "fog",
+      "sand",
+      "sand",
+      "ash",
+      "ash",
+      "squall",
+      "squall",
+      "tornado",
+      "tornado",
+      "clear",
+      "clear",
+      "clouds",
+      "clouds"
     ],
-    "getWeatherInfo": [
+    "weatherProvider_getWeatherInfo": [
       "Get the current weather information - Return whole weather information, format: \"temperature, humidity, pressure, pm25, pm10, weather, weather_string, icon_id, location\"",
       "lat",
       "The latitude of the location",
@@ -1031,12 +1811,18 @@
     "windowControl_window": [
       "windowControl",
       "window",
-      "A string representation of whether the window is open or closed"
+      "A string representation of whether the window is open or closed",
+      "closed",
+      "closed",
+      "open",
+      "open",
+      "unknown",
+      "unknown"
     ],
-    "close": [
+    "windowControl_close": [
       "Close the window"
     ],
-    "open": [
+    "windowControl_open": [
       "Open the window"
     ]
   },
@@ -1044,47 +1830,51 @@
     "fallDetection_fall": [
       "fallDetection",
       "fall",
-      "Whether or not a fall was detected"
+      "Whether or not a fall was detected",
+      "fall",
+      "fall detected",
+      "normal",
+      "no fall detected"
     ]
   },
   "timer": {
-    "add": [
+    "timer_add": [
       "Add a timer",
       "name",
       "The time name",
       "timeout",
       "The time at which the timer should expire"
     ],
-    "isExist": [
+    "timer_isExist": [
       "Check if a timer is exist",
       "name",
       "The time name"
     ],
-    "isSet": [
+    "timer_isSet": [
       "Check if a timer is set",
       "name",
       "The time name"
     ],
-    "reset": [
+    "timer_reset": [
       "Reset a timer",
       "name",
       "The time name"
     ],
-    "set": [
+    "timer_set": [
       "Set a timer",
       "name",
       "The time name",
       "timeout",
       "The time at which the timer should expire"
     ],
-    "start": [
+    "timer_start": [
       "Start a timer",
       "name",
       "The time name"
     ]
   },
   "manager": {
-    "add_thing": [
+    "manager_add_thing": [
       "Add staff thing - Return error string",
       "parameter",
       "Staff thing's parameter",
@@ -1093,14 +1883,14 @@
       "name",
       "Staff thing's name"
     ],
-    "delete_thing": [
+    "manager_delete_thing": [
       "Delete staff thing - Return error string",
       "name",
       "Staff thing's name",
       "client_id",
       "Requester's client id"
     ],
-    "discover": [
+    "manager_discover": [
       "Discover local devices - Return device list with json format"
     ]
   }
