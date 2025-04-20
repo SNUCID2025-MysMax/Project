@@ -1,0 +1,707 @@
+{
+  "airConditionerMode": {
+    "info": "Allows for the control of the air conditioner.",
+    "enum": [
+      "airConditionerModeEnum (Enum):\n\t\tauto: The fan is on auto\n\t\tcool: The fan is in sleep mode to reduce noise\n\t\theat: The fan is on low\n\t\tfanonly\n\t\tdehumidify"
+    ],
+    "Attributes": [
+      "airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner",
+      "airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in",
+      "airConditionerMode_targetTemperature (INTEGER): Current temperature status of the air conditioner"
+    ],
+    "Methods": [
+      "airConditionerMode_setAirConditionerMode(mode: airConditionerModeEnum) -> VOID:\n\t\tSet the air conditioner mode\n\n\t\tArgs:\n\t\t\tmode (airConditionerModeEnum): Set the air conditioner mode\n",
+      "airConditionerMode_setTemperature(temperature: INTEGER) -> VOID:\n\t\tSet the air conditioner temperature\n\n\t\tArgs:\n\t\t\ttemperature (INTEGER): Set the air conditioner temperature\n"
+    ]
+  },
+  "switch": {
+    "info": "Allows for the control of a switch device",
+    "enum": [
+      "switchEnum (Enum):\n\t\ton: The value of the ``switch`` attribute if the switch is on\n\t\toff: The value of the ``switch`` attribute if the switch is off"
+    ],
+    "Attributes": [
+      "switch_switch (switchEnum): A string representation of whether the switch is on or off"
+    ],
+    "Methods": [
+      "switch_off() -> VOID:\n\t\tTurn a switch off\n",
+      "switch_on() -> VOID:\n\t\tTurn a switch on\n",
+      "switch_toggle() -> VOID:\n\t\tToggle a switch\n"
+    ]
+  },
+  "airPurifierFanMode": {
+    "info": "Maintains and sets the state of an air purifier's fan",
+    "enum": [
+      "airPurifierFanModeEnum (Enum):\n\t\tauto: The fan is on auto\n\t\tsleep: The fan is in sleep mode to reduce noise\n\t\tlow: The fan is on low\n\t\tmedium: The fan is on medium\n\t\thigh: The fan is on high\n\t\tquiet: The fan is on quiet mode to reduce noise\n\t\twindFree: The fan is on wind free mode to reduce the feeling of cold air\n\t\toff: The fan is off"
+    ],
+    "Attributes": [
+      "airPurifierFanMode_airPurifierFanMode (airPurifierFanModeEnum): The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree",
+      "airPurifierFanMode_supportedAirPurifierFanModes (list[airPurifierFanModeEnum]): Supported states for this air purifier fan to be in"
+    ],
+    "Methods": [
+      "airPurifierFanMode_setAirPurifierFanMode(mode: airPurifierFanModeEnum) -> VOID:\n\t\tSet the air purifier fan's mode\n\n\t\tArgs:\n\t\t\tmode (airPurifierFanModeEnum): Set the air purifier fan's mode\n"
+    ]
+  },
+  "tvocMeasurement": {
+    "info": "Measure total volatile organic compound levels",
+    "Attributes": [
+      "tvocMeasurement_tvocLevel (DOUBLE): The level of total volatile organic compounds detected"
+    ]
+  },
+  "temperatureMeasurement": {
+    "info": "Get the temperature from a Device that reports current temperature",
+    "Attributes": [
+      "temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature",
+      "temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value"
+    ]
+  },
+  "carbonDioxideMeasurement": {
+    "info": "Measure carbon dioxide levels",
+    "Attributes": [
+      "carbonDioxideMeasurement_carbonDioxide (DOUBLE): The level of carbon dioxide detected"
+    ]
+  },
+  "dustSensor": {
+    "info": "Gets the reading of the dust sensor.",
+    "Attributes": [
+      "dustSensor_dustLevel (INTEGER): Current dust level -- also refered to as PM10, measured in micrograms per cubic meter",
+      "dustSensor_fineDustLevel (INTEGER): Current level of fine dust -- also refered to as PM2.5, measured in micrograms per cubic meter",
+      "dustSensor_veryFineDustLevel (INTEGER): Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter"
+    ]
+  },
+  "relativeHumidityMeasurement": {
+    "info": "Allow reading the relative humidity from devices that support it",
+    "Attributes": [
+      "relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device"
+    ]
+  },
+  "alarm": {
+    "info": "The Alarm skill allows for interacting with devices that serve as alarms",
+    "enum": [
+      "alarmVolumeEnum (Enum):\n\t\tmute\n\t\tlow\n\t\tmedium\n\t\thigh"
+    ],
+    "Attributes": [
+      "alarm_alarm (alarmEnum): A string representation of whether the switch is on or off",
+      "alarm_alarmVolume (alarmVolumeEnum): A string representation of the volume of the alarm"
+    ],
+    "Methods": [
+      "alarm_both() -> VOID:\n\t\tStrobe and sound the alarm\n",
+      "alarm_off() -> VOID:\n\t\tTurn the alarm (siren and strobe) off\n",
+      "alarm_setAlarmVolume(alarmVolume: alarmVolumeEnum) -> VOID:\n\t\tSet the volume of the alarm\n\n\t\tArgs:\n\t\t\talarmVolume (alarmVolumeEnum): Set the volume of the alarm to \"mute\", \"low\", \"medium\", or \"high\"\n",
+      "alarm_siren() -> VOID:\n\t\tSound the siren on the alarm\n",
+      "alarm_strobe() -> VOID:\n\t\tStrobe the alarm\n"
+    ]
+  },
+  "battery": {
+    "info": "Defines that the device has a battery",
+    "Attributes": [
+      "battery_battery (INTEGER): An indication of the status of the battery"
+    ]
+  },
+  "blindLevel": {
+    "info": "Allows for the control of the level of a blind.",
+    "Attributes": [
+      "blindLevel_blindLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
+    ],
+    "Methods": [
+      "blindLevel_setBlindLevel(blindLevel: INTEGER) -> VOID:\n\t\tSet the blind level to the given value.\n\n\t\tArgs:\n\t\t\tblindLevel (INTEGER): The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.\n"
+    ]
+  },
+  "blind": {
+    "info": "Allows for the control of the blind.",
+    "enum": [
+      "blindEnum (Enum):\n\t\tclosed: closed\n\t\tclosing: closing…\n\t\topen: open\n\t\topening: opening…\n\t\tpartially\n\t\tpaused\n\t\tunknown: unknown"
+    ],
+    "Attributes": [
+      "blind_blind (blindEnum): A string representation of whether the blind is open or closed"
+    ],
+    "Methods": [
+      "blind_close() -> VOID:\n\t\tClose the blind\n",
+      "blind_open() -> VOID:\n\t\tOpen the blind\n",
+      "blind_pause() -> VOID:\n\t\tPause opening or closing the blind\n"
+    ]
+  },
+  "button": {
+    "info": "A device with one or more buttons",
+    "enum": [
+      "buttonEnum (Enum):\n\t\tpushed: The value if the button is pushed\n\t\theld: The value if the button is held\n\t\tdouble: The value if the button is pushed twice\n\t\tpushed_2x: The value if the button is pushed twice\n\t\tpushed_3x: The value if the button is pushed three times\n\t\tpushed_4x: The value if the button is pushed four times\n\t\tpushed_5x: The value if the button is pushed five times\n\t\tpushed_6x: The value if the button is pushed six times\n\t\tdown: The value if the button is clicked down\n\t\tdown_2x: The value if the button is clicked down twice\n\t\tdown_3x: The value if the button is clicked down three times\n\t\tdown_4x: The value if the button is clicked down four times\n\t\tdown_5x: The value if the button is clicked down five times\n\t\tdown_6x: The value if the button is clicked down six times\n\t\tdown_hold: The value if the button is clicked down and held\n\t\tup: The value if the button is clicked up\n\t\tup_2x: The value if the button is clicked up twice\n\t\tup_3x: The value if the button is clicked up three times\n\t\tup_4x: The value if the button is clicked up four times\n\t\tup_5x: The value if the button is clicked up five times\n\t\tup_6x: The value if the button is clicked up six times\n\t\tup_hold: The value if the button is clicked up and held\n\t\tswipe_up: The value if the button is swiped up from botton to top\n\t\tswipe_down: The value if the button is swiped down from top to bottom\n\t\tswipe_left: The value if the button is swiped from right to left\n\t\tswipe_right: The value if the button is swiped from left to right"
+    ],
+    "Attributes": [
+      "button_button (buttonEnum): The state of the buttons",
+      "button_numberOfButtons (INTEGER): The number of buttons on the device",
+      "button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values"
+    ]
+  },
+  "buttonx4": {
+    "info": "A device with four buttons",
+    "enum": [
+      "buttonEnum (Enum):\n\t\tpushed: The value if the button is pushed\n\t\theld: The value if the button is held\n\t\tdouble: The value if the button is pushed twice\n\t\tpushed_2x: The value if the button is pushed twice\n\t\tpushed_3x: The value if the button is pushed three times\n\t\tpushed_4x: The value if the button is pushed four times\n\t\tpushed_5x: The value if the button is pushed five times\n\t\tpushed_6x: The value if the button is pushed six times\n\t\tdown: The value if the button is clicked down\n\t\tdown_2x: The value if the button is clicked down twice\n\t\tdown_3x: The value if the button is clicked down three times\n\t\tdown_4x: The value if the button is clicked down four times\n\t\tdown_5x: The value if the button is clicked down five times\n\t\tdown_6x: The value if the button is clicked down six times\n\t\tdown_hold: The value if the button is clicked down and held\n\t\tup: The value if the button is clicked up\n\t\tup_2x: The value if the button is clicked up twice\n\t\tup_3x: The value if the button is clicked up three times\n\t\tup_4x: The value if the button is clicked up four times\n\t\tup_5x: The value if the button is clicked up five times\n\t\tup_6x: The value if the button is clicked up six times\n\t\tup_hold: The value if the button is clicked up and held\n\t\tswipe_up: The value if the button is swiped up from botton to top\n\t\tswipe_down: The value if the button is swiped down from top to bottom\n\t\tswipe_left: The value if the button is swiped from right to left\n\t\tswipe_right: The value if the button is swiped from left to right"
+    ],
+    "Attributes": [
+      "buttonx4_button1 (buttonEnum): The state of the button1",
+      "buttonx4_button2 (buttonEnum): The state of the button2",
+      "buttonx4_button3 (buttonEnum): The state of the button3",
+      "buttonx4_button4 (buttonEnum): The state of the button4",
+      "buttonx4_numberOfButtons (INTEGER): The number of buttons on the device",
+      "buttonx4_supportedButtonValues (list[buttonEnum]): List of valid button attribute values"
+    ]
+  },
+  "calculator": {
+    "info": "Provides calculation services",
+    "Methods": [
+      "calculator_add(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tAdd two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n",
+      "calculator_div(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tDivide two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n",
+      "calculator_mod(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tModulo two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n",
+      "calculator_mul(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tMultiply two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n",
+      "calculator_sub(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tSubtract two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n"
+    ]
+  },
+  "camera": {
+    "info": "Allows for the control of a camera device",
+    "Attributes": [
+      "camera_image (BINARY): The latest image captured by the camera",
+      "camera_video (BINARY): The latest video captured by the camera"
+    ],
+    "Methods": [
+      "camera_take() -> BINARY:\n\t\tTake a picture with the camera - Return the image as binary data\n",
+      "camera_takeTimelapse(duration: DOUBLE, speed: DOUBLE) -> BINARY:\n\t\tTake a picture with the camera - Return the video as binary data\n\n\t\tArgs:\n\t\t\tduration (DOUBLE): The duration of the timelapse in seconds\n\t\t\tspeed (DOUBLE): The speed of the timelapse\n"
+    ]
+  },
+  "voltageMeasurement": {
+    "info": "Get the value of voltage measured from devices that support it",
+    "Attributes": [
+      "voltageMeasurement_voltage (DOUBLE): A number representing the current voltage measured"
+    ]
+  },
+  "currentMeasurement": {
+    "info": "Get the value of electrical current measured from a device.",
+    "Attributes": [
+      "currentMeasurement_current (DOUBLE): A number representing the current measured."
+    ]
+  },
+  "chargingState": {
+    "info": "The current status of battery charging",
+    "enum": [
+      "chargingStateEnum (Enum):\n\t\tcharging: charging\n\t\tdischarging: discharging\n\t\tstopped: stopped\n\t\tfullyCharged: fully charged\n\t\terror: error"
+    ],
+    "Attributes": [
+      "chargingState_chargingState (chargingStateEnum): The current charging state of the device",
+      "chargingState_supportedChargingStates (list[chargingStateEnum]): The list of charging states that the device supports. Optional, defaults to all states if not set."
+    ]
+  },
+  "clock": {
+    "info": "Provide current date and time",
+    "enum": [
+      "weekdayEnum (Enum):\n\t\tmonday\n\t\ttuesday\n\t\twednesday\n\t\tthursday\n\t\tfriday\n\t\tsaturday\n\t\tsunday"
+    ],
+    "Attributes": [
+      "clock_date (DOUBLE): Current date as double number - format: YYYYMMdd",
+      "clock_datetime (DOUBLE): Current date and time as double number - format: YYYYMMddhhmm",
+      "clock_day (INTEGER): Current day",
+      "clock_hour (INTEGER): Current hour",
+      "clock_isHoliday (BOOL): today is holiday or not",
+      "clock_minute (INTEGER): Current minute",
+      "clock_month (INTEGER): Current month",
+      "clock_second (INTEGER): Current second",
+      "clock_time (DOUBLE): Current time as double number - format: hhmm",
+      "clock_timestamp (DOUBLE): Current timestamp (return current unix time - unit: seconds with floating point)",
+      "clock_weekday (weekdayEnum): Current weekday",
+      "clock_year (INTEGER): Current year"
+    ],
+    "Methods": [
+      "clock_delay(hour: INTEGER, minute: INTEGER, second: INTEGER) -> VOID:\n\t\tdelay for a given amount of time\n\n\t\tArgs:\n\t\t\thour (INTEGER): hour\n\t\t\tminute (INTEGER): minute\n\t\t\tsecond (INTEGER): second\n"
+    ]
+  },
+  "contactSensor": {
+    "info": "Allows reading the value of a contact sensor device",
+    "enum": [
+      "contactEnum (Enum):\n\t\topen: The value if open\n\t\tclosed: The value if closed"
+    ],
+    "Attributes": [
+      "contactSensor_contact (contactEnum): The current state of the contact sensor"
+    ]
+  },
+  "curtain": {
+    "info": "Allows for the control of the curtain.",
+    "enum": [
+      "curtainEnum (Enum):\n\t\tclosed: closed\n\t\tclosing: closing…\n\t\topen: open\n\t\topening: opening…\n\t\tpartially\n\t\tpaused\n\t\tunknown: unknown"
+    ],
+    "Attributes": [
+      "curtain_curtain (curtainEnum): A string representation of whether the curtain is open or closed",
+      "curtain_supportedCurtainCommands (list[curtainEnum]): Curtain commands supported by this instance of Curtain"
+    ],
+    "Methods": [
+      "curtain_close() -> VOID:\n\t\tClose the curtain\n",
+      "curtain_open() -> VOID:\n\t\tOpen the curtain\n",
+      "curtain_pause() -> VOID:\n\t\tPause opening or closing the curtain\n"
+    ]
+  },
+  "dehumidifierMode": {
+    "info": "Allows for the control of the dehumidifier mode.",
+    "enum": [
+      "dehumidifierModeEnum (Enum):\n\t\tcooling\n\t\tdelayWash\n\t\tdrying\n\t\tfinished\n\t\trefreshing\n\t\tweightSensing\n\t\twrinklePrevent\n\t\tdehumidifying\n\t\tAIDrying\n\t\tsanitizing\n\t\tinternalCare\n\t\tfreezeProtection\n\t\tcontinuousDehumidifying\n\t\tthawingFrozenInside"
+    ],
+    "Attributes": [
+      "dehumidifierMode_dehumidifierMode (dehumidifierModeEnum): Current mode of the dehumidifier"
+    ],
+    "Methods": [
+      "dehumidifierMode_setDehumidifierMode(mode: dehumidifierModeEnum) -> VOID:\n\t\tSet the dehumidifier mode\n\n\t\tArgs:\n\t\t\tmode (dehumidifierModeEnum): Set the dehumidifier mode\n"
+    ]
+  },
+  "dishwasherMode": {
+    "info": "Allows for the control of the dishwasher mode.",
+    "enum": [
+      "dishwasherModeEnum (Enum):\n\t\teco: The dishwasher is in \"eco\" mode\n\t\tintense: The dishwasher is in \"intense\" mode\n\t\tauto: The dishwasher is in \"auto\" mode\n\t\tquick: The dishwasher is in \"quick\" mode\n\t\trinse: The dishwasher is in \"rinse\" mode\n\t\tdry: The dishwasher is in \"dry\" mode"
+    ],
+    "Attributes": [
+      "dishwasherMode_dishwasherMode (dishwasherModeEnum): Current mode of the dishwasher"
+    ],
+    "Methods": [
+      "dishwasherMode_setDishwasherMode(mode: dishwasherModeEnum) -> VOID:\n\t\tSet the dishwasher mode\n\n\t\tArgs:\n\t\t\tmode (dishwasherModeEnum): Set the dishwasher mode to \"eco\", \"intense\", \"auto\", \"quick\", \"rinse\", or \"dry\" mode\n"
+    ]
+  },
+  "doorControl": {
+    "info": "Allow for the control of a door",
+    "enum": [
+      "doorEnum (Enum):\n\t\tclosed: The door is closed\n\t\tclosing: The door is closing\n\t\topen: The door is open\n\t\topening: The door is opening\n\t\tunknown: The current state of the door is unknown"
+    ],
+    "Attributes": [
+      "doorControl_door (doorEnum): The current state of the door"
+    ],
+    "Methods": [
+      "doorControl_close() -> VOID:\n\t\tClose the door\n",
+      "doorControl_open() -> VOID:\n\t\tOpen the door\n"
+    ]
+  },
+  "emailProvider": {
+    "info": "Provides email services",
+    "Methods": [
+      "emailProvider_sendMail(toAddress: STRING, title: STRING, text: STRING) -> VOID:\n\t\tSend an email\n\n\t\tArgs:\n\t\t\ttoAddress (STRING): The email address of the recipient\n\t\t\ttitle (STRING): The title of the email\n\t\t\ttext (STRING): The text of the email\n",
+      "emailProvider_sendMailWithFile(toAddress: STRING, title: STRING, text: STRING, file: BINARY) -> VOID:\n\t\tSend an email with an attachment\n\n\t\tArgs:\n\t\t\ttoAddress (STRING): The email address of the recipient\n\t\t\ttitle (STRING): The title of the email\n\t\t\ttext (STRING): The text of the email\n\t\t\tfile (BINARY): The path to the file to be attached\n"
+    ]
+  },
+  "fanControl": {
+    "info": "Allows for the control of the fan.",
+    "Attributes": [
+      "fanControl_fanSpeed (INTEGER): The current fan speed represented as a integer value. - unit: RPM",
+      "fanControl_percent (INTEGER): The current fan speed represented as a percent value."
+    ],
+    "Methods": [
+      "fanControl_setFanSpeed(speed: INTEGER) -> VOID:\n\t\tSet the fan speed\n\n\t\tArgs:\n\t\t\tspeed (INTEGER): Set the fan to this speed\n",
+      "fanControl_setPercent(percent: INTEGER) -> VOID:\n\t\tSet the fan speed percent.\n\n\t\tArgs:\n\t\t\tpercent (INTEGER): The percent value to set the fan speed to.\n"
+    ]
+  },
+  "feederPortion": {
+    "info": "Allows for the portion control of a feeder device.",
+    "enum": [
+      "unitEnum (Enum):\n\t\tgrams\n\t\tpounds\n\t\tounces\n\t\tservings"
+    ],
+    "Attributes": [
+      "feederPortion_feedPortion (DOUBLE): A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense."
+    ],
+    "Methods": [
+      "feederPortion_setFeedPortion(portion: DOUBLE, unit: unitEnum) -> VOID:\n\t\tSet the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.\n\n\t\tArgs:\n\t\t\tportion (DOUBLE): The portion (in grams, pounds, ounces, or servings) to dispense.\n\t\t\tunit (unitEnum): \n"
+    ]
+  },
+  "feederOperatingState": {
+    "info": "Allows for the control of a feeder device.",
+    "enum": [
+      "feederOperatingStateEnum (Enum):\n\t\tidle: idle\n\t\tfeeding: feeding\n\t\terror: error"
+    ],
+    "Attributes": [
+      "feederOperatingState_feederOperatingState (feederOperatingStateEnum): The current state of the feeder."
+    ],
+    "Methods": [
+      "feederOperatingState_startFeeding() -> VOID:\n\t\tBegin the feeding process.\n"
+    ]
+  },
+  "gasMeter": {
+    "info": "Read the gas consumption of an energy metering device",
+    "Attributes": [
+      "gasMeter_gasMeter (DOUBLE): the gas energy reported by the metering device. unit: kWh",
+      "gasMeter_gasMeterCalorific (DOUBLE): a measure of the available heat energy, used as part of the calculation to convert gas volume to gas energy. - unit: kcal",
+      "gasMeter_gasMeterTime (DOUBLE): The cumulative gas use time reported by the metering device. - unit: seconds",
+      "gasMeter_gasMeterVolume (DOUBLE): the cumulative gas volume reported by the metering device. - unit: cubic meters"
+    ]
+  },
+  "valve": {
+    "info": "Allows for the control of a valve device",
+    "enum": [
+      "valveEnum (Enum):\n\t\topen: The value of the ``valve`` attribute if the valve is open\n\t\tclosed: The value of the ``valve`` attribute if the valve is closed"
+    ],
+    "Attributes": [
+      "valve_valve (valveEnum): A string representation of whether the valve is open or closed"
+    ],
+    "Methods": [
+      "valve_close() -> VOID:\n\t\tClose the valve\n",
+      "valve_open() -> VOID:\n\t\tOpen the valve\n"
+    ]
+  },
+  "humidifierMode": {
+    "info": "Maintains and sets the state of an humidifier",
+    "enum": [
+      "humidifierModeEnum (Enum):\n\t\tauto\n\t\tlow\n\t\tmedium\n\t\thigh"
+    ],
+    "Attributes": [
+      "humidifierMode_humidifierMode (humidifierModeEnum): Current mode of the humidifier"
+    ],
+    "Methods": [
+      "humidifierMode_setHumidifierMode(mode: humidifierModeEnum) -> VOID:\n\t\tSet the humidifier mode\n\n\t\tArgs:\n\t\t\tmode (humidifierModeEnum): Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode\n"
+    ]
+  },
+  "irrigatorOperatingState": {
+    "info": "Allows for the control of a irrigator device.",
+    "enum": [
+      "irrigatorOperatingStateEnum (Enum):\n\t\tidle: idle\n\t\twatering: watering\n\t\terror: error"
+    ],
+    "Attributes": [
+      "irrigatorOperatingState_irrigatorOperatingState (irrigatorOperatingStateEnum): The current state of the irrigator."
+    ],
+    "Methods": [
+      "irrigatorOperatingState_startWatering() -> VOID:\n\t\tBegin the watering process.\n"
+    ]
+  },
+  "irrigatorPortion": {
+    "info": "Allows for the portion control of a irrigator device.",
+    "enum": [
+      "unitEnum (Enum):\n\t\tliters\n\t\tmilliliters\n\t\tgallons\n\t\tounces"
+    ],
+    "Attributes": [
+      "irrigatorPortion_waterPortion (DOUBLE): A number that represents the portion (in liters, milliliters, gallons, or ounces) that will dispense."
+    ],
+    "Methods": [
+      "irrigatorPortion_setWaterPortion(portion: DOUBLE, unit: unitEnum) -> VOID:\n\t\tSet the portion (in liters, milliliters, gallons, or ounces) that the irrigator will dispense.\n\n\t\tArgs:\n\t\t\tportion (DOUBLE): The portion (in grams, pounds, ounces, or servings) to dispense.\n\t\t\tunit (unitEnum): \n"
+    ]
+  },
+  "leakSensor": {
+    "info": "A Device that senses water leakage",
+    "enum": [
+      "presenceEnum (Enum):\n\t\tdetected: water leak is detected\n\t\tnot_detected"
+    ],
+    "Attributes": [
+      "leakSensor_leakage (presenceEnum): Whether or not water leakage was detected by the Device"
+    ]
+  },
+  "switchLevel": {
+    "info": "Allows for the control of the level of a device like a light or a dimmer switch.",
+    "Attributes": [
+      "switchLevel_level (INTEGER): A number that represents the current level, usually ``0-100`` in percent",
+      "switchLevel_levelRange (DICT): Constraints on the level value"
+    ],
+    "Methods": [
+      "switchLevel_alert() -> VOID:\n\t\tAlert with dimming\n",
+      "switchLevel_setLevel(level: INTEGER, rate: INTEGER) -> VOID:\n\t\tSet the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.\n\n\t\tArgs:\n\t\t\tlevel (INTEGER): The level value, usually ``0-100`` in percent\n\t\t\trate (INTEGER): The rate at which to change the level\n"
+    ]
+  },
+  "colorControl": {
+    "info": "Allows for control of a color changing device by setting its hue, saturation, and color values",
+    "Attributes": [
+      "colorControl_color (STRING): ``{\"hue\":\"0-100 (percent)\", \"saturation\":\"0-100 (percent)\"}``",
+      "colorControl_hue (DOUBLE): ``0-100`` (percent)",
+      "colorControl_saturation (DOUBLE): ``0-100`` (percent)"
+    ],
+    "Methods": [
+      "colorControl_setColor(color: DICT) -> VOID:\n\t\tSets the color based on the values passed in with the given map\n\n\t\tArgs:\n\t\t\tcolor (DICT): The color map supports the following key/value pairs:\n",
+      "colorControl_setHue(hue: DOUBLE) -> VOID:\n\t\tSet the hue value of the color\n\n\t\tArgs:\n\t\t\thue (DOUBLE): A number in the range ``0-100`` representing the hue as a value of percent\n",
+      "colorControl_setSaturation(saturation: DOUBLE) -> VOID:\n\t\tSet the saturation value of the color\n\n\t\tArgs:\n\t\t\tsaturation (DOUBLE): A number in the range ``0-100`` representing the saturation as a value of percent\n"
+    ]
+  },
+  "lightLevel": {
+    "info": "A numerical representation of the brightness intensity",
+    "Attributes": [
+      "lightLevel_light (DOUBLE): brightness intensity (Unit: lux)"
+    ]
+  },
+  "menuProvider": {
+    "info": "Provides menu information services",
+    "Methods": [
+      "menuProvider_menu(command: STRING) -> STRING:\n\t\tGet the menu - Return the menu list\n\n\t\tArgs:\n\t\t\tcommand (STRING): The command to get the menu - format: [오늘|내일] [학생식당|수의대식당|전망대(3식당)|예술계식당(아름드리)|기숙사식당|아워홈|동원관식당(113동)|웰스토리(220동)|투굿(공대간이식당)|자하연식당|301동식당] [아침|점심|저녁]\n",
+      "menuProvider_todayMenu() -> STRING:\n\t\tGet today's menu randomly - Return the menu list\n",
+      "menuProvider_todayPlace() -> STRING:\n\t\tGet today's restaurant randomly - Return the restaurant name\n"
+    ]
+  },
+  "motionSensor": {
+    "info": "• active - The value when motion is detected\n• inactive - The value when no motion is detected",
+    "enum": [
+      "motionEnum (Enum):\n\t\tactive\n\t\tinactive"
+    ],
+    "Attributes": [
+      "motionSensor_motion (motionEnum): The current state of the motion sensor"
+    ]
+  },
+  "presenceSensor": {
+    "info": "The ability to see the current status of a presence sensor device",
+    "enum": [
+      "presenceEnum (Enum):\n\t\tpresent: The device is present\n\t\tnot_present"
+    ],
+    "Attributes": [
+      "presenceSensor_presence (presenceEnum): The current state of the presence sensor"
+    ]
+  },
+  "pumpOperationMode": {
+    "info": "Allows for setting the operation mode on a pump.",
+    "enum": [
+      "pumpOperationModeEnum (Enum):\n\t\tnormal: The pump is controlled by a setpoint.\n\t\tminimum: This value sets the pump to run at the minimum possible speed it can without being stopped.\n\t\tmaximum: This value sets the pump to run at its maximum possible speed.\n\t\tlocalSetting: This value sets the pump to run with the local settings of the pump."
+    ],
+    "Attributes": [
+      "pumpOperationMode_currentOperationMode (pumpOperationModeEnum): The current effective operation mode of the pump",
+      "pumpOperationMode_operationMode (pumpOperationModeEnum): The operation mode of the pump",
+      "pumpOperationMode_supportedOperationModes (list[pumpOperationModeEnum]): Supported operation modes for this device to be in"
+    ],
+    "Methods": [
+      "pumpOperationMode_setOperationMode(operationMode: pumpOperationModeEnum) -> VOID:\n\t\tSet the operation mode\n\n\t\tArgs:\n\t\t\toperationMode (pumpOperationModeEnum): The operation mode to set the device to\n"
+    ]
+  },
+  "pump": {
+    "info": "Allows for the control of a pump device",
+    "enum": [
+      "pumpEnum (Enum):\n\t\topen: The value of the ``pump`` attribute if the pump is open\n\t\tclosed: The value of the ``pump`` attribute if the pump is closed"
+    ],
+    "Attributes": [
+      "pump_pump (pumpEnum): A string representation of whether the pump is open or closed"
+    ],
+    "Methods": [
+      "pump_close() -> VOID:\n\t\tClose the pump\n",
+      "pump_open() -> VOID:\n\t\tOpen the pump\n"
+    ]
+  },
+  "refrigeration": {
+    "info": "Allows for the control of the refrigeration.",
+    "enum": [
+      "rapidFreezingEnum (Enum):\n\t\ton: The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on\n\t\toff: The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off"
+    ],
+    "Attributes": [
+      "refrigeration_defrost (defrostEnum): Status of the defrost",
+      "refrigeration_rapidCooling (rapidCoolingEnum): Status of the rapid cooling",
+      "refrigeration_rapidFreezing (rapidFreezingEnum): Status of the rapid freezing"
+    ],
+    "Methods": [
+      "refrigeration_setDefrost(defrost: defrostEnum) -> VOID:\n\t\tSets the defrost on or off\n\n\t\tArgs:\n\t\t\tdefrost (defrostEnum): The on or off value for the defrost\n",
+      "refrigeration_setRapidCooling(rapidCooling: rapidCoolingEnum) -> VOID:\n\t\tSets the rapid cooling on or off\n\n\t\tArgs:\n\t\t\trapidCooling (rapidCoolingEnum): The on or off value for the rapid cooling\n",
+      "refrigeration_setRapidFreezing(rapidFreezing: rapidFreezingEnum) -> VOID:\n\t\tSets the rapid freezing on or off\n\n\t\tArgs:\n\t\t\trapidFreezing (rapidFreezingEnum): The on or off value for the rapid freezing\n"
+    ]
+  },
+  "robotCleanerCleaningMode": {
+    "info": "Allows for the control of the robot cleaner cleaning mode.",
+    "enum": [
+      "robotCleanerCleaningModeEnum (Enum):\n\t\tauto: The robot cleaner cleaning mode is in \"auto\" mode\n\t\tpart: The robot cleaner cleaning mode is in \"part\" mode\n\t\trepeat: The robot cleaner cleaning mode is in \"repeat\" mode\n\t\tmanual: The robot cleaner cleaning mode is in \"manual\" mode\n\t\tstop: The robot cleaner cleaning mode is in \"stop\" mode\n\t\tmap: The robot cleaner cleaning mode is in \"map\" mode"
+    ],
+    "Attributes": [
+      "robotCleanerCleaningMode_robotCleanerCleaningMode (robotCleanerCleaningModeEnum): Current status of the robot cleaner cleaning mode"
+    ],
+    "Methods": [
+      "robotCleanerCleaningMode_setRobotCleanerCleaningMode(mode: robotCleanerCleaningModeEnum) -> VOID:\n\t\tSet the robot cleaner cleaning mode\n\n\t\tArgs:\n\t\t\tmode (robotCleanerCleaningModeEnum): Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes\n"
+    ]
+  },
+  "windowShadeLevel": {
+    "info": "Allows for the control of the level of a window shade.",
+    "Attributes": [
+      "windowShadeLevel_shadeLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
+    ],
+    "Methods": [
+      "windowShadeLevel_setShadeLevel(shadeLevel: INTEGER) -> VOID:\n\t\tSet the shade level to the given value.\n\n\t\tArgs:\n\t\t\tshadeLevel (INTEGER): The level to which the shade should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.\n"
+    ]
+  },
+  "windowShade": {
+    "info": "Allows for the control of the window shade.",
+    "enum": [
+      "windowShadeEnum (Enum):\n\t\tclosed: closed\n\t\tclosing: closing…\n\t\topen: open\n\t\topening: opening…\n\t\tpartially\n\t\tpaused\n\t\tunknown: unknown"
+    ],
+    "Attributes": [
+      "windowShade_supportedWindowShadeCommands (list[windowShadeEnum]): Window shade commands supported by this instance of Window Shade",
+      "windowShade_windowShade (windowShadeEnum): A string representation of whether the window shade is open or closed"
+    ],
+    "Methods": [
+      "windowShade_close() -> VOID:\n\t\tClose the window shade\n",
+      "windowShade_open() -> VOID:\n\t\tOpen the window shade\n",
+      "windowShade_pause() -> VOID:\n\t\tPause opening or closing the window shade\n"
+    ]
+  },
+  "sirenMode": {
+    "info": "Allows for the control of the siren.",
+    "enum": [
+      "sirenModeEnum (Enum):\n\t\tboth\n\t\toff\n\t\tsiren\n\t\tstrobe"
+    ],
+    "Attributes": [
+      "sirenMode_sirenMode (sirenModeEnum): Current mode of the siren"
+    ],
+    "Methods": [
+      "sirenMode_setSirenMode(mode: sirenModeEnum) -> VOID:\n\t\tSet the siren mode\n\n\t\tArgs:\n\t\t\tmode (sirenModeEnum): Set the siren mode\n"
+    ]
+  },
+  "powerMeter": {
+    "info": "Allows for reading the power consumption from devices that report it",
+    "Attributes": [
+      "powerMeter_power (DOUBLE): A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts",
+      "powerMeter_powerConsumption (DICT): energy and power consumption during specific time period - unit: Wh"
+    ]
+  },
+  "smokeDetector": {
+    "info": "A device that detects the presence or absence of smoke.",
+    "enum": [
+      "smokeEnum (Enum):\n\t\tclear: No smoke detected\n\t\tdetected: Smoke detected\n\t\ttested: Smoke detector test button was activated"
+    ],
+    "Attributes": [
+      "smokeDetector_smoke (smokeEnum): The state of the smoke detection device"
+    ]
+  },
+  "soilHumidityMeasurement": {
+    "info": "Allow reading the soil humidity from devices that support it",
+    "Attributes": [
+      "soilHumidityMeasurement_soilHumidity (DOUBLE): A numerical representation of the soil humidity measurement taken by the device"
+    ]
+  },
+  "soundSensor": {
+    "info": "A Device that senses sound",
+    "enum": [
+      "soundEnum (Enum):\n\t\tdetected: Sound is detected\n\t\tnot_detected"
+    ],
+    "Attributes": [
+      "soundSensor_sound (soundEnum): Whether or not sound was detected by the Device"
+    ]
+  },
+  "soundPressureLevel": {
+    "info": "Gets the value of the sound pressure level.",
+    "Attributes": [
+      "soundPressureLevel_soundPressureLevel (DOUBLE): Level of the sound pressure"
+    ]
+  },
+  "mediaPlayback": {
+    "info": "Allows for the control of the media playback.",
+    "enum": [
+      "mediaPlaybackEnum (Enum):\n\t\tpaused: Media playback is in a \"paused\" state\n\t\tplaying: Media playback is in a \"playing\" state\n\t\tstopped: Media playback is in a \"stopped\" state\n\t\tfast\n\t\trewinding: Media playback is in a \"rewinding\" state\n\t\tbuffering: Media playback is in a \"buffering\" state"
+    ],
+    "Attributes": [
+      "mediaPlayback_playbackStatus (mediaPlaybackEnum): Status of the media playback",
+      "mediaPlayback_supportedPlaybackCommands (list[mediaPlaybackEnum]): Media playback commands which are supported"
+    ],
+    "Methods": [
+      "mediaPlayback_fastForward() -> VOID:\n\t\tFast forward the media playback\n",
+      "mediaPlayback_pause() -> VOID:\n\t\tPause the media playback\n",
+      "mediaPlayback_play(source: STRING) -> VOID:\n\t\tPlay the media playback\n\n\t\tArgs:\n\t\t\tsource (STRING): The source of the media playback\n",
+      "mediaPlayback_rewind() -> VOID:\n\t\tRewind the media playback\n",
+      "mediaPlayback_setPlaybackStatus(status: mediaPlaybackEnum) -> VOID:\n\t\tSet the playback status\n\n\t\tArgs:\n\t\t\tstatus (mediaPlaybackEnum): Set the playback status to \"paused\", \"playing\", \"stopped\", \"fast forwarding\" or \"rewinding\" state.\n",
+      "mediaPlayback_speak(text: STRING) -> VOID:\n\t\tTTS feature\n\n\t\tArgs:\n\t\t\ttext (STRING): The text to be spoken\n",
+      "mediaPlayback_stop() -> VOID:\n\t\tStop the media playback\n"
+    ]
+  },
+  "audioRecord": {
+    "info": "Record audio",
+    "enum": [
+      "recordStatusEnum (Enum):\n\t\tidle: The audio recorder is idle\n\t\trecording: The audio recorder is recording"
+    ],
+    "Attributes": [
+      "audioRecord_recordStatus (recordStatusEnum): The current status of the audio recorder"
+    ],
+    "Methods": [
+      "audioRecord_record(file: STRING, duration: DOUBLE) -> VOID:\n\t\tRecord audio\n\n\t\tArgs:\n\t\t\tfile (STRING): The file to record to\n\t\t\tduration (DOUBLE): The duration to record for\n"
+    ]
+  },
+  "tvChannel": {
+    "info": "Allows for the control of the TV channel.",
+    "Attributes": [
+      "tvChannel_tvChannel (INTEGER): Current status of the TV channel",
+      "tvChannel_tvChannelName (STRING): Current status of the TV channel name"
+    ],
+    "Methods": [
+      "tvChannel_channelDown() -> VOID:\n\t\tMove the TV channel down\n",
+      "tvChannel_channelUp() -> VOID:\n\t\tMove the TV channel up\n",
+      "tvChannel_setTvChannel(tvChannel: INTEGER) -> VOID:\n\t\tSet the TV channel\n\n\t\tArgs:\n\t\t\ttvChannel (INTEGER): \n",
+      "tvChannel_setTvChannelName(tvChannelName: STRING) -> VOID:\n\t\tSet the TV channel Name\n\n\t\tArgs:\n\t\t\ttvChannelName (STRING): \n"
+    ]
+  },
+  "audioMute": {
+    "info": "Allows for the control of audio mute.",
+    "enum": [
+      "muteEnum (Enum):\n\t\tmuted: The audio is in \"muted\" state\n\t\tunmuted: The audio is in \"unmuted\" state"
+    ],
+    "Attributes": [
+      "audioMute_muteStatus (muteEnum): Current status of the audio mute"
+    ],
+    "Methods": [
+      "audioMute_mute() -> VOID:\n\t\tSet the audio to mute state\n",
+      "audioMute_setMute(state: muteEnum) -> VOID:\n\t\tSet the state of the audio mute\n\n\t\tArgs:\n\t\t\tstate (muteEnum): Set the audio mute state to \"muted\" or \"unmuted\"\n",
+      "audioMute_unmute() -> VOID:\n\t\tSet the audio to unmute state\n"
+    ]
+  },
+  "audioVolume": {
+    "info": "Allows for the control of audio volume.",
+    "Attributes": [
+      "audioVolume_volume (INTEGER): The current volume setting of the audio"
+    ],
+    "Methods": [
+      "audioVolume_setVolume(volume: INTEGER) -> VOID:\n\t\tSet the audio volume level\n\n\t\tArgs:\n\t\t\tvolume (INTEGER): A value to which the audio volume level should be set\n",
+      "audioVolume_volumeDown() -> VOID:\n\t\tTurn the audio volume down\n",
+      "audioVolume_volumeUp() -> VOID:\n\t\tTurn the audio volume up\n"
+    ]
+  },
+  "testSkill": {
+    "info": "testSkill",
+    "enum": [
+      "testSkillEnum (Enum):\n\t\tenum1\n\t\tenum2\n\t\tenum3"
+    ],
+    "Attributes": [
+      "testSkill_testSkillValue (STRING): testSkillValue"
+    ],
+    "Methods": [
+      "testSkill_testSkillFunction(testArgument: STRING) -> STRING:\n\t\ttestSkillFunction\n\n\t\tArgs:\n\t\t\ttestArgument (STRING): testArgument\n"
+    ]
+  },
+  "weatherProvider": {
+    "info": "Provides weather information",
+    "enum": [
+      "weatherEnum (Enum):\n\t\tthunderstorm: thunderstorm\n\t\tdrizzle: drizzle\n\t\train: rain\n\t\tsnow: snow\n\t\tmist: mist\n\t\tsmoke: smoke\n\t\thaze: haze\n\t\tdust: dust\n\t\tfog: fog\n\t\tsand: sand\n\t\tash: ash\n\t\tsquall: squall\n\t\ttornado: tornado\n\t\tclear: clear\n\t\tclouds: clouds"
+    ],
+    "Attributes": [
+      "weatherProvider_humidityWeather (DOUBLE): Current humidity level",
+      "weatherProvider_pm10Weather (DOUBLE): Current pm10 level",
+      "weatherProvider_pm25Weather (DOUBLE): Current pm25 level",
+      "weatherProvider_pressureWeather (DOUBLE): Current pressure level",
+      "weatherProvider_temperatureWeather (DOUBLE): Current temperature level",
+      "weatherProvider_weather (weatherEnum): Current weather condition"
+    ],
+    "Methods": [
+      "weatherProvider_getWeatherInfo(lat: DOUBLE, lon: DOUBLE) -> STRING:\n\t\tGet the current weather information - Return whole weather information, format: \"temperature, humidity, pressure, pm25, pm10, weather, weather_string, icon_id, location\"\n\n\t\tArgs:\n\t\t\tlat (DOUBLE): The latitude of the location\n\t\t\tlon (DOUBLE): The longitude of the location\n"
+    ]
+  },
+  "windowControl": {
+    "info": "Allows for the control of the window shade.",
+    "enum": [
+      "windowEnum (Enum):\n\t\tclosed: closed\n\t\topen: open\n\t\tunknown: unknown"
+    ],
+    "Attributes": [
+      "windowControl_window (windowEnum): A string representation of whether the window is open or closed"
+    ],
+    "Methods": [
+      "windowControl_close() -> VOID:\n\t\tClose the window\n",
+      "windowControl_open() -> VOID:\n\t\tOpen the window\n"
+    ]
+  },
+  "fallDetection": {
+    "info": "Detects if a fall has occurred",
+    "enum": [
+      "fallEnum (Enum):\n\t\tfall: fall detected\n\t\tnormal: no fall detected"
+    ],
+    "Attributes": [
+      "fallDetection_fall (fallEnum): Whether or not a fall was detected"
+    ]
+  },
+  "timer": {
+    "info": "The Timer allows for interacting with devices that serve as timers",
+    "Methods": [
+      "timer_add(name: STRING, timeout: DOUBLE) -> VOID:\n\t\tAdd a timer\n\n\t\tArgs:\n\t\t\tname (STRING): The time name\n\t\t\ttimeout (DOUBLE): The time at which the timer should expire\n",
+      "timer_isExist(name: STRING) -> BOOL:\n\t\tCheck if a timer is exist\n\n\t\tArgs:\n\t\t\tname (STRING): The time name\n",
+      "timer_isSet(name: STRING) -> BOOL:\n\t\tCheck if a timer is set\n\n\t\tArgs:\n\t\t\tname (STRING): The time name\n",
+      "timer_reset(name: STRING) -> VOID:\n\t\tReset a timer\n\n\t\tArgs:\n\t\t\tname (STRING): The time name\n",
+      "timer_set(name: STRING, timeout: DOUBLE) -> VOID:\n\t\tSet a timer\n\n\t\tArgs:\n\t\t\tname (STRING): The time name\n\t\t\ttimeout (DOUBLE): The time at which the timer should expire\n",
+      "timer_start(name: STRING) -> VOID:\n\t\tStart a timer\n\n\t\tArgs:\n\t\t\tname (STRING): The time name\n"
+    ]
+  },
+  "manager": {
+    "info": "Allow Manager Thing's features",
+    "Methods": [
+      "manager_add_thing(parameter: STRING, client_id: STRING, name: STRING) -> STRING:\n\t\tAdd staff thing - Return error string\n\n\t\tArgs:\n\t\t\tparameter (STRING): Staff thing's parameter\n\t\t\tclient_id (STRING): Requester's client id\n\t\t\tname (STRING): Staff thing's name\n",
+      "manager_delete_thing(name: STRING, client_id: STRING) -> STRING:\n\t\tDelete staff thing - Return error string\n\n\t\tArgs:\n\t\t\tname (STRING): Staff thing's name\n\t\t\tclient_id (STRING): Requester's client id\n",
+      "manager_discover() -> STRING:\n\t\tDiscover local devices - Return device list with json format\n"
+    ]
+  }
+}
