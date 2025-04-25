@@ -65,91 +65,100 @@ def flatten_actions(ir, context, depth=0):
     actions = []
 
     def visit(node):
-        if node["type"] == "Assign":
+        if not isinstance(node, dict):
+            actions.append((f"⚠️ Skipping non-dict node", repr(node), depth))
+            return
+        t = node.get("type")
+        if t == "Assign":
             val = evaluate_expression(node["value"], context)
             context[node["target"]] = val
             actions.append(("Assign", node["target"], val, depth))
 
-        elif node["type"] == "Action":
+        elif t == "Action":
             args = [evaluate_expression(arg, context) for arg in node["args"]]
             actions.append(("Action", ','.join(node["target"]), node["service"], tuple(args), depth))
 
-        elif node["type"] == "If":
-            if evaluate_condition(node["condition"], context):
+        elif t == "If":
+            cond_result = evaluate_condition(node["condition"], context)
+            if cond_result:
                 visit(node["then"])
-            elif node["else"]:
+            elif node.get("else"):
                 visit(node["else"])
 
-        elif node["type"] == "Block":
-            for s in node["body"]:
+        elif t == "Block":
+            for s in node.get("body", []):
                 visit(s)
 
-        elif node["type"] == "WaitUntil":
+        elif t == "WaitUntil":
             ok = evaluate_condition(node["condition"], context)
             actions.append((f"WaitUntil[{'OK' if ok else 'BLOCKED'}]", str(node["condition"]), depth))
+    top_level = ir.get("body", [])
 
-        elif node["type"] == "Loop":
-            for i in range(3):
-                ok = evaluate_condition(node["condition"], context)
-                actions.append((f"Loop[{i}]", node.get("time"), ok, depth))
-                if ok:
-                    visit(node["body"])
-
-    for stmt in ir["body"]:
+    if len(top_level) == 1 and top_level[0].get("type") == "Block":
+        top_level = top_level[0].get("body", [])
+    # ✅ 여기만 바꾸면 돼!
+    for stmt in top_level:
         visit(stmt)
 
     return actions
 
 
-
-# 조건식을 기반으로 context 조합 생성
-def generate_context_from_conditions(logic):
+def extract_candidates_from_condition(cond):
     candidates = {}
 
-    for cond in logic:
-        if cond is None or not isinstance(cond, dict): continue
-        op = cond.get("op")
+    if cond is None or not isinstance(cond, dict):
+        return candidates
 
-        if op in ("and", "or", "not"):
-            left = cond.get("left") or cond.get("expr")
-            right = cond.get("right") if op != "not" else None
-            subconds = [left] + ([right] if right else [])
-            sublogic = generate_context_from_conditions(subconds)
-            for var, vals in sublogic.items():
+    op = cond.get("op")
+    if op in ("and", "or"):
+        left = cond.get("left")
+        right = cond.get("right")
+        for sub in [left, right]:
+            subc = extract_candidates_from_condition(sub)
+            for var, vals in subc.items():
                 candidates.setdefault(var, set()).update(vals)
-            continue
-
+    elif op == "not":
+        expr = cond.get("expr")
+        subc = extract_candidates_from_condition(expr)
+        for var, vals in subc.items():
+            candidates.setdefault(var, set()).update(vals)
+    else:
         left = cond["left"]
         if isinstance(left, dict) and left.get("type") == "AttrAccess":
             var = f"{left['tags'][0]}.{left['attr']}"
         else:
             var = left
-
         val = cond["right"]
 
-        # 숫자형 조건
+        # 숫자 기반 조건 처리
         if isinstance(val, (int, float)):
-            vals = [val - 1, val, val + 1]
-
-        # 문자열 조건
-        elif isinstance(val, str):
-            if var == "__loop_time__":
-                #  시간 문자열에서 숫자와 단위 분리 (예: "1 HOUR" → 1, "HOUR")
-                m = re.match(r"(\d+)\s*(\w+)", val)
-                if m:
-                    base = int(m.group(1))
-                    unit = m.group(2)
-                    vals = [f"{base} {unit}", f"{base * 5} {unit}", f"{base * 10} {unit}"]
-                else:
-                    vals = [val]
+            # 조건 연산자에 따라 주변 값 포함
+            if op == '<':
+                vals = [val - 1, val]
+            elif op == '<=':
+                vals = [val, val + 1]
+            elif op == '>':
+                vals = [val + 1, val]
+            elif op == '>=':
+                vals = [val, val - 1]
+            elif op in ('==', '!='):
+                vals = [val, val + 1]  # == 3 이면 3, 4로 비교
             else:
                 vals = [val]
-        else:
-            continue
+            candidates.setdefault(var, set()).update(vals)
 
-        candidates.setdefault(var, set()).update(vals)
+    return candidates
 
-    # 전체 조합 생성
+
+
+def generate_context_from_conditions(logic):
+    candidates = {}
+
+    for cond in logic:
+        sub_candidates = extract_candidates_from_condition(cond)
+        for var, vals in sub_candidates.items():
+            candidates.setdefault(var, set()).update(vals)
+
     keys = sorted(candidates.keys())
     value_sets = [sorted(candidates[k]) for k in keys]
 
@@ -159,5 +168,4 @@ def generate_context_from_conditions(logic):
         context_variants.append(ctx)
 
     return context_variants
-
 

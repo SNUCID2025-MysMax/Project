@@ -1,16 +1,16 @@
-# soplang_parser_full.py - fully fixed PLY parser
+# soplang_parser_full.py - loop 제거 후 간결화된 PLY parser
 
 import ply.lex as lex
 import ply.yacc as yacc
 
-# 토큰 정의부
 tokens = (
     'INTEGER', 'DOUBLE', 'IDENTIFIER', 'STRING_LITERAL',
-    'GE', 'LE', 'EQ', 'NE', 'ASSIGN',
+    'GE', 'LE', 'EQ', 'NE', 'ASSIGN', 'DECLARE',
     'COMMA', 'DOT', 'HASH', 'LPAREN', 'RPAREN',
     'MILLISECOND', 'SECOND', 'MINUTE', 'HOUR', 'DAY',
-    'WAIT_UNTIL', 'LOOP', 'IF', 'ELSE', 'NOT', 'OR', 'AND',
-    'GT', 'LT', 'LBRACE', 'RBRACE',
+    'WAIT_UNTIL', 'IF', 'ELSE', 'NOT', 'OR', 'AND',
+    'GT', 'LT', 'LBRACE', 'RBRACE', 'ANY', 'ALL',
+    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'DELAY'
 )
 
 t_COMMA = r','
@@ -28,20 +28,27 @@ t_GT = r'>'
 t_LT = r'<'
 t_LBRACE = r'\{'
 t_RBRACE = r'\}'
+t_DECLARE = r':='
+t_PLUS = r'\+'
+t_MINUS = r'-'
+t_TIMES = r'\*'
+t_DIVIDE = r'/'
 
-#토큰 처리 함수
+
 def t_WAIT_UNTIL(t): r'wait\suntil'; return t
-def t_LOOP(t): r'loop'; return t
 def t_IF(t): r'if'; return t
 def t_ELSE(t): r'else'; return t
 def t_NOT(t): r'not'; return t
 def t_OR(t): r'or'; return t
-def t_AND(t): r'and'; return t
+def t_AND(t): r'and|\&\&'; return t
 def t_MILLISECOND(t): r'MSEC'; return t
 def t_SECOND(t): r'SEC'; return t
 def t_MINUTE(t): r'MIN'; return t
 def t_HOUR(t): r'HOUR'; return t
 def t_DAY(t): r'DAY'; return t
+def t_ANY(t): r'any'; return t
+def t_ALL(t): r'all'; return t
+def t_DELAY(t): r'delay'; return t
 
 def t_DOUBLE(t):
     r'[-+]?[0-9]*\.[0-9]+'
@@ -73,7 +80,7 @@ def t_error(t):
 lexer = lex.lex()
 
 # -------- PARSER --------
-#시나리오 구조 정의
+
 def p_scenario(p):
     'scenario : statement_list'
     p[0] = {"type": "Scenario", "body": p[1]}
@@ -85,9 +92,9 @@ def p_statement_list(p):
 
 def p_statement(p):
     '''statement : action
+                 | all_action
                  | assignment
                  | if_statement
-                 | loop_statement
                  | wait_statement
                  | compound_statement'''
     p[0] = p[1]
@@ -97,8 +104,10 @@ def p_compound_statement(p):
     p[0] = {"type": "Block", "body": p[2]}
 
 def p_assignment(p):
-    'assignment : IDENTIFIER ASSIGN expression'
-    p[0] = {"type": "Assign", "target": p[1], "value": p[3]}
+    '''assignment : IDENTIFIER ASSIGN expression
+                  | IDENTIFIER DECLARE expression'''
+    assign_type = "Declare" if p[2] == ':=' else "Assign"
+    p[0] = {"type": assign_type, "target": p[1], "value": p[3]}
 
 def p_expression(p):
     '''expression : IDENTIFIER
@@ -107,7 +116,8 @@ def p_expression(p):
                   | STRING_LITERAL
                   | tag_expression DOT IDENTIFIER
                   | tag_expression DOT IDENTIFIER LPAREN input RPAREN
-                  | tag_expression DOT IDENTIFIER LPAREN RPAREN'''
+                  | tag_expression DOT IDENTIFIER LPAREN RPAREN
+                  | ANY LPAREN tag_list RPAREN DOT IDENTIFIER'''
     if len(p) == 2:
         p[0] = p[1]
     elif len(p) == 4:
@@ -117,11 +127,23 @@ def p_expression(p):
     else:
         p[0] = {"type": "MethodCall", "tags": p[1]["tags"], "method": p[3], "args": p[5]}
 
+def p_expression_binary(p):
+    '''expression : expression PLUS expression
+                  | expression MINUS expression
+                  | expression TIMES expression
+                  | expression DIVIDE expression'''
+    p[0] = {
+        "type": "BinaryOp",
+        "op": p[2],
+        "left": p[1],
+        "right": p[3]
+    }
+
 
 def p_action(p):
     '''action : LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN RPAREN
               | LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN input RPAREN'''
-    if len(p) == 8:  # 인자 없는 함수 호출
+    if len(p) == 8:
         p[0] = {
             "type": "Action",
             "target": p[2],
@@ -135,7 +157,6 @@ def p_action(p):
             "service": p[5],
             "args": p[7]
         }
-
 
 def p_tag_expression(p):
     'tag_expression : LPAREN tag_list RPAREN'
@@ -166,6 +187,11 @@ def p_else_clause(p):
                    | empty'''
     p[0] = p[2] if len(p) == 3 else None
 
+def p_delay_statement(p):
+    'statement : DELAY LPAREN expression RPAREN'
+    p[0] = {"type": "Delay", "value": p[3]}
+
+
 def p_condition_list(p):
     '''condition_list : condition
                       | LPAREN condition_list RPAREN
@@ -176,7 +202,7 @@ def p_condition_list(p):
         p[0] = p[1]
     elif p[1] == '(':
         p[0] = p[2]
-    elif p[1] == 'not' or p[1] == 'NOT':
+    elif p[1] in ('not', 'NOT'):
         p[0] = {"op": "not", "expr": p[2]}
     else:
         p[0] = {"op": p[2], "left": p[1], "right": p[3]}
@@ -190,25 +216,13 @@ def p_condition(p):
                  | expression LT expression'''
     p[0] = {"left": p[1], "op": p[2], "right": p[3]}
 
-def p_loop_statement(p):
-    'loop_statement : LOOP LPAREN loop_condition RPAREN statement'
-    p[0] = {
-        "type": "Loop",
-        "time": p[3].get("time", None),
-        "condition": p[3].get("condition", None),
-        "body": p[5]
-    }
-
-def p_loop_condition(p):
-    '''loop_condition : period_time COMMA condition_list
-                      | period_time
-                      | condition_list'''
-    if len(p) == 4:
-        p[0] = {"time": p[1], "condition": p[3]}
-    elif isinstance(p[1], str):
-        p[0] = {"time": p[1]}
+def p_wait_statement(p):
+    '''wait_statement : WAIT_UNTIL LPAREN condition_list RPAREN
+                      | WAIT_UNTIL LPAREN period_time RPAREN'''
+    if isinstance(p[3], str):
+        p[0] = {"type": "WaitUntil", "time": p[3]}
     else:
-        p[0] = {"condition": p[1]}
+        p[0] = {"type": "WaitUntil", "condition": p[3]}
 
 def p_period_time(p):
     'period_time : INTEGER time_unit'
@@ -222,21 +236,22 @@ def p_time_unit(p):
                  | DAY'''
     p[0] = p[1]
 
-
-def p_wait_statement(p):
-    '''wait_statement : WAIT_UNTIL LPAREN condition_list RPAREN
-                      | WAIT_UNTIL LPAREN period_time RPAREN'''
-    if isinstance(p[3], str):
-        p[0] = {"type": "WaitUntil", "time": p[3]}
-    else:
-        p[0] = {"type": "WaitUntil", "condition": p[3]}
-
 def p_empty(p):
     'empty :'
     p[0] = []
 
 def p_error(p):
     print("Syntax error at", p)
+    
+def p_all_action(p):
+    '''all_action : ALL LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN RPAREN
+                  | ALL LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN input RPAREN'''
+    p[0] = {
+        "type": "AllAction",
+        "target": p[3],
+        "service": p[6],
+        "args": [] if len(p) == 8 else p[8]
+    }
+
 
 parser = yacc.yacc()
-
