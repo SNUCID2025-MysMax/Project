@@ -2,12 +2,12 @@
   "AirConditioner": {
     "skills": [
       {
-        "id": "airConditionerMode",
-        "descriptor": "Allows for the control of the air conditioner."
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "airConditionerMode",
+        "descriptor": "Allows for the control of the air conditioner."
       }
     ]
   },
@@ -26,10 +26,6 @@
   "AirQualityDetector": {
     "skills": [
       {
-        "id": "tvocMeasurement",
-        "descriptor": "Measure total volatile organic compound levels"
-      },
-      {
         "id": "temperatureMeasurement",
         "descriptor": "Get the temperature from a Device that reports current temperature"
       },
@@ -38,12 +34,16 @@
         "descriptor": "Measure carbon dioxide levels"
       },
       {
+        "id": "relativeHumidityMeasurement",
+        "descriptor": "Allow reading the relative humidity from devices that support it"
+      },
+      {
         "id": "dustSensor",
         "descriptor": "Gets the reading of the dust sensor."
       },
       {
-        "id": "relativeHumidityMeasurement",
-        "descriptor": "Allow reading the relative humidity from devices that support it"
+        "id": "tvocMeasurement",
+        "descriptor": "Measure total volatile organic compound levels"
       }
     ]
   },
@@ -114,12 +114,12 @@
         "descriptor": "Get the value of voltage measured from devices that support it"
       },
       {
-        "id": "currentMeasurement",
-        "descriptor": "Get the value of electrical current measured from a device."
-      },
-      {
         "id": "chargingState",
         "descriptor": "The current status of battery charging"
+      },
+      {
+        "id": "currentMeasurement",
+        "descriptor": "Get the value of electrical current measured from a device."
       }
     ]
   },
@@ -150,24 +150,24 @@
   "Dehumidifier": {
     "skills": [
       {
-        "id": "dehumidifierMode",
-        "descriptor": "Allows for the control of the dehumidifier mode."
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "dehumidifierMode",
+        "descriptor": "Allows for the control of the dehumidifier mode."
       }
     ]
   },
   "Dishwasher": {
     "skills": [
       {
-        "id": "dishwasherMode",
-        "descriptor": "Allows for the control of the dishwasher mode."
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "dishwasherMode",
+        "descriptor": "Allows for the control of the dishwasher mode."
       }
     ]
   },
@@ -206,12 +206,12 @@
         "descriptor": "Allows for the control of a switch device"
       },
       {
-        "id": "feederPortion",
-        "descriptor": "Allows for the portion control of a feeder device."
-      },
-      {
         "id": "feederOperatingState",
         "descriptor": "Allows for the control of a feeder device."
+      },
+      {
+        "id": "feederPortion",
+        "descriptor": "Allows for the portion control of a feeder device."
       }
     ]
   },
@@ -226,24 +226,24 @@
   "GasValve": {
     "skills": [
       {
-        "id": "gasMeter",
-        "descriptor": "Read the gas consumption of an energy metering device"
-      },
-      {
         "id": "valve",
         "descriptor": "Allows for the control of a valve device"
+      },
+      {
+        "id": "gasMeter",
+        "descriptor": "Read the gas consumption of an energy metering device"
       }
     ]
   },
   "Humidifier": {
     "skills": [
       {
-        "id": "humidifierMode",
-        "descriptor": "Maintains and sets the state of an humidifier"
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "humidifierMode",
+        "descriptor": "Maintains and sets the state of an humidifier"
       }
     ]
   },
@@ -258,16 +258,16 @@
   "Irrigator": {
     "skills": [
       {
-        "id": "irrigatorOperatingState",
-        "descriptor": "Allows for the control of a irrigator device."
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device"
       },
       {
         "id": "irrigatorPortion",
         "descriptor": "Allows for the portion control of a irrigator device."
+      },
+      {
+        "id": "irrigatorOperatingState",
+        "descriptor": "Allows for the control of a irrigator device."
       }
     ]
   },
@@ -282,16 +282,16 @@
   "Light": {
     "skills": [
       {
-        "id": "switchLevel",
-        "descriptor": "Allows for the control of the level of a device like a light or a dimmer switch."
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device"
       },
       {
         "id": "colorControl",
         "descriptor": "Allows for control of a color changing device by setting its hue, saturation, and color values"
+      },
+      {
+        "id": "switchLevel",
+        "descriptor": "Allows for the control of the level of a device like a light or a dimmer switch."
       }
     ]
   },
@@ -358,12 +358,12 @@
   "RobotCleaner": {
     "skills": [
       {
-        "id": "switch",
-        "descriptor": "Allows for the control of a switch device"
-      },
-      {
         "id": "robotCleanerCleaningMode",
         "descriptor": "Allows for the control of the robot cleaner cleaning mode."
+      },
+      {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device"
       }
     ]
   },
@@ -398,12 +398,12 @@
         "descriptor": "Get the value of voltage measured from devices that support it"
       },
       {
-        "id": "currentMeasurement",
-        "descriptor": "Get the value of electrical current measured from a device."
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device"
+      },
+      {
+        "id": "currentMeasurement",
+        "descriptor": "Get the value of electrical current measured from a device."
       },
       {
         "id": "powerMeter",
@@ -430,12 +430,12 @@
   "SoundSensor": {
     "skills": [
       {
-        "id": "soundSensor",
-        "descriptor": "A Device that senses sound"
-      },
-      {
         "id": "soundPressureLevel",
         "descriptor": "Gets the value of the sound pressure level."
+      },
+      {
+        "id": "soundSensor",
+        "descriptor": "A Device that senses sound"
       }
     ]
   },
@@ -474,20 +474,20 @@
   "Television": {
     "skills": [
       {
-        "id": "tvChannel",
-        "descriptor": "Allows for the control of the TV channel."
-      },
-      {
-        "id": "audioMute",
-        "descriptor": "Allows for the control of audio mute."
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device"
       },
       {
+        "id": "tvChannel",
+        "descriptor": "Allows for the control of the TV channel."
+      },
+      {
         "id": "audioVolume",
         "descriptor": "Allows for the control of audio volume."
+      },
+      {
+        "id": "audioMute",
+        "descriptor": "Allows for the control of audio mute."
       }
     ]
   },

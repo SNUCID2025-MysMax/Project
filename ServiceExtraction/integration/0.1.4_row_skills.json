@@ -1,4 +1,30 @@
 {
+  "switch": {
+    "info": "Allows for the control of a switch device",
+    "Attributes": {
+      "switch_switch": {
+        "info": "A string representation of whether the switch is on or off",
+        "type": "switchEnum"
+      }
+    },
+    "Methods": {
+      "switch_off": {
+        "info": "Turn a switch off",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "switch_on": {
+        "info": "Turn a switch on",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "switch_toggle": {
+        "info": "Toggle a switch",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
   "airConditionerMode": {
     "info": "Allows for the control of the air conditioner.",
     "Attributes": {
@@ -38,32 +64,6 @@
       }
     }
   },
-  "switch": {
-    "info": "Allows for the control of a switch device",
-    "Attributes": {
-      "switch_switch": {
-        "info": "A string representation of whether the switch is on or off",
-        "type": "switchEnum"
-      }
-    },
-    "Methods": {
-      "switch_off": {
-        "info": "Turn a switch off",
-        "args": {},
-        "return_type": "VOID"
-      },
-      "switch_on": {
-        "info": "Turn a switch on",
-        "args": {},
-        "return_type": "VOID"
-      },
-      "switch_toggle": {
-        "info": "Toggle a switch",
-        "args": {},
-        "return_type": "VOID"
-      }
-    }
-  },
   "airPurifierFanMode": {
     "info": "Maintains and sets the state of an air purifier's fan",
     "Attributes": {
@@ -89,15 +89,6 @@
       }
     }
   },
-  "tvocMeasurement": {
-    "info": "Measure total volatile organic compound levels",
-    "Attributes": {
-      "tvocMeasurement_tvocLevel": {
-        "info": "The level of total volatile organic compounds detected",
-        "type": "DOUBLE"
-      }
-    }
-  },
   "temperatureMeasurement": {
     "info": "Get the temperature from a Device that reports current temperature",
     "Attributes": {
@@ -120,6 +111,15 @@
       }
     }
   },
+  "relativeHumidityMeasurement": {
+    "info": "Allow reading the relative humidity from devices that support it",
+    "Attributes": {
+      "relativeHumidityMeasurement_humidity": {
+        "info": "A numerical representation of the relative humidity measurement taken by the device",
+        "type": "DOUBLE"
+      }
+    }
+  },
   "dustSensor": {
     "info": "Gets the reading of the dust sensor.",
     "Attributes": {
@@ -137,11 +137,11 @@
       }
     }
   },
-  "relativeHumidityMeasurement": {
-    "info": "Allow reading the relative humidity from devices that support it",
+  "tvocMeasurement": {
+    "info": "Measure total volatile organic compound levels",
     "Attributes": {
-      "relativeHumidityMeasurement_humidity": {
-        "info": "A numerical representation of the relative humidity measurement taken by the device",
+      "tvocMeasurement_tvocLevel": {
+        "info": "The level of total volatile organic compounds detected",
         "type": "DOUBLE"
       }
     }
@@ -314,11 +314,11 @@
         "info": "Divide two numbers",
         "args": {
           "a": {
-            "info": "The first number to add",
+            "info": "The first number to divide",
             "type": "DOUBLE"
           },
           "b": {
-            "info": "The second number to add",
+            "info": "The second number to divide",
             "type": "DOUBLE"
           }
         },
@@ -328,11 +328,11 @@
         "info": "Modulo two numbers",
         "args": {
           "a": {
-            "info": "The first number to add",
+            "info": "The first number to modulo",
             "type": "DOUBLE"
           },
           "b": {
-            "info": "The second number to add",
+            "info": "The second number to modulo",
             "type": "DOUBLE"
           }
         },
@@ -342,11 +342,11 @@
         "info": "Multiply two numbers",
         "args": {
           "a": {
-            "info": "The first number to add",
+            "info": "The first number to multiply",
             "type": "DOUBLE"
           },
           "b": {
-            "info": "The second number to add",
+            "info": "The second number to multiply",
             "type": "DOUBLE"
           }
         },
@@ -356,11 +356,11 @@
         "info": "Subtract two numbers",
         "args": {
           "a": {
-            "info": "The first number to add",
+            "info": "The first number to subtract",
             "type": "DOUBLE"
           },
           "b": {
-            "info": "The second number to add",
+            "info": "The second number to subtract",
             "type": "DOUBLE"
           }
         },
@@ -411,15 +411,6 @@
       }
     }
   },
-  "currentMeasurement": {
-    "info": "Get the value of electrical current measured from a device.",
-    "Attributes": {
-      "currentMeasurement_current": {
-        "info": "A number representing the current measured.",
-        "type": "DOUBLE"
-      }
-    }
-  },
   "chargingState": {
     "info": "The current status of battery charging",
     "Attributes": {
@@ -430,6 +421,15 @@
       "chargingState_supportedChargingStates": {
         "info": "The list of charging states that the device supports. Optional, defaults to all states if not set.",
         "type": "list[chargingStateEnum]"
+      }
+    }
+  },
+  "currentMeasurement": {
+    "info": "Get the value of electrical current measured from a device.",
+    "Attributes": {
+      "currentMeasurement_current": {
+        "info": "A number representing the current measured.",
+        "type": "DOUBLE"
       }
     }
   },
@@ -688,6 +688,22 @@
       }
     }
   },
+  "feederOperatingState": {
+    "info": "Allows for the control of a feeder device.",
+    "Attributes": {
+      "feederOperatingState_feederOperatingState": {
+        "info": "The current state of the feeder.",
+        "type": "feederOperatingStateEnum"
+      }
+    },
+    "Methods": {
+      "feederOperatingState_startFeeding": {
+        "info": "Begin the feeding process.",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
   "feederPortion": {
     "info": "Allows for the portion control of a feeder device.",
     "Attributes": {
@@ -709,22 +725,6 @@
             "type": "unitEnum"
           }
         },
-        "return_type": "VOID"
-      }
-    }
-  },
-  "feederOperatingState": {
-    "info": "Allows for the control of a feeder device.",
-    "Attributes": {
-      "feederOperatingState_feederOperatingState": {
-        "info": "The current state of the feeder.",
-        "type": "feederOperatingStateEnum"
-      }
-    },
-    "Methods": {
-      "feederOperatingState_startFeeding": {
-        "info": "Begin the feeding process.",
-        "args": {},
         "return_type": "VOID"
       }
     }
@@ -792,22 +792,6 @@
       }
     }
   },
-  "irrigatorOperatingState": {
-    "info": "Allows for the control of a irrigator device.",
-    "Attributes": {
-      "irrigatorOperatingState_irrigatorOperatingState": {
-        "info": "The current state of the irrigator.",
-        "type": "irrigatorOperatingStateEnum"
-      }
-    },
-    "Methods": {
-      "irrigatorOperatingState_startWatering": {
-        "info": "Begin the watering process.",
-        "args": {},
-        "return_type": "VOID"
-      }
-    }
-  },
   "irrigatorPortion": {
     "info": "Allows for the portion control of a irrigator device.",
     "Attributes": {
@@ -833,46 +817,28 @@
       }
     }
   },
+  "irrigatorOperatingState": {
+    "info": "Allows for the control of a irrigator device.",
+    "Attributes": {
+      "irrigatorOperatingState_irrigatorOperatingState": {
+        "info": "The current state of the irrigator.",
+        "type": "irrigatorOperatingStateEnum"
+      }
+    },
+    "Methods": {
+      "irrigatorOperatingState_startWatering": {
+        "info": "Begin the watering process.",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
   "leakSensor": {
     "info": "A Device that senses water leakage",
     "Attributes": {
       "leakSensor_leakage": {
         "info": "Whether or not water leakage was detected by the Device",
         "type": "presenceEnum"
-      }
-    }
-  },
-  "switchLevel": {
-    "info": "Allows for the control of the level of a device like a light or a dimmer switch.",
-    "Attributes": {
-      "switchLevel_level": {
-        "info": "A number that represents the current level, usually ``0-100`` in percent",
-        "type": "INTEGER"
-      },
-      "switchLevel_levelRange": {
-        "info": "Constraints on the level value",
-        "type": "DICT"
-      }
-    },
-    "Methods": {
-      "switchLevel_alert": {
-        "info": "Alert with dimming",
-        "args": {},
-        "return_type": "VOID"
-      },
-      "switchLevel_setLevel": {
-        "info": "Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.",
-        "args": {
-          "level": {
-            "info": "The level value, usually ``0-100`` in percent",
-            "type": "INTEGER"
-          },
-          "rate": {
-            "info": "The rate at which to change the level",
-            "type": "INTEGER"
-          }
-        },
-        "return_type": "VOID"
       }
     }
   },
@@ -919,6 +885,40 @@
           "saturation": {
             "info": "A number in the range ``0-100`` representing the saturation as a value of percent",
             "type": "DOUBLE"
+          }
+        },
+        "return_type": "VOID"
+      }
+    }
+  },
+  "switchLevel": {
+    "info": "Allows for the control of the level of a device like a light or a dimmer switch.",
+    "Attributes": {
+      "switchLevel_level": {
+        "info": "A number that represents the current level, usually ``0-100`` in percent",
+        "type": "INTEGER"
+      },
+      "switchLevel_levelRange": {
+        "info": "Constraints on the level value",
+        "type": "DICT"
+      }
+    },
+    "Methods": {
+      "switchLevel_alert": {
+        "info": "Alert with dimming",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "switchLevel_setLevel": {
+        "info": "Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.",
+        "args": {
+          "level": {
+            "info": "The level value, usually ``0-100`` in percent",
+            "type": "INTEGER"
+          },
+          "rate": {
+            "info": "The rate at which to change the level",
+            "type": "INTEGER"
           }
         },
         "return_type": "VOID"
@@ -1200,21 +1200,21 @@
       }
     }
   },
-  "soundSensor": {
-    "info": "A Device that senses sound",
-    "Attributes": {
-      "soundSensor_sound": {
-        "info": "Whether or not sound was detected by the Device",
-        "type": "soundEnum"
-      }
-    }
-  },
   "soundPressureLevel": {
     "info": "Gets the value of the sound pressure level.",
     "Attributes": {
       "soundPressureLevel_soundPressureLevel": {
         "info": "Level of the sound pressure",
         "type": "DOUBLE"
+      }
+    }
+  },
+  "soundSensor": {
+    "info": "A Device that senses sound",
+    "Attributes": {
+      "soundSensor_sound": {
+        "info": "Whether or not sound was detected by the Device",
+        "type": "soundEnum"
       }
     }
   },
@@ -1353,37 +1353,6 @@
       }
     }
   },
-  "audioMute": {
-    "info": "Allows for the control of audio mute.",
-    "Attributes": {
-      "audioMute_muteStatus": {
-        "info": "Current status of the audio mute",
-        "type": "muteEnum"
-      }
-    },
-    "Methods": {
-      "audioMute_mute": {
-        "info": "Set the audio to mute state",
-        "args": {},
-        "return_type": "VOID"
-      },
-      "audioMute_setMute": {
-        "info": "Set the state of the audio mute",
-        "args": {
-          "state": {
-            "info": "Set the audio mute state to \"muted\" or \"unmuted\"",
-            "type": "muteEnum"
-          }
-        },
-        "return_type": "VOID"
-      },
-      "audioMute_unmute": {
-        "info": "Set the audio to unmute state",
-        "args": {},
-        "return_type": "VOID"
-      }
-    }
-  },
   "audioVolume": {
     "info": "Allows for the control of audio volume.",
     "Attributes": {
@@ -1410,6 +1379,37 @@
       },
       "audioVolume_volumeUp": {
         "info": "Turn the audio volume up",
+        "args": {},
+        "return_type": "VOID"
+      }
+    }
+  },
+  "audioMute": {
+    "info": "Allows for the control of audio mute.",
+    "Attributes": {
+      "audioMute_muteStatus": {
+        "info": "Current status of the audio mute",
+        "type": "muteEnum"
+      }
+    },
+    "Methods": {
+      "audioMute_mute": {
+        "info": "Set the audio to mute state",
+        "args": {},
+        "return_type": "VOID"
+      },
+      "audioMute_setMute": {
+        "info": "Set the state of the audio mute",
+        "args": {
+          "state": {
+            "info": "Set the audio mute state to \"muted\" or \"unmuted\"",
+            "type": "muteEnum"
+          }
+        },
+        "return_type": "VOID"
+      },
+      "audioMute_unmute": {
+        "info": "Set the audio to unmute state",
         "args": {},
         "return_type": "VOID"
       }

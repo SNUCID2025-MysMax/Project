@@ -1,4 +1,8 @@
 {
+  "(#AirConditioner).switch_switch": {
+    "info": "A string representation of whether the switch is on or off",
+    "type": "switchEnum"
+  },
   "(#AirConditioner).airConditionerMode_airConditionerMode": {
     "info": "Current mode of the air conditioner",
     "type": "airConditionerModeEnum"
@@ -11,9 +15,20 @@
     "info": "Current temperature status of the air conditioner",
     "type": "INTEGER"
   },
-  "(#AirConditioner).switch_switch": {
-    "info": "A string representation of whether the switch is on or off",
-    "type": "switchEnum"
+  "(#AirConditioner).switch_off()": {
+    "info": "Turn a switch off",
+    "args": {},
+    "return_type": "VOID"
+  },
+  "(#AirConditioner).switch_on()": {
+    "info": "Turn a switch on",
+    "args": {},
+    "return_type": "VOID"
+  },
+  "(#AirConditioner).switch_toggle()": {
+    "info": "Toggle a switch",
+    "args": {},
+    "return_type": "VOID"
   },
   "(#AirConditioner).airConditionerMode_setAirConditionerMode(mode)": {
     "info": "Set the air conditioner mode",
@@ -33,21 +48,6 @@
         "type": "INTEGER"
       }
     },
-    "return_type": "VOID"
-  },
-  "(#AirConditioner).switch_off()": {
-    "info": "Turn a switch off",
-    "args": {},
-    "return_type": "VOID"
-  },
-  "(#AirConditioner).switch_on()": {
-    "info": "Turn a switch on",
-    "args": {},
-    "return_type": "VOID"
-  },
-  "(#AirConditioner).switch_toggle()": {
-    "info": "Toggle a switch",
-    "args": {},
     "return_type": "VOID"
   },
   "(#AirPurifier).switch_switch": {
@@ -87,10 +87,6 @@
     },
     "return_type": "VOID"
   },
-  "(#AirQualityDetector).tvocMeasurement_tvocLevel": {
-    "info": "The level of total volatile organic compounds detected",
-    "type": "DOUBLE"
-  },
   "(#AirQualityDetector).temperatureMeasurement_temperature": {
     "info": "A number that usually represents the current temperature",
     "type": "DOUBLE"
@@ -101,6 +97,10 @@
   },
   "(#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide": {
     "info": "The level of carbon dioxide detected",
+    "type": "DOUBLE"
+  },
+  "(#AirQualityDetector).relativeHumidityMeasurement_humidity": {
+    "info": "A numerical representation of the relative humidity measurement taken by the device",
     "type": "DOUBLE"
   },
   "(#AirQualityDetector).dustSensor_dustLevel": {
@@ -115,8 +115,8 @@
     "info": "Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter",
     "type": "INTEGER"
   },
-  "(#AirQualityDetector).relativeHumidityMeasurement_humidity": {
-    "info": "A numerical representation of the relative humidity measurement taken by the device",
+  "(#AirQualityDetector).tvocMeasurement_tvocLevel": {
+    "info": "The level of total volatile organic compounds detected",
     "type": "DOUBLE"
   },
   "(#Alarm).alarm_alarm": {
@@ -248,11 +248,11 @@
     "info": "Divide two numbers",
     "args": {
       "a": {
-        "info": "The first number to add",
+        "info": "The first number to divide",
         "type": "DOUBLE"
       },
       "b": {
-        "info": "The second number to add",
+        "info": "The second number to divide",
         "type": "DOUBLE"
       }
     },
@@ -262,11 +262,11 @@
     "info": "Modulo two numbers",
     "args": {
       "a": {
-        "info": "The first number to add",
+        "info": "The first number to modulo",
         "type": "DOUBLE"
       },
       "b": {
-        "info": "The second number to add",
+        "info": "The second number to modulo",
         "type": "DOUBLE"
       }
     },
@@ -276,11 +276,11 @@
     "info": "Multiply two numbers",
     "args": {
       "a": {
-        "info": "The first number to add",
+        "info": "The first number to multiply",
         "type": "DOUBLE"
       },
       "b": {
-        "info": "The second number to add",
+        "info": "The second number to multiply",
         "type": "DOUBLE"
       }
     },
@@ -290,11 +290,11 @@
     "info": "Subtract two numbers",
     "args": {
       "a": {
-        "info": "The first number to add",
+        "info": "The first number to subtract",
         "type": "DOUBLE"
       },
       "b": {
-        "info": "The second number to add",
+        "info": "The second number to subtract",
         "type": "DOUBLE"
       }
     },
@@ -350,10 +350,6 @@
     "info": "A number representing the current voltage measured",
     "type": "DOUBLE"
   },
-  "(#Charger).currentMeasurement_current": {
-    "info": "A number representing the current measured.",
-    "type": "DOUBLE"
-  },
   "(#Charger).chargingState_chargingState": {
     "info": "The current charging state of the device",
     "type": "chargingStateEnum"
@@ -361,6 +357,10 @@
   "(#Charger).chargingState_supportedChargingStates": {
     "info": "The list of charging states that the device supports. Optional, defaults to all states if not set.",
     "type": "list[chargingStateEnum]"
+  },
+  "(#Charger).currentMeasurement_current": {
+    "info": "A number representing the current measured.",
+    "type": "DOUBLE"
   },
   "(#Clock).clock_date": {
     "info": "Current date as double number - format: YYYYMMdd",
@@ -455,23 +455,13 @@
     "args": {},
     "return_type": "VOID"
   },
-  "(#Dehumidifier).dehumidifierMode_dehumidifierMode": {
-    "info": "Current mode of the dehumidifier",
-    "type": "dehumidifierModeEnum"
-  },
   "(#Dehumidifier).switch_switch": {
     "info": "A string representation of whether the switch is on or off",
     "type": "switchEnum"
   },
-  "(#Dehumidifier).dehumidifierMode_setDehumidifierMode(mode)": {
-    "info": "Set the dehumidifier mode",
-    "args": {
-      "mode": {
-        "info": "Set the dehumidifier mode",
-        "type": "dehumidifierModeEnum"
-      }
-    },
-    "return_type": "VOID"
+  "(#Dehumidifier).dehumidifierMode_dehumidifierMode": {
+    "info": "Current mode of the dehumidifier",
+    "type": "dehumidifierModeEnum"
   },
   "(#Dehumidifier).switch_off()": {
     "info": "Turn a switch off",
@@ -488,23 +478,23 @@
     "args": {},
     "return_type": "VOID"
   },
-  "(#Dishwasher).dishwasherMode_dishwasherMode": {
-    "info": "Current mode of the dishwasher",
-    "type": "dishwasherModeEnum"
+  "(#Dehumidifier).dehumidifierMode_setDehumidifierMode(mode)": {
+    "info": "Set the dehumidifier mode",
+    "args": {
+      "mode": {
+        "info": "Set the dehumidifier mode",
+        "type": "dehumidifierModeEnum"
+      }
+    },
+    "return_type": "VOID"
   },
   "(#Dishwasher).switch_switch": {
     "info": "A string representation of whether the switch is on or off",
     "type": "switchEnum"
   },
-  "(#Dishwasher).dishwasherMode_setDishwasherMode(mode)": {
-    "info": "Set the dishwasher mode",
-    "args": {
-      "mode": {
-        "info": "Set the dishwasher mode to \"eco\", \"intense\", \"auto\", \"quick\", \"rinse\", or \"dry\" mode",
-        "type": "dishwasherModeEnum"
-      }
-    },
-    "return_type": "VOID"
+  "(#Dishwasher).dishwasherMode_dishwasherMode": {
+    "info": "Current mode of the dishwasher",
+    "type": "dishwasherModeEnum"
   },
   "(#Dishwasher).switch_off()": {
     "info": "Turn a switch off",
@@ -519,6 +509,16 @@
   "(#Dishwasher).switch_toggle()": {
     "info": "Toggle a switch",
     "args": {},
+    "return_type": "VOID"
+  },
+  "(#Dishwasher).dishwasherMode_setDishwasherMode(mode)": {
+    "info": "Set the dishwasher mode",
+    "args": {
+      "mode": {
+        "info": "Set the dishwasher mode to \"eco\", \"intense\", \"auto\", \"quick\", \"rinse\", or \"dry\" mode",
+        "type": "dishwasherModeEnum"
+      }
+    },
     "return_type": "VOID"
   },
   "(#DoorLock).doorControl_door": {
@@ -626,13 +626,13 @@
     "info": "A string representation of whether the switch is on or off",
     "type": "switchEnum"
   },
-  "(#Feeder).feederPortion_feedPortion": {
-    "info": "A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense.",
-    "type": "DOUBLE"
-  },
   "(#Feeder).feederOperatingState_feederOperatingState": {
     "info": "The current state of the feeder.",
     "type": "feederOperatingStateEnum"
+  },
+  "(#Feeder).feederPortion_feedPortion": {
+    "info": "A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense.",
+    "type": "DOUBLE"
   },
   "(#Feeder).switch_off()": {
     "info": "Turn a switch off",
@@ -649,6 +649,11 @@
     "args": {},
     "return_type": "VOID"
   },
+  "(#Feeder).feederOperatingState_startFeeding()": {
+    "info": "Begin the feeding process.",
+    "args": {},
+    "return_type": "VOID"
+  },
   "(#Feeder).feederPortion_setFeedPortion(portion, unit)": {
     "info": "Set the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.",
     "args": {
@@ -661,11 +666,6 @@
         "type": "unitEnum"
       }
     },
-    "return_type": "VOID"
-  },
-  "(#Feeder).feederOperatingState_startFeeding()": {
-    "info": "Begin the feeding process.",
-    "args": {},
     "return_type": "VOID"
   },
   "(#GasMeter).gasMeter_gasMeter": {
@@ -684,6 +684,10 @@
     "info": "the cumulative gas volume reported by the metering device. - unit: cubic meters",
     "type": "DOUBLE"
   },
+  "(#GasValve).valve_valve": {
+    "info": "A string representation of whether the valve is open or closed",
+    "type": "valveEnum"
+  },
   "(#GasValve).gasMeter_gasMeter": {
     "info": "the gas energy reported by the metering device. unit: kWh",
     "type": "DOUBLE"
@@ -700,10 +704,6 @@
     "info": "the cumulative gas volume reported by the metering device. - unit: cubic meters",
     "type": "DOUBLE"
   },
-  "(#GasValve).valve_valve": {
-    "info": "A string representation of whether the valve is open or closed",
-    "type": "valveEnum"
-  },
   "(#GasValve).valve_close()": {
     "info": "Close the valve",
     "args": {},
@@ -714,23 +714,13 @@
     "args": {},
     "return_type": "VOID"
   },
-  "(#Humidifier).humidifierMode_humidifierMode": {
-    "info": "Current mode of the humidifier",
-    "type": "humidifierModeEnum"
-  },
   "(#Humidifier).switch_switch": {
     "info": "A string representation of whether the switch is on or off",
     "type": "switchEnum"
   },
-  "(#Humidifier).humidifierMode_setHumidifierMode(mode)": {
-    "info": "Set the humidifier mode",
-    "args": {
-      "mode": {
-        "info": "Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode",
-        "type": "humidifierModeEnum"
-      }
-    },
-    "return_type": "VOID"
+  "(#Humidifier).humidifierMode_humidifierMode": {
+    "info": "Current mode of the humidifier",
+    "type": "humidifierModeEnum"
   },
   "(#Humidifier).switch_off()": {
     "info": "Turn a switch off",
@@ -747,13 +737,19 @@
     "args": {},
     "return_type": "VOID"
   },
+  "(#Humidifier).humidifierMode_setHumidifierMode(mode)": {
+    "info": "Set the humidifier mode",
+    "args": {
+      "mode": {
+        "info": "Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode",
+        "type": "humidifierModeEnum"
+      }
+    },
+    "return_type": "VOID"
+  },
   "(#HumiditySensor).relativeHumidityMeasurement_humidity": {
     "info": "A numerical representation of the relative humidity measurement taken by the device",
     "type": "DOUBLE"
-  },
-  "(#Irrigator).irrigatorOperatingState_irrigatorOperatingState": {
-    "info": "The current state of the irrigator.",
-    "type": "irrigatorOperatingStateEnum"
   },
   "(#Irrigator).switch_switch": {
     "info": "A string representation of whether the switch is on or off",
@@ -763,10 +759,9 @@
     "info": "A number that represents the portion (in liters, milliliters, gallons, or ounces) that will dispense.",
     "type": "DOUBLE"
   },
-  "(#Irrigator).irrigatorOperatingState_startWatering()": {
-    "info": "Begin the watering process.",
-    "args": {},
-    "return_type": "VOID"
+  "(#Irrigator).irrigatorOperatingState_irrigatorOperatingState": {
+    "info": "The current state of the irrigator.",
+    "type": "irrigatorOperatingStateEnum"
   },
   "(#Irrigator).switch_off()": {
     "info": "Turn a switch off",
@@ -797,17 +792,14 @@
     },
     "return_type": "VOID"
   },
+  "(#Irrigator).irrigatorOperatingState_startWatering()": {
+    "info": "Begin the watering process.",
+    "args": {},
+    "return_type": "VOID"
+  },
   "(#LeakSensor).leakSensor_leakage": {
     "info": "Whether or not water leakage was detected by the Device",
     "type": "presenceEnum"
-  },
-  "(#Light).switchLevel_level": {
-    "info": "A number that represents the current level, usually ``0-100`` in percent",
-    "type": "INTEGER"
-  },
-  "(#Light).switchLevel_levelRange": {
-    "info": "Constraints on the level value",
-    "type": "DICT"
   },
   "(#Light).switch_switch": {
     "info": "A string representation of whether the switch is on or off",
@@ -825,24 +817,13 @@
     "info": "``0-100`` (percent)",
     "type": "DOUBLE"
   },
-  "(#Light).switchLevel_alert()": {
-    "info": "Alert with dimming",
-    "args": {},
-    "return_type": "VOID"
+  "(#Light).switchLevel_level": {
+    "info": "A number that represents the current level, usually ``0-100`` in percent",
+    "type": "INTEGER"
   },
-  "(#Light).switchLevel_setLevel(level, rate)": {
-    "info": "Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.",
-    "args": {
-      "level": {
-        "info": "The level value, usually ``0-100`` in percent",
-        "type": "INTEGER"
-      },
-      "rate": {
-        "info": "The rate at which to change the level",
-        "type": "INTEGER"
-      }
-    },
-    "return_type": "VOID"
+  "(#Light).switchLevel_levelRange": {
+    "info": "Constraints on the level value",
+    "type": "DICT"
   },
   "(#Light).switch_off()": {
     "info": "Turn a switch off",
@@ -885,6 +866,25 @@
       "saturation": {
         "info": "A number in the range ``0-100`` representing the saturation as a value of percent",
         "type": "DOUBLE"
+      }
+    },
+    "return_type": "VOID"
+  },
+  "(#Light).switchLevel_alert()": {
+    "info": "Alert with dimming",
+    "args": {},
+    "return_type": "VOID"
+  },
+  "(#Light).switchLevel_setLevel(level, rate)": {
+    "info": "Set the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.",
+    "args": {
+      "level": {
+        "info": "The level value, usually ``0-100`` in percent",
+        "type": "INTEGER"
+      },
+      "rate": {
+        "info": "The rate at which to change the level",
+        "type": "INTEGER"
       }
     },
     "return_type": "VOID"
@@ -1037,13 +1037,23 @@
     },
     "return_type": "VOID"
   },
+  "(#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode": {
+    "info": "Current status of the robot cleaner cleaning mode",
+    "type": "robotCleanerCleaningModeEnum"
+  },
   "(#RobotCleaner).switch_switch": {
     "info": "A string representation of whether the switch is on or off",
     "type": "switchEnum"
   },
-  "(#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode": {
-    "info": "Current status of the robot cleaner cleaning mode",
-    "type": "robotCleanerCleaningModeEnum"
+  "(#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode(mode)": {
+    "info": "Set the robot cleaner cleaning mode",
+    "args": {
+      "mode": {
+        "info": "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes",
+        "type": "robotCleanerCleaningModeEnum"
+      }
+    },
+    "return_type": "VOID"
   },
   "(#RobotCleaner).switch_off()": {
     "info": "Turn a switch off",
@@ -1058,16 +1068,6 @@
   "(#RobotCleaner).switch_toggle()": {
     "info": "Toggle a switch",
     "args": {},
-    "return_type": "VOID"
-  },
-  "(#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode(mode)": {
-    "info": "Set the robot cleaner cleaning mode",
-    "args": {
-      "mode": {
-        "info": "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes",
-        "type": "robotCleanerCleaningModeEnum"
-      }
-    },
     "return_type": "VOID"
   },
   "(#Shade).windowShadeLevel_shadeLevel": {
@@ -1144,13 +1144,13 @@
     "info": "A number representing the current voltage measured",
     "type": "DOUBLE"
   },
-  "(#SmartPlug).currentMeasurement_current": {
-    "info": "A number representing the current measured.",
-    "type": "DOUBLE"
-  },
   "(#SmartPlug).switch_switch": {
     "info": "A string representation of whether the switch is on or off",
     "type": "switchEnum"
+  },
+  "(#SmartPlug).currentMeasurement_current": {
+    "info": "A number representing the current measured.",
+    "type": "DOUBLE"
   },
   "(#SmartPlug).powerMeter_power": {
     "info": "A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts",
@@ -1183,13 +1183,13 @@
     "info": "A numerical representation of the soil humidity measurement taken by the device",
     "type": "DOUBLE"
   },
-  "(#SoundSensor).soundSensor_sound": {
-    "info": "Whether or not sound was detected by the Device",
-    "type": "soundEnum"
-  },
   "(#SoundSensor).soundPressureLevel_soundPressureLevel": {
     "info": "Level of the sound pressure",
     "type": "DOUBLE"
+  },
+  "(#SoundSensor).soundSensor_sound": {
+    "info": "Whether or not sound was detected by the Device",
+    "type": "soundEnum"
   },
   "(#Speaker).switch_switch": {
     "info": "A string representation of whether the switch is on or off",
@@ -1324,6 +1324,10 @@
     "args": {},
     "return_type": "VOID"
   },
+  "(#Television).switch_switch": {
+    "info": "A string representation of whether the switch is on or off",
+    "type": "switchEnum"
+  },
   "(#Television).tvChannel_tvChannel": {
     "info": "Current status of the TV channel",
     "type": "INTEGER"
@@ -1332,17 +1336,28 @@
     "info": "Current status of the TV channel name",
     "type": "STRING"
   },
+  "(#Television).audioVolume_volume": {
+    "info": "The current volume setting of the audio",
+    "type": "INTEGER"
+  },
   "(#Television).audioMute_muteStatus": {
     "info": "Current status of the audio mute",
     "type": "muteEnum"
   },
-  "(#Television).switch_switch": {
-    "info": "A string representation of whether the switch is on or off",
-    "type": "switchEnum"
+  "(#Television).switch_off()": {
+    "info": "Turn a switch off",
+    "args": {},
+    "return_type": "VOID"
   },
-  "(#Television).audioVolume_volume": {
-    "info": "The current volume setting of the audio",
-    "type": "INTEGER"
+  "(#Television).switch_on()": {
+    "info": "Turn a switch on",
+    "args": {},
+    "return_type": "VOID"
+  },
+  "(#Television).switch_toggle()": {
+    "info": "Toggle a switch",
+    "args": {},
+    "return_type": "VOID"
   },
   "(#Television).tvChannel_channelDown()": {
     "info": "Move the TV channel down",
@@ -1374,41 +1389,6 @@
     },
     "return_type": "VOID"
   },
-  "(#Television).audioMute_mute()": {
-    "info": "Set the audio to mute state",
-    "args": {},
-    "return_type": "VOID"
-  },
-  "(#Television).audioMute_setMute(state)": {
-    "info": "Set the state of the audio mute",
-    "args": {
-      "state": {
-        "info": "Set the audio mute state to \"muted\" or \"unmuted\"",
-        "type": "muteEnum"
-      }
-    },
-    "return_type": "VOID"
-  },
-  "(#Television).audioMute_unmute()": {
-    "info": "Set the audio to unmute state",
-    "args": {},
-    "return_type": "VOID"
-  },
-  "(#Television).switch_off()": {
-    "info": "Turn a switch off",
-    "args": {},
-    "return_type": "VOID"
-  },
-  "(#Television).switch_on()": {
-    "info": "Turn a switch on",
-    "args": {},
-    "return_type": "VOID"
-  },
-  "(#Television).switch_toggle()": {
-    "info": "Toggle a switch",
-    "args": {},
-    "return_type": "VOID"
-  },
   "(#Television).audioVolume_setVolume(volume)": {
     "info": "Set the audio volume level",
     "args": {
@@ -1426,6 +1406,26 @@
   },
   "(#Television).audioVolume_volumeUp()": {
     "info": "Turn the audio volume up",
+    "args": {},
+    "return_type": "VOID"
+  },
+  "(#Television).audioMute_mute()": {
+    "info": "Set the audio to mute state",
+    "args": {},
+    "return_type": "VOID"
+  },
+  "(#Television).audioMute_setMute(state)": {
+    "info": "Set the state of the audio mute",
+    "args": {
+      "state": {
+        "info": "Set the audio mute state to \"muted\" or \"unmuted\"",
+        "type": "muteEnum"
+      }
+    },
+    "return_type": "VOID"
+  },
+  "(#Television).audioMute_unmute()": {
+    "info": "Set the audio to unmute state",
     "args": {},
     "return_type": "VOID"
   },

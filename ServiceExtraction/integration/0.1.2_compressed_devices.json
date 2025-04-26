@@ -1,18 +1,18 @@
 {
   "AirConditioner": {
-    "airConditionerMode": "Allows for the control of the air conditioner.",
-    "switch": "Allows for the control of a switch device"
+    "switch": "Allows for the control of a switch device",
+    "airConditionerMode": "Allows for the control of the air conditioner."
   },
   "AirPurifier": {
     "switch": "Allows for the control of a switch device",
     "airPurifierFanMode": "Maintains and sets the state of an air purifier's fan"
   },
   "AirQualityDetector": {
-    "tvocMeasurement": "Measure total volatile organic compound levels",
     "temperatureMeasurement": "Get the temperature from a Device that reports current temperature",
     "carbonDioxideMeasurement": "Measure carbon dioxide levels",
+    "relativeHumidityMeasurement": "Allow reading the relative humidity from devices that support it",
     "dustSensor": "Gets the reading of the dust sensor.",
-    "relativeHumidityMeasurement": "Allow reading the relative humidity from devices that support it"
+    "tvocMeasurement": "Measure total volatile organic compound levels"
   },
   "Alarm": {
     "alarm": "The Alarm skill allows for interacting with devices that serve as alarms",
@@ -37,8 +37,8 @@
   },
   "Charger": {
     "voltageMeasurement": "Get the value of voltage measured from devices that support it",
-    "currentMeasurement": "Get the value of electrical current measured from a device.",
-    "chargingState": "The current status of battery charging"
+    "chargingState": "The current status of battery charging",
+    "currentMeasurement": "Get the value of electrical current measured from a device."
   },
   "Clock": {
     "clock": "Provide current date and time"
@@ -50,12 +50,12 @@
     "curtain": "Allows for the control of the curtain."
   },
   "Dehumidifier": {
-    "dehumidifierMode": "Allows for the control of the dehumidifier mode.",
-    "switch": "Allows for the control of a switch device"
+    "switch": "Allows for the control of a switch device",
+    "dehumidifierMode": "Allows for the control of the dehumidifier mode."
   },
   "Dishwasher": {
-    "dishwasherMode": "Allows for the control of the dishwasher mode.",
-    "switch": "Allows for the control of a switch device"
+    "switch": "Allows for the control of a switch device",
+    "dishwasherMode": "Allows for the control of the dishwasher mode."
   },
   "DoorLock": {
     "doorControl": "Allow for the control of a door"
@@ -69,35 +69,35 @@
   },
   "Feeder": {
     "switch": "Allows for the control of a switch device",
-    "feederPortion": "Allows for the portion control of a feeder device.",
-    "feederOperatingState": "Allows for the control of a feeder device."
+    "feederOperatingState": "Allows for the control of a feeder device.",
+    "feederPortion": "Allows for the portion control of a feeder device."
   },
   "GasMeter": {
     "gasMeter": "Read the gas consumption of an energy metering device"
   },
   "GasValve": {
-    "gasMeter": "Read the gas consumption of an energy metering device",
-    "valve": "Allows for the control of a valve device"
+    "valve": "Allows for the control of a valve device",
+    "gasMeter": "Read the gas consumption of an energy metering device"
   },
   "Humidifier": {
-    "humidifierMode": "Maintains and sets the state of an humidifier",
-    "switch": "Allows for the control of a switch device"
+    "switch": "Allows for the control of a switch device",
+    "humidifierMode": "Maintains and sets the state of an humidifier"
   },
   "HumiditySensor": {
     "relativeHumidityMeasurement": "Allow reading the relative humidity from devices that support it"
   },
   "Irrigator": {
-    "irrigatorOperatingState": "Allows for the control of a irrigator device.",
     "switch": "Allows for the control of a switch device",
-    "irrigatorPortion": "Allows for the portion control of a irrigator device."
+    "irrigatorPortion": "Allows for the portion control of a irrigator device.",
+    "irrigatorOperatingState": "Allows for the control of a irrigator device."
   },
   "LeakSensor": {
     "leakSensor": "A Device that senses water leakage"
   },
   "Light": {
-    "switchLevel": "Allows for the control of the level of a device like a light or a dimmer switch.",
     "switch": "Allows for the control of a switch device",
-    "colorControl": "Allows for control of a color changing device by setting its hue, saturation, and color values"
+    "colorControl": "Allows for control of a color changing device by setting its hue, saturation, and color values",
+    "switchLevel": "Allows for the control of the level of a device like a light or a dimmer switch."
   },
   "LightSensor": {
     "lightLevel": "A numerical representation of the brightness intensity"
@@ -121,8 +121,8 @@
     "refrigeration": "Allows for the control of the refrigeration."
   },
   "RobotCleaner": {
-    "switch": "Allows for the control of a switch device",
-    "robotCleanerCleaningMode": "Allows for the control of the robot cleaner cleaning mode."
+    "robotCleanerCleaningMode": "Allows for the control of the robot cleaner cleaning mode.",
+    "switch": "Allows for the control of a switch device"
   },
   "Shade": {
     "windowShadeLevel": "Allows for the control of the level of a window shade.",
@@ -134,8 +134,8 @@
   },
   "SmartPlug": {
     "voltageMeasurement": "Get the value of voltage measured from devices that support it",
-    "currentMeasurement": "Get the value of electrical current measured from a device.",
     "switch": "Allows for the control of a switch device",
+    "currentMeasurement": "Get the value of electrical current measured from a device.",
     "powerMeter": "Allows for reading the power consumption from devices that report it"
   },
   "SmokeDetector": {
@@ -145,8 +145,8 @@
     "soilHumidityMeasurement": "Allow reading the soil humidity from devices that support it"
   },
   "SoundSensor": {
-    "soundSensor": "A Device that senses sound",
-    "soundPressureLevel": "Gets the value of the sound pressure level."
+    "soundPressureLevel": "Gets the value of the sound pressure level.",
+    "soundSensor": "A Device that senses sound"
   },
   "Speaker": {
     "switch": "Allows for the control of a switch device",
@@ -160,10 +160,10 @@
     "switch": "Allows for the control of a switch device"
   },
   "Television": {
-    "tvChannel": "Allows for the control of the TV channel.",
-    "audioMute": "Allows for the control of audio mute.",
     "switch": "Allows for the control of a switch device",
-    "audioVolume": "Allows for the control of audio volume."
+    "tvChannel": "Allows for the control of the TV channel.",
+    "audioVolume": "Allows for the control of audio volume.",
+    "audioMute": "Allows for the control of audio mute."
   },
   "TemperatureSensor": {
     "temperatureMeasurement": "Get the temperature from a Device that reports current temperature"

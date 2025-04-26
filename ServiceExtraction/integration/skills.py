@@ -30,17 +30,15 @@ class airConditionerMode(Skill):
         def descriptor(cls) -> str:
             return textwrap.dedent(
                 '''\
-                • auto - The fan is on auto
-                • cool - The fan is in sleep mode to reduce noise
-                • heat - The fan is on low'''
+                • auto - auto
+                • cool - cool
+                • heat - heat'''
             )
 
         class airConditionerModeEnum(MXStrEnum):
             auto = aauto()
             cool = aauto()
             heat = aauto()
-            fanonly = aauto()
-            dehumidify = aauto()
 
     class Values:
         @dataclass
