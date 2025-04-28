@@ -138,4 +138,5 @@ if __name__ == "__main__":
                 if ac_mode == "auto":
                     All(Tags("AirConditioner").switch_off())
 """
+    example = "class Scenario1:\n    def __init__(self):\n        self.cron = '* * * * *'\n        self.period = 180000\n\n    def run(self):\n        Tags('Clock').clock_delay(minute=3)\n        Tags('Clock').clock_delay(minute=3)\n        Tags('Clock').clock_delay(minute=3)\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = '* * * * *'\n        self.period = 300000\n\n    def run(self):\n        Tags('AirConditioner').switch_toggle()\n        Tags('Clock').clock_delay(minute=5)\n        Tags('AirConditioner').switch_toggle()\n        Tags('Clock').clock_delay(minute=5)\n        Tags('AirConditioner').switch_toggle()"
     print(json.dumps(transform_code(example), indent=2, ensure_ascii=False).replace("\\n","\n"))
