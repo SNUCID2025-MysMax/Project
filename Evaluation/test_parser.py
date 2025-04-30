@@ -159,51 +159,6 @@ class TestSoplangIrSimulator(unittest.TestCase):
                     args = ", ".join(map(str, act[3])) if act[3] else ""
                     print(f"  → Action: {target}.{service}({args})")
 
-class TestAll(unittest.TestCase):
-    scenarios_a = [
-        {
-            "name": "",
-            "cron": "* * * * *",
-            "period": 1000,
-            "code": "if(temperature > 30) {\n  (#fan).on()\n}"
-        }
-    ]
-
-    # 시나리오 리스트 B (예측 또는 변형본)
-    scenarios_b = [
-        {
-            "name": "",
-            "cron": "* * * * *",
-            "period": 1000,
-            "code": "if(temperature >= 30) {\n  (#fan).on()\n}"
-        }
-    ]
-
-    # 결과 비교
-    for i, gold in enumerate(scenarios_a):
-        for j, pred in enumerate(scenarios_b):
-
-            # compare_codes는 code 필드를 script로 기대하므로 변환
-            gold_wrapped = {
-                "name": gold["name"],
-                "cron": gold["cron"],
-                "period": gold["period"],
-                "script": gold["code"]
-            }
-
-            pred_wrapped = {
-                "name": pred["name"],
-                "cron": pred["cron"],
-                "period": pred["period"],
-                "script": pred["code"]
-            }
-
-            result = compare_codes(gold_wrapped, pred_wrapped)
-
-            print(f"- cron : {result['cron_equal']}")
-            print(f"- period : {result['period_equal']}")
-            print(f"- logic equivalent: {result['logic_equivalent']}")
-            print(f"- script similarity: {result['script_similarity']:.3f}")
 """              
 class TestAll(unittest.TestCase):
 
@@ -220,6 +175,12 @@ class TestAll(unittest.TestCase):
                 "cron": "*/1 * * * *",
                 "period": 300000,
                 "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"
+            },
+            {
+                "name": "문턱값 높음",
+                "cron": "* * * * *",
+                "period": 1000,
+                "code": "if (temperature > 30) {\n  (#fan).on()\n}"
             }
         ]
 
@@ -235,9 +196,17 @@ class TestAll(unittest.TestCase):
                 "cron": "*/1 * * * *",
                 "period": 300000,
                 "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"
+            },
+            {
+                "name": "문턱값 높음",
+                "cron": "* * * * *",
+                "period": 1000,
+                "code": "if (temperature >= 30) {\n  (#fan).on()\n}"
             }
         ]
-
+        def parse_code_to_ast(script: str):
+            wrapped = f"{{\n{script}\n}}"
+            return parser.parse(wrapped, lexer=lexer)
         for i, (gen, gold) in enumerate(zip(code, label), start=1):
             print(f"\n[Test{i}]")
 
@@ -259,8 +228,36 @@ class TestAll(unittest.TestCase):
 
             print(f"- cron : {result['cron_equal']}")
             print(f"- period : {result['period_equal']}")
-            print(f"- logic equivalent: {result['logic_equivalent']}")
+            print(f"- ast_similarity: {result['ast_similarity']:.3f}")
             print(f"- script similarity: {result['script_similarity']:.3f}")
+            print("\n→ Simulated Action Traces:")
+        try:
+            gold_ast = parse_code_to_ast(gold["code"])
+            gen_ast = parse_code_to_ast(gen["code"])
+
+            logic = extract_logic_expressions(gold_ast)
+            contexts = generate_context_from_conditions(logic)
+
+            for ctx_idx, ctx in enumerate(contexts):
+                gold_trace = flatten_actions(gold_ast, ctx.copy())
+                gen_trace = flatten_actions(gen_ast, ctx.copy())
+
+                gold_actions = [a for a in gold_trace if a[0] == "Action"]
+                gen_actions = [a for a in gen_trace if a[0] == "Action"]
+
+                max_len = max(len(gold_actions), len(gen_actions))
+                for j in range(max_len):
+                    g = gold_actions[j] if j < len(gold_actions) else "❌ Missing"
+                    p = gen_actions[j] if j < len(gen_actions) else "❌ Missing"
+
+                    if g != p:
+                        print(f"\n❌ MISMATCH @ Context #{ctx_idx+1}, Step {j}")
+                        print(f"→ Variables: {ctx}")
+                        print(f"→ Gold Action: {g}")
+                        print(f"→ Pred Action: {p}")
+
+        except Exception as e:
+            print(f"❌ Simulation failed: {e}")    
 
 if __name__ == '__main__':
     unittest.main()
