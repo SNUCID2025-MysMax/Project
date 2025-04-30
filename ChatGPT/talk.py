@@ -80,6 +80,9 @@ for user_command in queries:
     # {'name': 'Scenario2', 'cron': '*/1 * * * *', 'period': 300000, 'code': "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"}]
     # 리스트에 담긴 시나리오 별로 평가 필요
     # label : 정답 code 라고 가정
+    def parse_code_to_ast(script: str):
+        wrapped = f"{{\n{script}\n}}"
+        return parser.parse(wrapped, lexer=lexer)
     for i, (gen, gold) in enumerate(zip(code, label), start=1):
         print(f"\n[Test{i}]")
 
@@ -101,8 +104,36 @@ for user_command in queries:
 
         print(f"- cron : {result['cron_equal']}")
         print(f"- period : {result['period_equal']}")
-        print(f"- logic equivalent: {result['logic_equivalent']}")
+        print(f"- ast_similarity: {result['ast_similarity']:.3f}")
         print(f"- script similarity: {result['script_similarity']:.3f}")
+        print("\n→ Simulated Action Traces:")
+    try:
+        gold_ast = parse_code_to_ast(gold["code"])
+        gen_ast = parse_code_to_ast(gen["code"])
+
+        logic = extract_logic_expressions(gold_ast)
+        contexts = generate_context_from_conditions(logic)
+
+        for ctx_idx, ctx in enumerate(contexts):
+            gold_trace = flatten_actions(gold_ast, ctx.copy())
+            gen_trace = flatten_actions(gen_ast, ctx.copy())
+
+            gold_actions = [a for a in gold_trace if a[0] == "Action"]
+            gen_actions = [a for a in gen_trace if a[0] == "Action"]
+
+            max_len = max(len(gold_actions), len(gen_actions))
+            for j in range(max_len):
+                g = gold_actions[j] if j < len(gold_actions) else "❌ Missing"
+                p = gen_actions[j] if j < len(gen_actions) else "❌ Missing"
+
+                if g != p:
+                    print(f"\n❌ MISMATCH @ Context #{ctx_idx+1}, Step {j}")
+                    print(f"→ Variables: {ctx}")
+                    print(f"→ Gold Action: {g}")
+                    print(f"→ Pred Action: {p}")
+
+    except Exception as e:
+        print(f"❌ Simulation failed: {e}")      
 
     # ---------------------------------- #
 
