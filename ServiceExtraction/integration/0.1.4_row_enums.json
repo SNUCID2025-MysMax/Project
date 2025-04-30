@@ -1,14 +1,12 @@
 {
-  "airConditionerModeEnum": {
-    "auto": "The fan is on auto",
-    "cool": "The fan is in sleep mode to reduce noise",
-    "heat": "The fan is on low",
-    "fanonly": "",
-    "dehumidify": ""
-  },
   "switchEnum": {
     "on": "The value of the ``switch`` attribute if the switch is on",
     "off": "The value of the ``switch`` attribute if the switch is off"
+  },
+  "airConditionerModeEnum": {
+    "auto": "auto",
+    "cool": "cool",
+    "heat": "heat"
   },
   "airPurifierFanModeEnum": {
     "auto": "The fan is on auto",
@@ -123,16 +121,16 @@
     "opening": "The door is opening",
     "unknown": "The current state of the door is unknown"
   },
+  "feederOperatingStateEnum": {
+    "idle": "idle",
+    "feeding": "feeding",
+    "error": "error"
+  },
   "unitEnum": {
     "liters": "",
     "milliliters": "",
     "gallons": "",
     "ounces": ""
-  },
-  "feederOperatingStateEnum": {
-    "idle": "idle",
-    "feeding": "feeding",
-    "error": "error"
   },
   "valveEnum": {
     "open": "The value of the ``valve`` attribute if the valve is open",

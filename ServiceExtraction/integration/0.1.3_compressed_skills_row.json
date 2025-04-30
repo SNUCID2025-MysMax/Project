@@ -1,19 +1,4 @@
 {
-  "airConditionerMode": {
-    "info": "Allows for the control of the air conditioner.",
-    "enum": [
-      "airConditionerModeEnum (Enum):\n\t\tauto: The fan is on auto\n\t\tcool: The fan is in sleep mode to reduce noise\n\t\theat: The fan is on low\n\t\tfanonly\n\t\tdehumidify"
-    ],
-    "Attributes": [
-      "airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner",
-      "airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in",
-      "airConditionerMode_targetTemperature (INTEGER): Current temperature status of the air conditioner"
-    ],
-    "Methods": [
-      "airConditionerMode_setAirConditionerMode(mode: airConditionerModeEnum) -> VOID:\n\t\tSet the air conditioner mode\n\n\t\tArgs:\n\t\t\tmode (airConditionerModeEnum): Set the air conditioner mode\n",
-      "airConditionerMode_setTemperature(temperature: INTEGER) -> VOID:\n\t\tSet the air conditioner temperature\n\n\t\tArgs:\n\t\t\ttemperature (INTEGER): Set the air conditioner temperature\n"
-    ]
-  },
   "switch": {
     "info": "Allows for the control of a switch device",
     "enum": [
@@ -26,6 +11,21 @@
       "switch_off() -> VOID:\n\t\tTurn a switch off\n",
       "switch_on() -> VOID:\n\t\tTurn a switch on\n",
       "switch_toggle() -> VOID:\n\t\tToggle a switch\n"
+    ]
+  },
+  "airConditionerMode": {
+    "info": "Allows for the control of the air conditioner.",
+    "enum": [
+      "airConditionerModeEnum (Enum):\n\t\tauto: auto\n\t\tcool: cool\n\t\theat: heat"
+    ],
+    "Attributes": [
+      "airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner",
+      "airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in",
+      "airConditionerMode_targetTemperature (INTEGER): Current temperature status of the air conditioner"
+    ],
+    "Methods": [
+      "airConditionerMode_setAirConditionerMode(mode: airConditionerModeEnum) -> VOID:\n\t\tSet the air conditioner mode\n\n\t\tArgs:\n\t\t\tmode (airConditionerModeEnum): Set the air conditioner mode\n",
+      "airConditionerMode_setTemperature(temperature: INTEGER) -> VOID:\n\t\tSet the air conditioner temperature\n\n\t\tArgs:\n\t\t\ttemperature (INTEGER): Set the air conditioner temperature\n"
     ]
   },
   "airPurifierFanMode": {
@@ -41,12 +41,6 @@
       "airPurifierFanMode_setAirPurifierFanMode(mode: airPurifierFanModeEnum) -> VOID:\n\t\tSet the air purifier fan's mode\n\n\t\tArgs:\n\t\t\tmode (airPurifierFanModeEnum): Set the air purifier fan's mode\n"
     ]
   },
-  "tvocMeasurement": {
-    "info": "Measure total volatile organic compound levels",
-    "Attributes": [
-      "tvocMeasurement_tvocLevel (DOUBLE): The level of total volatile organic compounds detected"
-    ]
-  },
   "temperatureMeasurement": {
     "info": "Get the temperature from a Device that reports current temperature",
     "Attributes": [
@@ -60,6 +54,12 @@
       "carbonDioxideMeasurement_carbonDioxide (DOUBLE): The level of carbon dioxide detected"
     ]
   },
+  "relativeHumidityMeasurement": {
+    "info": "Allow reading the relative humidity from devices that support it",
+    "Attributes": [
+      "relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device"
+    ]
+  },
   "dustSensor": {
     "info": "Gets the reading of the dust sensor.",
     "Attributes": [
@@ -68,10 +68,10 @@
       "dustSensor_veryFineDustLevel (INTEGER): Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter"
     ]
   },
-  "relativeHumidityMeasurement": {
-    "info": "Allow reading the relative humidity from devices that support it",
+  "tvocMeasurement": {
+    "info": "Measure total volatile organic compound levels",
     "Attributes": [
-      "relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device"
+      "tvocMeasurement_tvocLevel (DOUBLE): The level of total volatile organic compounds detected"
     ]
   },
   "alarm": {
@@ -149,10 +149,10 @@
     "info": "Provides calculation services",
     "Methods": [
       "calculator_add(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tAdd two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n",
-      "calculator_div(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tDivide two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n",
-      "calculator_mod(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tModulo two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n",
-      "calculator_mul(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tMultiply two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n",
-      "calculator_sub(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tSubtract two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to add\n\t\t\tb (DOUBLE): The second number to add\n"
+      "calculator_div(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tDivide two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to divide\n\t\t\tb (DOUBLE): The second number to divide\n",
+      "calculator_mod(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tModulo two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to modulo\n\t\t\tb (DOUBLE): The second number to modulo\n",
+      "calculator_mul(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tMultiply two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to multiply\n\t\t\tb (DOUBLE): The second number to multiply\n",
+      "calculator_sub(a: DOUBLE, b: DOUBLE) -> DOUBLE:\n\t\tSubtract two numbers\n\n\t\tArgs:\n\t\t\ta (DOUBLE): The first number to subtract\n\t\t\tb (DOUBLE): The second number to subtract\n"
     ]
   },
   "camera": {
@@ -172,12 +172,6 @@
       "voltageMeasurement_voltage (DOUBLE): A number representing the current voltage measured"
     ]
   },
-  "currentMeasurement": {
-    "info": "Get the value of electrical current measured from a device.",
-    "Attributes": [
-      "currentMeasurement_current (DOUBLE): A number representing the current measured."
-    ]
-  },
   "chargingState": {
     "info": "The current status of battery charging",
     "enum": [
@@ -186,6 +180,12 @@
     "Attributes": [
       "chargingState_chargingState (chargingStateEnum): The current charging state of the device",
       "chargingState_supportedChargingStates (list[chargingStateEnum]): The list of charging states that the device supports. Optional, defaults to all states if not set."
+    ]
+  },
+  "currentMeasurement": {
+    "info": "Get the value of electrical current measured from a device.",
+    "Attributes": [
+      "currentMeasurement_current (DOUBLE): A number representing the current measured."
     ]
   },
   "clock": {
@@ -290,18 +290,6 @@
       "fanControl_setPercent(percent: INTEGER) -> VOID:\n\t\tSet the fan speed percent.\n\n\t\tArgs:\n\t\t\tpercent (INTEGER): The percent value to set the fan speed to.\n"
     ]
   },
-  "feederPortion": {
-    "info": "Allows for the portion control of a feeder device.",
-    "enum": [
-      "unitEnum (Enum):\n\t\tgrams\n\t\tpounds\n\t\tounces\n\t\tservings"
-    ],
-    "Attributes": [
-      "feederPortion_feedPortion (DOUBLE): A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense."
-    ],
-    "Methods": [
-      "feederPortion_setFeedPortion(portion: DOUBLE, unit: unitEnum) -> VOID:\n\t\tSet the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.\n\n\t\tArgs:\n\t\t\tportion (DOUBLE): The portion (in grams, pounds, ounces, or servings) to dispense.\n\t\t\tunit (unitEnum): \n"
-    ]
-  },
   "feederOperatingState": {
     "info": "Allows for the control of a feeder device.",
     "enum": [
@@ -312,6 +300,18 @@
     ],
     "Methods": [
       "feederOperatingState_startFeeding() -> VOID:\n\t\tBegin the feeding process.\n"
+    ]
+  },
+  "feederPortion": {
+    "info": "Allows for the portion control of a feeder device.",
+    "enum": [
+      "unitEnum (Enum):\n\t\tgrams\n\t\tpounds\n\t\tounces\n\t\tservings"
+    ],
+    "Attributes": [
+      "feederPortion_feedPortion (DOUBLE): A number that represents the portion (in grams, pounds, ounces, or servings) that will dispense."
+    ],
+    "Methods": [
+      "feederPortion_setFeedPortion(portion: DOUBLE, unit: unitEnum) -> VOID:\n\t\tSet the portion (in grams, pounds, ounces, or servings) that the feeder will dispense.\n\n\t\tArgs:\n\t\t\tportion (DOUBLE): The portion (in grams, pounds, ounces, or servings) to dispense.\n\t\t\tunit (unitEnum): \n"
     ]
   },
   "gasMeter": {
@@ -348,18 +348,6 @@
       "humidifierMode_setHumidifierMode(mode: humidifierModeEnum) -> VOID:\n\t\tSet the humidifier mode\n\n\t\tArgs:\n\t\t\tmode (humidifierModeEnum): Set the humidifier mode to \"auto\", \"low\", \"medium\", or \"high\" mode\n"
     ]
   },
-  "irrigatorOperatingState": {
-    "info": "Allows for the control of a irrigator device.",
-    "enum": [
-      "irrigatorOperatingStateEnum (Enum):\n\t\tidle: idle\n\t\twatering: watering\n\t\terror: error"
-    ],
-    "Attributes": [
-      "irrigatorOperatingState_irrigatorOperatingState (irrigatorOperatingStateEnum): The current state of the irrigator."
-    ],
-    "Methods": [
-      "irrigatorOperatingState_startWatering() -> VOID:\n\t\tBegin the watering process.\n"
-    ]
-  },
   "irrigatorPortion": {
     "info": "Allows for the portion control of a irrigator device.",
     "enum": [
@@ -372,6 +360,18 @@
       "irrigatorPortion_setWaterPortion(portion: DOUBLE, unit: unitEnum) -> VOID:\n\t\tSet the portion (in liters, milliliters, gallons, or ounces) that the irrigator will dispense.\n\n\t\tArgs:\n\t\t\tportion (DOUBLE): The portion (in grams, pounds, ounces, or servings) to dispense.\n\t\t\tunit (unitEnum): \n"
     ]
   },
+  "irrigatorOperatingState": {
+    "info": "Allows for the control of a irrigator device.",
+    "enum": [
+      "irrigatorOperatingStateEnum (Enum):\n\t\tidle: idle\n\t\twatering: watering\n\t\terror: error"
+    ],
+    "Attributes": [
+      "irrigatorOperatingState_irrigatorOperatingState (irrigatorOperatingStateEnum): The current state of the irrigator."
+    ],
+    "Methods": [
+      "irrigatorOperatingState_startWatering() -> VOID:\n\t\tBegin the watering process.\n"
+    ]
+  },
   "leakSensor": {
     "info": "A Device that senses water leakage",
     "enum": [
@@ -379,17 +379,6 @@
     ],
     "Attributes": [
       "leakSensor_leakage (presenceEnum): Whether or not water leakage was detected by the Device"
-    ]
-  },
-  "switchLevel": {
-    "info": "Allows for the control of the level of a device like a light or a dimmer switch.",
-    "Attributes": [
-      "switchLevel_level (INTEGER): A number that represents the current level, usually ``0-100`` in percent",
-      "switchLevel_levelRange (DICT): Constraints on the level value"
-    ],
-    "Methods": [
-      "switchLevel_alert() -> VOID:\n\t\tAlert with dimming\n",
-      "switchLevel_setLevel(level: INTEGER, rate: INTEGER) -> VOID:\n\t\tSet the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.\n\n\t\tArgs:\n\t\t\tlevel (INTEGER): The level value, usually ``0-100`` in percent\n\t\t\trate (INTEGER): The rate at which to change the level\n"
     ]
   },
   "colorControl": {
@@ -403,6 +392,17 @@
       "colorControl_setColor(color: DICT) -> VOID:\n\t\tSets the color based on the values passed in with the given map\n\n\t\tArgs:\n\t\t\tcolor (DICT): The color map supports the following key/value pairs:\n",
       "colorControl_setHue(hue: DOUBLE) -> VOID:\n\t\tSet the hue value of the color\n\n\t\tArgs:\n\t\t\thue (DOUBLE): A number in the range ``0-100`` representing the hue as a value of percent\n",
       "colorControl_setSaturation(saturation: DOUBLE) -> VOID:\n\t\tSet the saturation value of the color\n\n\t\tArgs:\n\t\t\tsaturation (DOUBLE): A number in the range ``0-100`` representing the saturation as a value of percent\n"
+    ]
+  },
+  "switchLevel": {
+    "info": "Allows for the control of the level of a device like a light or a dimmer switch.",
+    "Attributes": [
+      "switchLevel_level (INTEGER): A number that represents the current level, usually ``0-100`` in percent",
+      "switchLevel_levelRange (DICT): Constraints on the level value"
+    ],
+    "Methods": [
+      "switchLevel_alert() -> VOID:\n\t\tAlert with dimming\n",
+      "switchLevel_setLevel(level: INTEGER, rate: INTEGER) -> VOID:\n\t\tSet the level to the given value. If the device supports being turned on and off then it will be turned on if ``level`` is greater than 0 and turned off if ``level`` is equal to 0.\n\n\t\tArgs:\n\t\t\tlevel (INTEGER): The level value, usually ``0-100`` in percent\n\t\t\trate (INTEGER): The rate at which to change the level\n"
     ]
   },
   "lightLevel": {
@@ -550,6 +550,12 @@
       "soilHumidityMeasurement_soilHumidity (DOUBLE): A numerical representation of the soil humidity measurement taken by the device"
     ]
   },
+  "soundPressureLevel": {
+    "info": "Gets the value of the sound pressure level.",
+    "Attributes": [
+      "soundPressureLevel_soundPressureLevel (DOUBLE): Level of the sound pressure"
+    ]
+  },
   "soundSensor": {
     "info": "A Device that senses sound",
     "enum": [
@@ -557,12 +563,6 @@
     ],
     "Attributes": [
       "soundSensor_sound (soundEnum): Whether or not sound was detected by the Device"
-    ]
-  },
-  "soundPressureLevel": {
-    "info": "Gets the value of the sound pressure level.",
-    "Attributes": [
-      "soundPressureLevel_soundPressureLevel (DOUBLE): Level of the sound pressure"
     ]
   },
   "mediaPlayback": {
@@ -609,6 +609,17 @@
       "tvChannel_setTvChannelName(tvChannelName: STRING) -> VOID:\n\t\tSet the TV channel Name\n\n\t\tArgs:\n\t\t\ttvChannelName (STRING): \n"
     ]
   },
+  "audioVolume": {
+    "info": "Allows for the control of audio volume.",
+    "Attributes": [
+      "audioVolume_volume (INTEGER): The current volume setting of the audio"
+    ],
+    "Methods": [
+      "audioVolume_setVolume(volume: INTEGER) -> VOID:\n\t\tSet the audio volume level\n\n\t\tArgs:\n\t\t\tvolume (INTEGER): A value to which the audio volume level should be set\n",
+      "audioVolume_volumeDown() -> VOID:\n\t\tTurn the audio volume down\n",
+      "audioVolume_volumeUp() -> VOID:\n\t\tTurn the audio volume up\n"
+    ]
+  },
   "audioMute": {
     "info": "Allows for the control of audio mute.",
     "enum": [
@@ -621,17 +632,6 @@
       "audioMute_mute() -> VOID:\n\t\tSet the audio to mute state\n",
       "audioMute_setMute(state: muteEnum) -> VOID:\n\t\tSet the state of the audio mute\n\n\t\tArgs:\n\t\t\tstate (muteEnum): Set the audio mute state to \"muted\" or \"unmuted\"\n",
       "audioMute_unmute() -> VOID:\n\t\tSet the audio to unmute state\n"
-    ]
-  },
-  "audioVolume": {
-    "info": "Allows for the control of audio volume.",
-    "Attributes": [
-      "audioVolume_volume (INTEGER): The current volume setting of the audio"
-    ],
-    "Methods": [
-      "audioVolume_setVolume(volume: INTEGER) -> VOID:\n\t\tSet the audio volume level\n\n\t\tArgs:\n\t\t\tvolume (INTEGER): A value to which the audio volume level should be set\n",
-      "audioVolume_volumeDown() -> VOID:\n\t\tTurn the audio volume down\n",
-      "audioVolume_volumeUp() -> VOID:\n\t\tTurn the audio volume up\n"
     ]
   },
   "testSkill": {
