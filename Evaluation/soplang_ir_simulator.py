@@ -96,7 +96,6 @@ def flatten_actions(ir, context, depth=0):
 
     if len(top_level) == 1 and top_level[0].get("type") == "Block":
         top_level = top_level[0].get("body", [])
-    # ✅ 여기만 바꾸면 돼!
     for stmt in top_level:
         visit(stmt)
 

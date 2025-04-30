@@ -8,6 +8,12 @@ from embedding import hybrid_recommend
 from conversion import transform_code
 from FlagEmbedding import BGEM3FlagModel
 
+sys.path.append("./Evaluation")
+from soplang_parser_full import parser, lexer
+from soplang_ir_simulator import flatten_actions, generate_context_from_conditions
+from compare_soplang_ir import extract_logic_expressions, compare_codes 
+
+
 # .env 파일에서 환경변수 불러오기
 load_dotenv()
 
@@ -73,11 +79,30 @@ for user_command in queries:
     # code: [{'name': 'Scenario1', 'cron': '*/1 * * * *', 'period': 180000, 'code': "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"},
     # {'name': 'Scenario2', 'cron': '*/1 * * * *', 'period': 300000, 'code': "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"}]
     # 리스트에 담긴 시나리오 별로 평가 필요
+    # label : 정답 code 라고 가정
+    for i, (gen, gold) in enumerate(zip(code, label), start=1):
+        print(f"\n[Test{i}]")
 
+        gold_wrapped = {
+            "name": gold["name"],
+            "cron": gold["cron"],
+            "period": gold["period"],
+            "script": gold["code"]
+        }
 
+        gen_wrapped = {
+            "name": gen["name"],
+            "cron": gen["cron"],
+            "period": gen["period"],
+            "script": gen["code"]
+        }
 
+        result = compare_codes(gold_wrapped, gen_wrapped)
 
-
+        print(f"- cron : {result['cron_equal']}")
+        print(f"- period : {result['period_equal']}")
+        print(f"- logic equivalent: {result['logic_equivalent']}")
+        print(f"- script similarity: {result['script_similarity']:.3f}")
 
     # ---------------------------------- #
 

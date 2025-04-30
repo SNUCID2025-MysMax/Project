@@ -61,8 +61,8 @@ def t_INTEGER(t):
     return t
 
 def t_STRING_LITERAL(t):
-    r'"([^\\"]|\\.)*"'
-    t.value = t.value.strip('"')
+    r'(\"([^\\"]|\\.)*\"|\'([^\\\']|\\.)*\')'
+    t.value = t.value[1:-1]  # Remove the surrounding quotes
     return t
 
 def t_IDENTIFIER(t):

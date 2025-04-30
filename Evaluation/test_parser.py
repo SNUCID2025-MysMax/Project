@@ -4,7 +4,7 @@ from soplang_parser_full import parser, lexer
 from compare_soplang_ir import parse_script_json, compare_codes, extract_logic_expressions
 from soplang_ir_simulator import generate_context_from_conditions, flatten_actions
 
-'''
+"""
 class TestSoplangParserFull(unittest.TestCase):
 
     def test_basic(self):
@@ -15,7 +15,7 @@ class TestSoplangParserFull(unittest.TestCase):
             "script": "if(temperature > 30) {\\n  (#fan).on()\\n}"
         }
         tree = parse_script_json(json_data)
-        print("\n[basic AST]:\n", json.dumps(tree, indent=2))
+        print("\n[basic AST]:\n", json.dumps(tree, indent=2, ensure_ascii=False))
         self.assertIsInstance(tree, dict)
 
     def test_cron(self):
@@ -26,7 +26,7 @@ class TestSoplangParserFull(unittest.TestCase):
             "script": "if ((#office #movement).detected == 1 && (#office).brightness < 50) {\\n  (#office #light).turn_on()\\n  x = (#office).take_picture()\\n  (#util).send_mail(\"움직임 감지\", x)\\n}"
         }
         tree = parse_script_json(json_data)
-        print("\n[cron AST]:\n", json.dumps(tree, indent=2))
+        print("\n[cron AST]:\n", json.dumps(tree, indent=2, ensure_ascii=False))
         self.assertIsNotNone(tree, dict)
     
     def test_functioncall(self):
@@ -37,7 +37,7 @@ class TestSoplangParserFull(unittest.TestCase):
             "script": "photo = (#Camera).take()"
         }
         tree = parse_script_json(json_data)
-        print("\n[function_call AST]:\n", json.dumps(tree, indent=2))
+        print("\n[function_call AST]:\n", json.dumps(tree, indent=2, ensure_ascii=False))
         self.assertIsNotNone(tree, dict)
     
     def test_all(self):
@@ -48,7 +48,7 @@ class TestSoplangParserFull(unittest.TestCase):
             "script": "all(#Light).off()"
         }
         tree = parse_script_json(json_data)
-        print("\n[all AST]:\n", json.dumps(tree, indent=2))
+        print("\n[all AST]:\n", json.dumps(tree, indent=2, ensure_ascii=False))
         self.assertIsNotNone(tree, dict)
         
     def test_arithmetic_expression(self):
@@ -59,7 +59,7 @@ class TestSoplangParserFull(unittest.TestCase):
             "script": "x := 4 / 3\\ny = x + 2\\n(#target).set_temp(y)"
         }
         tree = parse_script_json(json_data)
-        print("\n[산술 연산 AST]:\n", json.dumps(tree, indent=2))
+        print("\n[산술 연산 AST]:\n", json.dumps(tree, indent=2, ensure_ascii=False))
         self.assertIsNotNone(tree)
         self.assertIsInstance(tree, dict)
     def test_delay_statement(self):
@@ -70,7 +70,7 @@ class TestSoplangParserFull(unittest.TestCase):
             "script": "delay(1000)\\n(#speaker).say(\"1초 경과\")"
         }
         tree = parse_script_json(json_data)
-        print("\n[Delay AST]:\n", json.dumps(tree, indent=2))
+        print("\n[Delay AST]:\n", json.dumps(tree, indent=2, ensure_ascii=False))
         self.assertIsNotNone(tree)
         self.assertIsInstance(tree, dict)
 
@@ -117,10 +117,11 @@ class TestCompareSoplangIR(unittest.TestCase):
         self.assertTrue(result["period_equal"])
         self.assertFalse(result["logic_equivalent"])
         self.assertLess(result["script_similarity"], 1.0)
-'''
+
 def parse_script_only(script_code: str):
     wrapped_code = f"{{\n{script_code}\n}}"
     return parser.parse(wrapped_code, lexer=lexer)
+
 
 class TestSoplangIrSimulator(unittest.TestCase):
     def test_condition_contexts_and_actions(self):
@@ -157,6 +158,109 @@ class TestSoplangIrSimulator(unittest.TestCase):
                     service = act[2]
                     args = ", ".join(map(str, act[3])) if act[3] else ""
                     print(f"  → Action: {target}.{service}({args})")
+
+class TestAll(unittest.TestCase):
+    scenarios_a = [
+        {
+            "name": "",
+            "cron": "* * * * *",
+            "period": 1000,
+            "code": "if(temperature > 30) {\n  (#fan).on()\n}"
+        }
+    ]
+
+    # 시나리오 리스트 B (예측 또는 변형본)
+    scenarios_b = [
+        {
+            "name": "",
+            "cron": "* * * * *",
+            "period": 1000,
+            "code": "if(temperature >= 30) {\n  (#fan).on()\n}"
+        }
+    ]
+
+    # 결과 비교
+    for i, gold in enumerate(scenarios_a):
+        for j, pred in enumerate(scenarios_b):
+
+            # compare_codes는 code 필드를 script로 기대하므로 변환
+            gold_wrapped = {
+                "name": gold["name"],
+                "cron": gold["cron"],
+                "period": gold["period"],
+                "script": gold["code"]
+            }
+
+            pred_wrapped = {
+                "name": pred["name"],
+                "cron": pred["cron"],
+                "period": pred["period"],
+                "script": pred["code"]
+            }
+
+            result = compare_codes(gold_wrapped, pred_wrapped)
+
+            print(f"- cron : {result['cron_equal']}")
+            print(f"- period : {result['period_equal']}")
+            print(f"- logic equivalent: {result['logic_equivalent']}")
+            print(f"- script similarity: {result['script_similarity']:.3f}")
+"""              
+class TestAll(unittest.TestCase):
+
+    def test_code_vs_label(self):
+        code = [
+            {
+                "name": "Label1",
+                "cron": "*/1 * * * *",
+                "period": 180000,
+                "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"
+            },
+            {
+                "name": "Label2",
+                "cron": "*/1 * * * *",
+                "period": 300000,
+                "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"
+            }
+        ]
+
+        label = [
+            {
+                "name": "Label1",
+                "cron": "*/1 * * * *",
+                "period": 180000,
+                "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"
+            },
+            {
+                "name": "Label2",
+                "cron": "*/1 * * * *",
+                "period": 300000,
+                "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"
+            }
+        ]
+
+        for i, (gen, gold) in enumerate(zip(code, label), start=1):
+            print(f"\n[Test{i}]")
+
+            gold_wrapped = {
+                "name": gold["name"],
+                "cron": gold["cron"],
+                "period": gold["period"],
+                "script": gold["code"]
+            }
+
+            gen_wrapped = {
+                "name": gen["name"],
+                "cron": gen["cron"],
+                "period": gen["period"],
+                "script": gen["code"]
+            }
+
+            result = compare_codes(gold_wrapped, gen_wrapped)
+
+            print(f"- cron : {result['cron_equal']}")
+            print(f"- period : {result['period_equal']}")
+            print(f"- logic equivalent: {result['logic_equivalent']}")
+            print(f"- script similarity: {result['script_similarity']:.3f}")
 
 if __name__ == '__main__':
     unittest.main()
