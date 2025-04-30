@@ -7,6 +7,7 @@ import tiktoken
 from embedding import hybrid_recommend
 from conversion import transform_code
 from FlagEmbedding import BGEM3FlagModel
+import json
 
 sys.path.append("./Evaluation")
 from soplang_parser_full import parser, lexer
@@ -37,9 +38,12 @@ classes = extract_classes_by_name(service_doc)
 # Load Embedding
 model = BGEM3FlagModel('BAAI/bge-m3', use_fp16=False)
 
-queries = [
-    "3분마다 알람을 울려줘. 5분마다 에어컨 스위치를 토글해.",
-]
+queries = []
+with open("TestCase\\input.json", "r", encoding="utf-8") as f:
+    input_data = json.load(f)
+    for category, input_list in input_data.items():
+        queries.extend(input_list)
+    print(queries)
 
 for user_command in queries:
     service_selected = set(i["key"] for i in hybrid_recommend(model, user_command, max_k=7))
@@ -65,7 +69,7 @@ for user_command in queries:
     response = client.chat.completions.create(
         model="gpt-4",
         messages=[
-            {"role": "system", "content": grammar_compressed},
+            {"role": "system", "content": grammar},
             {"role": "user", "content": prompt},
         ]
     )
