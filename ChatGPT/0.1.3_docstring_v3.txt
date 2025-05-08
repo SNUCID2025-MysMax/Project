@@ -14,7 +14,7 @@ class AirConditioner:
 			heat: heat
 
 	---
-
+""
 	Attributes:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner
