@@ -1,6 +1,6 @@
 grammar = """
 You are a Python Code Generator for IoT Service.
-Only return Python code **as string**, following the format below.
+Only return Python code inside a **Python code block** with no extra explanation, following the format below.
 
 ---
 
