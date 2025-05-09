@@ -1,6 +1,7 @@
 [
   {
     "user_command": "3분마다 알람을 울려줘. 5분마다 에어컨 스위치를 토글해.",
+    "devices": ["Alarm", "AirConditioner", "Clock"],
     "generated_code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = 180000  # 3 minutes in milliseconds\n\n    def run(self):\n        Tags(\"Alarm\").ring()\n\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = 300000  # 5 minutes in milliseconds\n\n    def run(self):\n        Tags(\"AirConditioner\").switch_toggle()\n```",
     "transformed_code": [
       {

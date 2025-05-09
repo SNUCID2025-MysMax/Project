@@ -85,6 +85,7 @@ with open("./Testset/test.json", "r") as f:
 
         entry = {
             "user_command": user_command,
+            "devices": service_selected,
             "generated_code": resp,
             "transformed_code": code,
             "label": label,
@@ -109,6 +110,15 @@ with open("./Testset/test.json", "r") as f:
             "len_label_code": len(label),
             "len_is_equal": len(code) == len(label)
         }
+
+        # Syntax 체크
+        for c in code:
+            try:
+                parse_code_to_ast(c)
+            except Exception as e:
+                print(f"Parse failed: {e}")  
+                
+
 
         compare_result = {}
         
