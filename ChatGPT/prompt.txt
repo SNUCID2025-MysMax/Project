@@ -1,31 +1,91 @@
 # Devices
-class DoorLock:
+class Humidifier:
 	"""
-	Tags: ["DoorLock"]
+	Tags: ["Humidifier"]
 
 	---
 
 	Enums:
-		doorEnum (Enum):
-			closed: The door is closed
-			closing: The door is closing
-			open: The door is open
-			opening: The door is opening
-			unknown: The current state of the door is unknown
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		humidifierModeEnum (Enum):
+			auto
+			low
+			medium
+			high
 
 	---
 
 	Attributes:
-		doorControl_door (doorEnum): The current state of the door
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		humidifierMode_humidifierMode (humidifierModeEnum): Current mode of the humidifier
 
 	---
 
 	Methods:
-		doorControl_close() -> VOID:
-			Close the door
+		switch_off() -> VOID:
+			Turn a switch off
 	
-		doorControl_open() -> VOID:
-			Open the door
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		humidifierMode_setHumidifierMode(mode: humidifierModeEnum) -> VOID:
+			Set the humidifier mode
+	
+			Args:
+				mode (humidifierModeEnum): Set the humidifier mode to "auto", "low", "medium", or "high" mode
+	
+	"""
+class AirConditioner:
+	"""
+	Tags: ["AirConditioner"]
+
+	---
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		airConditionerModeEnum (Enum):
+			auto: auto
+			cool: cool
+			heat: heat
+
+	---
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner
+		airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in
+		airConditionerMode_targetTemperature (INTEGER): Current temperature status of the air conditioner
+
+	---
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		airConditionerMode_setAirConditionerMode(mode: airConditionerModeEnum) -> VOID:
+			Set the air conditioner mode
+	
+			Args:
+				mode (airConditionerModeEnum): Set the air conditioner mode
+	
+		airConditionerMode_setTemperature(temperature: INTEGER) -> VOID:
+			Set the air conditioner temperature
+	
+			Args:
+				temperature (INTEGER): Set the air conditioner temperature
 	
 	"""
 class Fan:
@@ -71,45 +131,90 @@ class Fan:
 				percent (INTEGER): The percent value to set the fan speed to.
 	
 	"""
-class Humidifier:
+class Button:
 	"""
-	Tags: ["Humidifier"]
+	Tags: ["Button"]
 
 	---
 
 	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
-		humidifierModeEnum (Enum):
-			auto
-			low
-			medium
-			high
+		buttonEnum (Enum):
+			pushed: The value if the button is pushed
+			held: The value if the button is held
+			double: The value if the button is pushed twice
+			pushed_2x: The value if the button is pushed twice
+			pushed_3x: The value if the button is pushed three times
+			pushed_4x: The value if the button is pushed four times
+			pushed_5x: The value if the button is pushed five times
+			pushed_6x: The value if the button is pushed six times
+			down: The value if the button is clicked down
+			down_2x: The value if the button is clicked down twice
+			down_3x: The value if the button is clicked down three times
+			down_4x: The value if the button is clicked down four times
+			down_5x: The value if the button is clicked down five times
+			down_6x: The value if the button is clicked down six times
+			down_hold: The value if the button is clicked down and held
+			up: The value if the button is clicked up
+			up_2x: The value if the button is clicked up twice
+			up_3x: The value if the button is clicked up three times
+			up_4x: The value if the button is clicked up four times
+			up_5x: The value if the button is clicked up five times
+			up_6x: The value if the button is clicked up six times
+			up_hold: The value if the button is clicked up and held
+			swipe_up: The value if the button is swiped up from botton to top
+			swipe_down: The value if the button is swiped down from top to bottom
+			swipe_left: The value if the button is swiped from right to left
+			swipe_right: The value if the button is swiped from left to right
 
 	---
 
 	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
-		humidifierMode_humidifierMode (humidifierModeEnum): Current mode of the humidifier
+		button_button (buttonEnum): The state of the buttons
+		button_numberOfButtons (INTEGER): The number of buttons on the device
+		button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values
+	"""
+class Clock:
+	"""
+	Tags: ["Clock"]
+
+	---
+
+	Enums:
+		weekdayEnum (Enum):
+			monday
+			tuesday
+			wednesday
+			thursday
+			friday
+			saturday
+			sunday
+
+	---
+
+	Attributes:
+		clock_date (DOUBLE): Current date as double number - format: YYYYMMdd
+		clock_datetime (DOUBLE): Current date and time as double number - format: YYYYMMddhhmm
+		clock_day (INTEGER): Current day
+		clock_hour (INTEGER): Current hour
+		clock_isHoliday (BOOL): today is holiday or not
+		clock_minute (INTEGER): Current minute
+		clock_month (INTEGER): Current month
+		clock_second (INTEGER): Current second
+		clock_time (DOUBLE): Current time as double number - format: hhmm
+		clock_timestamp (DOUBLE): Current timestamp (return current unix time - unit: seconds with floating point)
+		clock_weekday (weekdayEnum): Current weekday
+		clock_year (INTEGER): Current year
 
 	---
 
 	Methods:
-		switch_off() -> VOID:
-			Turn a switch off
-	
-		switch_on() -> VOID:
-			Turn a switch on
-	
-		switch_toggle() -> VOID:
-			Toggle a switch
-	
-		humidifierMode_setHumidifierMode(mode: humidifierModeEnum) -> VOID:
-			Set the humidifier mode
+		clock_delay(hour: INTEGER, minute: INTEGER, second: INTEGER) -> VOID:
+			delay for a given amount of time
 	
 			Args:
-				mode (humidifierModeEnum): Set the humidifier mode to "auto", "low", "medium", or "high" mode
+				hour (INTEGER): hour
+				minute (INTEGER): minute
+				second (INTEGER): second
 	
 	"""
 class AirPurifier:
@@ -156,6 +261,35 @@ class AirPurifier:
 	
 			Args:
 				mode (airPurifierFanModeEnum): Set the air purifier fan's mode
+	
+	"""
+class DoorLock:
+	"""
+	Tags: ["DoorLock"]
+
+	---
+
+	Enums:
+		doorEnum (Enum):
+			closed: The door is closed
+			closing: The door is closing
+			open: The door is open
+			opening: The door is opening
+			unknown: The current state of the door is unknown
+
+	---
+
+	Attributes:
+		doorControl_door (doorEnum): The current state of the door
+
+	---
+
+	Methods:
+		doorControl_close() -> VOID:
+			Close the door
+	
+		doorControl_open() -> VOID:
+			Open the door
 	
 	"""
 class Dehumidifier:
@@ -209,143 +343,9 @@ class Dehumidifier:
 				mode (dehumidifierModeEnum): Set the dehumidifier mode
 	
 	"""
-class AirConditioner:
-	"""
-	Tags: ["AirConditioner"]
-
-	---
-
-	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
-		airConditionerModeEnum (Enum):
-			auto: auto
-			cool: cool
-			heat: heat
-
-	---
-
-	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
-		airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner
-		airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in
-		airConditionerMode_targetTemperature (INTEGER): Current temperature status of the air conditioner
-
-	---
-
-	Methods:
-		switch_off() -> VOID:
-			Turn a switch off
-	
-		switch_on() -> VOID:
-			Turn a switch on
-	
-		switch_toggle() -> VOID:
-			Toggle a switch
-	
-		airConditionerMode_setAirConditionerMode(mode: airConditionerModeEnum) -> VOID:
-			Set the air conditioner mode
-	
-			Args:
-				mode (airConditionerModeEnum): Set the air conditioner mode
-	
-		airConditionerMode_setTemperature(temperature: INTEGER) -> VOID:
-			Set the air conditioner temperature
-	
-			Args:
-				temperature (INTEGER): Set the air conditioner temperature
-	
-	"""
-class Clock:
-	"""
-	Tags: ["Clock"]
-
-	---
-
-	Enums:
-		weekdayEnum (Enum):
-			monday
-			tuesday
-			wednesday
-			thursday
-			friday
-			saturday
-			sunday
-
-	---
-
-	Attributes:
-		clock_date (DOUBLE): Current date as double number - format: YYYYMMdd
-		clock_datetime (DOUBLE): Current date and time as double number - format: YYYYMMddhhmm
-		clock_day (INTEGER): Current day
-		clock_hour (INTEGER): Current hour
-		clock_isHoliday (BOOL): today is holiday or not
-		clock_minute (INTEGER): Current minute
-		clock_month (INTEGER): Current month
-		clock_second (INTEGER): Current second
-		clock_time (DOUBLE): Current time as double number - format: hhmm
-		clock_timestamp (DOUBLE): Current timestamp (return current unix time - unit: seconds with floating point)
-		clock_weekday (weekdayEnum): Current weekday
-		clock_year (INTEGER): Current year
-
-	---
-
-	Methods:
-		clock_delay(hour: INTEGER, minute: INTEGER, second: INTEGER) -> VOID:
-			delay for a given amount of time
-	
-			Args:
-				hour (INTEGER): hour
-				minute (INTEGER): minute
-				second (INTEGER): second
-	
-	"""
-class Button:
-	"""
-	Tags: ["Button"]
-
-	---
-
-	Enums:
-		buttonEnum (Enum):
-			pushed: The value if the button is pushed
-			held: The value if the button is held
-			double: The value if the button is pushed twice
-			pushed_2x: The value if the button is pushed twice
-			pushed_3x: The value if the button is pushed three times
-			pushed_4x: The value if the button is pushed four times
-			pushed_5x: The value if the button is pushed five times
-			pushed_6x: The value if the button is pushed six times
-			down: The value if the button is clicked down
-			down_2x: The value if the button is clicked down twice
-			down_3x: The value if the button is clicked down three times
-			down_4x: The value if the button is clicked down four times
-			down_5x: The value if the button is clicked down five times
-			down_6x: The value if the button is clicked down six times
-			down_hold: The value if the button is clicked down and held
-			up: The value if the button is clicked up
-			up_2x: The value if the button is clicked up twice
-			up_3x: The value if the button is clicked up three times
-			up_4x: The value if the button is clicked up four times
-			up_5x: The value if the button is clicked up five times
-			up_6x: The value if the button is clicked up six times
-			up_hold: The value if the button is clicked up and held
-			swipe_up: The value if the button is swiped up from botton to top
-			swipe_down: The value if the button is swiped down from top to bottom
-			swipe_left: The value if the button is swiped from right to left
-			swipe_right: The value if the button is swiped from left to right
-
-	---
-
-	Attributes:
-		button_button (buttonEnum): The state of the buttons
-		button_numberOfButtons (INTEGER): The number of buttons on the device
-		button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values
-	"""
 
 # User Command
-command: 3ë¶„ë§ˆë‹¤ ì•ŒëŒì„ ìš¸ë ¤ì¤˜. 5ë¶„ë§ˆë‹¤ ì—ì–´ì»¨ ìŠ¤ìœ„ì¹˜ë¥¼ í† ê¸€í•´.
+command: 3ºĞ¸¶´Ù ¾Ë¶÷À» ¿ï·ÁÁà. 5ºĞ¸¶´Ù ¿¡¾îÄÁ ½ºÀ§Ä¡¸¦ Åä±ÛÇØ.
 
 # Current Time
-current: Fri, 09 May 2025 09:35:43
+current: Wed, 30 Apr 2025 19:10:49

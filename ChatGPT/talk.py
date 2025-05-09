@@ -30,7 +30,7 @@ def extract_classes_by_name(text: str):
 
     return class_dict
 
-with open("0.1.3_docstring_v3.txt", "r") as f:
+with open("0.1.3_docstring_v3.txt", "r", encoding="utf-8") as f:
     service_doc = f.read()
 classes = extract_classes_by_name(service_doc)
 
