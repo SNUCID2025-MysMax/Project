@@ -1,6 +1,6 @@
 # compare_soplang_ir.py
 
-from soplang_parser_full import parser, lexer
+from .soplang_parser_full import parser, lexer
 from z3 import *
 import json
 import difflib

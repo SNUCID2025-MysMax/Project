@@ -1,4 +1,117 @@
 # Devices
+class DoorLock:
+	"""
+	Tags: ["DoorLock"]
+
+	---
+
+	Enums:
+		doorEnum (Enum):
+			closed: The door is closed
+			closing: The door is closing
+			open: The door is open
+			opening: The door is opening
+			unknown: The current state of the door is unknown
+
+	---
+
+	Attributes:
+		doorControl_door (doorEnum): The current state of the door
+
+	---
+
+	Methods:
+		doorControl_close() -> VOID:
+			Close the door
+	
+		doorControl_open() -> VOID:
+			Open the door
+	
+	"""
+class Fan:
+	"""
+	Tags: ["Fan"]
+
+	---
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+
+	---
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		fanControl_fanSpeed (INTEGER): The current fan speed represented as a integer value. - unit: RPM
+		fanControl_percent (INTEGER): The current fan speed represented as a percent value.
+
+	---
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		fanControl_setFanSpeed(speed: INTEGER) -> VOID:
+			Set the fan speed
+	
+			Args:
+				speed (INTEGER): Set the fan to this speed
+	
+		fanControl_setPercent(percent: INTEGER) -> VOID:
+			Set the fan speed percent.
+	
+			Args:
+				percent (INTEGER): The percent value to set the fan speed to.
+	
+	"""
+class Humidifier:
+	"""
+	Tags: ["Humidifier"]
+
+	---
+
+	Enums:
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
+		humidifierModeEnum (Enum):
+			auto
+			low
+			medium
+			high
+
+	---
+
+	Attributes:
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
+		humidifierMode_humidifierMode (humidifierModeEnum): Current mode of the humidifier
+
+	---
+
+	Methods:
+		switch_off() -> VOID:
+			Turn a switch off
+	
+		switch_on() -> VOID:
+			Turn a switch on
+	
+		switch_toggle() -> VOID:
+			Toggle a switch
+	
+		humidifierMode_setHumidifierMode(mode: humidifierModeEnum) -> VOID:
+			Set the humidifier mode
+	
+			Args:
+				mode (humidifierModeEnum): Set the humidifier mode to "auto", "low", "medium", or "high" mode
+	
+	"""
 class AirPurifier:
 	"""
 	Tags: ["AirPurifier"]
@@ -43,50 +156,6 @@ class AirPurifier:
 	
 			Args:
 				mode (airPurifierFanModeEnum): Set the air purifier fan's mode
-	
-	"""
-class Clock:
-	"""
-	Tags: ["Clock"]
-
-	---
-
-	Enums:
-		weekdayEnum (Enum):
-			monday
-			tuesday
-			wednesday
-			thursday
-			friday
-			saturday
-			sunday
-
-	---
-
-	Attributes:
-		clock_date (DOUBLE): Current date as double number - format: YYYYMMdd
-		clock_datetime (DOUBLE): Current date and time as double number - format: YYYYMMddhhmm
-		clock_day (INTEGER): Current day
-		clock_hour (INTEGER): Current hour
-		clock_isHoliday (BOOL): today is holiday or not
-		clock_minute (INTEGER): Current minute
-		clock_month (INTEGER): Current month
-		clock_second (INTEGER): Current second
-		clock_time (DOUBLE): Current time as double number - format: hhmm
-		clock_timestamp (DOUBLE): Current timestamp (return current unix time - unit: seconds with floating point)
-		clock_weekday (weekdayEnum): Current weekday
-		clock_year (INTEGER): Current year
-
-	---
-
-	Methods:
-		clock_delay(hour: INTEGER, minute: INTEGER, second: INTEGER) -> VOID:
-			delay for a given amount of time
-	
-			Args:
-				hour (INTEGER): hour
-				minute (INTEGER): minute
-				second (INTEGER): second
 	
 	"""
 class Dehumidifier:
@@ -140,49 +209,6 @@ class Dehumidifier:
 				mode (dehumidifierModeEnum): Set the dehumidifier mode
 	
 	"""
-class Fan:
-	"""
-	Tags: ["Fan"]
-
-	---
-
-	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
-
-	---
-
-	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
-		fanControl_fanSpeed (INTEGER): The current fan speed represented as a integer value. - unit: RPM
-		fanControl_percent (INTEGER): The current fan speed represented as a percent value.
-
-	---
-
-	Methods:
-		switch_off() -> VOID:
-			Turn a switch off
-	
-		switch_on() -> VOID:
-			Turn a switch on
-	
-		switch_toggle() -> VOID:
-			Toggle a switch
-	
-		fanControl_setFanSpeed(speed: INTEGER) -> VOID:
-			Set the fan speed
-	
-			Args:
-				speed (INTEGER): Set the fan to this speed
-	
-		fanControl_setPercent(percent: INTEGER) -> VOID:
-			Set the fan speed percent.
-	
-			Args:
-				percent (INTEGER): The percent value to set the fan speed to.
-	
-	"""
 class AirConditioner:
 	"""
 	Tags: ["AirConditioner"]
@@ -231,74 +257,48 @@ class AirConditioner:
 				temperature (INTEGER): Set the air conditioner temperature
 	
 	"""
-class DoorLock:
+class Clock:
 	"""
-	Tags: ["DoorLock"]
+	Tags: ["Clock"]
 
 	---
 
 	Enums:
-		doorEnum (Enum):
-			closed: The door is closed
-			closing: The door is closing
-			open: The door is open
-			opening: The door is opening
-			unknown: The current state of the door is unknown
+		weekdayEnum (Enum):
+			monday
+			tuesday
+			wednesday
+			thursday
+			friday
+			saturday
+			sunday
 
 	---
 
 	Attributes:
-		doorControl_door (doorEnum): The current state of the door
+		clock_date (DOUBLE): Current date as double number - format: YYYYMMdd
+		clock_datetime (DOUBLE): Current date and time as double number - format: YYYYMMddhhmm
+		clock_day (INTEGER): Current day
+		clock_hour (INTEGER): Current hour
+		clock_isHoliday (BOOL): today is holiday or not
+		clock_minute (INTEGER): Current minute
+		clock_month (INTEGER): Current month
+		clock_second (INTEGER): Current second
+		clock_time (DOUBLE): Current time as double number - format: hhmm
+		clock_timestamp (DOUBLE): Current timestamp (return current unix time - unit: seconds with floating point)
+		clock_weekday (weekdayEnum): Current weekday
+		clock_year (INTEGER): Current year
 
 	---
 
 	Methods:
-		doorControl_close() -> VOID:
-			Close the door
-	
-		doorControl_open() -> VOID:
-			Open the door
-	
-	"""
-class Humidifier:
-	"""
-	Tags: ["Humidifier"]
-
-	---
-
-	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
-		humidifierModeEnum (Enum):
-			auto
-			low
-			medium
-			high
-
-	---
-
-	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
-		humidifierMode_humidifierMode (humidifierModeEnum): Current mode of the humidifier
-
-	---
-
-	Methods:
-		switch_off() -> VOID:
-			Turn a switch off
-	
-		switch_on() -> VOID:
-			Turn a switch on
-	
-		switch_toggle() -> VOID:
-			Toggle a switch
-	
-		humidifierMode_setHumidifierMode(mode: humidifierModeEnum) -> VOID:
-			Set the humidifier mode
+		clock_delay(hour: INTEGER, minute: INTEGER, second: INTEGER) -> VOID:
+			delay for a given amount of time
 	
 			Args:
-				mode (humidifierModeEnum): Set the humidifier mode to "auto", "low", "medium", or "high" mode
+				hour (INTEGER): hour
+				minute (INTEGER): minute
+				second (INTEGER): second
 	
 	"""
 class Button:
@@ -348,4 +348,4 @@ class Button:
 command: 3분마다 알람을 울려줘. 5분마다 에어컨 스위치를 토글해.
 
 # Current Time
-current: Tue, 29 Apr 2025 02:54:27
+current: Fri, 09 May 2025 09:35:43

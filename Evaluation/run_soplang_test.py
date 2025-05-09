@@ -1,7 +1,7 @@
 import sys
 import json
-from soplang_parser_full import parser, lexer
-from soplang_ir_simulator import (
+from .soplang_parser_full import parser, lexer
+from .soplang_ir_simulator import (
     flatten_actions,
     extract_logic_expressions,
     generate_context_from_conditions

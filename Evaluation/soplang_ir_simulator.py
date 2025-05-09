@@ -2,8 +2,8 @@ import sys
 import json
 from itertools import product
 import re
-from soplang_parser_full import parser, lexer
-from compare_soplang_ir import extract_logic_expressions
+from .soplang_parser_full import parser, lexer
+from .compare_soplang_ir import extract_logic_expressions
 
 # Soplang 표현식을 현재 context 로 평가
 def evaluate_expression(expr, context):

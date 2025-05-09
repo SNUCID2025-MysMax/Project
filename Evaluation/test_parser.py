@@ -1,8 +1,8 @@
 import unittest
 import json
-from soplang_parser_full import parser, lexer
-from compare_soplang_ir import parse_script_json, compare_codes, extract_logic_expressions
-from soplang_ir_simulator import generate_context_from_conditions, flatten_actions
+from .soplang_parser_full import parser, lexer
+from .compare_soplang_ir import parse_script_json, compare_codes, extract_logic_expressions
+from .soplang_ir_simulator import generate_context_from_conditions, flatten_actions
 
 """
 class TestSoplangParserFull(unittest.TestCase):
