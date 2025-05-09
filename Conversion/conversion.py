@@ -2,6 +2,11 @@ import re, ast
 import json
 
 def transform_code(code):
+    code = code.strip()
+    if code[0] == "'":
+        code = code[1:-1]
+    elif code.startswith('```python'):
+        code = code[9:-3]
     tree = ast.parse(code)
     result_total = []
     result = {}

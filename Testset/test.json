@@ -1,0 +1,9 @@
+[
+    {
+        "query":"3분마다 알람을 울려줘. 5분마다 에어컨 스위치를 토글해.",
+        "answer": [
+            {"name": "Scenario1", "cron": "*/1 * * * *", "period": 180000, "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"},
+            {"name": "Scenario2", "cron": "*/1 * * * *", "period": 300000, "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"}
+        ]
+    }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "user_command": "3분마다 알람을 울려줘. 5분마다 에어컨 스위치를 토글해.",
+    "generated_code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = 180000  # 3 minutes in milliseconds\n\n    def run(self):\n        Tags(\"Alarm\").ring()\n\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = 300000  # 5 minutes in milliseconds\n\n    def run(self):\n        Tags(\"AirConditioner\").switch_toggle()\n```",
+    "transformed_code": [
+      {
+        "name": "Scenario1",
+        "cron": "* * * * *",
+        "period": 180000,
+        "code": "\n(#Alarm).ring()\n"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "* * * * *",
+        "period": 300000,
+        "code": "\n(#AirConditioner).switch_toggle()\n"
+      }
+    ],
+    "label": [
+      {
+        "name": "Scenario1",
+        "cron": "*/1 * * * *",
+        "period": 180000,
+        "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "*/1 * * * *",
+        "period": 300000,
+        "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"
+      }
+    ],
+    "compare_results": [
+      {
+        "scenario": "Scenario1",
+        "cron_equal": true,
+        "period_equal": true,
+        "ast_similarity": 1.0,
+        "script_similarity": 1.0,
+        "mismatches": []
+      },
+      {
+        "scenario": "Scenario2",
+        "cron_equal": true,
+        "period_equal": true,
+        "ast_similarity": 1.0,
+        "script_similarity": 1.0,
+        "mismatches": []
+      }
+    ],
+    "model_info": {
+      "prompt_tokens": 4187,
+      "completion_tokens": 106,
+      "total_tokens": 4293
+    }
+  }
+]

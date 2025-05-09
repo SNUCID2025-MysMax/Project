@@ -34,6 +34,7 @@ current = "<Weekday>, <Day> <Month> <Year> <Hour>:<Minute>:<Second>"  # datetime
 ## Output Format
 
 Use one or more scenario classes(Scenario1, Scenario2, ...).
+Write codes between ```python and ```.
 
 ```python
 class Scenario1:

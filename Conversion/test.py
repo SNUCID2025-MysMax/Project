@@ -1,6 +1,6 @@
 from conversion import transform_code
 import json
-c = """class Scenario1:
+c = """```pythonclass Scenario1:
     def __init__(self):
         self.cron = "0 20 1 1 1"  # 1월 1일 월요일 20:00에 시작
         self.period = 1000  # 1초마다 상태 확인
@@ -17,6 +17,6 @@ c = """class Scenario1:
                 All(Tags("Alarm").alarm_siren())
                 self.var3 = True
 
-        self.var1 = current
+        self.var1 = current```
 """
 print(json.dumps(transform_code(c), indent=2, ensure_ascii=False).replace("\\n","\n"))
