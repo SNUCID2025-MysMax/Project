@@ -7,6 +7,7 @@ import tiktoken
 from embedding import hybrid_recommend
 from conversion import transform_code
 from FlagEmbedding import BGEM3FlagModel
+import json
 
 sys.path.append("./Evaluation")
 from soplang_parser_full import parser, lexer
@@ -30,61 +31,80 @@ def extract_classes_by_name(text: str):
 
     return class_dict
 
-with open("0.1.3_docstring_v3.txt", "r") as f:
+with open("0.1.3_docstring_v3.txt", "r", encoding="utf-8") as f:
     service_doc = f.read()
 classes = extract_classes_by_name(service_doc)
 
 # Load Embedding
 model = BGEM3FlagModel('BAAI/bge-m3', use_fp16=False)
 
-queries = [
-    "3분마다 알람을 울려줘. 5분마다 에어컨 스위치를 토글해.",
-]
+queries = {
+    "임시 테스트": ["3분마다 알람을 울려줘. 5분마다 에어컨 스위치를 토글해."]
+}
 
-for user_command in queries:
-    service_selected = set(i["key"] for i in hybrid_recommend(model, user_command, max_k=7))
-    service_selected.add("Clock")
-    service_doc = "\n".join([classes[i] for i in service_selected])
-
-    current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
-    prompt = f"# Devices\n{service_doc}\n\n# User Command\ncommand: {user_command}\n\n# Current Time\ncurrent: {current_time}"
-    with open("prompt.txt", "w") as f:
-        f.write(prompt)
+generated_JOILang_codes = {
     
-    # encoding = tiktoken.encoding_for_model("gpt-4")
-    # text = f"{grammar}\n---\n{service_doc}\ncommand: {user_command}\ncurrent: {current_time}"
-    # num_tokens = len(encoding.encode(text))
-    # print(f"총 토큰 수: {num_tokens}")
+}
 
-    # 환경 변수에서 API 키 읽기
-    api_key = os.getenv("apikey")
+with open("TestCase\\input.json", "r", encoding="utf-8") as f:
+    input_data = json.load(f)
+    for category, input_list in input_data.items():
+        queries[category] = input_list
+    print(queries)
+    
+    
+    
+def extract_python_code(markdown_text):
+    match = re.search(r"```python\n(.*?)```", markdown_text, re.DOTALL)
+    return match.group(1).strip() if match else markdown_text.strip()
 
-    # 클라이언트 생성
-    client = OpenAI(api_key=api_key)
+for category, input_list in queries.items():
+    code_list = []
+    for user_command in input_list[:3]:
+        service_selected = set(i["key"] for i in hybrid_recommend(model, user_command, max_k=7))
+        service_selected.add("Clock")
+        service_doc = "\n".join([classes[i] for i in service_selected])
 
-    response = client.chat.completions.create(
-        model="gpt-4",
-        messages=[
-            {"role": "system", "content": grammar_compressed},
-            {"role": "user", "content": prompt},
-        ]
-    )
+        current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+        prompt = f"# Devices\n{service_doc}\n\n# User Command\ncommand: {user_command}\n\n# Current Time\ncurrent: {current_time}"
+        with open("prompt.txt", "w") as f:
+            f.write(prompt)
+        
+        # encoding = tiktoken.encoding_for_model("gpt-4")
+        # text = f"{grammar}\n---\n{service_doc}\ncommand: {user_command}\ncurrent: {current_time}"
+        # num_tokens = len(encoding.encode(text))
+        # print(f"총 토큰 수: {num_tokens}")
 
-    resp = response.choices[0].message.content
-    print("응답:\n", resp)
-    print("-"*30)
-    code = transform_code(resp)
-    # ---------------------------------- #
-    # Todo()
-    # code: [{'name': 'Scenario1', 'cron': '*/1 * * * *', 'period': 180000, 'code': "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"},
-    # {'name': 'Scenario2', 'cron': '*/1 * * * *', 'period': 300000, 'code': "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"}]
-    # 리스트에 담긴 시나리오 별로 평가 필요
-    # label : 정답 code 라고 가정
-    def parse_code_to_ast(script: str):
-        wrapped = f"{{\n{script}\n}}"
-        return parser.parse(wrapped, lexer=lexer)
-    for i, (gen, gold) in enumerate(zip(code, label), start=1):
-        print(f"\n[Test{i}]")
+        # 환경 변수에서 API 키 읽기
+        api_key = os.getenv("apikey")
+
+        # 클라이언트 생성
+        client = OpenAI(api_key=api_key)
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": grammar},
+                {"role": "user", "content": prompt},
+            ]
+        )
+
+        resp = response.choices[0].message.content
+        # print("응답:\n", resp)
+        # print("-"*30)
+        try:
+            code = transform_code(extract_python_code(resp))
+        except Exception as e:
+            print("ast error:", e)
+            print("skip current command")
+            continue
+            
+        
+        # ---------------------------------- #
+        # Todo()
+        # code: [{'name': 'Scenario1', 'cron': '*/1 * * * *', 'period': 180000, 'code': "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"},
+        # {'name': 'Scenario2', 'cron': '*/1 * * * *', 'period': 300000, 'code': "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"}]
+        # 리스트에 담긴 시나리오 별로 평가 필요
 
         gold_wrapped = {
             "name": gold["name"],
@@ -135,18 +155,25 @@ for user_command in queries:
     except Exception as e:
         print(f"❌ Simulation failed: {e}")      
 
-    # ---------------------------------- #
+        # ---------------------------------- #
+        print("명령:\n", user_command)
+        print("변환된 코드:\n", code)
+        code_list.append(code)
+        
+        print("-"*30)
 
-    print("변환된 코드:\n", code)
-    print("-"*30)
-
-    print("모델:", response.model)
-    print("생성 시각:", response.created)
-    print("Finish Reason:", response.choices[0].finish_reason)
-    print("토큰 사용량:")
-    print(" - prompt:", response.usage.prompt_tokens)
-    print(" - completion:", response.usage.completion_tokens)
-    print(" - total:", response.usage.total_tokens)
-    print("="*30)
+        # print("모델:", response.model)
+        # print("생성 시각:", response.created)
+        # print("Finish Reason:", response.choices[0].finish_reason)
+        # print("토큰 사용량:")
+        # print(" - prompt:", response.usage.prompt_tokens)
+        # print(" - completion:", response.usage.completion_tokens)
+        # print(" - total:", response.usage.total_tokens)
+        # print("="*30)
+    generated_JOILang_codes[category] = code_list
+    
+with open("TestCase\\output.json", "w", encoding="utf-8") as f:
+    json.dump(generated_JOILang_codes, f, ensure_ascii=False, indent=4)
+    
 del model
 gc.collect()

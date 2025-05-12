@@ -1,74 +1,87 @@
 # Devices
-class DoorLock:
+class Blind:
 	"""
-	Tags: ["DoorLock"]
+	Tags: ["Blind"]
 
 	---
 
 	Enums:
-		doorEnum (Enum):
-			closed: The door is closed
-			closing: The door is closing
-			open: The door is open
-			opening: The door is opening
-			unknown: The current state of the door is unknown
+		blindEnum (Enum):
+			closed: closed
+			closing: closing¡¦
+			open: open
+			opening: opening¡¦
+			partially
+			paused
+			unknown: unknown
 
 	---
 
 	Attributes:
-		doorControl_door (doorEnum): The current state of the door
+		blindLevel_blindLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
+		blind_blind (blindEnum): A string representation of whether the blind is open or closed
 
 	---
 
 	Methods:
-		doorControl_close() -> VOID:
-			Close the door
+		blindLevel_setBlindLevel(blindLevel: INTEGER) -> VOID:
+			Set the blind level to the given value.
 	
-		doorControl_open() -> VOID:
-			Open the door
+			Args:
+				blindLevel (INTEGER): The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
+	
+		blind_close() -> VOID:
+			Close the blind
+	
+		blind_open() -> VOID:
+			Open the blind
+	
+		blind_pause() -> VOID:
+			Pause opening or closing the blind
 	
 	"""
-class Fan:
+class Clock:
 	"""
-	Tags: ["Fan"]
+	Tags: ["Clock"]
 
 	---
 
 	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
+		weekdayEnum (Enum):
+			monday
+			tuesday
+			wednesday
+			thursday
+			friday
+			saturday
+			sunday
 
 	---
 
 	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
-		fanControl_fanSpeed (INTEGER): The current fan speed represented as a integer value. - unit: RPM
-		fanControl_percent (INTEGER): The current fan speed represented as a percent value.
+		clock_date (DOUBLE): Current date as double number - format: YYYYMMdd
+		clock_datetime (DOUBLE): Current date and time as double number - format: YYYYMMddhhmm
+		clock_day (INTEGER): Current day
+		clock_hour (INTEGER): Current hour
+		clock_isHoliday (BOOL): today is holiday or not
+		clock_minute (INTEGER): Current minute
+		clock_month (INTEGER): Current month
+		clock_second (INTEGER): Current second
+		clock_time (DOUBLE): Current time as double number - format: hhmm
+		clock_timestamp (DOUBLE): Current timestamp (return current unix time - unit: seconds with floating point)
+		clock_weekday (weekdayEnum): Current weekday
+		clock_year (INTEGER): Current year
 
 	---
 
 	Methods:
-		switch_off() -> VOID:
-			Turn a switch off
-	
-		switch_on() -> VOID:
-			Turn a switch on
-	
-		switch_toggle() -> VOID:
-			Toggle a switch
-	
-		fanControl_setFanSpeed(speed: INTEGER) -> VOID:
-			Set the fan speed
+		clock_delay(hour: INTEGER, minute: INTEGER, second: INTEGER) -> VOID:
+			delay for a given amount of time
 	
 			Args:
-				speed (INTEGER): Set the fan to this speed
-	
-		fanControl_setPercent(percent: INTEGER) -> VOID:
-			Set the fan speed percent.
-	
-			Args:
-				percent (INTEGER): The percent value to set the fan speed to.
+				hour (INTEGER): hour
+				minute (INTEGER): minute
+				second (INTEGER): second
 	
 	"""
 class Humidifier:
@@ -110,103 +123,6 @@ class Humidifier:
 	
 			Args:
 				mode (humidifierModeEnum): Set the humidifier mode to "auto", "low", "medium", or "high" mode
-	
-	"""
-class AirPurifier:
-	"""
-	Tags: ["AirPurifier"]
-
-	---
-
-	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
-		airPurifierFanModeEnum (Enum):
-			auto: The fan is on auto
-			sleep: The fan is in sleep mode to reduce noise
-			low: The fan is on low
-			medium: The fan is on medium
-			high: The fan is on high
-			quiet: The fan is on quiet mode to reduce noise
-			windFree: The fan is on wind free mode to reduce the feeling of cold air
-			off: The fan is off
-
-	---
-
-	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
-		airPurifierFanMode_airPurifierFanMode (airPurifierFanModeEnum): The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree
-		airPurifierFanMode_supportedAirPurifierFanModes (list[airPurifierFanModeEnum]): Supported states for this air purifier fan to be in
-
-	---
-
-	Methods:
-		switch_off() -> VOID:
-			Turn a switch off
-	
-		switch_on() -> VOID:
-			Turn a switch on
-	
-		switch_toggle() -> VOID:
-			Toggle a switch
-	
-		airPurifierFanMode_setAirPurifierFanMode(mode: airPurifierFanModeEnum) -> VOID:
-			Set the air purifier fan's mode
-	
-			Args:
-				mode (airPurifierFanModeEnum): Set the air purifier fan's mode
-	
-	"""
-class Dehumidifier:
-	"""
-	Tags: ["Dehumidifier"]
-
-	---
-
-	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
-		dehumidifierModeEnum (Enum):
-			cooling
-			delayWash
-			drying
-			finished
-			refreshing
-			weightSensing
-			wrinklePrevent
-			dehumidifying
-			AIDrying
-			sanitizing
-			internalCare
-			freezeProtection
-			continuousDehumidifying
-			thawingFrozenInside
-
-	---
-
-	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
-		dehumidifierMode_dehumidifierMode (dehumidifierModeEnum): Current mode of the dehumidifier
-
-	---
-
-	Methods:
-		switch_off() -> VOID:
-			Turn a switch off
-	
-		switch_on() -> VOID:
-			Turn a switch on
-	
-		switch_toggle() -> VOID:
-			Toggle a switch
-	
-		dehumidifierMode_setDehumidifierMode(mode: dehumidifierModeEnum) -> VOID:
-			Set the dehumidifier mode
-	
-			Args:
-				mode (dehumidifierModeEnum): Set the dehumidifier mode
 	
 	"""
 class AirConditioner:
@@ -257,95 +173,109 @@ class AirConditioner:
 				temperature (INTEGER): Set the air conditioner temperature
 	
 	"""
-class Clock:
+class DoorLock:
 	"""
-	Tags: ["Clock"]
+	Tags: ["DoorLock"]
 
 	---
 
 	Enums:
-		weekdayEnum (Enum):
-			monday
-			tuesday
-			wednesday
-			thursday
-			friday
-			saturday
-			sunday
+		doorEnum (Enum):
+			closed: The door is closed
+			closing: The door is closing
+			open: The door is open
+			opening: The door is opening
+			unknown: The current state of the door is unknown
 
 	---
 
 	Attributes:
-		clock_date (DOUBLE): Current date as double number - format: YYYYMMdd
-		clock_datetime (DOUBLE): Current date and time as double number - format: YYYYMMddhhmm
-		clock_day (INTEGER): Current day
-		clock_hour (INTEGER): Current hour
-		clock_isHoliday (BOOL): today is holiday or not
-		clock_minute (INTEGER): Current minute
-		clock_month (INTEGER): Current month
-		clock_second (INTEGER): Current second
-		clock_time (DOUBLE): Current time as double number - format: hhmm
-		clock_timestamp (DOUBLE): Current timestamp (return current unix time - unit: seconds with floating point)
-		clock_weekday (weekdayEnum): Current weekday
-		clock_year (INTEGER): Current year
+		doorControl_door (doorEnum): The current state of the door
 
 	---
 
 	Methods:
-		clock_delay(hour: INTEGER, minute: INTEGER, second: INTEGER) -> VOID:
-			delay for a given amount of time
+		doorControl_close() -> VOID:
+			Close the door
 	
-			Args:
-				hour (INTEGER): hour
-				minute (INTEGER): minute
-				second (INTEGER): second
+		doorControl_open() -> VOID:
+			Open the door
 	
 	"""
-class Button:
+class HumiditySensor:
 	"""
-	Tags: ["Button"]
-
-	---
-
-	Enums:
-		buttonEnum (Enum):
-			pushed: The value if the button is pushed
-			held: The value if the button is held
-			double: The value if the button is pushed twice
-			pushed_2x: The value if the button is pushed twice
-			pushed_3x: The value if the button is pushed three times
-			pushed_4x: The value if the button is pushed four times
-			pushed_5x: The value if the button is pushed five times
-			pushed_6x: The value if the button is pushed six times
-			down: The value if the button is clicked down
-			down_2x: The value if the button is clicked down twice
-			down_3x: The value if the button is clicked down three times
-			down_4x: The value if the button is clicked down four times
-			down_5x: The value if the button is clicked down five times
-			down_6x: The value if the button is clicked down six times
-			down_hold: The value if the button is clicked down and held
-			up: The value if the button is clicked up
-			up_2x: The value if the button is clicked up twice
-			up_3x: The value if the button is clicked up three times
-			up_4x: The value if the button is clicked up four times
-			up_5x: The value if the button is clicked up five times
-			up_6x: The value if the button is clicked up six times
-			up_hold: The value if the button is clicked up and held
-			swipe_up: The value if the button is swiped up from botton to top
-			swipe_down: The value if the button is swiped down from top to bottom
-			swipe_left: The value if the button is swiped from right to left
-			swipe_right: The value if the button is swiped from left to right
+	Tags: ["HumiditySensor"]
 
 	---
 
 	Attributes:
-		button_button (buttonEnum): The state of the buttons
-		button_numberOfButtons (INTEGER): The number of buttons on the device
-		button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values
+		relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device
+	"""
+class Window:
+	"""
+	Tags: ["Window"]
+
+	---
+
+	Enums:
+		windowEnum (Enum):
+			closed: closed
+			open: open
+			unknown: unknown
+
+	---
+
+	Attributes:
+		windowControl_window (windowEnum): A string representation of whether the window is open or closed
+
+	---
+
+	Methods:
+		windowControl_close() -> VOID:
+			Close the window
+	
+		windowControl_open() -> VOID:
+			Open the window
+	
+	"""
+class Curtain:
+	"""
+	Tags: ["Curtain"]
+
+	---
+
+	Enums:
+		curtainEnum (Enum):
+			closed: closed
+			closing: closing¡¦
+			open: open
+			opening: opening¡¦
+			partially
+			paused
+			unknown: unknown
+
+	---
+
+	Attributes:
+		curtain_curtain (curtainEnum): A string representation of whether the curtain is open or closed
+		curtain_supportedCurtainCommands (list[curtainEnum]): Curtain commands supported by this instance of Curtain
+
+	---
+
+	Methods:
+		curtain_close() -> VOID:
+			Close the curtain
+	
+		curtain_open() -> VOID:
+			Open the curtain
+	
+		curtain_pause() -> VOID:
+			Pause opening or closing the curtain
+	
 	"""
 
 # User Command
-command: 3ë¶„ë§ˆë‹¤ ì•ŒëžŒì„ ìš¸ë ¤ì¤˜. 5ë¶„ë§ˆë‹¤ ì—ì–´ì»¨ ìŠ¤ìœ„ì¹˜ë¥¼ í† ê¸€í•´.
+command: ¿¡¾îÄÁÀÌ ²¨Áø »óÅÂ¿¡¼­ Ã¢¹®ÀÌ ¿­·ÈÀ» ¶§ºÎÅÍ 10ÃÊ °£°ÝÀ¸·Î ½Àµµ¸¦ Ã¼Å©ÇØ¼­, ½Àµµ°¡ 60%¸¦ ÃÊ°úÇÏ¸é ºí¶óÀÎµå¸¦ ³»¸®°í Á¶¸íÀ» ²¨ Áà. ÀÌÈÄ ¹®ÀÌ ´ÝÈ÷¸é 5ÃÊ Áö¿¬ ÈÄ ¾Ë¶÷À» ¿ï¸®°í, ¾Ë¶÷ÀÌ ¿ï¸° ÈÄ 1ºÐ µ¿¾ÈÀº ¹®ÀÌ ¿­·Á ÀÖ´Â µ¿¾È 1ÃÊ °£°ÝÀ¸·Î Á¶¸íÀ» ±ôºýÀÌ´Ù°¡ ¹®ÀÌ ´ÝÈ÷¸é ½ºÇÇÄ¿·Î ¡®¹®ÀÌ ´ÝÇû½À´Ï´Ù¡¯¸¦ ¸»ÇØ Áà.
 
 # Current Time
-current: Fri, 09 May 2025 09:35:43
+current: Wed, 30 Apr 2025 21:29:52

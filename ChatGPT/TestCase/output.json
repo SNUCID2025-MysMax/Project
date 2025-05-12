@@ -1,0 +1,448 @@
+{
+    "임시 테스트": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 180000,
+                "code": "\n(#Clock).clock_delay(3, 0, 0)\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": 300000,
+                "code": "\n(#AirConditioner).switch_toggle()\n"
+            }
+        ]
+    ],
+    "디바이스": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\n(#AirConditioner).switch_on()\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\n(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\n(#AirConditioner).airConditionerMode_setTemperature(25)\n"
+            }
+        ]
+    ],
+    "단발성 1": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\n(#Window).windowControl_close()\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#Light).switch_switch == 'off' and (#TemperatureSensor).temperatureMeasurement_temperature >= 33) {\n    (#Light).switch_on()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\n(#Alarm).alarm_setAlarmVolume('high')\n"
+            }
+        ]
+    ],
+    "단발성 2": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#Window).windowControl_window == 'open' and (#Light).switch_switch == 'off' and ((#Curtain).curtain_curtain == 'closed')) {\n    (#Light).switch_on()\n    (#Curtain).curtain_open()\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\ntemperature = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((#AirConditioner).switch_switch == 'off' and temperature >= 27) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n    (#AirConditioner).switch_on()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#Television).switch_switch == 'on' and (#Speaker).switch_switch == 'off' and ((#Blind).blind_blind != 'closed')) {\n    (#Speaker).switch_on()\n    (#Blind).blind_close()\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#AirConditioner).airConditionerMode_airConditionerMode == 'fanonly' and (#DoorLock).doorControl_door == 'closed') {\n    (#AirConditioner).switch_off()\n}\nif ((#Window).windowControl_window == 'closed') {\n    (#Window).windowControl_open()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#DoorLock).doorControl_door == 'closed' and (not (#ContactSensor).contactSensor_contact == 'open') and ((#Light).switch_switch == 'on')) {\n    (#Light).switch_off()\n    if ((#Curtain).curtain_curtain == 'open') {\n        (#Curtain).curtain_close()\n    }\n}\nif ((#Television).switch_switch == 'off' and (#Speaker).switch_switch == 'on') {\n    (#Speaker).switch_off()\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#DoorLock).doorControl_door == 'closed' and (not (#ContactSensor).contactSensor_contact == 'open') and ((#Light).switch_switch == 'on')) {\n    (#Light).switch_off()\n    if ((#Curtain).curtain_curtain == 'open') {\n        (#Curtain).curtain_close()\n    }\n}\nif ((#Television).switch_switch == 'off' and (#Speaker).switch_switch == 'on') {\n    (#Speaker).switch_off()\n}\n"
+            }
+        ]
+    ],
+    "주기": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\n(#Alarm).alarm_both()\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "0 8 * * *",
+                "period": -1,
+                "code": "\n(#Light).switch_on()\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "0 6 * * *",
+                "period": 15000,
+                "code": "\nif (current.hour < 19) {\n    (#Light).switch_toggle()\n    (#Clock).clock_delay(0, 0, 15)\n}\nif (current.hour >= 19) {\n    break\n}\n"
+            }
+        ]
+    ],
+    "기다림": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "18 21 30 4 3",
+                "period": 100,
+                "code": "\nif ((#Window).windowControl_window == 'open') {\n    (#Alarm).alarm_both()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nif ((#DoorLock).doorControl_door == 'closed') {\n    (#Blind).blind_close()\n    period = -1\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#PresenceSensor).presenceSensor_presence == 'present') {\n    (#Light).switch_on()\n}\n"
+            }
+        ]
+    ],
+    "실시간": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nwait until((#DoorLock).doorControl_door == 'open')\n(#Curtain).curtain_close()\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nif ((#PresenceSensor).presenceSensor_presence == 'present') {\n    (#Light).switch_on()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nif ((#Light).switch_switch == 'on') {\n    (#Blind).blind_open()\n}\n"
+            }
+        ]
+    ],
+    "주기 + 실시간": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 5000,
+                "code": "\nrepetition := 0\nif ((#DoorLock).doorControl_door == 'closed' and repetition < 3) {\n    (#Light).switch_off()\n    repetition += 1\n} else if (repetition >= 3) {\n    period = -1\n}\n"
+            }
+        ]
+    ],
+    "반복 활용 1": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "0 7 * * *",
+                "period": -1,
+                "code": "\nlight_status = (#Light).switch_switch\nwindow_status = (#Window).windowControl_window\nif (light_status == 'off' and window_status == 'closed') {\n    (#Light).switch_on()\n    (#Window).windowControl_open()\n}\nnew_light_status = (#Light).switch_switch\nif (new_light_status != light_status) {\n    (#Blind).blind_close()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "0 9 * * 1",
+                "period": 100,
+                "code": "\nif ((#AirConditioner).switch_switch == 'off' and (#TemperatureSensor).temperatureMeasurement_temperature >= 26) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n    (#AirConditioner).switch_on()\n    if ((#Curtain).curtain_curtain != 'closed') {\n        (#Curtain).curtain_close()\n    }\n}\nif ((#Clock).clock_hour == 12) {\n    period = -1\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 5000,
+                "code": "\nif ((#Light).switch_switch == 'on') {\n    (#Light).switch_off()\n    if ((#Fan).switch_switch == 'on') {\n        (#Fan).fanControl_setPercent(30)\n    }\n} else {\n    (#Light).switch_on()\n}\n"
+            }
+        ]
+    ],
+    "반복 활용 2": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nrelay_switch_count := 0\nfan_switch_count := 0\nprev_relay_switch_state := \ncurr_relay_switch_state = (#Relay).switch_switch\nif (curr_relay_switch_state != prev_relay_switch_state) {\n    relay_switch_count += 1\n    prev_relay_switch_state = curr_relay_switch_state\n}\nif ((#Fan).switch_switch == 'on') {\n    fan_switch_count += 1\n}\nif (relay_switch_count > 4 and fan_switch_count >= 2) {\n    (#Curtain).curtain_close()\n    (#Blind).blind_close()\n    relay_switch_count = 0\n    fan_switch_count = 0\n    return 'executed'\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\ndoor_toggle := 0\nlight_off := False\nif ((#DoorLock).doorControl_door == 'open') {\n    door_toggle += 1\n}\nif ((#DoorLock).doorControl_door == 'closed') {\n    door_toggle += 1\n}\nif ((#Light).switch_switch == 'off') {\n    light_off = True\n}\nif (door_toggle >= 6 and (not light_off)) {\n    (#Light).switch_off()\n    (#Window).windowControl_close()\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\ndoor_toggle := 0\nlight_off := False\nif ((#DoorLock).doorControl_door == 'open') {\n    door_toggle += 1\n}\nif ((#DoorLock).doorControl_door == 'closed') {\n    door_toggle += 1\n}\nif ((#Light).switch_switch == 'off') {\n    light_off = True\n}\nif (door_toggle >= 6 and (not light_off)) {\n    (#Light).switch_off()\n    (#Curtain).curtain_close()\n}\n"
+            },
+            {
+                "name": "Scenario3",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\ndoor_toggle := 0\nlight_off := False\nif ((#DoorLock).doorControl_door == 'open') {\n    door_toggle += 1\n}\nif ((#DoorLock).doorControl_door == 'closed') {\n    door_toggle += 1\n}\nif ((#Light).switch_switch == 'off') {\n    light_off = True\n}\nif (door_toggle >= 6 and (not light_off)) {\n    (#Light).switch_off()\n    (#Blind).blind_close()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "0 21 * * *",
+                "period": 1000,
+                "code": "\nlight_on_duration := 0\nac_toggle_count := 0\nlight_was_on := False\nac_was_on := False\nif ((#Light).switch_switch == 'on') {\n    light_was_on = True\n    light_on_duration += 1\n} else if (light_was_on == True and (#Light).switch_switch == 'off') {\n    light_was_on = False\n}\nif ((#AirConditioner).switch_switch == 'on') {\n    if (ac_was_on == False) {\n        ac_toggle_count += 1\n    }\n    ac_was_on = True\n} else if (ac_was_on == True and (#AirConditioner).switch_switch == 'off') {\n    ac_was_on = False\n}\nif (light_on_duration >= 10 and ac_toggle_count >= 3 and ((#Clock).hour >= 0)) {\n    (#Speaker).mediaPlayback_speak('절전 모드입니다')\n    light_on_duration = 0\n    ac_toggle_count = 0\n    period = -1\n}\n"
+            }
+        ]
+    ],
+    "반복 활용 3": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * 3-9 * *",
+                "period": 100,
+                "code": "\ndoor_opened_time := None\nif (door_opened_time is None and (#DoorLock).doorControl_door == 'open') {\n    door_opened_time = (#Clock).clock_timestamp\n}\nif (door_opened_time is not None) {\n    current_time = (#Clock).clock_timestamp\n    if (current_time - door_opened_time >= 5 and current_time - door_opened_time < 15) {\n        (#Light).switch_on()\n    } else if (current_time - door_opened_time >= 15 and current_time - door_opened_time < 25) {\n        (#Light).switchLevel_alert()\n    } else if (current_time - door_opened_time >= 30 and (#DoorLock).doorControl_door == 'open') {\n        (#Window).windowControl_close()\n        door_opened_time = None\n    } else if ((#DoorLock).doorControl_door == 'closed') {\n        door_opened_time = None\n    }\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nalarm_count := 0\nif (alarm_count == 0 and (#Window).windowControl_window == 'open') {\n    alarm_count = 1\n}\nif (alarm_count > 0 and alarm_count <= 5) {\n    (#Alarm).alarm_siren()\n    (#Clock).clock_delay(0, 0, 1)\n    alarm_count += 1\n    if (alarm_count <= 5) {\n        (#Clock).clock_delay(0, 0, 3)\n    } else {\n        (#Clock).clock_delay(0, 0, 10)\n    }\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": 0,
+                "code": "\nif ((#Window).windowControl_window == 'open' and Scenario1().alarm_count == 0) {\n    Scenario1().run()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#MotionSensor).motionSensor_motion == 'active') {\n    (#Clock).clock_delay(0, 0, 5)\n    all(#Switch).switch_on()\n    (#Clock).clock_delay(0, 0, 10)\n    all(#Curtain).curtain_open()\n    (#Clock).clock_delay(0, 0, 15)\n    if ((#AirConditioner).switch_switch == 'off') {\n        (#AirConditioner).switch_on()\n    }\n}\n"
+            }
+        ]
+    ],
+    "분리": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#DoorLock).doorControl_door == 'open') {\n    (#Blind).blind_close()\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": 10000,
+                "code": "\nsensor_temp = (#TemperatureSensor).temperatureMeasurement_temperature\nif (sensor_temp > 25) {\n    (#AirConditioner).switch_off()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nif ((#Television).switch_switch == 'off') {\n    (#Speaker).switch_off()\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nif ((#Window).windowControl_window == 'open') {\n    (#Curtain).curtain_close()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nalarm_raised := False\nif ((#DoorLock).doorControl_door == 'closed') {\n    (#Clock).clock_delay(0, 0, 10)\n    if ((#DoorLock).doorControl_door != 'open') {\n        (#Alarm).alarm_both()\n        alarm_raised = True\n    }\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif (Scenario1().alarm_raised) {\n    (#Light).switch_off()\n}\n"
+            }
+        ]
+    ],
+    "태그": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\n(#Light #복도).switch_off()\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif (all(#Light).switch_switch == 'on') {\n    (#Blind #odd).blind_close()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif (any(#홀수 #Light).switch_switch == 'on') {\n    all(#거실 #Curtain).curtain_close()\n}\n"
+            }
+        ]
+    ],
+    "휴식": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": -1,
+                "code": "\nif ((#Light).switch_switch == 'off') {\n    (#Light).switch_off()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nif ((#Window).windowControl_window == 'closed') {\n    (#Window).windowControl_close()\n    if ((#Window).windowControl_window == 'closed') {\n        (#Window).windowControl_open()\n    }\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nif ((#MotionSensor).motionSensor_motion == 'inactive') {\n    if ((#MotionSensor).motionSensor_motion == 'active') {\n        (#Light).switch_off()\n        (#Clock).clock_delay(0, 0, 1)\n        (#Light).switch_on()\n    }\n}\n"
+            }
+        ]
+    ],
+    "종합": [
+        [
+            {
+                "name": "Scenario1",
+                "cron": "0 9 * * *",
+                "period": 0,
+                "code": "\ndoor_status := None\nif ((#Switch).switch_switch == 'off' and (#Window).windowControl_window == 'closed') {\n    (#Blind).blind_open()\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nopen_count := 0\nif (door_status == 'closed' and (#DoorLock).doorControl_door == 'open') {\n    open_count += 1\n}\nif (open_count == 1) {\n    first_open_time = (#Clock).clock_timestamp\n} else if (open_count == 2) {\n    second_open_time = (#Clock).clock_timestamp\n    period = 0\n}\n"
+            },
+            {
+                "name": "Scenario3",
+                "cron": "* * * * *",
+                "period": 100,
+                "code": "\nif ((#Window).windowControl_window == 'open') {\n    (#Clock).clock_delay(0, 0, 5)\n    (#Switch).switch_on()\n}\n"
+            },
+            {
+                "name": "Scenario4",
+                "cron": "* * * * *",
+                "period": 10000,
+                "code": "\nif ((#Switch).switch_switch == 'on') {\n    (#Clock).clock_delay(0, 0, 10)\n    if ((#Window).windowControl_window == 'open') {\n        period = 2000\n    }\n}\n"
+            },
+            {
+                "name": "Scenario5",
+                "cron": "* * * * *",
+                "period": 2000,
+                "code": "\nif ((#Switch).switch_switch == 'on' and (#Window).windowControl_window == 'open') {\n    (#Switch).switch_toggle()\n}\n"
+            },
+            {
+                "name": "Scenario6",
+                "cron": "* * * * *",
+                "period": 0,
+                "code": "\nif (second_open_time > first_open_time) {\n    (#AirConditioner).switch_off()\n}\n"
+            }
+        ],
+        [
+            {
+                "name": "Scenario1",
+                "cron": "* * * * *",
+                "period": 10000,
+                "code": "\nhumidity_level := 0\nspeaker_status := False\nlight_status := False\nalarm_status := False\ndoor_status := False\nac_status := False\nac_status = (#AirConditioner).switch_switch\nhumidity_level = (#HumiditySensor).relativeHumidityMeasurement_humidity\ndoor_status = (#DoorLock).doorControl_door\nif (ac_status == 'off' and (#Window).windowControl_window == 'open') {\n    if (humidity_level > 60) {\n        (#Blind).blind_close()\n        (#Light).switch_off()\n    }\n}\nif (door_status == 'closed') {\n    (#Clock).clock_delay(0, 0, 5)\n    (#Alarm).alarm_on()\n    alarm_status = True\n    period = 1000\n}\nif (alarm_status == True) {\n    light_status = any(#Light).switch_switch == 'on'\n    if (door_status == 'open') {\n        if (light_status == True) {\n            (#Light).switch_off()\n            light_status = False\n        } else {\n            (#Light).switch_on()\n        }\n    } else {\n        period = -1\n    }\n}\n"
+            },
+            {
+                "name": "Scenario2",
+                "cron": "* * * * *",
+                "period": 0,
+                "code": "\nlight_status = any(#Light).switch_switch == 'on'\nif (light_status == False) {\n    (#Light).switch_on()\n    period = 1000\n} else {\n    (#Light).switch_off()\n}\n"
+            }
+        ]
+    ]
+}
