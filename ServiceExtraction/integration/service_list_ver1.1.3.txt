@@ -1,6 +1,6 @@
 class AirConditioner:
 	"""
-	Tags: ["AirConditioner"]
+	Tags: ["AirConditioner", ..." , "upper", "sectorA", "lower", "sectorB", "odd", "even"]
 
 	---
 
@@ -118,6 +118,12 @@ class Alarm:
 	---
 
 	Enums:
+		alarmEnum (Enum):
+			both: if the alarm is strobing and sounding the alarm
+			off: if the alarm is turned off
+			siren: if the alarm is sounding the siren
+			strobe: if the alarm is strobing
+			
 		alarmVolumeEnum (Enum):
 			mute
 			low
@@ -1095,9 +1101,15 @@ class Refrigerator:
 		switchEnum (Enum):
 			on: The value of the ``switch`` attribute if the switch is on
 			off: The value of the ``switch`` attribute if the switch is off
+		defrostEnum (Enum):
+			on: The value of the ``defrost`` attribute if the defrost is on
+			off: The value of the ``defrost`` attribute if the defrost is off
+		rapidCoolingEnum (Enum):
+			on: The value of the ``rapidCooling`` attribute if the rapidCooling is on
+			off: The value of the ``rapidCooling`` attribute if the rapidCooling is off
 		rapidFreezingEnum (Enum):
-			on: The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is on
-			off: The value of the ``defrost``, ``rapidCooling``, ``rapidFreezing`` attribute if the defrost, rapidCooling, rapidFreezing is off
+			on: The value of the ``rapidFreezing`` attribute if the rapidFreezing is on
+			off: The value of the ``rapidFreezing`` attribute if the rapidFreezing is off
 
 	---
 
@@ -1575,7 +1587,7 @@ class TemperatureSensor:
 
 	Attributes:
 		temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature
-		temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value
+		? (DICT): Constraints on the temperature value
 	"""
 
 class TestDevice:

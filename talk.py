@@ -2,7 +2,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os, sys, re, gc, json
 from datetime import datetime
-from Grammar.grammar import grammar, grammar_compressed
+from Grammar.grammar_ver1_1_2 import grammar, grammar_compressed
 from Embedding.embedding import hybrid_recommend
 from Conversion.conversion import transform_code
 from FlagEmbedding import BGEM3FlagModel

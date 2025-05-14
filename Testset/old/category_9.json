@@ -1,0 +1,122 @@
+[
+  {
+    "command": "문이 열리면 10초 기다렸다가 알람의 사이렌을 울려 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        wait_until(Tags('DoorLock').doorControl_door == 'closed')\n        wait_until(Tags('DoorLock').doorControl_door == 'open')\n        Tags('Clock').clock_delay(0, 0, 10)\n        Tags('Alarm').alarm_siren()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#DoorLock).doorControl_door == 'closed')\nwait until((#DoorLock).doorControl_door == 'open')\n(#Clock).clock_delay(0, 0, 10)\n(#Alarm).alarm_siren()"
+      }
+    ]
+  },
+  {
+    "command": "창문이 열리면 5초 간격으로 세 번 알람의 사이렌을 울려 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        wait_until(Tags('Window').windowControl_window == 'closed')\n        wait_until(Tags('Window').windowControl_window == 'open')\n        Tags('Alarm').alarm_siren()\n        Tags('Clock').clock_delay(0, 0, 5)\n        Tags('Alarm').alarm_siren()\n        Tags('Clock').clock_delay(0, 0, 5)\n        Tags('Alarm').alarm_siren()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Window).windowControl_window == 'closed')\nwait until((#Window).windowControl_window == 'open')\n(#Alarm).alarm_siren()\n(#Clock).clock_delay(0, 0, 5)\n(#Alarm).alarm_siren()\n(#Clock).clock_delay(0, 0, 5)\n(#Alarm).alarm_siren()"
+      }
+    ]
+  },
+  {
+    "command": "움직임이 감지될 때마다 5초 대기 후 조명을 켜고, 10초 후 에어컨을 켜 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        wait_until(Tags('MotionSensor').motionSensor_motion == 'inactive')\n        wait_until(Tags('MotionSensor').motionSensor_motion == 'active')\n        Tags('Clock').clock_delay(0, 0, 5)\n        Tags('Light').switch_on()\n        Tags('Clock').clock_delay(0, 0, 10)\n        Tags('AirConditioner').switch_on()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "wait until((#MotionSensor).motionSensor_motion == 'inactive')\nwait until((#MotionSensor).motionSensor_motion == 'active')\n(#Clock).clock_delay(0, 0, 5)\n(#Light).switch_on()\n(#Clock).clock_delay(0, 0, 10)\n(#AirConditioner).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "문이 닫힌 후 10초 안에 다시 열리면 알람의 사이렌을 울려 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.is_triggered = False\n        self.counter = 0\n\n    def run(self):\n        if self.is_triggered == False:\n            wait_until(Tags('ContactSensor').contactSensor_contact == 'open')\n            wait_until(Tags('ContactSensor').contactSensor_contact == 'closed')\n            self.is_triggered = True\n        if self.is_triggered == True:\n            if Tags('ContactSensor').contactSensor_contact == 'open':\n                Tags('Alarm').alarm_siren()\n                break\n            else:\n                self.counter = self.counter + 100\n                if self.counter >= 10000:\n                    break",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "is_triggered := False\ncounter := 0\nif (is_triggered == False) {\n    wait until((#ContactSensor).contactSensor_contact == 'open')\n    wait until((#ContactSensor).contactSensor_contact == 'closed')\n    is_triggered = True\n}\nif (is_triggered == True) {\n    if ((#ContactSensor).contactSensor_contact == 'open') {\n        (#Alarm).alarm_siren()\n        break\n    } else {\n        counter = counter + 100\n    }\n}"
+      }
+    ]
+  },
+  {
+    "command": "TV가 꺼지면 5초 대기 후 스피커를 끄고, 추가로 10초 대기 후 조명을 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        wait_until(Tags('Television').switch_switch == 'on')\n        wait_until(Tags('Television').switch_switch == 'off')\n        Tags('Clock').clock_delay(0, 0, 5)\n        Tags('Speaker').switch_off()\n        Tags('Clock').clock_delay(0, 0, 10)\n        Tags('Light').switch_off()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "wait until((#Television).switch_switch == 'on')\nwait until((#Television).switch_switch == 'off')\n(#Clock).clock_delay(0, 0, 5)\n(#Speaker).switch_off()\n(#Clock).clock_delay(0, 0, 10)\n(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "창문이 열린 후 15초 동안 닫히지 않으면 조명을 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.is_triggered = False\n        self.counter = 0\n\n    def run(self):\n        if self.is_triggered == False:\n            wait_until(Tags('Window').windowControl_window == 'closed')\n            wait_until(Tags('Window').windowControl_window == 'open')\n            self.is_triggered = True\n        if self.is_triggered == True:\n            if Tags('Window').windowControl_window == 'closed':\n                break\n            else:\n                self.counter = self.counter + 100\n                if self.counter >= 15000:\n                    Tags('Light').switch_off()\n                    break",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "is_triggered := False\ncounter := 0\nif (is_triggered == False) {\n    wait until((#Window).windowControl_window == 'closed')\n    wait until((#Window).windowControl_window == 'open')\n    is_triggered = True\n}\nif (is_triggered == True) {\n    if ((#Window).windowControl_window == 'closed') {\n        break\n    } else {\n        counter = counter + 100\n    }\n}"
+      }
+    ]
+  },
+  {
+    "command": "조명이 켜지면 2초 간격으로 세 번 껐다 켜 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        wait_until(Tags('Light').switch_switch == 'off')\n        wait_until(Tags('Light').switch_switch == 'on')\n        Tags('Clock').clock_delay(0, 0, 2)\n        Tags('Light').switch_off()\n        Tags('Clock').clock_delay(0, 0, 2)\n        Tags('Light').switch_on()\n        Tags('Clock').clock_delay(0, 0, 2)\n        Tags('Light').switch_off()\n        Tags('Clock').clock_delay(0, 0, 2)\n        Tags('Light').switch_on()\n        Tags('Clock').clock_delay(0, 0, 2)\n        Tags('Light').switch_off()\n        Tags('Clock').clock_delay(0, 0, 2)\n        Tags('Light').switch_on()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "wait until((#Light).switch_switch == 'off')\nwait until((#Light).switch_switch == 'on')\n(#Clock).clock_delay(0, 0, 2)\n(#Light).switch_off()\n(#Clock).clock_delay(0, 0, 2)\n(#Light).switch_on()\n(#Clock).clock_delay(0, 0, 2)\n(#Light).switch_off()\n(#Clock).clock_delay(0, 0, 2)\n(#Light).switch_on()\n(#Clock).clock_delay(0, 0, 2)\n(#Light).switch_off()\n(#Clock).clock_delay(0, 0, 2)\n(#Light).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "문이 열리면 3초 대기 후 블라인드를 열어 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        wait_until(Tags('ContactSensor').contactSensor_contact == 'closed')\n        wait_until(Tags('ContactSensor').contactSensor_contact == 'open')\n        Tags('Clock').clock_delay(0, 0, 3)\n        Tags('Blind').blind_open()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "wait until((#ContactSensor).contactSensor_contact == 'closed')\nwait until((#ContactSensor).contactSensor_contact == 'open')\n(#Clock).clock_delay(0, 0, 3)\n(#Blind).blind_open()"
+      }
+    ]
+  },
+  {
+    "command": "알람의 사이렌이 울린 후 5초 기다렸다가 커튼을 열어 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        wait_until((Tags('Alarm').alarm_alarm == 'off') or (Tags('Alarm').alarm_alarm == 'strobe'))\n        wait_until((Tags('Alarm').alarm_alarm == 'both') or (Tags('Alarm').alarm_alarm == 'siren'))\n        Tags('Clock').clock_delay(0, 0, 5)\n        Tags('Curtain').curtain_open()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "wait until(((#Alarm).alarm_alarm == 'off') or ((#Alarm).alarm_alarm == 'strobe'))\nwait until(((#Alarm).alarm_alarm == 'both') or ((#Alarm).alarm_alarm == 'siren'))\n(#Clock).clock_delay(0, 0, 5)\n(#Curtain).curtain_open()"
+      }
+    ]
+  },
+  {
+    "command": "에어컨이 켜지면 10초 후 조명을 20으로 어둡게 해 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        wait_until(Tags('AirConditioner').switch_switch == 'off')\n        wait_until(Tags('AirConditioner').switch_switch == 'on')\n        Tags('Clock').clock_delay(0, 0, 10)\n        Tags('Light').switchLevel_setLevel(20, 0)",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "wait until((#AirConditioner).switch_switch == 'off')\nwait until((#AirConditioner).switch_switch == 'on')\n(#Clock).clock_delay(0, 0, 10)\n(#Light).switchLevel_setLevel(20, 0)"
+      }
+    ]
+  }
+]

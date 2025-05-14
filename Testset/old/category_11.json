@@ -1,0 +1,122 @@
+[
+  {
+    "command": "섹터 A의 조명을 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light', 'sectorA').switch_off()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#Light #sectorA).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "하단부의 조명이 켜져 있으면 선풍기를 모두 켜 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Light', 'lower').switch_switch == 'on':\n            All(Tags('Fan').switch_on())",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light #lower).switch_switch == 'on') {\n    (all(#Fan).switch_on())\n}"
+      }
+    ]
+  },
+  {
+    "command": "홀수 태그가 붙은 조명 중 하나라도 켜져 있으면, 섹터 B의의 모든 커튼을 닫아 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Any(Tags('Light', 'odd').switch_switch == 'on'):\n            All(Tags('Curtain', 'sectorB').curtain_close())",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if ((any(#Light #odd).switch_switch == 'on')) {\n    (all(#Curtain #sectorB).curtain_close())\n}"
+      }
+    ]
+  },
+  {
+    "command": "짝수 태그가 붙은 창문이 열려 있으면 벽에 있는 조명을 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Window', 'even').windowControl_window == 'open':\n            Tags('Light', 'wall').switch_off()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window #even).windowControl_window == 'open') {\n    (#Light #wall).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "상단부의 홀수 태그가 붙은 조명을 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light', 'upper', 'odd').switch_off()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#Light #upper #odd).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "섹터 A에 있는 짝수 태그가 붙은 창문이 열려 있으면 커튼을 닫아 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Window', 'sectorA', 'even').windowControl_window == 'open':\n            Tags('Curtain').curtain_close()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window #sectorA #even).windowControl_window == 'open') {\n    (#Curtain).curtain_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "벽에 있는 조명이 모두 꺼져 있으면, 홀수 태그가 붙은 모든 창문을 열어 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if All(Tags('Light', 'wall').switch_switch) == 'off':\n            All(Tags('Window', 'odd').windowControl_open())",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if ((all(#Light #wall).switch_switch) == 'off') {\n    (all(#Window #odd).windowControl_open())\n}"
+      }
+    ]
+  },
+  {
+    "command": "짝수 태그가 붙은 알람 중 하나라도 사이렌이 울리고 있으면 벽에 있는 조명을 모두 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Any(Tags('Alarm', 'even').alarm_alarm == 'siren') or Any(Tags('Alarm', 'even').alarm_alarm == 'both'):\n            All(Tags('Light', 'wall').switch_off())",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if ((any(#Alarm #even).alarm_alarm == 'siren') or (any(#Alarm #even).alarm_alarm == 'both')) {\n    (all(#Light #wall).switch_off())\n}"
+      }
+    ]
+  },
+  {
+    "command": "상단부의 모든 기기의 전원을 꺼줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        All(Tags('upper').switch_off())",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(all(#upper).switch_off())"
+      }
+    ]
+  },
+  {
+    "command": "상단부에 있는 조명 중 하나라도 켜져 있으면 블라인드를 내려 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Any(Tags('Light', 'upper').switch_switch == 'on'):\n            Tags('Blind').blind_close()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if ((any(#Light #upper).switch_switch == 'on')) {\n    (#Blind).blind_close()\n}"
+      }
+    ]
+  }
+]

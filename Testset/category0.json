@@ -1,0 +1,1317 @@
+[
+    {
+        "command": "에어컨의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirConditioner').switch_switch == 'on':\n   Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirConditioner).switch_switch == 'on') {\n   (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "에어컨의 모드가 냉방 모드면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirConditioner').airConditionerMode_airConditionerMode == 'cool':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirConditioner).airConditionerMode_airConditionerMode == 'cool') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "에어컨의 목표 온도가 30도면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirConditioner').airConditionerMode_targetTemperature == 30:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirConditioner).airConditionerMode_targetTemperature == 30) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "에어컨을 꺼줘.",
+        "python": "Tags('AirConditioner').switch_off()",
+        "code": "(#AirConditioner).switch_off()"
+    },
+    {
+        "command": "에어컨을 켜줘.",
+        "python": "Tags('AirConditioner').switch_on()",
+        "code": "(#AirConditioner).switch_on()"
+    },
+    {
+        "command": "에어컨의 전원을 토글해줘.",
+        "python": "Tags('AirConditioner').switch_toggle()",
+        "code": "(#AirConditioner).switch_toggle()"
+    },
+    {
+        "command": "에어컨을 자동 모드로 설정해줘.",
+        "python": "Tags('AirConditioner').airConditionerMode_setAirConditionerMode('auto')",
+        "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('auto')"
+    },
+    {
+        "command": "에어컨의 목표 온도를 18도로 설정해줘.",
+        "python": "Tags('AirConditioner').airConditionerMode_setTemperature(18)",
+        "code": "(#AirConditioner).airConditionerMode_setTemperature(18)"
+    },
+    {
+        "command": "공기청정기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirPurifier').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirPurifier).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "공기청정기가 수면 모드면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirPurifier').airPurifierFanMode_airPurifierFanMode == 'sleep':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'sleep') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "공기청정기를 꺼줘.",
+        "python": "Tags('AirPurifier').switch_off()",
+        "code": "(#AirPurifier).switch_off()"
+    },
+    {
+        "command": "공기청정기를 켜줘.",
+        "python": "Tags('AirPurifier').switch_on()",
+        "code": "(#AirPurifier).switch_on()"
+    },
+    {
+        "command": "공기청정기의 전원을 토글해줘.",
+        "python": "Tags('AirPurifier').switch_toggle()",
+        "code": "(#AirPurifier).switch_toggle()"
+    },
+    {
+        "command": "공기청정기의 모드를 자동으로 설정해줘.",
+        "python": "Tags('AirPurifier').airPurifierFanMode_setAirPurifierFanMode('auto')",
+        "code": "(#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('auto')"
+    },
+    {
+        "command": "현재 온도가 20도이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirQualityDetector').temperatureMeasurement_temperature == 20:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirQualityDetector).temperatureMeasurement_temperature == 20) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "이산화탄소 농도가 800ppm 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirQualityDetector').carbonDioxideMeasurement_carbonDioxide >= 800:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 800) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "상대 습도가 70% 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirQualityDetector').relativeHumidityMeasurement_humidity >= 70:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirQualityDetector).relativeHumidityMeasurement_humidity >= 70) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "황사 농도가 150마이크로그램 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirQualityDetector').dustSensor_dustLevel >= 150:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirQualityDetector).dustSensor_dustLevel >= 150) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "미세먼지 농도가 35마이크로그램 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirQualityDetector').dustSensor_fineDustLevel >= 35:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirQualityDetector).dustSensor_fineDustLevel >= 35) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "초미세먼지 농도가 15마이크로그램 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirQualityDetector').dustSensor_veryFineDustLevel >= 15:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirQualityDetector).dustSensor_veryFineDustLevel >= 15) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "총휘발성유기화합물 농도가 0.5ppm 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('AirQualityDetector').tvocMeasurement_tvocLevel >= 0.5:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#AirQualityDetector).tvocMeasurement_tvocLevel >= 0.5) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "알람의 경광등이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Alarm').alarm_alarm == 'strobe':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Alarm).alarm_alarm == 'strobe') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "알람의 볼륨이 높음이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Alarm').alarm_alarmVolume == 'high':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Alarm).alarm_alarmVolume == 'high') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "알람 배터리 상태가 20% 이하이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Alarm').battery_battery <= 20:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Alarm).battery_battery <= 20) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "알람의 사이렌과 경광등을 모두 켜줘.",
+        "python": "Tags('Alarm').alarm_both()",
+        "code": "(#Alarm).alarm_both()"
+    },
+    {
+        "command": "알람을 꺼줘.",
+        "python": "Tags('Alarm').alarm_off()",
+        "code": "(#Alarm).alarm_off()"
+    },
+    {
+        "command": "알람의 볼륨을 낮음으로 설정해줘.",
+        "python": "Tags('Alarm').alarm_setAlarmVolume('low')",
+        "code": "(#Alarm).alarm_setAlarmVolume('low')"
+    },
+    {
+        "command": "알람의 사이렌을 울려줘.",
+        "python": "Tags('Alarm').alarm_siren()",
+        "code": "(#Alarm).alarm_siren()"
+    },
+    {
+        "command": "알람의 경광등을 켜줘.",
+        "python": "Tags('Alarm').alarm_strobe()",
+        "code": "(#Alarm).alarm_strobe()"
+    },
+    {
+        "command": "블라인드가 50% 이상 열려있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Blind').blindLevel_blindLevel >= 50:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Blind).blindLevel_blindLevel >= 50) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "블라인드가 열린 상태이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Blind').blind_blind == 'open':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Blind).blind_blind == 'open') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "블라인드를 70%로 설정해줘.",
+        "python": "Tags('Blind').blindLevel_setBlindLevel(70)",
+        "code": "(#Blind).blindLevel_setBlindLevel(70)"
+    },
+    {
+        "command": "블라인드를 닫아줘.",
+        "python": "Tags('Blind').blind_close()",
+        "code": "(#Blind).blind_close()"
+    },
+    {
+        "command": "블라인드를 열어줘.",
+        "python": "Tags('Blind').blind_open()",
+        "code": "(#Blind).blind_open()"
+    },
+    {
+        "command": "블라인드를 멈춰줘.",
+        "python": "Tags('Blind').blind_pause()",
+        "code": "(#Blind).blind_pause()"
+    },
+    {
+        "command": "버튼이 눌렸으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Button').button_button == 'pushed':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Button).button_button == 'pushed') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "버튼의 개수가 4개 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Button').button_numberOfButtons >= 4:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Button).button_numberOfButtons >= 4) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "버튼1이 눌렸으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Buttonx4').buttonx4_button1 == 'pushed':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Buttonx4).buttonx4_button1 == 'pushed') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "버튼2가 눌린 상태면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Buttonx4').buttonx4_button2 == 'held':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Buttonx4).buttonx4_button2 == 'held') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "버튼3이 두 번 눌렸으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Buttonx4').buttonx4_button3 == 'pushed_2x':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Buttonx4).buttonx4_button3 == 'pushed_2x') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "버튼4가 위로 스와이프되었으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Buttonx4').buttonx4_button4 == 'swipe_up':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Buttonx4).buttonx4_button4 == 'swipe_up') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "버튼 개수가 4개면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Buttonx4').buttonx4_numberOfButtons == 4:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Buttonx4).buttonx4_numberOfButtons == 4) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "5와 3을 더해줘.",
+        "python": "Tags('Calculator').calculator_add(5, 3)",
+        "code": "(#Calculator).calculator_add(5, 3)"
+    },
+    {
+        "command": "10을 2로 나눠줘.",
+        "python": "Tags('Calculator').calculator_div(10, 2)",
+        "code": "(#Calculator).calculator_div(10, 2)"
+    },
+    {
+        "command": "10을 3으로 나눈 나머지를 구해줘.",
+        "python": "Tags('Calculator').calculator_mod(10, 3)",
+        "code": "(#Calculator).calculator_mod(10, 3)"
+    },
+    {
+        "command": "7과 8을 곱해줘.",
+        "python": "Tags('Calculator').calculator_mul(7, 8)",
+        "code": "(#Calculator).calculator_mul(7, 8)"
+    },
+    {
+        "command": "15에서 4를 빼줘.",
+        "python": "Tags('Calculator').calculator_sub(15, 4)",
+        "code": "(#Calculator).calculator_sub(15, 4)"
+    },
+    {
+        "command": "카메라의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Camera').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Camera).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "카메라를 꺼줘.",
+        "python": "Tags('Camera').switch_off()",
+        "code": "(#Camera).switch_off()"
+    },
+    {
+        "command": "카메라를 켜줘.",
+        "python": "Tags('Camera').switch_on()",
+        "code": "(#Camera).switch_on()"
+    },
+    {
+        "command": "가장 최근에 찍은 사진을 첨부파일로 이메일을 test@example.com 주소, 제목 '사진'과 내용 '사진입니다.'로 보내줘.",
+        "python": "recentPhoto = Tags('Camera').camera_image\nTags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '사진', '사진입니다.', recentPhoto)",
+        "code": "recentPhoto = (#Camera).camera_image\n(#EmailProvider).emailProvider_sendMailWithFile('test@example.com', '사진', '사진입니다.', recentPhoto)"
+    },
+    {
+        "command": "가장 최근에 찍은 동영상을 첨부파일로 이메일을 test@example.com 주소, 제목 '동영상'과 내용 '동영상입니다.'로 보내줘.",
+        "python": "recentVideo = Tags('Camera').camera_video\nTags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '동영상', '동영상입니다.', recentVideo)",
+        "code": "recentVideo = (#Camera).camera_video\n(#EmailProvider).emailProvider_sendMailWithFile('test@example.com', '동영상', '동영상입니다.', recentVideo)"
+    },
+    {
+        "command": "카메라의 전원을 토글해줘.",
+        "python": "Tags('Camera').switch_toggle()",
+        "code": "(#Camera).switch_toggle()"
+    },
+    {
+        "command": "카메라로 사진을 찍어줘.",
+        "python": "Tags('Camera').camera_take()",
+        "code": "(#Camera).camera_take()"
+    },
+    {
+        "command": "카메라로 10초 동안 속도 2로 타임랩스 영상을 촬영해줘.",
+        "python": "Tags('Camera').camera_takeTimelapse(10, 2)",
+        "code": "(#Camera).camera_takeTimelapse(10, 2)"
+    },
+    {
+        "command": "충전기의 전압이 230볼트 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Charger').voltageMeasurement_voltage >= 230:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Charger).voltageMeasurement_voltage >= 230) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "충전기의 상태가 충전 중이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Charger').chargingState_chargingState == 'charging':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Charger).chargingState_chargingState == 'charging') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "충전기의 전류가 10암페어 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Charger').currentMeasurement_current >= 10:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Charger).currentMeasurement_current >= 10) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "오늘 날짜가 2025년 5월 12일이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_date == 20250512:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_date == 20250512) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "현재 시간이 2025년 5월 12일 오후 3시 15분이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_datetime == 202505121515:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_datetime == 202505121515) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "오늘이 20일이면 알람의 사이렌을 울려줘",
+        "python": "if Tags('Clock').clock_day == 20:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_day == 20) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "현재 시간이 오후 3시이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_hour == 15:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_hour == 15) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "오늘이 공휴일이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_isHoliday == true:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_isHoliday == true) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "지금이 30분이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_minute == 30:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_minute == 30) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "지금이 5월이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_month == 5:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_month == 5) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "지금이 40초이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_second == 40:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_second == 40) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "지금이 오후 3시 15분이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_time == 1515:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_time == 1515) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "현재 Unix timestamp가 1747031637.23이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_timestamp == 1747031637.23:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_timestamp == 1747031637.23) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "오늘이 금요일이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_weekday == 'friday':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_weekday == 'friday') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "올해가 2025년이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Clock').clock_year == 2025:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Clock).clock_year == 2025) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "1시간 20분 30초 뒤에 알람의 사이렌을 울려줘",
+        "python": "Tags('Clock').clock_delay(1, 20, 30)\nTags('Alarm').alarm_siren()",
+        "code": "(#Clock).clock_delay(1, 20, 30)\n(#Alarm).alarm_siren()"
+    },
+    {
+        "command": "접촉 센서가 닫혀있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('ContactSensor').contactSensor_contact == 'closed':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#ContactSensor).contactSensor_contact == 'closed') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "커튼이 열림 상태이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Curtain').curtain_curtain == 'open':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Curtain).curtain_curtain == 'open') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "커튼을 닫아줘.",
+        "python": "Tags('Curtain').curtain_close()",
+        "code": "(#Curtain).curtain_close()"
+    },
+    {
+        "command": "커튼을 열어줘.",
+        "python": "Tags('Curtain').curtain_open()",
+        "code": "(#Curtain).curtain_open()"
+    },
+    {
+        "command": "커튼을 멈춰줘.",
+        "python": "Tags('Curtain').curtain_pause()",
+        "code": "(#Curtain).curtain_pause()"
+    },
+    {
+        "command": "제습기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Dehumidifier').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Dehumidifier).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "제습기의 모드가 제습 중이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Dehumidifier').dehumidifierMode_dehumidifierMode == 'dehumidifying':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'dehumidifying') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "제습기를 꺼줘.",
+        "python": "Tags('Dehumidifier').switch_off()",
+        "code": "(#Dehumidifier).switch_off()"
+    },
+    {
+        "command": "제습기를 켜줘.",
+        "python": "Tags('Dehumidifier').switch_on()",
+        "code": "(#Dehumidifier).switch_on()"
+    },
+    {
+        "command": "제습기의 전원을 토글해줘.",
+        "python": "Tags('Dehumidifier').switch_toggle()",
+        "code": "(#Dehumidifier).switch_toggle()"
+    },
+    {
+        "command": "제습기를 냉각 모드로 설정해줘.",
+        "python": "Tags('Dehumidifier').dehumidifierMode_setDehumidifierMode('cooling')",
+        "code": "(#Dehumidifier).dehumidifierMode_setDehumidifierMode('cooling')"
+    },
+    {
+        "command": "식기세척기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Dishwasher').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Dishwasher).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "식기세척기의 모드가 에코 모드면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Dishwasher').dishwasherMode_dishwasherMode == 'eco':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Dishwasher).dishwasherMode_dishwasherMode == 'eco') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "식기세척기를 꺼줘.",
+        "python": "Tags('Dishwasher').switch_off()",
+        "code": "(#Dishwasher).switch_off()"
+    },
+    {
+        "command": "식기세척기를 켜줘.",
+        "python": "Tags('Dishwasher').switch_on()",
+        "code": "(#Dishwasher).switch_on()"
+    },
+    {
+        "command": "식기세척기의 전원을 토글해줘.",
+        "python": "Tags('Dishwasher').switch_toggle()",
+        "code": "(#Dishwasher).switch_toggle()"
+    },
+    {
+        "command": "식기세척기를 자동 모드로 설정해줘.",
+        "python": "Tags('Dishwasher').dishwasherMode_setDishwasherMode('auto')",
+        "code": "(#Dishwasher).dishwasherMode_setDishwasherMode('auto')"
+    },
+    {
+        "command": "도어락이 열려 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('DoorLock').doorControl_door == 'open':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#DoorLock).doorControl_door == 'open') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "도어락을 닫아줘.",
+        "python": "Tags('DoorLock').doorControl_close()",
+        "code": "(#DoorLock).doorControl_close()"
+    },
+    {
+        "command": "도어락을 열어줘.",
+        "python": "Tags('DoorLock').doorControl_open()",
+        "code": "(#DoorLock).doorControl_open()"
+    },
+    {
+        "command": "이메일을 test@example.com 주소로 제목 '알림'과 내용 '긴급 상황입니다.'로 보내줘.",
+        "python": "Tags('EmailProvider').emailProvider_sendMail('test@example.com', '알림', '긴급 상황입니다.')",
+        "code": "(#EmailProvider).emailProvider_sendMail('test@example.com', '알림', '긴급 상황입니다.')"
+    },
+    {
+        "command": "가장 최근에 찍은 사진을 첨부파일로 이메일을 test@example.com 주소, 제목 '사진'과 내용 '사진입니다.'로 보내줘.",
+        "python": "recentPhoto = Tags('Camera').camera_image\nTags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '사진', '사진입니다.', recentPhoto)",
+        "code": "recentPhoto = (#Camera).camera_image\n(#EmailProvider).emailProvider_sendMailWithFile('test@example.com', '사진', '사진입니다.', recentPhoto)"
+    },
+    {
+        "command": "선풍기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Fan').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Fan).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "선풍기의 속도가 2000RPM 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Fan').fanControl_fanSpeed >= 2000:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Fan).fanControl_fanSpeed >= 2000) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "선풍기의 속도를 1500RPM으로 설정해줘.",
+        "python": "Tags('Fan').fanControl_setFanSpeed(1500)",
+        "code": "(#Fan).fanControl_setFanSpeed(1500)"
+    },
+    {
+        "command": "선풍기의 속도를 80%로 설정해줘.",
+        "python": "Tags('Fan').fanControl_setPercent(80)",
+        "code": "(#Fan).fanControl_setPercent(80)"
+    },
+    {
+        "command": "선풍기를 꺼줘.",
+        "python": "Tags('Fan').switch_off()",
+        "code": "(#Fan).switch_off()"
+    },
+    {
+        "command": "선풍기를 켜줘.",
+        "python": "Tags('Fan').switch_on()",
+        "code": "(#Fan).switch_on()"
+    },
+    {
+        "command": "선풍기의 전원을 토글해줘.",
+        "python": "Tags('Fan').switch_toggle()",
+        "code": "(#Fan).switch_toggle()"
+    },
+    {
+        "command": "사료 공급기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Feeder').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Feeder).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "사료 공급기의 상태가 급식 중이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Feeder').feederOperatingState_feederOperatingState == 'feeding':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Feeder).feederOperatingState_feederOperatingState == 'feeding') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "사료 공급기를 꺼줘.",
+        "python": "Tags('Feeder').switch_off()",
+        "code": "(#Feeder).switch_off()"
+    },
+    {
+        "command": "사료 공급기를 켜줘.",
+        "python": "Tags('Feeder').switch_on()",
+        "code": "(#Feeder).switch_on()"
+    },
+    {
+        "command": "사료 공급기의 전원을 토글해줘.",
+        "python": "Tags('Feeder').switch_toggle()",
+        "code": "(#Feeder).switch_toggle()"
+    },
+    {
+        "command": "사료 공급기의 사료 공급량을 100그램으로 설정해줘.",
+        "python": "Tags('Feeder').feederPortion_setFeedPortion(100, 'grams')",
+        "code": "(#Feeder).feederPortion_setFeedPortion(100, 'grams')"
+    },
+    {
+        "command": "사료 공급기의 사료 공급을 시작해줘.",
+        "python": "Tags('Feeder').feederOperatingState_startFeeding()",
+        "code": "(#Feeder).feederOperatingState_startFeeding()"
+    },
+    {
+        "command": "가스 사용량이 500kWh 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('GasMeter').gasMeter_gasMeter >= 500:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#GasMeter).gasMeter_gasMeter >= 500) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가스 발열량이 1000kcal 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('GasMeter').gasMeter_gasMeterCalorific >= 1000:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#GasMeter).gasMeter_gasMeterCalorific >= 1000) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가스 사용 시간이 10000초 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('GasMeter').gasMeter_gasMeterTime >= 10000:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#GasMeter).gasMeter_gasMeterTime >= 10000) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가스 사용량이 20세제곱미터 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('GasMeter').gasMeter_gasMeterVolume >= 20:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#GasMeter).gasMeter_gasMeterVolume >= 20) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가스 밸브가 열려 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('GasValve').valve_valve == 'open':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#GasValve).valve_valve == 'open') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가스 밸브를 닫아줘.",
+        "python": "Tags('GasValve').valve_close()",
+        "code": "(#GasValve).valve_close()"
+    },
+    {
+        "command": "가스 밸브를 열어줘.",
+        "python": "Tags('GasValve').valve_open()",
+        "code": "(#GasValve).valve_open()"
+    },
+    {
+        "command": "가스 사용량이 1000kWh 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('GasValve').gasMeter_gasMeter >= 1000:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#GasValve).gasMeter_gasMeter >= 1000) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가스 발열량이 500kcal 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('GasValve').gasMeter_gasMeterCalorific >= 500:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#GasValve).gasMeter_gasMeterCalorific >= 500) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가스 사용 시간이 5000초 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('GasValve').gasMeter_gasMeterTime >= 5000:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#GasValve).gasMeter_gasMeterTime >= 5000) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가스 사용량이 34세제곱미터 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('GasValve').gasMeter_gasMeterVolume >= 34:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#GasValve).gasMeter_gasMeterVolume >= 34) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가습기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Humidifier').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Humidifier).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가습기의 모드가 자동이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Humidifier').humidifierMode_humidifierMode == 'auto':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Humidifier).humidifierMode_humidifierMode == 'auto') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "가습기를 꺼줘.",
+        "python": "Tags('Humidifier').switch_off()",
+        "code": "(#Humidifier).switch_off()"
+    },
+    {
+        "command": "가습기를 켜줘.",
+        "python": "Tags('Humidifier').switch_on()",
+        "code": "(#Humidifier).switch_on()"
+    },
+    {
+        "command": "가습기의 전원을 토글해줘.",
+        "python": "Tags('Humidifier').switch_toggle()",
+        "code": "(#Humidifier).switch_toggle()"
+    },
+    {
+        "command": "가습기를 강 모드로 설정해줘.",
+        "python": "Tags('Humidifier').humidifierMode_setHumidifierMode('high')",
+        "code": "(#Humidifier).humidifierMode_setHumidifierMode('high')"
+    },
+    {
+        "command": "상대 습도가 70% 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('HumiditySensor').relativeHumidityMeasurement_humidity >= 70:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 70) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "관개기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Irrigator').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Irrigator).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "관개기의 급수량이 3리터이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Irrigator').irrigatorPortion_waterPortion == 3:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Irrigator).irrigatorPortion_waterPortion == 3) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "관개기의 상태가 급수 중이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Irrigator').irrigatorOperatingState_irrigatorOperatingState == 'watering':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == 'watering') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "관개기를 꺼줘.",
+        "python": "Tags('Irrigator').switch_off()",
+        "code": "(#Irrigator).switch_off()"
+    },
+    {
+        "command": "관개기를 켜줘.",
+        "python": "Tags('Irrigator').switch_on()",
+        "code": "(#Irrigator).switch_on()"
+    },
+    {
+        "command": "관개기의 전원을 토글해줘.",
+        "python": "Tags('Irrigator').switch_toggle()",
+        "code": "(#Irrigator).switch_toggle()"
+    },
+    {
+        "command": "관개기의 급수량을 5리터로 설정해줘.",
+        "python": "Tags('Irrigator').irrigatorPortion_setWaterPortion(5, 'liters')",
+        "code": "(#Irrigator).irrigatorPortion_setWaterPortion(5, 'liters')"
+    },
+    {
+        "command": "관개기의 급수를 시작해줘.",
+        "python": "Tags('Irrigator').irrigatorOperatingState_startWatering()",
+        "code": "(#Irrigator).irrigatorOperatingState_startWatering()"
+    },
+    {
+        "command": "누수가 감지되면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('LeakSensor').leakSensor_leakage == 'detected':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#LeakSensor).leakSensor_leakage == 'detected') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "조명이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Light').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Light).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "조명의 색조가 30이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Light').colorControl_hue == 30:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Light).colorControl_hue == 30) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "조명의 채도가 30이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Light').colorControl_saturation == 30:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Light).colorControl_saturation == 30) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "조명 밝기가 100이면 알람의 사이렌을 울려줘",
+        "python": "if Tags('Light').switchLevel_level == 100:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Light).switchLevel_level == 100) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "조명의 색조를 70으로 설정해줘.",
+        "python": "Tags('Light').colorControl_setHue(70)",
+        "code": "(#Light).colorControl_setHue(70)"
+    },
+    {
+        "command": "조명의 채도를 90으로 설정해줘.",
+        "python": "Tags('Light').colorControl_setSaturation(90)",
+        "code": "(#Light).colorControl_setSaturation(90)"
+    },
+    {
+        "command": "5의 속도로 조명의 밝기를 80으로 설정해줘.",
+        "python": "Tags('Light').switchLevel_setLevel(80, 5)",
+        "code": "(#Light).switchLevel_setLevel(80, 5)"
+    },
+    {
+        "command": "조명의 경고 모드를 켜줘.",
+        "python": "Tags('Light').switchLevel_alert()",
+        "code": "(#Light).switchLevel_alert()"
+    },
+    {
+        "command": "조명을 꺼줘.",
+        "python": "Tags('Light').switch_off()",
+        "code": "(#Light).switch_off()"
+    },
+    {
+        "command": "조명을 켜줘.",
+        "python": "Tags('Light').switch_on()",
+        "code": "(#Light).switch_on()"
+    },
+    {
+        "command": "조명의 전원을 토글해줘.",
+        "python": "Tags('Light').switch_toggle()",
+        "code": "(#Light).switch_toggle()"
+    },
+    {
+        "command": "조도 센서의 밝기 값이 500룩스 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('LightSensor').lightLevel_light >= 500:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#LightSensor).lightLevel_light >= 500) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "오늘 학생식당 점심 메뉴를 알려줘.",
+        "python": "Tags('MenuProvider').menuProvider_menu('오늘 학생식당 점심')",
+        "code": "(#MenuProvider).menuProvider_menu('오늘 학생식당 점심')"
+    },
+    {
+        "command": "오늘의 메뉴를 무작위로 알려줘.",
+        "python": "menu=Tags('MenuProvider').menuProvider_todayMenu()\nTags('Speaker').mediaPlayback_speak(menu)",
+        "code": "menu=(#MenuProvider).menuProvider_todayMenu()\n(#Speaker).mediaPlayback_speak(menu)"
+    },
+    {
+        "command": "오늘의 식당을 무작위로 알려줘.",
+        "python": "place=Tags('MenuProvider').menuProvider_todayPlace()\nTags('Speaker').mediaPlayback_speak(place)",
+        "code": "place=(#MenuProvider).menuProvider_todayPlace()\n(#Speaker).mediaPlayback_speak(place)"
+    },
+    {
+        "command": "모션 센서가 활성 상태이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('MotionSensor').motionSensor_motion == 'active':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#MotionSensor).motionSensor_motion == 'active') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "재실 센서가 감지 상태이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('PresenceSensor').presenceSensor_presence == 'present':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#PresenceSensor).presenceSensor_presence == 'present') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "펌프의 현재 동작 모드가 최대이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Pump').pumpOperationMode_currentOperationMode == 'maximum':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Pump).pumpOperationMode_currentOperationMode == 'maximum') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "펌프의 설정 동작 모드가 기본이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Pump').pumpOperationMode_operationMode == 'normal':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Pump).pumpOperationMode_operationMode == 'normal') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "펌프의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Pump').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Pump).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "펌프가 열려있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Pump').pump_pump == 'open':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Pump).pump_pump == 'open') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "펌프의 동작 모드를 최대로 설정해줘.",
+        "python": "Tags('Pump').pumpOperationMode_setOperationMode('maximum')",
+        "code": "(#Pump).pumpOperationMode_setOperationMode('maximum')"
+    },
+    {
+        "command": "펌프를 꺼줘.",
+        "python": "Tags('Pump').switch_off()",
+        "code": "(#Pump).switch_off()"
+    },
+    {
+        "command": "펌프를 켜줘.",
+        "python": "Tags('Pump').switch_on()",
+        "code": "(#Pump).switch_on()"
+    },
+    {
+        "command": "펌프의 전원을 토글해줘.",
+        "python": "Tags('Pump').switch_toggle()",
+        "code": "(#Pump).switch_toggle()"
+    },
+    {
+        "command": "펌프를 닫아줘.",
+        "python": "Tags('Pump').pump_close()",
+        "code": "(#Pump).pump_close()"
+    },
+    {
+        "command": "펌프를 열어줘.",
+        "python": "Tags('Pump').pump_open()",
+        "code": "(#Pump).pump_open()"
+    },
+    {
+        "command": "냉장고의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Refrigerator').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Refrigerator).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "냉장고의 성에 제거 기능이 켜저 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Refrigerator').refrigeration_defrost == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Refrigerator).refrigeration_defrost == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "냉장고의 급속 냉각 기능이 꺼져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Refrigerator').refrigeration_rapidCooling == 'off':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Refrigerator).refrigeration_rapidCooling == 'off') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "냉장고의 급속 냉동 기능이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Refrigerator').refrigeration_rapidFreezing == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Refrigerator).refrigeration_rapidFreezing == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "냉장고를 꺼줘.",
+        "python": "Tags('Refrigerator').switch_off()",
+        "code": "(#Refrigerator).switch_off()"
+    },
+    {
+        "command": "냉장고의 전원을 토글해줘.",
+        "python": "Tags('Refrigerator').switch_toggle()",
+        "code": "(#Refrigerator).switch_toggle()"
+    },
+    {
+        "command": "냉장고의 성에 제거 기능을 켜줘.",
+        "python": "Tags('Refrigerator').refrigeration_setDefrost('on')",
+        "code": "(#Refrigerator).refrigeration_setDefrost('on')"
+    },
+    {
+        "command": "냉장고의 급속 냉각 기능을 켜줘.",
+        "python": "Tags('Refrigerator').refrigeration_setRapidCooling('on')",
+        "code": "(#Refrigerator).refrigeration_setRapidCooling('on')"
+    },
+    {
+        "command": "냉장고의 급속 냉동 기능을 꺼줘.",
+        "python": "Tags('Refrigerator').refrigeration_setRapidFreezing('off')",
+        "code": "(#Refrigerator).refrigeration_setRapidFreezing('off')"
+    },
+    {
+        "command": "로봇 청소기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('RobotCleaner').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#RobotCleaner).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "로봇 청소기가 자동 모드이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('RobotCleaner').robotCleanerCleaningMode_robotCleanerCleaningMode == 'auto':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode == 'auto') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "로봇 청소기를 꺼줘.",
+        "python": "Tags('RobotCleaner').switch_off()",
+        "code": "(#RobotCleaner).switch_off()"
+    },
+    {
+        "command": "로봇 청소기를 켜줘.",
+        "python": "Tags('RobotCleaner').switch_on()",
+        "code": "(#RobotCleaner).switch_on()"
+    },
+    {
+        "command": "로봇 청소기의 전원을 토글해줘.",
+        "python": "Tags('RobotCleaner').switch_toggle()",
+        "code": "(#RobotCleaner).switch_toggle()"
+    },
+    {
+        "command": "로봇 청소기의 청소 모드를 수동으로 설정해줘.",
+        "python": "Tags('RobotCleaner').robotCleanerCleaningMode_setRobotCleanerCleaningMode('manual')",
+        "code": "(#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode('manual')"
+    },
+    {
+        "command": "창문 블라인드가 40% 이상 열려 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Shade').windowShadeLevel_shadeLevel >= 40:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Shade).windowShadeLevel_shadeLevel >= 40) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "창문 블라인드가 완전히 열려 있는 상태면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Shade').windowShade_windowShade == 'open':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Shade).windowShade_windowShade == 'open') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "창문 블라인드를 50%로 설정해줘.",
+        "python": "Tags('Shade').windowShadeLevel_setShadeLevel(50)",
+        "code": "(#Shade).windowShadeLevel_setShadeLevel(50)"
+    },
+    {
+        "command": "창문 블라인드를 닫아줘.",
+        "python": "Tags('Shade').windowShade_close()",
+        "code": "(#Shade).windowShade_close()"
+    },
+    {
+        "command": "창문 블라인드를 열어줘.",
+        "python": "Tags('Shade').windowShade_open()",
+        "code": "(#Shade).windowShade_open()"
+    },
+    {
+        "command": "창문 블라인드 움직임을 일시 중지해줘.",
+        "python": "Tags('Shade').windowShade_pause()",
+        "code": "(#Shade).windowShade_pause()"
+    },
+    {
+        "command": "사이렌이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Siren').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Siren).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "사이렌 모드가 사이렌이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Siren').sirenMode_sirenMode == 'siren':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Siren).sirenMode_sirenMode == 'siren') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "사이렌을 꺼줘.",
+        "python": "Tags('Siren').switch_off()",
+        "code": "(#Siren).switch_off()"
+    },
+    {
+        "command": "사이렌을 켜줘.",
+        "python": "Tags('Siren').switch_on()",
+        "code": "(#Siren).switch_on()"
+    },
+    {
+        "command": "사이렌 전원을 토글해줘.",
+        "python": "Tags('Siren').switch_toggle()",
+        "code": "(#Siren).switch_toggle()"
+    },
+    {
+        "command": "사이렌 모드를 경광등으로 설정해줘.",
+        "python": "Tags('Siren').sirenMode_setSirenMode('strobe')",
+        "code": "(#Siren).sirenMode_setSirenMode('strobe')"
+    },
+    {
+        "command": "스마트 플러그의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('SmartPlug').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#SmartPlug).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "스마트 플러그의 전압이 220볼트 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('SmartPlug').voltageMeasurement_voltage >= 220:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#SmartPlug).voltageMeasurement_voltage >= 220) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "스마트 플러그의 전류가 10암페어 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('SmartPlug').currentMeasurement_current >= 10:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#SmartPlug).currentMeasurement_current >= 10) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "스마트 플러그의 소비 전력이 1000와트 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('SmartPlug').powerMeter_power >= 1000:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#SmartPlug).powerMeter_power >= 1000) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "스마트 플러그를 꺼줘.",
+        "python": "Tags('SmartPlug').switch_off()",
+        "code": "(#SmartPlug).switch_off()"
+    },
+    {
+        "command": "스마트 플러그를 켜줘.",
+        "python": "Tags('SmartPlug').switch_on()",
+        "code": "(#SmartPlug).switch_on()"
+    },
+    {
+        "command": "스마트 플러그의 전원을 토글해줘.",
+        "python": "Tags('SmartPlug').switch_toggle()",
+        "code": "(#SmartPlug).switch_toggle()"
+    },
+    {
+        "command": "연기 감지기에서 연기가 감지되면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('SmokeDetector').smokeDetector_smoke == 'detected':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#SmokeDetector).smokeDetector_smoke == 'detected') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "토양 수분 센서의 토양 수분 측정값이 30% 이하이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('SoilMoistureSensor').soilHumidityMeasurement_soilHumidity <= 30:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "소리 센서에서 소리가 감지되면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('SoundSensor').soundSensor_sound == 'detected':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#SoundSensor).soundSensor_sound == 'detected') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "소리 감지 레벨이 70dB 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('SoundSensor').soundPressureLevel_soundPressureLevel >= 70:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#SoundSensor).soundPressureLevel_soundPressureLevel >= 70) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "스피커의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Speaker').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Speaker).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "스피커가 재생 중이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Speaker').mediaPlayback_playbackStatus == 'playing':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Speaker).mediaPlayback_playbackStatus == 'playing') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "스피커를 꺼줘.",
+        "python": "Tags('Speaker').switch_off()",
+        "code": "(#Speaker).switch_off()"
+    },
+    {
+        "command": "스피커를 켜줘.",
+        "python": "Tags('Speaker').switch_on()",
+        "code": "(#Speaker).switch_on()"
+    },
+    {
+        "command": "스피커의 전원을 토글해줘.",
+        "python": "Tags('Speaker').switch_toggle()",
+        "code": "(#Speaker).switch_toggle()"
+    },
+    {
+        "command": "스피커의 재생을 빨리 감기 해줘.",
+        "python": "Tags('Speaker').mediaPlayback_fastForward()",
+        "code": "(#Speaker).mediaPlayback_fastForward()"
+    },
+    {
+        "command": "스피커의 재생을 일시 정지해줘.",
+        "python": "Tags('Speaker').mediaPlayback_pause()",
+        "code": "(#Speaker).mediaPlayback_pause()"
+    },
+    {
+        "command": "스피커의 재생을 되감아줘.",
+        "python": "Tags('Speaker').mediaPlayback_rewind()",
+        "code": "(#Speaker).mediaPlayback_rewind()"
+    },
+    {
+        "command": "스피커의 재생을 멈춰줘.",
+        "python": "Tags('Speaker').mediaPlayback_stop()",
+        "code": "(#Speaker).mediaPlayback_stop()"
+    },
+    {
+        "command": "스피커에서 music.mp3를 재생해줘.",
+        "python": "Tags('Speaker').mediaPlayback_play('music.mp3')",
+        "code": "(#Speaker).mediaPlayback_play('music.mp3')"
+    },
+    {
+        "command": "스피커에서 '지금은 테스트 중입니다.'를 말해줘.",
+        "python": "Tags('Speaker').mediaPlayback_speak('지금은 테스트 중입니다.')",
+        "code": "(#Speaker).mediaPlayback_speak('지금은 테스트 중입니다.')"
+    },
+    {
+        "command": "녹음기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Recorder').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Recorder).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "녹음기가 녹음 중이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Recorder').audioRecord_recordStatus == 'recording':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Recorder).audioRecord_recordStatus == 'recording') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "녹음기를 꺼줘.",
+        "python": "Tags('Recorder').switch_off()",
+        "code": "(#Recorder).switch_off()"
+    },
+    {
+        "command": "녹음기를 켜줘.",
+        "python": "Tags('Recorder').switch_on()",
+        "code": "(#Recorder).switch_on()"
+    },
+    {
+        "command": "녹음기의 전원을 토글해줘.",
+        "python": "Tags('Recorder').switch_toggle()",
+        "code": "(#Recorder).switch_toggle()"
+    },
+    {
+        "command": "녹음기로 10초 동안 녹음해서 test.wav로 저장해줘.",
+        "python": "Tags('Recorder').audioRecord_record('test.wav', 10)",
+        "code": "(#Recorder).audioRecord_record('test.wav', 10)"
+    },
+    {
+        "command": "스위치의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Switch').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Switch).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "스위치를 꺼줘.",
+        "python": "Tags('Switch').switch_off()",
+        "code": "(#Switch).switch_off()"
+    },
+    {
+        "command": "스위치를 켜줘.",
+        "python": "Tags('Switch').switch_on()",
+        "code": "(#Switch).switch_on()"
+    },
+    {
+        "command": "스위치의 전원을 토글해줘.",
+        "python": "Tags('Switch').switch_toggle()",
+        "code": "(#Switch).switch_toggle()"
+    },
+    {
+        "command": "TV의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Television').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Television).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "현재 TV 채널 이름이 '9시 뉴스'이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Television').tvChannel_tvChannelName == '9시 뉴스':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Television).tvChannel_tvChannelName == '9시 뉴스') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "TV의 볼륨이 50 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Television').audioVolume_volume >= 50:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Television).audioVolume_volume >= 50) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "TV가 음소거 상태이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Television').audioMute_muteStatus == 'muted':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Television).audioMute_muteStatus == 'muted') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "TV를 꺼줘.",
+        "python": "Tags('Television').switch_off()",
+        "code": "(#Television).switch_off()"
+    },
+    {
+        "command": "TV를 켜줘.",
+        "python": "Tags('Television').switch_on()",
+        "code": "(#Television).switch_on()"
+    },
+    {
+        "command": "TV의 전원을 토글해줘.",
+        "python": "Tags('Television').switch_toggle()",
+        "code": "(#Television).switch_toggle()"
+    },
+    {
+        "command": "TV 채널을 하나 내려줘.",
+        "python": "Tags('Television').tvChannel_channelDown()",
+        "code": "(#Television).tvChannel_channelDown()"
+    },
+    {
+        "command": "TV 채널을 하나 올려줘.",
+        "python": "Tags('Television').tvChannel_channelUp()",
+        "code": "(#Television).tvChannel_channelUp()"
+    },
+    {
+        "command": "TV 채널을 7번으로 설정해줘.",
+        "python": "Tags('Television').tvChannel_setTvChannel(7)",
+        "code": "(#Television).tvChannel_setTvChannel(7)"
+    },
+    {
+        "command": "TV 채널 이름을 '뉴스'로 설정해줘.",
+        "python": "Tags('Television').tvChannel_setTvChannelName('뉴스')",
+        "code": "(#Television).tvChannel_setTvChannelName('뉴스')"
+    },
+    {
+        "command": "TV의 볼륨을 30으로 설정해줘.",
+        "python": "Tags('Television').audioVolume_setVolume(30)",
+        "code": "(#Television).audioVolume_setVolume(30)"
+    },
+    {
+        "command": "TV의 볼륨을 낮춰줘.",
+        "python": "Tags('Television').audioVolume_volumeDown()",
+        "code": "(#Television).audioVolume_volumeDown()"
+    },
+    {
+        "command": "TV의 볼륨을 높여줘.",
+        "python": "Tags('Television').audioVolume_volumeUp()",
+        "code": "(#Television).audioVolume_volumeUp()"
+    },
+    {
+        "command": "TV를 음소거해줘.",
+        "python": "Tags('Television').audioMute_mute()",
+        "code": "(#Television).audioMute_mute()"
+    },
+    {
+        "command": "TV의 음소거 상태를 해제해줘.",
+        "python": "Tags('Television').audioMute_unmute()",
+        "code": "(#Television).audioMute_unmute()"
+    },
+    {
+        "command": "TV의 음소거 상태를 음소거로 설정해줘.",
+        "python": "Tags('Television').audioMute_setMute('muted')",
+        "code": "(#Television).audioMute_setMute('muted')"
+    },
+    {
+        "command": "현재 온도가 25도 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('TemperatureSensor').temperatureMeasurement_temperature >= 25:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#TemperatureSensor).temperatureMeasurement_temperature >= 25) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "밸브가 열린 상태이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Valve').valve_valve == 'open':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Valve).valve_valve == 'open') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "밸브를 닫아줘.",
+        "python": "Tags('Valve').valve_close()",
+        "code": "(#Valve).valve_close()"
+    },
+    {
+        "command": "밸브를 열어줘.",
+        "python": "Tags('Valve').valve_open()",
+        "code": "(#Valve).valve_open()"
+    },
+    {
+        "command": "습도가 80% 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('WeatherProvider').weatherProvider_humidityWeather >= 80:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#WeatherProvider).weatherProvider_humidityWeather >= 80) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "미세먼지 농도가 100 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('WeatherProvider').weatherProvider_pm10Weather >= 100:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#WeatherProvider).weatherProvider_pm10Weather >= 100) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "초미세먼지 농도가 50 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('WeatherProvider').weatherProvider_pm25Weather >= 50:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#WeatherProvider).weatherProvider_pm25Weather >= 50) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "기압이 1020hPa 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('WeatherProvider').weatherProvider_pressureWeather >= 1020:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#WeatherProvider).weatherProvider_pressureWeather >= 1020) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "온도가 30도 이상이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('WeatherProvider').weatherProvider_temperatureWeather >= 30:\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#WeatherProvider).weatherProvider_temperatureWeather >= 30) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "현재 날씨가 비가 오고 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('WeatherProvider').weatherProvider_weather == 'rain':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#WeatherProvider).weatherProvider_weather == 'rain') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "위도 37.5665, 경도 126.9780의 현재 날씨 정보를 가져와줘.",
+        "python": "weatherInfo=Tags('WeatherProvider').weatherProvider_getWeatherInfo(37.5665, 126.9780)\nTags('Speaker').mediaPlayback_speak(weatherInfo)",
+        "code": "weatherInfo=(#WeatherProvider).weatherProvider_getWeatherInfo(37.5665, 126.9780)\n(#Speaker).mediaPlayback_speak(weatherInfo)"
+    },
+    {
+        "command": "창문이 열린 상태이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Window').windowControl_window == 'open':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Window).windowControl_window == 'open') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "창문을 닫아줘.",
+        "python": "Tags('Window').windowControl_close()",
+        "code": "(#Window).windowControl_close()"
+    },
+    {
+        "command": "창문을 열어줘.",
+        "python": "Tags('Window').windowControl_open()",
+        "code": "(#Window).windowControl_open()"
+    },
+    {
+        "command": "낙상 감지 센서에서 낙상이 감지되면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('FallDetector').fallDetection_fall == 'fall':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#FallDetector).fallDetection_fall == 'fall') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "존재 감지 센서가 감지 상태이면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('OccupancySensor').presenceSensor_presence == 'present':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#OccupancySensor).presenceSensor_presence == 'present') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "릴레이의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Relay').switch_switch == 'on':\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Relay).switch_switch == 'on') {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "릴레이를 꺼줘.",
+        "python": "Tags('Relay').switch_off()",
+        "code": "(#Relay).switch_off()"
+    },
+    {
+        "command": "릴레이를 켜줘.",
+        "python": "Tags('Relay').switch_on()",
+        "code": "(#Relay).switch_on()"
+    },
+    {
+        "command": "릴레이의 전원을 토글해줘.",
+        "python": "Tags('Relay').switch_toggle()",
+        "code": "(#Relay).switch_toggle()"
+    },
+    {
+        "command": "60초 길이의 테스트 타이머라는 타이머를 추가해줘.",
+        "python": "Tags('Timer').timer_add('테스트 타이머', 60)",
+        "code": "(#Timer).timer_add('테스트 타이머', 60)"
+    },
+    {
+        "command": "테스트 타이머라는 이름의 타이머가 존재하면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Timer').timer_isExist('테스트 타이머'):\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Timer).timer_isExist('테스트 타이머')) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "테스트 타이머라는 이름의 타이머가 하면 알람의 사이렌을 울려줘.",
+        "python": "if Tags('Timer').timer_isSet('테스트 타이머'):\n    Tags('Alarm').alarm_siren()",
+        "code": "if ((#Timer).timer_isSet('테스트 타이머')) {\n    (#Alarm).alarm_siren()\n}"
+    },
+    {
+        "command": "테스트 타이머라는 이름의 타이머를 리셋해줘.",
+        "python": "Tags('Timer').timer_reset('테스트 타이머')",
+        "code": "(#Timer).timer_reset('테스트 타이머')"
+    },
+    {
+        "command": "테스트 타이머라는 이름의 타이머를 120초로 설정해줘.",
+        "python": "Tags('Timer').timer_set('테스트 타이머', 120)",
+        "code": "(#Timer).timer_set('테스트 타이머', 120)"
+    },
+    {
+        "command": "테스트 타이머라는 이름의 타이머를 시작해줘.",
+        "python": "Tags('Timer').timer_start('테스트 타이머')",
+        "code": "(#Timer).timer_start('테스트 타이머')"
+    }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "command": "문이 열릴 때마다 알람의 사이렌을 울려 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('DoorLock').doorControl_door\n        if (self.last_state != 'open') and (current_state == 'open'):\n            Tags('Alarm').alarm_siren()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#DoorLock).doorControl_door\nif (last_state != 'open' and current_state == 'open') {\n    (#Alarm).alarm_siren()\n}\nlast_state = current_state"
+      }
+    ]
+  },
+  {
+    "command": "사람이 감지될 때마다 조명을 켜 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('OccupancySensor').presenceSensor_presence\n        if (self.last_state != 'present') and (current_state == 'present'):\n            Tags('Light').switch_on()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#OccupancySensor).presenceSensor_presence\nif (last_state != 'present' and current_state == 'present') {\n    (#Light).switch_on()\n}\nlast_state = current_state"
+      }
+    ]
+  },
+  {
+    "command": "조명이 켜질 때마다 블라인드를 열어 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('Light').switch_switch\n        if (self.last_state != 'on') and (current_state == 'on'):\n            Tags('Blind').blind_open()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#Light).switch_switch\nif (last_state != 'on' and current_state == 'on') {\n    (#Blind).blind_open()\n}\nlast_state = current_state"
+      }
+    ]
+  },
+  {
+    "command": "TV가 켜질 때마다 알람의 사이렌을 울려 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('Television').switch_switch\n        if (self.last_state != 'on') and (current_state == 'on'):\n            Tags('Alarm').alarm_siren()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#Television).switch_switch\nif (last_state != 'on' and current_state == 'on') {\n    (#Alarm).alarm_siren()\n}\nlast_state = current_state"
+      }
+    ]
+  },
+  {
+    "command": "커튼이 닫힐 때마다 조명을 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('Curtain').curtain_curtain\n        if (self.last_state != 'closed') and (current_state == 'closed'):\n            Tags('Light').switch_off()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#Curtain).curtain_curtain\nif (last_state != 'closed' and current_state == 'closed') {\n    (#Light).switch_off()\n}\nlast_state = current_state"
+      }
+    ]
+  },
+  {
+    "command": "문이 닫힐 때마다 스피커를 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('DoorLock').doorControl_door\n        if (self.last_state != 'closed') and (current_state == 'closed'):\n            Tags('Speaker').switch_off()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#DoorLock).doorControl_door\nif (last_state != 'closed' and current_state == 'closed') {\n    (#Speaker).switch_off()\n}\nlast_state = current_state"
+      }
+    ]
+  },
+  {
+    "command": "창문이 열릴 때마다 조명을 켜 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('Window').windowControl_window\n        if (self.last_state != 'open') and (current_state == 'open'):\n            Tags('Light').switch_on()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#Window).windowControl_window\nif (last_state != 'open' and current_state == 'open') {\n    (#Light).switch_on()\n}\nlast_state = current_state"
+      }
+    ]
+  },
+  {
+    "command": "제습기가 켜질 때마다 커튼을 닫아 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('Dehumidifier').switch_switch\n        if (self.last_state != 'on') and (current_state == 'on'):\n            Tags('Curtain').curtain_close()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#Dehumidifier).switch_switch\nif (last_state != 'on' and current_state == 'on') {\n    (#Curtain).curtain_close()\n}\nlast_state = current_state"
+      }
+    ]
+  },
+  {
+    "command": "문이 열릴 때마다 블라인드를 닫아 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('DoorLock').doorControl_door\n        if (self.last_state != 'open') and (current_state == 'open'):\n            Tags('Blind').blind_close()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#DoorLock).doorControl_door\nif (last_state != 'open' and current_state == 'open') {\n    (#Blind).blind_close()\n}\nlast_state = current_state"
+      }
+    ]
+  },
+  {
+    "command": "알람이 꺼질 때마다 다시 울려 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.last_state = ''\n\n    def run(self):\n        current_state = Tags('Alarm').alarm_alarm\n        if (self.last_state != 'off') and (current_state == 'off'):\n            Tags('Alarm').alarm_both()\n        self.last_state = current_state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "last_state := ''\ncurrent_state = (#Alarm).alarm_alarm\nif (last_state != 'off' and current_state == 'off') {\n    (#Alarm).alarm_both()\n}\nlast_state = current_state"
+      }
+    ]
+  }
+]
