@@ -1,11 +1,11 @@
-All test cases must fall under exactly one of the predefined behavior categories listed below.  
+All test cases must fall under one or more of the predefined behavior categories listed below.  
 These categories define the structure, timing logic, complexity, and constraints of the test command to be generated.
 
 ⚠️ When a category is specified, you must generate a single Korean natural language command that fits that category’s constraints exactly.  
 Do not infer or improvise beyond the stated category rules.
 
 📚 Category Definitions  
-Each test case falls under one of the following 14 categories.  
+Each test case falls under one of the following 16 categories.  
 Generate your test command strictly based on the intended logic and complexity of the specified category:
 
 [Category 0: Device]  
@@ -36,6 +36,7 @@ Examples:
 - Each command must result in only one immediate action, with no repetition, memory, or waiting.  
 - Do not use loops, wait until triggers, or `Tags("Clock").clock_delay(...)`.  
 - Do not use persistent variables or `period`.  
+- Do not generate test cases that require the use of tags.
 - This category is suitable for setting or toggling a single device based on a simple condition or command.
 
 Examples:  
@@ -54,6 +55,7 @@ Examples:
 - Conditions can be nested or combined using `if`, `elif`, or `else`.  
 - Multiple devices may be controlled in a single command if all actions are performed immediately.  
 - Do not use loops, wait until triggers, `Tags("Clock").clock_delay(...)`, persistent variables, or `period`.  
+- Do not generate test cases that require the use of tags.
 - This category is often used for scenario-based multi-device responses with complex decision logic.
 
 Examples:  
@@ -87,6 +89,7 @@ Examples:
 - The action must be simple and self-contained.  
 - Do not use `wait until`, persistent variables, or `Tags("Clock").clock_delay(...)`.  
 - Do not include any memory, counters, or state tracking logic.  
+- Do not generate test cases that require the use of tags.
 - This category is strictly time-driven and uses `period` to control the internal loop repetition.
 
 Examples:  
@@ -103,6 +106,7 @@ Examples:
 - The condition may be based on the current state of a device (state-based) or may simply be omitted for unconditional delays.
 - No repetition, memory, or event tracking is allowed. The action must occur once after the delay, and then terminate.
 - Do not use period, cron, wait_until, or persistent variables.
+- Do not generate test cases that require the use of tags other than Tags("Clock").clock_delay(...).
 - The use of Tags("Clock").clock_delay(...) must be the only form of timing control.
 
 Examples:
@@ -118,7 +122,8 @@ Examples:
 - The action must be executed **only once** when the condition is met for the **first time**, regardless of how many times the condition occurs again.  
 - Conditions using "~면" should execute **only once when the event first occurs**, not repeatedly when the condition is met multiple times.  
 - Do not use `period`, persistent variables, or `Tags("Clock").clock_delay(...)`.  
-- Do not add any timing-based scheduling (e.g., cron).  
+- Do not add any timing-based scheduling (e.g., cron). 
+- Do not generate test cases that require the use of tags. 
 - After the action is executed, the command must terminate immediately.
 
 Examples:  
@@ -133,18 +138,22 @@ Examples:
 - The action is repeated using either real-time polling (period = 100) or longer intervals (e.g., every 10 seconds, 5 seconds).
 - A break condition is mandatory. As soon as this condition is satisfied, the behavior must terminate using break.
 - The system must check the condition on every period cycle, and terminate only when the condition is newly satisfied.
+- Do not generate test cases that require the use of tags. 
 - wait until, cron, persistent variables and Tags("Clock").clock_delay(...) are not allowed.
 
 Examples:
 - “10초마다 전등을 토글해 줘. 단, 그때마다 확인하여 문이 열려 있으면 행동을 멈춰 줘.”
 - “실시간으로 문이 열려 있는지 확인해서 열려 있다면 에어컨을 켜고, 닫혀 있다면 에어컨을 꺼 줘. 단, 습도가 70%를 넘으면 모든 동작을 중단해 줘.”
 - “5초마다 창문을 열어 줘. 단, 블라인드가 닫혀 있으면 반복을 멈춰 줘.”
+- “5초마다 온실 블라인드를 한 단계씩 내려 줘. 더 이상 못 내릴 때까지.”
+
 
 [Category 7: Realtime]  
 - This category represents actions that must be executed **every time** a specific condition becomes true.  
 - The condition is expected to occur repeatedly over time, and each new occurrence must trigger the action again.  
 - You must explicitly state that the condition should be checked in real time such as, "실시간으로 확인해서", "3초마다 체크해서", "매초 검사해서", etc.
 - Do not use `cron` or `Tags("Clock").clock_delay(...)`.  
+- Do not generate test cases that require the use of tags. 
 - This category is used to respond in real time to repeated events or transitions.
 
 Examples:  
@@ -162,6 +171,7 @@ Examples:
 - The condition is never checked again.  
 - The repetition continues until the next scheduled cron event (if any), or until the scenario ends.  
 - Do not use persistent state tracking to re-evaluate the trigger condition.  
+- Do not generate test cases that require the use of tags. 
 - This category is often used when a temporary or reactive state must trigger repeated behavior for a short duration.
 
 Examples:  
@@ -180,6 +190,7 @@ Examples:
 - The behavior must remain simple and not require any persistent variables, counters, or stored memory.  
 - Do not use `Tags("Clock").clock_delay(...)` or any explicit delay-based waiting.  
 - Each loop or timing event must be handled naturally through time triggers only.  
+- Do not generate test cases that require the use of tags. 
 - This category is used to create basic flow control where time alone determines the actions.
 
 Examples:  
@@ -197,6 +208,7 @@ Examples:
 - The command must involve saving and using previous information, not just evaluating the current state.  
 - You may use `cron`, `period`, and `wait until` freely.  
 - You must not use `Tags("Clock").clock_delay(...)` for intentional delays between actions.  
+- Do not generate test cases that require the use of tags. 
 - This category is used for scenarios where the system needs to remember, compare, or accumulate past events across time.
 
 Examples:  
@@ -220,8 +232,9 @@ Examples:
 - You must use persistent variables to track states, counters, or timers across cycles.  
 - You may insert intentional delays between actions to control the timing sequence.  
 - Although delays can technically be implemented by using `period = 100` and elapsed time tracking,  
-  the use of `Tags("Clock").clock_delay(...)` is allowed here to simplify timing control and improve clarity.  
+- the use of `Tags("Clock").clock_delay(...)` is allowed here to simplify timing control and improve clarity.  
 - You may use `cron`, `period`, and `wait until` freely.  
+- Do not generate test cases that require the use of tags other than Tags("Clock").clock_delay(...).
 - This category is used for scenarios requiring both memory and explicit time flow control, including delayed actions, staged behaviors, and complex sequential flows.
 
 Examples:  
@@ -240,6 +253,7 @@ Examples:
 - Each split scenario must have its own independent timing, trigger, and execution flow.  
 - The behaviors must not share persistent variables, states, or logic across scenarios.  
 - You may use `cron`, `period`, `wait until`, persistent variables, and `Tags("Clock").clock_delay(...)` as needed within each scenario.  
+- Do not generate test cases that require the use of tags other than Tags("Clock").clock_delay(...).
 - This category is used when natural language commands describe distinct behaviors that are easier to manage separately rather than entangled in one complex script.
 
 Examples:  
@@ -251,7 +265,10 @@ Examples:
 
 [Category 13: Tag-based]  
 - This category handles automation scenarios where devices are selected and controlled based on **shared tags**.  
+- You must not use Tags("Clock").clock_delay(...).
 - Tags represent logical groupings that can be used to evaluate conditions or apply control to multiple devices at once.  
+- Do not use loops, wait until triggers, or `Tags("Clock").clock_delay(...)`.  
+- Do not use persistent variables or `period`.  
 - There are three types of tags:  
   1. **Device Tags**: Automatically assigned to every device based on its type (e.g., Light, Fan). Users do **not** mention the word "tag" when referring to these.  
      - Example: saying "조명을 꺼 줘" targets all devices with the `"Light"` tag.  
@@ -289,9 +306,9 @@ Examples:
 [Category 14: Idle / Do Nothing]  
 - This category covers scenarios where the user issues commands, but in practice, no action needs to occur.  
 - Even if the command appears complex or involves multiple conditions and actions,  
-  if the system ultimately has no valid trigger, or no required action is determined, it must stay idle.  
+- if the system ultimately has no valid trigger, or no required action is determined, it must stay idle.  
 - The system must correctly recognize "actionable impossibility" or "no-op situations" based on conditions.  
-- No cron, no period, no wait until, no persistent variables, and no clock delay are used.  
+- You may use cron, period, wait until, persistent variables, or clock delay.
 - This category is used when all possible actions are skipped logically, and the system remains idle.
 
 Examples:  
@@ -303,7 +320,7 @@ Examples:
 
 
 [Category 15: Comprehensive]  
-- This category represents the most complex test cases, combining all features and logic patterns from Categories 0–12.  
+- This category represents the most complex test cases, combining all features and logic patterns from Categories 0–14.  
 - The scenario must involve:  
   - Device methods and attribute access (Category 0)  
   - Immediate and conditional actions with nested `if` branches (Category 2)  
