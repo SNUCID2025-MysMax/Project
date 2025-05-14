@@ -2,6 +2,13 @@ import re, ast
 import json
 
 def transform_code(code):
+    code = code.strip()
+    code = code.replace("\"","'")
+    if code[0] == "'":
+        code = code[1:-1]
+    elif code.startswith('```python'):
+        code = code[9:-3]
+    code = code.strip()
     tree = ast.parse(code)
     result_total = []
     result = {}
@@ -41,7 +48,21 @@ def transform_code(code):
                         break
                 statements.append(f'{prefix}}}')
             else:
-                # 일반 문장
+                # 함수 호출인 경우 따로 처리
+                if isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Call):
+                    call = stmt.value
+                    func_name = ""
+                    if isinstance(call.func, ast.Attribute):
+                        func_name = call.func.attr
+                    elif isinstance(call.func, ast.Name):
+                        func_name = call.func.id
+
+                    if func_name == 'wait_until':
+                        condition = custom_unparse_condition(call.args[0])
+                        statements.append(f"{prefix}wait until{condition}")
+                        continue  # 일반 문장 처리로 넘어가지 않음
+
+                # 그 외 일반 문장
                 line = ast.unparse(stmt).strip()
                 statements.append(f"{prefix}{line}")
 
@@ -62,7 +83,7 @@ def transform_code(code):
                             if key in ["cron", "period"]:
                                 result[key] = dct[key]
                             else:
-                                statements.append(f"{key} := {dct[key]}")
+                                statements.append(f"{key} := {repr(dct[key])}")
 
                 if isinstance(item, ast.FunctionDef) and item.name == "run":
                     extract_statements(item.body)
@@ -81,13 +102,33 @@ def transform_code(code):
                 replaced = re.sub(pattern, replacer, text)
                 return replaced
 
+            # def replace_all_any_parentheses(text):
+            #     result = ''
+            #     i = 0
+            #     while i < len(text):
+            #         if text[i:i+4] in ('All(', 'Any('):
+            #             func_name = text[i:i+3]
+            #             result += func_name.lower()
+            #             i += 4
+            #             count = 1
+            #             start = i
+            #             while i < len(text) and count > 0:
+            #                 if text[i] == '(':
+            #                     count += 1
+            #                 elif text[i] == ')':
+            #                     count -= 1
+            #                 i += 1
+            #             result += text[start:i-1]
+            #         else:
+            #             result += text[i]
+            #             i += 1
+            #     return result
             def replace_all_any_parentheses(text):
                 result = ''
                 i = 0
                 while i < len(text):
                     if text[i:i+4] in ('All(', 'Any('):
-                        func_name = text[i:i+3]
-                        result += func_name.lower()
+                        func_name = text[i:i+3].lower()  # 'all' or 'any'
                         i += 4
                         count = 1
                         start = i
@@ -97,16 +138,19 @@ def transform_code(code):
                             elif text[i] == ')':
                                 count -= 1
                             i += 1
-                        result += text[start:i-1]
+                        inner = text[start:i-1]
+                        result += f'({func_name}{inner})'
                     else:
                         result += text[i]
                         i += 1
                 return result
 
+
+
             
             code = replace_all_any_parentheses(replace_tags_arguments(code)).replace('self.', '').replace('wait_until', 'wait until')
 
-            result["code"] = code
+            result["code"] = code.strip()
             result_total.append(result)
 
     return(result_total)
@@ -118,37 +162,18 @@ if __name__ == "__main__":
     # 변환할 파이썬 코드 예시
     example = """class Scenario1:
     def __init__(self):
-        self.cron = "now"
-        self.period = -1
-        self.var = False  # Whether alarm was triggered
+        self.cron = ""
+        self.period = 100
 
     def run(self):
-        if Any(Tags("Window").windowControl_window == "open"):
-            All(Tags("Window").windowControl_close())
-
-            if Tags("Clock").clock_hour < 12:
-                All(Tags("Alarm").alarm_both())
-                self.var = True
-
-                ac_mode = Tags("AirConditioner").airConditionerMode_airConditionerMode
-                All(Tags("AirConditioner").switch_on())
-                All(Tags("AirConditioner").airConditionerMode_setTemperature(15))
-                All(Tags("AirConditioner").airConditionerMode_setAirConditionerMode("auto"))
-
-                if ac_mode == "auto":
-                    All(Tags("AirConditioner").switch_off())
-                    break
+        wait_until(Tags("Window").windowControl_window == "open")
+        current_level = Tags("Blind").blindLevel_blindLevel
+        new_level = current_level
+        if new_level > 0:
+            new_level = new_level - 10
+            if new_level < 0:
+                new_level = 0
+            Tags("Blind").blindLevel_setBlindLevel(new_level)
+        Tags("Clock").clock_delay(0, 0, 2)
 """
-    example = """class Scenario1:
-    def __init__(self):
-        self.cron = "* * * * *"
-        self.period = -1
-    def run(self):
-        temp = Tags("TemperatureSensor").temperatureMeasurement_temperature
-        if temp <= 23:
-            Tags("AirConditioner").switch_on()
-        elif temp >= 25:
-            Tags("AirConditioner").switch_off()
-"""
-    # example = "class Scenario1:\n    def __init__(self):\n        self.cron = '* * * * *'\n        self.period = 180000\n\n    def run(self):\n        Tags('Clock').clock_delay(minute=3)\n        Tags('Clock').clock_delay(minute=3)\n        Tags('Clock').clock_delay(minute=3)\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = '* * * * *'\n        self.period = 300000\n\n    def run(self):\n        Tags('AirConditioner').switch_toggle()\n        Tags('Clock').clock_delay(minute=5)\n        Tags('AirConditioner').switch_toggle()\n        Tags('Clock').clock_delay(minute=5)\n        Tags('AirConditioner').switch_toggle()"
     print(json.dumps(transform_code(example), indent=2, ensure_ascii=False).replace("\\n","\n"))

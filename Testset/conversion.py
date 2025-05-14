@@ -8,6 +8,7 @@ def transform_code(code):
         code = code[1:-1]
     elif code.startswith('```python'):
         code = code[9:-3]
+    code = code.strip()
     tree = ast.parse(code)
     result_total = []
     result = {}

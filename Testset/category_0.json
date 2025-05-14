@@ -1,7 +1,7 @@
 [
   {
     "command": "에어컨의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirConditioner').switch_switch == 'on':\n            Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirConditioner').switch_switch == 'on':\n            Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -13,7 +13,7 @@
   },
   {
     "command": "에어컨의 모드가 냉방 모드면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirConditioner').airConditionerMode_airConditionerMode == 'cool':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirConditioner').airConditionerMode_airConditionerMode == 'cool':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -25,7 +25,7 @@
   },
   {
     "command": "에어컨의 목표 온도가 30도면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirConditioner').airConditionerMode_targetTemperature == 30:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirConditioner').airConditionerMode_targetTemperature == 30:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -37,7 +37,7 @@
   },
   {
     "command": "에어컨을 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -49,7 +49,7 @@
   },
   {
     "command": "에어컨을 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -61,7 +61,7 @@
   },
   {
     "command": "에어컨의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -73,7 +73,7 @@
   },
   {
     "command": "에어컨을 자동 모드로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').airConditionerMode_setAirConditionerMode('auto')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').airConditionerMode_setAirConditionerMode('auto')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -85,7 +85,7 @@
   },
   {
     "command": "에어컨의 목표 온도를 18도로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').airConditionerMode_setTemperature(18)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').airConditionerMode_setTemperature(18)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -97,7 +97,7 @@
   },
   {
     "command": "공기청정기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirPurifier').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirPurifier').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -109,7 +109,7 @@
   },
   {
     "command": "공기청정기가 수면 모드면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirPurifier').airPurifierFanMode_airPurifierFanMode == 'sleep':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirPurifier').airPurifierFanMode_airPurifierFanMode == 'sleep':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -121,7 +121,7 @@
   },
   {
     "command": "공기청정기를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirPurifier').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('AirPurifier').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -133,7 +133,7 @@
   },
   {
     "command": "공기청정기를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirPurifier').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('AirPurifier').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -145,7 +145,7 @@
   },
   {
     "command": "공기청정기의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirPurifier').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('AirPurifier').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -157,7 +157,7 @@
   },
   {
     "command": "공기청정기의 모드를 자동으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirPurifier').airPurifierFanMode_setAirPurifierFanMode('auto')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('AirPurifier').airPurifierFanMode_setAirPurifierFanMode('auto')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -169,7 +169,7 @@
   },
   {
     "command": "현재 온도가 20도이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').temperatureMeasurement_temperature == 20:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').temperatureMeasurement_temperature == 20:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -181,7 +181,7 @@
   },
   {
     "command": "이산화탄소 농도가 800ppm 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').carbonDioxideMeasurement_carbonDioxide >= 800:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').carbonDioxideMeasurement_carbonDioxide >= 800:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -193,7 +193,7 @@
   },
   {
     "command": "상대 습도가 70% 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').relativeHumidityMeasurement_humidity >= 70:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').relativeHumidityMeasurement_humidity >= 70:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -205,7 +205,7 @@
   },
   {
     "command": "황사 농도가 150마이크로그램 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').dustSensor_dustLevel >= 150:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').dustSensor_dustLevel >= 150:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -217,7 +217,7 @@
   },
   {
     "command": "미세먼지 농도가 35마이크로그램 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').dustSensor_fineDustLevel >= 35:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').dustSensor_fineDustLevel >= 35:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -229,7 +229,7 @@
   },
   {
     "command": "초미세먼지 농도가 15마이크로그램 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').dustSensor_veryFineDustLevel >= 15:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').dustSensor_veryFineDustLevel >= 15:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -241,7 +241,7 @@
   },
   {
     "command": "총휘발성유기화합물 농도가 0.5ppm 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').tvocMeasurement_tvocLevel >= 0.5:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('AirQualityDetector').tvocMeasurement_tvocLevel >= 0.5:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -253,7 +253,7 @@
   },
   {
     "command": "알람의 경광등이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Alarm').alarm_alarm == 'strobe':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Alarm').alarm_alarm == 'strobe':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -265,7 +265,7 @@
   },
   {
     "command": "알람의 볼륨이 높음이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Alarm').alarm_alarmVolume == 'high':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Alarm').alarm_alarmVolume == 'high':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -277,7 +277,7 @@
   },
   {
     "command": "알람 배터리 상태가 20% 이하이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Alarm').battery_battery <= 20:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Alarm').battery_battery <= 20:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -289,7 +289,7 @@
   },
   {
     "command": "알람의 사이렌과 경광등을 모두 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_both()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_both()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -301,7 +301,7 @@
   },
   {
     "command": "알람을 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -313,7 +313,7 @@
   },
   {
     "command": "알람의 볼륨을 낮음으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_setAlarmVolume('low')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_setAlarmVolume('low')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -325,7 +325,7 @@
   },
   {
     "command": "알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -337,7 +337,7 @@
   },
   {
     "command": "알람의 경광등을 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_strobe()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_strobe()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -349,7 +349,7 @@
   },
   {
     "command": "블라인드가 50% 이상 열려있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Blind').blindLevel_blindLevel >= 50:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Blind').blindLevel_blindLevel >= 50:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -361,7 +361,7 @@
   },
   {
     "command": "블라인드가 열린 상태이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Blind').blind_blind == 'open':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Blind').blind_blind == 'open':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -373,7 +373,7 @@
   },
   {
     "command": "블라인드를 70%로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Blind').blindLevel_setBlindLevel(70)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Blind').blindLevel_setBlindLevel(70)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -385,7 +385,7 @@
   },
   {
     "command": "블라인드를 닫아줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Blind').blind_close()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Blind').blind_close()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -397,7 +397,7 @@
   },
   {
     "command": "블라인드를 열어줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Blind').blind_open()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Blind').blind_open()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -409,7 +409,7 @@
   },
   {
     "command": "블라인드를 멈춰줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Blind').blind_pause()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Blind').blind_pause()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -421,7 +421,7 @@
   },
   {
     "command": "버튼이 눌렸으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Button').button_button == 'pushed':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Button').button_button == 'pushed':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -433,7 +433,7 @@
   },
   {
     "command": "버튼의 개수가 4개 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Button').button_numberOfButtons >= 4:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Button').button_numberOfButtons >= 4:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -445,7 +445,7 @@
   },
   {
     "command": "버튼1이 눌렸으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_button1 == 'pushed':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_button1 == 'pushed':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -457,7 +457,7 @@
   },
   {
     "command": "버튼2가 눌린 상태면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_button2 == 'held':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_button2 == 'held':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -469,7 +469,7 @@
   },
   {
     "command": "버튼3이 두 번 눌렸으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_button3 == 'pushed_2x':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_button3 == 'pushed_2x':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -481,7 +481,7 @@
   },
   {
     "command": "버튼4가 위로 스와이프되었으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_button4 == 'swipe_up':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_button4 == 'swipe_up':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -493,7 +493,7 @@
   },
   {
     "command": "버튼 개수가 4개면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_numberOfButtons == 4:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Buttonx4').buttonx4_numberOfButtons == 4:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -505,7 +505,7 @@
   },
   {
     "command": "5와 3을 더해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_add(5, 3)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_add(5, 3)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -517,7 +517,7 @@
   },
   {
     "command": "10을 2로 나눠줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_div(10, 2)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_div(10, 2)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -529,7 +529,7 @@
   },
   {
     "command": "10을 3으로 나눈 나머지를 구해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_mod(10, 3)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_mod(10, 3)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -541,7 +541,7 @@
   },
   {
     "command": "7과 8을 곱해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_mul(7, 8)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_mul(7, 8)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -553,7 +553,7 @@
   },
   {
     "command": "15에서 4를 빼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_sub(15, 4)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Calculator').calculator_sub(15, 4)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -565,7 +565,7 @@
   },
   {
     "command": "카메라의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Camera').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Camera').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -577,7 +577,7 @@
   },
   {
     "command": "카메라를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -589,7 +589,7 @@
   },
   {
     "command": "카메라를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -601,7 +601,7 @@
   },
   {
     "command": "가장 최근에 찍은 사진을 첨부파일로 이메일을 test@example.com 주소, 제목 '사진'과 내용 '사진입니다.'로 보내줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        recentPhoto = Tags('Camera').camera_image\nTags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '사진', '사진입니다.', recentPhoto)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        recentPhoto = Tags('Camera').camera_image\nTags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '사진', '사진입니다.', recentPhoto)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -613,7 +613,7 @@
   },
   {
     "command": "가장 최근에 찍은 동영상을 첨부파일로 이메일을 test@example.com 주소, 제목 '동영상'과 내용 '동영상입니다.'로 보내줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        recentVideo = Tags('Camera').camera_video\nTags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '동영상', '동영상입니다.', recentVideo)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        recentVideo = Tags('Camera').camera_video\nTags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '동영상', '동영상입니다.', recentVideo)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -625,7 +625,7 @@
   },
   {
     "command": "카메라의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -637,7 +637,7 @@
   },
   {
     "command": "카메라로 사진을 찍어줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').camera_take()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').camera_take()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -649,7 +649,7 @@
   },
   {
     "command": "카메라로 10초 동안 속도 2로 타임랩스 영상을 촬영해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').camera_takeTimelapse(10, 2)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Camera').camera_takeTimelapse(10, 2)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -661,7 +661,7 @@
   },
   {
     "command": "충전기의 전압이 230볼트 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Charger').voltageMeasurement_voltage >= 230:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Charger').voltageMeasurement_voltage >= 230:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -673,7 +673,7 @@
   },
   {
     "command": "충전기의 상태가 충전 중이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Charger').chargingState_chargingState == 'charging':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Charger').chargingState_chargingState == 'charging':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -685,7 +685,7 @@
   },
   {
     "command": "충전기의 전류가 10암페어 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Charger').currentMeasurement_current >= 10:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Charger').currentMeasurement_current >= 10:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -697,7 +697,7 @@
   },
   {
     "command": "오늘 날짜가 2025년 5월 12일이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_date == 20250512:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_date == 20250512:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -709,7 +709,7 @@
   },
   {
     "command": "현재 시간이 2025년 5월 12일 오후 3시 15분이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_datetime == 202505121515:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_datetime == 202505121515:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -721,7 +721,7 @@
   },
   {
     "command": "오늘이 20일이면 알람의 사이렌을 울려줘",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_day == 20:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_day == 20:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -733,7 +733,7 @@
   },
   {
     "command": "현재 시간이 오후 3시이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_hour == 15:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_hour == 15:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -745,7 +745,7 @@
   },
   {
     "command": "오늘이 공휴일이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_isHoliday == true:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_isHoliday == true:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -757,7 +757,7 @@
   },
   {
     "command": "지금이 30분이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_minute == 30:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_minute == 30:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -769,7 +769,7 @@
   },
   {
     "command": "지금이 5월이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_month == 5:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_month == 5:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -781,7 +781,7 @@
   },
   {
     "command": "지금이 40초이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_second == 40:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_second == 40:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -793,7 +793,7 @@
   },
   {
     "command": "지금이 오후 3시 15분이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_time == 1515:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_time == 1515:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -805,7 +805,7 @@
   },
   {
     "command": "현재 Unix timestamp가 1747031637.23이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_timestamp == 1747031637.23:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_timestamp == 1747031637.23:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -817,7 +817,7 @@
   },
   {
     "command": "오늘이 금요일이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_weekday == 'friday':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_weekday == 'friday':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -829,7 +829,7 @@
   },
   {
     "command": "올해가 2025년이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_year == 2025:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Clock').clock_year == 2025:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -841,7 +841,7 @@
   },
   {
     "command": "1시간 20분 30초 뒤에 알람의 사이렌을 울려줘",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Clock').clock_delay(1, 20, 30)\nTags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Clock').clock_delay(1, 20, 30)\nTags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -853,7 +853,7 @@
   },
   {
     "command": "접촉 센서가 닫혀있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('ContactSensor').contactSensor_contact == 'closed':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('ContactSensor').contactSensor_contact == 'closed':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -865,7 +865,7 @@
   },
   {
     "command": "커튼이 열림 상태이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Curtain').curtain_curtain == 'open':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Curtain').curtain_curtain == 'open':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -877,7 +877,7 @@
   },
   {
     "command": "커튼을 닫아줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Curtain').curtain_close()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Curtain').curtain_close()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -889,7 +889,7 @@
   },
   {
     "command": "커튼을 열어줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Curtain').curtain_open()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Curtain').curtain_open()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -901,7 +901,7 @@
   },
   {
     "command": "커튼을 멈춰줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Curtain').curtain_pause()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Curtain').curtain_pause()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -913,7 +913,7 @@
   },
   {
     "command": "제습기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Dehumidifier').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Dehumidifier').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -925,7 +925,7 @@
   },
   {
     "command": "제습기의 모드가 제습 중이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Dehumidifier').dehumidifierMode_dehumidifierMode == 'dehumidifying':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Dehumidifier').dehumidifierMode_dehumidifierMode == 'dehumidifying':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -937,7 +937,7 @@
   },
   {
     "command": "제습기를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Dehumidifier').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Dehumidifier').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -949,7 +949,7 @@
   },
   {
     "command": "제습기를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Dehumidifier').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Dehumidifier').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -961,7 +961,7 @@
   },
   {
     "command": "제습기의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Dehumidifier').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Dehumidifier').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -973,7 +973,7 @@
   },
   {
     "command": "제습기를 냉각 모드로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Dehumidifier').dehumidifierMode_setDehumidifierMode('cooling')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Dehumidifier').dehumidifierMode_setDehumidifierMode('cooling')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -985,7 +985,7 @@
   },
   {
     "command": "식기세척기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Dishwasher').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Dishwasher').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -997,7 +997,7 @@
   },
   {
     "command": "식기세척기의 모드가 에코 모드면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Dishwasher').dishwasherMode_dishwasherMode == 'eco':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Dishwasher').dishwasherMode_dishwasherMode == 'eco':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1009,7 +1009,7 @@
   },
   {
     "command": "식기세척기를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Dishwasher').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Dishwasher').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1021,7 +1021,7 @@
   },
   {
     "command": "식기세척기를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Dishwasher').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Dishwasher').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1033,7 +1033,7 @@
   },
   {
     "command": "식기세척기의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Dishwasher').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Dishwasher').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1045,7 +1045,7 @@
   },
   {
     "command": "식기세척기를 자동 모드로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Dishwasher').dishwasherMode_setDishwasherMode('auto')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Dishwasher').dishwasherMode_setDishwasherMode('auto')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1057,7 +1057,7 @@
   },
   {
     "command": "도어락이 열려 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('DoorLock').doorControl_door == 'open':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('DoorLock').doorControl_door == 'open':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1069,7 +1069,7 @@
   },
   {
     "command": "도어락을 닫아줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('DoorLock').doorControl_close()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('DoorLock').doorControl_close()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1081,7 +1081,7 @@
   },
   {
     "command": "도어락을 열어줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('DoorLock').doorControl_open()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('DoorLock').doorControl_open()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1093,7 +1093,7 @@
   },
   {
     "command": "이메일을 test@example.com 주소로 제목 '알림'과 내용 '긴급 상황입니다.'로 보내줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('EmailProvider').emailProvider_sendMail('test@example.com', '알림', '긴급 상황입니다.')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('EmailProvider').emailProvider_sendMail('test@example.com', '알림', '긴급 상황입니다.')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1105,7 +1105,7 @@
   },
   {
     "command": "가장 최근에 찍은 사진을 첨부파일로 이메일을 test@example.com 주소, 제목 '사진'과 내용 '사진입니다.'로 보내줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        recentPhoto = Tags('Camera').camera_image\nTags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '사진', '사진입니다.', recentPhoto)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        recentPhoto = Tags('Camera').camera_image\nTags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '사진', '사진입니다.', recentPhoto)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1117,7 +1117,7 @@
   },
   {
     "command": "선풍기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Fan').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Fan').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1129,7 +1129,7 @@
   },
   {
     "command": "선풍기의 속도가 2000RPM 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Fan').fanControl_fanSpeed >= 2000:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Fan').fanControl_fanSpeed >= 2000:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1141,7 +1141,7 @@
   },
   {
     "command": "선풍기의 속도를 1500RPM으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').fanControl_setFanSpeed(1500)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').fanControl_setFanSpeed(1500)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1153,7 +1153,7 @@
   },
   {
     "command": "선풍기의 속도를 80%로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').fanControl_setPercent(80)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').fanControl_setPercent(80)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1165,7 +1165,7 @@
   },
   {
     "command": "선풍기를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1177,7 +1177,7 @@
   },
   {
     "command": "선풍기를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1189,7 +1189,7 @@
   },
   {
     "command": "선풍기의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1201,7 +1201,7 @@
   },
   {
     "command": "사료 공급기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Feeder').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Feeder').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1213,7 +1213,7 @@
   },
   {
     "command": "사료 공급기의 상태가 급식 중이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Feeder').feederOperatingState_feederOperatingState == 'feeding':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Feeder').feederOperatingState_feederOperatingState == 'feeding':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1225,7 +1225,7 @@
   },
   {
     "command": "사료 공급기를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1237,7 +1237,7 @@
   },
   {
     "command": "사료 공급기를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1249,7 +1249,7 @@
   },
   {
     "command": "사료 공급기의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1261,7 +1261,7 @@
   },
   {
     "command": "사료 공급기의 사료 공급량을 100그램으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').feederPortion_setFeedPortion(100, 'grams')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').feederPortion_setFeedPortion(100, 'grams')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1273,7 +1273,7 @@
   },
   {
     "command": "사료 공급기의 사료 공급을 시작해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').feederOperatingState_startFeeding()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Feeder').feederOperatingState_startFeeding()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1285,7 +1285,7 @@
   },
   {
     "command": "가스 사용량이 500kWh 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('GasMeter').gasMeter_gasMeter >= 500:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('GasMeter').gasMeter_gasMeter >= 500:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1297,7 +1297,7 @@
   },
   {
     "command": "가스 발열량이 1000kcal 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('GasMeter').gasMeter_gasMeterCalorific >= 1000:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('GasMeter').gasMeter_gasMeterCalorific >= 1000:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1309,7 +1309,7 @@
   },
   {
     "command": "가스 사용 시간이 10000초 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('GasMeter').gasMeter_gasMeterTime >= 10000:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('GasMeter').gasMeter_gasMeterTime >= 10000:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1321,7 +1321,7 @@
   },
   {
     "command": "가스 사용량이 20세제곱미터 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('GasMeter').gasMeter_gasMeterVolume >= 20:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('GasMeter').gasMeter_gasMeterVolume >= 20:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1333,7 +1333,7 @@
   },
   {
     "command": "가스 밸브가 열려 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').valve_valve == 'open':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').valve_valve == 'open':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1345,7 +1345,7 @@
   },
   {
     "command": "가스 밸브를 닫아줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('GasValve').valve_close()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('GasValve').valve_close()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1357,7 +1357,7 @@
   },
   {
     "command": "가스 밸브를 열어줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('GasValve').valve_open()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('GasValve').valve_open()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1369,7 +1369,7 @@
   },
   {
     "command": "가스 사용량이 1000kWh 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').gasMeter_gasMeter >= 1000:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').gasMeter_gasMeter >= 1000:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1381,7 +1381,7 @@
   },
   {
     "command": "가스 발열량이 500kcal 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').gasMeter_gasMeterCalorific >= 500:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').gasMeter_gasMeterCalorific >= 500:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1393,7 +1393,7 @@
   },
   {
     "command": "가스 사용 시간이 5000초 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').gasMeter_gasMeterTime >= 5000:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').gasMeter_gasMeterTime >= 5000:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1405,7 +1405,7 @@
   },
   {
     "command": "가스 사용량이 34세제곱미터 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').gasMeter_gasMeterVolume >= 34:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('GasValve').gasMeter_gasMeterVolume >= 34:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1417,7 +1417,7 @@
   },
   {
     "command": "가습기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Humidifier').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Humidifier').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1429,7 +1429,7 @@
   },
   {
     "command": "가습기의 모드가 자동이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Humidifier').humidifierMode_humidifierMode == 'auto':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Humidifier').humidifierMode_humidifierMode == 'auto':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1441,7 +1441,7 @@
   },
   {
     "command": "가습기를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Humidifier').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Humidifier').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1453,7 +1453,7 @@
   },
   {
     "command": "가습기를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Humidifier').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Humidifier').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1465,7 +1465,7 @@
   },
   {
     "command": "가습기의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Humidifier').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Humidifier').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1477,7 +1477,7 @@
   },
   {
     "command": "가습기를 강 모드로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Humidifier').humidifierMode_setHumidifierMode('high')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Humidifier').humidifierMode_setHumidifierMode('high')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1489,7 +1489,7 @@
   },
   {
     "command": "상대 습도가 70% 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('HumiditySensor').relativeHumidityMeasurement_humidity >= 70:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('HumiditySensor').relativeHumidityMeasurement_humidity >= 70:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1501,7 +1501,7 @@
   },
   {
     "command": "관개기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Irrigator').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Irrigator').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1513,7 +1513,7 @@
   },
   {
     "command": "관개기의 급수량이 3리터이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Irrigator').irrigatorPortion_waterPortion == 3:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Irrigator').irrigatorPortion_waterPortion == 3:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1525,7 +1525,7 @@
   },
   {
     "command": "관개기의 상태가 급수 중이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Irrigator').irrigatorOperatingState_irrigatorOperatingState == 'watering':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Irrigator').irrigatorOperatingState_irrigatorOperatingState == 'watering':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1537,7 +1537,7 @@
   },
   {
     "command": "관개기를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1549,7 +1549,7 @@
   },
   {
     "command": "관개기를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1561,7 +1561,7 @@
   },
   {
     "command": "관개기의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1573,7 +1573,7 @@
   },
   {
     "command": "관개기의 급수량을 5리터로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').irrigatorPortion_setWaterPortion(5, 'liters')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').irrigatorPortion_setWaterPortion(5, 'liters')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1585,7 +1585,7 @@
   },
   {
     "command": "관개기의 급수를 시작해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').irrigatorOperatingState_startWatering()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Irrigator').irrigatorOperatingState_startWatering()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1597,7 +1597,7 @@
   },
   {
     "command": "누수가 감지되면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('LeakSensor').leakSensor_leakage == 'detected':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('LeakSensor').leakSensor_leakage == 'detected':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1609,7 +1609,7 @@
   },
   {
     "command": "조명이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Light').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Light').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1621,7 +1621,7 @@
   },
   {
     "command": "조명의 색조가 30이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Light').colorControl_hue == 30:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Light').colorControl_hue == 30:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1633,7 +1633,7 @@
   },
   {
     "command": "조명의 채도가 30이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Light').colorControl_saturation == 30:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Light').colorControl_saturation == 30:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1645,7 +1645,7 @@
   },
   {
     "command": "조명 밝기가 100이면 알람의 사이렌을 울려줘",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Light').switchLevel_level == 100:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Light').switchLevel_level == 100:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1657,7 +1657,7 @@
   },
   {
     "command": "조명의 색조를 70으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light').colorControl_setHue(70)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Light').colorControl_setHue(70)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1669,7 +1669,7 @@
   },
   {
     "command": "조명의 채도를 90으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light').colorControl_setSaturation(90)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Light').colorControl_setSaturation(90)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1681,7 +1681,7 @@
   },
   {
     "command": "5의 속도로 조명의 밝기를 80으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switchLevel_setLevel(80, 5)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switchLevel_setLevel(80, 5)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1693,7 +1693,7 @@
   },
   {
     "command": "조명의 경고 모드를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switchLevel_alert()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switchLevel_alert()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1705,7 +1705,7 @@
   },
   {
     "command": "조명을 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1717,7 +1717,7 @@
   },
   {
     "command": "조명을 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1729,7 +1729,7 @@
   },
   {
     "command": "조명의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1741,7 +1741,7 @@
   },
   {
     "command": "조도 센서의 밝기 값이 500룩스 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('LightSensor').lightLevel_light >= 500:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('LightSensor').lightLevel_light >= 500:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1753,7 +1753,7 @@
   },
   {
     "command": "오늘 학생식당 점심 메뉴를 알려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('MenuProvider').menuProvider_menu('오늘 학생식당 점심')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('MenuProvider').menuProvider_menu('오늘 학생식당 점심')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1765,7 +1765,7 @@
   },
   {
     "command": "오늘의 메뉴를 무작위로 알려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        menu=Tags('MenuProvider').menuProvider_todayMenu()\nTags('Speaker').mediaPlayback_speak(menu)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        menu=Tags('MenuProvider').menuProvider_todayMenu()\nTags('Speaker').mediaPlayback_speak(menu)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1777,7 +1777,7 @@
   },
   {
     "command": "오늘의 식당을 무작위로 알려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        place=Tags('MenuProvider').menuProvider_todayPlace()\nTags('Speaker').mediaPlayback_speak(place)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        place=Tags('MenuProvider').menuProvider_todayPlace()\nTags('Speaker').mediaPlayback_speak(place)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1789,7 +1789,7 @@
   },
   {
     "command": "모션 센서가 활성 상태이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('MotionSensor').motionSensor_motion == 'active':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('MotionSensor').motionSensor_motion == 'active':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1801,7 +1801,7 @@
   },
   {
     "command": "재실 센서가 감지 상태이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('PresenceSensor').presenceSensor_presence == 'present':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('PresenceSensor').presenceSensor_presence == 'present':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1813,7 +1813,7 @@
   },
   {
     "command": "펌프의 현재 동작 모드가 최대이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Pump').pumpOperationMode_currentOperationMode == 'maximum':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Pump').pumpOperationMode_currentOperationMode == 'maximum':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1825,7 +1825,7 @@
   },
   {
     "command": "펌프의 설정 동작 모드가 기본이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Pump').pumpOperationMode_operationMode == 'normal':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Pump').pumpOperationMode_operationMode == 'normal':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1837,7 +1837,7 @@
   },
   {
     "command": "펌프의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Pump').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Pump').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1849,7 +1849,7 @@
   },
   {
     "command": "펌프가 열려있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Pump').pump_pump == 'open':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Pump').pump_pump == 'open':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1861,7 +1861,7 @@
   },
   {
     "command": "펌프의 동작 모드를 최대로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').pumpOperationMode_setOperationMode('maximum')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').pumpOperationMode_setOperationMode('maximum')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1873,7 +1873,7 @@
   },
   {
     "command": "펌프를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1885,7 +1885,7 @@
   },
   {
     "command": "펌프를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1897,7 +1897,7 @@
   },
   {
     "command": "펌프의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1909,7 +1909,7 @@
   },
   {
     "command": "펌프를 닫아줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').pump_close()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').pump_close()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1921,7 +1921,7 @@
   },
   {
     "command": "펌프를 열어줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').pump_open()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Pump').pump_open()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1933,7 +1933,7 @@
   },
   {
     "command": "냉장고의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Refrigerator').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Refrigerator').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1945,7 +1945,7 @@
   },
   {
     "command": "냉장고의 성에 제거 기능이 켜저 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Refrigerator').refrigeration_defrost == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Refrigerator').refrigeration_defrost == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1957,7 +1957,7 @@
   },
   {
     "command": "냉장고의 급속 냉각 기능이 꺼져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Refrigerator').refrigeration_rapidCooling == 'off':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Refrigerator').refrigeration_rapidCooling == 'off':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1969,7 +1969,7 @@
   },
   {
     "command": "냉장고의 급속 냉동 기능이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Refrigerator').refrigeration_rapidFreezing == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Refrigerator').refrigeration_rapidFreezing == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1981,7 +1981,7 @@
   },
   {
     "command": "냉장고를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -1993,7 +1993,7 @@
   },
   {
     "command": "냉장고의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2005,7 +2005,7 @@
   },
   {
     "command": "냉장고의 성에 제거 기능을 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').refrigeration_setDefrost('on')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').refrigeration_setDefrost('on')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2017,7 +2017,7 @@
   },
   {
     "command": "냉장고의 급속 냉각 기능을 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').refrigeration_setRapidCooling('on')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').refrigeration_setRapidCooling('on')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2029,7 +2029,7 @@
   },
   {
     "command": "냉장고의 급속 냉동 기능을 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').refrigeration_setRapidFreezing('off')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Refrigerator').refrigeration_setRapidFreezing('off')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2041,7 +2041,7 @@
   },
   {
     "command": "로봇 청소기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('RobotCleaner').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('RobotCleaner').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2053,7 +2053,7 @@
   },
   {
     "command": "로봇 청소기가 자동 모드이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('RobotCleaner').robotCleanerCleaningMode_robotCleanerCleaningMode == 'auto':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('RobotCleaner').robotCleanerCleaningMode_robotCleanerCleaningMode == 'auto':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2065,7 +2065,7 @@
   },
   {
     "command": "로봇 청소기를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('RobotCleaner').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('RobotCleaner').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2077,7 +2077,7 @@
   },
   {
     "command": "로봇 청소기를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('RobotCleaner').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('RobotCleaner').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2089,7 +2089,7 @@
   },
   {
     "command": "로봇 청소기의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('RobotCleaner').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('RobotCleaner').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2101,7 +2101,7 @@
   },
   {
     "command": "로봇 청소기의 청소 모드를 수동으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('RobotCleaner').robotCleanerCleaningMode_setRobotCleanerCleaningMode('manual')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('RobotCleaner').robotCleanerCleaningMode_setRobotCleanerCleaningMode('manual')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2113,7 +2113,7 @@
   },
   {
     "command": "창문 블라인드가 40% 이상 열려 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Shade').windowShadeLevel_shadeLevel >= 40:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Shade').windowShadeLevel_shadeLevel >= 40:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2125,7 +2125,7 @@
   },
   {
     "command": "창문 블라인드가 완전히 열려 있는 상태면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Shade').windowShade_windowShade == 'open':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Shade').windowShade_windowShade == 'open':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2137,7 +2137,7 @@
   },
   {
     "command": "창문 블라인드를 50%로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Shade').windowShadeLevel_setShadeLevel(50)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Shade').windowShadeLevel_setShadeLevel(50)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2149,7 +2149,7 @@
   },
   {
     "command": "창문 블라인드를 닫아줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Shade').windowShade_close()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Shade').windowShade_close()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2161,7 +2161,7 @@
   },
   {
     "command": "창문 블라인드를 열어줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Shade').windowShade_open()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Shade').windowShade_open()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2173,7 +2173,7 @@
   },
   {
     "command": "창문 블라인드 움직임을 일시 중지해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Shade').windowShade_pause()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Shade').windowShade_pause()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2185,7 +2185,7 @@
   },
   {
     "command": "사이렌이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Siren').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Siren').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2197,7 +2197,7 @@
   },
   {
     "command": "사이렌 모드가 사이렌이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Siren').sirenMode_sirenMode == 'siren':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Siren').sirenMode_sirenMode == 'siren':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2209,7 +2209,7 @@
   },
   {
     "command": "사이렌을 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Siren').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Siren').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2221,7 +2221,7 @@
   },
   {
     "command": "사이렌을 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Siren').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Siren').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2233,7 +2233,7 @@
   },
   {
     "command": "사이렌 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Siren').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Siren').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2245,7 +2245,7 @@
   },
   {
     "command": "사이렌 모드를 경광등으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Siren').sirenMode_setSirenMode('strobe')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Siren').sirenMode_setSirenMode('strobe')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2257,7 +2257,7 @@
   },
   {
     "command": "스마트 플러그의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('SmartPlug').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('SmartPlug').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2269,7 +2269,7 @@
   },
   {
     "command": "스마트 플러그의 전압이 220볼트 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('SmartPlug').voltageMeasurement_voltage >= 220:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('SmartPlug').voltageMeasurement_voltage >= 220:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2281,7 +2281,7 @@
   },
   {
     "command": "스마트 플러그의 전류가 10암페어 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('SmartPlug').currentMeasurement_current >= 10:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('SmartPlug').currentMeasurement_current >= 10:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2293,7 +2293,7 @@
   },
   {
     "command": "스마트 플러그의 소비 전력이 1000와트 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('SmartPlug').powerMeter_power >= 1000:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('SmartPlug').powerMeter_power >= 1000:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2305,7 +2305,7 @@
   },
   {
     "command": "스마트 플러그를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('SmartPlug').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('SmartPlug').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2317,7 +2317,7 @@
   },
   {
     "command": "스마트 플러그를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('SmartPlug').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('SmartPlug').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2329,7 +2329,7 @@
   },
   {
     "command": "스마트 플러그의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('SmartPlug').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('SmartPlug').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2341,7 +2341,7 @@
   },
   {
     "command": "연기 감지기에서 연기가 감지되면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('SmokeDetector').smokeDetector_smoke == 'detected':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('SmokeDetector').smokeDetector_smoke == 'detected':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2353,7 +2353,7 @@
   },
   {
     "command": "토양 수분 센서의 토양 수분 측정값이 30% 이하이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('SoilMoistureSensor').soilHumidityMeasurement_soilHumidity <= 30:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('SoilMoistureSensor').soilHumidityMeasurement_soilHumidity <= 30:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2365,7 +2365,7 @@
   },
   {
     "command": "소리 센서에서 소리가 감지되면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('SoundSensor').soundSensor_sound == 'detected':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('SoundSensor').soundSensor_sound == 'detected':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2377,7 +2377,7 @@
   },
   {
     "command": "소리 감지 레벨이 70dB 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('SoundSensor').soundPressureLevel_soundPressureLevel >= 70:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('SoundSensor').soundPressureLevel_soundPressureLevel >= 70:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2389,7 +2389,7 @@
   },
   {
     "command": "스피커의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Speaker').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Speaker').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2401,7 +2401,7 @@
   },
   {
     "command": "스피커가 재생 중이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Speaker').mediaPlayback_playbackStatus == 'playing':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Speaker').mediaPlayback_playbackStatus == 'playing':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2413,7 +2413,7 @@
   },
   {
     "command": "스피커를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2425,7 +2425,7 @@
   },
   {
     "command": "스피커를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2437,7 +2437,7 @@
   },
   {
     "command": "스피커의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2449,7 +2449,7 @@
   },
   {
     "command": "스피커의 재생을 빨리 감기 해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_fastForward()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_fastForward()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2461,7 +2461,7 @@
   },
   {
     "command": "스피커의 재생을 일시 정지해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_pause()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_pause()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2473,7 +2473,7 @@
   },
   {
     "command": "스피커의 재생을 되감아줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_rewind()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_rewind()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2485,7 +2485,7 @@
   },
   {
     "command": "스피커의 재생을 멈춰줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_stop()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_stop()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2497,7 +2497,7 @@
   },
   {
     "command": "스피커에서 music.mp3를 재생해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_play('music.mp3')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_play('music.mp3')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2509,7 +2509,7 @@
   },
   {
     "command": "스피커에서 '지금은 테스트 중입니다.'를 말해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_speak('지금은 테스트 중입니다.')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Speaker').mediaPlayback_speak('지금은 테스트 중입니다.')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2521,7 +2521,7 @@
   },
   {
     "command": "녹음기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Recorder').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Recorder').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2533,7 +2533,7 @@
   },
   {
     "command": "녹음기가 녹음 중이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Recorder').audioRecord_recordStatus == 'recording':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Recorder').audioRecord_recordStatus == 'recording':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2545,7 +2545,7 @@
   },
   {
     "command": "녹음기를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Recorder').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Recorder').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2557,7 +2557,7 @@
   },
   {
     "command": "녹음기를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Recorder').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Recorder').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2569,7 +2569,7 @@
   },
   {
     "command": "녹음기의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Recorder').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Recorder').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2581,7 +2581,7 @@
   },
   {
     "command": "녹음기로 10초 동안 녹음해서 test.wav로 저장해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Recorder').audioRecord_record('test.wav', 10)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Recorder').audioRecord_record('test.wav', 10)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2593,7 +2593,7 @@
   },
   {
     "command": "스위치의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Switch').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Switch').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2605,7 +2605,7 @@
   },
   {
     "command": "스위치를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Switch').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Switch').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2617,7 +2617,7 @@
   },
   {
     "command": "스위치를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Switch').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Switch').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2629,7 +2629,7 @@
   },
   {
     "command": "스위치의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Switch').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Switch').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2641,7 +2641,7 @@
   },
   {
     "command": "TV의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Television').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Television').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2653,7 +2653,7 @@
   },
   {
     "command": "현재 TV 채널 이름이 '9시 뉴스'이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Television').tvChannel_tvChannelName == '9시 뉴스':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Television').tvChannel_tvChannelName == '9시 뉴스':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2665,7 +2665,7 @@
   },
   {
     "command": "TV의 볼륨이 50 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Television').audioVolume_volume >= 50:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Television').audioVolume_volume >= 50:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2677,7 +2677,7 @@
   },
   {
     "command": "TV가 음소거 상태이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Television').audioMute_muteStatus == 'muted':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Television').audioMute_muteStatus == 'muted':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2689,7 +2689,7 @@
   },
   {
     "command": "TV를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2701,7 +2701,7 @@
   },
   {
     "command": "TV를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2713,7 +2713,7 @@
   },
   {
     "command": "TV의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2725,7 +2725,7 @@
   },
   {
     "command": "TV 채널을 하나 내려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').tvChannel_channelDown()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').tvChannel_channelDown()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2737,7 +2737,7 @@
   },
   {
     "command": "TV 채널을 하나 올려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').tvChannel_channelUp()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').tvChannel_channelUp()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2749,7 +2749,7 @@
   },
   {
     "command": "TV 채널을 7번으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').tvChannel_setTvChannel(7)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').tvChannel_setTvChannel(7)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2761,7 +2761,7 @@
   },
   {
     "command": "TV 채널 이름을 '뉴스'로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').tvChannel_setTvChannelName('뉴스')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').tvChannel_setTvChannelName('뉴스')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2773,7 +2773,7 @@
   },
   {
     "command": "TV의 볼륨을 30으로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioVolume_setVolume(30)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioVolume_setVolume(30)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2785,7 +2785,7 @@
   },
   {
     "command": "TV의 볼륨을 낮춰줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioVolume_volumeDown()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioVolume_volumeDown()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2797,7 +2797,7 @@
   },
   {
     "command": "TV의 볼륨을 높여줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioVolume_volumeUp()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioVolume_volumeUp()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2809,7 +2809,7 @@
   },
   {
     "command": "TV를 음소거해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioMute_mute()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioMute_mute()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2821,7 +2821,7 @@
   },
   {
     "command": "TV의 음소거 상태를 해제해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioMute_unmute()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioMute_unmute()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2833,7 +2833,7 @@
   },
   {
     "command": "TV의 음소거 상태를 음소거로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioMute_setMute('muted')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Television').audioMute_setMute('muted')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2845,7 +2845,7 @@
   },
   {
     "command": "현재 온도가 25도 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('TemperatureSensor').temperatureMeasurement_temperature >= 25:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('TemperatureSensor').temperatureMeasurement_temperature >= 25:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2857,7 +2857,7 @@
   },
   {
     "command": "밸브가 열린 상태이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Valve').valve_valve == 'open':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Valve').valve_valve == 'open':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2869,7 +2869,7 @@
   },
   {
     "command": "밸브를 닫아줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Valve').valve_close()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Valve').valve_close()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2881,7 +2881,7 @@
   },
   {
     "command": "밸브를 열어줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Valve').valve_open()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Valve').valve_open()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2893,7 +2893,7 @@
   },
   {
     "command": "습도가 80% 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_humidityWeather >= 80:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_humidityWeather >= 80:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2905,7 +2905,7 @@
   },
   {
     "command": "미세먼지 농도가 100 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_pm10Weather >= 100:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_pm10Weather >= 100:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2917,7 +2917,7 @@
   },
   {
     "command": "초미세먼지 농도가 50 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_pm25Weather >= 50:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_pm25Weather >= 50:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2929,7 +2929,7 @@
   },
   {
     "command": "기압이 1020hPa 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_pressureWeather >= 1020:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_pressureWeather >= 1020:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2941,7 +2941,7 @@
   },
   {
     "command": "온도가 30도 이상이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_temperatureWeather >= 30:\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_temperatureWeather >= 30:\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2953,7 +2953,7 @@
   },
   {
     "command": "현재 날씨가 비가 오고 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_weather == 'rain':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('WeatherProvider').weatherProvider_weather == 'rain':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2965,7 +2965,7 @@
   },
   {
     "command": "위도 37.5665, 경도 126.9780의 현재 날씨 정보를 가져와줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        weatherInfo=Tags('WeatherProvider').weatherProvider_getWeatherInfo(37.5665, 126.9780)\nTags('Speaker').mediaPlayback_speak(weatherInfo)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        weatherInfo=Tags('WeatherProvider').weatherProvider_getWeatherInfo(37.5665, 126.9780)\nTags('Speaker').mediaPlayback_speak(weatherInfo)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2977,7 +2977,7 @@
   },
   {
     "command": "창문이 열린 상태이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Window').windowControl_window == 'open':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Window').windowControl_window == 'open':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -2989,7 +2989,7 @@
   },
   {
     "command": "창문을 닫아줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Window').windowControl_close()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Window').windowControl_close()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3001,7 +3001,7 @@
   },
   {
     "command": "창문을 열어줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Window').windowControl_open()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Window').windowControl_open()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3013,7 +3013,7 @@
   },
   {
     "command": "낙상 감지 센서에서 낙상이 감지되면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('FallDetector').fallDetection_fall == 'fall':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('FallDetector').fallDetection_fall == 'fall':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3025,7 +3025,7 @@
   },
   {
     "command": "존재 감지 센서가 감지 상태이면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('OccupancySensor').presenceSensor_presence == 'present':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('OccupancySensor').presenceSensor_presence == 'present':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3037,7 +3037,7 @@
   },
   {
     "command": "릴레이의 전원이 켜져 있으면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Relay').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Relay').switch_switch == 'on':\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3049,7 +3049,7 @@
   },
   {
     "command": "릴레이를 꺼줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Relay').switch_off()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Relay').switch_off()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3061,7 +3061,7 @@
   },
   {
     "command": "릴레이를 켜줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Relay').switch_on()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Relay').switch_on()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3073,7 +3073,7 @@
   },
   {
     "command": "릴레이의 전원을 토글해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Relay').switch_toggle()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Relay').switch_toggle()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3085,7 +3085,7 @@
   },
   {
     "command": "60초 길이의 테스트 타이머라는 타이머를 추가해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Timer').timer_add('테스트 타이머', 60)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Timer').timer_add('테스트 타이머', 60)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3097,7 +3097,7 @@
   },
   {
     "command": "테스트 타이머라는 이름의 타이머가 존재하면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Timer').timer_isExist('테스트 타이머'):\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Timer').timer_isExist('테스트 타이머'):\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3109,7 +3109,7 @@
   },
   {
     "command": "테스트 타이머라는 이름의 타이머가 하면 알람의 사이렌을 울려줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Timer').timer_isSet('테스트 타이머'):\n             Tags('Alarm').alarm_siren()",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        if Tags('Timer').timer_isSet('테스트 타이머'):\n             Tags('Alarm').alarm_siren()\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3121,7 +3121,7 @@
   },
   {
     "command": "테스트 타이머라는 이름의 타이머를 리셋해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Timer').timer_reset('테스트 타이머')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Timer').timer_reset('테스트 타이머')\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3133,7 +3133,7 @@
   },
   {
     "command": "테스트 타이머라는 이름의 타이머를 120초로 설정해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Timer').timer_set('테스트 타이머', 120)",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Timer').timer_set('테스트 타이머', 120)\n```",
     "code": [
       {
         "name": "Scenario1",
@@ -3145,7 +3145,7 @@
   },
   {
     "command": "테스트 타이머라는 이름의 타이머를 시작해줘.",
-    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Timer').timer_start('테스트 타이머')",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"\"\n        self.period = -1\n\n    def run(self):\n        Tags('Timer').timer_start('테스트 타이머')\n```",
     "code": [
       {
         "name": "Scenario1",
