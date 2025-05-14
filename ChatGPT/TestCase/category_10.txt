@@ -1,0 +1,311 @@
+
+command: 문이 열리면 블라인드를 닫아 줘. 온도가 25도를 넘으면 에어컨을 꺼 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('ContactSensor').contactSensor_contact == 'open')
+        Tags('Blind').blind_close()
+
+class Scenario2:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('AirQualityDetector').temperatureMeasurement_temperature > 25.0)
+        Tags('AirConditioner').switch_off()
+code:  name: Scenario1  cron:   period: -1  code:
+wait until ((#ContactSensor).contactSensor_contact == 'open')
+(#Blind).blind_close()  name: Scenario2  cron:   period: -1  code:
+wait until ((#AirQualityDetector).temperatureMeasurement_temperature > 25.0)
+(#AirConditioner).switch_off()
+================================================================================
+command: TV가 꺼질 때마다 스피커를 끄고, 창문이 열리면 커튼을 닫아 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('Television').switch_switch == 'on')
+        wait_until(Tags('Television').switch_switch == 'off')
+        Tags('Speaker').switch_off()
+
+class Scenario2:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('Window').windowControl_window == 'open')
+        Tags('Curtain').curtain_close()
+code:  name: Scenario1  cron:   period: -1  code:
+wait until ((#Television).switch_switch == 'on')
+wait until ((#Television).switch_switch == 'off')
+(#Speaker).switch_off()  name: Scenario2  cron:   period: -1  code:
+wait until ((#Window).windowControl_window == 'open')
+(#Curtain).curtain_close()
+================================================================================
+command: 문이 닫힌 후 10초 동안 다시 열리지 않으면 알람의 사이렌을 울려 줘, 그 이후에는 조명을 꺼 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+        self.monitoring = False
+        self.timer = 0
+
+    def run(self):
+        state = Tags('ContactSensor').contactSensor_contact
+
+        if self.monitoring == False:
+            if state == 'open':
+                self.monitoring = True
+                self.timer = 0
+        else:
+            if state == 'closed':
+                self.timer += 100
+                if self.timer >= 10000:
+                    Tags('Alarm').alarm_siren()
+                    Tags('Light').switch_off()
+                    self.monitoring = False
+            else:
+                self.monitoring = False
+code:  name: Scenario1  cron:   period: 100  code:
+monitoring := False
+timer := 0
+state = (#ContactSensor).contactSensor_contact
+if (monitoring == False) {
+    if (state == 'open') {
+        monitoring = True
+        timer = 0
+    }
+} else if (state == 'closed') {
+    timer += 100
+    if (timer >= 10000) {
+        (#Alarm).alarm_siren()
+        (#Light).switch_off()
+        monitoring = False
+    }
+} else {
+    monitoring = False
+}
+================================================================================
+command: 조명이 켜지면 선풍기를 켜 줘, 창문이 열리면 블라인드를 닫아 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('Light').switch_switch == 'off')
+        wait_until(Tags('Light').switch_switch == 'on')
+        Tags('Fan').switch_on()
+
+class Scenario2:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('Window').windowControl_window == 'closed')
+        wait_until(Tags('Window').windowControl_window == 'open')
+        Tags('Blind').blind_close()
+code:  name: Scenario1  cron:   period: -1  code:
+wait until ((#Light).switch_switch == 'off')
+wait until ((#Light).switch_switch == 'on')
+(#Fan).switch_on()  name: Scenario2  cron:   period: -1  code:
+wait until ((#Window).windowControl_window == 'closed')
+wait until ((#Window).windowControl_window == 'open')
+(#Blind).blind_close()
+================================================================================
+command: 에어컨이 꺼지고 창문이 열리면 알람의 사이렌을 울려 줘, 커튼이 닫혀 있으면 열어 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+        self.ac_was_on = False
+
+    def run(self):
+        ac_state = Tags('AirConditioner').switch_switch
+        window_state = Tags('Window').windowControl_window
+
+        if self.ac_was_on == False and ac_state == 'on':
+            self.ac_was_on = True
+
+        if self.ac_was_on == True and ac_state == 'off' and window_state == 'open':
+            Tags('Alarm').alarm_siren()
+            break
+
+class Scenario2:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+
+    def run(self):
+        if Tags('Curtain').curtain_curtain == 'closed':
+            Tags('Curtain').curtain_open()
+code:  name: Scenario1  cron:   period: 100  code:
+ac_was_on := False
+ac_state = (#AirConditioner).switch_switch
+window_state = (#Window).windowControl_window
+if (ac_was_on == False and ac_state == 'on') {
+    ac_was_on = True
+}
+if (ac_was_on == True and ac_state == 'off' and (window_state == 'open')) {
+    (#Alarm).alarm_siren()
+    break
+}  name: Scenario2  cron:   period: 100  code:
+if ((#Curtain).curtain_curtain == 'closed') {
+    (#Curtain).curtain_open()
+}
+================================================================================
+command: 문이 열릴 때마다 조명을 켜고, TV가 꺼지면 스피커를 끄고 블라인드를 내리게 해 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('ContactSensor').contactSensor_contact == 'closed')
+        wait_until(Tags('ContactSensor').contactSensor_contact == 'open')
+        Tags('Light').switch_on()
+
+class Scenario2:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('Television').switch_switch == 'on')
+        wait_until(Tags('Television').switch_switch == 'off')
+        Tags('Speaker').switch_off()
+        Tags('Blind').blind_close()
+code:  name: Scenario1  cron:   period: -1  code:
+wait until ((#ContactSensor).contactSensor_contact == 'closed')
+wait until ((#ContactSensor).contactSensor_contact == 'open')
+(#Light).switch_on()  name: Scenario2  cron:   period: -1  code:
+wait until ((#Television).switch_switch == 'on')
+wait until ((#Television).switch_switch == 'off')
+(#Speaker).switch_off()
+(#Blind).blind_close()
+================================================================================
+command: 제습기가 꺼지면 켜 줘, 동시에 조명이 꺼져 있으면 밝기를 50으로 설정해 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('Dehumidifier').switch_switch == 'on')
+        wait_until(Tags('Dehumidifier').switch_switch == 'off')
+        Tags('Dehumidifier').switch_on()
+
+class Scenario2:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if Tags('Light').switch_switch == 'off':
+            Tags('Light').switchLevel_setLevel(50, 0)
+code:  name: Scenario1  cron:   period: -1  code:
+wait until ((#Dehumidifier).switch_switch == 'on')
+wait until ((#Dehumidifier).switch_switch == 'off')
+(#Dehumidifier).switch_on()  name: Scenario2  cron:   period: -1  code:
+if ((#Light).switch_switch == 'off') {
+    (#Light).switchLevel_setLevel(50, 0)
+}
+================================================================================
+command: 창문이 열리면 블라인드를 닫고, 조명이 꺼지면 선풍기를 켜 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('Window').windowControl_window == 'closed')
+        wait_until(Tags('Window').windowControl_window == 'open')
+        Tags('Blind').blind_close()
+
+class Scenario2:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('Light').switch_switch == 'on')
+        wait_until(Tags('Light').switch_switch == 'off')
+        Tags('Fan').switch_on()
+code:  name: Scenario1  cron:   period: -1  code:
+wait until ((#Window).windowControl_window == 'closed')
+wait until ((#Window).windowControl_window == 'open')
+(#Blind).blind_close()  name: Scenario2  cron:   period: -1  code:
+wait until ((#Light).switch_switch == 'on')
+wait until ((#Light).switch_switch == 'off')
+(#Fan).switch_on()
+================================================================================
+command: 움직임이 감지되면 커튼을 닫고, 동시에 알람의 사이렌을 울려 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if Tags('MotionSensor').motionSensor_motion == 'active':
+            Tags('Curtain').curtain_close()
+            Tags('Alarm').alarm_siren()
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#MotionSensor).motionSensor_motion == 'active') {
+    (#Curtain).curtain_close()
+    (#Alarm).alarm_siren()
+}
+================================================================================
+command: 알람의 사이렌이 울리면 10초 후 커튼을 열어 주고, 이후 5초마다 조명을 켰다 꺼 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+        self.alarm_triggered = False
+
+    def run(self):
+        if self.alarm_triggered == False:
+            wait_until(Tags('Alarm').alarm_alarm == 'siren' or Tags('Alarm').alarm_alarm == 'both')
+            wait_until(Tags('Alarm').alarm_alarm != 'siren' and Tags('Alarm').alarm_alarm != 'both')
+            wait_until(Tags('Alarm').alarm_alarm == 'siren' or Tags('Alarm').alarm_alarm == 'both')
+            Tags('Clock').clock_delay(0, 0, 10)
+            Tags('Curtain').curtain_open()
+            self.alarm_triggered = True
+
+        if self.alarm_triggered == True:
+            Tags('Light').switch_on()
+            Tags('Clock').clock_delay(0, 0, 1)
+            Tags('Light').switch_off()
+code:  name: Scenario1  cron:   period: -1  code:
+alarm_triggered := False
+if (alarm_triggered == False) {
+    wait until (((#Alarm).alarm_alarm == 'siren') or ((#Alarm).alarm_alarm == 'both'))
+    wait until (((#Alarm).alarm_alarm != 'siren') and ((#Alarm).alarm_alarm != 'both'))
+    wait until (((#Alarm).alarm_alarm == 'siren') or ((#Alarm).alarm_alarm == 'both'))
+    (#Clock).clock_delay(0, 0, 10)
+    (#Curtain).curtain_open()
+    alarm_triggered = True
+}
+if (alarm_triggered == True) {
+    (#Light).switch_on()
+    (#Clock).clock_delay(0, 0, 1)
+    (#Light).switch_off()
+}
+================================================================================

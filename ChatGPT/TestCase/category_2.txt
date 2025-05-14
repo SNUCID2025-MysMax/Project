@@ -1,0 +1,159 @@
+
+command: 창문이 열려 있고 조명이 꺼져 있으면 조명을 켜 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if (Tags('Window').windowControl_window == 'open') and (Tags('Light').switch_switch == 'off'):
+            Tags('Light').switch_on()
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#Window).windowControl_window == 'open' and (#Light).switch_switch == 'off') {
+    (#Light).switch_on()
+}
+================================================================================
+command: 문이 닫혀 있고 TV가 켜져 있으면 TV를 꺼 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if (Tags('DoorLock').doorControl_door == 'closed') and (Tags('Television').switch_switch == 'on'):
+            Tags('Television').switch_off()
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#DoorLock).doorControl_door == 'closed' and (#Television).switch_switch == 'on') {
+    (#Television).switch_off()
+}
+================================================================================
+command: 블라인드가 열려 있고 커튼이 닫혀 있으면 커튼을 열어 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if (Tags('Blind').blind_blind == 'open') and (Tags('Curtain').curtain_curtain == 'closed'):
+            Tags('Curtain').curtain_open()
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#Blind).blind_blind == 'open' and (#Curtain).curtain_curtain == 'closed') {
+    (#Curtain).curtain_open()
+}
+================================================================================
+command: 에어컨이 꺼져 있고 온도가 28도 이상이면 에어컨을 켜 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        temp = Tags('TemperatureSensor').temperatureMeasurement_temperature
+        if (Tags('AirConditioner').switch_switch == 'off') and (temp >= 28.0):
+            Tags('AirConditioner').switch_on()
+code:  name: Scenario1  cron:   period: -1  code:
+temp = (#TemperatureSensor).temperatureMeasurement_temperature
+if ((#AirConditioner).switch_switch == 'off' and temp >= 28.0) {
+    (#AirConditioner).switch_on()
+}
+================================================================================
+command: 조명이 켜져 있고 선풍기가 꺼져 있으면 선풍기를 켜 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if (Tags('Light').switch_switch == 'on') and (Tags('Fan').switch_switch == 'off'):
+            Tags('Fan').switch_on()
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#Light).switch_switch == 'on' and (#Fan).switch_switch == 'off') {
+    (#Fan).switch_on()
+}
+================================================================================
+command: TV가 꺼져 있고 스피커가 꺼져 있으면 둘 다 켜 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if (Tags('Television').switch_switch == 'off') and (Tags('Speaker').switch_switch == 'off'):
+            Tags('Television').switch_on()
+            Tags('Speaker').switch_on()
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#Television).switch_switch == 'off' and (#Speaker).switch_switch == 'off') {
+    (#Television).switch_on()
+    (#Speaker).switch_on()
+}
+================================================================================
+command: 블라인드와 커튼이 둘 다 열려 있으면 블라인드를 닫고 커튼은 그대로 둬 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if (Tags('Blind').blind_blind == 'open') and (Tags('Curtain').curtain_curtain == 'open'):
+            Tags('Blind').blind_close()
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#Blind).blind_blind == 'open' and (#Curtain).curtain_curtain == 'open') {
+    (#Blind).blind_close()
+}
+================================================================================
+command: 문이 닫혀 있고 움직임이 감지되지 않으면 조명을 꺼 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if (Tags('DoorLock').doorControl_door == 'closed') and (Tags('MotionSensor').motionSensor_motion == 'inactive'):
+            Tags('Light').switch_off()
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#DoorLock).doorControl_door == 'closed' and (#MotionSensor).motionSensor_motion == 'inactive') {
+    (#Light).switch_off()
+}
+================================================================================
+command: 에어컨이 켜져 있고 창문이 열려 있으면 창문을 닫고 조명을 어둡게 해 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if (Tags('AirConditioner').switch_switch == 'on') and (Tags('Window').windowControl_window == 'open'):
+            Tags('Window').windowControl_close()
+            Tags('Light').switchLevel_setLevel(20, 0)
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#AirConditioner).switch_switch == 'on' and (#Window).windowControl_window == 'open') {
+    (#Window).windowControl_close()
+    (#Light).switchLevel_setLevel(20, 0)
+}
+================================================================================
+command: 커튼이 열려 있고 조명이 꺼져 있으면 조명을 켜고 블라인드를 닫아 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if (Tags('Curtain').curtain_curtain == 'open') and (Tags('Light').switch_switch == 'off'):
+            Tags('Light').switch_on()
+            Tags('Blind').blind_close()
+code:  name: Scenario1  cron:   period: -1  code:
+if ((#Curtain).curtain_curtain == 'open' and (#Light).switch_switch == 'off') {
+    (#Light).switch_on()
+    (#Blind).blind_close()
+}
+================================================================================

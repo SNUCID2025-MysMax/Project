@@ -1,0 +1,139 @@
+
+command: 매일 오전 9시에 조명을 켜 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = '0 9 * * *'
+        self.period = 0
+
+    def run(self):
+        Tags('Light').switch_on()
+code:  name: Scenario1  cron: 0 9 * * *  period: 0  code:
+(#Light).switch_on()
+================================================================================
+command: 매주 월요일 오전 8시에 창문을 열어 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = '0 8 * * 1'
+        self.period = 0
+
+    def run(self):
+        Tags('Window').windowControl_open()
+code:  name: Scenario1  cron: 0 8 * * 1  period: 0  code:
+(#Window).windowControl_open()
+================================================================================
+command: 5초마다 조명을 깜빡여 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 5000
+        self.is_on = True
+
+    def run(self):
+        if self.is_on == True:
+            Tags('Light').switch_off()
+            self.is_on = False
+        else:
+            Tags('Light').switch_on()
+            self.is_on = True
+code:  name: Scenario1  cron:   period: 5000  code:
+is_on := True
+if (is_on == True) {
+    (#Light).switch_off()
+    is_on = False
+} else {
+    (#Light).switch_on()
+}
+================================================================================
+command: 문이 열리면 알람을 울려 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('ContactSensor').contactSensor_contact == 'open')
+        Tags('Alarm').alarm_siren()
+code:  name: Scenario1  cron:   period: -1  code:
+wait until((#ContactSensor).contactSensor_contact == 'open')
+(#Alarm).alarm_siren()
+================================================================================
+command: 조명이 켜지면 블라인드를 닫아 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        wait_until(Tags('Light').switch_switch == 'on')
+        Tags('Blind').blind_close()
+code:  name: Scenario1  cron:   period: -1  code:
+wait until((#Light).switch_switch == 'on')
+(#Blind).blind_close()
+================================================================================
+command: 매일 밤 11시마다 창문을 닫고 알람의 사이렌을 울려 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = '0 23 * * *'
+        self.period = 0
+
+    def run(self):
+        Tags('Window').windowControl_close()
+        Tags('Alarm').alarm_siren()
+code:  name: Scenario1  cron: 0 23 * * *  period: 0  code:
+(#Window).windowControl_close()
+(#Alarm).alarm_siren()
+================================================================================
+command: 매주 금요일 오후 5시에 커튼을 닫아 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = '0 17 * * 5'
+        self.period = 0
+
+    def run(self):
+        Tags('Curtain').curtain_close()
+code:  name: Scenario1  cron: 0 17 * * 5  period: 0  code:
+(#Curtain).curtain_close()
+================================================================================
+command: 10초마다 선풍기를 꺼 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 10000
+
+    def run(self):
+        Tags('Fan').switch_off()
+code:  name: Scenario1  cron:   period: 10000  code:
+(#Fan).switch_off()
+================================================================================
+command: 매일 아침 7시에 에어컨을 자동 모드로 설정해 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = '0 7 * * *'
+        self.period = 0
+
+    def run(self):
+        Tags('AirConditioner').airConditionerMode_setAirConditionerMode('auto')
+code:  name: Scenario1  cron: 0 7 * * *  period: 0  code:
+(#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+================================================================================
+command: 매주 수요일 정오에 조명을 20으로 어둡게 해 줘.
+python:
+class Scenario1:
+    def __init__(self):
+        self.cron = '0 12 * * 3'
+        self.period = 0
+
+    def run(self):
+        Tags('Light').switchLevel_setLevel(20, 1)
+code:  name: Scenario1  cron: 0 12 * * 3  period: 0  code:
+(#Light).switchLevel_setLevel(20, 1)
+================================================================================
