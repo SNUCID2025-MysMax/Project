@@ -9,18 +9,12 @@ def print_json_pretty_with_real_newlines(input_path, output_path):
         return
 
     try:
-        with open(output_path, 'w', encoding='utf-8') as f_out:
-            for item in data:
-                f_out.write(f"\ncommand: {item['command']}")
-                f_out.write(f"\npython:\n{item['python']}")
+        json_str = json.dumps(data, indent=4, ensure_ascii=False)
+        # json.dumps는 문자열 내 줄바꿈을 \\n으로 만듦 → \n으로 복원
+        json_str = json_str.replace('\\n', '\n')
 
-                f_out.write("\ncode:")
-                for code_block in item['code']:
-                    f_out.write(f"  name: {code_block['name']}")
-                    f_out.write(f"  cron: {code_block['cron']}")
-                    f_out.write(f"  period: {code_block['period']}")
-                    f_out.write(f"  code:\n{code_block['code']}")
-                f_out.write("\n" + "=" * 80)
+        with open(output_path, 'w', encoding='utf-8') as f_out:
+            f_out.write(json_str)
     except Exception as e:
         print(f"❌ 출력 파일 저장 중 오류 발생: {e}")
 

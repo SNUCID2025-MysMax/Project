@@ -1,79 +1,115 @@
-
-command: 지금 알람의 사이렌을 한 번 울려 줘.
-python:
-class Scenario1:
+[
+    {
+        "command": "지금 알람의 사이렌을 한 번 울려 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = ''
         self.period = -1
 
     def run(self):
-        Tags('Alarm').alarm_siren()
-code:  name: Scenario1  cron:   period: -1  code:
-(#Alarm).alarm_siren()
-================================================================================
-command: 매일 아침 8시에 조명을 켜 줘.
-python:
-class Scenario1:
+        Tags('Alarm').alarm_siren()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "(#Alarm).alarm_siren()"
+            }
+        ]
+    },
+    {
+        "command": "매일 아침 8시에 조명을 켜 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = '0 8 * * *'
         self.period = 0
 
     def run(self):
-        Tags('Light').switch_on()
-code:  name: Scenario1  cron: 0 8 * * *  period: 0  code:
-(#Light).switch_on()
-================================================================================
-command: 매일 오후 10시에 조명을 꺼 줘.
-python:
-class Scenario1:
+        Tags('Light').switch_on()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "0 8 * * *",
+                "period": 0,
+                "code": "(#Light).switch_on()"
+            }
+        ]
+    },
+    {
+        "command": "매일 오후 10시에 조명을 꺼 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = '0 22 * * *'
         self.period = 0
 
     def run(self):
-        Tags('Light').switch_off()
-code:  name: Scenario1  cron: 0 22 * * *  period: 0  code:
-(#Light).switch_off()
-================================================================================
-command: 매주 월요일 오전 9시에 블라인드를 열어 줘.
-python:
-class Scenario1:
+        Tags('Light').switch_off()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "0 22 * * *",
+                "period": 0,
+                "code": "(#Light).switch_off()"
+            }
+        ]
+    },
+    {
+        "command": "매주 월요일 오전 9시에 블라인드를 열어 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = '0 9 * * 1'
         self.period = 0
 
     def run(self):
-        Tags('Blind').blind_open()
-code:  name: Scenario1  cron: 0 9 * * 1  period: 0  code:
-(#Blind).blind_open()
-================================================================================
-command: 10초마다 알람의 사이렌을 울려 줘.
-python:
-class Scenario1:
+        Tags('Blind').blind_open()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "0 9 * * 1",
+                "period": 0,
+                "code": "(#Blind).blind_open()"
+            }
+        ]
+    },
+    {
+        "command": "10초마다 알람의 사이렌을 울려 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = ''
         self.period = 10000
 
     def run(self):
-        Tags('Alarm').alarm_both()
-code:  name: Scenario1  cron:   period: 10000  code:
-(#Alarm).alarm_both()
-================================================================================
-command: 30초마다 선풍기를 꺼 줘.
-python:
-class Scenario1:
+        Tags('Alarm').alarm_both()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 10000,
+                "code": "(#Alarm).alarm_both()"
+            }
+        ]
+    },
+    {
+        "command": "30초마다 선풍기를 꺼 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = ''
         self.period = 30000
 
     def run(self):
-        Tags('Fan').switch_off()
-code:  name: Scenario1  cron:   period: 30000  code:
-(#Fan).switch_off()
-================================================================================
-command: 매일 오후 6시부터 7시 사이에 15초마다 조명을 깜빡여 줘.
-python:
-class Scenario1:
+        Tags('Fan').switch_off()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 30000,
+                "code": "(#Fan).switch_off()"
+            }
+        ]
+    },
+    {
+        "command": "매일 오후 6시부터 7시 사이에 15초마다 조명을 깜빡여 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = '0 18 * * *'
         self.period = 15000
@@ -81,46 +117,71 @@ class Scenario1:
     def run(self):
         hour = Tags('Clock').clock_hour
         if (hour >= 18) and (hour < 19):
-            Tags('Light').switch_toggle()
-code:  name: Scenario1  cron: 0 18 * * *  period: 15000  code:
-hour = (#Clock).clock_hour
+            Tags('Light').switch_toggle()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "0 18 * * *",
+                "period": 15000,
+                "code": "hour = (#Clock).clock_hour
 if (hour >= 18 and hour < 19) {
     (#Light).switch_toggle()
-}
-================================================================================
-command: 매일 자정에 커튼을 닫아 줘.
-python:
-class Scenario1:
+}"
+            }
+        ]
+    },
+    {
+        "command": "매일 자정에 커튼을 닫아 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = '0 0 * * *'
         self.period = 0
 
     def run(self):
-        Tags('Curtain').curtain_close()
-code:  name: Scenario1  cron: 0 0 * * *  period: 0  code:
-(#Curtain).curtain_close()
-================================================================================
-command: 5초마다 TV 볼륨을 1씩 올려 줘.
-python:
-class Scenario1:
+        Tags('Curtain').curtain_close()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "0 0 * * *",
+                "period": 0,
+                "code": "(#Curtain).curtain_close()"
+            }
+        ]
+    },
+    {
+        "command": "5초마다 TV 볼륨을 1씩 올려 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = ''
         self.period = 5000
 
     def run(self):
-        Tags('Television').audioVolume_volumeUp()
-code:  name: Scenario1  cron:   period: 5000  code:
-(#Television).audioVolume_volumeUp()
-================================================================================
-command: 매주 수요일 오전 10시에 스피커를 켜 줘.
-python:
-class Scenario1:
+        Tags('Television').audioVolume_volumeUp()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 5000,
+                "code": "(#Television).audioVolume_volumeUp()"
+            }
+        ]
+    },
+    {
+        "command": "매주 수요일 오전 10시에 스피커를 켜 줘.",
+        "python": "class Scenario1:
     def __init__(self):
         self.cron = '0 10 * * 3'
         self.period = 0
 
     def run(self):
-        Tags('Speaker').switch_on()
-code:  name: Scenario1  cron: 0 10 * * 3  period: 0  code:
-(#Speaker).switch_on()
-================================================================================
+        Tags('Speaker').switch_on()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "0 10 * * 3",
+                "period": 0,
+                "code": "(#Speaker).switch_on()"
+            }
+        ]
+    }
+]
