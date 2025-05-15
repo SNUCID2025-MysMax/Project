@@ -59,12 +59,12 @@ class airConditionerMode(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[-470, 10000])
+                return MXValueType(MXType.INTEGER)
 
         class supportedAcModes(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'Supported states for this air conditioner to be in: "str|..."'
+                return 'Supported states for this air conditioner to be in'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -111,7 +111,7 @@ class airConditionerMode(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-460, 10000])
+                        return MXValueType(MXType.INTEGER)
 
 
 @dataclass
@@ -160,7 +160,7 @@ class airPurifierFanMode(Skill):
         class supportedAirPurifierFanModes(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'Supported states for this air purifier fan to be in: "str|..."'
+                return 'Supported states for this air purifier fan to be in'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -365,7 +365,7 @@ class button(Skill):
         class supportedButtonValues(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'List of valid button attribute values: "str|..."'
+                return 'List of valid button attribute values'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -495,7 +495,7 @@ class buttonx4(Skill):
         class supportedButtonValues(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'List of valid button attribute values: "str|..."'
+                return 'List of valid button attribute values'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -562,7 +562,7 @@ class chargingState(Skill):
         class supportedChargingStates(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'The list of charging states that the device supports. Optional, defaults to all states if not set.: "str|..."'
+                return 'The list of charging states that the device supports. Optional, defaults to all states if not set.'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -678,7 +678,7 @@ class clock(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class datetime(SkillValue):
@@ -688,7 +688,7 @@ class clock(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class date(SkillValue):
@@ -698,7 +698,7 @@ class clock(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class time(SkillValue):
@@ -708,7 +708,7 @@ class clock(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class isHoliday(SkillValue):
@@ -849,7 +849,7 @@ class colorControl(Skill):
                 class color(SkillFunctionArgument):
                     @MXClassproperty
                     def descriptor(cls) -> str:
-                        return 'The color map supports the following key/value pairs:"RED|GREEN|BLUE", example:"255|255|255"'
+                        return 'The color map supports the following key/value pairs:'
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
@@ -933,7 +933,7 @@ class currentMeasurement(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
 
 @dataclass
@@ -1438,7 +1438,7 @@ class irrigatorPortion(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
     class Functions:
         @dataclass
@@ -1558,7 +1558,7 @@ class switchLevel(Skill):
         class levelRange(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'Constraints on the level value:"min|max",example:"30|60"'
+                return 'Constraints on the level value'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -1773,7 +1773,7 @@ class temperatureMeasurement(Skill):
         class temperatureRange(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'Constraints on the temperature value:"min|max", example:"-20|50"'
+                return 'Constraints on the temperature value'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -1847,7 +1847,7 @@ class tvChannel(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.INTEGER, [0, INFINITY])
+                return MXValueType(MXType.INTEGER)
 
         @dataclass
         class tvChannelName(SkillValue):
@@ -1899,7 +1899,7 @@ class tvChannel(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.INTEGER, bound=[0, INFINITY])
+                        return MXValueType(MXType.INTEGER)
 
         @dataclass
         class setTvChannelName(SkillFunction):
@@ -1939,7 +1939,7 @@ class voltageMeasurement(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
 
 @dataclass
@@ -1958,7 +1958,7 @@ class gasMeter(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class gasMeterCalorific(SkillValue):
@@ -1968,7 +1968,7 @@ class gasMeter(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class gasMeterTime(SkillValue):
@@ -1978,7 +1978,7 @@ class gasMeter(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class gasMeterVolume(SkillValue):
@@ -1988,7 +1988,7 @@ class gasMeter(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
 
 @dataclass
@@ -2007,7 +2007,7 @@ class soilHumidityMeasurement(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[-10000, 100000])
+                return MXValueType(MXType.DOUBLE)
 
 
 @dataclass
@@ -2324,7 +2324,7 @@ class mediaPlayback(Skill):
         class supportedPlaybackCommands(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'Media playback commands which are supported: "str|..."'
+                return 'Media playback commands which are supported'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -2789,7 +2789,7 @@ class windowShade(Skill):
         class supportedWindowShadeCommands(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'Window shade commands supported by this instance of Window Shade: "str|..."'
+                return 'Window shade commands supported by this instance of Window Shade'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -2872,7 +2872,7 @@ class curtain(Skill):
         class supportedCurtainCommands(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'Curtain commands supported by this instance of Curtain: "str|..."'
+                return 'Curtain commands supported by this instance of Curtain'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -3063,13 +3063,13 @@ class powerMeter(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, INFINITY])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class powerConsumption(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'energy and power consumption during specific time period:"unit|Wh", example:"kWh|30"'
+                return 'energy and power consumption during specific time period - unit: Wh'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -3188,7 +3188,7 @@ class atmosphericPressureSensor(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, 2000])
+                return MXValueType(MXType.DOUBLE)
 
 
 @dataclass
@@ -3432,7 +3432,7 @@ class weatherProvider(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[-470, 10000])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class humidityWeather(SkillValue):
@@ -3442,7 +3442,7 @@ class weatherProvider(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, 100])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class pressureWeather(SkillValue):
@@ -3452,7 +3452,7 @@ class weatherProvider(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, 2000])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class pm25Weather(SkillValue):
@@ -3462,7 +3462,7 @@ class weatherProvider(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, 10000])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class pm10Weather(SkillValue):
@@ -3472,7 +3472,7 @@ class weatherProvider(Skill):
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
-                return MXValueType(MXType.DOUBLE, bound=[0, 10000])
+                return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class weather(SkillValue):
@@ -3504,7 +3504,7 @@ class weatherProvider(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-90, 90])
+                        return MXValueType(MXType.DOUBLE)
 
                 @dataclass
                 class lon(SkillFunctionArgument):
@@ -3514,7 +3514,7 @@ class weatherProvider(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-180, 180])
+                        return MXValueType(MXType.DOUBLE)
 
 
 @dataclass
@@ -3775,7 +3775,7 @@ class pumpOperationMode(Skill):
         class supportedOperationModes(SkillValue):
             @MXClassproperty
             def descriptor(cls) -> str:
-                return 'Supported operation modes for this device to be in: "str|..."'
+                return 'Supported operation modes for this device to be in'
 
             @MXClassproperty
             def value_type(cls) -> MXValueType:
@@ -3831,7 +3831,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
                 @dataclass
                 class b(SkillFunctionArgument):
@@ -3841,7 +3841,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class sub(SkillFunction):
@@ -3862,7 +3862,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
                 @dataclass
                 class b(SkillFunctionArgument):
@@ -3872,7 +3872,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class mul(SkillFunction):
@@ -3893,7 +3893,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
                 @dataclass
                 class b(SkillFunctionArgument):
@@ -3903,7 +3903,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class div(SkillFunction):
@@ -3924,7 +3924,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
                 @dataclass
                 class b(SkillFunctionArgument):
@@ -3934,7 +3934,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
         @dataclass
         class mod(SkillFunction):
@@ -3955,7 +3955,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
                 @dataclass
                 class b(SkillFunctionArgument):
@@ -3965,7 +3965,7 @@ class calculator(Skill):
 
                     @MXClassproperty
                     def argument_type(cls) -> MXValueType:
-                        return MXValueType(MXType.DOUBLE, bound=[-INFINITY, INFINITY])
+                        return MXValueType(MXType.DOUBLE)
 
 
 @dataclass

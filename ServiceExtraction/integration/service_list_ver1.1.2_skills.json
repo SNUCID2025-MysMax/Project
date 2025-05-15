@@ -44,13 +44,13 @@
         "format": "airConditionerModeEnum"
       },
       "supportedAcModes": {
-        "info": "Supported states for this air conditioner to be in",
+        "info": "Supported states for this air conditioner to be in: \"str|...\"",
         "type": "LIST",
         "format": "list[airConditionerModeEnum]"
       },
       "targetTemperature": {
         "info": "Current temperature status of the air conditioner",
-        "type": "INTEGER"
+        "type": "DOUBLE"
       }
     },
     "functions": {
@@ -72,7 +72,7 @@
           {
             "id": "temperature",
             "descriptor": "Set the air conditioner temperature",
-            "type": "INTEGER",
+            "type": "DOUBLE",
             "format": null
           }
         ],
@@ -99,7 +99,7 @@
         "format": "airPurifierFanModeEnum"
       },
       "supportedAirPurifierFanModes": {
-        "info": "Supported states for this air purifier fan to be in",
+        "info": "Supported states for this air purifier fan to be in: \"str|...\"",
         "type": "LIST",
         "format": "list[airPurifierFanModeEnum]"
       }
@@ -134,33 +134,11 @@
       }
     }
   },
-  "temperatureMeasurement": {
-    "info": "Get the temperature from a Device that reports current temperature",
-    "values": {
-      "temperature": {
-        "info": "A number that usually represents the current temperature",
-        "type": "DOUBLE"
-      },
-      "temperatureRange": {
-        "info": "Constraints on the temperature value",
-        "type": "DICT"
-      }
-    }
-  },
   "carbonDioxideMeasurement": {
     "info": "Measure carbon dioxide levels",
     "values": {
       "carbonDioxide": {
         "info": "The level of carbon dioxide detected",
-        "type": "DOUBLE"
-      }
-    }
-  },
-  "relativeHumidityMeasurement": {
-    "info": "Allow reading the relative humidity from devices that support it",
-    "values": {
-      "humidity": {
-        "info": "A numerical representation of the relative humidity measurement taken by the device",
         "type": "DOUBLE"
       }
     }
@@ -182,12 +160,43 @@
       }
     }
   },
+  "relativeHumidityMeasurement": {
+    "info": "Allow reading the relative humidity from devices that support it",
+    "values": {
+      "humidity": {
+        "info": "A numerical representation of the relative humidity measurement taken by the device",
+        "type": "DOUBLE"
+      }
+    }
+  },
   "tvocMeasurement": {
     "info": "Measure total volatile organic compound levels",
     "values": {
       "tvocLevel": {
         "info": "The level of total volatile organic compounds detected",
         "type": "DOUBLE"
+      }
+    }
+  },
+  "temperatureMeasurement": {
+    "info": "Get the temperature from a Device that reports current temperature",
+    "values": {
+      "temperature": {
+        "info": "A number that usually represents the current temperature",
+        "type": "DOUBLE"
+      },
+      "temperatureRange": {
+        "info": "Constraints on the temperature value:\"min|max\", example:\"-20|50\"",
+        "type": "DICT"
+      }
+    }
+  },
+  "battery": {
+    "info": "Defines that the device has a battery",
+    "values": {
+      "battery": {
+        "info": "An indication of the status of the battery",
+        "type": "INTEGER"
       }
     }
   },
@@ -260,38 +269,6 @@
       }
     }
   },
-  "battery": {
-    "info": "Defines that the device has a battery",
-    "values": {
-      "battery": {
-        "info": "An indication of the status of the battery",
-        "type": "INTEGER"
-      }
-    }
-  },
-  "blindLevel": {
-    "info": "Allows for the control of the level of a blind.",
-    "values": {
-      "blindLevel": {
-        "info": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
-        "type": "INTEGER"
-      }
-    },
-    "functions": {
-      "setBlindLevel": {
-        "info": "Set the blind level to the given value.",
-        "arguements": [
-          {
-            "id": "blindLevel",
-            "descriptor": "The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
-            "type": "INTEGER",
-            "format": null
-          }
-        ],
-        "return_type": "VOID"
-      }
-    }
-  },
   "blind": {
     "info": "Allows for the control of the blind.",
     "values": {
@@ -333,6 +310,29 @@
       }
     }
   },
+  "blindLevel": {
+    "info": "Allows for the control of the level of a blind.",
+    "values": {
+      "blindLevel": {
+        "info": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+        "type": "INTEGER"
+      }
+    },
+    "functions": {
+      "setBlindLevel": {
+        "info": "Set the blind level to the given value.",
+        "arguements": [
+          {
+            "id": "blindLevel",
+            "descriptor": "The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      }
+    }
+  },
   "button": {
     "info": "A device with one or more buttons",
     "values": {
@@ -346,7 +346,7 @@
         "type": "INTEGER"
       },
       "supportedButtonValues": {
-        "info": "List of valid button attribute values",
+        "info": "List of valid button attribute values: \"str|...\"",
         "type": "LIST",
         "format": "list[buttonEnum]"
       }
@@ -413,7 +413,7 @@
         "type": "INTEGER"
       },
       "supportedButtonValues": {
-        "info": "List of valid button attribute values",
+        "info": "List of valid button attribute values: \"str|...\"",
         "type": "LIST",
         "format": "list[buttonEnum]"
       }
@@ -594,6 +594,15 @@
       }
     }
   },
+  "currentMeasurement": {
+    "info": "Get the value of electrical current measured from a device.",
+    "values": {
+      "current": {
+        "info": "A number representing the current measured.",
+        "type": "DOUBLE"
+      }
+    }
+  },
   "chargingState": {
     "info": "The current status of battery charging",
     "values": {
@@ -603,7 +612,7 @@
         "format": "chargingStateEnum"
       },
       "supportedChargingStates": {
-        "info": "The list of charging states that the device supports. Optional, defaults to all states if not set.",
+        "info": "The list of charging states that the device supports. Optional, defaults to all states if not set.: \"str|...\"",
         "type": "LIST",
         "format": "list[chargingStateEnum]"
       }
@@ -618,15 +627,6 @@
           "error"
         ],
         "info": "• charging - charging\n• discharging - discharging\n• stopped - stopped\n• fullyCharged - fully charged\n• error - error"
-      }
-    }
-  },
-  "currentMeasurement": {
-    "info": "Get the value of electrical current measured from a device.",
-    "values": {
-      "current": {
-        "info": "A number representing the current measured.",
-        "type": "DOUBLE"
       }
     }
   },
@@ -752,7 +752,7 @@
         "format": "curtainEnum"
       },
       "supportedCurtainCommands": {
-        "info": "Curtain commands supported by this instance of Curtain",
+        "info": "Curtain commands supported by this instance of Curtain: \"str|...\"",
         "type": "LIST",
         "format": "list[curtainEnum]"
       }
@@ -1265,7 +1265,7 @@
         "arguements": [
           {
             "id": "color",
-            "descriptor": "The color map supports the following key/value pairs:",
+            "descriptor": "The color map supports the following key/value pairs:\"RED|GREEN|BLUE\", example:\"255|255|255\"",
             "type": "DICT",
             "format": null
           }
@@ -1306,7 +1306,7 @@
         "type": "INTEGER"
       },
       "levelRange": {
-        "info": "Constraints on the level value",
+        "info": "Constraints on the level value:\"min|max\",example:\"30|60\"",
         "type": "DICT"
       }
     },
@@ -1424,7 +1424,7 @@
         "format": "pumpOperationModeEnum"
       },
       "supportedOperationModes": {
-        "info": "Supported operation modes for this device to be in",
+        "info": "Supported operation modes for this device to be in: \"str|...\"",
         "type": "LIST",
         "format": "list[pumpOperationModeEnum]"
       }
@@ -1631,7 +1631,7 @@
     "info": "Allows for the control of the window shade.",
     "values": {
       "supportedWindowShadeCommands": {
-        "info": "Window shade commands supported by this instance of Window Shade",
+        "info": "Window shade commands supported by this instance of Window Shade: \"str|...\"",
         "type": "LIST",
         "format": "list[windowShadeEnum]"
       },
@@ -1716,7 +1716,7 @@
         "type": "DOUBLE"
       },
       "powerConsumption": {
-        "info": "energy and power consumption during specific time period - unit: Wh",
+        "info": "energy and power consumption during specific time period:\"unit|Wh\", example:\"kWh|30\"",
         "type": "DICT"
       }
     }
@@ -1787,7 +1787,7 @@
         "format": "mediaPlaybackEnum"
       },
       "supportedPlaybackCommands": {
-        "info": "Media playback commands which are supported",
+        "info": "Media playback commands which are supported: \"str|...\"",
         "type": "LIST",
         "format": "list[mediaPlaybackEnum]"
       }
@@ -1903,55 +1903,6 @@
       }
     }
   },
-  "tvChannel": {
-    "info": "Allows for the control of the TV channel.",
-    "values": {
-      "tvChannel": {
-        "info": "Current status of the TV channel",
-        "type": "INTEGER"
-      },
-      "tvChannelName": {
-        "info": "Current status of the TV channel name",
-        "type": "STRING"
-      }
-    },
-    "functions": {
-      "channelDown": {
-        "info": "Move the TV channel down",
-        "arguements": [],
-        "return_type": "VOID"
-      },
-      "channelUp": {
-        "info": "Move the TV channel up",
-        "arguements": [],
-        "return_type": "VOID"
-      },
-      "setTvChannel": {
-        "info": "Set the TV channel",
-        "arguements": [
-          {
-            "id": "tvChannel",
-            "descriptor": "",
-            "type": "INTEGER",
-            "format": null
-          }
-        ],
-        "return_type": "VOID"
-      },
-      "setTvChannelName": {
-        "info": "Set the TV channel Name",
-        "arguements": [
-          {
-            "id": "tvChannelName",
-            "descriptor": "",
-            "type": "STRING",
-            "format": null
-          }
-        ],
-        "return_type": "VOID"
-      }
-    }
-  },
   "audioVolume": {
     "info": "Allows for the control of audio volume.",
     "values": {
@@ -2025,6 +1976,55 @@
           "unmuted"
         ],
         "info": "• muted - The audio is in \"muted\" state\n• unmuted - The audio is in \"unmuted\" state"
+      }
+    }
+  },
+  "tvChannel": {
+    "info": "Allows for the control of the TV channel.",
+    "values": {
+      "tvChannel": {
+        "info": "Current status of the TV channel",
+        "type": "INTEGER"
+      },
+      "tvChannelName": {
+        "info": "Current status of the TV channel name",
+        "type": "STRING"
+      }
+    },
+    "functions": {
+      "channelDown": {
+        "info": "Move the TV channel down",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "channelUp": {
+        "info": "Move the TV channel up",
+        "arguements": [],
+        "return_type": "VOID"
+      },
+      "setTvChannel": {
+        "info": "Set the TV channel",
+        "arguements": [
+          {
+            "id": "tvChannel",
+            "descriptor": "",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
+      },
+      "setTvChannelName": {
+        "info": "Set the TV channel Name",
+        "arguements": [
+          {
+            "id": "tvChannelName",
+            "descriptor": "",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "return_type": "VOID"
       }
     }
   },

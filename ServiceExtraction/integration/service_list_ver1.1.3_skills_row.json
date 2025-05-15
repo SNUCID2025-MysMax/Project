@@ -20,12 +20,12 @@
     ],
     "Attributes": [
       "airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner",
-      "airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in",
-      "airConditionerMode_targetTemperature (INTEGER): Current temperature status of the air conditioner"
+      "airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in: \"str|...\"",
+      "airConditionerMode_targetTemperature (DOUBLE): Current temperature status of the air conditioner"
     ],
     "Methods": [
       "airConditionerMode_setAirConditionerMode(mode: airConditionerModeEnum) -> VOID:\n\t\tSet the air conditioner mode\n\n\t\tArgs:\n\t\t\tmode (airConditionerModeEnum): Set the air conditioner mode\n",
-      "airConditionerMode_setTemperature(temperature: INTEGER) -> VOID:\n\t\tSet the air conditioner temperature\n\n\t\tArgs:\n\t\t\ttemperature (INTEGER): Set the air conditioner temperature\n"
+      "airConditionerMode_setTemperature(temperature: DOUBLE) -> VOID:\n\t\tSet the air conditioner temperature\n\n\t\tArgs:\n\t\t\ttemperature (DOUBLE): Set the air conditioner temperature\n"
     ]
   },
   "airPurifierFanMode": {
@@ -35,29 +35,16 @@
     ],
     "Attributes": [
       "airPurifierFanMode_airPurifierFanMode (airPurifierFanModeEnum): The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree",
-      "airPurifierFanMode_supportedAirPurifierFanModes (list[airPurifierFanModeEnum]): Supported states for this air purifier fan to be in"
+      "airPurifierFanMode_supportedAirPurifierFanModes (list[airPurifierFanModeEnum]): Supported states for this air purifier fan to be in: \"str|...\""
     ],
     "Methods": [
       "airPurifierFanMode_setAirPurifierFanMode(mode: airPurifierFanModeEnum) -> VOID:\n\t\tSet the air purifier fan's mode\n\n\t\tArgs:\n\t\t\tmode (airPurifierFanModeEnum): Set the air purifier fan's mode\n"
-    ]
-  },
-  "temperatureMeasurement": {
-    "info": "Get the temperature from a Device that reports current temperature",
-    "Attributes": [
-      "temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature",
-      "temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value"
     ]
   },
   "carbonDioxideMeasurement": {
     "info": "Measure carbon dioxide levels",
     "Attributes": [
       "carbonDioxideMeasurement_carbonDioxide (DOUBLE): The level of carbon dioxide detected"
-    ]
-  },
-  "relativeHumidityMeasurement": {
-    "info": "Allow reading the relative humidity from devices that support it",
-    "Attributes": [
-      "relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device"
     ]
   },
   "dustSensor": {
@@ -68,10 +55,29 @@
       "dustSensor_veryFineDustLevel (INTEGER): Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter"
     ]
   },
+  "relativeHumidityMeasurement": {
+    "info": "Allow reading the relative humidity from devices that support it",
+    "Attributes": [
+      "relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device"
+    ]
+  },
   "tvocMeasurement": {
     "info": "Measure total volatile organic compound levels",
     "Attributes": [
       "tvocMeasurement_tvocLevel (DOUBLE): The level of total volatile organic compounds detected"
+    ]
+  },
+  "temperatureMeasurement": {
+    "info": "Get the temperature from a Device that reports current temperature",
+    "Attributes": [
+      "temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature",
+      "temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value:\"min|max\", example:\"-20|50\""
+    ]
+  },
+  "battery": {
+    "info": "Defines that the device has a battery",
+    "Attributes": [
+      "battery_battery (INTEGER): An indication of the status of the battery"
     ]
   },
   "alarm": {
@@ -91,21 +97,6 @@
       "alarm_strobe() -> VOID:\n\t\tStrobe the alarm\n"
     ]
   },
-  "battery": {
-    "info": "Defines that the device has a battery",
-    "Attributes": [
-      "battery_battery (INTEGER): An indication of the status of the battery"
-    ]
-  },
-  "blindLevel": {
-    "info": "Allows for the control of the level of a blind.",
-    "Attributes": [
-      "blindLevel_blindLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
-    ],
-    "Methods": [
-      "blindLevel_setBlindLevel(blindLevel: INTEGER) -> VOID:\n\t\tSet the blind level to the given value.\n\n\t\tArgs:\n\t\t\tblindLevel (INTEGER): The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.\n"
-    ]
-  },
   "blind": {
     "info": "Allows for the control of the blind.",
     "enum": [
@@ -120,6 +111,15 @@
       "blind_pause() -> VOID:\n\t\tPause opening or closing the blind\n"
     ]
   },
+  "blindLevel": {
+    "info": "Allows for the control of the level of a blind.",
+    "Attributes": [
+      "blindLevel_blindLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open."
+    ],
+    "Methods": [
+      "blindLevel_setBlindLevel(blindLevel: INTEGER) -> VOID:\n\t\tSet the blind level to the given value.\n\n\t\tArgs:\n\t\t\tblindLevel (INTEGER): The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.\n"
+    ]
+  },
   "button": {
     "info": "A device with one or more buttons",
     "enum": [
@@ -128,7 +128,7 @@
     "Attributes": [
       "button_button (buttonEnum): The state of the buttons",
       "button_numberOfButtons (INTEGER): The number of buttons on the device",
-      "button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values"
+      "button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values: \"str|...\""
     ]
   },
   "buttonx4": {
@@ -142,7 +142,7 @@
       "buttonx4_button3 (buttonEnum): The state of the button3",
       "buttonx4_button4 (buttonEnum): The state of the button4",
       "buttonx4_numberOfButtons (INTEGER): The number of buttons on the device",
-      "buttonx4_supportedButtonValues (list[buttonEnum]): List of valid button attribute values"
+      "buttonx4_supportedButtonValues (list[buttonEnum]): List of valid button attribute values: \"str|...\""
     ]
   },
   "calculator": {
@@ -172,6 +172,12 @@
       "voltageMeasurement_voltage (DOUBLE): A number representing the current voltage measured"
     ]
   },
+  "currentMeasurement": {
+    "info": "Get the value of electrical current measured from a device.",
+    "Attributes": [
+      "currentMeasurement_current (DOUBLE): A number representing the current measured."
+    ]
+  },
   "chargingState": {
     "info": "The current status of battery charging",
     "enum": [
@@ -179,13 +185,7 @@
     ],
     "Attributes": [
       "chargingState_chargingState (chargingStateEnum): The current charging state of the device",
-      "chargingState_supportedChargingStates (list[chargingStateEnum]): The list of charging states that the device supports. Optional, defaults to all states if not set."
-    ]
-  },
-  "currentMeasurement": {
-    "info": "Get the value of electrical current measured from a device.",
-    "Attributes": [
-      "currentMeasurement_current (DOUBLE): A number representing the current measured."
+      "chargingState_supportedChargingStates (list[chargingStateEnum]): The list of charging states that the device supports. Optional, defaults to all states if not set.: \"str|...\""
     ]
   },
   "clock": {
@@ -227,7 +227,7 @@
     ],
     "Attributes": [
       "curtain_curtain (curtainEnum): A string representation of whether the curtain is open or closed",
-      "curtain_supportedCurtainCommands (list[curtainEnum]): Curtain commands supported by this instance of Curtain"
+      "curtain_supportedCurtainCommands (list[curtainEnum]): Curtain commands supported by this instance of Curtain: \"str|...\""
     ],
     "Methods": [
       "curtain_close() -> VOID:\n\t\tClose the curtain\n",
@@ -389,7 +389,7 @@
       "colorControl_saturation (DOUBLE): ``0-100`` (percent)"
     ],
     "Methods": [
-      "colorControl_setColor(color: DICT) -> VOID:\n\t\tSets the color based on the values passed in with the given map\n\n\t\tArgs:\n\t\t\tcolor (DICT): The color map supports the following key/value pairs:\n",
+      "colorControl_setColor(color: DICT) -> VOID:\n\t\tSets the color based on the values passed in with the given map\n\n\t\tArgs:\n\t\t\tcolor (DICT): The color map supports the following key/value pairs:\"RED|GREEN|BLUE\", example:\"255|255|255\"\n",
       "colorControl_setHue(hue: DOUBLE) -> VOID:\n\t\tSet the hue value of the color\n\n\t\tArgs:\n\t\t\thue (DOUBLE): A number in the range ``0-100`` representing the hue as a value of percent\n",
       "colorControl_setSaturation(saturation: DOUBLE) -> VOID:\n\t\tSet the saturation value of the color\n\n\t\tArgs:\n\t\t\tsaturation (DOUBLE): A number in the range ``0-100`` representing the saturation as a value of percent\n"
     ]
@@ -398,7 +398,7 @@
     "info": "Allows for the control of the level of a device like a light or a dimmer switch.",
     "Attributes": [
       "switchLevel_level (INTEGER): A number that represents the current level, usually ``0-100`` in percent",
-      "switchLevel_levelRange (DICT): Constraints on the level value"
+      "switchLevel_levelRange (DICT): Constraints on the level value:\"min|max\",example:\"30|60\""
     ],
     "Methods": [
       "switchLevel_alert() -> VOID:\n\t\tAlert with dimming\n",
@@ -445,7 +445,7 @@
     "Attributes": [
       "pumpOperationMode_currentOperationMode (pumpOperationModeEnum): The current effective operation mode of the pump",
       "pumpOperationMode_operationMode (pumpOperationModeEnum): The operation mode of the pump",
-      "pumpOperationMode_supportedOperationModes (list[pumpOperationModeEnum]): Supported operation modes for this device to be in"
+      "pumpOperationMode_supportedOperationModes (list[pumpOperationModeEnum]): Supported operation modes for this device to be in: \"str|...\""
     ],
     "Methods": [
       "pumpOperationMode_setOperationMode(operationMode: pumpOperationModeEnum) -> VOID:\n\t\tSet the operation mode\n\n\t\tArgs:\n\t\t\toperationMode (pumpOperationModeEnum): The operation mode to set the device to\n"
@@ -507,7 +507,7 @@
       "windowShadeEnum (Enum):\n\t\tclosed: closed\n\t\tclosing: closing…\n\t\topen: open\n\t\topening: opening…\n\t\tpartially\n\t\tpaused\n\t\tunknown: unknown"
     ],
     "Attributes": [
-      "windowShade_supportedWindowShadeCommands (list[windowShadeEnum]): Window shade commands supported by this instance of Window Shade",
+      "windowShade_supportedWindowShadeCommands (list[windowShadeEnum]): Window shade commands supported by this instance of Window Shade: \"str|...\"",
       "windowShade_windowShade (windowShadeEnum): A string representation of whether the window shade is open or closed"
     ],
     "Methods": [
@@ -532,7 +532,7 @@
     "info": "Allows for reading the power consumption from devices that report it",
     "Attributes": [
       "powerMeter_power (DOUBLE): A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts",
-      "powerMeter_powerConsumption (DICT): energy and power consumption during specific time period - unit: Wh"
+      "powerMeter_powerConsumption (DICT): energy and power consumption during specific time period:\"unit|Wh\", example:\"kWh|30\""
     ]
   },
   "smokeDetector": {
@@ -572,7 +572,7 @@
     ],
     "Attributes": [
       "mediaPlayback_playbackStatus (mediaPlaybackEnum): Status of the media playback",
-      "mediaPlayback_supportedPlaybackCommands (list[mediaPlaybackEnum]): Media playback commands which are supported"
+      "mediaPlayback_supportedPlaybackCommands (list[mediaPlaybackEnum]): Media playback commands which are supported: \"str|...\""
     ],
     "Methods": [
       "mediaPlayback_fastForward() -> VOID:\n\t\tFast forward the media playback\n",
@@ -594,19 +594,6 @@
     ],
     "Methods": [
       "audioRecord_record(file: STRING, duration: DOUBLE) -> VOID:\n\t\tRecord audio\n\n\t\tArgs:\n\t\t\tfile (STRING): The file to record to\n\t\t\tduration (DOUBLE): The duration to record for\n"
-    ]
-  },
-  "tvChannel": {
-    "info": "Allows for the control of the TV channel.",
-    "Attributes": [
-      "tvChannel_tvChannel (INTEGER): Current status of the TV channel",
-      "tvChannel_tvChannelName (STRING): Current status of the TV channel name"
-    ],
-    "Methods": [
-      "tvChannel_channelDown() -> VOID:\n\t\tMove the TV channel down\n",
-      "tvChannel_channelUp() -> VOID:\n\t\tMove the TV channel up\n",
-      "tvChannel_setTvChannel(tvChannel: INTEGER) -> VOID:\n\t\tSet the TV channel\n\n\t\tArgs:\n\t\t\ttvChannel (INTEGER): \n",
-      "tvChannel_setTvChannelName(tvChannelName: STRING) -> VOID:\n\t\tSet the TV channel Name\n\n\t\tArgs:\n\t\t\ttvChannelName (STRING): \n"
     ]
   },
   "audioVolume": {
@@ -632,6 +619,19 @@
       "audioMute_mute() -> VOID:\n\t\tSet the audio to mute state\n",
       "audioMute_setMute(state: muteEnum) -> VOID:\n\t\tSet the state of the audio mute\n\n\t\tArgs:\n\t\t\tstate (muteEnum): Set the audio mute state to \"muted\" or \"unmuted\"\n",
       "audioMute_unmute() -> VOID:\n\t\tSet the audio to unmute state\n"
+    ]
+  },
+  "tvChannel": {
+    "info": "Allows for the control of the TV channel.",
+    "Attributes": [
+      "tvChannel_tvChannel (INTEGER): Current status of the TV channel",
+      "tvChannel_tvChannelName (STRING): Current status of the TV channel name"
+    ],
+    "Methods": [
+      "tvChannel_channelDown() -> VOID:\n\t\tMove the TV channel down\n",
+      "tvChannel_channelUp() -> VOID:\n\t\tMove the TV channel up\n",
+      "tvChannel_setTvChannel(tvChannel: INTEGER) -> VOID:\n\t\tSet the TV channel\n\n\t\tArgs:\n\t\t\ttvChannel (INTEGER): \n",
+      "tvChannel_setTvChannelName(tvChannelName: STRING) -> VOID:\n\t\tSet the TV channel Name\n\n\t\tArgs:\n\t\t\ttvChannelName (STRING): \n"
     ]
   },
   "testSkill": {

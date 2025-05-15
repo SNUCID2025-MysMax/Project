@@ -8,19 +8,19 @@
     "airPurifierFanMode": "Maintains and sets the state of an air purifier's fan"
   },
   "AirQualityDetector": {
-    "temperatureMeasurement": "Get the temperature from a Device that reports current temperature",
     "carbonDioxideMeasurement": "Measure carbon dioxide levels",
-    "relativeHumidityMeasurement": "Allow reading the relative humidity from devices that support it",
     "dustSensor": "Gets the reading of the dust sensor.",
-    "tvocMeasurement": "Measure total volatile organic compound levels"
+    "relativeHumidityMeasurement": "Allow reading the relative humidity from devices that support it",
+    "tvocMeasurement": "Measure total volatile organic compound levels",
+    "temperatureMeasurement": "Get the temperature from a Device that reports current temperature"
   },
   "Alarm": {
-    "alarm": "The Alarm skill allows for interacting with devices that serve as alarms",
-    "battery": "Defines that the device has a battery"
+    "battery": "Defines that the device has a battery",
+    "alarm": "The Alarm skill allows for interacting with devices that serve as alarms"
   },
   "Blind": {
-    "blindLevel": "Allows for the control of the level of a blind.",
-    "blind": "Allows for the control of the blind."
+    "blind": "Allows for the control of the blind.",
+    "blindLevel": "Allows for the control of the level of a blind."
   },
   "Button": {
     "button": "A device with one or more buttons"
@@ -37,8 +37,8 @@
   },
   "Charger": {
     "voltageMeasurement": "Get the value of voltage measured from devices that support it",
-    "chargingState": "The current status of battery charging",
-    "currentMeasurement": "Get the value of electrical current measured from a device."
+    "currentMeasurement": "Get the value of electrical current measured from a device.",
+    "chargingState": "The current status of battery charging"
   },
   "Clock": {
     "clock": "Provide current date and time"
@@ -112,8 +112,8 @@
     "presenceSensor": "The ability to see the current status of a presence sensor device"
   },
   "Pump": {
-    "pumpOperationMode": "Allows for setting the operation mode on a pump.",
     "switch": "Allows for the control of a switch device",
+    "pumpOperationMode": "Allows for setting the operation mode on a pump.",
     "pump": "Allows for the control of a pump device"
   },
   "Refrigerator": {
@@ -121,8 +121,8 @@
     "refrigeration": "Allows for the control of the refrigeration."
   },
   "RobotCleaner": {
-    "robotCleanerCleaningMode": "Allows for the control of the robot cleaner cleaning mode.",
-    "switch": "Allows for the control of a switch device"
+    "switch": "Allows for the control of a switch device",
+    "robotCleanerCleaningMode": "Allows for the control of the robot cleaner cleaning mode."
   },
   "Shade": {
     "windowShadeLevel": "Allows for the control of the level of a window shade.",
@@ -133,10 +133,10 @@
     "sirenMode": "Allows for the control of the siren."
   },
   "SmartPlug": {
-    "voltageMeasurement": "Get the value of voltage measured from devices that support it",
     "switch": "Allows for the control of a switch device",
-    "currentMeasurement": "Get the value of electrical current measured from a device.",
-    "powerMeter": "Allows for reading the power consumption from devices that report it"
+    "voltageMeasurement": "Get the value of voltage measured from devices that support it",
+    "powerMeter": "Allows for reading the power consumption from devices that report it",
+    "currentMeasurement": "Get the value of electrical current measured from a device."
   },
   "SmokeDetector": {
     "smokeDetector": "A device that detects the presence or absence of smoke."
@@ -153,17 +153,17 @@
     "mediaPlayback": "Allows for the control of the media playback."
   },
   "Recorder": {
-    "audioRecord": "Record audio",
-    "switch": "Allows for the control of a switch device"
+    "switch": "Allows for the control of a switch device",
+    "audioRecord": "Record audio"
   },
   "Switch": {
     "switch": "Allows for the control of a switch device"
   },
   "Television": {
     "switch": "Allows for the control of a switch device",
-    "tvChannel": "Allows for the control of the TV channel.",
     "audioVolume": "Allows for the control of audio volume.",
-    "audioMute": "Allows for the control of audio mute."
+    "audioMute": "Allows for the control of audio mute.",
+    "tvChannel": "Allows for the control of the TV channel."
   },
   "TemperatureSensor": {
     "temperatureMeasurement": "Get the temperature from a Device that reports current temperature"

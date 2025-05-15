@@ -98,7 +98,7 @@ def transform_code(code):
                                 key = target.attr
 
                                 # cron, period는 따로 저장
-                                if key in ["cron", "period"] and isinstance(value, (ast.Constant, ast.Str, ast.Num)):
+                                if key in ["cron", "period"]:
                                     result[key] = ast.literal_eval(value)
                                 else:
                                     # ast를 문자열로 unparse 후, replace_tags_arguments 적용
@@ -151,7 +151,7 @@ def transform_code(code):
                                 count -= 1
                             i += 1
                         inner = text[start:i-1]
-                        result += f'({func_name}{inner})'
+                        result += f'{func_name}{inner}'
                     else:
                         result += text[i]
                         i += 1

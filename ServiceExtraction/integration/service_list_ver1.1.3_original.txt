@@ -18,8 +18,8 @@ class AirConditioner:
 	Attributes:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner
-		airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in: "str|..."
-		airConditionerMode_targetTemperature (DOUBLE): Current temperature status of the air conditioner
+		airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in
+		airConditionerMode_targetTemperature (INTEGER): Current temperature status of the air conditioner
 
 	---
 
@@ -39,11 +39,11 @@ class AirConditioner:
 			Args:
 				mode (airConditionerModeEnum): Set the air conditioner mode
 	
-		airConditionerMode_setTemperature(temperature: DOUBLE) -> VOID:
+		airConditionerMode_setTemperature(temperature: INTEGER) -> VOID:
 			Set the air conditioner temperature
 	
 			Args:
-				temperature (DOUBLE): Set the air conditioner temperature
+				temperature (INTEGER): Set the air conditioner temperature
 	
 	"""
 
@@ -72,7 +72,7 @@ class AirPurifier:
 	Attributes:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		airPurifierFanMode_airPurifierFanMode (airPurifierFanModeEnum): The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree
-		airPurifierFanMode_supportedAirPurifierFanModes (list[airPurifierFanModeEnum]): Supported states for this air purifier fan to be in: "str|..."
+		airPurifierFanMode_supportedAirPurifierFanModes (list[airPurifierFanModeEnum]): Supported states for this air purifier fan to be in
 
 	---
 
@@ -101,14 +101,14 @@ class AirQualityDetector:
 	---
 
 	Attributes:
+		temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature
+		temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value
 		carbonDioxideMeasurement_carbonDioxide (DOUBLE): The level of carbon dioxide detected
+		relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device
 		dustSensor_dustLevel (INTEGER): Current dust level -- also refered to as PM10, measured in micrograms per cubic meter
 		dustSensor_fineDustLevel (INTEGER): Current level of fine dust -- also refered to as PM2.5, measured in micrograms per cubic meter
 		dustSensor_veryFineDustLevel (INTEGER): Current level of fine dust -- also refered to as PM1.0, measured in micrograms per cubic meter
-		relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device
 		tvocMeasurement_tvocLevel (DOUBLE): The level of total volatile organic compounds detected
-		temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature
-		temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value:"min|max", example:"-20|50"
 	"""
 
 class Alarm:
@@ -130,13 +130,12 @@ class Alarm:
 			medium
 			high
 
-
 	---
 
 	Attributes:
-		battery_battery (INTEGER): An indication of the status of the battery
 		alarm_alarm (alarmEnum): A string representation of whether the switch is on or off
 		alarm_alarmVolume (alarmVolumeEnum): A string representation of the volume of the alarm
+		battery_battery (INTEGER): An indication of the status of the battery
 
 	---
 
@@ -180,12 +179,18 @@ class Blind:
 	---
 
 	Attributes:
-		blind_blind (blindEnum): A string representation of whether the blind is open or closed
 		blindLevel_blindLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
+		blind_blind (blindEnum): A string representation of whether the blind is open or closed
 
 	---
 
 	Methods:
+		blindLevel_setBlindLevel(blindLevel: INTEGER) -> VOID:
+			Set the blind level to the given value.
+	
+			Args:
+				blindLevel (INTEGER): The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
+	
 		blind_close() -> VOID:
 			Close the blind
 	
@@ -194,12 +199,6 @@ class Blind:
 	
 		blind_pause() -> VOID:
 			Pause opening or closing the blind
-	
-		blindLevel_setBlindLevel(blindLevel: INTEGER) -> VOID:
-			Set the blind level to the given value.
-	
-			Args:
-				blindLevel (INTEGER): The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
 	
 	"""
 
@@ -243,7 +242,7 @@ class Button:
 	Attributes:
 		button_button (buttonEnum): The state of the buttons
 		button_numberOfButtons (INTEGER): The number of buttons on the device
-		button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values: "str|..."
+		button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values
 	"""
 
 class Buttonx4:
@@ -289,7 +288,7 @@ class Buttonx4:
 		buttonx4_button3 (buttonEnum): The state of the button3
 		buttonx4_button4 (buttonEnum): The state of the button4
 		buttonx4_numberOfButtons (INTEGER): The number of buttons on the device
-		buttonx4_supportedButtonValues (list[buttonEnum]): List of valid button attribute values: "str|..."
+		buttonx4_supportedButtonValues (list[buttonEnum]): List of valid button attribute values
 	"""
 
 class Calculator:
@@ -396,9 +395,9 @@ class Charger:
 
 	Attributes:
 		voltageMeasurement_voltage (DOUBLE): A number representing the current voltage measured
-		currentMeasurement_current (DOUBLE): A number representing the current measured.
 		chargingState_chargingState (chargingStateEnum): The current charging state of the device
-		chargingState_supportedChargingStates (list[chargingStateEnum]): The list of charging states that the device supports. Optional, defaults to all states if not set.: "str|..."
+		chargingState_supportedChargingStates (list[chargingStateEnum]): The list of charging states that the device supports. Optional, defaults to all states if not set.
+		currentMeasurement_current (DOUBLE): A number representing the current measured.
 	"""
 
 class Clock:
@@ -483,7 +482,7 @@ class Curtain:
 
 	Attributes:
 		curtain_curtain (curtainEnum): A string representation of whether the curtain is open or closed
-		curtain_supportedCurtainCommands (list[curtainEnum]): Curtain commands supported by this instance of Curtain: "str|..."
+		curtain_supportedCurtainCommands (list[curtainEnum]): Curtain commands supported by this instance of Curtain
 
 	---
 
@@ -929,7 +928,7 @@ class Light:
 		colorControl_hue (DOUBLE): ``0-100`` (percent)
 		colorControl_saturation (DOUBLE): ``0-100`` (percent)
 		switchLevel_level (INTEGER): A number that represents the current level, usually ``0-100`` in percent
-		switchLevel_levelRange (DICT): Constraints on the level value:"min|max",example:"30|60"
+		switchLevel_levelRange (DICT): Constraints on the level value
 
 	---
 
@@ -947,7 +946,7 @@ class Light:
 			Sets the color based on the values passed in with the given map
 	
 			Args:
-				color (DICT): The color map supports the following key/value pairs:"RED|GREEN|BLUE", example:"255|255|255"
+				color (DICT): The color map supports the following key/value pairs:
 	
 		colorControl_setHue(hue: DOUBLE) -> VOID:
 			Set the hue value of the color
@@ -1045,14 +1044,14 @@ class Pump:
 	---
 
 	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
 		pumpOperationModeEnum (Enum):
 			normal: The pump is controlled by a setpoint.
 			minimum: This value sets the pump to run at the minimum possible speed it can without being stopped.
 			maximum: This value sets the pump to run at its maximum possible speed.
 			localSetting: This value sets the pump to run with the local settings of the pump.
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
 		pumpEnum (Enum):
 			open: The value of the ``pump`` attribute if the pump is open
 			closed: The value of the ``pump`` attribute if the pump is closed
@@ -1060,15 +1059,21 @@ class Pump:
 	---
 
 	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		pumpOperationMode_currentOperationMode (pumpOperationModeEnum): The current effective operation mode of the pump
 		pumpOperationMode_operationMode (pumpOperationModeEnum): The operation mode of the pump
-		pumpOperationMode_supportedOperationModes (list[pumpOperationModeEnum]): Supported operation modes for this device to be in: "str|..."
+		pumpOperationMode_supportedOperationModes (list[pumpOperationModeEnum]): Supported operation modes for this device to be in
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		pump_pump (pumpEnum): A string representation of whether the pump is open or closed
 
 	---
 
 	Methods:
+		pumpOperationMode_setOperationMode(operationMode: pumpOperationModeEnum) -> VOID:
+			Set the operation mode
+	
+			Args:
+				operationMode (pumpOperationModeEnum): The operation mode to set the device to
+	
 		switch_off() -> VOID:
 			Turn a switch off
 	
@@ -1077,12 +1082,6 @@ class Pump:
 	
 		switch_toggle() -> VOID:
 			Toggle a switch
-	
-		pumpOperationMode_setOperationMode(operationMode: pumpOperationModeEnum) -> VOID:
-			Set the operation mode
-	
-			Args:
-				operationMode (pumpOperationModeEnum): The operation mode to set the device to
 	
 		pump_close() -> VOID:
 			Close the pump
@@ -1159,9 +1158,6 @@ class RobotCleaner:
 	---
 
 	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
 		robotCleanerCleaningModeEnum (Enum):
 			auto: The robot cleaner cleaning mode is in "auto" mode
 			part: The robot cleaner cleaning mode is in "part" mode
@@ -1169,16 +1165,25 @@ class RobotCleaner:
 			manual: The robot cleaner cleaning mode is in "manual" mode
 			stop: The robot cleaner cleaning mode is in "stop" mode
 			map: The robot cleaner cleaning mode is in "map" mode
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
 
 	---
 
 	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		robotCleanerCleaningMode_robotCleanerCleaningMode (robotCleanerCleaningModeEnum): Current status of the robot cleaner cleaning mode
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
 
 	---
 
 	Methods:
+		robotCleanerCleaningMode_setRobotCleanerCleaningMode(mode: robotCleanerCleaningModeEnum) -> VOID:
+			Set the robot cleaner cleaning mode
+	
+			Args:
+				mode (robotCleanerCleaningModeEnum): Set the robot cleaner cleaning mode, to "auto", "part", "repeat", "manual" or "stop" modes
+	
 		switch_off() -> VOID:
 			Turn a switch off
 	
@@ -1187,12 +1192,6 @@ class RobotCleaner:
 	
 		switch_toggle() -> VOID:
 			Toggle a switch
-	
-		robotCleanerCleaningMode_setRobotCleanerCleaningMode(mode: robotCleanerCleaningModeEnum) -> VOID:
-			Set the robot cleaner cleaning mode
-	
-			Args:
-				mode (robotCleanerCleaningModeEnum): Set the robot cleaner cleaning mode, to "auto", "part", "repeat", "manual" or "stop" modes
 	
 	"""
 
@@ -1216,7 +1215,7 @@ class Shade:
 
 	Attributes:
 		windowShadeLevel_shadeLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
-		windowShade_supportedWindowShadeCommands (list[windowShadeEnum]): Window shade commands supported by this instance of Window Shade: "str|..."
+		windowShade_supportedWindowShadeCommands (list[windowShadeEnum]): Window shade commands supported by this instance of Window Shade
 		windowShade_windowShade (windowShadeEnum): A string representation of whether the window shade is open or closed
 
 	---
@@ -1295,11 +1294,11 @@ class SmartPlug:
 	---
 
 	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		voltageMeasurement_voltage (DOUBLE): A number representing the current voltage measured
-		powerMeter_power (DOUBLE): A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts
-		powerMeter_powerConsumption (DICT): energy and power consumption during specific time period:"unit|Wh", example:"kWh|30"
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		currentMeasurement_current (DOUBLE): A number representing the current measured.
+		powerMeter_power (DOUBLE): A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts
+		powerMeter_powerConsumption (DICT): energy and power consumption during specific time period - unit: Wh
 
 	---
 
@@ -1384,7 +1383,7 @@ class Speaker:
 	Attributes:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		mediaPlayback_playbackStatus (mediaPlaybackEnum): Status of the media playback
-		mediaPlayback_supportedPlaybackCommands (list[mediaPlaybackEnum]): Media playback commands which are supported: "str|..."
+		mediaPlayback_supportedPlaybackCommands (list[mediaPlaybackEnum]): Media playback commands which are supported
 
 	---
 
@@ -1437,22 +1436,29 @@ class Recorder:
 	---
 
 	Enums:
-		switchEnum (Enum):
-			on: The value of the ``switch`` attribute if the switch is on
-			off: The value of the ``switch`` attribute if the switch is off
 		recordStatusEnum (Enum):
 			idle: The audio recorder is idle
 			recording: The audio recorder is recording
+		switchEnum (Enum):
+			on: The value of the ``switch`` attribute if the switch is on
+			off: The value of the ``switch`` attribute if the switch is off
 
 	---
 
 	Attributes:
-		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		audioRecord_recordStatus (recordStatusEnum): The current status of the audio recorder
+		switch_switch (switchEnum): A string representation of whether the switch is on or off
 
 	---
 
 	Methods:
+		audioRecord_record(file: STRING, duration: DOUBLE) -> VOID:
+			Record audio
+	
+			Args:
+				file (STRING): The file to record to
+				duration (DOUBLE): The duration to record for
+	
 		switch_off() -> VOID:
 			Turn a switch off
 	
@@ -1461,13 +1467,6 @@ class Recorder:
 	
 		switch_toggle() -> VOID:
 			Toggle a switch
-	
-		audioRecord_record(file: STRING, duration: DOUBLE) -> VOID:
-			Record audio
-	
-			Args:
-				file (STRING): The file to record to
-				duration (DOUBLE): The duration to record for
 	
 	"""
 
@@ -1519,10 +1518,10 @@ class Television:
 
 	Attributes:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
-		audioVolume_volume (INTEGER): The current volume setting of the audio
-		audioMute_muteStatus (muteEnum): Current status of the audio mute
 		tvChannel_tvChannel (INTEGER): Current status of the TV channel
 		tvChannel_tvChannelName (STRING): Current status of the TV channel name
+		audioVolume_volume (INTEGER): The current volume setting of the audio
+		audioMute_muteStatus (muteEnum): Current status of the audio mute
 
 	---
 
@@ -1535,6 +1534,24 @@ class Television:
 	
 		switch_toggle() -> VOID:
 			Toggle a switch
+	
+		tvChannel_channelDown() -> VOID:
+			Move the TV channel down
+	
+		tvChannel_channelUp() -> VOID:
+			Move the TV channel up
+	
+		tvChannel_setTvChannel(tvChannel: INTEGER) -> VOID:
+			Set the TV channel
+	
+			Args:
+				tvChannel (INTEGER): 
+	
+		tvChannel_setTvChannelName(tvChannelName: STRING) -> VOID:
+			Set the TV channel Name
+	
+			Args:
+				tvChannelName (STRING): 
 	
 		audioVolume_setVolume(volume: INTEGER) -> VOID:
 			Set the audio volume level
@@ -1560,24 +1577,6 @@ class Television:
 		audioMute_unmute() -> VOID:
 			Set the audio to unmute state
 	
-		tvChannel_channelDown() -> VOID:
-			Move the TV channel down
-	
-		tvChannel_channelUp() -> VOID:
-			Move the TV channel up
-	
-		tvChannel_setTvChannel(tvChannel: INTEGER) -> VOID:
-			Set the TV channel
-	
-			Args:
-				tvChannel (INTEGER): 
-	
-		tvChannel_setTvChannelName(tvChannelName: STRING) -> VOID:
-			Set the TV channel Name
-	
-			Args:
-				tvChannelName (STRING): 
-	
 	"""
 
 class TemperatureSensor:
@@ -1588,7 +1587,7 @@ class TemperatureSensor:
 
 	Attributes:
 		temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature
-		temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value:"min|max", example:"-20|50"
+		temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value
 	"""
 
 class TestDevice:

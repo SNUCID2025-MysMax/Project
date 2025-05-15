@@ -52,14 +52,14 @@
           },
           {
             "id": "supportedAcModes",
-            "descriptor": "Supported states for this air conditioner to be in",
+            "descriptor": "Supported states for this air conditioner to be in: \"str|...\"",
             "type": "LIST",
             "format": "list[airConditionerModeEnum]"
           },
           {
             "id": "targetTemperature",
             "descriptor": "Current temperature status of the air conditioner",
-            "type": "INTEGER",
+            "type": "DOUBLE",
             "format": null
           }
         ],
@@ -84,7 +84,7 @@
               {
                 "id": "temperature",
                 "descriptor": "Set the air conditioner temperature",
-                "type": "INTEGER",
+                "type": "DOUBLE",
                 "format": null
               }
             ],
@@ -155,7 +155,7 @@
           },
           {
             "id": "supportedAirPurifierFanModes",
-            "descriptor": "Supported states for this air purifier fan to be in",
+            "descriptor": "Supported states for this air purifier fan to be in: \"str|...\"",
             "type": "LIST",
             "format": "list[airPurifierFanModeEnum]"
           }
@@ -194,46 +194,12 @@
   "AirQualityDetector": {
     "skills": [
       {
-        "id": "temperatureMeasurement",
-        "descriptor": "Get the temperature from a Device that reports current temperature",
-        "values": [
-          {
-            "id": "temperature",
-            "descriptor": "A number that usually represents the current temperature",
-            "type": "DOUBLE",
-            "format": null
-          },
-          {
-            "id": "temperatureRange",
-            "descriptor": "Constraints on the temperature value",
-            "type": "DICT",
-            "format": null
-          }
-        ],
-        "functions": [],
-        "enum": null
-      },
-      {
         "id": "carbonDioxideMeasurement",
         "descriptor": "Measure carbon dioxide levels",
         "values": [
           {
             "id": "carbonDioxide",
             "descriptor": "The level of carbon dioxide detected",
-            "type": "DOUBLE",
-            "format": null
-          }
-        ],
-        "functions": [],
-        "enum": null
-      },
-      {
-        "id": "relativeHumidityMeasurement",
-        "descriptor": "Allow reading the relative humidity from devices that support it",
-        "values": [
-          {
-            "id": "humidity",
-            "descriptor": "A numerical representation of the relative humidity measurement taken by the device",
             "type": "DOUBLE",
             "format": null
           }
@@ -268,6 +234,20 @@
         "enum": null
       },
       {
+        "id": "relativeHumidityMeasurement",
+        "descriptor": "Allow reading the relative humidity from devices that support it",
+        "values": [
+          {
+            "id": "humidity",
+            "descriptor": "A numerical representation of the relative humidity measurement taken by the device",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "functions": [],
+        "enum": null
+      },
+      {
         "id": "tvocMeasurement",
         "descriptor": "Measure total volatile organic compound levels",
         "values": [
@@ -280,11 +260,45 @@
         ],
         "functions": [],
         "enum": null
+      },
+      {
+        "id": "temperatureMeasurement",
+        "descriptor": "Get the temperature from a Device that reports current temperature",
+        "values": [
+          {
+            "id": "temperature",
+            "descriptor": "A number that usually represents the current temperature",
+            "type": "DOUBLE",
+            "format": null
+          },
+          {
+            "id": "temperatureRange",
+            "descriptor": "Constraints on the temperature value:\"min|max\", example:\"-20|50\"",
+            "type": "DICT",
+            "format": null
+          }
+        ],
+        "functions": [],
+        "enum": null
       }
     ]
   },
   "Alarm": {
     "skills": [
+      {
+        "id": "battery",
+        "descriptor": "Defines that the device has a battery",
+        "values": [
+          {
+            "id": "battery",
+            "descriptor": "An indication of the status of the battery",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "functions": [],
+        "enum": null
+      },
       {
         "id": "alarm",
         "descriptor": "The Alarm skill allows for interacting with devices that serve as alarms",
@@ -356,53 +370,11 @@
             "high"
           ]
         }
-      },
-      {
-        "id": "battery",
-        "descriptor": "Defines that the device has a battery",
-        "values": [
-          {
-            "id": "battery",
-            "descriptor": "An indication of the status of the battery",
-            "type": "INTEGER",
-            "format": null
-          }
-        ],
-        "functions": [],
-        "enum": null
       }
     ]
   },
   "Blind": {
     "skills": [
-      {
-        "id": "blindLevel",
-        "descriptor": "Allows for the control of the level of a blind.",
-        "values": [
-          {
-            "id": "blindLevel",
-            "descriptor": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
-            "type": "INTEGER",
-            "format": null
-          }
-        ],
-        "functions": [
-          {
-            "id": "setBlindLevel",
-            "descriptor": "Set the blind level to the given value.",
-            "arguments": [
-              {
-                "id": "blindLevel",
-                "descriptor": "The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
-                "type": "INTEGER",
-                "format": null
-              }
-            ],
-            "return_type": "VOID"
-          }
-        ],
-        "enum": null
-      },
       {
         "id": "blind",
         "descriptor": "Allows for the control of the blind.",
@@ -446,6 +418,34 @@
             "unknown"
           ]
         }
+      },
+      {
+        "id": "blindLevel",
+        "descriptor": "Allows for the control of the level of a blind.",
+        "values": [
+          {
+            "id": "blindLevel",
+            "descriptor": "A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+            "type": "INTEGER",
+            "format": null
+          }
+        ],
+        "functions": [
+          {
+            "id": "setBlindLevel",
+            "descriptor": "Set the blind level to the given value.",
+            "arguments": [
+              {
+                "id": "blindLevel",
+                "descriptor": "The level to which the blind should be set, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.",
+                "type": "INTEGER",
+                "format": null
+              }
+            ],
+            "return_type": "VOID"
+          }
+        ],
+        "enum": null
       }
     ]
   },
@@ -469,7 +469,7 @@
           },
           {
             "id": "supportedButtonValues",
-            "descriptor": "List of valid button attribute values",
+            "descriptor": "List of valid button attribute values: \"str|...\"",
             "type": "LIST",
             "format": "list[buttonEnum]"
           }
@@ -547,7 +547,7 @@
           },
           {
             "id": "supportedButtonValues",
-            "descriptor": "List of valid button attribute values",
+            "descriptor": "List of valid button attribute values: \"str|...\"",
             "type": "LIST",
             "format": "list[buttonEnum]"
           }
@@ -800,6 +800,20 @@
         "enum": null
       },
       {
+        "id": "currentMeasurement",
+        "descriptor": "Get the value of electrical current measured from a device.",
+        "values": [
+          {
+            "id": "current",
+            "descriptor": "A number representing the current measured.",
+            "type": "DOUBLE",
+            "format": null
+          }
+        ],
+        "functions": [],
+        "enum": null
+      },
+      {
         "id": "chargingState",
         "descriptor": "The current status of battery charging",
         "values": [
@@ -811,7 +825,7 @@
           },
           {
             "id": "supportedChargingStates",
-            "descriptor": "The list of charging states that the device supports. Optional, defaults to all states if not set.",
+            "descriptor": "The list of charging states that the device supports. Optional, defaults to all states if not set.: \"str|...\"",
             "type": "LIST",
             "format": "list[chargingStateEnum]"
           }
@@ -827,20 +841,6 @@
             "error"
           ]
         }
-      },
-      {
-        "id": "currentMeasurement",
-        "descriptor": "Get the value of electrical current measured from a device.",
-        "values": [
-          {
-            "id": "current",
-            "descriptor": "A number representing the current measured.",
-            "type": "DOUBLE",
-            "format": null
-          }
-        ],
-        "functions": [],
-        "enum": null
       }
     ]
   },
@@ -1003,7 +1003,7 @@
           },
           {
             "id": "supportedCurtainCommands",
-            "descriptor": "Curtain commands supported by this instance of Curtain",
+            "descriptor": "Curtain commands supported by this instance of Curtain: \"str|...\"",
             "type": "LIST",
             "format": "list[curtainEnum]"
           }
@@ -1934,7 +1934,7 @@
             "arguments": [
               {
                 "id": "color",
-                "descriptor": "The color map supports the following key/value pairs:",
+                "descriptor": "The color map supports the following key/value pairs:\"RED|GREEN|BLUE\", example:\"255|255|255\"",
                 "type": "DICT",
                 "format": null
               }
@@ -1982,7 +1982,7 @@
           },
           {
             "id": "levelRange",
-            "descriptor": "Constraints on the level value",
+            "descriptor": "Constraints on the level value:\"min|max\",example:\"30|60\"",
             "type": "DICT",
             "format": null
           }
@@ -2124,54 +2124,6 @@
   "Pump": {
     "skills": [
       {
-        "id": "pumpOperationMode",
-        "descriptor": "Allows for setting the operation mode on a pump.",
-        "values": [
-          {
-            "id": "currentOperationMode",
-            "descriptor": "The current effective operation mode of the pump",
-            "type": "ENUM",
-            "format": "pumpOperationModeEnum"
-          },
-          {
-            "id": "operationMode",
-            "descriptor": "The operation mode of the pump",
-            "type": "ENUM",
-            "format": "pumpOperationModeEnum"
-          },
-          {
-            "id": "supportedOperationModes",
-            "descriptor": "Supported operation modes for this device to be in",
-            "type": "LIST",
-            "format": "list[pumpOperationModeEnum]"
-          }
-        ],
-        "functions": [
-          {
-            "id": "setOperationMode",
-            "descriptor": "Set the operation mode",
-            "arguments": [
-              {
-                "id": "operationMode",
-                "descriptor": "The operation mode to set the device to",
-                "type": "ENUM",
-                "format": "pumpOperationModeEnum"
-              }
-            ],
-            "return_type": "VOID"
-          }
-        ],
-        "enum": {
-          "descriptor": "• normal - The pump is controlled by a setpoint.\n• minimum - This value sets the pump to run at the minimum possible speed it can without being stopped.\n• maximum - This value sets the pump to run at its maximum possible speed.\n• localSetting - This value sets the pump to run with the local settings of the pump.",
-          "pumpOperationModeEnum": [
-            "normal",
-            "minimum",
-            "maximum",
-            "localSetting"
-          ]
-        }
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device",
         "values": [
@@ -2207,6 +2159,54 @@
           "switchEnum": [
             "on",
             "off"
+          ]
+        }
+      },
+      {
+        "id": "pumpOperationMode",
+        "descriptor": "Allows for setting the operation mode on a pump.",
+        "values": [
+          {
+            "id": "currentOperationMode",
+            "descriptor": "The current effective operation mode of the pump",
+            "type": "ENUM",
+            "format": "pumpOperationModeEnum"
+          },
+          {
+            "id": "operationMode",
+            "descriptor": "The operation mode of the pump",
+            "type": "ENUM",
+            "format": "pumpOperationModeEnum"
+          },
+          {
+            "id": "supportedOperationModes",
+            "descriptor": "Supported operation modes for this device to be in: \"str|...\"",
+            "type": "LIST",
+            "format": "list[pumpOperationModeEnum]"
+          }
+        ],
+        "functions": [
+          {
+            "id": "setOperationMode",
+            "descriptor": "Set the operation mode",
+            "arguments": [
+              {
+                "id": "operationMode",
+                "descriptor": "The operation mode to set the device to",
+                "type": "ENUM",
+                "format": "pumpOperationModeEnum"
+              }
+            ],
+            "return_type": "VOID"
+          }
+        ],
+        "enum": {
+          "descriptor": "• normal - The pump is controlled by a setpoint.\n• minimum - This value sets the pump to run at the minimum possible speed it can without being stopped.\n• maximum - This value sets the pump to run at its maximum possible speed.\n• localSetting - This value sets the pump to run with the local settings of the pump.",
+          "pumpOperationModeEnum": [
+            "normal",
+            "minimum",
+            "maximum",
+            "localSetting"
           ]
         }
       },
@@ -2371,44 +2371,6 @@
   "RobotCleaner": {
     "skills": [
       {
-        "id": "robotCleanerCleaningMode",
-        "descriptor": "Allows for the control of the robot cleaner cleaning mode.",
-        "values": [
-          {
-            "id": "robotCleanerCleaningMode",
-            "descriptor": "Current status of the robot cleaner cleaning mode",
-            "type": "ENUM",
-            "format": "robotCleanerCleaningModeEnum"
-          }
-        ],
-        "functions": [
-          {
-            "id": "setRobotCleanerCleaningMode",
-            "descriptor": "Set the robot cleaner cleaning mode",
-            "arguments": [
-              {
-                "id": "mode",
-                "descriptor": "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes",
-                "type": "ENUM",
-                "format": "robotCleanerCleaningModeEnum"
-              }
-            ],
-            "return_type": "VOID"
-          }
-        ],
-        "enum": {
-          "descriptor": "• auto - The robot cleaner cleaning mode is in \"auto\" mode\n• part - The robot cleaner cleaning mode is in \"part\" mode\n• repeat - The robot cleaner cleaning mode is in \"repeat\" mode\n• manual - The robot cleaner cleaning mode is in \"manual\" mode\n• stop - The robot cleaner cleaning mode is in \"stop\" mode\n• map - The robot cleaner cleaning mode is in \"map\" mode",
-          "robotCleanerCleaningModeEnum": [
-            "auto",
-            "part",
-            "repeat",
-            "manual",
-            "stop",
-            "map"
-          ]
-        }
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device",
         "values": [
@@ -2444,6 +2406,44 @@
           "switchEnum": [
             "on",
             "off"
+          ]
+        }
+      },
+      {
+        "id": "robotCleanerCleaningMode",
+        "descriptor": "Allows for the control of the robot cleaner cleaning mode.",
+        "values": [
+          {
+            "id": "robotCleanerCleaningMode",
+            "descriptor": "Current status of the robot cleaner cleaning mode",
+            "type": "ENUM",
+            "format": "robotCleanerCleaningModeEnum"
+          }
+        ],
+        "functions": [
+          {
+            "id": "setRobotCleanerCleaningMode",
+            "descriptor": "Set the robot cleaner cleaning mode",
+            "arguments": [
+              {
+                "id": "mode",
+                "descriptor": "Set the robot cleaner cleaning mode, to \"auto\", \"part\", \"repeat\", \"manual\" or \"stop\" modes",
+                "type": "ENUM",
+                "format": "robotCleanerCleaningModeEnum"
+              }
+            ],
+            "return_type": "VOID"
+          }
+        ],
+        "enum": {
+          "descriptor": "• auto - The robot cleaner cleaning mode is in \"auto\" mode\n• part - The robot cleaner cleaning mode is in \"part\" mode\n• repeat - The robot cleaner cleaning mode is in \"repeat\" mode\n• manual - The robot cleaner cleaning mode is in \"manual\" mode\n• stop - The robot cleaner cleaning mode is in \"stop\" mode\n• map - The robot cleaner cleaning mode is in \"map\" mode",
+          "robotCleanerCleaningModeEnum": [
+            "auto",
+            "part",
+            "repeat",
+            "manual",
+            "stop",
+            "map"
           ]
         }
       }
@@ -2485,7 +2485,7 @@
         "values": [
           {
             "id": "supportedWindowShadeCommands",
-            "descriptor": "Window shade commands supported by this instance of Window Shade",
+            "descriptor": "Window shade commands supported by this instance of Window Shade: \"str|...\"",
             "type": "LIST",
             "format": "list[windowShadeEnum]"
           },
@@ -2613,20 +2613,6 @@
   "SmartPlug": {
     "skills": [
       {
-        "id": "voltageMeasurement",
-        "descriptor": "Get the value of voltage measured from devices that support it",
-        "values": [
-          {
-            "id": "voltage",
-            "descriptor": "A number representing the current voltage measured",
-            "type": "DOUBLE",
-            "format": null
-          }
-        ],
-        "functions": [],
-        "enum": null
-      },
-      {
         "id": "switch",
         "descriptor": "Allows for the control of a switch device",
         "values": [
@@ -2666,12 +2652,12 @@
         }
       },
       {
-        "id": "currentMeasurement",
-        "descriptor": "Get the value of electrical current measured from a device.",
+        "id": "voltageMeasurement",
+        "descriptor": "Get the value of voltage measured from devices that support it",
         "values": [
           {
-            "id": "current",
-            "descriptor": "A number representing the current measured.",
+            "id": "voltage",
+            "descriptor": "A number representing the current voltage measured",
             "type": "DOUBLE",
             "format": null
           }
@@ -2691,8 +2677,22 @@
           },
           {
             "id": "powerConsumption",
-            "descriptor": "energy and power consumption during specific time period - unit: Wh",
+            "descriptor": "energy and power consumption during specific time period:\"unit|Wh\", example:\"kWh|30\"",
             "type": "DICT",
+            "format": null
+          }
+        ],
+        "functions": [],
+        "enum": null
+      },
+      {
+        "id": "currentMeasurement",
+        "descriptor": "Get the value of electrical current measured from a device.",
+        "values": [
+          {
+            "id": "current",
+            "descriptor": "A number representing the current measured.",
+            "type": "DOUBLE",
             "format": null
           }
         ],
@@ -2835,7 +2835,7 @@
           },
           {
             "id": "supportedPlaybackCommands",
-            "descriptor": "Media playback commands which are supported",
+            "descriptor": "Media playback commands which are supported: \"str|...\"",
             "type": "LIST",
             "format": "list[mediaPlaybackEnum]"
           }
@@ -2922,6 +2922,45 @@
   "Recorder": {
     "skills": [
       {
+        "id": "switch",
+        "descriptor": "Allows for the control of a switch device",
+        "values": [
+          {
+            "id": "switch",
+            "descriptor": "A string representation of whether the switch is on or off",
+            "type": "ENUM",
+            "format": "switchEnum"
+          }
+        ],
+        "functions": [
+          {
+            "id": "off",
+            "descriptor": "Turn a switch off",
+            "arguments": [],
+            "return_type": "VOID"
+          },
+          {
+            "id": "on",
+            "descriptor": "Turn a switch on",
+            "arguments": [],
+            "return_type": "VOID"
+          },
+          {
+            "id": "toggle",
+            "descriptor": "Toggle a switch",
+            "arguments": [],
+            "return_type": "VOID"
+          }
+        ],
+        "enum": {
+          "descriptor": "• on - The value of the ``switch`` attribute if the switch is on\n• off - The value of the ``switch`` attribute if the switch is off",
+          "switchEnum": [
+            "on",
+            "off"
+          ]
+        }
+      },
+      {
         "id": "audioRecord",
         "descriptor": "Record audio",
         "values": [
@@ -2958,45 +2997,6 @@
           "recordStatusEnum": [
             "idle",
             "recording"
-          ]
-        }
-      },
-      {
-        "id": "switch",
-        "descriptor": "Allows for the control of a switch device",
-        "values": [
-          {
-            "id": "switch",
-            "descriptor": "A string representation of whether the switch is on or off",
-            "type": "ENUM",
-            "format": "switchEnum"
-          }
-        ],
-        "functions": [
-          {
-            "id": "off",
-            "descriptor": "Turn a switch off",
-            "arguments": [],
-            "return_type": "VOID"
-          },
-          {
-            "id": "on",
-            "descriptor": "Turn a switch on",
-            "arguments": [],
-            "return_type": "VOID"
-          },
-          {
-            "id": "toggle",
-            "descriptor": "Toggle a switch",
-            "arguments": [],
-            "return_type": "VOID"
-          }
-        ],
-        "enum": {
-          "descriptor": "• on - The value of the ``switch`` attribute if the switch is on\n• off - The value of the ``switch`` attribute if the switch is off",
-          "switchEnum": [
-            "on",
-            "off"
           ]
         }
       }
@@ -3087,65 +3087,6 @@
         }
       },
       {
-        "id": "tvChannel",
-        "descriptor": "Allows for the control of the TV channel.",
-        "values": [
-          {
-            "id": "tvChannel",
-            "descriptor": "Current status of the TV channel",
-            "type": "INTEGER",
-            "format": null
-          },
-          {
-            "id": "tvChannelName",
-            "descriptor": "Current status of the TV channel name",
-            "type": "STRING",
-            "format": null
-          }
-        ],
-        "functions": [
-          {
-            "id": "channelDown",
-            "descriptor": "Move the TV channel down",
-            "arguments": [],
-            "return_type": "VOID"
-          },
-          {
-            "id": "channelUp",
-            "descriptor": "Move the TV channel up",
-            "arguments": [],
-            "return_type": "VOID"
-          },
-          {
-            "id": "setTvChannel",
-            "descriptor": "Set the TV channel",
-            "arguments": [
-              {
-                "id": "tvChannel",
-                "descriptor": "",
-                "type": "INTEGER",
-                "format": null
-              }
-            ],
-            "return_type": "VOID"
-          },
-          {
-            "id": "setTvChannelName",
-            "descriptor": "Set the TV channel Name",
-            "arguments": [
-              {
-                "id": "tvChannelName",
-                "descriptor": "",
-                "type": "STRING",
-                "format": null
-              }
-            ],
-            "return_type": "VOID"
-          }
-        ],
-        "enum": null
-      },
-      {
         "id": "audioVolume",
         "descriptor": "Allows for the control of audio volume.",
         "values": [
@@ -3230,6 +3171,65 @@
             "unmuted"
           ]
         }
+      },
+      {
+        "id": "tvChannel",
+        "descriptor": "Allows for the control of the TV channel.",
+        "values": [
+          {
+            "id": "tvChannel",
+            "descriptor": "Current status of the TV channel",
+            "type": "INTEGER",
+            "format": null
+          },
+          {
+            "id": "tvChannelName",
+            "descriptor": "Current status of the TV channel name",
+            "type": "STRING",
+            "format": null
+          }
+        ],
+        "functions": [
+          {
+            "id": "channelDown",
+            "descriptor": "Move the TV channel down",
+            "arguments": [],
+            "return_type": "VOID"
+          },
+          {
+            "id": "channelUp",
+            "descriptor": "Move the TV channel up",
+            "arguments": [],
+            "return_type": "VOID"
+          },
+          {
+            "id": "setTvChannel",
+            "descriptor": "Set the TV channel",
+            "arguments": [
+              {
+                "id": "tvChannel",
+                "descriptor": "",
+                "type": "INTEGER",
+                "format": null
+              }
+            ],
+            "return_type": "VOID"
+          },
+          {
+            "id": "setTvChannelName",
+            "descriptor": "Set the TV channel Name",
+            "arguments": [
+              {
+                "id": "tvChannelName",
+                "descriptor": "",
+                "type": "STRING",
+                "format": null
+              }
+            ],
+            "return_type": "VOID"
+          }
+        ],
+        "enum": null
       }
     ]
   },
@@ -3247,7 +3247,7 @@
           },
           {
             "id": "temperatureRange",
-            "descriptor": "Constraints on the temperature value",
+            "descriptor": "Constraints on the temperature value:\"min|max\", example:\"-20|50\"",
             "type": "DICT",
             "format": null
           }
