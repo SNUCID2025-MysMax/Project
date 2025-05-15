@@ -44,7 +44,7 @@ def transform_code(code):
                         orelse = first.orelse
                     else:
                         statements.append(f"{prefix}}} else {{")
-                        extract_statements([first], prefix=prefix + "    ")
+                        extract_statements(orelse, prefix=prefix + "    ")
                         break
                 statements.append(f'{prefix}}}')
             else:

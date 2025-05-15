@@ -30,21 +30,21 @@ def transform_code(code):
             if isinstance(stmt, ast.If):
                 # if 문
                 condition = ast.unparse(stmt.test).strip()
-                # condition = custom_unparse_condition(stmt.test)
-                statements.append(f"{prefix}if ({condition}) {{")
+                condition = custom_unparse_condition(stmt.test)
+                statements.append(f"{prefix}if {condition} {{")
                 extract_statements(stmt.body, prefix=prefix + "    ")
                 orelse = stmt.orelse
                 while orelse:
                     first = orelse[0]
                     if isinstance(first, ast.If):
                         condition = ast.unparse(first.test).strip()
-                        # condition = custom_unparse_condition(first.test)
-                        statements.append(f"{prefix}}} else if ({condition}) {{")
+                        condition = custom_unparse_condition(first.test)
+                        statements.append(f"{prefix}}} else if {condition} {{")
                         extract_statements(first.body, prefix=prefix + "    ")
                         orelse = first.orelse
                     else:
                         statements.append(f"{prefix}}} else {{")
-                        extract_statements([first], prefix=prefix + "    ")
+                        extract_statements(orelse, prefix=prefix + "    ")
                         break
                 statements.append(f'{prefix}}}')
             else:
@@ -160,20 +160,5 @@ def transform_code(code):
 if __name__ == "__main__":
     
     # 변환할 파이썬 코드 예시
-    example = """class Scenario1:
-    def __init__(self):
-        self.cron = ""
-        self.period = 100
-
-    def run(self):
-        wait_until(Tags("Window").windowControl_window == "open")
-        current_level = Tags("Blind").blindLevel_blindLevel
-        new_level = current_level
-        if new_level > 0:
-            new_level = new_level - 10
-            if new_level < 0:
-                new_level = 0
-            Tags("Blind").blindLevel_setBlindLevel(new_level)
-        Tags("Clock").clock_delay(0, 0, 2)
-"""
+    example = "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        contact = Tags('ContactSensor').contactSensor_contact\n        alarm_state = Tags('Alarm').alarm_alarm\n\n        if contact == 'open' and alarm_state == 'off':\n            Tags('Alarm').alarm_siren()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        curtain_state = Tags('Curtain').curtain_curtain\n\n        if curtain_state == 'open':\n            Tags('Curtain').curtain_close()\n\nclass Scenario3:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        ac_state = Tags('AirConditioner').switch_switch\n        temperature = Tags('AirQualityDetector').temperatureMeasurement_temperature\n\n        if ac_state == 'off' and temperature >= 30.0:\n            Tags('AirConditioner').airConditionerMode_setAirConditionerMode('cool')\n            Tags('AirConditioner').switch_on()\n```"
     print(json.dumps(transform_code(example), indent=2, ensure_ascii=False).replace("\\n","\n"))
