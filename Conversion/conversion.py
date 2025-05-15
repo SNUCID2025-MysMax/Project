@@ -14,6 +14,18 @@ def transform_code(code):
     result = {}
     statements = []
 
+    def replace_tags_arguments(text):
+        pattern = r'Tags\((.*?)\)'
+
+        def replacer(match):
+            inner = match.group(1)
+            parts = [p.strip().strip('"').strip("'") for p in inner.split(',')]
+            new_text = ' '.join(f"#{p}" for p in parts)
+            return f"({new_text})"
+
+        replaced = re.sub(pattern, replacer, text)
+        return replaced
+
     def custom_unparse_condition(node):
         if isinstance(node, ast.BoolOp):
             op = " and " if isinstance(node.op, ast.And) else " or "
@@ -78,29 +90,29 @@ def transform_code(code):
                 # __init__ 메서드
                 if isinstance(item, ast.FunctionDef) and item.name == "__init__":
                     for sub_item in item.body:
-                        dct = {sub_item.targets[0].attr:ast.literal_eval(sub_item.value)}
-                        for key in dct.keys():
-                            if key in ["cron", "period"]:
-                                result[key] = dct[key]
-                            else:
-                                statements.append(f"{key} := {repr(dct[key])}")
+                        if isinstance(sub_item, ast.Assign):
+                            target = sub_item.targets[0]
+                            value = sub_item.value
+
+                            if isinstance(target, ast.Attribute) and isinstance(target.value, ast.Name) and target.value.id == "self":
+                                key = target.attr
+
+                                # cron, period는 따로 저장
+                                if key in ["cron", "period"] and isinstance(value, (ast.Constant, ast.Str, ast.Num)):
+                                    result[key] = ast.literal_eval(value)
+                                else:
+                                    # ast를 문자열로 unparse 후, replace_tags_arguments 적용
+                                    raw_value = ast.unparse(value).strip()
+                                    converted_value = replace_tags_arguments(raw_value)
+                                    statements.append(f"{key} := {converted_value}")
+                                    # statements.append(f"{key} := {repr(dct[key])}")
 
                 if isinstance(item, ast.FunctionDef) and item.name == "run":
                     extract_statements(item.body)
 
             code = '\n'.join(statements+[""])
             
-            def replace_tags_arguments(text):
-                pattern = r'Tags\((.*?)\)'
-
-                def replacer(match):
-                    inner = match.group(1)
-                    parts = [p.strip().strip('"').strip("'") for p in inner.split(',')]
-                    new_text = ' '.join(f"#{p}" for p in parts)
-                    return f"({new_text})"
-
-                replaced = re.sub(pattern, replacer, text)
-                return replaced
+            
 
             # def replace_all_any_parentheses(text):
             #     result = ''
