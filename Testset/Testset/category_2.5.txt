@@ -31,8 +31,8 @@ class Scenario2:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-window = (#Window).windowControl_window
+                "period": -1,
+                "code": "window = (#Window).windowControl_window
 light = (#Light).switch_switch
 curtain = (#Curtain).curtain_curtain
 if ((window == 'open') and (light == 'off') and (curtain == 'closed')) {
@@ -43,8 +43,8 @@ if ((window == 'open') and (light == 'off') and (curtain == 'closed')) {
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-ac_power = (#AirConditioner).switch_switch
+                "period": -1,
+                "code": "ac_power = (#AirConditioner).switch_switch
 temp = (#TemperatureSensor).temperatureMeasurement_temperature
 if ((ac_power == 'off') and (temp >= 27.0)) {
     (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
@@ -87,8 +87,8 @@ class Scenario2:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-tv = (#Television).switch_switch
+                "period": -1,
+                "code": "tv = (#Television).switch_switch
 speaker = (#Speaker).switch_switch
 blind = (#Blind).blind_blind
 if ((tv == 'on') and (speaker == 'off') and (blind == 'open')) {
@@ -99,8 +99,8 @@ if ((tv == 'on') and (speaker == 'off') and (blind == 'open')) {
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode
+                "period": -1,
+                "code": "ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode
 door = (#DoorLock).doorControl_door
 if ((ac_mode == 'auto') and (door == 'closed')) {
     (#AirConditioner).switch_off()
@@ -145,8 +145,8 @@ class Scenario2:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-door = (#DoorLock).doorControl_door
+                "period": -1,
+                "code": "door = (#DoorLock).doorControl_door
 motion = (#MotionSensor).motionSensor_motion
 light = (#Light).switch_switch
 if ((door == 'closed') and (motion == 'inactive') and (light == 'on')) {
@@ -160,8 +160,8 @@ if ((door == 'closed') and (motion == 'inactive') and (light == 'on')) {
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-tv = (#Television).switch_switch
+                "period": -1,
+                "code": "tv = (#Television).switch_switch
 speaker = (#Speaker).switch_switch
 if ((tv == 'off') and (speaker == 'on')) {
     (#Speaker).switch_off()
@@ -201,8 +201,8 @@ class Scenario2:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-ac_power = (#AirConditioner).switch_switch
+                "period": -1,
+                "code": "ac_power = (#AirConditioner).switch_switch
 temp = (#TemperatureSensor).temperatureMeasurement_temperature
 humidity = (#HumiditySensor).relativeHumidityMeasurement_humidity
 if ((ac_power == 'off') and (temp >= 28.0) and (humidity >= 60.0)) {
@@ -213,8 +213,8 @@ if ((ac_power == 'off') and (temp >= 28.0) and (humidity >= 60.0)) {
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-light = (#Light).switch_switch
+                "period": -1,
+                "code": "light = (#Light).switch_switch
 window = (#Window).windowControl_window
 if ((light == 'off') and (window == 'open')) {
     (#Light).switch_on()
@@ -255,8 +255,8 @@ class Scenario2:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-tv = (#Television).switch_switch
+                "period": -1,
+                "code": "tv = (#Television).switch_switch
 volume = (#Television).audioVolume_volume
 curtain = (#Curtain).curtain_curtain
 if ((tv == 'on') and (volume >= 20) and (curtain == 'open')) {
@@ -267,8 +267,8 @@ if ((tv == 'on') and (volume >= 20) and (curtain == 'open')) {
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-speaker_status = (#Speaker).mediaPlayback_playbackStatus
+                "period": -1,
+                "code": "speaker_status = (#Speaker).mediaPlayback_playbackStatus
 light = (#Light).switch_switch
 if ((speaker_status == 'stopped') and (light == 'off')) {
     (#Speaker).mediaPlayback_play('')
@@ -309,8 +309,8 @@ class Scenario2:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-window = (#Window).windowControl_window
+                "period": -1,
+                "code": "window = (#Window).windowControl_window
 curtain = (#Curtain).curtain_curtain
 blind = (#Blind).blind_blind
 if ((window == 'open') and (curtain == 'closed') and (blind == 'open')) {
@@ -321,8 +321,8 @@ if ((window == 'open') and (curtain == 'closed') and (blind == 'open')) {
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode
+                "period": -1,
+                "code": "ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode
 ac_power = (#AirConditioner).switch_switch
 if ((ac_mode != 'auto') and (ac_power == 'off')) {
     (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
@@ -363,8 +363,8 @@ class Scenario2:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-light = (#Light).switch_switch
+                "period": -1,
+                "code": "light = (#Light).switch_switch
 level = (#Light).switchLevel_level
 fan = (#Fan).switch_switch
 if ((light == 'on') and (level >= 80) and (fan == 'off')) {
@@ -375,8 +375,8 @@ if ((light == 'on') and (level >= 80) and (fan == 'off')) {
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-tv = (#Television).switch_switch
+                "period": -1,
+                "code": "tv = (#Television).switch_switch
 blind = (#Blind).blind_blind
 if ((tv == 'off') and (blind == 'closed')) {
     (#Television).switch_on()
@@ -428,8 +428,8 @@ class Scenario3:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-contact = (#ContactSensor).contactSensor_contact
+                "period": -1,
+                "code": "contact = (#ContactSensor).contactSensor_contact
 alarm_state = (#Alarm).alarm_alarm
 if ((contact == 'open') and (alarm_state == 'off')) {
     (#Alarm).alarm_siren()
@@ -438,8 +438,8 @@ if ((contact == 'open') and (alarm_state == 'off')) {
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-curtain_state = (#Curtain).curtain_curtain
+                "period": -1,
+                "code": "curtain_state = (#Curtain).curtain_curtain
 if (curtain_state == 'open') {
     (#Curtain).curtain_close()
 }"
@@ -447,8 +447,8 @@ if (curtain_state == 'open') {
             {
                 "name": "Scenario3",
                 "cron": "",
-                "code": "period := -1
-ac_state = (#AirConditioner).switch_switch
+                "period": -1,
+                "code": "ac_state = (#AirConditioner).switch_switch
 temperature = (#AirQualityDetector).temperatureMeasurement_temperature
 if ((ac_state == 'off') and (temperature >= 30.0)) {
     (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
@@ -489,8 +489,8 @@ class Scenario2:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-speaker_status = (#Speaker).mediaPlayback_playbackStatus
+                "period": -1,
+                "code": "speaker_status = (#Speaker).mediaPlayback_playbackStatus
 light = (#Light).switch_switch
 curtain = (#Curtain).curtain_curtain
 if ((speaker_status == 'playing') and (light == 'off') and (curtain == 'open')) {
@@ -501,8 +501,8 @@ if ((speaker_status == 'playing') and (light == 'off') and (curtain == 'open')) 
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-tv = (#Television).switch_switch
+                "period": -1,
+                "code": "tv = (#Television).switch_switch
 fan = (#Fan).switch_switch
 if ((tv == 'off') and (fan == 'off')) {
     (#Television).switch_on()
@@ -545,8 +545,8 @@ class Scenario2:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode
+                "period": -1,
+                "code": "ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode
 temp = (#TemperatureSensor).temperatureMeasurement_temperature
 if ((ac_mode == 'heat') and (temp >= 20.0)) {
     (#AirConditioner).switch_off()
@@ -559,8 +559,8 @@ if ((ac_mode == 'heat') and (temp >= 20.0)) {
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-tv = (#Television).switch_switch
+                "period": -1,
+                "code": "tv = (#Television).switch_switch
 light = (#Light).switch_switch
 speaker = (#Speaker).switch_switch
 if ((tv == 'on') and (light == 'on') and (speaker == 'off')) {

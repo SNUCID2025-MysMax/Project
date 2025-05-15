@@ -1,0 +1,224 @@
+[
+    {
+        "command": "섹터 에이에 있는 선풍기를 꺼 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('sectorA', 'Fan').switch_off()```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "(#sectorA #Fan).switch_off()"
+            }
+        ]
+    },
+    {
+        "command": "섹터 비와 섹터 에이에 있는 선풍기가 모두 켜져 있으면 홀수 태그가 붙은 블라인드 중 하나를 닫아 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        sectorA_on = Tags('sectorA', 'Fan').switch_switch == 'on'
+        sectorB_on = Tags('sectorB', 'Fan').switch_switch == 'on'
+        if (sectorA_on == True) and (sectorB_on == True):
+            Tags('odd', 'Blind').blind_close()```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "sectorA_on = (#sectorA #Fan).switch_switch == 'on'
+sectorB_on = (#sectorB #Fan).switch_switch == 'on'
+if ((sectorA_on == True) and (sectorB_on == True)) {
+    (#odd #Blind).blind_close()
+}"
+            }
+        ]
+    },
+    {
+        "command": "홀수 태그가 붙은 선풍기 중 하나라도 켜져 있으면, 하단부에 있는 모든 관개 장치를 꺼 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if Any(Tags('odd', 'Fan').switch_switch == 'on'):
+            All(Tags('lower', 'Irrigator').switch_off())```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "if (any(#odd #Fan).switch_switch == 'on') {
+    all(#lower #Irrigator).switch_off()
+}"
+            }
+        ]
+    },
+    {
+        "command": "짝수 태그가 붙은 창문이 열려 있으면 섹터 에이에 있는 선풍기를 꺼 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if Tags('even', 'Window').windowControl_window == 'open':
+            Tags('sectorA', 'Fan').switch_off()```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "if ((#even #Window).windowControl_window == 'open') {
+    (#sectorA #Fan).switch_off()
+}"
+            }
+        ]
+    },
+    {
+        "command": "섹터 비에 있는 홀수 태그가 붙은 관개 장치를 모두 꺼 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        All(Tags('sectorB', 'odd', 'Irrigator').switch_off())```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "all(#sectorB #odd #Irrigator).switch_off()"
+            }
+        ]
+    },
+    {
+        "command": "상단부에 있는 짝수 태그가 붙은 창문이 열려 있으면 커튼을 닫아 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if Tags('upper', 'even', 'Window').windowControl_window == 'open':
+            Tags('Curtain').curtain_close()```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "if ((#upper #even #Window).windowControl_window == 'open') {
+    (#Curtain).curtain_close()
+}"
+            }
+        ]
+    },
+    {
+        "command": "상단부에 있는 조명이 모두 꺼져 있으면, 홀수 태그가 붙은 모든 창문을 열어 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if All(Tags('upper', 'Light').switch_switch == 'off'):
+            All(Tags('odd', 'Window').windowControl_open())```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "if (all(#upper #Light).switch_switch == 'off') {
+    all(#odd #Window).windowControl_open()
+}"
+            }
+        ]
+    },
+    {
+        "command": "짝수 태그가 붙은 스피커 중 하나라도 켜져 있으면 섹터 비에 있는 조명을 모두 꺼 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if Any(Tags('even', 'Speaker').switch_switch == 'on'):
+            All(Tags('sectorB', 'Light').switch_off())```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "if (any(#even #Speaker).switch_switch == 'on') {
+    all(#sectorB #Light).switch_off()
+}"
+            }
+        ]
+    },
+    {
+        "command": "벽에 있는 홀수 태그가 붙은 모든 블라인드가 열려 있으면 조명을 꺼 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        if All(Tags('wall', 'odd', 'Blind').blind_blind == 'open'):
+            Tags('Light').switch_off()```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "if (all(#wall #odd #Blind).blind_blind == 'open') {
+    (#Light).switch_off()
+}"
+            }
+        ]
+    },
+    {
+        "command": "상단부에 있거나 섹터 에이에 있는 조명 중 하나가 켜져 있으면 선풍기를 모두 켜 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        upper_on = Any(Tags('upper', 'Light').switch_switch == 'on')
+        sectorA_on = Any(Tags('sectorA', 'Light').switch_switch == 'on')
+        if (upper_on == True) or (sectorA_on == True):
+            All(Tags('Fan').switch_on())```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "upper_on = any(#upper #Light).switch_switch == 'on'
+sectorA_on = any(#sectorA #Light).switch_switch == 'on'
+if ((upper_on == True) or (sectorA_on == True)) {
+    all(#Fan).switch_on()
+}"
+            }
+        ]
+    }
+]

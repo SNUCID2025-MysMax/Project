@@ -12,8 +12,8 @@
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Alarm).alarm_siren()"
+                "period": -1,
+                "code": "(#Alarm).alarm_siren()"
             }
         ]
     },

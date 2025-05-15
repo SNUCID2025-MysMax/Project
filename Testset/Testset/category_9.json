@@ -1,0 +1,122 @@
+[
+  {
+    "command": "매일 오전 7시에 관개 장치가 꺼져 있고 창문이 닫혀 있으면 관개 장치를 켜고 창문을 열어 줘. 이후 관개 장치가 켜지면 블라인드를 닫아 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = '0 7 * * *'\n        self.period = 100\n        self.irrigator_on = False\n\n    def run(self):\n        if self.irrigator_on == False:\n            if Tags('Irrigator').switch_switch == 'off' and Tags('Window').windowControl_window == 'closed':\n                Tags('Irrigator').switch_on()\n                Tags('Window').windowControl_open()\n                self.irrigator_on = True\n\n        if Tags('Irrigator').switch_switch == 'on':\n            Tags('Blind').blind_close()\n            break```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 7 * * *",
+        "period": 100,
+        "code": "irrigator_on := False\nif (irrigator_on == False) {\n    if (((#Irrigator).switch_switch == 'off') and ((#Window).windowControl_window == 'closed')) {\n        (#Irrigator).switch_on()\n        (#Window).windowControl_open()\n        irrigator_on = True\n    }\n}\nif ((#Irrigator).switch_switch == 'on') {\n    (#Blind).blind_close()\n    break\n}"
+      }
+    ]
+  },
+  {
+    "command": "실시간으로 확인하여 5초마다 토양 습도 센서의 값이 20 퍼센트 이하이면 관개 장치를 켜고, 60 퍼센트 이상이면 관개 장치를 꺼 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 5000\n\n    def run(self):\n        soil_humidity = Tags('SoilMoistureSensor').soilHumidityMeasurement_soilHumidity\n        if soil_humidity <= 20.0:\n            Tags('Irrigator').switch_on()\n        elif soil_humidity >= 60.0:\n            Tags('Irrigator').switch_off()```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "soil_humidity = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity\nif (soil_humidity <= 20.0) {\n    (#Irrigator).switch_on()\n} else if (soil_humidity >= 60.0) {\n    (#Irrigator).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "실시간으로 확인하여 온도가 28도 이상이면 선풍기를 켜고, 습도가 80% 이상이면 제습기를 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        temperature = Tags('TemperatureSensor').temperatureMeasurement_temperature\n        humidity = Tags('HumiditySensor').relativeHumidityMeasurement_humidity\n        if temperature >= 28.0:\n            Tags('Fan').switch_on()\n        if humidity >= 80.0:\n            Tags('Dehumidifier').switch_on()```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "temperature = (#TemperatureSensor).temperatureMeasurement_temperature\nhumidity = (#HumiditySensor).relativeHumidityMeasurement_humidity\nif (temperature >= 28.0) {\n    (#Fan).switch_on()\n}\nif (humidity >= 80.0) {\n    (#Dehumidifier).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "실시간으로 확인하여 조명이 켜져 있을 때마다 블라인드를 닫고, 꺼져 있으면 블라인드를 열어 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        light_status = Tags('Light').switch_switch\n        if light_status == 'on':\n            Tags('Blind').blind_close()\n        elif light_status == 'off':\n            Tags('Blind').blind_open()```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "light_status = (#Light).switch_switch\nif (light_status == 'on') {\n    (#Blind).blind_close()\n} else if (light_status == 'off') {\n    (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "주말에는 5초마다 펌프가 꺼져 있으면 켜고, 켜져 있으면 꺼 줘. 선풍기 속도를 10으로 설정해 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = '0 0 * * 6,7'\n        self.period = 5000\n\n    def run(self):\n        weekday = Tags('Clock').clock_weekday\n        if weekday != 'saturday' and weekday != 'sunday':\n            break\n        Tags('Fan').fanControl_setFanSpeed(10)\n        Tags('Pump').switch_toggle()```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * 6,7",
+        "period": 5000,
+        "code": "weekday = (#Clock).clock_weekday\nif ((weekday != 'saturday') and (weekday != 'sunday')) {\n    break\n}\n(#Fan).fanControl_setFanSpeed(10)\n(#Pump).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "실시간으로 확인하여 움직임이 감지되었을 때마다 조명을 켜고, 선풍기 속도를 10 높여 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        motion = Tags('MotionSensor').motionSensor_motion\n        if motion == 'active':\n            Tags('Light').switch_on()\n            current_speed = Tags('Fan').fanControl_fanSpeed\n            new_speed = current_speed + 10\n            Tags('Fan').fanControl_setFanSpeed(new_speed)```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "motion = (#MotionSensor).motionSensor_motion\nif (motion == 'active') {\n    (#Light).switch_on()\n    current_speed = (#Fan).fanControl_fanSpeed\n    new_speed = current_speed + 10\n    (#Fan).fanControl_setFanSpeed(new_speed)\n}"
+      }
+    ]
+  },
+  {
+    "command": "실시간으로 확인하여 창문이 열려 있으면 블라인드를 닫고, 창문이 닫혀 있으면 커튼을 열어 줘. 또한 실시간으로 확인하여 알람의 사이렌이 울리고 있지 않다면 즉시 알람의 사이렌을 울려 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        window_status = Tags('Window').windowControl_window\n        if window_status == 'open':\n            Tags('Blind').blind_close()\n        elif window_status == 'closed':\n            Tags('Curtain').curtain_open()\n\n        alarm_status = Tags('Alarm').alarm_alarm\n        if alarm_status != 'siren' and alarm_status != 'both':\n            Tags('Alarm').alarm_siren()```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "window_status = (#Window).windowControl_window\nif (window_status == 'open') {\n    (#Blind).blind_close()\n} else if (window_status == 'closed') {\n    (#Curtain).curtain_open()\n}\nalarm_status = (#Alarm).alarm_alarm\nif ((alarm_status != 'siren') and (alarm_status != 'both')) {\n    (#Alarm).alarm_siren()\n}"
+      }
+    ]
+  },
+  {
+    "command": "매주 금요일 오후 6시에 조명이 켜져 있으면 밝기를 30으로 낮추고, TV가 꺼져 있으면 TV를 켜 줘. 이후 선풍기가 꺼져 있으면 선풍기도 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = '0 18 * * 5'\n        self.period = 0\n\n    def run(self):\n        if Tags('Light').switch_switch == 'on':\n            Tags('Light').switchLevel_setLevel(30, 0)\n\n        if Tags('Television').switch_switch == 'off':\n            Tags('Television').switch_on()\n\n        if Tags('Fan').switch_switch == 'off':\n            Tags('Fan').switch_on()```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 18 * * 5",
+        "period": 0,
+        "code": "if ((#Light).switch_switch == 'on') {\n    (#Light).switchLevel_setLevel(30, 0)\n}\nif ((#Television).switch_switch == 'off') {\n    (#Television).switch_on()\n}\nif ((#Fan).switch_switch == 'off') {\n    (#Fan).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "창문이 닫혔을 때부터 5초마다 블라인드를 열었다 닫았다 반복해 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 5000\n        self.triggered = False\n        self.state = 0\n\n    def run(self):\n        if self.triggered == False:\n            wait_until(Tags('Window').windowControl_window == 'closed')\n            self.triggered = True\n\n        if self.triggered == True:\n            if self.state == 0:\n                Tags('Blind').blind_open()\n                self.state = 1\n            elif self.state == 1:\n                Tags('Blind').blind_close()\n                self.state = 0```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "triggered := False\nstate := 0\nif (triggered == False) {\n    wait until((#Window).windowControl_window == 'closed')\n    triggered = True\n}\nif (triggered == True) {\n    if (state == 0) {\n        (#Blind).blind_open()\n        state = 1\n    } else if (state == 1) {\n        (#Blind).blind_close()\n        state = 0\n    }\n}"
+      }
+    ]
+  },
+  {
+    "command": "매일 아침 8시에 스피커가 꺼져 있으면 스피커를 켜고 ‘오늘 날씨입니다’라고 말해 줘. 이후 조명이 꺼져 있으면 켜고 블라인드를 열어 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = '0 8 * * *'\n        self.period = 0\n\n    def run(self):\n        if Tags('Speaker').switch_switch == 'off':\n            Tags('Speaker').switch_on()\n            Tags('Speaker').mediaPlayback_speak('오늘 날씨입니다')\n\n        if Tags('Light').switch_switch == 'off':\n            Tags('Light').switch_on()\n            Tags('Blind').blind_open()```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8 * * *",
+        "period": 0,
+        "code": "if ((#Speaker).switch_switch == 'off') {\n    (#Speaker).switch_on()\n    (#Speaker).mediaPlayback_speak('오늘 날씨입니다')\n}\nif ((#Light).switch_switch == 'off') {\n    (#Light).switch_on()\n    (#Blind).blind_open()\n}"
+      }
+    ]
+  }
+]

@@ -14,8 +14,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Window).windowControl_close()"
+                "period": -1,
+                "code": "(#Window).windowControl_close()"
             }
         ]
     },
@@ -37,8 +37,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-light_status = (#Light).switch_switch
+                "period": -1,
+                "code": "light_status = (#Light).switch_switch
 temp = (#TemperatureSensor).temperatureMeasurement_temperature
 if ((light_status == 'off') and (temp >= 33.0)) {
     (#Light).switch_on()
@@ -61,8 +61,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Alarm).alarm_setAlarmVolume('high')"
+                "period": -1,
+                "code": "(#Alarm).alarm_setAlarmVolume('high')"
             }
         ]
     },
@@ -81,8 +81,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Fan).switch_off()"
+                "period": -1,
+                "code": "(#Fan).switch_off()"
             }
         ]
     },
@@ -101,8 +101,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
+                "period": -1,
+                "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
             }
         ]
     },
@@ -121,8 +121,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Blind).blind_close()"
+                "period": -1,
+                "code": "(#Blind).blind_close()"
             }
         ]
     },
@@ -144,8 +144,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirPurifier).switch_on()
+                "period": -1,
+                "code": "(#AirPurifier).switch_on()
 mode = (#AirPurifier).airPurifierFanMode_airPurifierFanMode
 if (mode == 'auto') {
     (#AirPurifier).switch_off()
@@ -168,8 +168,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Window).windowControl_open()"
+                "period": -1,
+                "code": "(#Window).windowControl_open()"
             }
         ]
     },
@@ -188,8 +188,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Dehumidifier).switch_off()"
+                "period": -1,
+                "code": "(#Dehumidifier).switch_off()"
             }
         ]
     },
@@ -208,8 +208,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Light).switchLevel_setLevel(80, 0)"
+                "period": -1,
+                "code": "(#Light).switchLevel_setLevel(80, 0)"
             }
         ]
     }

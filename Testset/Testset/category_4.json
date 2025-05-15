@@ -6,7 +6,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#Window).windowControl_window == 'closed')\nwait until((#Window).windowControl_window == 'open')\n(#Alarm).alarm_siren()"
+        "period": -1,
+        "code": "wait until((#Window).windowControl_window == 'closed')\nwait until((#Window).windowControl_window == 'open')\n(#Alarm).alarm_siren()"
       }
     ]
   },
@@ -17,7 +18,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#DoorLock).doorControl_door == 'open')\nwait until((#DoorLock).doorControl_door == 'closed')\n(#Blind).blind_close()"
+        "period": -1,
+        "code": "wait until((#DoorLock).doorControl_door == 'open')\nwait until((#DoorLock).doorControl_door == 'closed')\n(#Blind).blind_close()"
       }
     ]
   },
@@ -28,7 +30,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#PresenceSensor).presenceSensor_presence == 'not_present')\nwait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Light).switch_on()"
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not_present')\nwait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Light).switch_on()"
       }
     ]
   },
@@ -39,7 +42,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#Television).switch_switch == 'on')\nwait until((#Television).switch_switch == 'off')\n(#Speaker).switch_off()"
+        "period": -1,
+        "code": "wait until((#Television).switch_switch == 'on')\nwait until((#Television).switch_switch == 'off')\n(#Speaker).switch_off()"
       }
     ]
   },
@@ -50,7 +54,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#Curtain).curtain_curtain != 'open')\nwait until((#Curtain).curtain_curtain == 'open')\n(#Light).switch_off()"
+        "period": -1,
+        "code": "wait until((#Curtain).curtain_curtain != 'open')\nwait until((#Curtain).curtain_curtain == 'open')\n(#Light).switch_off()"
       }
     ]
   },
@@ -61,7 +66,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#Blind).blind_blind != 'closed')\nwait until((#Blind).blind_blind == 'closed')\n(#Speaker).mediaPlayback_speak('블라인드가 닫혔습니다')"
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind != 'closed')\nwait until((#Blind).blind_blind == 'closed')\n(#Speaker).mediaPlayback_speak('블라인드가 닫혔습니다')"
       }
     ]
   },
@@ -72,7 +78,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#Dehumidifier).switch_switch == 'on')\nwait until((#Dehumidifier).switch_switch == 'off')\n(#Dehumidifier).switch_on()"
+        "period": -1,
+        "code": "wait until((#Dehumidifier).switch_switch == 'on')\nwait until((#Dehumidifier).switch_switch == 'off')\n(#Dehumidifier).switch_on()"
       }
     ]
   },
@@ -83,7 +90,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#DoorLock).doorControl_door == 'closed')\nwait until((#DoorLock).doorControl_door == 'open')\n(#Speaker).mediaPlayback_speak('문이 열렸습니다')"
+        "period": -1,
+        "code": "wait until((#DoorLock).doorControl_door == 'closed')\nwait until((#DoorLock).doorControl_door == 'open')\n(#Speaker).mediaPlayback_speak('문이 열렸습니다')"
       }
     ]
   },
@@ -94,7 +102,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#AirConditioner).switch_switch == 'on')\nwait until((#AirConditioner).switch_switch == 'off')\n(#Light).switch_off()"
+        "period": -1,
+        "code": "wait until((#AirConditioner).switch_switch == 'on')\nwait until((#AirConditioner).switch_switch == 'off')\n(#Light).switch_off()"
       }
     ]
   },
@@ -105,7 +114,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwait until((#Window).windowControl_window != 'closed')\nwait until((#Window).windowControl_window == 'closed')\n(#Blind).blind_open()"
+        "period": -1,
+        "code": "wait until((#Window).windowControl_window != 'closed')\nwait until((#Window).windowControl_window == 'closed')\n(#Blind).blind_open()"
       }
     ]
   }

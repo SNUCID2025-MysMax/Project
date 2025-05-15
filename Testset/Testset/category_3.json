@@ -6,7 +6,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#Alarm).alarm_siren()"
+        "period": -1,
+        "code": "(#Alarm).alarm_siren()"
       }
     ]
   },

@@ -6,7 +6,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#Window).windowControl_close()"
+        "period": -1,
+        "code": "(#Window).windowControl_close()"
       }
     ]
   },
@@ -17,7 +18,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nlight_status = (#Light).switch_switch\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((light_status == 'off') and (temp >= 33.0)) {\n    (#Light).switch_on()\n}"
+        "period": -1,
+        "code": "light_status = (#Light).switch_switch\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((light_status == 'off') and (temp >= 33.0)) {\n    (#Light).switch_on()\n}"
       }
     ]
   },
@@ -28,7 +30,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#Alarm).alarm_setAlarmVolume('high')"
+        "period": -1,
+        "code": "(#Alarm).alarm_setAlarmVolume('high')"
       }
     ]
   },
@@ -39,7 +42,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#Fan).switch_off()"
+        "period": -1,
+        "code": "(#Fan).switch_off()"
       }
     ]
   },
@@ -50,7 +54,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
+        "period": -1,
+        "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
       }
     ]
   },
@@ -61,7 +66,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#Blind).blind_close()"
+        "period": -1,
+        "code": "(#Blind).blind_close()"
       }
     ]
   },
@@ -72,7 +78,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#AirPurifier).switch_on()\nmode = (#AirPurifier).airPurifierFanMode_airPurifierFanMode\nif (mode == 'auto') {\n    (#AirPurifier).switch_off()\n}"
+        "period": -1,
+        "code": "(#AirPurifier).switch_on()\nmode = (#AirPurifier).airPurifierFanMode_airPurifierFanMode\nif (mode == 'auto') {\n    (#AirPurifier).switch_off()\n}"
       }
     ]
   },
@@ -83,7 +90,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#Window).windowControl_open()"
+        "period": -1,
+        "code": "(#Window).windowControl_open()"
       }
     ]
   },
@@ -94,7 +102,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#Dehumidifier).switch_off()"
+        "period": -1,
+        "code": "(#Dehumidifier).switch_off()"
       }
     ]
   },
@@ -105,7 +114,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\n(#Light).switchLevel_setLevel(80, 0)"
+        "period": -1,
+        "code": "(#Light).switchLevel_setLevel(80, 0)"
       }
     ]
   }

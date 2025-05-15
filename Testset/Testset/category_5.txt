@@ -16,8 +16,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+                "period": -1,
+                "code": "if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
     (#Clock).clock_delay(0, 0, 5)
     (#Irrigator).irrigatorOperatingState_startWatering()
 }"
@@ -41,8 +41,8 @@ class Scenario2:
             {
                 "name": "Scenario2",
                 "cron": "",
-                "code": "period := -1
-if (((#Window).windowControl_window == 'open') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)) {
+                "period": -1,
+                "code": "if (((#Window).windowControl_window == 'open') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)) {
     (#Clock).clock_delay(0, 0, 10)
     (#Blind).blind_close()
 }"
@@ -68,8 +68,8 @@ class Scenario3:
             {
                 "name": "Scenario3",
                 "cron": "",
-                "code": "period := -1
-if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
+                "period": -1,
+                "code": "if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
     (#Clock).clock_delay(0, 0, 3)
     (#Dehumidifier).switch_on()
     (#Clock).clock_delay(0, 0, 7)
@@ -95,8 +95,8 @@ class Scenario4:
             {
                 "name": "Scenario4",
                 "cron": "",
-                "code": "period := -1
-if ((#LightSensor).lightLevel_light <= 100.0) {
+                "period": -1,
+                "code": "if ((#LightSensor).lightLevel_light <= 100.0) {
     (#Clock).clock_delay(0, 0, 5)
     (#Light).switch_on()
 }"
@@ -120,8 +120,8 @@ class Scenario5:
             {
                 "name": "Scenario5",
                 "cron": "",
-                "code": "period := -1
-(#Irrigator).irrigatorOperatingState_startWatering()
+                "period": -1,
+                "code": "(#Irrigator).irrigatorOperatingState_startWatering()
 (#Clock).clock_delay(0, 0, 10)
 (#Fan).switch_on()"
             }
@@ -146,8 +146,8 @@ class Scenario6:
             {
                 "name": "Scenario6",
                 "cron": "",
-                "code": "period := -1
-if ((#Window).windowControl_window == 'open') {
+                "period": -1,
+                "code": "if ((#Window).windowControl_window == 'open') {
     (#Clock).clock_delay(0, 0, 5)
     (#Curtain).curtain_close()
     (#Clock).clock_delay(0, 0, 10)
@@ -175,8 +175,8 @@ class Scenario7:
             {
                 "name": "Scenario7",
                 "cron": "",
-                "code": "period := -1
-if ((#Light).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Light).switch_switch == 'on') {
     (#Clock).clock_delay(0, 0, 3)
     (#Light).switch_off()
     (#Clock).clock_delay(0, 0, 3)
@@ -203,8 +203,8 @@ class Scenario8:
             {
                 "name": "Scenario8",
                 "cron": "",
-                "code": "period := -1
-(#Clock).clock_delay(0, 0, 7)
+                "period": -1,
+                "code": "(#Clock).clock_delay(0, 0, 7)
 (#Light).switch_off()
 (#Clock).clock_delay(0, 0, 5)
 (#Light).switch_on()"
@@ -229,8 +229,8 @@ class Scenario9:
             {
                 "name": "Scenario9",
                 "cron": "",
-                "code": "period := -1
-if ((#DoorLock).doorControl_door == 'closed') {
+                "period": -1,
+                "code": "if ((#DoorLock).doorControl_door == 'closed') {
     (#Clock).clock_delay(0, 0, 5)
     if ((#Window).windowControl_window != 'open') {
         (#Blind).blind_open()
@@ -258,8 +258,8 @@ class Scenario10:
             {
                 "name": "Scenario10",
                 "cron": "",
-                "code": "period := -1
-if ((#Curtain).curtain_curtain == 'open') {
+                "period": -1,
+                "code": "if ((#Curtain).curtain_curtain == 'open') {
     (#Clock).clock_delay(0, 0, 2)
     (#Light).switchLevel_setLevel(50, 0)
     (#Clock).clock_delay(0, 0, 4)

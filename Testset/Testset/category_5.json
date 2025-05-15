@@ -6,7 +6,8 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nif ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {\n    (#Clock).clock_delay(0, 0, 5)\n    (#Irrigator).irrigatorOperatingState_startWatering()\n}"
+        "period": -1,
+        "code": "if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {\n    (#Clock).clock_delay(0, 0, 5)\n    (#Irrigator).irrigatorOperatingState_startWatering()\n}"
       }
     ]
   },
@@ -17,7 +18,8 @@
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\nif (((#Window).windowControl_window == 'open') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)) {\n    (#Clock).clock_delay(0, 0, 10)\n    (#Blind).blind_close()\n}"
+        "period": -1,
+        "code": "if (((#Window).windowControl_window == 'open') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)) {\n    (#Clock).clock_delay(0, 0, 10)\n    (#Blind).blind_close()\n}"
       }
     ]
   },
@@ -28,7 +30,8 @@
       {
         "name": "Scenario3",
         "cron": "",
-        "code": "period := -1\nif ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {\n    (#Clock).clock_delay(0, 0, 3)\n    (#Dehumidifier).switch_on()\n    (#Clock).clock_delay(0, 0, 7)\n    (#Window).windowControl_close()\n}"
+        "period": -1,
+        "code": "if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {\n    (#Clock).clock_delay(0, 0, 3)\n    (#Dehumidifier).switch_on()\n    (#Clock).clock_delay(0, 0, 7)\n    (#Window).windowControl_close()\n}"
       }
     ]
   },
@@ -39,7 +42,8 @@
       {
         "name": "Scenario4",
         "cron": "",
-        "code": "period := -1\nif ((#LightSensor).lightLevel_light <= 100.0) {\n    (#Clock).clock_delay(0, 0, 5)\n    (#Light).switch_on()\n}"
+        "period": -1,
+        "code": "if ((#LightSensor).lightLevel_light <= 100.0) {\n    (#Clock).clock_delay(0, 0, 5)\n    (#Light).switch_on()\n}"
       }
     ]
   },
@@ -50,7 +54,8 @@
       {
         "name": "Scenario5",
         "cron": "",
-        "code": "period := -1\n(#Irrigator).irrigatorOperatingState_startWatering()\n(#Clock).clock_delay(0, 0, 10)\n(#Fan).switch_on()"
+        "period": -1,
+        "code": "(#Irrigator).irrigatorOperatingState_startWatering()\n(#Clock).clock_delay(0, 0, 10)\n(#Fan).switch_on()"
       }
     ]
   },
@@ -61,7 +66,8 @@
       {
         "name": "Scenario6",
         "cron": "",
-        "code": "period := -1\nif ((#Window).windowControl_window == 'open') {\n    (#Clock).clock_delay(0, 0, 5)\n    (#Curtain).curtain_close()\n    (#Clock).clock_delay(0, 0, 10)\n    (#Blind).blind_close()\n}"
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'open') {\n    (#Clock).clock_delay(0, 0, 5)\n    (#Curtain).curtain_close()\n    (#Clock).clock_delay(0, 0, 10)\n    (#Blind).blind_close()\n}"
       }
     ]
   },
@@ -72,7 +78,8 @@
       {
         "name": "Scenario7",
         "cron": "",
-        "code": "period := -1\nif ((#Light).switch_switch == 'on') {\n    (#Clock).clock_delay(0, 0, 3)\n    (#Light).switch_off()\n    (#Clock).clock_delay(0, 0, 3)\n    (#Light).switch_on()\n}"
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'on') {\n    (#Clock).clock_delay(0, 0, 3)\n    (#Light).switch_off()\n    (#Clock).clock_delay(0, 0, 3)\n    (#Light).switch_on()\n}"
       }
     ]
   },
@@ -83,7 +90,8 @@
       {
         "name": "Scenario8",
         "cron": "",
-        "code": "period := -1\n(#Clock).clock_delay(0, 0, 7)\n(#Light).switch_off()\n(#Clock).clock_delay(0, 0, 5)\n(#Light).switch_on()"
+        "period": -1,
+        "code": "(#Clock).clock_delay(0, 0, 7)\n(#Light).switch_off()\n(#Clock).clock_delay(0, 0, 5)\n(#Light).switch_on()"
       }
     ]
   },
@@ -94,7 +102,8 @@
       {
         "name": "Scenario9",
         "cron": "",
-        "code": "period := -1\nif ((#DoorLock).doorControl_door == 'closed') {\n    (#Clock).clock_delay(0, 0, 5)\n    if ((#Window).windowControl_window != 'open') {\n        (#Blind).blind_open()\n    }\n}"
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'closed') {\n    (#Clock).clock_delay(0, 0, 5)\n    if ((#Window).windowControl_window != 'open') {\n        (#Blind).blind_open()\n    }\n}"
       }
     ]
   },
@@ -105,7 +114,8 @@
       {
         "name": "Scenario10",
         "cron": "",
-        "code": "period := -1\nif ((#Curtain).curtain_curtain == 'open') {\n    (#Clock).clock_delay(0, 0, 2)\n    (#Light).switchLevel_setLevel(50, 0)\n    (#Clock).clock_delay(0, 0, 4)\n    (#Light).switch_off()\n}"
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'open') {\n    (#Clock).clock_delay(0, 0, 2)\n    (#Light).switchLevel_setLevel(50, 0)\n    (#Clock).clock_delay(0, 0, 4)\n    (#Light).switch_off()\n}"
       }
     ]
   }

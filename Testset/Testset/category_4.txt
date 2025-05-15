@@ -15,8 +15,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#Window).windowControl_window == 'closed')
+                "period": -1,
+                "code": "wait until((#Window).windowControl_window == 'closed')
 wait until((#Window).windowControl_window == 'open')
 (#Alarm).alarm_siren()"
             }
@@ -38,8 +38,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#DoorLock).doorControl_door == 'open')
+                "period": -1,
+                "code": "wait until((#DoorLock).doorControl_door == 'open')
 wait until((#DoorLock).doorControl_door == 'closed')
 (#Blind).blind_close()"
             }
@@ -61,8 +61,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#PresenceSensor).presenceSensor_presence == 'not_present')
+                "period": -1,
+                "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not_present')
 wait until((#PresenceSensor).presenceSensor_presence == 'present')
 (#Light).switch_on()"
             }
@@ -84,8 +84,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#Television).switch_switch == 'on')
+                "period": -1,
+                "code": "wait until((#Television).switch_switch == 'on')
 wait until((#Television).switch_switch == 'off')
 (#Speaker).switch_off()"
             }
@@ -107,8 +107,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#Curtain).curtain_curtain != 'open')
+                "period": -1,
+                "code": "wait until((#Curtain).curtain_curtain != 'open')
 wait until((#Curtain).curtain_curtain == 'open')
 (#Light).switch_off()"
             }
@@ -130,8 +130,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#Blind).blind_blind != 'closed')
+                "period": -1,
+                "code": "wait until((#Blind).blind_blind != 'closed')
 wait until((#Blind).blind_blind == 'closed')
 (#Speaker).mediaPlayback_speak('블라인드가 닫혔습니다')"
             }
@@ -153,8 +153,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#Dehumidifier).switch_switch == 'on')
+                "period": -1,
+                "code": "wait until((#Dehumidifier).switch_switch == 'on')
 wait until((#Dehumidifier).switch_switch == 'off')
 (#Dehumidifier).switch_on()"
             }
@@ -176,8 +176,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#DoorLock).doorControl_door == 'closed')
+                "period": -1,
+                "code": "wait until((#DoorLock).doorControl_door == 'closed')
 wait until((#DoorLock).doorControl_door == 'open')
 (#Speaker).mediaPlayback_speak('문이 열렸습니다')"
             }
@@ -199,8 +199,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#AirConditioner).switch_switch == 'on')
+                "period": -1,
+                "code": "wait until((#AirConditioner).switch_switch == 'on')
 wait until((#AirConditioner).switch_switch == 'off')
 (#Light).switch_off()"
             }
@@ -222,8 +222,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-wait until((#Window).windowControl_window != 'closed')
+                "period": -1,
+                "code": "wait until((#Window).windowControl_window != 'closed')
 wait until((#Window).windowControl_window == 'closed')
 (#Blind).blind_open()"
             }

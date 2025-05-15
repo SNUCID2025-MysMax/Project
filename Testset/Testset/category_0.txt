@@ -15,8 +15,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirConditioner).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#AirConditioner).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -38,8 +38,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirConditioner).airConditionerMode_airConditionerMode == 'cool') {
+                "period": -1,
+                "code": "if ((#AirConditioner).airConditionerMode_airConditionerMode == 'cool') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -61,8 +61,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirConditioner).airConditionerMode_targetTemperature == 30) {
+                "period": -1,
+                "code": "if ((#AirConditioner).airConditionerMode_targetTemperature == 30) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -83,8 +83,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirConditioner).switch_off()"
+                "period": -1,
+                "code": "(#AirConditioner).switch_off()"
             }
         ]
     },
@@ -103,8 +103,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirConditioner).switch_on()"
+                "period": -1,
+                "code": "(#AirConditioner).switch_on()"
             }
         ]
     },
@@ -123,8 +123,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirConditioner).switch_toggle()"
+                "period": -1,
+                "code": "(#AirConditioner).switch_toggle()"
             }
         ]
     },
@@ -143,8 +143,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirConditioner).airConditionerMode_setAirConditionerMode('auto')"
+                "period": -1,
+                "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('auto')"
             }
         ]
     },
@@ -163,8 +163,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirConditioner).airConditionerMode_setTemperature(18)"
+                "period": -1,
+                "code": "(#AirConditioner).airConditionerMode_setTemperature(18)"
             }
         ]
     },
@@ -184,8 +184,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirPurifier).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#AirPurifier).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -207,8 +207,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'sleep') {
+                "period": -1,
+                "code": "if ((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'sleep') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -229,8 +229,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirPurifier).switch_off()"
+                "period": -1,
+                "code": "(#AirPurifier).switch_off()"
             }
         ]
     },
@@ -249,8 +249,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirPurifier).switch_on()"
+                "period": -1,
+                "code": "(#AirPurifier).switch_on()"
             }
         ]
     },
@@ -269,8 +269,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirPurifier).switch_toggle()"
+                "period": -1,
+                "code": "(#AirPurifier).switch_toggle()"
             }
         ]
     },
@@ -289,8 +289,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('auto')"
+                "period": -1,
+                "code": "(#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('auto')"
             }
         ]
     },
@@ -310,8 +310,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirQualityDetector).temperatureMeasurement_temperature == 20) {
+                "period": -1,
+                "code": "if ((#AirQualityDetector).temperatureMeasurement_temperature == 20) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -333,8 +333,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 800) {
+                "period": -1,
+                "code": "if ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 800) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -356,8 +356,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirQualityDetector).relativeHumidityMeasurement_humidity >= 70) {
+                "period": -1,
+                "code": "if ((#AirQualityDetector).relativeHumidityMeasurement_humidity >= 70) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -379,8 +379,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirQualityDetector).dustSensor_dustLevel >= 150) {
+                "period": -1,
+                "code": "if ((#AirQualityDetector).dustSensor_dustLevel >= 150) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -402,8 +402,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirQualityDetector).dustSensor_fineDustLevel >= 35) {
+                "period": -1,
+                "code": "if ((#AirQualityDetector).dustSensor_fineDustLevel >= 35) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -425,8 +425,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirQualityDetector).dustSensor_veryFineDustLevel >= 15) {
+                "period": -1,
+                "code": "if ((#AirQualityDetector).dustSensor_veryFineDustLevel >= 15) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -448,8 +448,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#AirQualityDetector).tvocMeasurement_tvocLevel >= 0.5) {
+                "period": -1,
+                "code": "if ((#AirQualityDetector).tvocMeasurement_tvocLevel >= 0.5) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -471,8 +471,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Alarm).alarm_alarm == 'strobe') {
+                "period": -1,
+                "code": "if ((#Alarm).alarm_alarm == 'strobe') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -494,8 +494,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Alarm).alarm_alarmVolume == 'high') {
+                "period": -1,
+                "code": "if ((#Alarm).alarm_alarmVolume == 'high') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -517,8 +517,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Alarm).battery_battery <= 20) {
+                "period": -1,
+                "code": "if ((#Alarm).battery_battery <= 20) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -539,8 +539,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Alarm).alarm_both()"
+                "period": -1,
+                "code": "(#Alarm).alarm_both()"
             }
         ]
     },
@@ -559,8 +559,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Alarm).alarm_off()"
+                "period": -1,
+                "code": "(#Alarm).alarm_off()"
             }
         ]
     },
@@ -579,8 +579,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Alarm).alarm_setAlarmVolume('low')"
+                "period": -1,
+                "code": "(#Alarm).alarm_setAlarmVolume('low')"
             }
         ]
     },
@@ -599,8 +599,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Alarm).alarm_siren()"
+                "period": -1,
+                "code": "(#Alarm).alarm_siren()"
             }
         ]
     },
@@ -619,8 +619,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Alarm).alarm_strobe()"
+                "period": -1,
+                "code": "(#Alarm).alarm_strobe()"
             }
         ]
     },
@@ -640,8 +640,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Blind).blindLevel_blindLevel >= 50) {
+                "period": -1,
+                "code": "if ((#Blind).blindLevel_blindLevel >= 50) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -663,8 +663,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Blind).blind_blind == 'open') {
+                "period": -1,
+                "code": "if ((#Blind).blind_blind == 'open') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -685,8 +685,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Blind).blindLevel_setBlindLevel(70)"
+                "period": -1,
+                "code": "(#Blind).blindLevel_setBlindLevel(70)"
             }
         ]
     },
@@ -705,8 +705,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Blind).blind_close()"
+                "period": -1,
+                "code": "(#Blind).blind_close()"
             }
         ]
     },
@@ -725,8 +725,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Blind).blind_open()"
+                "period": -1,
+                "code": "(#Blind).blind_open()"
             }
         ]
     },
@@ -745,8 +745,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Blind).blind_pause()"
+                "period": -1,
+                "code": "(#Blind).blind_pause()"
             }
         ]
     },
@@ -766,8 +766,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Button).button_button == 'pushed') {
+                "period": -1,
+                "code": "if ((#Button).button_button == 'pushed') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -789,8 +789,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Button).button_numberOfButtons >= 4) {
+                "period": -1,
+                "code": "if ((#Button).button_numberOfButtons >= 4) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -812,8 +812,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Buttonx4).buttonx4_button1 == 'pushed') {
+                "period": -1,
+                "code": "if ((#Buttonx4).buttonx4_button1 == 'pushed') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -835,8 +835,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Buttonx4).buttonx4_button2 == 'held') {
+                "period": -1,
+                "code": "if ((#Buttonx4).buttonx4_button2 == 'held') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -858,8 +858,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Buttonx4).buttonx4_button3 == 'pushed_2x') {
+                "period": -1,
+                "code": "if ((#Buttonx4).buttonx4_button3 == 'pushed_2x') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -881,8 +881,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Buttonx4).buttonx4_button4 == 'swipe_up') {
+                "period": -1,
+                "code": "if ((#Buttonx4).buttonx4_button4 == 'swipe_up') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -904,8 +904,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Buttonx4).buttonx4_numberOfButtons == 4) {
+                "period": -1,
+                "code": "if ((#Buttonx4).buttonx4_numberOfButtons == 4) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -926,8 +926,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Calculator).calculator_add(5, 3)"
+                "period": -1,
+                "code": "(#Calculator).calculator_add(5, 3)"
             }
         ]
     },
@@ -946,8 +946,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Calculator).calculator_div(10, 2)"
+                "period": -1,
+                "code": "(#Calculator).calculator_div(10, 2)"
             }
         ]
     },
@@ -966,8 +966,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Calculator).calculator_mod(10, 3)"
+                "period": -1,
+                "code": "(#Calculator).calculator_mod(10, 3)"
             }
         ]
     },
@@ -986,8 +986,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Calculator).calculator_mul(7, 8)"
+                "period": -1,
+                "code": "(#Calculator).calculator_mul(7, 8)"
             }
         ]
     },
@@ -1006,8 +1006,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Calculator).calculator_sub(15, 4)"
+                "period": -1,
+                "code": "(#Calculator).calculator_sub(15, 4)"
             }
         ]
     },
@@ -1027,8 +1027,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Camera).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Camera).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1049,8 +1049,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Camera).switch_off()"
+                "period": -1,
+                "code": "(#Camera).switch_off()"
             }
         ]
     },
@@ -1069,8 +1069,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Camera).switch_on()"
+                "period": -1,
+                "code": "(#Camera).switch_on()"
             }
         ]
     },
@@ -1090,8 +1090,8 @@ Tags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '사진
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-recentPhoto = (#Camera).camera_image"
+                "period": -1,
+                "code": "recentPhoto = (#Camera).camera_image"
             }
         ]
     },
@@ -1111,8 +1111,8 @@ Tags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '동영
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-recentVideo = (#Camera).camera_video"
+                "period": -1,
+                "code": "recentVideo = (#Camera).camera_video"
             }
         ]
     },
@@ -1131,8 +1131,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Camera).switch_toggle()"
+                "period": -1,
+                "code": "(#Camera).switch_toggle()"
             }
         ]
     },
@@ -1151,8 +1151,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Camera).camera_take()"
+                "period": -1,
+                "code": "(#Camera).camera_take()"
             }
         ]
     },
@@ -1171,8 +1171,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Camera).camera_takeTimelapse(10, 2)"
+                "period": -1,
+                "code": "(#Camera).camera_takeTimelapse(10, 2)"
             }
         ]
     },
@@ -1192,8 +1192,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Charger).voltageMeasurement_voltage >= 230) {
+                "period": -1,
+                "code": "if ((#Charger).voltageMeasurement_voltage >= 230) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1215,8 +1215,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Charger).chargingState_chargingState == 'charging') {
+                "period": -1,
+                "code": "if ((#Charger).chargingState_chargingState == 'charging') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1238,8 +1238,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Charger).currentMeasurement_current >= 10) {
+                "period": -1,
+                "code": "if ((#Charger).currentMeasurement_current >= 10) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1261,8 +1261,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_date == 20250512) {
+                "period": -1,
+                "code": "if ((#Clock).clock_date == 20250512) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1284,8 +1284,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_datetime == 202505121515) {
+                "period": -1,
+                "code": "if ((#Clock).clock_datetime == 202505121515) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1307,8 +1307,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_day == 20) {
+                "period": -1,
+                "code": "if ((#Clock).clock_day == 20) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1330,8 +1330,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_hour == 15) {
+                "period": -1,
+                "code": "if ((#Clock).clock_hour == 15) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1353,8 +1353,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_isHoliday == true) {
+                "period": -1,
+                "code": "if ((#Clock).clock_isHoliday == true) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1376,8 +1376,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_minute == 30) {
+                "period": -1,
+                "code": "if ((#Clock).clock_minute == 30) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1399,8 +1399,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_month == 5) {
+                "period": -1,
+                "code": "if ((#Clock).clock_month == 5) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1422,8 +1422,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_second == 40) {
+                "period": -1,
+                "code": "if ((#Clock).clock_second == 40) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1445,8 +1445,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_time == 1515) {
+                "period": -1,
+                "code": "if ((#Clock).clock_time == 1515) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1468,8 +1468,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_timestamp == 1747031637.23) {
+                "period": -1,
+                "code": "if ((#Clock).clock_timestamp == 1747031637.23) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1491,8 +1491,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_weekday == 'friday') {
+                "period": -1,
+                "code": "if ((#Clock).clock_weekday == 'friday') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1514,8 +1514,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Clock).clock_year == 2025) {
+                "period": -1,
+                "code": "if ((#Clock).clock_year == 2025) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1537,8 +1537,8 @@ Tags('Alarm').alarm_siren()
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Clock).clock_delay(1, 20, 30)"
+                "period": -1,
+                "code": "(#Clock).clock_delay(1, 20, 30)"
             }
         ]
     },
@@ -1558,8 +1558,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#ContactSensor).contactSensor_contact == 'closed') {
+                "period": -1,
+                "code": "if ((#ContactSensor).contactSensor_contact == 'closed') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1581,8 +1581,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Curtain).curtain_curtain == 'open') {
+                "period": -1,
+                "code": "if ((#Curtain).curtain_curtain == 'open') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1603,8 +1603,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Curtain).curtain_close()"
+                "period": -1,
+                "code": "(#Curtain).curtain_close()"
             }
         ]
     },
@@ -1623,8 +1623,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Curtain).curtain_open()"
+                "period": -1,
+                "code": "(#Curtain).curtain_open()"
             }
         ]
     },
@@ -1643,8 +1643,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Curtain).curtain_pause()"
+                "period": -1,
+                "code": "(#Curtain).curtain_pause()"
             }
         ]
     },
@@ -1664,8 +1664,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Dehumidifier).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Dehumidifier).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1687,8 +1687,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'dehumidifying') {
+                "period": -1,
+                "code": "if ((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'dehumidifying') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1709,8 +1709,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Dehumidifier).switch_off()"
+                "period": -1,
+                "code": "(#Dehumidifier).switch_off()"
             }
         ]
     },
@@ -1729,8 +1729,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Dehumidifier).switch_on()"
+                "period": -1,
+                "code": "(#Dehumidifier).switch_on()"
             }
         ]
     },
@@ -1749,8 +1749,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Dehumidifier).switch_toggle()"
+                "period": -1,
+                "code": "(#Dehumidifier).switch_toggle()"
             }
         ]
     },
@@ -1769,8 +1769,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Dehumidifier).dehumidifierMode_setDehumidifierMode('cooling')"
+                "period": -1,
+                "code": "(#Dehumidifier).dehumidifierMode_setDehumidifierMode('cooling')"
             }
         ]
     },
@@ -1790,8 +1790,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Dishwasher).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Dishwasher).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1813,8 +1813,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Dishwasher).dishwasherMode_dishwasherMode == 'eco') {
+                "period": -1,
+                "code": "if ((#Dishwasher).dishwasherMode_dishwasherMode == 'eco') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1835,8 +1835,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Dishwasher).switch_off()"
+                "period": -1,
+                "code": "(#Dishwasher).switch_off()"
             }
         ]
     },
@@ -1855,8 +1855,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Dishwasher).switch_on()"
+                "period": -1,
+                "code": "(#Dishwasher).switch_on()"
             }
         ]
     },
@@ -1875,8 +1875,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Dishwasher).switch_toggle()"
+                "period": -1,
+                "code": "(#Dishwasher).switch_toggle()"
             }
         ]
     },
@@ -1895,8 +1895,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Dishwasher).dishwasherMode_setDishwasherMode('auto')"
+                "period": -1,
+                "code": "(#Dishwasher).dishwasherMode_setDishwasherMode('auto')"
             }
         ]
     },
@@ -1916,8 +1916,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#DoorLock).doorControl_door == 'open') {
+                "period": -1,
+                "code": "if ((#DoorLock).doorControl_door == 'open') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -1938,8 +1938,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#DoorLock).doorControl_close()"
+                "period": -1,
+                "code": "(#DoorLock).doorControl_close()"
             }
         ]
     },
@@ -1958,8 +1958,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#DoorLock).doorControl_open()"
+                "period": -1,
+                "code": "(#DoorLock).doorControl_open()"
             }
         ]
     },
@@ -1978,8 +1978,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#EmailProvider).emailProvider_sendMail('test@example.com', '알림', '긴급 상황입니다.')"
+                "period": -1,
+                "code": "(#EmailProvider).emailProvider_sendMail('test@example.com', '알림', '긴급 상황입니다.')"
             }
         ]
     },
@@ -1999,8 +1999,8 @@ Tags('EmailProvider').emailProvider_sendMailWithFile('test@example.com', '사진
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-recentPhoto = (#Camera).camera_image"
+                "period": -1,
+                "code": "recentPhoto = (#Camera).camera_image"
             }
         ]
     },
@@ -2020,8 +2020,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Fan).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Fan).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2043,8 +2043,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Fan).fanControl_fanSpeed >= 2000) {
+                "period": -1,
+                "code": "if ((#Fan).fanControl_fanSpeed >= 2000) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2065,8 +2065,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Fan).fanControl_setFanSpeed(1500)"
+                "period": -1,
+                "code": "(#Fan).fanControl_setFanSpeed(1500)"
             }
         ]
     },
@@ -2085,8 +2085,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Fan).fanControl_setPercent(80)"
+                "period": -1,
+                "code": "(#Fan).fanControl_setPercent(80)"
             }
         ]
     },
@@ -2105,8 +2105,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Fan).switch_off()"
+                "period": -1,
+                "code": "(#Fan).switch_off()"
             }
         ]
     },
@@ -2125,8 +2125,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Fan).switch_on()"
+                "period": -1,
+                "code": "(#Fan).switch_on()"
             }
         ]
     },
@@ -2145,8 +2145,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Fan).switch_toggle()"
+                "period": -1,
+                "code": "(#Fan).switch_toggle()"
             }
         ]
     },
@@ -2166,8 +2166,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Feeder).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Feeder).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2189,8 +2189,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Feeder).feederOperatingState_feederOperatingState == 'feeding') {
+                "period": -1,
+                "code": "if ((#Feeder).feederOperatingState_feederOperatingState == 'feeding') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2211,8 +2211,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Feeder).switch_off()"
+                "period": -1,
+                "code": "(#Feeder).switch_off()"
             }
         ]
     },
@@ -2231,8 +2231,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Feeder).switch_on()"
+                "period": -1,
+                "code": "(#Feeder).switch_on()"
             }
         ]
     },
@@ -2251,8 +2251,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Feeder).switch_toggle()"
+                "period": -1,
+                "code": "(#Feeder).switch_toggle()"
             }
         ]
     },
@@ -2271,8 +2271,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Feeder).feederPortion_setFeedPortion(100, 'grams')"
+                "period": -1,
+                "code": "(#Feeder).feederPortion_setFeedPortion(100, 'grams')"
             }
         ]
     },
@@ -2291,8 +2291,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Feeder).feederOperatingState_startFeeding()"
+                "period": -1,
+                "code": "(#Feeder).feederOperatingState_startFeeding()"
             }
         ]
     },
@@ -2312,8 +2312,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#GasMeter).gasMeter_gasMeter >= 500) {
+                "period": -1,
+                "code": "if ((#GasMeter).gasMeter_gasMeter >= 500) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2335,8 +2335,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#GasMeter).gasMeter_gasMeterCalorific >= 1000) {
+                "period": -1,
+                "code": "if ((#GasMeter).gasMeter_gasMeterCalorific >= 1000) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2358,8 +2358,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#GasMeter).gasMeter_gasMeterTime >= 10000) {
+                "period": -1,
+                "code": "if ((#GasMeter).gasMeter_gasMeterTime >= 10000) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2381,8 +2381,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#GasMeter).gasMeter_gasMeterVolume >= 20) {
+                "period": -1,
+                "code": "if ((#GasMeter).gasMeter_gasMeterVolume >= 20) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2404,8 +2404,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#GasValve).valve_valve == 'open') {
+                "period": -1,
+                "code": "if ((#GasValve).valve_valve == 'open') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2426,8 +2426,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#GasValve).valve_close()"
+                "period": -1,
+                "code": "(#GasValve).valve_close()"
             }
         ]
     },
@@ -2446,8 +2446,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#GasValve).valve_open()"
+                "period": -1,
+                "code": "(#GasValve).valve_open()"
             }
         ]
     },
@@ -2467,8 +2467,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#GasValve).gasMeter_gasMeter >= 1000) {
+                "period": -1,
+                "code": "if ((#GasValve).gasMeter_gasMeter >= 1000) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2490,8 +2490,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#GasValve).gasMeter_gasMeterCalorific >= 500) {
+                "period": -1,
+                "code": "if ((#GasValve).gasMeter_gasMeterCalorific >= 500) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2513,8 +2513,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#GasValve).gasMeter_gasMeterTime >= 5000) {
+                "period": -1,
+                "code": "if ((#GasValve).gasMeter_gasMeterTime >= 5000) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2536,8 +2536,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#GasValve).gasMeter_gasMeterVolume >= 34) {
+                "period": -1,
+                "code": "if ((#GasValve).gasMeter_gasMeterVolume >= 34) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2559,8 +2559,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Humidifier).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Humidifier).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2582,8 +2582,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Humidifier).humidifierMode_humidifierMode == 'auto') {
+                "period": -1,
+                "code": "if ((#Humidifier).humidifierMode_humidifierMode == 'auto') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2604,8 +2604,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Humidifier).switch_off()"
+                "period": -1,
+                "code": "(#Humidifier).switch_off()"
             }
         ]
     },
@@ -2624,8 +2624,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Humidifier).switch_on()"
+                "period": -1,
+                "code": "(#Humidifier).switch_on()"
             }
         ]
     },
@@ -2644,8 +2644,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Humidifier).switch_toggle()"
+                "period": -1,
+                "code": "(#Humidifier).switch_toggle()"
             }
         ]
     },
@@ -2664,8 +2664,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Humidifier).humidifierMode_setHumidifierMode('high')"
+                "period": -1,
+                "code": "(#Humidifier).humidifierMode_setHumidifierMode('high')"
             }
         ]
     },
@@ -2685,8 +2685,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 70) {
+                "period": -1,
+                "code": "if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 70) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2708,8 +2708,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Irrigator).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Irrigator).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2731,8 +2731,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Irrigator).irrigatorPortion_waterPortion == 3) {
+                "period": -1,
+                "code": "if ((#Irrigator).irrigatorPortion_waterPortion == 3) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2754,8 +2754,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == 'watering') {
+                "period": -1,
+                "code": "if ((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == 'watering') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2776,8 +2776,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Irrigator).switch_off()"
+                "period": -1,
+                "code": "(#Irrigator).switch_off()"
             }
         ]
     },
@@ -2796,8 +2796,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Irrigator).switch_on()"
+                "period": -1,
+                "code": "(#Irrigator).switch_on()"
             }
         ]
     },
@@ -2816,8 +2816,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Irrigator).switch_toggle()"
+                "period": -1,
+                "code": "(#Irrigator).switch_toggle()"
             }
         ]
     },
@@ -2836,8 +2836,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Irrigator).irrigatorPortion_setWaterPortion(5, 'liters')"
+                "period": -1,
+                "code": "(#Irrigator).irrigatorPortion_setWaterPortion(5, 'liters')"
             }
         ]
     },
@@ -2856,8 +2856,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Irrigator).irrigatorOperatingState_startWatering()"
+                "period": -1,
+                "code": "(#Irrigator).irrigatorOperatingState_startWatering()"
             }
         ]
     },
@@ -2877,8 +2877,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#LeakSensor).leakSensor_leakage == 'detected') {
+                "period": -1,
+                "code": "if ((#LeakSensor).leakSensor_leakage == 'detected') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2900,8 +2900,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Light).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Light).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2923,8 +2923,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Light).colorControl_hue == 30) {
+                "period": -1,
+                "code": "if ((#Light).colorControl_hue == 30) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2946,8 +2946,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Light).colorControl_saturation == 30) {
+                "period": -1,
+                "code": "if ((#Light).colorControl_saturation == 30) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2969,8 +2969,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Light).switchLevel_level == 100) {
+                "period": -1,
+                "code": "if ((#Light).switchLevel_level == 100) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -2991,8 +2991,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Light).colorControl_setHue(70)"
+                "period": -1,
+                "code": "(#Light).colorControl_setHue(70)"
             }
         ]
     },
@@ -3011,8 +3011,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Light).colorControl_setSaturation(90)"
+                "period": -1,
+                "code": "(#Light).colorControl_setSaturation(90)"
             }
         ]
     },
@@ -3031,8 +3031,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Light).switchLevel_setLevel(80, 5)"
+                "period": -1,
+                "code": "(#Light).switchLevel_setLevel(80, 5)"
             }
         ]
     },
@@ -3051,8 +3051,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Light).switchLevel_alert()"
+                "period": -1,
+                "code": "(#Light).switchLevel_alert()"
             }
         ]
     },
@@ -3071,8 +3071,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Light).switch_off()"
+                "period": -1,
+                "code": "(#Light).switch_off()"
             }
         ]
     },
@@ -3091,8 +3091,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Light).switch_on()"
+                "period": -1,
+                "code": "(#Light).switch_on()"
             }
         ]
     },
@@ -3111,8 +3111,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Light).switch_toggle()"
+                "period": -1,
+                "code": "(#Light).switch_toggle()"
             }
         ]
     },
@@ -3132,8 +3132,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#LightSensor).lightLevel_light >= 500) {
+                "period": -1,
+                "code": "if ((#LightSensor).lightLevel_light >= 500) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3154,8 +3154,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#MenuProvider).menuProvider_menu('오늘 학생식당 점심')"
+                "period": -1,
+                "code": "(#MenuProvider).menuProvider_menu('오늘 학생식당 점심')"
             }
         ]
     },
@@ -3175,8 +3175,8 @@ Tags('Speaker').mediaPlayback_speak(menu)
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-menu = (#MenuProvider).menuProvider_todayMenu()"
+                "period": -1,
+                "code": "menu = (#MenuProvider).menuProvider_todayMenu()"
             }
         ]
     },
@@ -3196,8 +3196,8 @@ Tags('Speaker').mediaPlayback_speak(place)
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-place = (#MenuProvider).menuProvider_todayPlace()"
+                "period": -1,
+                "code": "place = (#MenuProvider).menuProvider_todayPlace()"
             }
         ]
     },
@@ -3217,8 +3217,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#MotionSensor).motionSensor_motion == 'active') {
+                "period": -1,
+                "code": "if ((#MotionSensor).motionSensor_motion == 'active') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3240,8 +3240,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#PresenceSensor).presenceSensor_presence == 'present') {
+                "period": -1,
+                "code": "if ((#PresenceSensor).presenceSensor_presence == 'present') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3263,8 +3263,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Pump).pumpOperationMode_currentOperationMode == 'maximum') {
+                "period": -1,
+                "code": "if ((#Pump).pumpOperationMode_currentOperationMode == 'maximum') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3286,8 +3286,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Pump).pumpOperationMode_operationMode == 'normal') {
+                "period": -1,
+                "code": "if ((#Pump).pumpOperationMode_operationMode == 'normal') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3309,8 +3309,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Pump).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Pump).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3332,8 +3332,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Pump).pump_pump == 'open') {
+                "period": -1,
+                "code": "if ((#Pump).pump_pump == 'open') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3354,8 +3354,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Pump).pumpOperationMode_setOperationMode('maximum')"
+                "period": -1,
+                "code": "(#Pump).pumpOperationMode_setOperationMode('maximum')"
             }
         ]
     },
@@ -3374,8 +3374,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Pump).switch_off()"
+                "period": -1,
+                "code": "(#Pump).switch_off()"
             }
         ]
     },
@@ -3394,8 +3394,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Pump).switch_on()"
+                "period": -1,
+                "code": "(#Pump).switch_on()"
             }
         ]
     },
@@ -3414,8 +3414,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Pump).switch_toggle()"
+                "period": -1,
+                "code": "(#Pump).switch_toggle()"
             }
         ]
     },
@@ -3434,8 +3434,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Pump).pump_close()"
+                "period": -1,
+                "code": "(#Pump).pump_close()"
             }
         ]
     },
@@ -3454,8 +3454,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Pump).pump_open()"
+                "period": -1,
+                "code": "(#Pump).pump_open()"
             }
         ]
     },
@@ -3475,8 +3475,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Refrigerator).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Refrigerator).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3498,8 +3498,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Refrigerator).refrigeration_defrost == 'on') {
+                "period": -1,
+                "code": "if ((#Refrigerator).refrigeration_defrost == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3521,8 +3521,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Refrigerator).refrigeration_rapidCooling == 'off') {
+                "period": -1,
+                "code": "if ((#Refrigerator).refrigeration_rapidCooling == 'off') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3544,8 +3544,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Refrigerator).refrigeration_rapidFreezing == 'on') {
+                "period": -1,
+                "code": "if ((#Refrigerator).refrigeration_rapidFreezing == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3566,8 +3566,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Refrigerator).switch_off()"
+                "period": -1,
+                "code": "(#Refrigerator).switch_off()"
             }
         ]
     },
@@ -3586,8 +3586,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Refrigerator).switch_toggle()"
+                "period": -1,
+                "code": "(#Refrigerator).switch_toggle()"
             }
         ]
     },
@@ -3606,8 +3606,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Refrigerator).refrigeration_setDefrost('on')"
+                "period": -1,
+                "code": "(#Refrigerator).refrigeration_setDefrost('on')"
             }
         ]
     },
@@ -3626,8 +3626,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Refrigerator).refrigeration_setRapidCooling('on')"
+                "period": -1,
+                "code": "(#Refrigerator).refrigeration_setRapidCooling('on')"
             }
         ]
     },
@@ -3646,8 +3646,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Refrigerator).refrigeration_setRapidFreezing('off')"
+                "period": -1,
+                "code": "(#Refrigerator).refrigeration_setRapidFreezing('off')"
             }
         ]
     },
@@ -3667,8 +3667,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#RobotCleaner).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#RobotCleaner).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3690,8 +3690,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode == 'auto') {
+                "period": -1,
+                "code": "if ((#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode == 'auto') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3712,8 +3712,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#RobotCleaner).switch_off()"
+                "period": -1,
+                "code": "(#RobotCleaner).switch_off()"
             }
         ]
     },
@@ -3732,8 +3732,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#RobotCleaner).switch_on()"
+                "period": -1,
+                "code": "(#RobotCleaner).switch_on()"
             }
         ]
     },
@@ -3752,8 +3752,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#RobotCleaner).switch_toggle()"
+                "period": -1,
+                "code": "(#RobotCleaner).switch_toggle()"
             }
         ]
     },
@@ -3772,8 +3772,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode('manual')"
+                "period": -1,
+                "code": "(#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode('manual')"
             }
         ]
     },
@@ -3793,8 +3793,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Shade).windowShadeLevel_shadeLevel >= 40) {
+                "period": -1,
+                "code": "if ((#Shade).windowShadeLevel_shadeLevel >= 40) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3816,8 +3816,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Shade).windowShade_windowShade == 'open') {
+                "period": -1,
+                "code": "if ((#Shade).windowShade_windowShade == 'open') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3838,8 +3838,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Shade).windowShadeLevel_setShadeLevel(50)"
+                "period": -1,
+                "code": "(#Shade).windowShadeLevel_setShadeLevel(50)"
             }
         ]
     },
@@ -3858,8 +3858,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Shade).windowShade_close()"
+                "period": -1,
+                "code": "(#Shade).windowShade_close()"
             }
         ]
     },
@@ -3878,8 +3878,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Shade).windowShade_open()"
+                "period": -1,
+                "code": "(#Shade).windowShade_open()"
             }
         ]
     },
@@ -3898,8 +3898,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Shade).windowShade_pause()"
+                "period": -1,
+                "code": "(#Shade).windowShade_pause()"
             }
         ]
     },
@@ -3919,8 +3919,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Siren).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Siren).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3942,8 +3942,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Siren).sirenMode_sirenMode == 'siren') {
+                "period": -1,
+                "code": "if ((#Siren).sirenMode_sirenMode == 'siren') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -3964,8 +3964,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Siren).switch_off()"
+                "period": -1,
+                "code": "(#Siren).switch_off()"
             }
         ]
     },
@@ -3984,8 +3984,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Siren).switch_on()"
+                "period": -1,
+                "code": "(#Siren).switch_on()"
             }
         ]
     },
@@ -4004,8 +4004,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Siren).switch_toggle()"
+                "period": -1,
+                "code": "(#Siren).switch_toggle()"
             }
         ]
     },
@@ -4024,8 +4024,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Siren).sirenMode_setSirenMode('strobe')"
+                "period": -1,
+                "code": "(#Siren).sirenMode_setSirenMode('strobe')"
             }
         ]
     },
@@ -4045,8 +4045,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#SmartPlug).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#SmartPlug).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4068,8 +4068,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#SmartPlug).voltageMeasurement_voltage >= 220) {
+                "period": -1,
+                "code": "if ((#SmartPlug).voltageMeasurement_voltage >= 220) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4091,8 +4091,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#SmartPlug).currentMeasurement_current >= 10) {
+                "period": -1,
+                "code": "if ((#SmartPlug).currentMeasurement_current >= 10) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4114,8 +4114,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#SmartPlug).powerMeter_power >= 1000) {
+                "period": -1,
+                "code": "if ((#SmartPlug).powerMeter_power >= 1000) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4136,8 +4136,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#SmartPlug).switch_off()"
+                "period": -1,
+                "code": "(#SmartPlug).switch_off()"
             }
         ]
     },
@@ -4156,8 +4156,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#SmartPlug).switch_on()"
+                "period": -1,
+                "code": "(#SmartPlug).switch_on()"
             }
         ]
     },
@@ -4176,8 +4176,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#SmartPlug).switch_toggle()"
+                "period": -1,
+                "code": "(#SmartPlug).switch_toggle()"
             }
         ]
     },
@@ -4197,8 +4197,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#SmokeDetector).smokeDetector_smoke == 'detected') {
+                "period": -1,
+                "code": "if ((#SmokeDetector).smokeDetector_smoke == 'detected') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4220,8 +4220,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30) {
+                "period": -1,
+                "code": "if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4243,8 +4243,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#SoundSensor).soundSensor_sound == 'detected') {
+                "period": -1,
+                "code": "if ((#SoundSensor).soundSensor_sound == 'detected') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4266,8 +4266,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#SoundSensor).soundPressureLevel_soundPressureLevel >= 70) {
+                "period": -1,
+                "code": "if ((#SoundSensor).soundPressureLevel_soundPressureLevel >= 70) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4289,8 +4289,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Speaker).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Speaker).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4312,8 +4312,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Speaker).mediaPlayback_playbackStatus == 'playing') {
+                "period": -1,
+                "code": "if ((#Speaker).mediaPlayback_playbackStatus == 'playing') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4334,8 +4334,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Speaker).switch_off()"
+                "period": -1,
+                "code": "(#Speaker).switch_off()"
             }
         ]
     },
@@ -4354,8 +4354,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Speaker).switch_on()"
+                "period": -1,
+                "code": "(#Speaker).switch_on()"
             }
         ]
     },
@@ -4374,8 +4374,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Speaker).switch_toggle()"
+                "period": -1,
+                "code": "(#Speaker).switch_toggle()"
             }
         ]
     },
@@ -4394,8 +4394,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Speaker).mediaPlayback_fastForward()"
+                "period": -1,
+                "code": "(#Speaker).mediaPlayback_fastForward()"
             }
         ]
     },
@@ -4414,8 +4414,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Speaker).mediaPlayback_pause()"
+                "period": -1,
+                "code": "(#Speaker).mediaPlayback_pause()"
             }
         ]
     },
@@ -4434,8 +4434,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Speaker).mediaPlayback_rewind()"
+                "period": -1,
+                "code": "(#Speaker).mediaPlayback_rewind()"
             }
         ]
     },
@@ -4454,8 +4454,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Speaker).mediaPlayback_stop()"
+                "period": -1,
+                "code": "(#Speaker).mediaPlayback_stop()"
             }
         ]
     },
@@ -4474,8 +4474,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Speaker).mediaPlayback_play('music.mp3')"
+                "period": -1,
+                "code": "(#Speaker).mediaPlayback_play('music.mp3')"
             }
         ]
     },
@@ -4494,8 +4494,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Speaker).mediaPlayback_speak('지금은 테스트 중입니다.')"
+                "period": -1,
+                "code": "(#Speaker).mediaPlayback_speak('지금은 테스트 중입니다.')"
             }
         ]
     },
@@ -4515,8 +4515,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Recorder).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Recorder).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4538,8 +4538,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Recorder).audioRecord_recordStatus == 'recording') {
+                "period": -1,
+                "code": "if ((#Recorder).audioRecord_recordStatus == 'recording') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4560,8 +4560,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Recorder).switch_off()"
+                "period": -1,
+                "code": "(#Recorder).switch_off()"
             }
         ]
     },
@@ -4580,8 +4580,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Recorder).switch_on()"
+                "period": -1,
+                "code": "(#Recorder).switch_on()"
             }
         ]
     },
@@ -4600,8 +4600,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Recorder).switch_toggle()"
+                "period": -1,
+                "code": "(#Recorder).switch_toggle()"
             }
         ]
     },
@@ -4620,8 +4620,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Recorder).audioRecord_record('test.wav', 10)"
+                "period": -1,
+                "code": "(#Recorder).audioRecord_record('test.wav', 10)"
             }
         ]
     },
@@ -4641,8 +4641,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Switch).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Switch).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4663,8 +4663,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Switch).switch_off()"
+                "period": -1,
+                "code": "(#Switch).switch_off()"
             }
         ]
     },
@@ -4683,8 +4683,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Switch).switch_on()"
+                "period": -1,
+                "code": "(#Switch).switch_on()"
             }
         ]
     },
@@ -4703,8 +4703,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Switch).switch_toggle()"
+                "period": -1,
+                "code": "(#Switch).switch_toggle()"
             }
         ]
     },
@@ -4724,8 +4724,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Television).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Television).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4747,8 +4747,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Television).tvChannel_tvChannelName == '9시 뉴스') {
+                "period": -1,
+                "code": "if ((#Television).tvChannel_tvChannelName == '9시 뉴스') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4770,8 +4770,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Television).audioVolume_volume >= 50) {
+                "period": -1,
+                "code": "if ((#Television).audioVolume_volume >= 50) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4793,8 +4793,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Television).audioMute_muteStatus == 'muted') {
+                "period": -1,
+                "code": "if ((#Television).audioMute_muteStatus == 'muted') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -4815,8 +4815,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).switch_off()"
+                "period": -1,
+                "code": "(#Television).switch_off()"
             }
         ]
     },
@@ -4835,8 +4835,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).switch_on()"
+                "period": -1,
+                "code": "(#Television).switch_on()"
             }
         ]
     },
@@ -4855,8 +4855,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).switch_toggle()"
+                "period": -1,
+                "code": "(#Television).switch_toggle()"
             }
         ]
     },
@@ -4875,8 +4875,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).tvChannel_channelDown()"
+                "period": -1,
+                "code": "(#Television).tvChannel_channelDown()"
             }
         ]
     },
@@ -4895,8 +4895,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).tvChannel_channelUp()"
+                "period": -1,
+                "code": "(#Television).tvChannel_channelUp()"
             }
         ]
     },
@@ -4915,8 +4915,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).tvChannel_setTvChannel(7)"
+                "period": -1,
+                "code": "(#Television).tvChannel_setTvChannel(7)"
             }
         ]
     },
@@ -4935,8 +4935,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).tvChannel_setTvChannelName('뉴스')"
+                "period": -1,
+                "code": "(#Television).tvChannel_setTvChannelName('뉴스')"
             }
         ]
     },
@@ -4955,8 +4955,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).audioVolume_setVolume(30)"
+                "period": -1,
+                "code": "(#Television).audioVolume_setVolume(30)"
             }
         ]
     },
@@ -4975,8 +4975,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).audioVolume_volumeDown()"
+                "period": -1,
+                "code": "(#Television).audioVolume_volumeDown()"
             }
         ]
     },
@@ -4995,8 +4995,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).audioVolume_volumeUp()"
+                "period": -1,
+                "code": "(#Television).audioVolume_volumeUp()"
             }
         ]
     },
@@ -5015,8 +5015,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).audioMute_mute()"
+                "period": -1,
+                "code": "(#Television).audioMute_mute()"
             }
         ]
     },
@@ -5035,8 +5035,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).audioMute_unmute()"
+                "period": -1,
+                "code": "(#Television).audioMute_unmute()"
             }
         ]
     },
@@ -5055,8 +5055,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Television).audioMute_setMute('muted')"
+                "period": -1,
+                "code": "(#Television).audioMute_setMute('muted')"
             }
         ]
     },
@@ -5076,8 +5076,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#TemperatureSensor).temperatureMeasurement_temperature >= 25) {
+                "period": -1,
+                "code": "if ((#TemperatureSensor).temperatureMeasurement_temperature >= 25) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5099,8 +5099,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Valve).valve_valve == 'open') {
+                "period": -1,
+                "code": "if ((#Valve).valve_valve == 'open') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5121,8 +5121,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Valve).valve_close()"
+                "period": -1,
+                "code": "(#Valve).valve_close()"
             }
         ]
     },
@@ -5141,8 +5141,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Valve).valve_open()"
+                "period": -1,
+                "code": "(#Valve).valve_open()"
             }
         ]
     },
@@ -5162,8 +5162,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#WeatherProvider).weatherProvider_humidityWeather >= 80) {
+                "period": -1,
+                "code": "if ((#WeatherProvider).weatherProvider_humidityWeather >= 80) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5185,8 +5185,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#WeatherProvider).weatherProvider_pm10Weather >= 100) {
+                "period": -1,
+                "code": "if ((#WeatherProvider).weatherProvider_pm10Weather >= 100) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5208,8 +5208,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#WeatherProvider).weatherProvider_pm25Weather >= 50) {
+                "period": -1,
+                "code": "if ((#WeatherProvider).weatherProvider_pm25Weather >= 50) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5231,8 +5231,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#WeatherProvider).weatherProvider_pressureWeather >= 1020) {
+                "period": -1,
+                "code": "if ((#WeatherProvider).weatherProvider_pressureWeather >= 1020) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5254,8 +5254,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#WeatherProvider).weatherProvider_temperatureWeather >= 30) {
+                "period": -1,
+                "code": "if ((#WeatherProvider).weatherProvider_temperatureWeather >= 30) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5277,8 +5277,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#WeatherProvider).weatherProvider_weather == 'rain') {
+                "period": -1,
+                "code": "if ((#WeatherProvider).weatherProvider_weather == 'rain') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5300,8 +5300,8 @@ Tags('Speaker').mediaPlayback_speak(weatherInfo)
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-weatherInfo = (#WeatherProvider).weatherProvider_getWeatherInfo(37.5665, 126.978)"
+                "period": -1,
+                "code": "weatherInfo = (#WeatherProvider).weatherProvider_getWeatherInfo(37.5665, 126.978)"
             }
         ]
     },
@@ -5321,8 +5321,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Window).windowControl_window == 'open') {
+                "period": -1,
+                "code": "if ((#Window).windowControl_window == 'open') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5343,8 +5343,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Window).windowControl_close()"
+                "period": -1,
+                "code": "(#Window).windowControl_close()"
             }
         ]
     },
@@ -5363,8 +5363,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Window).windowControl_open()"
+                "period": -1,
+                "code": "(#Window).windowControl_open()"
             }
         ]
     },
@@ -5384,8 +5384,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#FallDetector).fallDetection_fall == 'fall') {
+                "period": -1,
+                "code": "if ((#FallDetector).fallDetection_fall == 'fall') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5407,8 +5407,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#OccupancySensor).presenceSensor_presence == 'present') {
+                "period": -1,
+                "code": "if ((#OccupancySensor).presenceSensor_presence == 'present') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5430,8 +5430,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Relay).switch_switch == 'on') {
+                "period": -1,
+                "code": "if ((#Relay).switch_switch == 'on') {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5452,8 +5452,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Relay).switch_off()"
+                "period": -1,
+                "code": "(#Relay).switch_off()"
             }
         ]
     },
@@ -5472,8 +5472,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Relay).switch_on()"
+                "period": -1,
+                "code": "(#Relay).switch_on()"
             }
         ]
     },
@@ -5492,8 +5492,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Relay).switch_toggle()"
+                "period": -1,
+                "code": "(#Relay).switch_toggle()"
             }
         ]
     },
@@ -5512,8 +5512,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Timer).timer_add('테스트 타이머', 60)"
+                "period": -1,
+                "code": "(#Timer).timer_add('테스트 타이머', 60)"
             }
         ]
     },
@@ -5533,8 +5533,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Timer).timer_isExist('테스트 타이머')) {
+                "period": -1,
+                "code": "if ((#Timer).timer_isExist('테스트 타이머')) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5556,8 +5556,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-if ((#Timer).timer_isSet('테스트 타이머')) {
+                "period": -1,
+                "code": "if ((#Timer).timer_isSet('테스트 타이머')) {
     (#Alarm).alarm_siren()
 }"
             }
@@ -5578,8 +5578,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Timer).timer_reset('테스트 타이머')"
+                "period": -1,
+                "code": "(#Timer).timer_reset('테스트 타이머')"
             }
         ]
     },
@@ -5598,8 +5598,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Timer).timer_set('테스트 타이머', 120)"
+                "period": -1,
+                "code": "(#Timer).timer_set('테스트 타이머', 120)"
             }
         ]
     },
@@ -5618,8 +5618,8 @@ class Scenario1:
             {
                 "name": "Scenario1",
                 "cron": "",
-                "code": "period := -1
-(#Timer).timer_start('테스트 타이머')"
+                "period": -1,
+                "code": "(#Timer).timer_start('테스트 타이머')"
             }
         ]
     }

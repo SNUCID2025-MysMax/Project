@@ -6,12 +6,14 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwindow = (#Window).windowControl_window\nlight = (#Light).switch_switch\ncurtain = (#Curtain).curtain_curtain\nif ((window == 'open') and (light == 'off') and (curtain == 'closed')) {\n    (#Light).switch_on()\n    (#Curtain).curtain_open()\n}"
+        "period": -1,
+        "code": "window = (#Window).windowControl_window\nlight = (#Light).switch_switch\ncurtain = (#Curtain).curtain_curtain\nif ((window == 'open') and (light == 'off') and (curtain == 'closed')) {\n    (#Light).switch_on()\n    (#Curtain).curtain_open()\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\nac_power = (#AirConditioner).switch_switch\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((ac_power == 'off') and (temp >= 27.0)) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n    (#AirConditioner).switch_on()\n}"
+        "period": -1,
+        "code": "ac_power = (#AirConditioner).switch_switch\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((ac_power == 'off') and (temp >= 27.0)) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n    (#AirConditioner).switch_on()\n}"
       }
     ]
   },
@@ -22,12 +24,14 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\ntv = (#Television).switch_switch\nspeaker = (#Speaker).switch_switch\nblind = (#Blind).blind_blind\nif ((tv == 'on') and (speaker == 'off') and (blind == 'open')) {\n    (#Speaker).switch_on()\n    (#Blind).blind_close()\n}"
+        "period": -1,
+        "code": "tv = (#Television).switch_switch\nspeaker = (#Speaker).switch_switch\nblind = (#Blind).blind_blind\nif ((tv == 'on') and (speaker == 'off') and (blind == 'open')) {\n    (#Speaker).switch_on()\n    (#Blind).blind_close()\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\nac_mode = (#AirConditioner).airConditionerMode_airConditionerMode\ndoor = (#DoorLock).doorControl_door\nif ((ac_mode == 'auto') and (door == 'closed')) {\n    (#AirConditioner).switch_off()\n}\nwindow = (#Window).windowControl_window\nif (window == 'closed') {\n    (#Window).windowControl_open()\n}"
+        "period": -1,
+        "code": "ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode\ndoor = (#DoorLock).doorControl_door\nif ((ac_mode == 'auto') and (door == 'closed')) {\n    (#AirConditioner).switch_off()\n}\nwindow = (#Window).windowControl_window\nif (window == 'closed') {\n    (#Window).windowControl_open()\n}"
       }
     ]
   },
@@ -38,12 +42,14 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\ndoor = (#DoorLock).doorControl_door\nmotion = (#MotionSensor).motionSensor_motion\nlight = (#Light).switch_switch\nif ((door == 'closed') and (motion == 'inactive') and (light == 'on')) {\n    (#Light).switch_off()\n    curtain = (#Curtain).curtain_curtain\n    if (curtain == 'open') {\n        (#Curtain).curtain_close()\n    }\n}"
+        "period": -1,
+        "code": "door = (#DoorLock).doorControl_door\nmotion = (#MotionSensor).motionSensor_motion\nlight = (#Light).switch_switch\nif ((door == 'closed') and (motion == 'inactive') and (light == 'on')) {\n    (#Light).switch_off()\n    curtain = (#Curtain).curtain_curtain\n    if (curtain == 'open') {\n        (#Curtain).curtain_close()\n    }\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\ntv = (#Television).switch_switch\nspeaker = (#Speaker).switch_switch\nif ((tv == 'off') and (speaker == 'on')) {\n    (#Speaker).switch_off()\n}"
+        "period": -1,
+        "code": "tv = (#Television).switch_switch\nspeaker = (#Speaker).switch_switch\nif ((tv == 'off') and (speaker == 'on')) {\n    (#Speaker).switch_off()\n}"
       }
     ]
   },
@@ -54,12 +60,14 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nac_power = (#AirConditioner).switch_switch\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nhumidity = (#HumiditySensor).relativeHumidityMeasurement_humidity\nif ((ac_power == 'off') and (temp >= 28.0) and (humidity >= 60.0)) {\n    (#AirConditioner).switch_on()\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('dry')\n}"
+        "period": -1,
+        "code": "ac_power = (#AirConditioner).switch_switch\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nhumidity = (#HumiditySensor).relativeHumidityMeasurement_humidity\nif ((ac_power == 'off') and (temp >= 28.0) and (humidity >= 60.0)) {\n    (#AirConditioner).switch_on()\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('dry')\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\nlight = (#Light).switch_switch\nwindow = (#Window).windowControl_window\nif ((light == 'off') and (window == 'open')) {\n    (#Light).switch_on()\n    (#Window).windowControl_close()\n}"
+        "period": -1,
+        "code": "light = (#Light).switch_switch\nwindow = (#Window).windowControl_window\nif ((light == 'off') and (window == 'open')) {\n    (#Light).switch_on()\n    (#Window).windowControl_close()\n}"
       }
     ]
   },
@@ -70,12 +78,14 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\ntv = (#Television).switch_switch\nvolume = (#Television).audioVolume_volume\ncurtain = (#Curtain).curtain_curtain\nif ((tv == 'on') and (volume >= 20) and (curtain == 'open')) {\n    (#Television).audioVolume_setVolume(15)\n    (#Curtain).curtain_close()\n}"
+        "period": -1,
+        "code": "tv = (#Television).switch_switch\nvolume = (#Television).audioVolume_volume\ncurtain = (#Curtain).curtain_curtain\nif ((tv == 'on') and (volume >= 20) and (curtain == 'open')) {\n    (#Television).audioVolume_setVolume(15)\n    (#Curtain).curtain_close()\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\nspeaker_status = (#Speaker).mediaPlayback_playbackStatus\nlight = (#Light).switch_switch\nif ((speaker_status == 'stopped') and (light == 'off')) {\n    (#Speaker).mediaPlayback_play('')\n    (#Light).switch_on()\n}"
+        "period": -1,
+        "code": "speaker_status = (#Speaker).mediaPlayback_playbackStatus\nlight = (#Light).switch_switch\nif ((speaker_status == 'stopped') and (light == 'off')) {\n    (#Speaker).mediaPlayback_play('')\n    (#Light).switch_on()\n}"
       }
     ]
   },
@@ -86,12 +96,14 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nwindow = (#Window).windowControl_window\ncurtain = (#Curtain).curtain_curtain\nblind = (#Blind).blind_blind\nif ((window == 'open') and (curtain == 'closed') and (blind == 'open')) {\n    (#Curtain).curtain_open()\n    (#Blind).blind_close()\n}"
+        "period": -1,
+        "code": "window = (#Window).windowControl_window\ncurtain = (#Curtain).curtain_curtain\nblind = (#Blind).blind_blind\nif ((window == 'open') and (curtain == 'closed') and (blind == 'open')) {\n    (#Curtain).curtain_open()\n    (#Blind).blind_close()\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\nac_mode = (#AirConditioner).airConditionerMode_airConditionerMode\nac_power = (#AirConditioner).switch_switch\nif ((ac_mode != 'auto') and (ac_power == 'off')) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')\n    (#AirConditioner).switch_on()\n}"
+        "period": -1,
+        "code": "ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode\nac_power = (#AirConditioner).switch_switch\nif ((ac_mode != 'auto') and (ac_power == 'off')) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')\n    (#AirConditioner).switch_on()\n}"
       }
     ]
   },
@@ -102,12 +114,14 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nlight = (#Light).switch_switch\nlevel = (#Light).switchLevel_level\nfan = (#Fan).switch_switch\nif ((light == 'on') and (level >= 80) and (fan == 'off')) {\n    (#Light).switchLevel_setLevel(50, 0)\n    (#Fan).switch_on()\n}"
+        "period": -1,
+        "code": "light = (#Light).switch_switch\nlevel = (#Light).switchLevel_level\nfan = (#Fan).switch_switch\nif ((light == 'on') and (level >= 80) and (fan == 'off')) {\n    (#Light).switchLevel_setLevel(50, 0)\n    (#Fan).switch_on()\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\ntv = (#Television).switch_switch\nblind = (#Blind).blind_blind\nif ((tv == 'off') and (blind == 'closed')) {\n    (#Television).switch_on()\n    (#Blind).blind_open()\n}"
+        "period": -1,
+        "code": "tv = (#Television).switch_switch\nblind = (#Blind).blind_blind\nif ((tv == 'off') and (blind == 'closed')) {\n    (#Television).switch_on()\n    (#Blind).blind_open()\n}"
       }
     ]
   },
@@ -118,17 +132,20 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\ncontact = (#ContactSensor).contactSensor_contact\nalarm_state = (#Alarm).alarm_alarm\nif ((contact == 'open') and (alarm_state == 'off')) {\n    (#Alarm).alarm_siren()\n}"
+        "period": -1,
+        "code": "contact = (#ContactSensor).contactSensor_contact\nalarm_state = (#Alarm).alarm_alarm\nif ((contact == 'open') and (alarm_state == 'off')) {\n    (#Alarm).alarm_siren()\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\ncurtain_state = (#Curtain).curtain_curtain\nif (curtain_state == 'open') {\n    (#Curtain).curtain_close()\n}"
+        "period": -1,
+        "code": "curtain_state = (#Curtain).curtain_curtain\nif (curtain_state == 'open') {\n    (#Curtain).curtain_close()\n}"
       },
       {
         "name": "Scenario3",
         "cron": "",
-        "code": "period := -1\nac_state = (#AirConditioner).switch_switch\ntemperature = (#AirQualityDetector).temperatureMeasurement_temperature\nif ((ac_state == 'off') and (temperature >= 30.0)) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n    (#AirConditioner).switch_on()\n}"
+        "period": -1,
+        "code": "ac_state = (#AirConditioner).switch_switch\ntemperature = (#AirQualityDetector).temperatureMeasurement_temperature\nif ((ac_state == 'off') and (temperature >= 30.0)) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n    (#AirConditioner).switch_on()\n}"
       }
     ]
   },
@@ -139,12 +156,14 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nspeaker_status = (#Speaker).mediaPlayback_playbackStatus\nlight = (#Light).switch_switch\ncurtain = (#Curtain).curtain_curtain\nif ((speaker_status == 'playing') and (light == 'off') and (curtain == 'open')) {\n    (#Light).switch_on()\n    (#Curtain).curtain_close()\n}"
+        "period": -1,
+        "code": "speaker_status = (#Speaker).mediaPlayback_playbackStatus\nlight = (#Light).switch_switch\ncurtain = (#Curtain).curtain_curtain\nif ((speaker_status == 'playing') and (light == 'off') and (curtain == 'open')) {\n    (#Light).switch_on()\n    (#Curtain).curtain_close()\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\ntv = (#Television).switch_switch\nfan = (#Fan).switch_switch\nif ((tv == 'off') and (fan == 'off')) {\n    (#Television).switch_on()\n    (#Fan).switch_on()\n}"
+        "period": -1,
+        "code": "tv = (#Television).switch_switch\nfan = (#Fan).switch_switch\nif ((tv == 'off') and (fan == 'off')) {\n    (#Television).switch_on()\n    (#Fan).switch_on()\n}"
       }
     ]
   },
@@ -155,12 +174,14 @@
       {
         "name": "Scenario1",
         "cron": "",
-        "code": "period := -1\nac_mode = (#AirConditioner).airConditionerMode_airConditionerMode\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((ac_mode == 'heat') and (temp >= 20.0)) {\n    (#AirConditioner).switch_off()\n    blind = (#Blind).blind_blind\n    if (blind == 'open') {\n        (#Blind).blind_close()\n    }\n}"
+        "period": -1,
+        "code": "ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((ac_mode == 'heat') and (temp >= 20.0)) {\n    (#AirConditioner).switch_off()\n    blind = (#Blind).blind_blind\n    if (blind == 'open') {\n        (#Blind).blind_close()\n    }\n}"
       },
       {
         "name": "Scenario2",
         "cron": "",
-        "code": "period := -1\ntv = (#Television).switch_switch\nlight = (#Light).switch_switch\nspeaker = (#Speaker).switch_switch\nif ((tv == 'on') and (light == 'on') and (speaker == 'off')) {\n    (#Speaker).switch_on()\n    (#Light).switchLevel_setLevel(40, 0)\n}"
+        "period": -1,
+        "code": "tv = (#Television).switch_switch\nlight = (#Light).switch_switch\nspeaker = (#Speaker).switch_switch\nif ((tv == 'on') and (light == 'on') and (speaker == 'off')) {\n    (#Speaker).switch_on()\n    (#Light).switchLevel_setLevel(40, 0)\n}"
       }
     ]
   }
