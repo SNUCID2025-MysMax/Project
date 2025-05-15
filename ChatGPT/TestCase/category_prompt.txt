@@ -322,7 +322,6 @@ Examples:
 [Category 15: Comprehensive]  
 - This category represents the most complex test cases, combining all features and logic patterns from Categories 0–14.  
 - The scenario must involve:  
-  - Device methods and attribute access (Category 0)  
   - Immediate and conditional actions with nested `if` branches (Category 2)  
   - Cron and period-based repetition (Category 3)  
   - wait until triggers (Category 4)  
@@ -333,8 +332,8 @@ Examples:
   - State tracking across cycles with persistent variables (Category 10)  
   - Timed delays between stages using `Tags("Clock").clock_delay(...)` (Category 11)  
   - Potential splitting logic embedded, but must be combined into a single coherent flow (instead of actual Split Category) (Category 12)
-  - Tag-based group operations if needed (Category 13)  
-  - Correctly skipping impossible cases (handling Idle/Do Nothing conditions when necessary)
+  - Tag-based group operations (Category 13)
+- carefully read instructions of other categorys to make comprehensive test cases.
 
 - You must create a single, extremely sophisticated natural language command that realistically applies all these elements together.  
 - The system must not generate impossible or internally contradictory logic.  
