@@ -1,0 +1,122 @@
+[
+  {
+    "command": "실시간으로 확인해서 토양 습도가 25% 이하로 떨어질 때마다 급수기를 켜고 '급수 시작'이라고 스피커로 출력해줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.prev_soil = Tags('SoilMoistureSensor').soilHumidityMeasurement_soilHumidity\n\n    def run(self):\n        current_soil = Tags('SoilMoistureSensor').soilHumidityMeasurement_soilHumidity\n        if current_soil <= 25.0 and self.prev_soil > 25.0:\n            Tags('Irrigator').switch_on()\n            Tags('Speaker').mediaPlayback_speak('급수 시작')\n        self.prev_soil = current_soil\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "prev_soil := (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity\ncurrent_soil = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity\nif ((current_soil <= 25.0) and (prev_soil > 25.0)) {\n    (#Irrigator).switch_on()\n    (#Speaker).mediaPlayback_speak('급수 시작')\n}\nprev_soil = current_soil"
+      }
+    ]
+  },
+  {
+    "command": "1초마다 상태를 확인해서 온도가 35도를 초과할 때마다 환풍기를 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 1000\n        self.prev_temp = Tags('TemperatureSensor').temperatureMeasurement_temperature\n\n    def run(self):\n        current_temp = Tags('TemperatureSensor').temperatureMeasurement_temperature\n        if current_temp > 35.0 and self.prev_temp <= 35.0:\n            Tags('Fan').switch_on()\n        self.prev_temp = current_temp\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 1000,
+        "code": "prev_temp := (#TemperatureSensor).temperatureMeasurement_temperature\ncurrent_temp = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((current_temp > 35.0) and (prev_temp <= 35.0)) {\n    (#Fan).switch_on()\n}\nprev_temp = current_temp"
+      }
+    ]
+  },
+  {
+    "command": "3초마다 일조량을 확인해서 200룩스 이하로 떨어지는 순간 조명을 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 3000\n        self.prev_light = Tags('LightSensor').lightLevel_light\n\n    def run(self):\n        current_light = Tags('LightSensor').lightLevel_light\n        if current_light <= 200.0 and self.prev_light > 200.0:\n            Tags('Light').switch_on()\n        self.prev_light = current_light\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 3000,
+        "code": "prev_light := (#LightSensor).lightLevel_light\ncurrent_light = (#LightSensor).lightLevel_light\nif ((current_light <= 200.0) and (prev_light > 200.0)) {\n    (#Light).switch_on()\n}\nprev_light = current_light"
+      }
+    ]
+  },
+  {
+    "command": "문이 열릴 때마다 알람의 사이렌을 울리고 조명을 켜 줘. 실시간으로 확인해서 상태를 계속 검사해서 반응해 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.prev_contact = Tags('ContactSensor').contactSensor_contact\n\n    def run(self):\n        current_contact = Tags('ContactSensor').contactSensor_contact\n        if current_contact == 'open' and self.prev_contact != 'open':\n            Tags('Alarm').alarm_siren()\n            Tags('Light').switch_on()\n        self.prev_contact = current_contact\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "prev_contact := (#ContactSensor).contactSensor_contact\ncurrent_contact = (#ContactSensor).contactSensor_contact\nif ((current_contact == 'open') and (prev_contact != 'open')) {\n    (#Alarm).alarm_siren()\n    (#Light).switch_on()\n}\nprev_contact = current_contact"
+      }
+    ]
+  },
+  {
+    "command": "현재 날씨에서 비가 감지될 때마다 관개 장치를 꺼 주고 '비가 감지되었습니다'라고 스피커로 출력해줘. 감지는 1분에 한번씩만 하자.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 60000\n        self.prev_weather = Tags('WeatherProvider').weatherProvider_weather\n\n    def run(self):\n        current_weather = Tags('WeatherProvider').weatherProvider_weather\n        if current_weather == 'rain' and self.prev_weather != 'rain':\n            Tags('Irrigator').switch_off()\n            Tags('Speaker').mediaPlayback_speak('비가 감지되었습니다')\n        self.prev_weather = current_weather\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 60000,
+        "code": "prev_weather := (#WeatherProvider).weatherProvider_weather\ncurrent_weather = (#WeatherProvider).weatherProvider_weather\nif ((current_weather == 'rain') and (prev_weather != 'rain')) {\n    (#Irrigator).switch_off()\n    (#Speaker).mediaPlayback_speak('비가 감지되었습니다')\n}\nprev_weather = current_weather"
+      }
+    ]
+  },
+  {
+    "command": "실시간으로 확인해서 거실 창문이 열릴 때마다 블라인드를 닫아 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.prev_window = Tags('Window').windowControl_window\n\n    def run(self):\n        current_window = Tags('Window').windowControl_window\n        if current_window == 'open' and self.prev_window != 'open':\n            Tags('Blind').blind_close()\n        self.prev_window = current_window\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "prev_window := (#Window).windowControl_window\ncurrent_window = (#Window).windowControl_window\nif ((current_window == 'open') and (prev_window != 'open')) {\n    (#Blind).blind_close()\n}\nprev_window = current_window"
+      }
+    ]
+  },
+  {
+    "command": "조명이 켜질 때마다 커튼을 동시에 열어 줘. 실시간으로 조명을 체크해야 해.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.prev_light = Tags('Light').switch_switch\n\n    def run(self):\n        current_light = Tags('Light').switch_switch\n        if current_light == 'on' and self.prev_light != 'on':\n            Tags('Curtain').curtain_open()\n        self.prev_light = current_light\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "prev_light := (#Light).switch_switch\ncurrent_light = (#Light).switch_switch\nif ((current_light == 'on') and (prev_light != 'on')) {\n    (#Curtain).curtain_open()\n}\nprev_light = current_light"
+      }
+    ]
+  },
+  {
+    "command": "2초마다 상태를 확인해서 TV가 켜질 때마다 스피커도 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 2000\n        self.prev_tv = Tags('Television').switch_switch\n\n    def run(self):\n        current_tv = Tags('Television').switch_switch\n        if current_tv == 'on' and self.prev_tv != 'on':\n            Tags('Speaker').switch_on()\n        self.prev_tv = current_tv\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 2000,
+        "code": "prev_tv := (#Television).switch_switch\ncurrent_tv = (#Television).switch_switch\nif ((current_tv == 'on') and (prev_tv != 'on')) {\n    (#Speaker).switch_on()\n}\nprev_tv = current_tv"
+      }
+    ]
+  },
+  {
+    "command": "현관 문이 열릴 때마다 즉시 알람의 경광등을 켜 줘. 확인은 실시간으로 하구.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.prev_door = Tags('DoorLock').doorControl_door\n\n    def run(self):\n        current_door = Tags('DoorLock').doorControl_door\n        if current_door == 'open' and self.prev_door != 'open':\n            Tags('Alarm').alarm_strobe()\n        self.prev_door = current_door\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "prev_door := (#DoorLock).doorControl_door\ncurrent_door = (#DoorLock).doorControl_door\nif ((current_door == 'open') and (prev_door != 'open')) {\n    (#Alarm).alarm_strobe()\n}\nprev_door = current_door"
+      }
+    ]
+  },
+  {
+    "command": "1초마다 공기청정기 상태를 확인해서 꺼지는 순간 자동 모드로 다시 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 1000\n        self.prev_purifier = Tags('AirPurifier').switch_switch\n\n    def run(self):\n        current_purifier = Tags('AirPurifier').switch_switch\n        if current_purifier == 'off' and self.prev_purifier != 'off':\n            Tags('AirPurifier').switch_on()\n            Tags('AirPurifier').airPurifierFanMode_setAirPurifierFanMode('auto')\n        self.prev_purifier = current_purifier\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 1000,
+        "code": "prev_purifier := (#AirPurifier).switch_switch\ncurrent_purifier = (#AirPurifier).switch_switch\nif ((current_purifier == 'off') and (prev_purifier != 'off')) {\n    (#AirPurifier).switch_on()\n    (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('auto')\n}\nprev_purifier = current_purifier"
+      }
+    ]
+  }
+]

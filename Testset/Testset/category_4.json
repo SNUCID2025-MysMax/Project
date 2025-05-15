@@ -1,0 +1,112 @@
+[
+  {
+    "command": "창문이 열리면 알람의 사이렌을 울려 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('Window').windowControl_window == 'closed')\n        wait_until(Tags('Window').windowControl_window == 'open')\n        Tags('Alarm').alarm_siren()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#Window).windowControl_window == 'closed')\nwait until((#Window).windowControl_window == 'open')\n(#Alarm).alarm_siren()"
+      }
+    ]
+  },
+  {
+    "command": "문이 닫히면 블라인드를 닫아 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('DoorLock').doorControl_door == 'open')\n        wait_until(Tags('DoorLock').doorControl_door == 'closed')\n        Tags('Blind').blind_close()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#DoorLock).doorControl_door == 'open')\nwait until((#DoorLock).doorControl_door == 'closed')\n(#Blind).blind_close()"
+      }
+    ]
+  },
+  {
+    "command": "사람이 감지되면 조명을 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('PresenceSensor').presenceSensor_presence == 'not_present')\n        wait_until(Tags('PresenceSensor').presenceSensor_presence == 'present')\n        Tags('Light').switch_on()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#PresenceSensor).presenceSensor_presence == 'not_present')\nwait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Light).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "TV가 꺼지면 스피커를 꺼 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('Television').switch_switch == 'on')\n        wait_until(Tags('Television').switch_switch == 'off')\n        Tags('Speaker').switch_off()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#Television).switch_switch == 'on')\nwait until((#Television).switch_switch == 'off')\n(#Speaker).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "커튼이 열리면 조명을 꺼 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('Curtain').curtain_curtain != 'open')\n        wait_until(Tags('Curtain').curtain_curtain == 'open')\n        Tags('Light').switch_off()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#Curtain).curtain_curtain != 'open')\nwait until((#Curtain).curtain_curtain == 'open')\n(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "블라인드가 닫히면 '블라인드가 닫혔습니다'라고 말해 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('Blind').blind_blind != 'closed')\n        wait_until(Tags('Blind').blind_blind == 'closed')\n        Tags('Speaker').mediaPlayback_speak('블라인드가 닫혔습니다')\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#Blind).blind_blind != 'closed')\nwait until((#Blind).blind_blind == 'closed')\n(#Speaker).mediaPlayback_speak('블라인드가 닫혔습니다')"
+      }
+    ]
+  },
+  {
+    "command": "제습기가 꺼지면 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('Dehumidifier').switch_switch == 'on')\n        wait_until(Tags('Dehumidifier').switch_switch == 'off')\n        Tags('Dehumidifier').switch_on()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#Dehumidifier).switch_switch == 'on')\nwait until((#Dehumidifier).switch_switch == 'off')\n(#Dehumidifier).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "문이 열리면 ‘문이 열렸습니다’라고 말해 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('DoorLock').doorControl_door == 'closed')\n        wait_until(Tags('DoorLock').doorControl_door == 'open')\n        Tags('Speaker').mediaPlayback_speak('문이 열렸습니다')\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#DoorLock).doorControl_door == 'closed')\nwait until((#DoorLock).doorControl_door == 'open')\n(#Speaker).mediaPlayback_speak('문이 열렸습니다')"
+      }
+    ]
+  },
+  {
+    "command": "에어컨이 꺼지면 조명을 꺼 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('AirConditioner').switch_switch == 'on')\n        wait_until(Tags('AirConditioner').switch_switch == 'off')\n        Tags('Light').switch_off()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#AirConditioner).switch_switch == 'on')\nwait until((#AirConditioner).switch_switch == 'off')\n(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "창문이 닫히면 블라인드를 열어 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n    def run(self):\n        wait_until(Tags('Window').windowControl_window != 'closed')\n        wait_until(Tags('Window').windowControl_window == 'closed')\n        Tags('Blind').blind_open()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwait until((#Window).windowControl_window != 'closed')\nwait until((#Window).windowControl_window == 'closed')\n(#Blind).blind_open()"
+      }
+    ]
+  }
+]

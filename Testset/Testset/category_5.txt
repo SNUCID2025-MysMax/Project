@@ -1,0 +1,271 @@
+[
+    {
+        "command": "토양 습도가 30% 미만이면 5초 후 급수기를 작동해 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        if Tags(\"SoilMoistureSensor\").soilHumidityMeasurement_soilHumidity < 30.0:
+            Tags(\"Clock\").clock_delay(0,0,5)
+            Tags(\"Irrigator\").irrigatorOperatingState_startWatering()
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+    (#Clock).clock_delay(0, 0, 5)
+    (#Irrigator).irrigatorOperatingState_startWatering()
+}"
+            }
+        ]
+    },
+    {
+        "command": "창문이 열려 있고 온도가 35도 이상이면 10초 대기 후 블라인드를 내려 줘.",
+        "python": "```python
+class Scenario2:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        if Tags(\"Window\").windowControl_window == \"open\" and Tags(\"TemperatureSensor\").temperatureMeasurement_temperature >= 35.0:
+            Tags(\"Clock\").clock_delay(0,0,10)
+            Tags(\"Blind\").blind_close()
+```",
+        "code": [
+            {
+                "name": "Scenario2",
+                "cron": "",
+                "code": "period := -1
+if (((#Window).windowControl_window == 'open') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)) {
+    (#Clock).clock_delay(0, 0, 10)
+    (#Blind).blind_close()
+}"
+            }
+        ]
+    },
+    {
+        "command": "습도가 80% 이상이면 3초 뒤 제습기를 켜고, 7초 더 지난 후 창문을 닫아 줘.",
+        "python": "```python
+class Scenario3:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        if Tags(\"HumiditySensor\").relativeHumidityMeasurement_humidity >= 80.0:
+            Tags(\"Clock\").clock_delay(0,0,3)
+            Tags(\"Dehumidifier\").switch_on()
+            Tags(\"Clock\").clock_delay(0,0,7)
+            Tags(\"Window\").windowControl_close()
+```",
+        "code": [
+            {
+                "name": "Scenario3",
+                "cron": "",
+                "code": "period := -1
+if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
+    (#Clock).clock_delay(0, 0, 3)
+    (#Dehumidifier).switch_on()
+    (#Clock).clock_delay(0, 0, 7)
+    (#Window).windowControl_close()
+}"
+            }
+        ]
+    },
+    {
+        "command": "빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘.",
+        "python": "```python
+class Scenario4:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        if Tags(\"LightSensor\").lightLevel_light <= 100.0:
+            Tags(\"Clock\").clock_delay(0,0,5)
+            Tags(\"Light\").switch_on()
+```",
+        "code": [
+            {
+                "name": "Scenario4",
+                "cron": "",
+                "code": "period := -1
+if ((#LightSensor).lightLevel_light <= 100.0) {
+    (#Clock).clock_delay(0, 0, 5)
+    (#Light).switch_on()
+}"
+            }
+        ]
+    },
+    {
+        "command": "급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘.",
+        "python": "```python
+class Scenario5:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        Tags(\"Irrigator\").irrigatorOperatingState_startWatering()
+        Tags(\"Clock\").clock_delay(0,0,10)
+        Tags(\"Fan\").switch_on()
+```",
+        "code": [
+            {
+                "name": "Scenario5",
+                "cron": "",
+                "code": "period := -1
+(#Irrigator).irrigatorOperatingState_startWatering()
+(#Clock).clock_delay(0, 0, 10)
+(#Fan).switch_on()"
+            }
+        ]
+    },
+    {
+        "command": "창문이 열려 있으면 5초 후 커튼을 닫고, 10초 더 지난 뒤 블라인드를 닫아 줘.",
+        "python": "```python
+class Scenario6:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        if Tags(\"Window\").windowControl_window == \"open\":
+            Tags(\"Clock\").clock_delay(0,0,5)
+            Tags(\"Curtain\").curtain_close()
+            Tags(\"Clock\").clock_delay(0,0,10)
+            Tags(\"Blind\").blind_close()
+```",
+        "code": [
+            {
+                "name": "Scenario6",
+                "cron": "",
+                "code": "period := -1
+if ((#Window).windowControl_window == 'open') {
+    (#Clock).clock_delay(0, 0, 5)
+    (#Curtain).curtain_close()
+    (#Clock).clock_delay(0, 0, 10)
+    (#Blind).blind_close()
+}"
+            }
+        ]
+    },
+    {
+        "command": "조명이 켜져 있으면 3초 대기 후 조명을 껐다가 3초 뒤 다시 켜 줘.",
+        "python": "```python
+class Scenario7:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        if Tags(\"Light\").switch_switch == \"on\":
+            Tags(\"Clock\").clock_delay(0,0,3)
+            Tags(\"Light\").switch_off()
+            Tags(\"Clock\").clock_delay(0,0,3)
+            Tags(\"Light\").switch_on()
+```",
+        "code": [
+            {
+                "name": "Scenario7",
+                "cron": "",
+                "code": "period := -1
+if ((#Light).switch_switch == 'on') {
+    (#Clock).clock_delay(0, 0, 3)
+    (#Light).switch_off()
+    (#Clock).clock_delay(0, 0, 3)
+    (#Light).switch_on()
+}"
+            }
+        ]
+    },
+    {
+        "command": "7초 후에 조명을 끄고 5초 뒤 다시 켜 줘.",
+        "python": "```python
+class Scenario8:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        Tags(\"Clock\").clock_delay(0,0,7)
+        Tags(\"Light\").switch_off()
+        Tags(\"Clock\").clock_delay(0,0,5)
+        Tags(\"Light\").switch_on()
+```",
+        "code": [
+            {
+                "name": "Scenario8",
+                "cron": "",
+                "code": "period := -1
+(#Clock).clock_delay(0, 0, 7)
+(#Light).switch_off()
+(#Clock).clock_delay(0, 0, 5)
+(#Light).switch_on()"
+            }
+        ]
+    },
+    {
+        "command": "문이 닫혀 있는데 5초가 지나도 창문이 열려 있지 않으면 블라인드를 열어 줘.",
+        "python": "```python
+class Scenario9:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        if Tags(\"DoorLock\").doorControl_door == \"closed\":
+            Tags(\"Clock\").clock_delay(0,0,5)
+            if Tags(\"Window\").windowControl_window != \"open\":
+                Tags(\"Blind\").blind_open()
+```",
+        "code": [
+            {
+                "name": "Scenario9",
+                "cron": "",
+                "code": "period := -1
+if ((#DoorLock).doorControl_door == 'closed') {
+    (#Clock).clock_delay(0, 0, 5)
+    if ((#Window).windowControl_window != 'open') {
+        (#Blind).blind_open()
+    }
+}"
+            }
+        ]
+    },
+    {
+        "command": "커튼이 열린 상태라면 2초 뒤 조명을 50으로 낮추고, 다시 4초 기다려서 꺼 줘.",
+        "python": "```python
+class Scenario10:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        if Tags(\"Curtain\").curtain_curtain == \"open\":
+            Tags(\"Clock\").clock_delay(0,0,2)
+            Tags(\"Light\").switchLevel_setLevel(50, 0)
+            Tags(\"Clock\").clock_delay(0,0,4)
+            Tags(\"Light\").switch_off()
+```",
+        "code": [
+            {
+                "name": "Scenario10",
+                "cron": "",
+                "code": "period := -1
+if ((#Curtain).curtain_curtain == 'open') {
+    (#Clock).clock_delay(0, 0, 2)
+    (#Light).switchLevel_setLevel(50, 0)
+    (#Clock).clock_delay(0, 0, 4)
+    (#Light).switch_off()
+}"
+            }
+        ]
+    }
+]

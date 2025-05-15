@@ -1,0 +1,167 @@
+[
+  {
+    "command": "창문이 열려 있고 조명이 꺼져 있으며 커튼이 닫혀 있으면 조명을 켜고 커튼을 열어 줘. 또한 에어컨이 꺼져 있고 현재 온도가 27도 이상이면 에어컨의 모드를 냉방으로 설정하고 전원을 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        window = Tags('Window').windowControl_window\n        light = Tags('Light').switch_switch\n        curtain = Tags('Curtain').curtain_curtain\n        if (window == 'open') and (light == 'off') and (curtain == 'closed'):\n            Tags('Light').switch_on()\n            Tags('Curtain').curtain_open()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        ac_power = Tags('AirConditioner').switch_switch\n        temp = Tags('TemperatureSensor').temperatureMeasurement_temperature\n        if (ac_power == 'off') and (temp >= 27.0):\n            Tags('AirConditioner').airConditionerMode_setAirConditionerMode('cool')\n            Tags('AirConditioner').switch_on()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwindow = (#Window).windowControl_window\nlight = (#Light).switch_switch\ncurtain = (#Curtain).curtain_curtain\nif ((window == 'open') and (light == 'off') and (curtain == 'closed')) {\n    (#Light).switch_on()\n    (#Curtain).curtain_open()\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\nac_power = (#AirConditioner).switch_switch\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((ac_power == 'off') and (temp >= 27.0)) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n    (#AirConditioner).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "TV가 켜져 있고 스피커가 꺼져 있으며 블라인드가 열려 있을 경우 스피커를 켜고 블라인드를 닫아 줘. 에어컨이 송풍 모드로 설정되어 있고 문이 닫혀 있으면 에어컨을 끄고 창문이 닫혀 있으면 창문을 열어 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        tv = Tags('Television').switch_switch\n        speaker = Tags('Speaker').switch_switch\n        blind = Tags('Blind').blind_blind\n        if (tv == 'on') and (speaker == 'off') and (blind == 'open'):\n            Tags('Speaker').switch_on()\n            Tags('Blind').blind_close()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        ac_mode = Tags('AirConditioner').airConditionerMode_airConditionerMode\n        door = Tags('DoorLock').doorControl_door\n        if (ac_mode == 'auto') and (door == 'closed'):\n            Tags('AirConditioner').switch_off()\n        window = Tags('Window').windowControl_window\n        if window == 'closed':\n            Tags('Window').windowControl_open()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\ntv = (#Television).switch_switch\nspeaker = (#Speaker).switch_switch\nblind = (#Blind).blind_blind\nif ((tv == 'on') and (speaker == 'off') and (blind == 'open')) {\n    (#Speaker).switch_on()\n    (#Blind).blind_close()\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\nac_mode = (#AirConditioner).airConditionerMode_airConditionerMode\ndoor = (#DoorLock).doorControl_door\nif ((ac_mode == 'auto') and (door == 'closed')) {\n    (#AirConditioner).switch_off()\n}\nwindow = (#Window).windowControl_window\nif (window == 'closed') {\n    (#Window).windowControl_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "문이 닫혀 있고 움직임이 감지되지 않으며 조명이 켜져 있으면 조명을 꺼 주고 커튼이 열려 있으면 커튼도 닫아 줘. TV가 꺼져 있으면서도 스피커가 켜져 있으면 스피커도 함께 꺼 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        door = Tags('DoorLock').doorControl_door\n        motion = Tags('MotionSensor').motionSensor_motion\n        light = Tags('Light').switch_switch\n        if (door == 'closed') and (motion == 'inactive') and (light == 'on'):\n            Tags('Light').switch_off()\n            curtain = Tags('Curtain').curtain_curtain\n            if curtain == 'open':\n                Tags('Curtain').curtain_close()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        tv = Tags('Television').switch_switch\n        speaker = Tags('Speaker').switch_switch\n        if (tv == 'off') and (speaker == 'on'):\n            Tags('Speaker').switch_off()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\ndoor = (#DoorLock).doorControl_door\nmotion = (#MotionSensor).motionSensor_motion\nlight = (#Light).switch_switch\nif ((door == 'closed') and (motion == 'inactive') and (light == 'on')) {\n    (#Light).switch_off()\n    curtain = (#Curtain).curtain_curtain\n    if (curtain == 'open') {\n        (#Curtain).curtain_close()\n    }\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\ntv = (#Television).switch_switch\nspeaker = (#Speaker).switch_switch\nif ((tv == 'off') and (speaker == 'on')) {\n    (#Speaker).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "에어컨이 꺼져 있고 온도가 28도 이상이며 습도가 60% 이상이면 에어컨을 켜고 제습 모드로 설정해 줘. 조명이 꺼져 있고 창문이 열려 있으면 조명을 켜고 창문을 닫아 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        ac_power = Tags('AirConditioner').switch_switch\n        temp = Tags('TemperatureSensor').temperatureMeasurement_temperature\n        humidity = Tags('HumiditySensor').relativeHumidityMeasurement_humidity\n        if (ac_power == 'off') and (temp >= 28.0) and (humidity >= 60.0):\n            Tags('AirConditioner').switch_on()\n            Tags('AirConditioner').airConditionerMode_setAirConditionerMode('dry')\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        light = Tags('Light').switch_switch\n        window = Tags('Window').windowControl_window\n        if (light == 'off') and (window == 'open'):\n            Tags('Light').switch_on()\n            Tags('Window').windowControl_close()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nac_power = (#AirConditioner).switch_switch\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nhumidity = (#HumiditySensor).relativeHumidityMeasurement_humidity\nif ((ac_power == 'off') and (temp >= 28.0) and (humidity >= 60.0)) {\n    (#AirConditioner).switch_on()\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('dry')\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\nlight = (#Light).switch_switch\nwindow = (#Window).windowControl_window\nif ((light == 'off') and (window == 'open')) {\n    (#Light).switch_on()\n    (#Window).windowControl_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "TV가 켜져 있고 음량이 20 이상이며 커튼이 열려 있으면 음량을 15로 낮춰 주고 커튼을 닫아 줘. 스피커가 정지 상태이고 조명이 꺼져 있으면 스피커를 재생 상태로 만들고 조명도 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        tv = Tags('Television').switch_switch\n        volume = Tags('Television').audioVolume_volume\n        curtain = Tags('Curtain').curtain_curtain\n        if (tv == 'on') and (volume >= 20) and (curtain == 'open'):\n            Tags('Television').audioVolume_setVolume(15)\n            Tags('Curtain').curtain_close()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        speaker_status = Tags('Speaker').mediaPlayback_playbackStatus\n        light = Tags('Light').switch_switch\n        if (speaker_status == 'stopped') and (light == 'off'):\n            Tags('Speaker').mediaPlayback_play('')\n            Tags('Light').switch_on()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\ntv = (#Television).switch_switch\nvolume = (#Television).audioVolume_volume\ncurtain = (#Curtain).curtain_curtain\nif ((tv == 'on') and (volume >= 20) and (curtain == 'open')) {\n    (#Television).audioVolume_setVolume(15)\n    (#Curtain).curtain_close()\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\nspeaker_status = (#Speaker).mediaPlayback_playbackStatus\nlight = (#Light).switch_switch\nif ((speaker_status == 'stopped') and (light == 'off')) {\n    (#Speaker).mediaPlayback_play('')\n    (#Light).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "창문이 열려 있고 커튼이 닫혀 있으며 블라인드가 열린 상태이면 커튼을 열고 블라인드를 닫아 줘. 에어컨이 자동 모드가 아닌 상태이고 전원이 꺼져 있으면 자동 모드로 설정한 후 전원을 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        window = Tags('Window').windowControl_window\n        curtain = Tags('Curtain').curtain_curtain\n        blind = Tags('Blind').blind_blind\n        if (window == 'open') and (curtain == 'closed') and (blind == 'open'):\n            Tags('Curtain').curtain_open()\n            Tags('Blind').blind_close()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        ac_mode = Tags('AirConditioner').airConditionerMode_airConditionerMode\n        ac_power = Tags('AirConditioner').switch_switch\n        if (ac_mode != 'auto') and (ac_power == 'off'):\n            Tags('AirConditioner').airConditionerMode_setAirConditionerMode('auto')\n            Tags('AirConditioner').switch_on()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nwindow = (#Window).windowControl_window\ncurtain = (#Curtain).curtain_curtain\nblind = (#Blind).blind_blind\nif ((window == 'open') and (curtain == 'closed') and (blind == 'open')) {\n    (#Curtain).curtain_open()\n    (#Blind).blind_close()\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\nac_mode = (#AirConditioner).airConditionerMode_airConditionerMode\nac_power = (#AirConditioner).switch_switch\nif ((ac_mode != 'auto') and (ac_power == 'off')) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')\n    (#AirConditioner).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "조명이 켜져 있고 밝기가 80 이상이며 선풍기가 꺼져 있을 경우 조명을 50으로 줄이고 선풍기를 켜 줘. TV가 꺼져 있고 블라인드가 닫혀 있으면 TV를 켜고 블라인드를 열어 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        light = Tags('Light').switch_switch\n        level = Tags('Light').switchLevel_level\n        fan = Tags('Fan').switch_switch\n        if (light == 'on') and (level >= 80) and (fan == 'off'):\n            Tags('Light').switchLevel_setLevel(50, 0)\n            Tags('Fan').switch_on()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        tv = Tags('Television').switch_switch\n        blind = Tags('Blind').blind_blind\n        if (tv == 'off') and (blind == 'closed'):\n            Tags('Television').switch_on()\n            Tags('Blind').blind_open()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nlight = (#Light).switch_switch\nlevel = (#Light).switchLevel_level\nfan = (#Fan).switch_switch\nif ((light == 'on') and (level >= 80) and (fan == 'off')) {\n    (#Light).switchLevel_setLevel(50, 0)\n    (#Fan).switch_on()\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\ntv = (#Television).switch_switch\nblind = (#Blind).blind_blind\nif ((tv == 'off') and (blind == 'closed')) {\n    (#Television).switch_on()\n    (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "문이 열려 있고 알람이 꺼져 있으면 알람의 사이렌을 울려 주고 커튼이 열려 있으면 커튼을 닫아 줘. 에어컨이 꺼져 있고 현재 온도가 30도 이상이면 에어컨을 냉방 모드로 설정한 후 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        contact = Tags('ContactSensor').contactSensor_contact\n        alarm_state = Tags('Alarm').alarm_alarm\n\n        if contact == 'open' and alarm_state == 'off':\n            Tags('Alarm').alarm_siren()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        curtain_state = Tags('Curtain').curtain_curtain\n\n        if curtain_state == 'open':\n            Tags('Curtain').curtain_close()\n\nclass Scenario3:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        ac_state = Tags('AirConditioner').switch_switch\n        temperature = Tags('AirQualityDetector').temperatureMeasurement_temperature\n\n        if ac_state == 'off' and temperature >= 30.0:\n            Tags('AirConditioner').airConditionerMode_setAirConditionerMode('cool')\n            Tags('AirConditioner').switch_on()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\ncontact = (#ContactSensor).contactSensor_contact\nalarm_state = (#Alarm).alarm_alarm\nif ((contact == 'open') and (alarm_state == 'off')) {\n    (#Alarm).alarm_siren()\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\ncurtain_state = (#Curtain).curtain_curtain\nif (curtain_state == 'open') {\n    (#Curtain).curtain_close()\n}"
+      },
+      {
+        "name": "Scenario3",
+        "cron": "",
+        "code": "period := -1\nac_state = (#AirConditioner).switch_switch\ntemperature = (#AirQualityDetector).temperatureMeasurement_temperature\nif ((ac_state == 'off') and (temperature >= 30.0)) {\n    (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n    (#AirConditioner).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "스피커가 재생 중이고 조명이 꺼져 있으며 커튼이 열려 있을 경우 조명을 켜고 커튼을 닫아 줘. TV가 꺼져 있고 선풍기가 꺼져 있을 경우 둘 다 켜 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        speaker_status = Tags('Speaker').mediaPlayback_playbackStatus\n        light = Tags('Light').switch_switch\n        curtain = Tags('Curtain').curtain_curtain\n        if (speaker_status == 'playing') and (light == 'off') and (curtain == 'open'):\n            Tags('Light').switch_on()\n            Tags('Curtain').curtain_close()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        tv = Tags('Television').switch_switch\n        fan = Tags('Fan').switch_switch\n        if (tv == 'off') and (fan == 'off'):\n            Tags('Television').switch_on()\n            Tags('Fan').switch_on()\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nspeaker_status = (#Speaker).mediaPlayback_playbackStatus\nlight = (#Light).switch_switch\ncurtain = (#Curtain).curtain_curtain\nif ((speaker_status == 'playing') and (light == 'off') and (curtain == 'open')) {\n    (#Light).switch_on()\n    (#Curtain).curtain_close()\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\ntv = (#Television).switch_switch\nfan = (#Fan).switch_switch\nif ((tv == 'off') and (fan == 'off')) {\n    (#Television).switch_on()\n    (#Fan).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "에어컨이 난방 모드이고 현재 온도가 20도 이상이면 에어컨을 끄고 블라인드가 열려 있으면 닫아 줘. TV가 켜져 있고 조명이 켜져 있으며 스피커가 꺼져 있으면 스피커를 켜고 조명을 40으로 조절해 줘.",
+    "python": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        ac_mode = Tags('AirConditioner').airConditionerMode_airConditionerMode\n        temp = Tags('TemperatureSensor').temperatureMeasurement_temperature\n        if (ac_mode == 'heat') and (temp >= 20.0):\n            Tags('AirConditioner').switch_off()\n            blind = Tags('Blind').blind_blind\n            if blind == 'open':\n                Tags('Blind').blind_close()\n\nclass Scenario2:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        tv = Tags('Television').switch_switch\n        light = Tags('Light').switch_switch\n        speaker = Tags('Speaker').switch_switch\n        if (tv == 'on') and (light == 'on') and (speaker == 'off'):\n            Tags('Speaker').switch_on()\n            Tags('Light').switchLevel_setLevel(40, 0)\n```",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "code": "period := -1\nac_mode = (#AirConditioner).airConditionerMode_airConditionerMode\ntemp = (#TemperatureSensor).temperatureMeasurement_temperature\nif ((ac_mode == 'heat') and (temp >= 20.0)) {\n    (#AirConditioner).switch_off()\n    blind = (#Blind).blind_blind\n    if (blind == 'open') {\n        (#Blind).blind_close()\n    }\n}"
+      },
+      {
+        "name": "Scenario2",
+        "cron": "",
+        "code": "period := -1\ntv = (#Television).switch_switch\nlight = (#Light).switch_switch\nspeaker = (#Speaker).switch_switch\nif ((tv == 'on') and (light == 'on') and (speaker == 'off')) {\n    (#Speaker).switch_on()\n    (#Light).switchLevel_setLevel(40, 0)\n}"
+      }
+    ]
+  }
+]

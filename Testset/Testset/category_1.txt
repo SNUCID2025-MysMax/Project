@@ -1,0 +1,216 @@
+[
+    {
+        "command": "창문을 닫아 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('Window').windowControl_close()
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+(#Window).windowControl_close()"
+            }
+        ]
+    },
+    {
+        "command": "조명이 꺼져 있고, 온도가 33도 이상이면 조명을 켜 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        light_status = Tags('Light').switch_switch
+        temp = Tags('TemperatureSensor').temperatureMeasurement_temperature
+        if (light_status == 'off') and (temp >= 33.0):
+            Tags('Light').switch_on()
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+light_status = (#Light).switch_switch
+temp = (#TemperatureSensor).temperatureMeasurement_temperature
+if ((light_status == 'off') and (temp >= 33.0)) {
+    (#Light).switch_on()
+}"
+            }
+        ]
+    },
+    {
+        "command": "알람의 음량을 높음으로 설정해 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('Alarm').alarm_setAlarmVolume('high')
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+(#Alarm).alarm_setAlarmVolume('high')"
+            }
+        ]
+    },
+    {
+        "command": "선풍기를 꺼 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('Fan').switch_off()
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+(#Fan).switch_off()"
+            }
+        ]
+    },
+    {
+        "command": "에어컨의 모드를 냉방으로 바꿔 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('AirConditioner').airConditionerMode_setAirConditionerMode('cool')
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
+            }
+        ]
+    },
+    {
+        "command": "블라인드를 닫아 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('Blind').blind_close()
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+(#Blind).blind_close()"
+            }
+        ]
+    },
+    {
+        "command": "공기청정기를 켜 줘. 켜고 보니 공기청정기가 자동 모드면 다시 꺼 줘",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('AirPurifier').switch_on()
+        mode = Tags('AirPurifier').airPurifierFanMode_airPurifierFanMode
+        if mode == 'auto':
+            Tags('AirPurifier').switch_off()
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+(#AirPurifier).switch_on()
+mode = (#AirPurifier).airPurifierFanMode_airPurifierFanMode
+if (mode == 'auto') {
+    (#AirPurifier).switch_off()
+}"
+            }
+        ]
+    },
+    {
+        "command": "창문이 닫혀 있으면 열어 줘. 열려 있어도 열어 줘",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('Window').windowControl_open()
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+(#Window).windowControl_open()"
+            }
+        ]
+    },
+    {
+        "command": "제습기를 꺼 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('Dehumidifier').switch_off()
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+(#Dehumidifier).switch_off()"
+            }
+        ]
+    },
+    {
+        "command": "조명의 밝기를 80으로 설정해 줘.",
+        "python": "```python
+class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        Tags('Light').switchLevel_setLevel(80, 0)
+```",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "code": "period := -1
+(#Light).switchLevel_setLevel(80, 0)"
+            }
+        ]
+    }
+]
