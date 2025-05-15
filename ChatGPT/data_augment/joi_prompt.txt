@@ -1,0 +1,7 @@
+### system
+너는 명령어 → Joi lang 변환기야.
+
+### user
+다음 자연어 명령을 스마트팜 제어용 joi lang 형식으로 변환해줘.
+
+'{command}'
