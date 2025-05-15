@@ -1,0 +1,336 @@
+[
+    {
+        "command": "불이 5번 켜지면 선풍기를 꺼 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''   
+        self.period = 100
+        self.on_count = 0
+
+    def run(self):
+        wait_until(Tags('Light').switch_switch == 'off')
+        wait_until(Tags('Light').switch_switch == 'on')
+        self.on_count = self.on_count + 1
+        if self.on_count == 5:
+            Tags('Fan').switch_off()
+            break",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 100,
+                "code": "on_count := 0
+wait until((#Light).switch_switch == 'off')
+wait until((#Light).switch_switch == 'on')
+on_count = on_count + 1
+if (on_count == 5) {
+    (#Fan).switch_off()
+    break
+}"
+            }
+        ]
+    },
+    {
+        "command": "10초마다 문이 열려 있는지 확인해서 이전과 다르면 알람의 사이렌을 울려 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 10000
+        self.prev_state = ''
+
+    def run(self):
+        current_state = Tags('DoorLock').doorControl_door
+        if self.prev_state != '' and current_state != self.prev_state:
+            Tags('Alarm').alarm_siren()
+        self.prev_state = current_state",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 10000,
+                "code": "prev_state := ''
+current_state = (#DoorLock).doorControl_door
+if (prev_state != '' and current_state != prev_state) {
+    (#Alarm).alarm_siren()
+}
+prev_state = current_state"
+            }
+        ]
+    },
+    {
+        "command": "문이 열렸다 닫힌 횟수가 3번이 되면 커튼을 닫아 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+        self.open_close_count = 0
+
+    def run(self):
+        wait_until(Tags('DoorLock').doorControl_door == 'closed')
+        wait_until(Tags('DoorLock').doorControl_door == 'open')
+        wait_until(Tags('DoorLock').doorControl_door == 'closed')
+        self.open_close_count = self.open_close_count + 1
+        if self.open_close_count == 3:
+            Tags('Curtain').curtain_close()
+            break",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 100,
+                "code": "open_close_count := 0
+wait until((#DoorLock).doorControl_door == 'closed')
+wait until((#DoorLock).doorControl_door == 'open')
+wait until((#DoorLock).doorControl_door == 'closed')
+open_close_count = open_close_count + 1
+if (open_close_count == 3) {
+    (#Curtain).curtain_close()
+    break
+}"
+            }
+        ]
+    },
+    {
+        "command": "조명이 3번 꺼졌다 켜졌으면 블라인드를 닫아 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+        self.off_on_count = 0
+
+    def run(self):
+        wait_until(Tags('Light').switch_switch == 'on')
+        wait_until(Tags('Light').switch_switch == 'off')
+        wait_until(Tags('Light').switch_switch == 'on')
+        self.off_on_count = self.off_on_count + 1
+        if self.off_on_count == 3:
+            Tags('Blind').blind_close()
+            break",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 100,
+                "code": "off_on_count := 0
+wait until((#Light).switch_switch == 'on')
+wait until((#Light).switch_switch == 'off')
+wait until((#Light).switch_switch == 'on')
+off_on_count = off_on_count + 1
+if (off_on_count == 3) {
+    (#Blind).blind_close()
+    break
+}"
+            }
+        ]
+    },
+    {
+        "command": "알람의 사이렌이 2번 울리면 창문을 열어 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+        self.siren_count = 0
+
+    def run(self):
+        wait_until(
+            Tags('Alarm').alarm_alarm != 'siren' and Tags('Alarm').alarm_alarm != 'both'
+        )
+        wait_until(
+            Tags('Alarm').alarm_alarm == 'siren' or Tags('Alarm').alarm_alarm == 'both'
+        )
+        self.siren_count = self.siren_count + 1
+        if self.siren_count == 2:
+            Tags('Window').windowControl_open()
+            break",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 100,
+                "code": "siren_count := 0
+wait until((#Alarm).alarm_alarm != 'siren' and (#Alarm).alarm_alarm != 'both')
+wait until((#Alarm).alarm_alarm == 'siren' or (#Alarm).alarm_alarm == 'both')
+siren_count = siren_count + 1
+if (siren_count == 2) {
+    (#Window).windowControl_open()
+    break
+}"
+            }
+        ]
+    },
+    {
+        "command": "온도가 지금보다 2도 이상 올라가면 에어컨을 켜 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = -1
+
+    def run(self):
+        current_temp = Tags('TemperatureSensor').temperatureMeasurement_temperature
+        target_temp = current_temp + 2.0
+        wait_until(Tags('TemperatureSensor').temperatureMeasurement_temperature >= target_temp)
+        Tags('AirConditioner').switch_on()",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": -1,
+                "code": "current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+target_temp = current_temp + 2.0
+wait until((#TemperatureSensor).temperatureMeasurement_temperature >= target_temp)
+(#AirConditioner).switch_on()"
+            }
+        ]
+    },
+    {
+        "command": "조명이 연속으로 5분 이상 켜져 있으면 스피커로 ‘절전 모드로 전환합니다’라고 말해 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+        self.light_on_duration = 0
+
+    def run(self):
+        if Tags('Light').switch_switch == 'on':
+            self.light_on_duration = self.light_on_duration + 100
+        else:
+            self.light_on_duration = 0
+        if self.light_on_duration >= 300000:
+            Tags('Speaker').mediaPlayback_speak('절전 모드로 전환합니다')
+            break",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 100,
+                "code": "light_on_duration := 0
+if ((#Light).switch_switch == 'on') {
+    light_on_duration = light_on_duration + 100
+} else {
+    light_on_duration = 0
+}
+if (light_on_duration >= 300000) {
+    (#Speaker).mediaPlayback_speak('절전 모드로 전환합니다')
+    break
+}"
+            }
+        ]
+    },
+    {
+        "command": "창문이 5분 안에 3번 이상 열렸다 닫혔으면 알람의 사이렌을 1초 간격으로 세 번 울려 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+        self.prev_event_time_1 = 0
+        self.prev_event_time_2 = 0
+
+    def run(self):
+        wait_until(Tags('Window').windowControl_window == 'closed')
+        wait_until(Tags('Window').windowControl_window == 'open')
+        wait_until(Tags('Window').windowControl_window == 'closed')
+        current_time = Tags('Clock').clock_timestamp
+        if self.prev_event_time_1 > 0 and self.prev_event_time_2 > 0:
+            if (current_time - self.prev_event_time_2 <= 300) and (current_time - self.prev_event_time_1 <= 300):
+                Tags('Alarm').alarm_siren()
+                Tags('Clock').clock_delay(0, 0, 1)
+                Tags('Alarm').alarm_siren()
+                Tags('Clock').clock_delay(0, 0, 1)
+                Tags('Alarm').alarm_siren()
+                self.prev_event_time_1 = 0
+                self.prev_event_time_2 = 0
+                break
+        self.prev_event_time_2 = self.prev_event_time_1
+        self.prev_event_time_1 = current_time",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 100,
+                "code": "prev_event_time_1 := 0
+prev_event_time_2 := 0
+wait until((#Window).windowControl_window == 'closed')
+wait until((#Window).windowControl_window == 'open')
+wait until((#Window).windowControl_window == 'closed')
+current_time = (#Clock).clock_timestamp
+if (prev_event_time_1 > 0 and prev_event_time_2 > 0) {
+    if (current_time - prev_event_time_2 <= 300 and current_time - prev_event_time_1 <= 300) {
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(0, 0, 1)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(0, 0, 1)
+        (#Alarm).alarm_siren()
+        prev_event_time_1 = 0
+        prev_event_time_2 = 0
+        break
+    }
+}
+prev_event_time_2 = prev_event_time_1
+prev_event_time_1 = current_time"
+            }
+        ]
+    },
+    {
+        "command": "제습기가 3번 꺼졌다 켜졌으면 알람의 사이렌을 울려 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+        self.off_on_count = 0
+
+    def run(self):
+        wait_until(Tags('Dehumidifier').switch_switch == 'on')
+        wait_until(Tags('Dehumidifier').switch_switch == 'off')
+        wait_until(Tags('Dehumidifier').switch_switch == 'on')
+        self.off_on_count = self.off_on_count + 1
+        if self.off_on_count == 3:
+            Tags('Alarm').alarm_siren()
+            break",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 100,
+                "code": "off_on_count := 0
+wait until((#Dehumidifier).switch_switch == 'on')
+wait until((#Dehumidifier).switch_switch == 'off')
+wait until((#Dehumidifier).switch_switch == 'on')
+off_on_count = off_on_count + 1
+if (off_on_count == 3) {
+    (#Alarm).alarm_siren()
+    break
+}"
+            }
+        ]
+    },
+    {
+        "command": "조명이 켜져 있는 시간이 총합 5분을 넘으면 조명을 꺼 줘.",
+        "python": "class Scenario1:
+    def __init__(self):
+        self.cron = ''
+        self.period = 100
+        self.total_on_time = 0
+
+    def run(self):
+        if Tags('Light').switch_switch == 'on':
+            self.total_on_time = self.total_on_time + 100
+        if self.total_on_time >= 300000:
+            Tags('Light').switch_off()
+            break",
+        "code": [
+            {
+                "name": "Scenario1",
+                "cron": "",
+                "period": 100,
+                "code": "total_on_time := 0
+if ((#Light).switch_switch == 'on') {
+    total_on_time = total_on_time + 100
+}
+if (total_on_time >= 300000) {
+    (#Light).switch_off()
+    break
+}"
+            }
+        ]
+    }
+]

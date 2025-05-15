@@ -1,0 +1,122 @@
+[
+  {
+    "command": "문이 닫히면 5초마다 조명을 끄고 3번 반복해 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        wait_until(Tags('DoorLock').doorControl_door == 'closed')\n        Tags('Light').switch_off()\n        Tags('Clock').clock_delay(0, 0, 5)\n        Tags('Light').switch_off()\n        Tags('Clock').clock_delay(0, 0, 5)\n        Tags('Light').switch_off()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#DoorLock).doorControl_door == 'closed')\n(#Light).switch_off()\n(#Clock).clock_delay(0, 0, 5)\n(#Light).switch_off()\n(#Clock).clock_delay(0, 0, 5)\n(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "창문이 열리면 2초마다 블라인드를 10씩 내려 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n\n    def run(self):\n        wait_until(Tags('Window').windowControl_window == 'open')\n        current_level = Tags('Blind').blindLevel_blindLevel\n        new_level = current_level\n        if new_level > 0:\n            new_level = new_level - 10\n            if new_level < 0:\n                new_level = 0\n            Tags('Blind').blindLevel_setBlindLevel(new_level)\n        Tags('Clock').clock_delay(0, 0, 2)",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "wait until((#Window).windowControl_window == 'open')\ncurrent_level = (#Blind).blindLevel_blindLevel\nnew_level = current_level\nif (new_level > 0) {\n    new_level = new_level - 10\n    if (new_level < 0) {\n        new_level = 0\n    }\n    (#Blind).blindLevel_setBlindLevel(new_level)\n}\n(#Clock).clock_delay(0, 0, 2)"
+      }
+    ]
+  },
+  {
+    "command": "움직임이 감지되면 1초마다 TV 볼륨을 2씩 높여서 최대 10까지 올려 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.active = False\n\n    def run(self):\n        if self.active == False:\n            wait_until(Tags('MotionSensor').motionSensor_motion == 'active')\n            self.active = True\n\n        if Tags('MotionSensor').motionSensor_motion == 'active':\n            current_volume = Tags('Television').audioVolume_volume\n            if current_volume >= 10:\n                break\n            new_volume = current_volume + 2\n            if new_volume > 10:\n                new_volume = 10\n            Tags('Television').audioVolume_setVolume(new_volume)\n            Tags('Clock').clock_delay(0, 0, 1)\n        else:\n            self.active = False",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "active := False\nif (active == False) {\n    wait until((#MotionSensor).motionSensor_motion == 'active')\n    active = True\n}\nif ((#MotionSensor).motionSensor_motion == 'active') {\n    current_volume = (#Television).audioVolume_volume\n    if (current_volume >= 10) {\n        break\n    }\n    new_volume = current_volume + 2\n    if (new_volume > 10) {\n        new_volume = 10\n    }\n    (#Television).audioVolume_setVolume(new_volume)\n    (#Clock).clock_delay(0, 0, 1)\n} else {\n    active = False\n}"
+      }
+    ]
+  },
+  {
+    "command": "에어컨이 꺼지면 5초마다 ‘에어컨을 켜 주세요’라고 3번 말해 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        wait_until(Tags('AirConditioner').switch_switch == 'off')\n        Tags('Speaker').mediaPlayback_speak('에어컨을 켜 주세요')\n        Tags('Clock').clock_delay(0, 0, 5)\n        Tags('Speaker').mediaPlayback_speak('에어컨을 켜 주세요')\n        Tags('Clock').clock_delay(0, 0, 5)\n        Tags('Speaker').mediaPlayback_speak('에어컨을 켜 주세요')",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#AirConditioner).switch_switch == 'off')\n(#Speaker).mediaPlayback_speak('에어컨을 켜 주세요')\n(#Clock).clock_delay(0, 0, 5)\n(#Speaker).mediaPlayback_speak('에어컨을 켜 주세요')\n(#Clock).clock_delay(0, 0, 5)\n(#Speaker).mediaPlayback_speak('에어컨을 켜 주세요')"
+      }
+    ]
+  },
+  {
+    "command": "문이 닫히면 10초마다 조명의 밝기를 10씩 낮춰서 완전히 꺼질 때까지 반복해 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.active = False\n\n    def run(self):\n        if self.active == False:\n            wait_until(Tags('DoorLock').doorControl_door == 'closed')\n            self.active = True\n\n        if Tags('DoorLock').doorControl_door == 'closed':\n            current_level = Tags('Light').switchLevel_level\n            if current_level == 0:\n                break\n            new_level = current_level - 10\n            if new_level < 0:\n                new_level = 0\n            Tags('Light').switchLevel_setLevel(new_level, 0)\n            Tags('Clock').clock_delay(0, 0, 10)\n        else:\n            self.active = False",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "active := False\nif (active == False) {\n    wait until((#DoorLock).doorControl_door == 'closed')\n    active = True\n}\nif ((#DoorLock).doorControl_door == 'closed') {\n    current_level = (#Light).switchLevel_level\n    if (current_level == 0) {\n        break\n    }\n    new_level = current_level - 10\n    if (new_level < 0) {\n        new_level = 0\n    }\n    (#Light).switchLevel_setLevel(new_level, 0)\n    (#Clock).clock_delay(0, 0, 10)\n} else {\n    active = False\n}"
+      }
+    ]
+  },
+  {
+    "command": "조명이 켜지면 2초마다 창문과 커튼을 번갈아 열고 닫아 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.active = False\n        self.toggle = False\n\n    def run(self):\n        if self.active == False:\n            wait_until(Tags('Light').switch_switch == 'on')\n            self.active = True\n\n        if Tags('Light').switch_switch == 'on':\n            if self.toggle == False:\n                window_state = Tags('Window').windowControl_window\n                if window_state == 'open':\n                    Tags('Window').windowControl_close()\n                else:\n                    Tags('Window').windowControl_open()\n                self.toggle = True\n            else:\n                curtain_state = Tags('Curtain').curtain_curtain\n                if curtain_state == 'open':\n                    Tags('Curtain').curtain_close()\n                else:\n                    Tags('Curtain').curtain_open()\n                self.toggle = False\n            Tags('Clock').clock_delay(0, 0, 2)\n        else:\n            self.active = False\n            self.toggle = False",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "active := False\ntoggle := False\nif (active == False) {\n    wait until((#Light).switch_switch == 'on')\n    active = True\n}\nif ((#Light).switch_switch == 'on') {\n    if (toggle == False) {\n        window_state = (#Window).windowControl_window\n        if (window_state == 'open') {\n            (#Window).windowControl_close()\n        } else {\n            (#Window).windowControl_open()\n        }\n        toggle = True\n    } else {\n        curtain_state = (#Curtain).curtain_curtain\n    }\n    (#Clock).clock_delay(0, 0, 2)\n} else {\n    active = False\n}"
+      }
+    ]
+  },
+  {
+    "command": "알람이 울리면 3초마다 커튼을 열고 닫아 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.active = False\n\n    def run(self):\n        if self.active == False:\n            wait_until(Tags('Alarm').alarm_alarm != 'off')\n            self.active = True\n\n        if Tags('Alarm').alarm_alarm != 'off':\n            curtain_state = Tags('Curtain').curtain_curtain\n            if curtain_state == 'open':\n                Tags('Curtain').curtain_close()\n            else:\n                Tags('Curtain').curtain_open()\n            Tags('Clock').clock_delay(0, 0, 3)\n        else:\n            self.active = False",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "active := False\nif (active == False) {\n    wait until((#Alarm).alarm_alarm != 'off')\n    active = True\n}\nif ((#Alarm).alarm_alarm != 'off') {\n    curtain_state = (#Curtain).curtain_curtain\n    if (curtain_state == 'open') {\n        (#Curtain).curtain_close()\n    } else {\n        (#Curtain).curtain_open()\n    }\n    (#Clock).clock_delay(0, 0, 3)\n} else {\n    active = False\n}"
+      }
+    ]
+  },
+  {
+    "command": "블라인드가 열리면 1초마다 조명의 밝기를 10씩 밝게 해 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.active = False\n\n    def run(self):\n        if self.active == False:\n            wait_until(Tags('Blind').blind_blind == 'open')\n            self.active = True\n\n        if Tags('Blind').blind_blind == 'open':\n            current_level = Tags('Light').switchLevel_level\n            new_level = current_level + 10\n            if new_level > 100:\n                new_level = 100\n            if new_level != current_level:\n                Tags('Light').switchLevel_setLevel(new_level, 0)\n            Tags('Clock').clock_delay(0, 0, 1)\n        else:\n            self.active = False",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "active := False\nif (active == False) {\n    wait until((#Blind).blind_blind == 'open')\n    active = True\n}\nif ((#Blind).blind_blind == 'open') {\n    current_level = (#Light).switchLevel_level\n    new_level = current_level + 10\n    if (new_level > 100) {\n        new_level = 100\n    }\n    if (new_level != current_level) {\n        (#Light).switchLevel_setLevel(new_level, 0)\n    }\n    (#Clock).clock_delay(0, 0, 1)\n} else {\n    active = False\n}"
+      }
+    ]
+  },
+  {
+    "command": "제습기가 켜지면 4초마다 스피커를 껐다 켜 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.active = False\n        self.toggle = False\n\n    def run(self):\n        if self.active == False:\n            wait_until(Tags('Dehumidifier').switch_switch == 'on')\n            self.active = True\n\n        if Tags('Dehumidifier').switch_switch == 'on':\n            if self.toggle == False:\n                Tags('Speaker').switch_off()\n                self.toggle = True\n            else:\n                Tags('Speaker').switch_on()\n                self.toggle = False\n            Tags('Clock').clock_delay(0, 0, 4)\n        else:\n            self.active = False\n            self.toggle = False",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "active := False\ntoggle := False\nif (active == False) {\n    wait until((#Dehumidifier).switch_switch == 'on')\n    active = True\n}\nif ((#Dehumidifier).switch_switch == 'on') {\n    if (toggle == False) {\n        (#Speaker).switch_off()\n        toggle = True\n    } else {\n        (#Speaker).switch_on()\n    }\n    (#Clock).clock_delay(0, 0, 4)\n} else {\n    active = False\n}"
+      }
+    ]
+  },
+  {
+    "command": "TV가 켜지면 3초마다 스피커와 조명을 껐다 켰다 반복해 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = 100\n        self.active = False\n        self.toggle = False\n\n    def run(self):\n        if self.active == False:\n            wait_until(Tags('Television').switch_switch == 'on')\n            self.active = True\n\n        if Tags('Television').switch_switch == 'on':\n            if self.toggle == False:\n                Tags('Speaker').switch_off()\n                Tags('Light').switch_off()\n                self.toggle = True\n            else:\n                Tags('Speaker').switch_on()\n                Tags('Light').switch_on()\n                self.toggle = False\n            Tags('Clock').clock_delay(0, 0, 3)\n        else:\n            self.active = False\n            self.toggle = False",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "active := False\ntoggle := False\nif (active == False) {\n    wait until((#Television).switch_switch == 'on')\n    active = True\n}\nif ((#Television).switch_switch == 'on') {\n    if (toggle == False) {\n        (#Speaker).switch_off()\n        (#Light).switch_off()\n        toggle = True\n    } else {\n        (#Speaker).switch_on()\n    }\n    (#Clock).clock_delay(0, 0, 3)\n} else {\n    active = False\n}"
+      }
+    ]
+  }
+]

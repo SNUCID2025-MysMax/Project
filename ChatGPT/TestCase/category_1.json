@@ -1,0 +1,122 @@
+[
+  {
+    "command": "창문을 닫아 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Window').windowControl_close()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#Window).windowControl_close()"
+      }
+    ]
+  },
+  {
+    "command": "조명을 켜 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switch_on()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#Light).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "알람의 음량을 높음으로 설정해 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Alarm').alarm_setAlarmVolume('high')",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#Alarm).alarm_setAlarmVolume('high')"
+      }
+    ]
+  },
+  {
+    "command": "선풍기를 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Fan').switch_off()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#Fan).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "에어컨을 냉방 모드로 바꿔 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirConditioner').airConditionerMode_setAirConditionerMode('cool')",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
+      }
+    ]
+  },
+  {
+    "command": "블라인드를 닫아 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Blind').blind_close()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#Blind).blind_close()"
+      }
+    ]
+  },
+  {
+    "command": "공기청정기를 켜 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('AirPurifier').switch_on()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#AirPurifier).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "창문이 닫혀 있으면 열어 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        if Tags('Window').windowControl_window == 'closed':\n            Tags('Window').windowControl_open()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'closed') {\n    (#Window).windowControl_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "제습기를 꺼 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Dehumidifier').switch_off()",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#Dehumidifier).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "조명의 밝기를 80으로 설정해 줘.",
+    "python": "class Scenario1:\n    def __init__(self):\n        self.cron = ''\n        self.period = -1\n\n    def run(self):\n        Tags('Light').switchLevel_setLevel(80, 0)",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "(#Light).switchLevel_setLevel(80, 0)"
+      }
+    ]
+  }
+]
