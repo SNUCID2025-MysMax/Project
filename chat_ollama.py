@@ -43,6 +43,19 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
     
     prompt = f"# Devices\n{service_doc}\n\n# User Command\ncommand: {user_command}\n\n# Current Time\ncurrent: {current_time}"
 
+    example = """command: \"에어컨의 전원이 켜져 있으면 알람의 사이렌을 울려줘.\"
+result: 
+```python
+class Scenario1:
+    def __init__(self):
+        self.cron = \"\"
+        self.period = -1
+
+    def run(self):
+        if Tags('AirConditioner').switch_switch == 'on':
+            Tags('Alarm').alarm_siren()
+```"""
+
     try:
         if use_stream:
             response = ollama.chat(
@@ -50,6 +63,7 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
                 messages=[
                     {"role": "system", "content": grammar},
                     {"role": "user", "content": prompt},
+                    {"role": "user", "content": example},
                 ],
                 stream=True
             )
@@ -143,10 +157,15 @@ def evaluate_pair(gold, gen):
 
     return compare_result
 
+def extract_last_python_block(resp: str) -> str:
+    pattern = r'```python.*?```'
+    matches = re.findall(pattern, resp, flags=re.DOTALL)
+    return matches[-1] if matches else None
 
 def main():
     # select sllm
     model = "qwen2.5-coder:7b"
+    # model = "exaone-deep:7.8B"
 
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
@@ -171,6 +190,8 @@ def main():
 
             print("응답:\n", resp)
             print("-"*30)
+            resp = extract_last_python_block(resp)
+            print(resp)
             code = transform_code(resp)
             print("변환된 코드:\n", code)
             print("-"*30)
@@ -229,3 +250,7 @@ def main():
         
     del model
     gc.collect()
+
+
+if __name__ == "__main__":
+    main()
