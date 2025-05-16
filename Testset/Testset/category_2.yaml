@@ -1,8 +1,7 @@
-- command: 창문이 열려 있고 조명이 꺼져 있으며 커튼이 닫혀 있으면 조명을 켜고 커튼을 열어 줘. 또한 에어컨이 꺼져 있고 현재 온도가 27도
-    이상이면 에어컨의 모드를 냉방으로 설정하고 전원을 켜 줘.
+- command: "창문이 열려 있고 조명이 꺼져 있으며 커튼이 닫혀 있으면 조명을 켜고 커튼을 열어 줘. 또한 에어컨이 꺼져 있고 현재 온도가 27도 이상이면 에어컨의 모드를 냉방으로 설정하고 전원을 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       window = (#Window).windowControl_window
@@ -18,11 +17,10 @@
         (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
         (#AirConditioner).switch_on()
       }
-- command: TV가 켜져 있고 스피커가 꺼져 있으며 블라인드가 열려 있을 경우 스피커를 켜고 블라인드를 닫아 줘. 에어컨이 송풍 모드로 설정되어
-    있고 문이 닫혀 있으면 에어컨을 끄고 창문이 닫혀 있으면 창문을 열어 줘.
+- command: "TV가 켜져 있고 스피커가 꺼져 있으며 블라인드가 열려 있을 경우 스피커를 켜고 블라인드를 닫아 줘. 에어컨이 송풍 모드로 설정되어 있고 문이 닫혀 있으면 에어컨을 끄고 창문이 닫혀 있으면 창문을 열어 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       tv = (#Television).switch_switch
@@ -41,11 +39,10 @@
       if (window == 'closed') {
         (#Window).windowControl_open()
       }
-- command: 문이 닫혀 있고 움직임이 감지되지 않으며 조명이 켜져 있으면 조명을 꺼 주고 커튼이 열려 있으면 커튼도 닫아 줘. TV가 꺼져
-    있으면서도 스피커가 켜져 있으면 스피커도 함께 꺼 줘.
+- command: "문이 닫혀 있고 움직임이 감지되지 않으며 조명이 켜져 있으면 조명을 꺼 주고 커튼이 열려 있으면 커튼도 닫아 줘. TV가 꺼져 있으면서도 스피커가 켜져 있으면 스피커도 함께 꺼 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       door = (#DoorLock).doorControl_door
@@ -63,11 +60,10 @@
       if ((tv == 'off') and (speaker == 'on')) {
         (#Speaker).switch_off()
       }
-- command: 에어컨이 꺼져 있고 온도가 28도 이상이며 습도가 60% 이상이면 에어컨을 켜고 제습 모드로 설정해 줘. 조명이 꺼져 있고 창문이
-    열려 있으면 조명을 켜고 창문을 닫아 줘.
+- command: "에어컨이 꺼져 있고 온도가 28도 이상이며 습도가 60% 이상이면 에어컨을 켜고 제습 모드로 설정해 줘. 조명이 꺼져 있고 창문이 열려 있으면 조명을 켜고 창문을 닫아 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       ac_power = (#AirConditioner).switch_switch
@@ -83,11 +79,10 @@
         (#Light).switch_on()
         (#Window).windowControl_close()
       }
-- command: TV가 켜져 있고 음량이 20 이상이며 커튼이 열려 있으면 음량을 15로 낮춰 주고 커튼을 닫아 줘. 스피커가 정지 상태이고 조명이
-    꺼져 있으면 스피커를 재생 상태로 만들고 조명도 켜 줘.
+- command: "TV가 켜져 있고 음량이 20 이상이며 커튼이 열려 있으면 음량을 15로 낮춰 주고 커튼을 닫아 줘. 스피커가 정지 상태이고 조명이 꺼져 있으면 스피커를 재생 상태로 만들고 조명도 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       tv = (#Television).switch_switch
@@ -103,11 +98,10 @@
         (#Speaker).mediaPlayback_play('')
         (#Light).switch_on()
       }
-- command: 창문이 열려 있고 커튼이 닫혀 있으며 블라인드가 열린 상태이면 커튼을 열고 블라인드를 닫아 줘. 에어컨이 자동 모드가 아닌 상태이고
-    전원이 꺼져 있으면 자동 모드로 설정한 후 전원을 켜 줘.
+- command: "창문이 열려 있고 커튼이 닫혀 있으며 블라인드가 열린 상태이면 커튼을 열고 블라인드를 닫아 줘. 에어컨이 자동 모드가 아닌 상태이고 전원이 꺼져 있으면 자동 모드로 설정한 후 전원을 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       window = (#Window).windowControl_window
@@ -123,11 +117,10 @@
         (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
         (#AirConditioner).switch_on()
       }
-- command: 조명이 켜져 있고 밝기가 80 이상이며 선풍기가 꺼져 있을 경우 조명을 50으로 줄이고 선풍기를 켜 줘. TV가 꺼져 있고 블라인드가
-    닫혀 있으면 TV를 켜고 블라인드를 열어 줘.
+- command: "조명이 켜져 있고 밝기가 80 이상이며 선풍기가 꺼져 있을 경우 조명을 50으로 줄이고 선풍기를 켜 줘. TV가 꺼져 있고 블라인드가 닫혀 있으면 TV를 켜고 블라인드를 열어 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       light = (#Light).switch_switch
@@ -143,11 +136,10 @@
         (#Television).switch_on()
         (#Blind).blind_open()
       }
-- command: 문이 열려 있고 알람이 꺼져 있으면 알람의 사이렌을 울려 주고 커튼이 열려 있으면 커튼을 닫아 줘. 에어컨이 꺼져 있고 현재 온도가
-    30도 이상이면 에어컨을 냉방 모드로 설정한 후 켜 줘.
+- command: "문이 열려 있고 알람이 꺼져 있으면 알람의 사이렌을 울려 주고 커튼이 열려 있으면 커튼을 닫아 줘. 에어컨이 꺼져 있고 현재 온도가 30도 이상이면 에어컨을 냉방 모드로 설정한 후 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       contact = (#ContactSensor).contactSensor_contact
@@ -165,11 +157,10 @@
         (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
         (#AirConditioner).switch_on()
       }
-- command: 스피커가 재생 중이고 조명이 꺼져 있으며 커튼이 열려 있을 경우 조명을 켜고 커튼을 닫아 줘. TV가 꺼져 있고 선풍기가 꺼져
-    있을 경우 둘 다 켜 줘.
+- command: "스피커가 재생 중이고 조명이 꺼져 있으며 커튼이 열려 있을 경우 조명을 켜고 커튼을 닫아 줘. TV가 꺼져 있고 선풍기가 꺼져 있을 경우 둘 다 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       speaker_status = (#Speaker).mediaPlayback_playbackStatus
@@ -185,11 +176,10 @@
         (#Television).switch_on()
         (#Fan).switch_on()
       }
-- command: 에어컨이 난방 모드이고 현재 온도가 20도 이상이면 에어컨을 끄고 블라인드가 열려 있으면 닫아 줘. TV가 켜져 있고 조명이 켜져
-    있으며 스피커가 꺼져 있으면 스피커를 켜고 조명을 40으로 조절해 줘.
+- command: "에어컨이 난방 모드이고 현재 온도가 20도 이상이면 에어컨을 끄고 블라인드가 열려 있으면 닫아 줘. TV가 켜져 있고 조명이 켜져 있으며 스피커가 꺼져 있으면 스피커를 켜고 조명을 40으로 조절해 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       ac_mode = (#AirConditioner).airConditionerMode_airConditionerMode

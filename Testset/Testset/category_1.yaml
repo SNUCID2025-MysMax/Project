@@ -1,14 +1,14 @@
-- command: 창문을 닫아 줘.
+- command: "창문을 닫아 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       (#Window).windowControl_close()
-- command: 조명이 꺼져 있고, 온도가 33도 이상이면 조명을 켜 줘.
+- command: "조명이 꺼져 있고, 온도가 33도 이상이면 조명을 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       light_status = (#Light).switch_switch
@@ -16,38 +16,38 @@
       if ((light_status == 'off') and (temp >= 33.0)) {
         (#Light).switch_on()
       }
-- command: 알람의 음량을 높음으로 설정해 줘.
+- command: "알람의 음량을 높음으로 설정해 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       (#Alarm).alarm_setAlarmVolume('high')
-- command: 선풍기를 꺼 줘.
+- command: "선풍기를 꺼 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       (#Fan).switch_off()
-- command: 에어컨의 모드를 냉방으로 바꿔 줘.
+- command: "에어컨의 모드를 냉방으로 바꿔 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
-- command: 블라인드를 닫아 줘.
+- command: "블라인드를 닫아 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       (#Blind).blind_close()
-- command: 공기청정기를 켜 줘. 켜고 보니 공기청정기가 자동 모드면 다시 꺼 줘
+- command: "공기청정기를 켜 줘. 켜고 보니 공기청정기가 자동 모드면 다시 꺼 줘"
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       (#AirPurifier).switch_on()
@@ -55,24 +55,24 @@
       if (mode == 'auto') {
         (#AirPurifier).switch_off()
       }
-- command: 창문이 닫혀 있으면 열어 줘. 열려 있어도 열어 줘
+- command: "창문이 닫혀 있으면 열어 줘. 열려 있어도 열어 줘"
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       (#Window).windowControl_open()
-- command: 제습기를 꺼 줘.
+- command: "제습기를 꺼 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       (#Dehumidifier).switch_off()
-- command: 조명의 밝기를 80으로 설정해 줘.
+- command: "조명의 밝기를 80으로 설정해 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
     code: |-
       (#Light).switchLevel_setLevel(80, 0)

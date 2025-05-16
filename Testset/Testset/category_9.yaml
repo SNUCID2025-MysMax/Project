@@ -1,8 +1,7 @@
-- command: 매일 오전 7시에 관개 장치가 꺼져 있고 창문이 닫혀 있으면 관개 장치를 켜고 창문을 열어 줘. 이후 관개 장치가 켜지면 블라인드를
-    닫아 줘.
+- command: "매일 오전 7시에 관개 장치가 꺼져 있고 창문이 닫혀 있으면 관개 장치를 켜고 창문을 열어 줘. 이후 관개 장치가 켜지면 블라인드를 닫아 줘."
   code:
-  - name: Scenario1
-    cron: 0 7 * * *
+  - name: "Scenario1"
+    cron: "0 7 * * *"
     period: 100
     code: |-
       irrigator_on := False
@@ -17,11 +16,10 @@
         (#Blind).blind_close()
         break
       }
-- command: 실시간으로 확인하여 5초마다 토양 습도 센서의 값이 20 퍼센트 이하이면 관개 장치를 켜고, 60 퍼센트 이상이면 관개 장치를
-    꺼 줘.
+- command: "실시간으로 확인하여 5초마다 토양 습도 센서의 값이 20 퍼센트 이하이면 관개 장치를 켜고, 60 퍼센트 이상이면 관개 장치를 꺼 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 5000
     code: |-
       soil_humidity = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
@@ -30,10 +28,10 @@
       } else if (soil_humidity >= 60.0) {
         (#Irrigator).switch_off()
       }
-- command: 실시간으로 확인하여 온도가 28도 이상이면 선풍기를 켜고, 습도가 80% 이상이면 제습기를 켜 줘.
+- command: "실시간으로 확인하여 온도가 28도 이상이면 선풍기를 켜고, 습도가 80% 이상이면 제습기를 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 100
     code: |-
       temperature = (#TemperatureSensor).temperatureMeasurement_temperature
@@ -44,10 +42,10 @@
       if (humidity >= 80.0) {
         (#Dehumidifier).switch_on()
       }
-- command: 실시간으로 확인하여 조명이 켜져 있을 때마다 블라인드를 닫고, 꺼져 있으면 블라인드를 열어 줘.
+- command: "실시간으로 확인하여 조명이 켜져 있을 때마다 블라인드를 닫고, 꺼져 있으면 블라인드를 열어 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 100
     code: |-
       light_status = (#Light).switch_switch
@@ -56,10 +54,10 @@
       } else if (light_status == 'off') {
         (#Blind).blind_open()
       }
-- command: 주말에는 5초마다 펌프가 꺼져 있으면 켜고, 켜져 있으면 꺼 줘. 선풍기 속도를 10으로 설정해 줘.
+- command: "주말에는 5초마다 펌프가 꺼져 있으면 켜고, 켜져 있으면 꺼 줘. 선풍기 속도를 10으로 설정해 줘."
   code:
-  - name: Scenario1
-    cron: 0 0 * * 6,7
+  - name: "Scenario1"
+    cron: "0 0 * * 6,7"
     period: 5000
     code: |-
       weekday = (#Clock).clock_weekday
@@ -68,10 +66,10 @@
       }
       (#Fan).fanControl_setFanSpeed(10)
       (#Pump).switch_toggle()
-- command: 실시간으로 확인하여 움직임이 감지되었을 때마다 조명을 켜고, 선풍기 속도를 10 높여 줘.
+- command: "실시간으로 확인하여 움직임이 감지되었을 때마다 조명을 켜고, 선풍기 속도를 10 높여 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 100
     code: |-
       motion = (#MotionSensor).motionSensor_motion
@@ -81,11 +79,10 @@
         new_speed = current_speed + 10
         (#Fan).fanControl_setFanSpeed(new_speed)
       }
-- command: 실시간으로 확인하여 창문이 열려 있으면 블라인드를 닫고, 창문이 닫혀 있으면 커튼을 열어 줘. 또한 실시간으로 확인하여 알람의
-    사이렌이 울리고 있지 않다면 즉시 알람의 사이렌을 울려 줘.
+- command: "실시간으로 확인하여 창문이 열려 있으면 블라인드를 닫고, 창문이 닫혀 있으면 커튼을 열어 줘. 또한 실시간으로 확인하여 알람의 사이렌이 울리고 있지 않다면 즉시 알람의 사이렌을 울려 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 100
     code: |-
       window_status = (#Window).windowControl_window
@@ -98,11 +95,10 @@
       if ((alarm_status != 'siren') and (alarm_status != 'both')) {
         (#Alarm).alarm_siren()
       }
-- command: 매주 금요일 오후 6시에 조명이 켜져 있으면 밝기를 30으로 낮추고, TV가 꺼져 있으면 TV를 켜 줘. 이후 선풍기가 꺼져 있으면
-    선풍기도 켜 줘.
+- command: "매주 금요일 오후 6시에 조명이 켜져 있으면 밝기를 30으로 낮추고, TV가 꺼져 있으면 TV를 켜 줘. 이후 선풍기가 꺼져 있으면 선풍기도 켜 줘."
   code:
-  - name: Scenario1
-    cron: 0 18 * * 5
+  - name: "Scenario1"
+    cron: "0 18 * * 5"
     period: 0
     code: |-
       if ((#Light).switch_switch == 'on') {
@@ -114,10 +110,10 @@
       if ((#Fan).switch_switch == 'off') {
         (#Fan).switch_on()
       }
-- command: 창문이 닫혔을 때부터 5초마다 블라인드를 열었다 닫았다 반복해 줘.
+- command: "창문이 닫혔을 때부터 5초마다 블라인드를 열었다 닫았다 반복해 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 5000
     code: |-
       triggered := False
@@ -135,11 +131,10 @@
             state = 0
         }
       }
-- command: 매일 아침 8시에 스피커가 꺼져 있으면 스피커를 켜고 ‘오늘 날씨입니다’라고 말해 줘. 이후 조명이 꺼져 있으면 켜고 블라인드를
-    열어 줘.
+- command: "매일 아침 8시에 스피커가 꺼져 있으면 스피커를 켜고 ‘오늘 날씨입니다’라고 말해 줘. 이후 조명이 꺼져 있으면 켜고 블라인드를 열어 줘."
   code:
-  - name: Scenario1
-    cron: 0 8 * * *
+  - name: "Scenario1"
+    cron: "0 8 * * *"
     period: 0
     code: |-
       if ((#Speaker).switch_switch == 'off') {

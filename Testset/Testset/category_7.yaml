@@ -1,7 +1,7 @@
-- command: 실시간으로 확인해서 토양 습도가 25% 이하로 떨어질 때마다 급수기를 켜고 '급수 시작'이라고 스피커로 출력해줘.
+- command: "실시간으로 확인해서 토양 습도가 25% 이하로 떨어질 때마다 급수기를 켜고 '급수 시작'이라고 스피커로 출력해줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 100
     code: |-
       prev_soil := (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
@@ -11,10 +11,10 @@
         (#Speaker).mediaPlayback_speak('급수 시작')
       }
       prev_soil = current_soil
-- command: 1초마다 상태를 확인해서 온도가 35도를 초과할 때마다 환풍기를 켜 줘.
+- command: "1초마다 상태를 확인해서 온도가 35도를 초과할 때마다 환풍기를 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 1000
     code: |-
       prev_temp := (#TemperatureSensor).temperatureMeasurement_temperature
@@ -23,10 +23,10 @@
         (#Fan).switch_on()
       }
       prev_temp = current_temp
-- command: 3초마다 일조량을 확인해서 200룩스 이하로 떨어지는 순간 조명을 켜 줘.
+- command: "3초마다 일조량을 확인해서 200룩스 이하로 떨어지는 순간 조명을 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 3000
     code: |-
       prev_light := (#LightSensor).lightLevel_light
@@ -35,10 +35,10 @@
         (#Light).switch_on()
       }
       prev_light = current_light
-- command: 문이 열릴 때마다 알람의 사이렌을 울리고 조명을 켜 줘. 실시간으로 확인해서 상태를 계속 검사해서 반응해 줘.
+- command: "문이 열릴 때마다 알람의 사이렌을 울리고 조명을 켜 줘. 실시간으로 확인해서 상태를 계속 검사해서 반응해 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 100
     code: |-
       prev_contact := (#ContactSensor).contactSensor_contact
@@ -48,10 +48,10 @@
         (#Light).switch_on()
       }
       prev_contact = current_contact
-- command: 현재 날씨에서 비가 감지될 때마다 관개 장치를 꺼 주고 '비가 감지되었습니다'라고 스피커로 출력해줘. 감지는 1분에 한번씩만 하자.
+- command: "현재 날씨에서 비가 감지될 때마다 관개 장치를 꺼 주고 '비가 감지되었습니다'라고 스피커로 출력해줘. 감지는 1분에 한번씩만 하자."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 60000
     code: |-
       prev_weather := (#WeatherProvider).weatherProvider_weather
@@ -61,10 +61,10 @@
         (#Speaker).mediaPlayback_speak('비가 감지되었습니다')
       }
       prev_weather = current_weather
-- command: 실시간으로 확인해서 거실 창문이 열릴 때마다 블라인드를 닫아 줘.
+- command: "실시간으로 확인해서 거실 창문이 열릴 때마다 블라인드를 닫아 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 100
     code: |-
       prev_window := (#Window).windowControl_window
@@ -73,10 +73,10 @@
         (#Blind).blind_close()
       }
       prev_window = current_window
-- command: 조명이 켜질 때마다 커튼을 동시에 열어 줘. 실시간으로 조명을 체크해야 해.
+- command: "조명이 켜질 때마다 커튼을 동시에 열어 줘. 실시간으로 조명을 체크해야 해."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 100
     code: |-
       prev_light := (#Light).switch_switch
@@ -85,10 +85,10 @@
         (#Curtain).curtain_open()
       }
       prev_light = current_light
-- command: 2초마다 상태를 확인해서 TV가 켜질 때마다 스피커도 켜 줘.
+- command: "2초마다 상태를 확인해서 TV가 켜질 때마다 스피커도 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 2000
     code: |-
       prev_tv := (#Television).switch_switch
@@ -97,10 +97,10 @@
         (#Speaker).switch_on()
       }
       prev_tv = current_tv
-- command: 현관 문이 열릴 때마다 즉시 알람의 경광등을 켜 줘. 확인은 실시간으로 하구.
+- command: "현관 문이 열릴 때마다 즉시 알람의 경광등을 켜 줘. 확인은 실시간으로 하구."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 100
     code: |-
       prev_door := (#DoorLock).doorControl_door
@@ -109,10 +109,10 @@
         (#Alarm).alarm_strobe()
       }
       prev_door = current_door
-- command: 1초마다 공기청정기 상태를 확인해서 꺼지는 순간 자동 모드로 다시 켜 줘.
+- command: "1초마다 공기청정기 상태를 확인해서 꺼지는 순간 자동 모드로 다시 켜 줘."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: 1000
     code: |-
       prev_purifier := (#AirPurifier).switch_switch
