@@ -1,0 +1,8 @@
+- command: 스피커가 지원하는 명령어를 스피커로 출력해줘.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      commands = (#Speaker).mediaPlayback_supportedPlaybackCommands
+      (#Speaker).mediaPlayback_speak(commands)

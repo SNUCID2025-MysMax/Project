@@ -14,7 +14,7 @@ Device AirConditioner:
 	Attributes:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		airConditionerMode_airConditionerMode (airConditionerModeEnum): Current mode of the air conditioner
-		airConditionerMode_supportedAcModes (list[airConditionerModeEnum]): Supported states for this air conditioner to be in: "str|..."
+		airConditionerMode_supportedAcModes (STRING): Supported states for this air conditioner to be in: "str|..."
 		airConditionerMode_targetTemperature (DOUBLE): Current temperature status of the air conditioner
 	---
 	Methods:
@@ -62,7 +62,7 @@ Device AirPurifier:
 	Attributes:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		airPurifierFanMode_airPurifierFanMode (airPurifierFanModeEnum): The current mode of the air purifier fan, an enum of auto, low, medium, high, sleep, quiet or windFree
-		airPurifierFanMode_supportedAirPurifierFanModes (list[airPurifierFanModeEnum]): Supported states for this air purifier fan to be in: "str|..."
+		airPurifierFanMode_supportedAirPurifierFanModes (STRING): Supported states for this air purifier fan to be in: "str|..."
 	---
 	Methods:
 		switch_off() -> VOID:
@@ -94,7 +94,7 @@ Device AirQualityDetector:
 		relativeHumidityMeasurement_humidity (DOUBLE): A numerical representation of the relative humidity measurement taken by the device
 		tvocMeasurement_tvocLevel (DOUBLE): The level of total volatile organic compounds detected
 		temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature
-		temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value:"min|max", example:"-20|50"
+		temperatureMeasurement_temperatureRange (STRING): Constraints on the temperature value:"min|max", example:"-20|50"
 	"""
 
 Device Alarm:
@@ -213,7 +213,7 @@ Device Button:
 	Attributes:
 		button_button (buttonEnum): The state of the buttons
 		button_numberOfButtons (INTEGER): The number of buttons on the device
-		button_supportedButtonValues (list[buttonEnum]): List of valid button attribute values: "str|..."
+		button_supportedButtonValues (STRING): List of valid button attribute values: "str|..."
 	"""
 
 Device Buttonx4:
@@ -255,7 +255,7 @@ Device Buttonx4:
 		buttonx4_button3 (buttonEnum): The state of the button3
 		buttonx4_button4 (buttonEnum): The state of the button4
 		buttonx4_numberOfButtons (INTEGER): The number of buttons on the device
-		buttonx4_supportedButtonValues (list[buttonEnum]): List of valid button attribute values: "str|..."
+		buttonx4_supportedButtonValues (STRING): List of valid button attribute values: "str|..."
 	"""
 
 Device Calculator:
@@ -352,7 +352,7 @@ Device Charger:
 		voltageMeasurement_voltage (DOUBLE): A number representing the current voltage measured
 		currentMeasurement_current (DOUBLE): A number representing the current measured.
 		chargingState_chargingState (chargingStateEnum): The current charging state of the device
-		chargingState_supportedChargingStates (list[chargingStateEnum]): The list of charging states that the device supports. Optional, defaults to all states if not set.: "str|..."
+		chargingState_supportedChargingStates (STRING): The list of charging states that the device supports. Optional, defaults to all states if not set.: "str|..."
 	"""
 
 Device Clock:
@@ -400,8 +400,8 @@ Device ContactSensor:
 	---
 	Enums:
 		contactEnum (Enum):
-			open: The value if open
-			closed: The value if closed
+			open: The value if open(No contacted)
+			closed: The value if closed(Contacted)
 	---
 	Attributes:
 		contactSensor_contact (contactEnum): The current state of the contact sensor
@@ -423,7 +423,7 @@ Device Curtain:
 	---
 	Attributes:
 		curtain_curtain (curtainEnum): A string representation of whether the curtain is open or closed
-		curtain_supportedCurtainCommands (list[curtainEnum]): Curtain commands supported by this instance of Curtain: "str|..."
+		curtain_supportedCurtainCommands (STRING): Curtain commands supported by this instance of Curtain: "str|..."
 	---
 	Methods:
 		curtain_close() -> VOID:
@@ -805,7 +805,7 @@ Device Light:
 		colorControl_hue (DOUBLE): ``0-100`` (percent)
 		colorControl_saturation (DOUBLE): ``0-100`` (percent)
 		switchLevel_level (INTEGER): A number that represents the current level, usually ``0-100`` in percent
-		switchLevel_levelRange (DICT): Constraints on the level value:"min|max",example:"30|60"
+		switchLevel_levelRange (STRING): Constraints on the level value:"min|max",example:"30|60"
 	---
 	Methods:
 		switch_off() -> VOID:
@@ -817,11 +817,11 @@ Device Light:
 		switch_toggle() -> VOID:
 			Toggle a switch
 	
-		colorControl_setColor(color: DICT) -> VOID:
+		colorControl_setColor(color: STRING) -> VOID:
 			Sets the color based on the values passed in with the given map
 	
 			Args:
-				color (DICT): The color map supports the following key/value pairs:"RED|GREEN|BLUE", example:"255|255|255"
+				color (STRING): The color map supports the following key/value pairs:"RED|GREEN|BLUE", example:"255|255|255"
 	
 		colorControl_setHue(hue: DOUBLE) -> VOID:
 			Set the hue value of the color
@@ -921,7 +921,7 @@ Device Pump:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		pumpOperationMode_currentOperationMode (pumpOperationModeEnum): The current effective operation mode of the pump
 		pumpOperationMode_operationMode (pumpOperationModeEnum): The operation mode of the pump
-		pumpOperationMode_supportedOperationModes (list[pumpOperationModeEnum]): Supported operation modes for this device to be in: "str|..."
+		pumpOperationMode_supportedOperationModes (STRING): Supported operation modes for this device to be in: "str|..."
 		pump_pump (pumpEnum): A string representation of whether the pump is open or closed
 	---
 	Methods:
@@ -1056,7 +1056,7 @@ Device Shade:
 	---
 	Attributes:
 		windowShadeLevel_shadeLevel (INTEGER): A number that represents the current level as a function of being open, ``0-100`` in percent; 0 representing completely closed, and 100 representing completely open.
-		windowShade_supportedWindowShadeCommands (list[windowShadeEnum]): Window shade commands supported by this instance of Window Shade: "str|..."
+		windowShade_supportedWindowShadeCommands (STRING): Window shade commands supported by this instance of Window Shade: "str|..."
 		windowShade_windowShade (windowShadeEnum): A string representation of whether the window shade is open or closed
 	---
 	Methods:
@@ -1126,7 +1126,7 @@ Device SmartPlug:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		voltageMeasurement_voltage (DOUBLE): A number representing the current voltage measured
 		powerMeter_power (DOUBLE): A number representing the current power consumption. Check the device documentation for how this value is reported - unit: Watts
-		powerMeter_powerConsumption (DICT): energy and power consumption during specific time period:"unit|Wh", example:"kWh|30"
+		powerMeter_powerConsumption (STRING): energy and power consumption during specific time period:"unit|Wh", example:"kWh|30"
 		currentMeasurement_current (DOUBLE): A number representing the current measured.
 	---
 	Methods:
@@ -1196,7 +1196,7 @@ Device Speaker:
 	Attributes:
 		switch_switch (switchEnum): A string representation of whether the switch is on or off
 		mediaPlayback_playbackStatus (mediaPlaybackEnum): Status of the media playback
-		mediaPlayback_supportedPlaybackCommands (list[mediaPlaybackEnum]): Media playback commands which are supported: "str|..."
+		mediaPlayback_supportedPlaybackCommands (STRING): Media playback commands which are supported: "str|..."
 	---
 	Methods:
 		switch_off() -> VOID:
@@ -1378,29 +1378,7 @@ Device TemperatureSensor:
 	---
 	Attributes:
 		temperatureMeasurement_temperature (DOUBLE): A number that usually represents the current temperature
-		temperatureMeasurement_temperatureRange (DICT): Constraints on the temperature value:"min|max", example:"-20|50"
-	"""
-
-Device TestDevice:
-	"""
-	Tags: #TestDevice
-	---
-	Enums:
-		testSkillEnum (Enum):
-			enum1
-			enum2
-			enum3
-	---
-	Attributes:
-		testSkill_testSkillValue (STRING): testSkillValue
-	---
-	Methods:
-		testSkill_testSkillFunction(testArgument: STRING) -> STRING:
-			testSkillFunction
-	
-			Args:
-				testArgument (STRING): testArgument
-	
+		temperatureMeasurement_temperatureRange (STRING): Constraints on the temperature value:"min|max", example:"-20|50"
 	"""
 
 Device Valve:
@@ -1578,30 +1556,5 @@ Device Timer:
 	
 			Args:
 				name (STRING): The time name
-	
-	"""
-
-Device ManagerThing:
-	"""
-	Tags: #ManagerThing
-	---
-	Methods:
-		manager_add_thing(parameter: STRING, client_id: STRING, name: STRING) -> STRING:
-			Add staff thing - Return error string
-	
-			Args:
-				parameter (STRING): Staff thing's parameter
-				client_id (STRING): Requester's client id
-				name (STRING): Staff thing's name
-	
-		manager_delete_thing(name: STRING, client_id: STRING) -> STRING:
-			Delete staff thing - Return error string
-	
-			Args:
-				name (STRING): Staff thing's name
-				client_id (STRING): Requester's client id
-	
-		manager_discover() -> STRING:
-			Discover local devices - Return device list with json format
 	
 	"""
