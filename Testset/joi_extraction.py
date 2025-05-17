@@ -36,7 +36,7 @@ def parse_scenarios_with_command(script: str):
 
         scenarios.append({
             # "name": QuotedString(name),
-            "name": f'Scenario{num}',
+            "name": QuotedString(f'Scenario{num}'),
             "cron": QuotedString(cron),
             "period": period,
             "code": LiteralString(code)
