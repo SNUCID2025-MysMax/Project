@@ -1,14 +1,16 @@
 - command: "매일 오전 9시에 조명이 꺼져 있고 창문이 닫혀 있으면 블라인드를 열어 줘. 이후 창문이 열리면 5초 기다렸다가 알람을 울려 줘. 알람이 울린 후 10초 동안 창문이 닫히지 않으면 2초마다 조명을 깜빡여 줘. 블라인드를 열었을 때부터 이때까지 문이 두 번 이상 열렸다 닫혔을 경우, 첫 번째로 열린 시간보다 두 번째로 열린 시간이 길면 에어컨을 꺼 줘."
   code:
-  - name: Scenario1
+  - name: "Scenario1"
     cron: "0 9 * * *"
     period: 100
     code: |
       phase := 0
-      door_open_1 := 0.0
-      door_open_2 := 0.0
       open_count := 0
+      open_time_1 := 0.0
+      open_time_2 := 0.0
       blind_open_time := 0.0
+      alarm_triggered := false
+      blink_start := 0.0
 
       if (phase == 0) {
         if ((#Light).switch_switch == 'off' and (#Window).windowControl_window == 'closed')) {
@@ -19,35 +21,38 @@
       }
 
       if (phase == 1) {
-        if ((#ContactSensor).contactSensor_contact == 'open') {
+        if ((#Window).windowControl_window == 'open') {
           open_count = open_count + 1
           if (open_count == 1) {
-            door_open_1 = (#Clock).clock_timestamp
+            open_time_1 = (#Clock).clock_timestamp
           } else if (open_count == 2) {
-            door_open_2 = (#Clock).clock_timestamp
+            open_time_2 = (#Clock).clock_timestamp
           }
-          wait until((#ContactSensor).contactSensor_contact == 'closed')
-        }
-        if ((#Window).windowControl_window == 'open') {
           (#Clock).clock_delay(0, 0, 5)
           (#Alarm).alarm_siren()
+          blink_start = (#Clock).clock_timestamp
           phase = 2
         }
       }
 
       if (phase == 2) {
-        wait until((#Clock).clock_delay(0, 0, 10))
-        if ((#Window).windowControl_window == 'open') {
+        if (((#Clock).clock_timestamp - blink_start >= 10.0) and (#Window).windowControl_window == 'open')) {
           (#Light).switch_toggle()
           (#Clock).clock_delay(0, 0, 2)
           (#Light).switch_toggle()
         }
+        if ((#Window).windowControl_window == 'closed') {
+          phase = 3
+        }
+      }
 
-        if (open_count >= 2 and door_open_2 > door_open_1) {
+      if (phase == 3) {
+        if ((open_count >= 2) and (open_time_2 > open_time_1)) {
           (#AirConditioner).switch_off()
         }
         break
       }
+
 - command: "문이 열리면 5초 대기 후 조명을 켜고, 조명이 켜진 후 10초 간격으로 창문을 닫았다 열었다 반복해 줘. 만약 온도가 28도 이상일 때 이 과정을 시작했다면, 반복이 3번 끝난 후 멈추고, 선풍기를 켜고 10초 간격으로 알람을 1초간 두 번 울려 줘. 단, 문이 다시 닫히면 이 모든 과정을 즉시 중단하고 조명만 꺼 줘."
   code:
   - name: Scenario1
@@ -59,7 +64,7 @@
       initial_temp := 0.0
 
       if (step == 0) {
-        wait until((#ContactSensor).contactSensor_contact == 'open')
+        wait until((#Window).windowControl_window == 'open')
         initial_temp = (#TemperatureSensor).temperatureMeasurement_temperature
         (#Clock).clock_delay(0, 0, 5)
         (#Light).switch_on()
@@ -67,7 +72,7 @@
       }
 
       if (step == 1) {
-        if ((#ContactSensor).contactSensor_contact == 'closed') {
+        if ((#Window).windowControl_window == 'closed') {
           (#Light).switch_off()
           break
         }
@@ -118,7 +123,7 @@
       }
 
       if (stage == 2) {
-        wait until((#ContactSensor).contactSensor_contact == 'closed')
+        wait until((#Window).windowControl_window == 'closed')
         (#Clock).clock_delay(0, 0, 5)
         (#Alarm).alarm_siren()
         alarm_time = (#Clock).clock_timestamp
@@ -127,7 +132,7 @@
 
       if (stage == 3) {
         if ((#Clock).clock_timestamp - alarm_time < 60.0)) {
-          if ((#ContactSensor).contactSensor_contact == 'open') {
+          if ((#Window).windowControl_window == 'open') {
             (#Light).switch_toggle()
             (#Clock).clock_delay(0, 0, 1)
             (#Light).switch_toggle()
@@ -193,7 +198,7 @@
       count := 0
 
       if (step == 0) {
-        if ((#Light).switch_switch == 'on' and (#Window).windowControl_window == 'closed' and (#ContactSensor).contactSensor_contact == 'open') {
+        if ((#Light).switch_switch == 'on' and (#Window).windowControl_window == 'closed' and (#Window).windowControl_window == 'open') {
           step = 1
         }
       }
@@ -266,7 +271,7 @@
       }
 
       if (phase == 1) {
-        if ((#ContactSensor).contactSensor_contact == 'open') {
+        if ((#Window).windowControl_window == 'open') {
           (#Curtain).curtain_close()
           break
         }
@@ -352,11 +357,11 @@
       }
 
       if (phase == 1) {
-        if ((#ContactSensor).contactSensor_contact != door_prev) {
-          if ((#ContactSensor).contactSensor_contact == 'closed') {
+        if ((#Window).windowControl_window != door_prev) {
+          if ((#Window).windowControl_window == 'closed') {
             door_events = door_events + 1
           }
-          door_prev = (#ContactSensor).contactSensor_contact
+          door_prev = (#Window).windowControl_window
         }
 
         if (door_events >= 2) {
@@ -430,7 +435,7 @@
       motion_timer := 0.0
 
       if (step == 0) {
-        wait until((#Light).switch_switch == 'off' and (#Curtain).curtain_curtain == 'closed' and (#ContactSensor).contactSensor_contact == 'open')
+        wait until((#Light).switch_switch == 'off' and (#Curtain).curtain_curtain == 'closed' and (#Window).windowControl_window == 'open')
         (#Clock).clock_delay(0, 0, 5)
         (#Light).switch_on()
         (#Window).windowControl_open()

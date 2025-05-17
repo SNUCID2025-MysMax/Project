@@ -76,9 +76,9 @@ with open("./test.txt", "r", encoding="utf-8") as f:
 
 # # print(json.dumps(parse_scenarios(dsl_code), indent=2))
 with open("./test.yaml", "w", encoding="utf-8") as f:
-    # yaml.dump([parse_scenarios(dsl_codes)], f, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
-    yaml.dump([parse_scenarios_with_command(dsl_code.strip()) for dsl_code in dsl_codes.split("------")],
-               f, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
+    yaml.dump([parse_scenarios(dsl_codes)], f, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
+    # yaml.dump([parse_scenarios_with_command(dsl_code.strip()) for dsl_code in dsl_codes.split("------")],
+    #            f, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
 
 # --------------------------------------------------------------------------------------#
 # yaml 속성을 LiteralString으로 변환
