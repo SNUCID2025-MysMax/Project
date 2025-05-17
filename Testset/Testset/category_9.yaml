@@ -4,17 +4,14 @@
     cron: "0 7 * * *"
     period: 100
     code: |-
-      irrigator_on := False
-      if (irrigator_on == False) {
-        if (((#Irrigator).switch_switch == 'off') and ((#Window).windowControl_window == 'closed')) {
-            (#Irrigator).switch_on()
-            (#Window).windowControl_open()
-            irrigator_on = True
-        }
-      }
-      if ((#Irrigator).switch_switch == 'on') {
+      name = "Scenario1"
+      cron = "0 7 * * *"
+      period = -1
+      if ((#Irrigator).switch_switch == 'off' and (#Window).windowControl_window == 'closed') {
+        (#Irrigator).switch_on()
+        (#Window).windowControl_open()
+        wait until((#Irrigator).switch_switch == 'on')
         (#Blind).blind_close()
-        break
       }
 - command: "실시간으로 확인하여 5초마다 토양 습도 센서의 값이 20 퍼센트 이하이면 관개 장치를 켜고, 60 퍼센트 이상이면 관개 장치를 꺼 줘."
   code:
@@ -54,7 +51,7 @@
       } else if (light_status == 'off') {
         (#Blind).blind_open()
       }
-- command: "주말에는 5초마다 펌프가 꺼져 있으면 켜고, 켜져 있으면 꺼 줘. 선풍기 속도를 10으로 설정해 줘."
+- command: "주말에는 5초마다 펌프가 꺼져 있으면 켜고, 켜져 있으면 꺼 주고, 선풍기 속도를 10으로 설정해 줘."
   code:
   - name: "Scenario1"
     cron: "0 0 * * 6,7"
@@ -95,7 +92,7 @@
       if ((alarm_status != 'siren') and (alarm_status != 'both')) {
         (#Alarm).alarm_siren()
       }
-- command: "매주 금요일 오후 6시에 조명이 켜져 있으면 밝기를 30으로 낮추고, TV가 꺼져 있으면 TV를 켜 줘. 이후 선풍기가 꺼져 있으면 선풍기도 켜 줘."
+- command: "매주 금요일 오후 6시에 조명이 켜져 있으면 밝기를 30으로 낮추고, TV가 꺼져 있으면 TV를 켜 줘. 선풍기가 꺼져 있으면 선풍기도 켜 줘."
   code:
   - name: "Scenario1"
     cron: "0 18 * * 5"
@@ -140,8 +137,8 @@
       if ((#Speaker).switch_switch == 'off') {
         (#Speaker).switch_on()
         (#Speaker).mediaPlayback_speak('오늘 날씨입니다')
-      }
-      if ((#Light).switch_switch == 'off') {
-        (#Light).switch_on()
-        (#Blind).blind_open()
+        if ((#Light).switch_switch == 'off') {
+          (#Light).switch_on()
+          (#Blind).blind_open()
+        }
       }

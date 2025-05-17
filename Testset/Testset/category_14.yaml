@@ -1,0 +1,116 @@
+- command: "매일 선풍기가 꺼져 있으면 선풍기를 꺼 줘. 또한 그 때마다 선풍기를 꺼 줘"
+  code:
+  - name: Scenario1
+    cron: "0 0 * * *"
+    period: 0
+    code: |
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).switch_off()
+      }
+- command: "휴일에는 관개 장치가 꺼지면 관개 장치를 꺼 줘."
+  code:
+  - name: Scenario1
+    cron: "0 0 * * *"
+    period: 0
+    code: |
+      if ((#Clock).clock_isHoliday == true) {
+        if ((#Irrigator).switch_switch == 'off') {
+          (#Irrigator).switch_off()
+        }
+      }
+- command: "블라인드가 닫힌 상태에서 또 닫히면 전등을 켜 줘"
+  code:
+  - name: Scenario1
+    cron: ""
+    period: -1
+    code: |
+      previous_closed := false
+      if ((#Blind).blind_blind == 'closed') {
+        if (previous_closed == true) {
+          (#Light).switch_on()
+        }
+        previous_closed = true
+      } else {
+        previous_closed = false
+      }
+- command: "매일 관개 장치가 꺼져 있으면 10초간 기다리는 것을 반복해 줘"
+  code:
+  - name: Scenario1
+    cron: "0 0 * * *"
+    period: 10000
+    code: |
+      if ((#Irrigator).switch_switch == 'off') {
+        (#Clock).clock_delay(0, 0, 10)
+      }
+- command: "선풍기가 꺼져 있는데 움직임이 감지되면 그 때부터 10초 간격으로 전등이 꺼져 있으면 끄고, 켜져 있으면 켜 줘"
+  code:
+  - name: Scenario1
+    cron: ""
+    period: 1000
+    code: |
+      if ((#Fan).switch_switch == 'off') {
+        wait until((#MotionSensor).motionSensor_motion == 'active')
+        while (true) {
+          (#Clock).clock_delay(0, 0, 10)
+          if ((#Light).switch_switch == 'on') {
+            (#Light).switch_on()
+          } else {
+            (#Light).switch_off()
+          }
+        }
+      }
+- command: "1초마다 확인하여 온도가 30도 미만이면서 25도 이상일 때 에어컨을 켜 줘."
+  code:
+  - name: Scenario1
+    cron: ""
+    period: 1000
+    code: |
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).switch_on()
+      }
+- command: "주말 오전에, 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않으면 조명이 켜져 있으면 조명을 켜 줘."
+  code:
+  - name: Scenario1
+    cron: "0 9 * * 6,0"
+    period: 100
+    code: |
+      if ((#Door).doorControl_door == 'open') {
+        wait until((#MotionSensor).motionSensor_motion != 'active')
+        (#Clock).clock_delay(0, 0, 10)
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_on()
+        }
+      }
+- command: "실시간으로 확인하여 알람이 켜져 있지 않을 때마다 10초 대기 후 조명의 밝기를 현재 밝기로 맞춰줘."
+  code:
+  - name: Scenario1
+    cron: ""
+    period: 100
+    code: |
+      if ((#Alarm).alarm_alarm != 'siren') {
+        (#Clock).clock_delay(0, 0, 10)
+        level = (#Light).switchLevel_level
+        (#Light).switchLevel_setLevel(level, 0)
+      }
+- command: "TV가 꺼져 있으면 10초 대기 후 다시 TV를 확인하여 켜져 있으면 TV를 켜 줘."
+  code:
+  - name: Scenario1
+    cron: ""
+    period: -1
+    code: |
+      if ((#Television).switch_switch == 'off') {
+        (#Clock).clock_delay(0, 0, 10)
+        if ((#Television).switch_switch == 'on') {
+          (#Television).switch_on()
+        }
+      }
+- command: "월, 수, 금에 실시간으로 확인하여 창문이 열려 있지 않으면 창문을 닫아 줘."
+  code:
+  - name: Scenario1
+    cron: "0 9 * * 1,3,5"
+    period: 100
+    code: |
+      if ((#Window).windowControl_window != 'open') {
+        (#Window).windowControl_close()
+      }

@@ -1,4 +1,4 @@
-- command: "5초마다 토양 습도를 측정해서 30% 이하이면 급수기를 켜 줘. 만약 그 때 온도가 35도 이상이 되면 급수기를 끄고 반복도 종료해 줘."
+- command: "5초마다 토양 습도를 측정해서 30% 이하이면 급수기를 켜 줘. 만약 그 때 온도가 35도 이상이면 급수기를 끄고 반복도 종료해 줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -20,6 +20,7 @@
     period: 3000
     code: |-
       count := 0
+
       if (count >= 10) {
         break
       }
@@ -93,6 +94,7 @@
     period: 3000
     code: |-
       volume := 0
+      
       if (volume >= 5) {
         motion = (#MotionSensor).motionSensor_motion
         if (motion == 'active') {

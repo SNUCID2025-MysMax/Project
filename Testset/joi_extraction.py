@@ -26,6 +26,7 @@ def parse_scenarios_with_command(script: str):
     parts = [part.strip() for part in script.strip().split('---') if part.strip()]
     scenarios = []
 
+    num = 1
     for part in parts:
         lines = part.strip().splitlines()
         name = lines[0].split('=', 1)[1].strip().strip('"')
@@ -34,14 +35,16 @@ def parse_scenarios_with_command(script: str):
         code = "\n".join(lines[3:]).strip() + "\n"  # 줄바꿈 포함시켜 | 출력 유도
 
         scenarios.append({
-            "name": name,
-            "cron": cron,
+            # "name": QuotedString(name),
+            "name": f'Scenario{num}',
+            "cron": QuotedString(cron),
             "period": period,
             "code": LiteralString(code)
         })
+        num += 1
 
     return {
-      "command": command,
+      "command": QuotedString(command),
       "code": scenarios
       }
 
@@ -57,8 +60,8 @@ def parse_scenarios(script: str):
         code = "\n".join(lines[3:]).strip() + "\n"  # 줄바꿈 포함시켜 | 출력 유도
 
         scenarios.append({
-            "name": name,
-            "cron": cron,
+            "name": QuotedString(name),
+            "cron": QuotedString(cron),
             "period": period,
             "code": LiteralString(code)
         })
@@ -67,19 +70,40 @@ def parse_scenarios(script: str):
       "code": scenarios
     }
 
-# dsl_code = '''
-# 에어컨이 지원하는 모드를 스피커로 출력해줘
-# name = "Scenario1"
-# cron = ""
-# period = -1
-# modes_str = (#AirConditioner).airConditionerMode_supportedAcModes
-# (#Speaker).mediaPlayback_speak(modes_str)
-# '''
+
+with open("./test.txt", "r", encoding="utf-8") as f:
+    dsl_codes = f.read()
 
 # # print(json.dumps(parse_scenarios(dsl_code), indent=2))
-# with open("./test.yaml", "w", encoding="utf-8") as f:
-#     yaml.dump([parse_scenarios_with_command(dsl_code)], f, indent=2, allow_unicode=True, sort_keys=False)
-# # print(yaml.dump(parse_scenarios(dsl_code), indent=2, allow_unicode=True, sort_keys=False))
+with open("./test.yaml", "w", encoding="utf-8") as f:
+    # yaml.dump([parse_scenarios(dsl_codes)], f, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
+    yaml.dump([parse_scenarios_with_command(dsl_code.strip()) for dsl_code in dsl_codes.split("------")],
+               f, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
+
+# --------------------------------------------------------------------------------------#
+# yaml 속성을 LiteralString으로 변환
+def print_yaml(file):
+  with open(file, "r", encoding="utf-8") as f:
+    data = yaml.safe_load(f)
+    result = []
+    for item in data:
+      s = ""
+      s += item['command'] + "\n"
+      sub = []
+      for i in item['code']:
+        k = ""
+        k += f"name = \"{i['name']}\"\n"
+        k += f"cron = \"{i['cron']}\"\n"
+        k += f"period = {i['period']}\n"
+        k += i['code'].strip() + "\n"
+        sub.append(k)
+      s += "---\n".join(sub)
+      # print(item['code'][0]['code'].strip())
+      result.append(s)
+    print('\n'.join(result))
+print_yaml("./Testset/category_13.yaml")
+
+# --------------------------------------------------------------------------------------#
 
 # # 줄바꿈 변환
 # def process_fields(data, quote_fields, literal_fields):

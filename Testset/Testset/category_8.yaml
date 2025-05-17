@@ -16,7 +16,7 @@
         }
         (#Irrigator).switch_toggle()
       }
-- command: "온도가 30도를 초과하는 순간 블라인드를 닫고, 이후 5초마다 알람의 사이렌을 울려 줘."
+- command: "온도가 30도를 초과하면 블라인드를 닫고, 이후 5초마다 알람의 사이렌을 울려 줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -46,7 +46,7 @@
       if (active == True) {
         (#Alarm).alarm_off()
       }
-- command: "일조량이 200룩스 이하가 되는 순간부터 4초마다 조명을 켜고, 2초 후에 꺼 주는 동작을 반복해 줘."
+- command: "일조량이 200룩스 이하가 되면 4초마다 조명을 켜고, 2초 후에 꺼 주는 동작을 반복해 줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -80,7 +80,7 @@
         }
         (#Fan).switch_toggle()
       }
-- command: "조명이 켜지는 순간 블라인드를 닫고, 이후 2초마다 커튼을 열었다 닫았다 반복해 줘."
+- command: "조명이 켜지면 블라인드를 닫고, 이후 2초마다 커튼을 열었다 닫았다 반복해 줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -97,7 +97,7 @@
         (#Clock).clock_delay(0, 0, 1)
         (#Curtain).curtain_close()
       }
-- command: "TV가 켜진 첫 순간부터 5초마다 스피커를 켜고 3초 후에 끄는 동작을 반복해 줘."
+- command: "TV가 처음 켜지면 5초마다 스피커를 켜고 3초 후에 끄는 동작을 반복해 줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -113,7 +113,7 @@
         (#Clock).clock_delay(0, 0, 3)
         (#Speaker).switch_off()
       }
-- command: "공기청정기가 꺼지는 순간부터 2초마다 ‘공기청정기를 켜 주세요’라고 두 번 반복해서 스피커로 출력해줘."
+- command: "공기청정기가 꺼지면 2초마다 ‘공기청정기를 켜 주세요’라고 두 번 반복해서 스피커로 출력해줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -128,7 +128,7 @@
         (#Speaker).mediaPlayback_speak('공기청정기를 켜 주세요')
         (#Speaker).mediaPlayback_speak('공기청정기를 켜 주세요')
       }
-- command: "창문이 열리는 순간 조명을 꺼 주고, 이후 1초마다 블라인드를 10퍼센트 씩 내려 줘."
+- command: "창문이 열리면 조명을 꺼 주고, 이후 1초마다 블라인드를 10퍼센트 씩 내려 줘."
   code:
   - name: "Scenario1"
     cron: ""
