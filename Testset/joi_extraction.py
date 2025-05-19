@@ -101,7 +101,7 @@ def print_yaml(file):
       # print(item['code'][0]['code'].strip())
       result.append(s)
     print('\n'.join(result))
-print_yaml("./Testset/category_13.yaml")
+#print_yaml("./Testset/category_13.yaml")
 
 # --------------------------------------------------------------------------------------#
 
