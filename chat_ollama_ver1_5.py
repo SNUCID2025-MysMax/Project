@@ -13,6 +13,8 @@ import ollama
 
 with open("./Grammar/SoP_Lang_Description.md", "r") as f:
     description = f.read()
+with open("./Grammar/grammar_ver1_5_1_inst.md", "r") as f:
+    inst = f.read()
 
 # docstring
 def extract_classes_by_name(text: str):
@@ -40,65 +42,73 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
     start_time = time.time()
 
     service_selected = set(i["key"] for i in hybrid_recommend(model_bge, user_command, max_k=7))
-    print("service_selected", (time.time() - start_time), service_selected)
-
+    service_elapsed = time.time() - start_time
     service_selected.add("Clock")
 
     # service_doc = "\n".join([classes[i] for i in service_selected])
-
-    service_doc = "\n".join([json.dumps(classes[i]) for i in service_selected])
+    service_doc = "#Devices\n"+"\n".join([json.dumps(classes[i]) for i in service_selected])
     
-    prompt = f"# Devices\n{service_doc}\n\n# User Command\ncommand: {user_command}"
+    prompt = f"Generate SoP Lang code for \"{user_command}\""
 
-    start_time = time.time()
+    role = "user"
+
     try:
         if use_stream:
             response = ollama.chat(
                 model=model,
                 messages=[
-                    {"role": "user", "content": description},
-                    {"role": "user", "content": grammar},
+                    {"role": role, "content": description},
+                    {"role": role, "content": grammar},
+                    {"role": role, "content": service_doc},
+                    {"role": role, "content": inst},
                     {"role": "user", "content": prompt},
                 ],
                 stream=True
             )
 
             full_response = ""
+            last_chunk = None
             for chunk in response:
+                last_chunk = chunk
                 if 'message' in chunk and 'content' in chunk['message']:
                     content = chunk['message']['content']
                     full_response += content
+                    print(content, end='', flush=True)
 
             elapsed = time.time() - start_time
 
             info = {
-                "elapsed_time":round(elapsed, 2), 
-                "prompt_tokens": None,
-                "generated_tokens": None,
+                "elapsed_time": round(elapsed, 3),
+                "bge_elapsed_time": round(service_elapsed, 3),
+                "llm_elapsed_time": round(elapsed - service_elapsed, 3),
+                "prompt_tokens": last_chunk.get("prompt_eval_count", None) if last_chunk else None,
+                "generated_tokens": last_chunk.get("eval_count", None) if last_chunk else None,
             }
-
         else:
             response = ollama.chat(
                 model=model,
                 messages=[
-                    {"role": "system", "content": description},
-                    {"role": "system", "content": grammar},
+                    {"role": role, "content": description},
+                    {"role": role, "content": grammar},
+                    {"role": role, "content": service_doc},
+                    {"role": role, "content": inst},
                     {"role": "user", "content": prompt},
                 ]
             )
             full_response = response['message']['content']
             elapsed = time.time() - start_time
-            
 
             info = {
-                "elapsed_time":round(elapsed, 2), 
+                "elapsed_time":round(elapsed, 3),
+                "bge_elapsed_time": round(service_elapsed, 3),
+                "llm_elapsed_time": round(elapsed - service_elapsed, 3),
                 "prompt_tokens": response.get("prompt_eval_count", None),
                 "generated_tokens": response.get("eval_count", None),
             }
-        print("응답 시간:", elapsed)
         return full_response.strip(), service_selected, info
 
     except Exception as e:
+        print(e)
         return f"Error: {e}", None, {"elapsed_time": None, "prompt_tokens": None, "generated_tokens": None}
 
 def evaluate_pair(gold, gen):
@@ -153,22 +163,26 @@ def evaluate_pair(gold, gen):
 
     return compare_result
 
-def extract_last_python_block(resp: str) -> str:
-    pattern = r'```python.*?```'
-    matches = re.findall(pattern, resp, flags=re.DOTALL)
-    return matches[-1] if matches else None
-
 def main():
     # select sllm
-    # model = "exaone-deep:7.8B"
-    # model = "qwen2.5-coder:7b"
-    # model = "llama3.2:3b"
+    model = "exaone-deep:7.8B"
+    model = "qwen2.5-coder:7b"
+    model = "llama3.2:3b"
     model = "codellama:7b"
 
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
     model_bge = BGEM3FlagModel(model_dir, use_fp16=False, local_files_only=True)
+    hybrid_recommend(model_bge, "에어컨", max_k=7)
     print("Embedding loaded")
+
+    # Load llm
+    response = ollama.chat(
+        model = model,
+        messages=[{"role":"system", "content":"Do not print anything."},
+                  {"role": "user", "content": "hi"}],
+    )
+    print("LLM loaded")
 
     # 태그, 서비스 목록 불러오기
 
@@ -185,14 +199,18 @@ def main():
         data = json.load(f)
         for item in data:
             user_command = item["query"]
-            label = item["answer"]
+            # label = item["answer"]
             
             resp, service_selected, info = run_test_case(
-                model, model_bge, user_command, classes
+                model, model_bge, user_command, classes, False
             )
-
-            print("응답:\n", resp)
-            print("-"*30)
+            print(f"#명령어: {user_command}")
+            print(f"#총 응답 시간 : {info['elapsed_time']}초")
+            print(f"#디바이스 추출: {service_selected} ({info["bge_elapsed_time"]}초)")
+            print(f"#모델 응답 시간: {info["llm_elapsed_time"]}초")
+            print("#응답:\n", resp)
+            print("="*30)
+            
         #     resp = extract_last_python_block(resp)
         #     print(resp)
         #     code = ""

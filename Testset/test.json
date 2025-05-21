@@ -1,6 +1,14 @@
 [
     {
-        "query":"온도가 30도 이상이면 창문을 열어줘.",
-        "answer":"d"
+        "query": "에어컨을 틀어줘."
+    },
+    {
+        "query": "Turn on the air conditioner."
+    },
+    {
+        "query": "온도가 30도 이상이면 창문을 열어줘."
+    },
+    {
+        "query": "If the temperature is above 30 degrees, open the window."
     }
 ]

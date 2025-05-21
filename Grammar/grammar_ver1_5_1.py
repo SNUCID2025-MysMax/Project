@@ -173,6 +173,4 @@ else { ... }
   "
 }
 ```
-Reasoning (<thought>) should be brief and to the point.
-Please reason step by step, and you should write the correct code within \\boxed{}.
 """
