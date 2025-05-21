@@ -92,7 +92,7 @@ def process_refined_commands(client, refined_text, service_doc, max_variants=3):
 
     # 2. 명령어별 유사문장 및 코드 생성
     for idx, command in enumerate(refined_commands, start=1):
-        print(f"\n📌 명령어 {idx}: {command}")
+        #print(f"\n📌 명령어 {idx}: {command}")
         try:
             # 유사 문장 생성
             variants_text = expand_variants(client, command, n=max_variants)
@@ -108,7 +108,7 @@ def process_refined_commands(client, refined_text, service_doc, max_variants=3):
 
             # 모든 문장에 동일한 코드 할당
             for i, variant in enumerate(all_variants):
-                print(f"  {i+1}. {variant}")
+                #print(f"  {i+1}. {variant}")
                 data_pairs.append({"text": variant, "code": code})
 
         except Exception as e:
@@ -176,13 +176,13 @@ current: {current_time}
 # === 실행 === #
 if __name__ == "__main__":
     device_docs = parse_class_docstrings("../0.1.3_docstring_v3.txt")
-    sampled_device = sample_device_classes(device_docs, k=3)
+    sampled_device = sample_device_classes(device_docs, k=10)
 
-    base_commands = generate_commands(client, sampled_device, n=5)
-    print("생성된 명령어들\n", base_commands)
+    base_commands = generate_commands(client, sampled_device, n=20)
+    #print("생성된 명령어들\n", base_commands)
 
     refined_text = refine_commands(client, base_commands)
-    print("✅ 정제된 명령어들:\n", refined_text)
+    #print("✅ 정제된 명령어들:\n", refined_text)
     
     data_pairs = process_refined_commands(client, refined_text, sampled_device, max_variants=3)
 

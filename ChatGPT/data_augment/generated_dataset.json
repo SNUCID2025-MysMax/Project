@@ -1,82 +1,322 @@
 [
   {
-    "text": "\"연기 감지기가 실시간으로 확인하여 연기를 감지하면, 에어컨을 끄고 이후에 알림을 보내줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"16 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        if Tags(\"SmokeDetector\").smokeDetector_smoke == \"detected\":\n            Tags(\"AirConditioner\").switch_off()\n            # Notification code goes here\n            self.period = -1\n```"
+    "text": "\"얼굴 인식기를 작동시켜라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"FaceRecognizer\").switch_on()\n```"
   },
   {
-    "text": "\"연기를 감지할 경우 실시간으로 연기 감지기를 사용하여 에어컨을 끄고 그 후 알림을 발송해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"16 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        if Tags(\"SmokeDetector\").smokeDetector_smoke == \"detected\":\n            Tags(\"AirConditioner\").switch_off()\n            # Notification code goes here\n            self.period = -1\n```"
+    "text": "\"얼굴 인식 기능을 활성화해 주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"FaceRecognizer\").switch_on()\n```"
   },
   {
-    "text": "\"연기 감지기를 이용해 실시간으로 모니터링하고, 연기 발견 시 에어컨을 중단하고 알림을 전송해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"16 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        if Tags(\"SmokeDetector\").smokeDetector_smoke == \"detected\":\n            Tags(\"AirConditioner\").switch_off()\n            # Notification code goes here\n            self.period = -1\n```"
+    "text": "\"얼굴 인식기를 켜주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"FaceRecognizer\").switch_on()\n```"
   },
   {
-    "text": "\"실시간으로 연기 감지기를 체크하고, 만약 연기를 발견하면 에어컨을 꺼주고 결과를 알려줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"16 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        if Tags(\"SmokeDetector\").smokeDetector_smoke == \"detected\":\n            Tags(\"AirConditioner\").switch_off()\n            # Notification code goes here\n            self.period = -1\n```"
+    "text": "\"얼굴을 인식하는 기능을 시작해 주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"FaceRecognizer\").switch_on()\n```"
   },
   {
-    "text": "\"에어컨이 켜져 있는 상태이고, 현재 온도가 22도보다 낮을 때에는, 에어컨을 끄고 그리고 알림을 보내줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").switch_switch == \"on\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 22:\n            Tags(\"AirConditioner\").switch_off()\n            # here should be a code to send notification, but there is no available method in the given device classes\n```"
+    "text": "\"사이렌을 켜라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"  \n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").switch_on()\n```"
   },
   {
-    "text": "\"에어컨이 작동 중이며, 현재의 온도가 22도 이하라면, 에어컨의 작동을 중지시키고 알림을 발송해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").switch_switch == \"on\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 22:\n            Tags(\"AirConditioner\").switch_off()\n            # here should be a code to send notification, but there is no available method in the given device classes\n```"
+    "text": "\"사이렌을 활성화해라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"  \n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").switch_on()\n```"
   },
   {
-    "text": "\"만약 에어컨이 켜져 있고, 온도가 22도 미만이라면, 에어컨을 종료하고 알림을 통보해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").switch_switch == \"on\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 22:\n            Tags(\"AirConditioner\").switch_off()\n            # here should be a code to send notification, but there is no available method in the given device classes\n```"
+    "text": "\"사이렌을 작동시켜라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"  \n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").switch_on()\n```"
   },
   {
-    "text": "\"에어컨이 켜진 상태에서, 현재의 온도가 22도보다 더 낮다면, 에어컨을 끄는 동시에 알림을 전해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").switch_switch == \"on\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 22:\n            Tags(\"AirConditioner\").switch_off()\n            # here should be a code to send notification, but there is no available method in the given device classes\n```"
+    "text": "\"사이렌을 시작해라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"  \n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").switch_on()\n```"
   },
   {
-    "text": "\"토양 습도 센서가 실시간으로 확인하여 습도가 70% 보다 높으면, 알림을 보내줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"17 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        soil_humidity = Tags(\"SoilMoistureSensor\").soilHumidityMeasurement_soilHumidity\n        if soil_humidity > 70:\n            # send notification\n            pass\n```"
+    "text": "\"사이렌을 꺼라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").switch_off()\n```"
   },
   {
-    "text": "\"토양 습도 센서를 이용해 실시간으로 습도를 감지하고, 이가 70%를 초과하면 알림을 전송해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"17 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        soil_humidity = Tags(\"SoilMoistureSensor\").soilHumidityMeasurement_soilHumidity\n        if soil_humidity > 70:\n            # send notification\n            pass\n```"
+    "text": "\"사이렌을 끄기 바랍니다.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").switch_off()\n```"
   },
   {
-    "text": "\"알림을 보내주게, 토양 습도 센서가 실시간으로 습도를 측정하며 이 값이 70% 이상이라면.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"17 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        soil_humidity = Tags(\"SoilMoistureSensor\").soilHumidityMeasurement_soilHumidity\n        if soil_humidity > 70:\n            # send notification\n            pass\n```"
+    "text": "\"사이렌을 중단해주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").switch_off()\n```"
   },
   {
-    "text": "\"습도가 70%를 넘어가면, 토양 습도 센서를 통해 실시간으로 알림을 보내줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"17 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        soil_humidity = Tags(\"SoilMoistureSensor\").soilHumidityMeasurement_soilHumidity\n        if soil_humidity > 70:\n            # send notification\n            pass\n```"
+    "text": "\"사이렌 소리를 멈춰주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").switch_off()\n```"
   },
   {
-    "text": "\"에어컨을 냉방 모드로 설정하고, 이후에 목표 온도를 정확하게 24도로 설정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"AirConditioner\").airConditionerMode_setAirConditionerMode(\"cool\")\n        Tags(\"AirConditioner\").airConditionerMode_setTemperature(24)\n```"
+    "text": "\"사이렌 모드를 스트로브로 변경하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").sirenMode_setSirenMode(\"strobe\")\n```"
   },
   {
-    "text": "\"에어컨을 냉방 모드로 바꾼 후, 목표 온도를 24도로 맞춰줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"AirConditioner\").airConditionerMode_setAirConditionerMode(\"cool\")\n        Tags(\"AirConditioner\").airConditionerMode_setTemperature(24)\n```"
+    "text": "\"스트로브로 사이렌 모드를 전환하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").sirenMode_setSirenMode(\"strobe\")\n```"
   },
   {
-    "text": "\"냉방 모드로 에어컨을 조절하고, 그다음에는 24도로 온도를 설정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"AirConditioner\").airConditionerMode_setAirConditionerMode(\"cool\")\n        Tags(\"AirConditioner\").airConditionerMode_setTemperature(24)\n```"
+    "text": "\"사이렌 모드를 스트로브 설정으로 바꾸어라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").sirenMode_setSirenMode(\"strobe\")\n```"
   },
   {
-    "text": "\"에어컨이 냉방 모드로 작동하게 하고, 이어서 24도를 목표 온도로 정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"AirConditioner\").airConditionerMode_setAirConditionerMode(\"cool\")\n        Tags(\"AirConditioner\").airConditionerMode_setTemperature(24)\n```"
+    "text": "\"사이렌 모드를 스트로브로 바꿔라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Siren\").sirenMode_setSirenMode(\"strobe\")\n```"
   },
   {
-    "text": "\"에어컨이 가열 모드로 설정되어 있는 상태이고, 목표 온도가 정확하게 20도보다 낮을 경우, 목표 온도를 20도로 설정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").airConditionerMode_airConditionerMode == \"heat\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 20:\n            Tags(\"AirConditioner\").airConditionerMode_setTemperature(20)\n```"
+    "text": "\"제목이 'Meeting'이고 본문이 'Check the attachment'인 이메일을 'john@gmail.com'에 보내라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"EmailProvider\").emailProvider_sendMail(\"john@gmail.com\", \"Meeting\", \"Check the attachment\")\n```"
   },
   {
-    "text": "\"에어컨이 가열 모드로 작동 중이며, 설정 온도가 20도 미만일 때에는 목표 온도를 20도로 조정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").airConditionerMode_airConditionerMode == \"heat\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 20:\n            Tags(\"AirConditioner\").airConditionerMode_setTemperature(20)\n```"
+    "text": "\"제목이 'Meeting'이고 내용이 'Check the attachment'인 메일을 'john@gmail.com'에 전송하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"EmailProvider\").emailProvider_sendMail(\"john@gmail.com\", \"Meeting\", \"Check the attachment\")\n```"
   },
   {
-    "text": "\"가열 모드에서 작동하는 에어컨의 목표 온도가 20도 이하일 경우, 그 목표 온도를 20도로 바꿔줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").airConditionerMode_airConditionerMode == \"heat\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 20:\n            Tags(\"AirConditioner\").airConditionerMode_setTemperature(20)\n```"
+    "text": "\"'john@gmail.com'에 'Meeting'이라는 제목과 'Check the attachment'라는 본문으로 이메일을 보내라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"EmailProvider\").emailProvider_sendMail(\"john@gmail.com\", \"Meeting\", \"Check the attachment\")\n```"
   },
   {
-    "text": "\"에어컨이 가열 모드로 동작하고 있고, 만약 설정된 온도가 20도보다 작다면, 그 목표 온도를 20도로 설정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").airConditionerMode_airConditionerMode == \"heat\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 20:\n            Tags(\"AirConditioner\").airConditionerMode_setTemperature(20)\n```"
+    "text": "\"'Meeting'이라는 제목과 'Check the attachment'이라는 본문을 가진 이메일을 'john@gmail.com'에 발송하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"EmailProvider\").emailProvider_sendMail(\"john@gmail.com\", \"Meeting\", \"Check the attachment\")\n```"
+  },
+  {
+    "text": "\"첨부파일을 포함하여, 제목이 'Report'이고 본문이 'Here is the file'인 이메일을 'susan@gmail.com'에 보내라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"EmailProvider\").emailProvider_sendMailWithFile('susan@gmail.com', 'Report', 'Here is the file', None)\n```"
+  },
+  {
+    "text": "\"Report\"라는 제목과 \"Here is the file\"이라는 본문, 그리고 첨부파일을 포함한 이메일을 'susan@gmail.com'에 발송하라",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"EmailProvider\").emailProvider_sendMailWithFile('susan@gmail.com', 'Report', 'Here is the file', None)\n```"
+  },
+  {
+    "text": "'susan@gmail.com'에 첨부파일이 동봉된, 제목이 'Report'이고 본문에 'Here is the file'이라는 내용이 적힌 이메일을 보내라",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"EmailProvider\").emailProvider_sendMailWithFile('susan@gmail.com', 'Report', 'Here is the file', None)\n```"
+  },
+  {
+    "text": "첨부파일, 'Report'라는 제목, 그리고 'Here is the file'이라는 본문을 가진 이메일을 'susan@gmail.com'에 전송하라",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"EmailProvider\").emailProvider_sendMailWithFile('susan@gmail.com', 'Report', 'Here is the file', None)\n```"
+  },
+  {
+    "text": "\"스피커를 켜라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").switch_on()\n```"
+  },
+  {
+    "text": "'스피커를 활성화해주세요.'",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").switch_on()\n```"
+  },
+  {
+    "text": "'스피커를 작동시켜 주시기 바랍니다.'",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").switch_on()\n```"
+  },
+  {
+    "text": "'스피커를 가동해도 좋습니다.'",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").switch_on()\n```"
+  },
+  {
+    "text": "\"스피커를 꺼라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"   # UNIX cron format\n        self.period = -1               # in milliseconds, -1 for one-time\n\n    def run(self):\n        Tags(\"Speaker\").switch_off()\n```"
+  },
+  {
+    "text": "\"스피커를 종료해 주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"   # UNIX cron format\n        self.period = -1               # in milliseconds, -1 for one-time\n\n    def run(self):\n        Tags(\"Speaker\").switch_off()\n```"
+  },
+  {
+    "text": "\"스피커의 전원을 끄십시오.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"   # UNIX cron format\n        self.period = -1               # in milliseconds, -1 for one-time\n\n    def run(self):\n        Tags(\"Speaker\").switch_off()\n```"
+  },
+  {
+    "text": "\"스피커를 중지시켜 주십시오.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"   # UNIX cron format\n        self.period = -1               # in milliseconds, -1 for one-time\n\n    def run(self):\n        Tags(\"Speaker\").switch_off()\n```"
+  },
+  {
+    "text": "\"스피커로 'Good morning'이라 말하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_speak('Good morning')\n```"
+  },
+  {
+    "text": "\"스피커가 'Good morning'을 말하도록 해.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_speak('Good morning')\n```"
+  },
+  {
+    "text": "\"'Good morning'이라는 말을 스피커로 하게 해.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_speak('Good morning')\n```"
+  },
+  {
+    "text": "\"'Good morning'을 스피커에서 들려줘.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_speak('Good morning')\n```"
+  },
+  {
+    "text": "\"스피커로 음악을 재생하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_play(\"music\")\n```"
+  },
+  {
+    "text": "\"스피커가 음악을 틀어줄 수 있을까?\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_play(\"music\")\n```"
+  },
+  {
+    "text": "\"스피커에게 음악 플레이를 요청해.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_play(\"music\")\n```"
+  },
+  {
+    "text": "\"스피커로 음악을 들려주길 바란다.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_play(\"music\")\n```"
+  },
+  {
+    "text": "\"스피커로 음악 재생을 일시 정지하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_pause()\n```"
+  },
+  {
+    "text": "\"스피커에서 음악을 일시 중단해라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_pause()\n```"
+  },
+  {
+    "text": "\"스피커의 음악 재생을 잠시 멈춰라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_pause()\n```"
+  },
+  {
+    "text": "\"스피커를 통한 음악 재생을 당장 중지하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_pause()\n```"
+  },
+  {
+    "text": "\"움직임 센서를 활성화하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"MotionSensor\").motionSensor_motion = \"active\"\n```"
+  },
+  {
+    "text": "\"움직임 센서를 켜라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"MotionSensor\").motionSensor_motion = \"active\"\n```"
+  },
+  {
+    "text": "\"움직임 센서를 작동시켜라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"MotionSensor\").motionSensor_motion = \"active\"\n```"
+  },
+  {
+    "text": "\"움직임 센서를 가동시키라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"MotionSensor\").motionSensor_motion = \"active\"\n```"
+  },
+  {
+    "text": "\"가스 미터를 확인하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        gas_meter_value = Tags(\"GasMeter\").gasMeter_gasMeter\n        Tags(\"Speaker\").mediaPlayback_speak(\"Current gas meter reading is: {}\".format(gas_meter_value))\n```"
+  },
+  {
+    "text": "\"가스 미터를 점검해 보세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        gas_meter_value = Tags(\"GasMeter\").gasMeter_gasMeter\n        Tags(\"Speaker\").mediaPlayback_speak(\"Current gas meter reading is: {}\".format(gas_meter_value))\n```"
+  },
+  {
+    "text": "\"가스 미터를 검사하도록 하세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        gas_meter_value = Tags(\"GasMeter\").gasMeter_gasMeter\n        Tags(\"Speaker\").mediaPlayback_speak(\"Current gas meter reading is: {}\".format(gas_meter_value))\n```"
+  },
+  {
+    "text": "\"가스 미터를 살펴봐야 합니다.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        gas_meter_value = Tags(\"GasMeter\").gasMeter_gasMeter\n        Tags(\"Speaker\").mediaPlayback_speak(\"Current gas meter reading is: {}\".format(gas_meter_value))\n```"
+  },
+  {
+    "text": "\"타이머를 15분으로 설정하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Timer\").timer_set(\"Timer1\", 15*60)\n```"
+  },
+  {
+    "text": "\"타이머를 15분 동안 맞춰줘.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Timer\").timer_set(\"Timer1\", 15*60)\n```"
+  },
+  {
+    "text": "\"15분 간격의 타이머를 설정해.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Timer\").timer_set(\"Timer1\", 15*60)\n```"
+  },
+  {
+    "text": "\"타이머를 15분에 맞춰 설정해.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Timer\").timer_set(\"Timer1\", 15*60)\n```"
+  },
+  {
+    "text": "\"소리 센서를 활성화하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"SoundSensor\").switch_on()\n```"
+  },
+  {
+    "text": "\"소리 센서를 켜주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"SoundSensor\").switch_on()\n```"
+  },
+  {
+    "text": "\"소리 센서 활성화를 해 주십시오.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"SoundSensor\").switch_on()\n```"
+  },
+  {
+    "text": "\"소리 센서를 작동시키십시오.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"SoundSensor\").switch_on()\n```"
+  },
+  {
+    "text": "\"현재 날씨를 확인하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        weather_info = Tags(\"WeatherProvider\").weatherProvider_getWeatherInfo(37.5665, 126.9780)\n        Tags(\"Speaker\").mediaPlayback_speak(weather_info)\n```"
+  },
+  {
+    "text": "\"지금 날씨가 어떤지 알아봐.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        weather_info = Tags(\"WeatherProvider\").weatherProvider_getWeatherInfo(37.5665, 126.9780)\n        Tags(\"Speaker\").mediaPlayback_speak(weather_info)\n```"
+  },
+  {
+    "text": "\"즉시 날씨를 체크해 보아라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        weather_info = Tags(\"WeatherProvider\").weatherProvider_getWeatherInfo(37.5665, 126.9780)\n        Tags(\"Speaker\").mediaPlayback_speak(weather_info)\n```"
+  },
+  {
+    "text": "\"현재의 기상 조건을 조사하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        weather_info = Tags(\"WeatherProvider\").weatherProvider_getWeatherInfo(37.5665, 126.9780)\n        Tags(\"Speaker\").mediaPlayback_speak(weather_info)\n```"
+  },
+  {
+    "text": "\"현재 습도를 확인하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        humidity = Tags(\"HumiditySensor\").relativeHumidityMeasurement_humidity\n        Tags(\"Speaker\").mediaPlayback_speak(f\"현재 습도는 {humidity}입니다.\")\n```"
+  },
+  {
+    "text": "\"지금의 습도를 확인해봐.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        humidity = Tags(\"HumiditySensor\").relativeHumidityMeasurement_humidity\n        Tags(\"Speaker\").mediaPlayback_speak(f\"현재 습도는 {humidity}입니다.\")\n```"
+  },
+  {
+    "text": "\"현재의 습도를 체크해보세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        humidity = Tags(\"HumiditySensor\").relativeHumidityMeasurement_humidity\n        Tags(\"Speaker\").mediaPlayback_speak(f\"현재 습도는 {humidity}입니다.\")\n```"
+  },
+  {
+    "text": "\"지금 습도를 확인해 주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        humidity = Tags(\"HumiditySensor\").relativeHumidityMeasurement_humidity\n        Tags(\"Speaker\").mediaPlayback_speak(f\"현재 습도는 {humidity}입니다.\")\n```"
+  },
+  {
+    "text": "\"스피커로 음악을 빠르게 재생하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_fastForward()\n```"
+  },
+  {
+    "text": "\"스피커를 통해 음악을 빠른 속도로 재생해 주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_fastForward()\n```"
+  },
+  {
+    "text": "\"스피커에서 음악을 신속하게 틀어주길 바랍니다.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_fastForward()\n```"
+  },
+  {
+    "text": "\"스피커를 이용하여 음악을 고속으로 재생하도록 하세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_fastForward()\n```"
+  },
+  {
+    "text": "\"스피커로 음악을 되감아 재생하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_rewind()\n        Tags(\"Speaker\").mediaPlayback_play(source=\"music_track\")\n```"
+  },
+  {
+    "text": "\"스피커로 음악을 되감아서 다시 틀어줘.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_rewind()\n        Tags(\"Speaker\").mediaPlayback_play(source=\"music_track\")\n```"
+  },
+  {
+    "text": "\"스피커를 이용해 음악을 되감아서 플레이하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_rewind()\n        Tags(\"Speaker\").mediaPlayback_play(source=\"music_track\")\n```"
+  },
+  {
+    "text": "\"음악을 되감아 스피커에서 재생시켜줘.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Speaker\").mediaPlayback_rewind()\n        Tags(\"Speaker\").mediaPlayback_play(source=\"music_track\")\n```"
+  },
+  {
+    "text": "\"타이머를 시작하라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Timer\").timer_start(name=\"Timer\")\n```"
+  },
+  {
+    "text": "\"타이머를 실행해주세요.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Timer\").timer_start(name=\"Timer\")\n```"
+  },
+  {
+    "text": "\"타이머를 작동시켜 주십시오.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Timer\").timer_start(name=\"Timer\")\n```"
+  },
+  {
+    "text": "\"타이머를 동작시키라.\"",
+    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"Timer\").timer_start(name=\"Timer\")\n```"
   }
 ]
