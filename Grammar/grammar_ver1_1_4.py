@@ -122,13 +122,10 @@ x =  (#TemperatureSensor).temperatureMeasurement_temperature + 5
 ## Input
 
 ```
-// User Command
-command = "<user natural language command>"
+Generate SoP Lang code for <user command>"
 ```
 
 ## Output
-
-```
 ```
 name = "Scenario1"
 cron = "<cron expression>"  // UNIX cron format(or empty string "" for one-time)
@@ -138,10 +135,7 @@ period = <int>              // in milliseconds; -1 for one-time; 0 for one-time 
 ---
 name = "Scenario2"          // split scenarios if needed
 ...
-
 ```
-```
-
 - Use one or more scenario classes (`Scenario1`, `Scenario2`, ...).
 - Each scenario runs independently, concurrently, and is not shareable between others.
 - Each scenario code block **must follow this strict structure**:
@@ -177,12 +171,9 @@ Step4. Check whether the code satisfies the command & is grammatically correct.
 
 # Examples
 
+## Testcase1
+Generate SoP Lang code for "펌프가 꺼지면 스피커를 켜고, 토양 습도 센서의 값이 20% 이하가 되면 관개 장치를 켜 줘."
 ```
-// Testcase1
-// input
-command = "펌프가 꺼지면 스피커를 켜고, 토양 습도 센서의 값이 20% 이하가 되면 관개 장치를 켜 줘."
-
-// output
 name = "Scenario1"
 cron = ""
 period = -1
@@ -194,12 +185,10 @@ cron = ""
 period = -1
 wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
 (#Irrigator).switch_on()
-
-// Testcase2
-// input
-command = "매일 오전 7시에 관개 장치가 꺼져 있으면 창문을 닫아줘. 창문 닫은 횟수가 5회 이상이면 창문을 닫을 때마다 알람의 사이렌을 울려줘."
-
-// output
+```
+## Testcase2
+Generate SoP Lang code for "매일 오전 7시에 관개 장치가 꺼져 있으면 창문을 닫아줘. 창문 닫은 횟수가 5회 이상이면 창문을 닫을 때마다 알람의 사이렌을 울려줘."
+```
 name = "Scenario1"
 cron = "0 7 * * *"
 period = 0
@@ -212,7 +201,4 @@ if ((#Irrigator).switch_switch == 'off') {
   }
 }
 ```
----
-Reasoning (<thought>) should be brief and to the point.
-Please reason step by step, and you should write the correct code within \\boxed{}.
 """
