@@ -101,7 +101,7 @@ def print_yaml(file):
       # print(item['code'][0]['code'].strip())
       result.append(s)
     print('\n'.join(result))
-#print_yaml("./Testset/category_13.yaml")
+print_yaml("./Testset/category_13.yaml")
 
 # --------------------------------------------------------------------------------------#
 
@@ -166,4 +166,5 @@ def print_yaml(file):
 #       })
 #     with open(f"./Testset/{file[:-5]}.yaml", "w", encoding="utf-8") as f:
 #       yaml.dump(result, f, indent=2, allow_unicode=True, sort_keys=False)
+
 

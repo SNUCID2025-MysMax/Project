@@ -1,78 +1,100 @@
-- command: "창문을 닫아 줘."
+- command: "토양 수분이 30% 이하이고 조명이 꺼져 있으면 관개 장치를 작동시키고 조명을 켜 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      (#Window).windowControl_close()
-- command: "조명이 꺼져 있고, 온도가 33도 이상이면 조명을 켜 줘."
-  code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      light_status = (#Light).switch_switch
-      temp = (#TemperatureSensor).temperatureMeasurement_temperature
-      if ((light_status == 'off') and (temp >= 33.0)) {
+    code: |
+      if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) and ((#Light).switch_switch == 'off')) {
+        (#Irrigator).switch_on()
         (#Light).switch_on()
       }
-- command: "알람의 음량을 높음으로 설정해 줘."
+- command: "온도가 33도 이상이면 제습기를 켜고 커튼을 닫아 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      (#Alarm).alarm_setAlarmVolume('high')
-- command: "선풍기를 꺼 줘."
-  code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Fan).switch_off()
-- command: "에어컨의 모드를 냉방으로 바꿔 줘."
-  code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
-- command: "블라인드를 닫아 줘."
-  code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Blind).blind_close()
-- command: "공기청정기를 켜 줘. 켜고 보니 공기청정기가 자동 모드면 다시 꺼 줘"
-  code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#AirPurifier).switch_on()
-      mode = (#AirPurifier).airPurifierFanMode_airPurifierFanMode
-      if (mode == 'auto') {
-        (#AirPurifier).switch_off()
+    code: |
+      if ((#TemperatureSensor).temperatureMeasurement_temperature >= 33.0) {
+        (#Dehumidifier).switch_on()
+        (#Curtain).curtain_close()
       }
-- command: "창문이 닫혀 있으면 열어 줘. 열려 있어도 열어 줘"
+- command: "이산화탄소가 1000ppm 이상이고 블라인드가 열려 있으면 환풍기를 켜고 블라인드를 닫아 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      (#Window).windowControl_open()
-- command: "제습기를 꺼 줘."
+    code: |
+      if (((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 1000.0) and ((#Blind).blind_blind == 'open')) {
+        (#Fan).switch_on()
+        (#Blind).blind_close()
+      }
+- command: "온도가 29도 이상이고 습도가 80% 이상이며 조명이 꺼져 있으면 에어컨을 켜고 조명을 켜 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      (#Dehumidifier).switch_off()
-- command: "조명의 밝기를 80으로 설정해 줘."
+    code: |
+      if (((#TemperatureSensor).temperatureMeasurement_temperature >= 29.0) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) and ((#Light).switch_switch == 'off')) {
+        (#AirConditioner).switch_on()
+        (#Light).switch_on()
+      }
+- command: "조명이 켜져 있고 창문이 닫혀 있으면 커튼을 열고 환풍기를 꺼 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      (#Light).switchLevel_setLevel(80, 0)
+    code: |
+      if (((#Light).switch_switch == 'on') and ((#Window).windowControl_window == 'closed')) {
+        (#Curtain).curtain_open()
+        (#Fan).switch_off()
+      }
+- command: "TV가 꺼져 있고 스피커가 재생 중이면 TV를 켜고 스피커를 꺼 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'playing')) {
+        (#Television).switch_on()
+        (#Speaker).switch_off()
+      }
+- command: "조명이 켜져 있고 블라인드가 열려 있으며 움직임이 감지되면 조명을 끄고 블라인드를 닫아 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'open') and ((#MotionSensor).motionSensor_motion == 'active')) {
+        (#Light).switch_off()
+        (#Blind).blind_close()
+      }
+- command: "알람이 꺼져 있고 조명이 꺼져 있으며 커튼이 열려 있으면 알람의 사이렌을 울리고 조명을 켜 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Alarm).alarm_alarm == 'off') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'open')) {
+        (#Alarm).alarm_siren()
+        (#Light).switch_on()
+      }
+- command: "에어컨이 꺼져 있고 커튼이 닫혀 있으면 에어컨을 켜고 커튼을 열어 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#AirConditioner).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#AirConditioner).switch_on()
+        (#Curtain).curtain_open()
+      }
+- command: "TV가 켜져 있고 소리가 꺼져 있으면 TV를 끄고 음소거를 해제해 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {
+        (#Television).switch_off()
+        (#Television).audioMute_unmute()
+      }

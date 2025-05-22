@@ -3,62 +3,94 @@
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      wait until((#Window).windowControl_window == 'closed')
+    code: |
       wait until((#Window).windowControl_window == 'open')
       (#Alarm).alarm_siren()
-- command: "문이 닫히면 블라인드를 닫아 줘."
+- command: "토양 수분이 20% 이상이었다가 이하가 되면 관개 장치를 작동시켜 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      wait until((#DoorLock).doorControl_door == 'open')
-      wait until((#DoorLock).doorControl_door == 'closed')
+    code: |
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 20.0)
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 20.0)
+      (#Irrigator).switch_on()
+- command: "움직임이 감지되면 최대 3번까지 조명을 켜 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      motion_count := 0
+      prev_motion := 'inactive'
+      current = (#MotionSensor).motionSensor_motion
+      if (current == 'active') and (prev_motion == 'inactive') {
+        if (motion_count < 3) {
+          (#Light).switch_on()
+          motion_count = motion_count + 1
+        }
+      }
+      prev_motion = current
+- command: "온도가 35도 이상이 되면 에어컨을 켜 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)
+      (#AirConditioner).switch_on()
+- command: "습도가 80% 이상이 되면 블라인드를 내려 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0)
       (#Blind).blind_close()
-- command: "사람이 감지되면 조명을 켜 줘."
+- command: "블라인드가 닫히면 ‘블라인드가 닫혔습니다’라고 말해 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      wait until((#PresenceSensor).presenceSensor_presence == 'not_present')
-      wait until((#PresenceSensor).presenceSensor_presence == 'present')
-      (#Light).switch_on()
+    code: |
+      wait until((#Blind).blind_blind == 'closed')
+      (#Speaker).mediaPlayback_speak('블라인드가 닫혔습니다')
 - command: "TV가 꺼지면 스피커를 꺼 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      wait until((#Television).switch_switch == 'on')
+    code: |
       wait until((#Television).switch_switch == 'off')
       (#Speaker).switch_off()
-- command: "커튼이 열리면 조명을 꺼 줘."
+- command: "커튼이 3번 열렸다 닫히면 조명을 꺼 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      close_count := 0
+      prev_state := 'closed'
+      opened := false
+      curr = (#Curtain).curtain_curtain
+      if (curr == 'open') and (prev_state == 'closed') {
+        opened = true
+      }
+      if (curr == 'closed') and (prev_state == 'open') and (opened == true) {
+        close_count = close_count + 1
+        opened = false
+      }
+      prev_state = curr
+      if (close_count >= 3) {
+        (#Light).switch_off()
+        break
+      }
+- command: "제습기가 꺼지면 다시 켜 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      wait until((#Curtain).curtain_curtain != 'open')
-      wait until((#Curtain).curtain_curtain == 'open')
-      (#Light).switch_off()
-- command: "블라인드가 닫히면 '블라인드가 닫혔습니다'라고 말해 줘."
-  code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      wait until((#Blind).blind_blind != 'closed')
-      wait until((#Blind).blind_blind == 'closed')
-      (#Speaker).mediaPlayback_speak('블라인드가 닫혔습니다')
-- command: "제습기가 꺼지면 켜 줘."
-  code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      wait until((#Dehumidifier).switch_switch == 'on')
+    code: |
       wait until((#Dehumidifier).switch_switch == 'off')
       (#Dehumidifier).switch_on()
 - command: "문이 열리면 ‘문이 열렸습니다’라고 말해 줘."
@@ -66,25 +98,6 @@
   - name: "Scenario1"
     cron: ""
     period: -1
-    code: |-
-      wait until((#DoorLock).doorControl_door == 'closed')
+    code: |
       wait until((#DoorLock).doorControl_door == 'open')
-      (#Speaker).mediaPlayback_speak('문이 열렸습니다')
-- command: "에어컨이 꺼지면 조명을 꺼 줘."
-  code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      wait until((#AirConditioner).switch_switch == 'on')
-      wait until((#AirConditioner).switch_switch == 'off')
-      (#Light).switch_off()
-- command: "창문이 닫히면 블라인드를 열어 줘."
-  code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      wait until((#Window).windowControl_window != 'closed')
-      wait until((#Window).windowControl_window == 'closed')
-      (#Blind).blind_open()
+      (#Speaker).mediaPlayback_speak("문이 열렸습니다")

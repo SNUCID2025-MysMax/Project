@@ -1,19 +1,25 @@
 import os, sys, re, gc, json, time, pprint
 from datetime import datetime
-from Grammar.grammar_ver1_1_3 import grammar
+from Grammar.grammar_ver1_5_1 import grammar
 from Embedding.embedding import hybrid_recommend
-from Conversion.conversion import transform_code
 from FlagEmbedding import BGEM3FlagModel
 
+from Testset.joi_extraction import parse_scenarios
 from Evaluation.soplang_parser_full import parser, lexer
 from Evaluation.soplang_ir_simulator import flatten_actions, generate_context_from_conditions
 from Evaluation.compare_soplang_ir import extract_logic_expressions, compare_codes 
 
 import ollama
 
+with open("./Grammar/SoP_Lang_Description.md", "r") as f:
+    description = f.read()
+with open("./Grammar/grammar_ver1_5_1_inst.md", "r") as f:
+    inst = f.read()
+
 # docstring
 def extract_classes_by_name(text: str):
-    pattern = r'class\s+(\w+)\s*:\s*\n\s+"""(.*?)"""'
+    # pattern = r'class\s+(\w+)\s*:\s*\n\s+"""(.*?)"""'
+    pattern = r'Device\s+(\w+)\s*:\s*\n\s+"""(.*?)"""'
     matches = re.finditer(pattern, text, re.DOTALL)
 
     class_dict = {}
@@ -36,73 +42,73 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
     start_time = time.time()
 
     service_selected = set(i["key"] for i in hybrid_recommend(model_bge, user_command, max_k=7))
+    service_elapsed = time.time() - start_time
     service_selected.add("Clock")
-    service_doc = "\n".join([classes[i] for i in service_selected])
 
-    current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+    # service_doc = "\n".join([classes[i] for i in service_selected])
+    service_doc = "#Devices\n"+"\n".join([json.dumps(classes[i]) for i in service_selected])
     
-    prompt = f"# Devices\n{service_doc}\n\n# User Command\ncommand: {user_command}\n\n# Current Time\ncurrent: {current_time}"
+    prompt = f"Generate SoP Lang code for \"{user_command}\""
 
-    example = """command: \"에어컨의 전원이 켜져 있으면 알람의 사이렌을 울려줘.\"
-result: 
-```python
-class Scenario1:
-    def __init__(self):
-        self.cron = \"\"
-        self.period = -1
-
-    def run(self):
-        if Tags('AirConditioner').switch_switch == 'on':
-            Tags('Alarm').alarm_siren()
-```"""
+    role = "user"
 
     try:
         if use_stream:
             response = ollama.chat(
                 model=model,
                 messages=[
-                    {"role": "system", "content": grammar},
+                    {"role": role, "content": description},
+                    {"role": role, "content": grammar},
+                    {"role": role, "content": service_doc},
+                    {"role": role, "content": inst},
                     {"role": "user", "content": prompt},
-                    {"role": "user", "content": example},
                 ],
                 stream=True
             )
 
             full_response = ""
+            last_chunk = None
             for chunk in response:
+                last_chunk = chunk
                 if 'message' in chunk and 'content' in chunk['message']:
                     content = chunk['message']['content']
                     full_response += content
+                    print(content, end='', flush=True)
 
             elapsed = time.time() - start_time
 
             info = {
-                "elapsed_time":round(elapsed, 2), 
-                "prompt_tokens": None,
-                "generated_tokens": None,
+                "elapsed_time": round(elapsed, 3),
+                "bge_elapsed_time": round(service_elapsed, 3),
+                "llm_elapsed_time": round(elapsed - service_elapsed, 3),
+                "prompt_tokens": last_chunk.get("prompt_eval_count", None) if last_chunk else None,
+                "generated_tokens": last_chunk.get("eval_count", None) if last_chunk else None,
             }
-
         else:
             response = ollama.chat(
                 model=model,
                 messages=[
-                    {"role": "system", "content": grammar},
+                    {"role": role, "content": description},
+                    {"role": role, "content": grammar},
+                    {"role": role, "content": service_doc},
+                    {"role": role, "content": inst},
                     {"role": "user", "content": prompt},
                 ]
             )
             full_response = response['message']['content']
             elapsed = time.time() - start_time
-            
 
             info = {
-                "elapsed_time":round(elapsed, 2), 
+                "elapsed_time":round(elapsed, 3),
+                "bge_elapsed_time": round(service_elapsed, 3),
+                "llm_elapsed_time": round(elapsed - service_elapsed, 3),
                 "prompt_tokens": response.get("prompt_eval_count", None),
                 "generated_tokens": response.get("eval_count", None),
             }
-
         return full_response.strip(), service_selected, info
 
     except Exception as e:
+        print(e)
         return f"Error: {e}", None, {"elapsed_time": None, "prompt_tokens": None, "generated_tokens": None}
 
 def evaluate_pair(gold, gen):
@@ -157,24 +163,35 @@ def evaluate_pair(gold, gen):
 
     return compare_result
 
-def extract_last_python_block(resp: str) -> str:
-    pattern = r'```python.*?```'
-    matches = re.findall(pattern, resp, flags=re.DOTALL)
-    return matches[-1] if matches else None
-
 def main():
     # select sllm
+    model = "exaone-deep:7.8B"
     model = "qwen2.5-coder:7b"
-    # model = "exaone-deep:7.8B"
+    model = "llama3.2:3b"
+    model = "codellama:7b"
 
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
     model_bge = BGEM3FlagModel(model_dir, use_fp16=False, local_files_only=True)
+    hybrid_recommend(model_bge, "에어컨", max_k=7)
+    print("Embedding loaded")
+
+    # Load llm
+    response = ollama.chat(
+        model = model,
+        messages=[{"role":"system", "content":"Do not print anything."},
+                  {"role": "user", "content": "hi"}],
+    )
+    print("LLM loaded")
 
     # 태그, 서비스 목록 불러오기
-    with open("./ServiceExtraction/integration/service_list_ver1.1.3.txt", "r") as f:
-        service_doc = f.read()
-    classes = extract_classes_by_name(service_doc)
+
+    # with open("./ServiceExtraction/integration/service_list_ver1.1.7.txt", "r") as f:
+    #     service_doc = f.read()
+    # classes = extract_classes_by_name(service_doc)
+
+    with open("./ServiceExtraction/integration/service_list_ver1.5.3.json", "r") as f:
+        classes = json.load(f)
 
     results = []
 
@@ -182,67 +199,74 @@ def main():
         data = json.load(f)
         for item in data:
             user_command = item["query"]
-            label = item["answer"]
+            # label = item["answer"]
             
             resp, service_selected, info = run_test_case(
                 model, model_bge, user_command, classes, False
             )
+            print(f"#명령어: {user_command}")
+            print(f"#총 응답 시간 : {info['elapsed_time']}초")
+            print(f"#디바이스 추출: {service_selected} ({info["bge_elapsed_time"]}초)")
+            print(f"#모델 응답 시간: {info["llm_elapsed_time"]}초")
+            print("#응답:\n", resp)
+            print("="*30)
+            
+        #     resp = extract_last_python_block(resp)
+        #     print(resp)
+        #     code = ""
+        #     try:
+        #         code = parse_scenarios(resp)
+        #     except:
+        #         code = ""
+        #     print("변환된 코드:\n", code)
+        #     print("-"*30)
 
-            print("응답:\n", resp)
-            print("-"*30)
-            resp = extract_last_python_block(resp)
-            print(resp)
-            code = transform_code(resp)
-            print("변환된 코드:\n", code)
-            print("-"*30)
+        #     entry = {
+        #         "user_command": user_command,
+        #         "devices": service_selected,
+        #         "generated_code": resp,
+        #         "label": label,
+        #         "compare_results": [],
+        #         "model_info": {
+        #             "prompt_tokens": info["prompt_tokens"],
+        #             "generated_tokens": info["generated_tokens"],
+        #             "elapsed_time": info["elapsed_time"],
+        #         }
+        #     }
 
-            entry = {
-                "user_command": user_command,
-                "devices": service_selected,
-                "generated_code": resp,
-                "transformed_code": code,
-                "label": label,
-                "compare_results": [],
-                "model_info": {
-                    "prompt_tokens": info["prompt_tokens"],
-                    "generated_tokens": info["generated_tokens"],
-                    "elapsed_time": info["elapsed_time"],
-                }
-            }
+        #     entry["len_check"] = {
+        #         "len_generated_code": len(code),
+        #         "len_label_code": len(label),
+        #         "len_is_equal": len(code) == len(label)
+        #     }
 
-            entry["len_check"] = {
-                "len_generated_code": len(code),
-                "len_label_code": len(label),
-                "len_is_equal": len(code) == len(label)
-            }
-
-            # Syntax 체크
-            entry["syntax_errors"] = []
-            for c in code:
-                try:
-                    parse_code_to_ast(c)
-                except Exception as e:
-                    entry["syntax_errors"].append(str(e))
+        #     # Syntax 체크
+        #     entry["syntax_errors"] = []
+        #     for c in code:
+        #         try:
+        #             parse_code_to_ast(c)
+        #         except Exception as e:
+        #             entry["syntax_errors"].append(str(e))
                     
             
-            for i, (gen, gold) in enumerate(zip(code, label), start=1):
-                gold_wrapped = {
-                    "name": gold["name"],
-                    "cron": gold["cron"],
-                    "period": gold["period"],
-                    "script": gold["code"]
-                }
+        #     for i, (gen, gold) in enumerate(zip(code, label), start=1):
+        #         gold_wrapped = {
+        #             "name": gold["name"],
+        #             "cron": gold["cron"],
+        #             "period": gold["period"],
+        #             "script": gold["code"]
+        #         }
 
-                gen_wrapped = {
-                    "name": gen["name"],
-                    "cron": gen["cron"],
-                    "period": gen["period"],
-                    "script": gen["code"]
-                }
+        #         gen_wrapped = {
+        #             "name": gen["name"],
+        #             "cron": gen["cron"],
+        #             "period": gen["period"],
+        #             "script": gen["code"]
+        #         }
 
-                result = evaluate_pair(gold_wrapped, gen_wrapped)
-                entry["compare_results"].append(result)
-        results.append(entry)
+        #         result = evaluate_pair(gold_wrapped, gen_wrapped)
+        #         entry["compare_results"].append(result)
+        # results.append(entry)
 
     # 저장하기
     with open("./Testset/evaluation_results.json", "w", encoding="utf-8") as out_file:
