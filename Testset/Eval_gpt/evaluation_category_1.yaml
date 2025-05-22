@@ -1,0 +1,215 @@
+- devices:
+  - SoilMoistureSensor
+  - Light
+  - LightSensor
+  - Clock
+  - Irrigator
+  - Humidifier
+  - Blind
+  - WeatherProvider
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) and ((#Light).switch_switch == 'off')) {
+      (#Irrigator).switch_on()
+      (#Light).switch_on()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) and ((#Light).switch_switch == 'off')) {
+        (#Irrigator).switch_on()
+        (#Light).switch_on()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) and ((#Light).switch_switch == 'off')) {
+        (#Irrigator).switch_on()
+        (#Light).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4233
+    completion_tokens: 71
+    total_tokens: 4304
+  command: 토양 수분이 30% 이하이고 조명이 꺼져 있으면 관개 장치를 작동시키고 조명을 켜 줘.
+- devices:
+  - Curtain
+  - Clock
+  - Humidifier
+  - Blind
+  - DoorLock
+  - AirConditioner
+  - Dehumidifier
+  - TemperatureSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if ((#TemperatureSensor).temperatureMeasurement_temperature >= 33.0) {
+      (#Dehumidifier).switch_on()
+      (#Curtain).curtain_close()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#TemperatureSensor).temperatureMeasurement_temperature >= 33.0) {
+        (#Dehumidifier).switch_on()
+        (#Curtain).curtain_close()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if ((#TemperatureSensor).temperatureMeasurement_temperature >= 33.0) {
+        (#Dehumidifier).switch_on()
+        (#Curtain).curtain_close()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3936
+    completion_tokens: 54
+    total_tokens: 3990
+  command: 온도가 33도 이상이면 제습기를 켜고 커튼을 닫아 줘.
+- devices:
+  - Fan
+  - Clock
+  - Humidifier
+  - Blind
+  - AirQualityDetector
+  - AirPurifier
+  - AirConditioner
+  - Pump
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if (((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 1000.0) and ((#Blind).blind_blind == 'open')) {
+      (#VentilationFan).switch_on()
+      (#Blind).blind_close()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 1000.0) and ((#Blind).blind_blind == 'open')) {
+        (#VentilationFan).switch_on()
+        (#Blind).blind_close()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if (((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 1000.0) and ((#Blind).blind_blind == 'open')) {
+        (#Fan).switch_on()
+        (#Blind).blind_close()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4581
+    completion_tokens: 71
+    total_tokens: 4652
+  command: 이산화탄소가 1000ppm 이상이고 블라인드가 열려 있으면 환풍기를 켜고 블라인드를 닫아 줘.
+- devices:
+  - Light
+  - HumiditySensor
+  - Clock
+  - Humidifier
+  - WeatherProvider
+  - AirConditioner
+  - Dehumidifier
+  - TemperatureSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if (((#TemperatureSensor).temperatureMeasurement_temperature >= 29.0) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) and ((#Light).switch_switch == 'off')) {
+      (#AirConditioner).switch_on()
+      (#Light).switch_on()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#TemperatureSensor).temperatureMeasurement_temperature >= 29.0) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) and ((#Light).switch_switch == 'off')) {
+        (#AirConditioner).switch_on()
+        (#Light).switch_on()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if (((#TemperatureSensor).temperatureMeasurement_temperature >= 29.0) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) and ((#Light).switch_switch == 'off')) {
+        (#AirConditioner).switch_on()
+        (#Light).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4265
+    completion_tokens: 80
+    total_tokens: 4345
+  command: 온도가 29도 이상이고 습도가 80% 이상이며 조명이 꺼져 있으면 에어컨을 켜고 조명을 켜 줘.
+- devices:
+  - Fan
+  - Curtain
+  - Clock
+  - Humidifier
+  - Blind
+  - AirConditioner
+  - AirPurifier
+  - Window
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if (((#Light).switch_switch == 'on') and ((#Window).windowControl_window == 'closed')) {
+      (#Curtain).curtain_open()
+      (#Fan).switch_off()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Light).switch_switch == 'on') and ((#Window).windowControl_window == 'closed')) {
+        (#Curtain).curtain_open()
+        (#Fan).switch_off()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if (((#Light).switch_switch == 'on') and ((#Window).windowControl_window == 'closed')) {
+        (#Curtain).curtain_open()
+        (#Fan).switch_off()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4187
+    completion_tokens: 59
+    total_tokens: 4246
+  command: 조명이 켜져 있고 창문이 닫혀 있으면 커튼을 열고 환풍기를 꺼 줘.

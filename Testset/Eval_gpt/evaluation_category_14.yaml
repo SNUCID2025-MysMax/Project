@@ -1,0 +1,262 @@
+- devices:
+  - AirConditioner
+  - Dehumidifier
+  - AirPurifier
+  - Curtain
+  - Humidifier
+  - Fan
+  - Clock
+  - WeatherProvider
+  generated_code: |-
+    name = "Scenario1"
+    cron = "0 0 * * *"
+    period = 0
+    if ((#Fan).switch_switch == 'off') {
+      (#Fan).switch_off()
+      (#Fan).switch_off()
+    }
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 0
+    code: |
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).switch_off()
+        (#Fan).switch_off()
+      }
+  label:
+  - name: Scenario1
+    cron: 0 0 * * *
+    period: 0
+    code: |
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).switch_off()
+        (#Fan).switch_off()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4448
+    completion_tokens: 48
+    total_tokens: 4496
+  command: 매일 자정 선풍기가 꺼져 있으면 선풍기를 꺼 줘. 또한 그 때마다 선풍기를 꺼 줘
+- devices:
+  - Relay
+  - Curtain
+  - LeakSensor
+  - Alarm
+  - Clock
+  - Irrigator
+  - WeatherProvider
+  - GasValve
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = "0 * * * SAT,SUN"
+    period = 0
+    if ((#Irrigator).switch_switch == 'off') {
+      (#Irrigator).switch_off()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 * * * SAT,SUN"
+    period: 0
+    code: |
+      if ((#Irrigator).switch_switch == 'off') {
+        (#Irrigator).switch_off()
+      }
+  label:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 0
+    code: |
+      wait until((#Irrigator).switch_switch == "off")
+      (#Irrigator).switch_off()
+  compare_results: []
+  model_info:
+    prompt_tokens: 4020
+    completion_tokens: 49
+    total_tokens: 4069
+  command: 주말에는 관개 장치가 꺼지면 관개 장치를 꺼 줘.
+- devices:
+  - Switch
+  - Siren
+  - Relay
+  - Shade
+  - Clock
+  - DoorLock
+  - Blind
+  - Valve
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 100
+    is_closed_state := false
+    if(((#Blind).blind_blind == 'closed') and (is_closed_state == true)) {
+      (#Switch).switch_on()
+    }
+    if((#Blind).blind_blind == 'closed') {
+      is_closed_state = true
+    } else {
+      is_closed_state = false
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      is_closed_state := false
+      if(((#Blind).blind_blind == 'closed') and (is_closed_state == true)) {
+        (#Switch).switch_on()
+      }
+      if((#Blind).blind_blind == 'closed') {
+        is_closed_state = true
+      } else {
+        is_closed_state = false
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |
+      wasClosed := false
+      if (wasClosed == true) {
+        if ((wasClosed == false) and ((#Blind).blind_blind == "closed")) {
+          (#Light).switch_on()
+        }
+      }
+      wasClosed = ((#Blind).blind_blind == "closed")
+  compare_results: []
+  model_info:
+    prompt_tokens: 3744
+    completion_tokens: 85
+    total_tokens: 3829
+  command: 실시간으로 확인하여 블라인드가 닫힌 상태에서 또 닫히면 전등을 켜 줘
+- devices:
+  - Relay
+  - LeakSensor
+  - WeatherProvider
+  - Clock
+  - Irrigator
+  - Charger
+  - GasValve
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = "0 0 * * *"
+    period = 100
+    wait until((#Irrigator).switch_switch == 'off')
+    (#Clock).clock_delay(hour: 0, minute: 0, second: 10)
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 100
+    code: |
+      wait until((#Irrigator).switch_switch == 'off')
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 10)
+  label:
+  - name: Scenario1
+    cron: 0 0 * * *
+    period: 100
+    code: |
+      triggered := false
+      if ((#Irrigator).switch_switch == "off") {
+        if (triggered == false) {
+          (#Clock).clock_delay(0, 0, 10)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3714
+    completion_tokens: 58
+    total_tokens: 3772
+  command: 매일, 실시간으로 확인하여 관개 장치가 꺼질 때마다 10초간 기다리는 것을 반복해 줘
+- devices:
+  - Switch
+  - MotionSensor
+  - PresenceSensor
+  - SmokeDetector
+  - Fan
+  - Clock
+  - DoorLock
+  - ContactSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 1000
+    motion_detected := false
+    wait until(((#Fan).switch_switch == 'off') and ((#MotionSensor).motionSensor_motion == 'inactive'))
+    motion_detected = true
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = 10000
+    if (motion_detected == true) {
+      if ((#Light).switch_switch == 'on') {
+        (#Light).switch_off()
+      } else {
+        (#Light).switch_on()
+      }
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      motion_detected := false
+      wait until(((#Fan).switch_switch == 'off') and ((#MotionSensor).motionSensor_motion == 'inactive'))
+      motion_detected = true
+  - name: "Scenario2"
+    cron: ""
+    period: 10000
+    code: |
+      if (motion_detected == true) {
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_off()
+        } else {
+          (#Light).switch_on()
+        }
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |
+      motion_prev := "inactive"
+      triggered := false
+      tick := 0
+
+      if (triggered == false) {
+        if ((#Fan).switch_switch == 'off') {
+          current = (#MotionSensor).motionSensor_motion
+          if ((motion_prev == "inactive") and (current == "active")) {
+            triggered = true
+            tick = 100
+          }
+          motion_prev = current
+        }
+      } else {
+        tick = tick + 1
+        if (tick >= 100) {
+          if ((#Light).switch_switch == 'on') {
+            (#Light).switch_on()
+          } else {
+            (#Light).switch_off()
+          }
+          tick = 0
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3280
+    completion_tokens: 111
+    total_tokens: 3391
+  command: 실시간으로 확인하여 선풍기가 꺼져 있으면서 움직임이 감지되지 않다가 감지되는 순간 그 때부터 10초 간격으로 전등이 꺼져 있으면 끄고, 켜져 있으면 켜 줘

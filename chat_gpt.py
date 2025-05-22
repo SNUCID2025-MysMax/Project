@@ -1,15 +1,33 @@
 from openai import OpenAI
 from dotenv import load_dotenv
-import os, sys, re, gc, json, yaml
+import os, sys, re, gc, json, yaml, copy
 from datetime import datetime
 from Grammar.grammar_ver1_1_4 import grammar
 from Embedding.embedding import hybrid_recommend
 from FlagEmbedding import BGEM3FlagModel
 
-from Testset.joi_extraction import parse_scenarios
+from Testset.tools import print_yaml
+from Testset.joi_extraction_tool import parse_scenarios
 from Evaluation.soplang_parser_full import parser, lexer
 from Evaluation.soplang_ir_simulator import flatten_actions, generate_context_from_conditions
 from Evaluation.compare_soplang_ir import extract_logic_expressions, compare_codes 
+
+import yaml
+from yaml.representer import SafeRepresenter
+
+class LiteralString(str):
+    pass
+
+def literal_str_representer(dumper, data):
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
+
+yaml.add_representer(LiteralString, literal_str_representer)
+
+class QuotedString(str):
+    pass
+
+def quoted_str_representer(dumper, data):
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
 
 # docstring
 def extract_classes_by_name(text: str):
@@ -35,7 +53,6 @@ def extract_last_code_block(text):
     return matches[-1] if matches else None
 
 
-
 def main():
     # .env 파일에서 환경변수 불러오기
     load_dotenv()
@@ -53,144 +70,168 @@ def main():
     api_key = os.getenv("apikey")
     client = OpenAI(api_key=api_key)
 
-    results = []
-    with open("./Testset/Testset/category_1.yaml", "r") as f:
-        data = yaml.safe_load(f)
-        for item in data:
-            user_command = item["command"]
-            label = item["code"]
+    for i in range(3, 4):
+        file_name = f"category_{i}.yaml"
 
-            service_selected = set(i["key"] for i in hybrid_recommend(model, user_command, max_k=7))
-            service_selected.add("Clock")
-            service_doc = "\n".join([classes[i] for i in service_selected])
-            
-            prompt = prompt = f"Generate SoP Lang code for \"{user_command}\""
+        example_file = f"./Testset/Testset/{file_name}"
 
-            # response = client.chat.completions.create(
-            #     model="gpt-4",
-            #     messages=[
-            #         {"role": "system", "content": grammar},
-            #         {"role": "system", "content": service_doc},
-            #         {"role": "user", "content": prompt},
-            #     ]
-            # )
+        examples = f"# Examples for this category\n{print_yaml(example_file)}\n"
 
-            # resp = response.choices[0].message.content
-            # print("응답:\n", resp)
-            # print("-"*30)
-            # try:
-            #     code = parse_scenarios(extract_last_code_block(resp))
-            # except:
-            #     code = [{'name': 'Scenario1', 'cron': '', 'period': -1, 'code': '(#AirConditioner).switch_on()\n'}]
-            # print("변환된 코드:\n", code)
-            # print("-"*30)
+        results = []
+        with open(f"./Testset/Testset/{file_name}", "r") as f:
+            data = yaml.safe_load(f)
 
-            # entry = {
-            #     "user_command": user_command,
-            #     "devices": service_selected,
-            #     "generated_code": resp,
-            #     "transformed_code": code,
-            #     "label": label,
-            #     "compare_results": [],
-            #     "model_info": {
-            #         "prompt_tokens": response.usage.prompt_tokens,
-            #         "completion_tokens": response.usage.completion_tokens,
-            #         "total_tokens": response.usage.total_tokens
-            #     }
-            # }
+            for idx, item in enumerate(data):
+                # 1~5번만
+                if idx >= 5:
+                    break
 
-            # dummies
-            entry = {"compare_results":[]}
+                user_command = item["command"]
+                label = item["code"]
 
-            code = [
-                {"name": "Scenario1", "cron": "*/1 * * * *", "period": 180000, "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"},
-                {"name": "Scenario2", "cron": "*/1 * * * *", "period": 300000, "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"}
-            ]
-
-            entry["len_check"] = {
-                "len_generated_code": len(code),
-                "len_label_code": len(label),
-                "len_is_equal": len(code) == len(label)
-            }
-
-            # Syntax 체크
-            for c in code:
-                try:
-                    parse_code_to_ast(c)
-                except Exception as e:
-                    print(f"Parse failed: {e}")  
-
-            compare_result = {}
-            
-            for i, (gen, gold) in enumerate(zip(code, label), start=1):
-                print(f"\n[Test{i}]")
-                print(gen, gold)
-
-                gold_wrapped = {
-                    "name": gold["name"],
-                    "cron": gold["cron"],
-                    "period": gold["period"],
-                    "script": gold["code"]
-                }
-
-                gen_wrapped = {
-                    "name": gen["name"],
-                    "cron": gen["cron"],
-                    "period": gen["period"],
-                    "script": gen["code"]
-                }
-
-                result = compare_codes(gold_wrapped, gen_wrapped)
-
-                compare_result = {
-                    "scenario": gold["name"],
-                    "cron_equal": result['cron_equal'],
-                    "period_equal": result['period_equal'],
-                    "ast_similarity": result['ast_similarity'],
-                    "script_similarity": result['script_similarity'],
-                    "mismatches": []
-                }
-
-                try:
-                    gold_ast = parse_code_to_ast(gold["code"])
-                    gen_ast = parse_code_to_ast(gen["code"])
-
-                    logic = extract_logic_expressions(gold_ast)
-                    contexts = generate_context_from_conditions(logic)
-
-                    for ctx_idx, ctx in enumerate(contexts):
-                        gold_trace = flatten_actions(gold_ast, ctx.copy())
-                        gen_trace = flatten_actions(gen_ast, ctx.copy())
-
-                        gold_actions = [a for a in gold_trace if a[0] == "Action"]
-                        gen_actions = [a for a in gen_trace if a[0] == "Action"]
-
-                        max_len = max(len(gold_actions), len(gen_actions))
-                        for j in range(max_len):
-                            g = gold_actions[j] if j < len(gold_actions) else "❌ Missing"
-                            p = gen_actions[j] if j < len(gen_actions) else "❌ Missing"
-
-                            if g != p:
-                                
-                                compare_result["mismatches"].append({
-                                    "context_index": ctx_idx + 1,
-                                    "step": j,
-                                    "variables": ctx,
-                                    "gold_action": g,
-                                    "pred_action": p
-                                })
-
-                except Exception as e:
-                    # print(f"❌ Simulation failed: {e}")      
-                    compare_result["simulation_error"] = str(e)
+                service_selected = set(i["key"] for i in hybrid_recommend(model, user_command, max_k=7))
+                service_selected.add("Clock")
+                service_doc = "\n".join([classes[i] for i in service_selected])
                 
-                entry["compare_results"].append(compare_result)
-            break
-        results.append(entry)
+                prompt = prompt = f"Generate SoP Lang code for \"{user_command}\""
 
-    # 저장하기
-    with open("./Testset/evaluation_results.json", "w", encoding="utf-8") as out_file:
-        json.dump(results, out_file, indent=2, ensure_ascii=False)
+                response = client.chat.completions.create(
+                    model="gpt-4",
+                    messages=[
+                        {"role": "system", "content": grammar},
+                        {"role": "system", "content": service_doc},
+                        {"role": "system", "content": examples},
+                        {"role": "user", "content": prompt},
+                    ]
+                )
+
+                resp = response.choices[0].message.content
+                try:
+                    code = parse_scenarios(extract_last_code_block(resp))['code']
+                except:
+                    try:
+                        code = parse_scenarios(resp)['code']
+                    except:
+                        code = [{'name': 'Scenario1', 'cron': '', 'period': -1, 'code': '(#AirConditioner).switch_on()\n'}]
+                
+                # print("응답:\n", resp)
+                # print("-"*30)
+                # print("변환된 코드:\n", code)
+                # print("-"*30)
+
+                code_for_yaml = copy.deepcopy(code)
+                for c in code_for_yaml:
+                    c["code"] = LiteralString(c["code"])
+
+                label_for_yaml = copy.deepcopy(label)
+                for l in label_for_yaml:
+                    l["code"] = LiteralString(l["code"])
+
+                entry = {
+                    "command": user_command,
+                    "devices": list(service_selected),
+                    "generated_code": LiteralString(resp),
+                    "transformed_code": code_for_yaml,
+                    "label": label_for_yaml,
+                    "compare_results": [],
+                    "model_info": {
+                        "prompt_tokens": response.usage.prompt_tokens,
+                        "completion_tokens": response.usage.completion_tokens,
+                        "total_tokens": response.usage.total_tokens
+                    }
+                }
+
+                # # dummies
+                # entry = {"compare_results":[]}
+
+                # # code = [
+                # #     {"name": "Scenario1", "cron": "*/1 * * * *", "period": 180000, "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"},
+                # #     {"name": "Scenario2", "cron": "*/1 * * * *", "period": 300000, "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"}
+                # # ]
+
+                # entry["len_check"] = {
+                #     "len_generated_code": len(code),
+                #     "len_label_code": len(label),
+                #     "len_is_equal": len(code) == len(label)
+                # }
+
+                # # Syntax 체크
+                # for c in code:
+                #     try:
+                #         parse_code_to_ast(c)
+                #     except Exception as e:
+                #         print(f"Parse failed: {e}")  
+
+                # compare_result = {}
+                
+                # for i, (gen, gold) in enumerate(zip(code, label), start=1):
+                #     print(f"\n[Test{i}]")
+                #     print(gen, gold)
+
+                #     gold_wrapped = {
+                #         "name": gold["name"],
+                #         "cron": gold["cron"],
+                #         "period": gold["period"],
+                #         "script": gold["code"]
+                #     }
+
+                #     gen_wrapped = {
+                #         "name": gen["name"],
+                #         "cron": gen["cron"],
+                #         "period": gen["period"],
+                #         "script": gen["code"]
+                #     }
+
+                #     result = compare_codes(gold_wrapped, gen_wrapped)
+
+                #     compare_result = {
+                #         "scenario": gold["name"],
+                #         "cron_equal": result['cron_equal'],
+                #         "period_equal": result['period_equal'],
+                #         "ast_similarity": result['ast_similarity'],
+                #         "script_similarity": result['script_similarity'],
+                #         "mismatches": []
+                #     }
+
+                #     try:
+                #         gold_ast = parse_code_to_ast(gold["code"])
+                #         gen_ast = parse_code_to_ast(gen["code"])
+
+                #         logic = extract_logic_expressions(gold_ast)
+                #         contexts = generate_context_from_conditions(logic)
+
+                #         for ctx_idx, ctx in enumerate(contexts):
+                #             gold_trace = flatten_actions(gold_ast, ctx.copy())
+                #             gen_trace = flatten_actions(gen_ast, ctx.copy())
+
+                #             gold_actions = [a for a in gold_trace if a[0] == "Action"]
+                #             gen_actions = [a for a in gen_trace if a[0] == "Action"]
+
+                #             max_len = max(len(gold_actions), len(gen_actions))
+                #             for j in range(max_len):
+                #                 g = gold_actions[j] if j < len(gold_actions) else "❌ Missing"
+                #                 p = gen_actions[j] if j < len(gen_actions) else "❌ Missing"
+
+                #                 if g != p:
+                                    
+                #                     compare_result["mismatches"].append({
+                #                         "context_index": ctx_idx + 1,
+                #                         "step": j,
+                #                         "variables": ctx,
+                #                         "gold_action": g,
+                #                         "pred_action": p
+                #                     })
+
+                #     except Exception as e:
+                #         # print(f"❌ Simulation failed: {e}")      
+                #         compare_result["simulation_error"] = str(e)
+                    
+                #     entry["compare_results"].append(compare_result)
+                results.append(entry)
+
+        # 저장하기
+        with open(f"./Testset/Eval_gpt/evaluation_{file_name}", "w", encoding="utf-8") as out_file:
+            yaml.dump(results, out_file, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
         
     del model
     gc.collect()

@@ -1,0 +1,296 @@
+- devices:
+  - Irrigator
+  - Dehumidifier
+  - Clock
+  - WeatherProvider
+  - HumiditySensor
+  - SoilMoistureSensor
+  - Pump
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 3000
+    if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0) {
+      (#Pump).switch_on()
+    }
+    while ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+      if ((#Pump).switch_switch == 'on') {
+          (#Pump).switch_off()
+      } else {
+          (#Pump).switch_on()
+      }
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0) {
+        (#Pump).switch_on()
+      }
+      while ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+        if ((#Pump).switch_switch == 'on') {
+            (#Pump).switch_off()
+        } else {
+            (#Pump).switch_on()
+        }
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+        (#Irrigator).switch_on()
+        active = True
+      }
+      if (active == True) {
+        if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 30.0) {
+            break
+        }
+        (#Irrigator).switch_toggle()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4226
+    completion_tokens: 116
+    total_tokens: 4342
+  command: 토양 습도가 25% 이하가 되면 급수기를 켜고 이후 3초마다 상태를 확인해서 습도가 30% 이상이 될 때까지 급수기를 껐다 켰다 반복해 줘.
+- devices:
+  - Clock
+  - WeatherProvider
+  - Blind
+  - Shade
+  - TemperatureSensor
+  - AirConditioner
+  - Alarm
+  - Siren
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    wait until((#TemperatureSensor).temperatureMeasurement_temperature > 30.0)
+    (#Blind).blind_close()
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = 5000
+    (#Alarm).alarm_siren()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#TemperatureSensor).temperatureMeasurement_temperature > 30.0)
+      (#Blind).blind_close()
+  - name: "Scenario2"
+    cron: ""
+    period: 5000
+    code: |
+      (#Alarm).alarm_siren()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#TemperatureSensor).temperatureMeasurement_temperature > 30.0)
+        (#Blind).blind_close()
+        active = True
+      }
+      if (active == True) {
+        (#Alarm).alarm_siren()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4216
+    completion_tokens: 63
+    total_tokens: 4279
+  command: 온도가 30도를 초과하면 블라인드를 닫고, 이후 5초마다 알람의 사이렌을 울려 줘.
+- devices:
+  - SmokeDetector
+  - Clock
+  - FallDetector
+  - WeatherProvider
+  - LeakSensor
+  - TemperatureSensor
+  - Alarm
+  - SoundSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    wait until((#WeatherProvider).weatherProvider_weather == 'rain')
+    (#Irrigator).switch_off()
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = 2000
+    (#Alarm).alarm_off()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#WeatherProvider).weatherProvider_weather == 'rain')
+      (#Irrigator).switch_off()
+  - name: "Scenario2"
+    cron: ""
+    period: 2000
+    code: |
+      (#Alarm).alarm_off()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#WeatherProvider).weatherProvider_weather == 'rain')
+        (#Irrigator).switch_off()
+        active = True
+      }
+      if (active == True) {
+        (#Alarm).alarm_off()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3423
+    completion_tokens: 61
+    total_tokens: 3484
+  command: 날씨 감지 센서에서 비가 감지되면 관개 장치를 바로 끄고, 이후 2초마다 알람을 꺼 줘.
+- devices:
+  - Relay
+  - Clock
+  - WeatherProvider
+  - Buttonx4
+  - Camera
+  - Light
+  - LightSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 4000
+    if ((#LightSensor).lightLevel_light <= 200.0) {
+      (#Light).switch_on()
+      wait until((#Clock).clock_delay(hour: 0, minute: 0, second: 2))
+      (#Light).switch_off()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 4000
+    code: |
+      if ((#LightSensor).lightLevel_light <= 200.0) {
+        (#Light).switch_on()
+        wait until((#Clock).clock_delay(hour: 0, minute: 0, second: 2))
+        (#Light).switch_off()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 4000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#LightSensor).lightLevel_light <= 200.0)
+        active = True
+      }
+      if (active == True) {
+        (#Light).switch_on()
+        (#Clock).clock_delay(0, 0, 2)
+        (#Light).switch_off()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4268
+    completion_tokens: 73
+    total_tokens: 4341
+  command: 일조량이 200룩스 이하가 되면 4초마다 조명을 켜고, 2초 후에 꺼 주는 동작을 반복해 줘.
+- devices:
+  - Clock
+  - Fan
+  - Dehumidifier
+  - AirPurifier
+  - HumiditySensor
+  - AirConditioner
+  - Curtain
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    wait until((#Door).contactSensor_contact == 'open')
+    (#VentilationFan).switch_on()
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = 3000
+    while_humidity_high := true
+    if (while_humidity_high) {
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity <= 70.0) {
+        (#VentilationFan).switch_off()
+        while_humidity_high = false
+      }
+      else {
+        (#VentilationFan).switch_on()
+      }
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#Door).contactSensor_contact == 'open')
+      (#VentilationFan).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: 3000
+    code: |
+      while_humidity_high := true
+      if (while_humidity_high) {
+        if ((#HumiditySensor).relativeHumidityMeasurement_humidity <= 70.0) {
+          (#VentilationFan).switch_off()
+          while_humidity_high = false
+        }
+        else {
+          (#VentilationFan).switch_on()
+        }
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Fan).switch_on()
+        active = True
+      }
+      if (active == True) {
+        if ((#HumiditySensor).relativeHumidityMeasurement_humidity <= 70.0) {
+            break
+        }
+        (#Fan).switch_toggle()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4218
+    completion_tokens: 124
+    total_tokens: 4342
+  command: 문이 처음 열릴 때 환풍기를 켜고, 이후 3초마다 습도를 확인해서 70% 이하가 될 때까지 환풍기를 켜고 끄는 동작을 반복해 줘.

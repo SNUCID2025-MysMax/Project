@@ -4,7 +4,7 @@ from Grammar.grammar_ver1_5_1 import grammar
 from Embedding.embedding import hybrid_recommend
 from FlagEmbedding import BGEM3FlagModel
 
-from Testset.joi_extraction import parse_scenarios
+from Testset.joi_extraction_tool import parse_scenarios
 from Evaluation.soplang_parser_full import parser, lexer
 from Evaluation.soplang_ir_simulator import flatten_actions, generate_context_from_conditions
 from Evaluation.compare_soplang_ir import extract_logic_expressions, compare_codes 
@@ -222,7 +222,7 @@ def main():
         #     print("-"*30)
 
         #     entry = {
-        #         "user_command": user_command,
+        #         "command": user_command,
         #         "devices": service_selected,
         #         "generated_code": resp,
         #         "label": label,

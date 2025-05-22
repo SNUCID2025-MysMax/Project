@@ -1,0 +1,316 @@
+- devices:
+  - Irrigator
+  - Clock
+  - WeatherProvider
+  - HumiditySensor
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - Pump
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 100
+    if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+      (#Irrigator).switch_on()
+    }
+
+    name = "Scenario2"
+    cron = ""
+    period = 1000
+    if ((#TemperatureSensor).temperatureMeasurement_temperature > 25.0) {
+      (#Pump).switch_off()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+        (#Irrigator).switch_on()
+      }
+
+      name = "Scenario2"
+      cron = ""
+      period = 1000
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 25.0) {
+        (#Pump).switch_off()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
+      (#Irrigator).switch_on()
+  - name: Scenario2
+    cron: ''
+    period: 1000
+    code: |-
+      wait until((#TemperatureSensor).temperatureMeasurement_temperature > 25.0)
+      (#Pump).switch_off()
+      break
+  compare_results: []
+  model_info:
+    prompt_tokens: 3985
+    completion_tokens: 93
+    total_tokens: 4078
+  command: 실시간으로 확인하여 토양 습도 센서의 값이 30% 이하가 되면 관개 장치를 켜 줘, 또한 1초마다 체크해서 온도가 25도를 넘으면 펌프를 꺼 줘.
+- devices:
+  - Clock
+  - Fan
+  - WeatherProvider
+  - HumiditySensor
+  - SoilMoistureSensor
+  - Speaker
+  - Pump
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    wait until((#Pump).switch_switch == 'off')
+    (#Speaker).switch_on()
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = -1
+    wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+    (#Irrigator).switch_on()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#Pump).switch_switch == 'off')
+      (#Speaker).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+      (#Irrigator).switch_on()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Pump).switch_switch == "off")
+      (#Speaker).switch_on()
+  - name: Scenario2
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+      (#Irrigator).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 4245
+    completion_tokens: 85
+    total_tokens: 4330
+  command: 펌프가 꺼지면 스피커를 켜고, 토양 습도 센서의 값이 20% 이하가 되면 관개 장치를 켜 줘.
+- devices:
+  - Clock
+  - WeatherProvider
+  - HumiditySensor
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - Alarm
+  - Siren
+  - LightSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+    humidity = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+    (#Clock).clock_delay(0, 0, 10)
+    if (humidity == (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity) {
+      (#Alarm).alarm_siren()
+    }
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = -1
+    (#LightSensor).switch_off()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+      humidity = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+      (#Clock).clock_delay(0, 0, 10)
+      if (humidity == (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity) {
+        (#Alarm).alarm_siren()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |
+      (#LightSensor).switch_off()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      stable_count := 0
+      last_value := -1.0
+      triggered := false
+      if (triggered == false) {
+        wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+        triggered = true
+      }
+
+      if (triggered == true) {
+        soil_humidity = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+        if (last_value == -1.0) {
+          last_value = soil_humidity
+          stable_count = 0
+        } else if (soil_humidity == last_value) {
+          stable_count = stable_count + 1
+        } else {
+          break
+        }
+        if (stable_count >= 100) {
+          (#Alarm).alarm_siren()
+          break
+        }
+      }
+  - name: Scenario2
+    cron: ''
+    period: -1
+    code: |-
+      (#Light).switch_off()
+  compare_results: []
+  model_info:
+    prompt_tokens: 3505
+    completion_tokens: 131
+    total_tokens: 3636
+  command: 토양 습도 센서의 값이 25% 이하로 떨어진 후 10초 동안 값이 변하지 않으면 알람의 사이렌을 울려 줘. 그리고 조명은 그냥 꺼 줘.
+- devices:
+  - Clock
+  - Blind
+  - HumiditySensor
+  - Shade
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - Pump
+  - LightSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 100
+    if ((#LightSensor).lightLevel_light > 0.0) {
+      (#Pump).switch_on()
+    }
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = 100
+    if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+      (#Blind).blind_close()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if ((#LightSensor).lightLevel_light > 0.0) {
+        (#Pump).switch_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+        (#Blind).blind_close()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      (#Pump).switch_on()
+  - name: Scenario2
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
+      (#Blind).blind_close()
+  compare_results: []
+  model_info:
+    prompt_tokens: 3657
+    completion_tokens: 92
+    total_tokens: 3749
+  command: 실시간으로 확인하여 조명이 켜지면 펌프를 켜 줘, 토양 습도 센서의 값이 30% 이하로 떨어지면 블라인드를 닫아 줘.
+- devices:
+  - Clock
+  - WeatherProvider
+  - HumiditySensor
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - Curtain
+  - Alarm
+  - Siren
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    wait until((#Irrigator).switch_switch == 'off')
+    wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+    (#Alarm).alarm_siren()
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = -1
+    if ((#Curtain).curtain_curtain == "closed") {
+      (#Curtain).curtain_open()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#Irrigator).switch_switch == 'off')
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+      (#Alarm).alarm_siren()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Curtain).curtain_curtain == "closed") {
+        (#Curtain).curtain_open()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Irrigator).switch_switch == 'off')
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+      (#Alarm).alarm_siren()
+  - name: Scenario2
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Curtain).curtain_curtain == 'closed') {
+        (#Curtain).curtain_open()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3644
+    completion_tokens: 107
+    total_tokens: 3751
+  command: 관개 장치가 꺼지고 나서 토양 습도 센서의 값이 20% 이하로 떨어지면 알람의 사이렌을 울려 줘. 커튼이 닫혀 있으면 열어 줘.

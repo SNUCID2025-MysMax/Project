@@ -1,0 +1,348 @@
+- devices:
+  - Clock
+  - WeatherProvider
+  - Blind
+  - HumiditySensor
+  - Shade
+  - SoilMoistureSensor
+  - Alarm
+  - Humidifier
+  generated_code: "```\nname = \"Scenario1\"\ncron = \"\"\nperiod = 100\nisIrrigated := false\nisSirenOn := false\nisBlindClosed := false\nbegin_month := ((#Clock).clock_month >= 3)\nend_month := ((#Clock).clock_month <= 9)\nif((begin_month == true) and (end_month == true)) {  \n  if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) and (isIrrigated == false)) {\n    (#Clock).clock_delay(hour: 0, minute: 0, second: 5)\n    (#Irrigator).switch_on()\n    isIrrigated = true\n  }\n  if ((isIrrigated == true) and (isSirenOn == false)) {\n    (#Clock).clock_delay(hour: 0, minute: 0, second: 10)\n    (#Alarm).alarm_siren()\n    isSirenOn = true\n  }\n  if ((isSirenOn == true) and (isBlindClosed == false)) {\n    (#Clock).clock_delay(hour: 0, minute: 0, second: 15)\n    if((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {\n      (#Blind).blind_close()\n      isBlindClosed = true\n      isIrrigated = false\n      isSirenOn = false\n    }\n  }\n  if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 30.0)){\n    isIrrigated = false\n    isSirenOn = false\n  }\n}\n```"
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: "isIrrigated := false\nisSirenOn := false\nisBlindClosed := false\nbegin_month := ((#Clock).clock_month >= 3)\nend_month := ((#Clock).clock_month <= 9)\nif((begin_month == true) and (end_month == true)) {  \n  if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) and (isIrrigated == false)) {\n    (#Clock).clock_delay(hour: 0, minute: 0, second: 5)\n    (#Irrigator).switch_on()\n    isIrrigated = true\n  }\n  if ((isIrrigated == true) and (isSirenOn == false)) {\n    (#Clock).clock_delay(hour: 0, minute: 0, second: 10)\n    (#Alarm).alarm_siren()\n    isSirenOn = true\n  }\n  if ((isSirenOn == true) and (isBlindClosed == false)) {\n    (#Clock).clock_delay(hour: 0, minute: 0, second: 15)\n    if((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {\n      (#Blind).blind_close()\n      isBlindClosed = true\n      isIrrigated = false\n      isSirenOn = false\n    }\n  }\n  if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 30.0)){\n    isIrrigated = false\n    isSirenOn = false\n  }\n}\n"
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      monitoring := false
+      start_time := 0
+
+      if (((#Clock).clock_month >= 3) and ((#Clock).clock_month <= 9)) {
+        if ((monitoring == false) and ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)) {
+          (#Clock).clock_delay(0, 0, 5)
+          (#Irrigator).switch_on()
+          (#Clock).clock_delay(0, 0, 10)
+          (#Alarm).alarm_siren()
+          start_time = (#Clock).clock_timestamp
+          monitoring = true
+        }
+      }
+
+      if (monitoring == true) {
+        current = (#Clock).clock_timestamp
+        if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 30.0) {
+          monitoring = false
+        } else if ((current - start_time) >= 15.0) {
+          (#Blind).blind_close()
+          monitoring = false
+          break
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4043
+    completion_tokens: 364
+    total_tokens: 4407
+  command: 3월부터 9월까지, 실시간으로 확인하여 토양 습도 센서의 값이 30% 이하이면 5초 대기 후 관개 장치를 켜고, 추가로 10초 대기 후 알람의 사이렌을 울린 다음, 그 후로부터 15초 동안 습도 값이 계속 30% 이하이면 블라인드를 닫아 줘.
+- devices:
+  - Clock
+  - WeatherProvider
+  - Blind
+  - HumiditySensor
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - Alarm
+  - Siren
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+    for i := 1 to 5 {
+      (#Alarm).alarm_siren()
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 1)
+      if (i < 5) {
+        (#Clock).clock_delay(hour: 0, minute: 0, second: 3)
+      }
+    }
+    (#Clock).clock_delay(hour: 0, minute: 0, second: 10)
+    (#Blind).blind_close()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+      for i := 1 to 5 {
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(hour: 0, minute: 0, second: 1)
+        if (i < 5) {
+          (#Clock).clock_delay(hour: 0, minute: 0, second: 3)
+        }
+      }
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 10)
+      (#Blind).blind_close()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      i := 0
+      triggered := false
+      if (triggered == false) {
+        wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+        triggered = true
+      }
+      if (triggered == true) {
+        if (i < 5) {
+          (#Alarm).alarm_siren()
+          (#Clock).clock_delay(0, 0, 1)
+          (#Alarm).alarm_off()
+          i = i + 1
+        } else {
+          (#Clock).clock_delay(0, 0, 10)
+          (#Blind).blind_close()
+          break
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3738
+    completion_tokens: 141
+    total_tokens: 3879
+  command: 토양 습도 센서의 값이 25% 이하로 떨어지면 3초 간격으로 총 다섯 번 알람의 사이렌을 1초간 울리고, 그 후 10초 대기 후 블라인드를 닫아 줘.
+- devices:
+  - SmokeDetector
+  - Clock
+  - MotionSensor
+  - GasValve
+  - Curtain
+  - Camera
+  - Pump
+  - Light
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 100
+    wait until((#MotionSensor).motionSensor_motion == 'active')
+    (#Clock).clock_delay(hour: 0, minute: 0, second: 5)
+    (#Light).switch_on()
+    (#Clock).clock_delay(hour: 0, minute: 0, second: 10)
+    (#Curtain).curtain_open()
+    (#Clock).clock_delay(hour: 0, minute: 0, second: 15)
+    if ((#Pump).switch_switch == 'off') {
+      (#Pump).switch_on()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 5)
+      (#Light).switch_on()
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 10)
+      (#Curtain).curtain_open()
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 15)
+      if ((#Pump).switch_switch == 'off') {
+        (#Pump).switch_on()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(0, 0, 5)
+      (#Light).switch_on()
+      (#Clock).clock_delay(0, 0, 10)
+      (#Curtain).curtain_open()
+      (#Clock).clock_delay(0, 0, 15)
+      if ((#Pump).switch_switch == 'off') {
+        (#Pump).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4234
+    completion_tokens: 128
+    total_tokens: 4362
+  command: 실시간으로 확인하여 움직임이 감지되면 5초 대기 후 조명을 켜고, 10초 후 커튼을 열고, 15초 후 펌프가 꺼져 있으면 펌프를 켜 줘.
+- devices:
+  - Relay
+  - Clock
+  - Blind
+  - Light
+  - Shade
+  - Alarm
+  - Pump
+  - Siren
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = "0 0 1 1 *"
+    period = 100
+    if ((#Light).switch_switch == 'off') {
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 3)
+      (#Pump).switch_off()
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 5)
+      (#Blind).blind_close()
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 7)
+      (#Light).switch_on()
+      (#Alarm).alarm_siren()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 0 1 1 *"
+    period: 100
+    code: |
+      if ((#Light).switch_switch == 'off') {
+        (#Clock).clock_delay(hour: 0, minute: 0, second: 3)
+        (#Pump).switch_off()
+        (#Clock).clock_delay(hour: 0, minute: 0, second: 5)
+        (#Blind).blind_close()
+        (#Clock).clock_delay(hour: 0, minute: 0, second: 7)
+        (#Light).switch_on()
+        (#Alarm).alarm_siren()
+      }
+  label:
+  - name: Scenario1
+    cron: 0 0 1 1 *
+    period: 0
+    code: |-
+      wait until((#Light).switch_switch == 'off')
+      if (((#Clock).clock_month == 1) and ((#Clock).clock_day == 1)) {
+        (#Clock).clock_delay(0, 0, 3)
+        (#Pump).switch_off()
+        (#Clock).clock_delay(0, 0, 5)
+        (#Blind).blind_close()
+        (#Clock).clock_delay(0, 0, 7)
+        (#Light).switch_on()
+        (#Alarm).alarm_siren()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4655
+    completion_tokens: 133
+    total_tokens: 4788
+  command: 1월 1일에, 실시간으로 확인하여 조명이 꺼지면 3초 대기 후 펌프를 끄고, 5초 후 블라인드를 닫으며, 추가로 7초 후 조명을 다시 켠 다음 알람의 사이렌을 울려 줘.
+- devices:
+  - Clock
+  - WeatherProvider
+  - Blind
+  - LeakSensor
+  - HumiditySensor
+  - Shade
+  - TemperatureSensor
+  - SoilMoistureSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 10000
+    lowCount := 0
+    lowTime := 0
+    prevTime := (#Clock).clock_timestamp
+    if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+      lowCount = lowCount + 1
+      if (lowCount == 2) {
+        if (lowTime == 0) {
+          lowTime = (#Clock).clock_timestamp
+        }
+      }
+    } else {
+      lowCount = 0
+      lowTime = 0
+    }
+    if (lowTime != 0 and ((#Clock).clock_timestamp - lowTime) >= 60.0) {
+      (#Blind).blind_close()
+      (#Clock).clock_delay(0, 0, 5)
+      (#Speaker).speak("알람")
+      (#Clock).clock_delay(0, 0, 5)
+      (#Speaker).speak("알람")
+    }
+    prevTime = (#Clock).clock_timestamp
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |
+      lowCount := 0
+      lowTime := 0
+      prevTime := (#Clock).clock_timestamp
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+        lowCount = lowCount + 1
+        if (lowCount == 2) {
+          if (lowTime == 0) {
+            lowTime = (#Clock).clock_timestamp
+          }
+        }
+      } else {
+        lowCount = 0
+        lowTime = 0
+      }
+      if (lowTime != 0 and ((#Clock).clock_timestamp - lowTime) >= 60.0) {
+        (#Blind).blind_close()
+        (#Clock).clock_delay(0, 0, 5)
+        (#Speaker).speak("알람")
+        (#Clock).clock_delay(0, 0, 5)
+        (#Speaker).speak("알람")
+      }
+      prevTime = (#Clock).clock_timestamp
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      elapsed10s := 0
+      previousLow := false
+      confirmedLow := false
+      monitoring := false
+      duration := 0
+      executed := false
+
+      if (executed == false) {
+        if (monitoring == false) {
+          elapsed10s = elapsed10s + 100
+          if (elapsed10s >= 10000) {
+            current = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+            if ((current <= 30.0) and (previousLow == true)) {
+              confirmedLow = true
+              monitoring = true
+            } else {
+              confirmedLow = false
+            }
+            previousLow = (current <= 30.0)
+            elapsed10s = 0
+          }
+        } else {
+          if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+            duration = duration + 100
+            if (duration >= 60000) {
+              (#Blind).blind_close()
+              (#Clock).clock_delay(0, 0, 5)
+              (#Speaker).mediaPlayback_speak("알람")
+              (#Speaker).mediaPlayback_speak("알람")
+              executed = true
+              break
+            }
+          } else {
+            duration = 0
+          }
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3592
+    completion_tokens: 224
+    total_tokens: 3816
+  command: 10초마다 확인하여 토양 습도 센서의 값이 두 번 연속으로 30% 이하가 된 다음, 그 상태가 1분 이상 유지되면 블라인드를 닫고 5초 후 ‘알람’이라고 두 번 말해 줘.
