@@ -148,7 +148,7 @@
             break
         }
       }
-- command: "현관 문이 닫히면 즉시 조명을 끄고, 이후 3초마다 알람의 사이렌을 한 번씩 울려 줘."
+- command: "현관 문이 닫히면 즉시 조명을 끄고, 이후 3초마다 경광등을 켜 줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -161,5 +161,5 @@
         active = True
       }
       if (active == True) {
-        (#Alarm).alarm_siren()
+        (#Siren).sirenMode_setSirenMode('strobe')
       }
