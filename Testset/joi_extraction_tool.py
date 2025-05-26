@@ -78,6 +78,10 @@ def parse_scenarios(script: str):
       "code": scenarios
     }
 
+def extract_last_code_block(text):
+  pattern = r"```(?:[^\n]*)\n(.*?)```"
+  matches = re.findall(pattern, text, re.DOTALL)
+  return matches[-1].strip() if matches else None
 
 if __name__ == "__main__":
     script = """
@@ -112,8 +116,5 @@ if __name__ == "__main__":
       }
     }
     """
-    def extract_last_code_block(text):
-        pattern = r"```(?:.*?\n)?(.*?)```"
-        matches = re.findall(pattern, text, re.DOTALL)
-        return matches[-1] if matches else None
+    
     print(parse_scenarios(extract_last_code_block(script)))

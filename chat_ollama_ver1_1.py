@@ -4,7 +4,7 @@ from Grammar.grammar_ver1_1_4 import grammar
 from Embedding.embedding import hybrid_recommend
 from FlagEmbedding import BGEM3FlagModel
 
-from Testset.joi_extraction_tool import parse_scenarios
+from Testset.joi_extraction_tool import parse_scenarios, extract_last_code_block
 from Evaluation.soplang_parser_full import parser, lexer
 from Evaluation.soplang_ir_simulator import flatten_actions, generate_context_from_conditions
 from Evaluation.compare_soplang_ir import extract_logic_expressions, compare_codes 
@@ -48,7 +48,7 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
     
     prompt = f"Generate SoP Lang code for \"{user_command}\""
 
-    role = "user"
+    role = "system"
 
     try:
         if use_stream:
@@ -161,10 +161,10 @@ def evaluate_pair(gold, gen):
 
 def main():
     # select sllm
-    model = "exaone-deep:7.8B"
+    # model = "exaone3.5:7.8b"
     model = "qwen2.5-coder:7b"
-    model = "llama3.2:3b"
-    model = "codellama:7b"
+    # model = "codellama:7b"  # good
+    # model = "codegemma:7b" # good
 
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
@@ -178,7 +178,7 @@ def main():
         messages=[{"role":"system", "content":"Do not print anything."},
                   {"role": "user", "content": "hi"}],
     )
-    print("LLM loaded")
+    print(f"LLM loaded - {model}")
 
     # 태그, 서비스 목록 불러오기
 
@@ -202,33 +202,34 @@ def main():
             )
             print(f"#명령어: {user_command}")
             print(f"#총 응답 시간 : {info['elapsed_time']}초")
-            print(f"#디바이스 추출: {service_selected} ({info["bge_elapsed_time"]}초)")
+            print(f"#디바이스 추출: {list(service_selected)} ({info["bge_elapsed_time"]}초)")
             print(f"#모델 응답 시간: {info["llm_elapsed_time"]}초")
             print("#응답:\n", resp)
             print("="*30)
             
-        #     resp = extract_last_python_block(resp)
-        #     print(resp)
-        #     code = ""
-        #     try:
-        #         code = parse_scenarios(resp)
-        #     except:
-        #         code = ""
-        #     print("변환된 코드:\n", code)
-        #     print("-"*30)
+            code = ""
+            try:
+                code = parse_scenarios(extract_last_code_block(resp))
+            except:
+                try:
+                    code = parse_scenarios(resp)
+                except:
+                    code = ""
+            # print("변환된 코드:\n", code)
+            # print("-"*30)
 
-        #     entry = {
-        #         "command": user_command,
-        #         "devices": service_selected,
-        #         "generated_code": resp,
-        #         "label": label,
-        #         "compare_results": [],
-        #         "model_info": {
-        #             "prompt_tokens": info["prompt_tokens"],
-        #             "generated_tokens": info["generated_tokens"],
-        #             "elapsed_time": info["elapsed_time"],
-        #         }
-        #     }
+            entry = {
+                "command": user_command,
+                "devices": list(service_selected),
+                "generated_code": resp,
+                # "label": label,
+                "compare_results": [],
+                "model_info": {
+                    "prompt_tokens": info["prompt_tokens"],
+                    "generated_tokens": info["generated_tokens"],
+                    "elapsed_time": info["elapsed_time"],
+                }
+            }
 
         #     entry["len_check"] = {
         #         "len_generated_code": len(code),
@@ -262,7 +263,7 @@ def main():
 
         #         result = evaluate_pair(gold_wrapped, gen_wrapped)
         #         entry["compare_results"].append(result)
-        # results.append(entry)
+            results.append(entry)
 
     # 저장하기
     with open("./Testset/evaluation_results.json", "w", encoding="utf-8") as out_file:
