@@ -75,7 +75,7 @@
     code: |-
       wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
       (#Blind).blind_close()
-- command: "관개 장치가 꺼지고 나서 토양 습도 센서의 값이 20% 이하로 떨어지면 알람의 사이렌을 울려 줘. 커튼이 닫혀 있으면 열어 줘."
+- command: "관개 장치가 꺼지고 나서 토양 습도 센서의 값이 20% 이하로 떨어지면 사이렌과 경광등을 켜 줘. 커튼이 닫혀 있으면 열어 줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -83,7 +83,7 @@
     code: |-
       wait until((#Irrigator).switch_switch == 'off')
       wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
-      (#Alarm).alarm_siren()
+      (#Alarm).alarm_both()
   - name: "Scenario2"
     cron: ""
     period: -1

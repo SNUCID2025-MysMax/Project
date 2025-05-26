@@ -199,7 +199,7 @@
       }
       (#Clock).clock_delay(0, 0, 10)
       (#Light).switchLevel_setLevel(10, 1)
-- command: "실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않으면 알람의 사이렌을 울리고, 5초 후 조명을 최대 밝기로 켜 줘."
+- command: "실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않으면 경광등을 켜고, 5초 후 조명을 최대 밝기로 켜 줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -215,7 +215,7 @@
         if ((#MotionSensor).motionSensor_motion == 'inactive') {
           noMotionDuration = noMotionDuration + 100
           if (noMotionDuration >= 10000) {
-            (#Alarm).alarm_siren()
+            (#Alarm).alarm_strobe()
             (#Clock).clock_delay(0, 0, 5)
             (#Light).switchLevel_setLevel(100, 0)
             break

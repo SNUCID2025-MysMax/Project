@@ -113,13 +113,13 @@
           }
         }
       }
-- command: "실시간으로 확인하여 알람이 켜져 있지 않을 때마다 10초 대기 후 조명의 밝기를 현재 밝기로 맞춰줘."
+- command: "실시간으로 확인하여 재실 센서가 감지 상태일 때마다 10초 대기 후 조명의 밝기를 현재 밝기로 맞춰줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: 100
     code: |
-      wait until((#Alarm).alarm_alarm == "off")
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
       (#Clock).clock_delay(0, 0, 10)
       level = (#Light).switchLevel_level
       (#Light).switchLevel_setLevel(level, 1)

@@ -1,3 +1,84 @@
+- command: "사이렌을 울려줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
+- command: "사이렌을 울려줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
+      (#Siren).sirenMode_setSirenMode('siren')
+- command: "경광등을 켜 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
+      (#Alarm).alarm_strobe()
+- command: "경광등을 켜 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
+      (#Siren).sirenMode_setSirenMode('strobe')
+- command: "사이렌과 경광등을 동시에 켜 줘"
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
+      (#Alarm).alarm_both()
+- command: "사이렌과 경광등을 동시에 켜 줘"
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
+      (#Siren).sirenMode_setSirenMode('both')
+- command: "사이렌과 경광등을 둘 다 꺼 줘"
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
+      (#Alarm).alarm_off()
+- command: "사이렌과 경광등을 둘 다 꺼 줘"
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
+      (#Siren).sirenMode_setSirenMode('off')
+- command: "재실 센서가 감지 상태이면 알람의 사이렌을 울려줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#OccupancySensor).presenceSensor_presence == 'present') {
+        (#Alarm).alarm_siren()
+      }
+- command: "재실 센서가 감지 상태이면 알람의 사이렌을 울려줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#PresenceSensor).presenceSensor_presence == 'present') {
+        (#Alarm).alarm_siren()
+      }
 - command: "에어컨의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
   code:
   - name: "Scenario1"
@@ -1239,6 +1320,15 @@
       place = (#MenuProvider).menuProvider_todayPlace()
       (#Speaker).mediaPlayback_speak(menu)
 - command: "모션 센서가 활성 상태이면 알람의 사이렌을 울려줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#MotionSensor).motionSensor_motion == 'active') {
+        (#Alarm).alarm_siren()
+      }
+- command: "움직임이 감지되고 있으면 알람의 사이렌을 울려줘."
   code:
   - name: "Scenario1"
     cron: ""

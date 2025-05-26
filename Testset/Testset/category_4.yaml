@@ -93,11 +93,11 @@
     code: |
       wait until((#Dehumidifier).switch_switch == 'off')
       (#Dehumidifier).switch_on()
-- command: "문이 열리면 ‘문이 열렸습니다’라고 말해 줘."
+- command: "재실 센서에서 더 이상 감지가 안 되면 ‘문이 열렸습니다’라고 말해 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |
-      wait until((#DoorLock).doorControl_door == 'open')
+      wait until((#PresenceSensor).presenceSensor_presence == 'not present')
       (#Speaker).mediaPlayback_speak("문이 열렸습니다")
