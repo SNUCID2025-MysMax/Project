@@ -162,7 +162,8 @@ def evaluate_pair(gold, gen):
 def main():
     # select sllm
     # model = "exaone3.5:7.8b"
-    model = "qwen2.5-coder:7b"
+    model = "qwen2.5-coder:7b"  # very good
+    # model = "gemma3:12b" # good
     # model = "codellama:7b"  # good
     # model = "codegemma:7b" # good
 
