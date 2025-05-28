@@ -7,7 +7,7 @@ from datasets import Dataset
 from Grammar.grammar_ver1_1_4 import grammar
 import torch, yaml, re
 
-max_seq_length = 8192  # Gemma sadly only supports max 8192 for now
+max_seq_length = 4096  # Gemma sadly only supports max 8192 for now
 dtype = (
     None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 )
@@ -20,6 +20,10 @@ fourbit_models = [
     "unsloth/gemma-3-12b-it-unsloth-bnb-4bit",
     "unsloth/codegemma-7b-bnb-4bit",
 ] # More models at https://huggingface.co/unsloth
+
+from transformers import AutoTokenizer
+original_tokenizer = AutoTokenizer.from_pretrained("unsloth/codegemma-7b-bnb-4bit")
+original_tokenizer.save_pretrained("model")
 
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name = "unsloth/codegemma-7b-bnb-4bit",  # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
@@ -158,12 +162,12 @@ trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
     train_dataset = MY_DATASET,
-    packing = False,  # Can make training 5x faster for short sequences.
+    packing = True,  # Can make training 5x faster for short sequences.
     args = SFTConfig(
-        per_device_train_batch_size = 2,
-        gradient_accumulation_steps = 4,
+        per_device_train_batch_size = 4,
+        gradient_accumulation_steps = 2,
         warmup_steps = 5,
-        num_train_epochs = 5,
+        num_train_epochs = 2,
         # max_steps = 20,
         learning_rate = 2e-4,
         optim = "adamw_8bit",
@@ -173,6 +177,9 @@ trainer = SFTTrainer(
         dataset_text_field = "text",
         report_to = "none",  # Use this for WandB etc
         max_grad_norm = 0.3,
+        dataset_num_proc = 4,
+        dataloader_num_workers = 4,
+        logging_steps=10,
     ),
 )
 

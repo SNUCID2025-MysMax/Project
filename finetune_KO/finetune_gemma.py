@@ -20,8 +20,8 @@ fourbit_models = [
 ]  # More models at https://huggingface.co/unsloth
 
 model, tokenizer = FastModel.from_pretrained(
-    model_name = "unsloth/gemma-3-12b-it-unsloth-bnb-4bit",
-    max_seq_length = 8192, # Choose any for long context!
+    model_name = "unsloth/gemma-3-4b-it-unsloth-bnb-4bit",
+    max_seq_length = 4096, # Choose any for long context!
     load_in_4bit = True,  # 4 bit quantization to reduce memory
     load_in_8bit = False, # [NEW!] A bit more accurate, uses 2x memory
     full_finetuning = False, # [NEW!] We have full finetuning now!
@@ -51,6 +51,7 @@ def formatting_prompts_func(examples):
     convos = examples["conversations"]
     texts = [tokenizer.apply_chat_template(convo, tokenize = False, add_generation_prompt = False) for convo in convos]
     return { "text" : texts, }
+pass
 
 ######################################################################################
 def extract_classes_by_name(text: str):
@@ -102,19 +103,15 @@ def load_dataset():
                     "conversations": [
                         {
                             "role": "system",
-                            "content": grammar,
-                        },
-                        {
-                            "role": "system", 
-                            "content": service_doc,
+                            "content": grammar + "\n\n" + service_doc
                         },
                         {
                             "role": "user",
-                            "content": f"Generate SoP Lang code for \"{result['command']}\"",
+                            "content": f"Generate SoP Lang code for \"{result['command']}\""
                         },
                         {
                             "role": "assistant",
-                            "content": result['code'],
+                            "content": result['code']
                         }
                     ]
                 })
@@ -148,24 +145,43 @@ trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
     train_dataset = MY_DATASET,
-    eval_dataset = None, # Can set up evaluation!
+    packing = True,
     args = SFTConfig(
         dataset_text_field = "text",
-        per_device_train_batch_size = 2,
-        gradient_accumulation_steps = 4, # Use GA to mimic batch size!
+        per_device_train_batch_size = 4,
+        gradient_accumulation_steps = 2, # Use GA to mimic batch size!
         warmup_steps = 5,
-        num_train_epochs = 5, # Set this for 1 full training run.
+        num_train_epochs = 2, # Set this for 1 full training run.
         # max_steps = 30,
-        learning_rate = 1e-4, # Reduce to 2e-5 for long training runs
-        logging_steps = 1,
+        learning_rate = 2e-4, # Reduce to 2e-5 for long training runs
+        logging_steps = 10,
         optim = "adamw_8bit",
         weight_decay = 0.01,
         lr_scheduler_type = "linear",
         seed = 3407,
         report_to = "none", # Use this for WandB etc
-        dataset_num_proc=2,
+        max_grad_norm = 0.3,
+        dataset_num_proc = 4,
+        dataloader_num_workers = 4,
     ),
 )
-trainer_stats = trainer.train()
 
-model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")
+from unsloth.chat_templates import train_on_responses_only
+trainer = train_on_responses_only(
+    trainer,
+    instruction_part = "<start_of_turn>user\n",
+    response_part = "<start_of_turn>model\n",
+)
+
+# trainer_stats = trainer.train()
+
+# model.save_pretrained("model")
+# tokenizer.save_pretrained("model")
+
+model.save_pretrained_merged("model", tokenizer)
+
+model.save_pretrained_gguf(
+    "model",
+    quantization_type = "Q8_0", # For now only Q8_0, BF16, F16 supported
+)
+# # model.save_pretrained_gguf("model", tokenizer, quantization_type = "Q8_0")
