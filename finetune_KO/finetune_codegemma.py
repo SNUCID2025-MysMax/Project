@@ -1,3 +1,5 @@
+import os, sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from unsloth import FastLanguageModel
 from unsloth.chat_templates import get_chat_template
 from trl import SFTTrainer, SFTConfig
@@ -74,7 +76,7 @@ def extract_classes_by_name(text: str):
 
     return class_dict
 
-with open("./ServiceExtraction/integration/service_list_ver1.1.7.txt", "r") as f:
+with open("../ServiceExtraction/integration/service_list_ver1.1.7.txt", "r") as f:
     service_doc = f.read()
 classes = extract_classes_by_name(service_doc)
 
@@ -99,7 +101,7 @@ def read_yaml(data):
 def load_dataset():
     ret = []
     for i in range(0, 16):  # 범위를 필요에 따라 조정
-        file_name = f"./Testset/TestsetWithDevices/category_{i}.yaml"
+        file_name = f"../Testset/TestsetWithDevices/category_{i}.yaml"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
                 data = yaml.safe_load(file)

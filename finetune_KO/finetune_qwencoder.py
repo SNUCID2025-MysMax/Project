@@ -1,12 +1,14 @@
+import os, sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from unsloth import FastLanguageModel
 from unsloth.chat_templates import get_chat_template
 from trl import SFTTrainer, SFTConfig
 from transformers import TrainingArguments, DataCollatorForSeq2Seq
 from datasets import Dataset
 from Grammar.grammar_ver1_1_4 import grammar
-import torch, yaml, re
+import torch, yaml, re, subprocess
 
-max_seq_length = 8192 # Choose any! We auto support RoPE Scaling internally!
+max_seq_length = 4096 # Choose any! We auto support RoPE Scaling internally!
 dtype = None # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 load_in_4bit = True # Use 4bit quantization to reduce memory usage. Can be False.
 
@@ -20,6 +22,7 @@ fourbit_models = [
 
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name = "unsloth/Qwen2.5-Coder-7B-bnb-4bit",
+    # model_name = "unsloth/qwen2.5-coder-3b-instruct-bnb-4bit",
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -65,7 +68,7 @@ def extract_classes_by_name(text: str):
 
     return class_dict
 
-with open("./ServiceExtraction/integration/service_list_ver1.1.7.txt", "r") as f:
+with open("../ServiceExtraction/integration/service_list_ver1.1.7.txt", "r") as f:
     service_doc = f.read()
 classes = extract_classes_by_name(service_doc)
 
@@ -90,7 +93,7 @@ def read_yaml(data):
 def load_dataset():
     ret = []
     for i in range(0, 16):  # 범위를 필요에 따라 조정
-        file_name = f"./Testset/TestsetWithDevices/category_{i}.yaml"
+        file_name = f"../Testset/TestsetWithDevices/category_{i}.yaml"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
                 data = yaml.safe_load(file)
@@ -147,12 +150,12 @@ trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
     train_dataset = MY_DATASET,
-    packing = False,  # Can make training 5x faster for short sequences.
+    packing = True,  # Can make training 5x faster for short sequences.
     args = SFTConfig(
-        per_device_train_batch_size = 2,
-        gradient_accumulation_steps = 4,
+        per_device_train_batch_size = 4,
+        gradient_accumulation_steps = 2,
         warmup_steps = 5,
-        num_train_epochs = 5,
+        num_train_epochs = 2,
         # max_steps = 20,
         learning_rate = 2e-4,
         optim = "adamw_8bit",
@@ -162,6 +165,9 @@ trainer = SFTTrainer(
         dataset_text_field = "text",
         report_to = "none",  # Use this for WandB etc
         max_grad_norm = 0.3,
+        dataset_num_proc = 4,
+        dataloader_num_workers = 4,
+        logging_steps=50,
     ),
 )
 
