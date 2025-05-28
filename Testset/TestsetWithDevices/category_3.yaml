@@ -1,21 +1,25 @@
-- command: "지금 바로 관수기를 작동해 줘."
+- command: 지금 바로 관수기를 작동해 줘.
   code:
-  - name: "Scenario1"
-    cron: ""
+  - name: Scenario1
+    cron: ''
     period: -1
     code: |
       (#Irrigator).switch_on()
-- command: "매일 아침 8시에 조명을 켜 줘."
+  devices:
+  - Irrigator
+- command: 매일 아침 8시에 조명을 켜 줘.
   code:
-  - name: "Scenario1"
-    cron: "0 8 * * *"
+  - name: Scenario1
+    cron: 0 8 * * *
     period: 0
     code: |
       (#Light).switch_on()
-- command: "매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘."
+  devices:
+  - Light
+- command: 매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘.
   code:
-  - name: "Scenario1"
-    cron: "0 18 * * *"
+  - name: Scenario1
+    cron: 0 18 * * *
     period: 15000
     code: |
       curtain_action := true
@@ -30,10 +34,13 @@
       } else {
         break
       }
-- command: "주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘."
+  devices:
+  - Curtain
+  - Clock
+- command: 주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘.
   code:
-  - name: "Scenario1"
-    cron: "0 22 * * 6,0"
+  - name: Scenario1
+    cron: 0 22 * * 6,0
     period: 180000
     code: |
       if ((#Clock).clock_hour == 22) {
@@ -41,10 +48,13 @@
       } else {
         break
       }
-- command: "주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘."
+  devices:
+  - Blind
+  - Clock
+- command: 주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘.
   code:
-  - name: "Scenario1"
-    cron: "0 22 * * 6,0"
+  - name: Scenario1
+    cron: 0 22 * * 6,0
     period: 3000
     code: |
       if ((#Clock).clock_hour == 22) {
@@ -52,10 +62,13 @@
       } else {
         break
       }
-- command: "10초마다 알람과 사이렌을 껐다 켰다 반복해 줘."
+  devices:
+  - Dehumidifier
+  - Clock
+- command: 10초마다 알람과 사이렌을 껐다 켰다 반복해 줘.
   code:
-  - name: "Scenario1"
-    cron: ""
+  - name: Scenario1
+    cron: ''
     period: 10000
     code: |
       alarm_state := true
@@ -68,10 +81,13 @@
         (#Siren).switch_on()
         alarm_state = true
       }
-- command: "매일 30초마다 선풍기를 껐다 켰다 반복해 줘."
+  devices:
+  - Siren
+  - Alarm
+- command: 매일 30초마다 선풍기를 껐다 켰다 반복해 줘.
   code:
-  - name: "Scenario1"
-    cron: ""
+  - name: Scenario1
+    cron: ''
     period: 30000
     code: |
       fan_on := true
@@ -82,26 +98,34 @@
         (#Fan).switch_on()
         fan_on = true
       }
-- command: "매일 자정에 TV를 꺼 줘."
+  devices:
+  - Fan
+- command: 매일 자정에 TV를 꺼 줘.
   code:
-  - name: "Scenario1"
-    cron: "0 0 * * *"
+  - name: Scenario1
+    cron: 0 0 * * *
     period: 0
     code: |
       (#Television).switch_off()
-- command: "5초마다 텔레비전 볼륨을 1씩 높여 줘."
+  devices:
+  - Television
+- command: 5초마다 텔레비전 볼륨을 1씩 높여 줘.
   code:
-  - name: "Scenario1"
-    cron: ""
+  - name: Scenario1
+    cron: ''
     period: 5000
     code: |
       vol = (#Television).audioVolume_volume
       new_vol = vol + 1
       (#Television).audioVolume_setVolume(new_vol)
-- command: "평일 오전 8시부터 자정까지 한 시간마다 조명을 켜 줘."
+  devices:
+  - Television
+- command: 평일 오전 8시부터 자정까지 한 시간마다 조명을 켜 줘.
   code:
-  - name: "Scenario1"
-    cron: "0 8-23 * * 1-5"
+  - name: Scenario1
+    cron: 0 8-23 * * 1-5
     period: 0
     code: |
       (#Light).switch_on()
+  devices:
+  - Light

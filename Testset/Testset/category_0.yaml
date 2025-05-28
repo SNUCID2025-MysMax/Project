@@ -973,7 +973,7 @@
     period: -1
     code: |-
       (#Feeder).feederOperatingState_startFeeding()
-- command: "가스 측정기의 가스 사용량이 500kWh 이상이면 알람의 사이렌을 울려줘."
+- command: "가스 미터의 가스 사용량이 500kWh 이상이면 알람의 사이렌을 울려줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -982,7 +982,7 @@
       if ((#GasMeter).gasMeter_gasMeter >= 500) {
         (#Alarm).alarm_siren()
       }
-- command: "가스 측정기의 가스 발열량이 1000kcal 이상이면 알람의 사이렌을 울려줘."
+- command: "가스 미터의 가스 발열량이 1000kcal 이상이면 알람의 사이렌을 울려줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -991,7 +991,7 @@
       if ((#GasMeter).gasMeter_gasMeterCalorific >= 1000) {
         (#Alarm).alarm_siren()
       }
-- command: "가스 측정기의 누적 가스 사용 시간이 10000초 이상이면 알람의 사이렌을 울려줘."
+- command: "가스 미터의 누적 가스 사용 시간이 10000초 이상이면 알람의 사이렌을 울려줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -1000,7 +1000,7 @@
       if ((#GasMeter).gasMeter_gasMeterTime >= 10000) {
         (#Alarm).alarm_siren()
       }
-- command: "가스 측정기의 가스 사용량이 20세제곱미터 이상이면 알람의 사이렌을 울려줘."
+- command: "가스 미터의 가스 사용량이 20세제곱미터 이상이면 알람의 사이렌을 울려줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -1549,7 +1549,7 @@
     period: -1
     code: |-
       (#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode('manual')
-- command: "롤 스크린이 40퍼센트 이상 열려 있으면 알람의 사이렌을 울려줘."
+- command: "쉐이드가 40퍼센트 이상 열려 있으면 알람의 사이렌을 울려줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -1558,7 +1558,7 @@
       if ((#Shade).windowShadeLevel_shadeLevel >= 40) {
         (#Alarm).alarm_siren()
       }
-- command: "롤 스크린이 완전히 열려 있는 상태면 알람의 사이렌을 울려줘."
+- command: "쉐이드가 완전히 열려 있는 상태면 알람의 사이렌을 울려줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -1567,7 +1567,7 @@
       if ((#Shade).windowShade_windowShade == 'open') {
         (#Alarm).alarm_siren()
       }
-- command: "롤 스크린이 지원하는 상태를 스피커로 출력해줘."
+- command: "쉐이드가 지원하는 상태를 스피커로 출력해줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -1575,28 +1575,28 @@
     code: |
       states = (#Shade).windowShade_supportedWindowShadeCommands
       (#Speaker).mediaPlayback_speak(states)
-- command: "롤 스크린을 50퍼 센트로 설정해줘."
+- command: "쉐이드를 50퍼 센트로 설정해줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       (#Shade).windowShadeLevel_setShadeLevel(50)
-- command: "롤 스크린을 닫아줘."
+- command: "쉐이드를 닫아줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       (#Shade).windowShade_close()
-- command: "롤 스크린을 열어줘."
+- command: "쉐이드를 열어줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       (#Shade).windowShade_open()
-- command: "롤 스크린 움직임을 일시 중지해줘."
+- command: "쉐이드 움직임을 일시 중지해줘."
   code:
   - name: "Scenario1"
     cron: ""

@@ -96,5 +96,5 @@ trainer = SFTTrainer(
     ),
 )
 trainer_stats = trainer.train()
-tokenizer.chat_template = None
-model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m",)
+# tokenizer.chat_template = None
+model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")

@@ -18,8 +18,8 @@ fourbit_models = [
     "unsloth/codegemma-7b-bnb-4bit",
 ] # More models at https://huggingface.co/unsloth
 
-model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = fourbit_models[0]
+model, tokenizer = FastLanguageModel.from_pretrained( 
+    model_name = fourbit_models[0],
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
