@@ -200,3 +200,8 @@ finetune_old/*
 finetune_KO/*
 !finetune_KO/*.py
 nohup.out
+
+llama.cpp
+
+llama.cpp2
+llama.cpp*
