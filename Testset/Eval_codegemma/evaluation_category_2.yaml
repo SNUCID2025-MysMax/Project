@@ -1,0 +1,356 @@
+- command: 창문이 열려 있고 조명이 꺼져 있으며 커튼이 닫혀 있으면 조명을 켜고 커튼을 열어 줘. 또한 관수기가 꺼져 있고 토양 수분이 40% 이하이면 관수기를 작동시켜 줘.
+  devices:
+  - Blind
+  - Pump
+  - Curtain
+  - SoilMoistureSensor
+  - Humidifier
+  - Clock
+  - Irrigator
+  - Window
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Window).windowControl_contact == 'open' and (#Light).switch_switch == 'off' and (#Curtain).curtainControl_curtain == 'closed') {
+        (#Light).switch_on()
+        (#Curtain).curtainControl_open()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Irrigator).switch_switch == 'off' and (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 40.0) {
+        (#Irrigator).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2753
+    generated_tokens: 147
+    elapsed_time: 4.429
+- command: 환풍기가 꺼져 있고 이산화탄소 수치가 1000 이상이며 커튼이 닫혀 있으면 환풍기를 켜고 커튼을 열어 줘. 조명이 꺼져 있고 온도가 27도 이상이면 조명을 켜고 블라인드를 닫아 줘.
+  devices:
+  - Blind
+  - AirQualityDetector
+  - Curtain
+  - Humidifier
+  - Clock
+  - Fan
+  - AirConditioner
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Fan).switch_switch == 'off') {
+        if ((#CarbonDioxideSensor).carbonDioxideMeasurement_carbonDioxide >= 1000.0) {
+          if ((#Window Blind).windowBlind_blind == 'closed') {
+            (#Fan).switch_on()
+            (#Window Blind).windowBlind_open()
+          }
+        }
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Light).switch_switch == 'off') {
+        if ((#TemperatureSensor).temperatureMeasurement_temperature >= 27.0) {
+          (#Light).switch_on()
+          (#Window Blind).windowBlind_close()
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2764
+    generated_tokens: 181
+    elapsed_time: 5.428
+- command: 에어컨이 꺼져 있고 온도가 29도 이상이며 습도가 70% 이상이면 제습기를 제습 모드로 설정하고 켜 줘. 커튼이 열려 있고 조명이 꺼져 있으면 커튼을 닫고 조명을 켜 줘.
+  devices:
+  - Humidifier
+  - Curtain
+  - Clock
+  - Dehumidifier
+  - AirConditioner
+  - Light
+  - TemperatureSensor
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#AirConditioner).switch_switch == 'off') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 29.0) and ((#HumiditySensor).humidityMeasurement_humidity >= 70.0)) {
+        (#Dryer).dryMode_setDryMode('dry')
+        (#Dryer).switch_on()
+      }
+      if (((#Curtain).curtainControl_curtain == 'open') and ((#Light).switch_switch == 'off')) {
+        (#Curtain).curtainControl_close()
+        (#Light).switch_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 1000
+    code: |-
+      cur_time := (#Clock).clock_time
+      prev_time := cur_time
+      if (cur_time != prev_time) {
+        prev_time = cur_time
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2756
+    generated_tokens: 210
+    elapsed_time: 6.289
+- command: 조명이 꺼져 있고 움직임이 감지되지 않으며 커튼이 열려 있으면 조명을 켜고 커튼을 닫아 줘. 관수기가 꺼져 있고 창문이 닫혀 있으면 관수기를 켜고 창문을 열어 줘.
+  devices:
+  - Blind
+  - Pump
+  - Curtain
+  - Clock
+  - Valve
+  - ContactSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Light).switch_switch == 'off') {
+        if ((#ContactSensor).contactSensor_contact == 'closed') {
+          if ((# SzkINA1128 # kura ).windowControl_window == 'open') {
+            (#Light).switch_on()
+            (# SzkINA1128 # kura ).windowControl_close()
+          }
+        }
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Irrigator).switch_switch == 'off') {
+        if ((#ContactSensor).contactSensor_contact == 'closed') {
+          (#Irrigator).switch_on()
+          (#ContactSensor).contactSensor_contact = 'open'
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2754
+    generated_tokens: 186
+    elapsed_time: 5.578
+- command: 블라인드가 열려 있고 조명이 꺼져 있으며 습도가 80% 이상이면 블라인드를 닫고 조명을 켜 줘. 창문이 닫혀 있고 에어컨이 꺼져 있으면 창문을 열고 에어컨을 켜 줘.
+  devices:
+  - Blind
+  - Humidifier
+  - Curtain
+  - Clock
+  - Shade
+  - AirConditioner
+  - Window
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#Bl indent).bl indentControl_bl indent == 'open') and ((#Light).switch_switch == 'off') and ((#HumiditySensor).humidityMeasurement_humidity >= 80.0)) {
+        (#Bl indent).bl indentControl_close()
+        (#Light).switch_on()
+      }
+      if (((#Window).windowControl_window == 'closed') and ((#AirConditioner).airConditionerMode_airConditionerMode == 'off')) {
+        (#Window).windowControl_open()
+        (#AirConditioner).airConditionerMode_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 60000
+    code: |-
+      count := 0
+      if (((#Bl indent).bl indentControl_bl indent == 'open') and ((#Light).switch_switch == 'off') and ((#HumiditySensor).humidityMeasurement_humidity >= 80.0)) {
+        (#Bl indent).bl indentControl_close()
+        (#Light).switch_on()
+        count = count + 1
+      }
+      if (((#Window).windowControl_window == 'closed') and ((#AirConditioner).airConditionerMode_airConditionerMode == 'off')) {
+        (#Window).windowControl_open()
+        (#AirConditioner).airConditionerMode_on()
+        count = count + 1
+      }
+      if (count >= 1) {
+        break
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2757
+    generated_tokens: 336
+    elapsed_time: 10.042
+- command: TV가 꺼져 있고 블라인드가 닫혀 있으며 커튼이 열려 있으면 TV를 켜고 블라인드를 열어 줘. 에어컨이 자동 모드가 아니고 꺼져 있으면 자동 모드로 설정하고 전원을 켜 줘.
+  devices:
+  - Blind
+  - Television
+  - Curtain
+  - Humidifier
+  - Pump
+  - Shade
+  - Clock
+  - AirConditioner
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#TV).switch_switch == 'off') and ((#Blind).blindControl_blind == 'closed') and ((# curt).curtControl_curt == 'open')) {
+        (#TV).switch_on()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'auto') and ((#AirConditioner).switch_switch == 'off')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+        (#AirConditioner).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2750
+    generated_tokens: 139
+    elapsed_time: 4.203
+- command: 스피커가 정지 상태이고 조명이 꺼져 있으며 커튼이 닫혀 있으면 스피커를 재생 상태로 전환하고 커튼을 열어 줘. TV가 켜져 있고 조명 밝기가 80 이상이면 밝기를 50으로 낮춰 줘.
+  devices:
+  - Speaker
+  - Television
+  - Curtain
+  - Blind
+  - Clock
+  - Light
+  - Relay
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#Speaker).switch_switch == 'stopped') and ((#Light).switch_switch == 'off') and ((#Window).windowControl_window == 'closed') and ((#TV).switch_switch == 'on') and ((#Light).lightControl_lightVolume >= 80)) {
+        (#Speaker).switch_setStatus('playing')
+        (#Window).windowControl_open()
+        if (((#TV).switch_switch == 'on') and ((#Light).lightControl_lightVolume >= 80)) {
+          (#Light).lightControl_setVolume(50)
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2757
+    generated_tokens: 155
+    elapsed_time: 4.685
+- command: 문이 열려 있고 알람이 꺼져 있으면 사이렌을 울리고 블라인드가 열려 있으면 닫아 줘. 에어컨이 꺼져 있고 온도가 30도 이상이면 냉방 모드로 설정하고 켜 줘.
+  devices:
+  - Blind
+  - Siren
+  - Clock
+  - AirConditioner
+  - Alarm
+  - TemperatureSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#ContactSensor).contactSensor_contact == "open") and ((#Alarm).alarm_alarm == "off")) {
+        (#Alarm).alarm_siren()
+      }
+      if (((#Blinds).blindsControl_blinds == "open") and ((#ContactSensor).contactSensor_contact == "open")) {
+        (#Blinds).blindsControl_close()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#AirConditioner).switch_switch == "off") and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setTemperature(30.0)
+        (#AirConditioner).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2750
+    generated_tokens: 186
+    elapsed_time: 5.606
+- command: TV가 꺼져 있고 커튼이 닫혀 있으며 선풍기가 꺼져 있으면 TV를 켜고 커튼을 열어 줘. 스피커가 재생 중이고 조명이 꺼져 있으면 조명을 켜고 블라인드를 닫아 줘.
+  devices:
+  - Speaker
+  - Television
+  - Curtain
+  - Blind
+  - Pump
+  - Clock
+  - Fan
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#TV).switch_switch == 'off') {
+        if ((#Curtain).windowControl_window == 'closed') {
+          if ((#Fan).switch_switch == 'off') {
+            (#TV).switch_on()
+            (#Curtain).windowControl_open()
+          }
+        }
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Speaker).switch_switch == 'on') {
+        if ((#Light).switch_switch == 'off') {
+          (#Light).switch_on()
+          (#Blind).blindControl_close()
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2752
+    generated_tokens: 162
+    elapsed_time: 4.889
+- command: TV가 켜져 있고 스피커가 꺼져 있으며 조명이 꺼져 있으면 스피커를 켜고 조명을 켜 줘. 에어컨이 난방 모드이고 온도가 21도 이상이면 에어컨을 끄고 블라인드를 닫아 줘.
+  devices:
+  - Speaker
+  - Television
+  - Blind
+  - Clock
+  - Dehumidifier
+  - AirConditioner
+  - Light
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#TV).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'off')) {
+        (#Speaker).switch_on()
+        (#Light).switch_on()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#AirConditioner).airConditionerMode_temperature >= 21)) {
+        (#AirConditioner).switch_off()
+        (#Blind).blindControl_close()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#TV).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'off')) {
+        (#Speaker).switch_on()
+        (#Light).switch_on()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#AirConditioner).airConditionerMode_temperature >= 21)) {
+        (#AirConditioner).switch_off()
+        (#Blind).blindControl_close()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2759
+    generated_tokens: 277
+    elapsed_time: 8.314

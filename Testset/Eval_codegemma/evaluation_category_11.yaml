@@ -1,0 +1,395 @@
+- command: 3월부터 9월까지, 실시간으로 확인하여 토양 습도 센서의 값이 30% 이하이면 5초 대기 후 관개 장치를 켜고, 추가로 10초 대기 후 알람의 사이렌을 울린 다음, 그 후로부터 15초 동안 습도 값이 계속 30% 이하이면 블라인드를 닫아 줘.
+  devices:
+  - Blind
+  - Humidifier
+  - SoilMoistureSensor
+  - WeatherProvider
+  - Shade
+  - Clock
+  - Alarm
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#Clock).clock_month == 3) or ((#Clock).clock_month == 4) or ((#Clock).clock_month == 5) or ((#Clock).clock_month == 6) or ((#Clock).clock_month == 7) or ((#Clock).clock_month == 8) or ((#Clock).clock_month == 9)) {
+        wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
+        (#Clock).clock_delay(5)
+        (#Irrigator).switch_on()
+        (#Clock).clock_delay(10)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(15)
+        wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
+        (#Blind).blindControl_close()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2785
+    generated_tokens: 216
+    elapsed_time: 7.967
+- command: 토양 습도 센서의 값이 25% 이하로 떨어지면 3초 간격으로 총 다섯 번 알람의 사이렌을 1초간 울리고, 그 후 10초 대기 후 블라인드를 닫아 줘.
+  devices:
+  - Blind
+  - SoilMoistureSensor
+  - WeatherProvider
+  - Clock
+  - Alarm
+  - TemperatureSensor
+  - Siren
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+      count := 0
+      while(count < 5) {
+        (#Alarm).alarm_siren()
+        delay = 3000
+        (#Clock).clock_delay(0, 0, delay)
+        count = count + 1
+      }
+      (#Clock).clock_delay(0, 0, 10000)
+      (#Blind).blindControl_close()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2750
+    generated_tokens: 126
+    elapsed_time: 3.854
+- command: 실시간으로 확인하여 움직임이 감지되면 5초 대기 후 조명을 켜고, 10초 후 커튼을 열고, 15초 후 펌프가 꺼져 있으면 펌프를 켜 줘.
+  devices:
+  - Pump
+  - Curtain
+  - Clock
+  - MotionSensor
+  - SmokeDetector
+  - GasValve
+  - Light
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        wait until((#ContactSensor).contactSensor_contact == "closed")
+        wait until((#Clock).clock_delay(second: 5))
+        (#Light).switch_on()
+        wait until((#Clock).clock_delay(second: 10))
+        (#Curtain).curtainControl_open()
+        wait until((#Clock).clock_delay(second: 15))
+        if ((#Pump).switch_switch == 'off') {
+          (#Pump).switch_on()
+        }
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      wait until((#ContactSensor).contactSensor_contact == "open")
+      wait until((#Clock).clock_delay(second: 5))
+      (#Light).switch_on()
+      wait until((#Clock).clock_delay(second: 10))
+      (#Curtain).curtainControl_open()
+      wait until((#Clock).clock_delay(second: 15))
+      if ((#Pump).switch_switch == 'off') {
+        (#Pump).switch_on()
+      }
+  - name: "Scenario3"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        wait until((#ContactSensor).contactSensor_contact == "closed")
+  compare_results: []
+  model_info:
+    prompt_tokens: null
+    generated_tokens: null
+    elapsed_time: 10.158
+- command: 1월 1일에, 실시간으로 확인하여 조명이 꺼지면 3초 대기 후 펌프를 끄고, 5초 후 블라인드를 닫으며, 추가로 7초 후 조명을 다시 켠 다음 알람의 사이렌을 울려 줘.
+  devices:
+  - Pump
+  - Blind
+  - Clock
+  - Shade
+  - Alarm
+  - Light
+  - Relay
+  - Siren
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 1 1 *"
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'off')
+      (#Clock).clock_delay(3)
+      (#Pump).switch_off()
+      (#Clock).clock_delay(5)
+      (#Blind).blindControl_close()
+      (#Clock).clock_delay(7)
+      (#Light).switch_on()
+      (#Alarm).alarm_siren()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2753
+    generated_tokens: 100
+    elapsed_time: 3.086
+- command: 10초마다 확인하여 토양 습도 센서의 값이 두 번 연속으로 30% 이하가 된 다음, 그 상태가 1분 이상 유지되면 블라인드를 닫고 5초 후 ‘알람’이라고 두 번 말해 줘.
+  devices:
+  - Blind
+  - SoilMoistureSensor
+  - WeatherProvider
+  - Shade
+  - Clock
+  - TemperatureSensor
+  - LeakSensor
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      count := 0
+      temp := 30.0
+      flag := true
+      flag2 := false
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= temp) {
+        count = count + 1
+      }
+      if ((count == 2) and (flag)) {
+        flag = false
+        flag2 = true
+      }
+      if (flag2) {
+        if (flag == false) {
+          break
+        }
+        flag2 = false
+      }
+      if (flag == false) {
+        break
+      }
+      if ((flag == false) and (count >= 2)) {
+        flag = true
+        (# Blind).blindControl_close()
+        (# Clock).clock_delay(0, 0, 5)
+        (# Speaker).switch_on()
+        (# Speaker).speakerVolume_setSpeakerVolume(8)
+        (# Speaker).speakerContent_setSpeakerContent('alert')
+        (# Speaker).speakerContent_setSpeakerContent('alert')
+        count = 0
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2752
+    generated_tokens: 246
+    elapsed_time: 7.469
+- command: 실시간으로 확인하여 커튼이 5초 연속 닫혀 있으면 커튼을 열고, 이후 10초 동안 움직임이 감지되지 않으면 조명을 꺼 줘.
+  devices:
+  - Blind
+  - Curtain
+  - Clock
+  - MotionSensor
+  - Light
+  - ContactSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 500
+    code: |-
+      curtain_closed := 0
+      curtain_closed_duration := 0
+      curtain = (#Curtain).curtainControl_curtain
+      switch = (#Light).switch_switch
+      if (curtain == 'closed') {
+        curtain_closed = curtain_closed + 1
+        curtain_closed_duration = curtain_closed_duration + 500
+        if (curtain_closed == 5) {
+          (#Curtain).curtainControl_open()
+          curtain_closed = 0
+          curtain_closed_duration = 0
+        }
+      } else {
+        curtain_closed = 0
+        curtain_closed_duration = 0
+      }
+      if (curtain_closed_duration >= 10000) {
+        switch = 'off'
+        curtain_closed = 0
+        curtain_closed_duration = 0
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      if (curtain == 'closed') {
+        curtain_closed = curtain_closed + 1
+      } else {
+        curtain_closed = 0
+      }
+      if (curtain_closed >= 5) {
+        (#Curtain).curtainControl_open()
+        curtain_closed = 0
+      }
+      if (curtain_closed_duration >= 10000) {
+  compare_results: []
+  model_info:
+    prompt_tokens: null
+    generated_tokens: null
+    elapsed_time: 10.089
+- command: 조명이 켜지면 1초 간격으로 조명을 3번 깜빡이고, 이후 5초 대기 후 스피커를 켜고, 그 다음부터는 실시간으로 확인하여 에어컨이 꺼지면 10초 후 켜 줘.
+  devices:
+  - Speaker
+  - Clock
+  - AirConditioner
+  - AirPurifier
+  - Light
+  - Relay
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      (#Light).switch_ flasher(3)
+      (#Clock).clock_delay(0, 0, 5)
+      (#Speaker).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'off')
+      (#Clock).clock_delay(0, 0, 10)
+      (#AirConditioner).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2750
+    generated_tokens: 129
+    elapsed_time: 3.93
+- command: 에어컨이 켜지면 5초 후 블라인드를 닫고, 5초 더 기다린 후 커튼이 열려 있으면 커튼을 닫고, 이후 10초 후 조명 밝기를 10퍼센트로 낮춰 줘.
+  devices:
+  - Blind
+  - Curtain
+  - Clock
+  - Shade
+  - AirConditioner
+  - AirPurifier
+  - Light
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#AirConditioner).switch_switch == 'on') {
+        (#Clock).clock_delay(0, 0, 5)
+        (#Blind).blindControl_close()
+        (#Clock).clock_delay(0, 0, 5)
+        if ((#Curtain).curtainControl_curtain == 'open') {
+          (#Curtain).curtainControl_close()
+          (#Clock).clock_delay(0, 0, 10)
+        }
+        (#LightLevel).lightLevelControl_setLightLevel(10)
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2751
+    generated_tokens: 148
+    elapsed_time: 4.537
+- command: 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않으면 경광등을 켜고, 5초 후 조명을 최대 밝기로 켜 줘.
+  devices:
+  - Clock
+  - Alarm
+  - SmokeDetector
+  - Light
+  - DoorLock
+  - LightSensor
+  - Window
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      previous_contact := (#ContactSensor).contactSensor_contact
+      contact := (#ContactSensor).contactSensor_contact
+      contact_change_duration := 0
+      if (contact != previous_contact) {
+        contact_change_duration = contact_change_duration + 100
+        if ((contact_change_duration >= 10000) and (contact == 'open')) {
+          (#Light).switch_on()
+          (#Light).switch_on()
+          (#Light).switch_on()
+          (#Light).switch_on()
+          (#Light).switch_on()
+          break
+        }
+      }
+      previous_contact = contact
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      contact = (#ContactSensor).contactSensor_contact
+      if ((contact == 'open') and (contact_change_duration >= 5000)) {
+        (#Light).switch_on()
+        (#Light).switch_on()
+        (#Light).switch_on()
+        (#Light).switch_on()
+        (#Light).switch_on()
+        break
+      }
+      contact_change_duration = 0
+      contact = (#ContactSensor).contactSensor_contact
+  compare_results: []
+  model_info:
+    prompt_tokens: 2734
+    generated_tokens: 288
+    elapsed_time: 8.72
+- command: 매주 월요일 오전 9시부터 10시까지, 실시간으로 확인하여 창문이 열리고 나서 7초가 지난 시점에도 블라인드가 열려 있으면 블라인드를 닫고, 10초 후 커튼도 닫아 줘. 그리고 그 시간대에 실시간으로 확인하여 조명이 꺼지면 켜 줘.
+  devices:
+  - Blind
+  - Curtain
+  - Clock
+  - Shade
+  - ContactSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 9 * * 1"
+    period: 300000
+    code: |-
+      previous_state := "closed"
+      previous_time := 0.0
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        if (previous_state == "closed") {
+          current_time = (#Clock).clock_timestamp()
+          if ((current_time - previous_time) >= 7.0) {
+            (#Blind).blindControl_close()
+            (#Clock).clock_delay(seconds=10)
+            (#Curtain).curtainControl_close()
+          }
+        }
+      }
+      previous_state = (#ContactSensor).contactSensor_contact
+      previous_time = (#Clock).clock_timestamp()
+      if ((#Light).switch_switch == 'off') {
+        (#Light).switch_on()
+      }
+  - name: "Scenario2"
+    cron: "0 10 * * 1"
+    period: -1
+    code: |-
+      (#Blind).blindControl_close()
+      (#Curtain).curtainControl_close()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2775
+    generated_tokens: 248
+    elapsed_time: 7.53

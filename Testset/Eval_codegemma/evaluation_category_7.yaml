@@ -1,0 +1,371 @@
+- command: 실시간으로 확인해서 토양 습도가 25% 이하로 떨어질 때마다 급수기를 켜고 '급수 시작'이라고 스피커로 출력해줘.
+  devices:
+  - Speaker
+  - Humidifier
+  - SoilMoistureSensor
+  - WeatherProvider
+  - Clock
+  - Irrigator
+  - LeakSensor
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      last_checked := 25
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25) {
+        if (last_checked < 25) {
+          (#Irrigator).switch_on()
+          (#Speaker).switch_on()
+          (#Speaker).mediaPlayback_setMedia(163)
+          (#Speaker).mediaPlayback_play()
+        }
+        last_checked = 25
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2730
+    generated_tokens: 120
+    elapsed_time: 3.69
+- command: 1초마다 상태를 확인해서 온도가 35도를 초과할 때마다 환풍기를 켜 줘.
+  devices:
+  - Humidifier
+  - AirQualityDetector
+  - Clock
+  - Dehumidifier
+  - Fan
+  - AirConditioner
+  - AirPurifier
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if (temp > 35.0) {
+        (#Fan).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2713
+    generated_tokens: 54
+    elapsed_time: 1.699
+- command: 3초마다 일조량을 확인해서 200룩스 이하로 떨어지면 조명을 켜 줘.
+  devices:
+  - WeatherProvider
+  - Clock
+  - Light
+  - Irrigator
+  - Relay
+  - TemperatureSensor
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      light_status := (#Light).switch_switch
+      light_status_string := "off"
+      if (light_status_string == 'off') {
+        (#Light).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2715
+    generated_tokens: 65
+    elapsed_time: 2.029
+- command: 문이 열릴 때마다 경광등과 조명을 켜 줘. 실시간으로 확인해서 상태를 계속 검사해서 반응해 줘.
+  devices:
+  - Curtain
+  - Clock
+  - Alarm
+  - Light
+  - DoorLock
+  - ContactSensor
+  - Window
+  - Siren
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#ContactSensor).contactSensor_contact == "open")
+      (#Light).switch_on()
+      (#AlarmLight).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#ContactSensor).contactSensor_contact == "open")
+      (#Light).switch_on()
+      (#AlarmLight).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2720
+    generated_tokens: 101
+    elapsed_time: 3.096
+- command: 현재 날씨에서 비가 감지될 때마다 관개 장치를 꺼 주고 '비가 감지되었습니다'라고 스피커로 출력해줘. 감지는 1분에 한번씩만 하자.
+  devices:
+  - Speaker
+  - WeatherProvider
+  - Clock
+  - SmokeDetector
+  - SoundSensor
+  - Irrigator
+  - LeakSensor
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |-
+      wait until((#Weather).weatherCondition_weather == ' Rain')
+      (#Irrigator).switch_off()
+      (#Speaker).switch_on()
+      (#Speaker).mediaPlayback_setMedia("text")
+      (#Speaker).mediaPlayback_play()
+  - name: "Scenario2"
+    cron: ""
+    period: 60000
+    code: |-
+      wait until((#Weather).weatherCondition_weather == ' Rain')
+      (#Irrigator).switch_off()
+      (#Speaker).switch_on()
+      (#Speaker).mediaPlayback_setMedia("text")
+      (#Speaker).mediaPlayback_play()
+  - name: "Scenario3"
+    cron: ""
+    period: 60000
+    code: |-
+      wait until((#Weather).weatherCondition_weather == ' Rain')
+      (#Irrigator).switch_off()
+      (#Speaker).switch_on()
+      (#Speaker).mediaPlayback_setMedia("text")
+      (#Speaker).mediaPlayback_play()
+  - name: "Scenario4"
+    cron: ""
+    period: 60000
+    code: |-
+      wait until((#Weather).weatherCondition_weather == ' Rain')
+      (#Irrigator).switch_off()
+      (#Speaker).switch_on()
+      (#Speaker).mediaPlayback_setMedia("text")
+      (#Speaker).mediaPlayback_play()
+  - name: "Scenario5"
+    cron: ""
+    period: 60000
+    code: |-
+      wait until((#Weather).weatherCondition_weather == ' Rain')
+  compare_results: []
+  model_info:
+    prompt_tokens: null
+    generated_tokens: null
+    elapsed_time: 10.36
+- command: 실시간으로 확인해서 거실 창문이 열릴 때마다 블라인드를 닫아 줘.
+  devices:
+  - Blind
+  - Curtain
+  - Clock
+  - Shade
+  - GasValve
+  - ContactSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      is_window_open := false
+      current_window_state = (#Window).windowControl_window
+      if ((current_window_state == "open") and (is_window_open == false)) {
+        is_window_open = true
+        (#Blind).blindControl_close()
+      }
+      if (current_window_state == "closed") {
+        is_window_open = false
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2709
+    generated_tokens: 110
+    elapsed_time: 3.371
+- command: 조명이 켜질 때마다 커튼을 동시에 열어 줘. 실시간으로 조명을 체크해야 해.
+  devices:
+  - Blind
+  - Curtain
+  - ContactSensor
+  - Clock
+  - Light
+  - LightSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      (#Curtain).curtainControl_open()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      (#Curtain).curtainControl_open()
+  - name: "Scenario3"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      (#Curtain).curtainControl_open()
+  - name: "Scenario4"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      (#Curtain).curtainControl_open()
+  - name: "Scenario5"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      (#Curtain).curtainControl_open()
+  - name: "Scenario6"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      (#Curtain).curtainControl_open()
+  - name: "Scenario7"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      (#Curtain).curtainControl_open()
+  - name: "Scenario8"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+  compare_results: []
+  model_info:
+    prompt_tokens: null
+    generated_tokens: null
+    elapsed_time: 10.037
+- command: 2초마다 상태를 확인해서 TV가 켜질 때마다 스피커도 켜 줘.
+  devices:
+  - Speaker
+  - Television
+  - Clock
+  - GasValve
+  - Irrigator
+  - Relay
+  - Camera
+  - Switch
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |-
+      tv_state := (#TV).switch_switch
+      tv_state_previous := "off"
+      if (tv_state == "on") {
+        if (tv_state_previous == "off") {
+          (#Speaker).switch_on()
+        }
+      }
+      tv_state_previous = tv_state
+  compare_results: []
+  model_info:
+    prompt_tokens: 2708
+    generated_tokens: 90
+    elapsed_time: 2.778
+- command: 현관 문이 열릴 때마다 즉시 알람의 경광등을 켜 줘. 확인은 실시간으로 하구.
+  devices:
+  - Curtain
+  - Clock
+  - Shade
+  - Alarm
+  - SmokeDetector
+  - DoorLock
+  - Window
+  - Siren
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#MainGate).contactSensor_contact == 'open') {
+        (#Alarm).alarmLight_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      contact := (#MainGate).contactSensor_contact
+      if (contact == 'open') {
+        (#Alarm).alarmLight_on()
+      } else if (contact == 'closed') {
+        (#Alarm).alarmLight_off()
+      }
+  - name: "Scenario3"
+    cron: ""
+    period: 100
+    code: |-
+      contact := (#MainGate).contactSensor_contact
+      if (contact == 'open') {
+        (#Alarm).alarmLight_on()
+      } else if (contact == 'closed') {
+        (#Alarm).alarmLight_off()
+      }
+  - name: "Scenario4"
+    cron: ""
+    period: 100
+    code: |-
+      contact := (#MainGate).contactSensor_contact
+      if (contact == 'open') {
+        (#Alarm).alarmLight_on()
+      } else if (contact == 'closed') {
+        (#Alarm).alarmLight_off()
+      }
+  - name: "Scenario5"
+    cron: ""
+    period: 100
+    code: |-
+      contact := (#MainGate).contactSensor_contact
+      if (contact == 'open') {
+        (#Alarm).alarmLight_on()
+      } else if (contact == 'closed') {
+        (#Alarm).alarmLight_off()
+  compare_results: []
+  model_info:
+    prompt_tokens: null
+    generated_tokens: null
+    elapsed_time: 10.132
+- command: 1초마다 공기청정기 상태를 확인해서 꺼지면 자동 모드로 다시 켜 줘.
+  devices:
+  - Humidifier
+  - AirQualityDetector
+  - RobotCleaner
+  - Clock
+  - Dehumidifier
+  - Dishwasher
+  - AirConditioner
+  - AirPurifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      if ((#AirCleaner).switch_switch == 'off') {
+        (#AirCleaner).switch_on()
+        (#AirCleaner).airCleanerMode_setAirCleanerMode('auto')
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2710
+    generated_tokens: 64
+    elapsed_time: 1.985

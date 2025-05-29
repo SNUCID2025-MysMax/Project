@@ -1,0 +1,276 @@
+- command: 매일 자정 선풍기가 꺼져 있으면 선풍기를 꺼 줘. 또한 그 때마다 선풍기를 꺼 줘
+  devices:
+  - Humidifier
+  - Curtain
+  - WeatherProvider
+  - Dehumidifier
+  - Clock
+  - Fan
+  - AirConditioner
+  - AirPurifier
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 10000
+    code: |-
+      last_state := (#Fan).switch_switch
+      if (last_state == "on") {
+        (#Fan).switch_off()
+      }
+      last_state = (#Fan).switch_switch
+  compare_results: []
+  model_info:
+    prompt_tokens: 2718
+    generated_tokens: 71
+    elapsed_time: 2.219
+- command: 주말에는 관개 장치가 꺼지면 관개 장치를 꺼 줘.
+  devices:
+  - Curtain
+  - WeatherProvider
+  - Clock
+  - Alarm
+  - GasValve
+  - Irrigator
+  - LeakSensor
+  - Relay
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 16 * * 6,0"
+    period: -1
+    code: |-
+      wait until((#Irrigator).switch_switch == "off")
+      (#Irrigator).switch_off()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2705
+    generated_tokens: 54
+    elapsed_time: 1.714
+- command: 실시간으로 확인하여 블라인드가 닫힌 상태에서 또 닫히면 전등을 켜 줘
+  devices:
+  - Blind
+  - Siren
+  - Clock
+  - Shade
+  - Valve
+  - Relay
+  - Switch
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#Blind).blindControl_blind == "closed") and ((#Blind).blindControl_blind == "closed")) {
+        (#Light).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2711
+    generated_tokens: 56
+    elapsed_time: 1.774
+- command: 매일, 실시간으로 확인하여 관개 장치가 꺼질 때마다 10초간 기다리는 것을 반복해 줘
+  devices:
+  - WeatherProvider
+  - Clock
+  - GasValve
+  - Irrigator
+  - LeakSensor
+  - Relay
+  - Charger
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 1000
+    code: |-
+      wait until((#Irrigator).switch_switch == "off")
+      delay = 10000
+      if (delay >= 1000) {
+        (#Clock).clock_delay(0, 0, delay / 1000)
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2717
+    generated_tokens: 87
+    elapsed_time: 2.693
+- command: 실시간으로 확인하여 선풍기가 꺼져 있으면서 움직임이 감지되지 않다가 감지되는 순간 그 때부터 10초 간격으로 전등이 꺼져 있으면 끄고, 켜져 있으면 켜 줘
+  devices:
+  - Clock
+  - MotionSensor
+  - Fan
+  - PresenceSensor
+  - SmokeDetector
+  - ContactSensor
+  - Switch
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      isFanOff := true
+      isMovement gis detected := false
+      previousTime := (#Clock).clock_datetime
+      currentTim := (#Clock).clock_datetime
+      if (isFanOff == true) {
+        if ((#Fan).switch_switch == 'off') {
+          isFanOff = false
+        }
+      }
+      if (isFanOff == false) {
+        if (isMovement gis detected == false) {
+          if ((#MotionSensor).motionSensor_motion == 'inactive') {
+            isMovement gis detected = false
+          }
+        }
+      }
+      if (isFanOff == false and isMovement gis detected == true) {
+        if (currentTim - previousTime >= 10000) {
+          if ((#Light).switch_switch == 'on') {
+            (#Light).switch_off()
+          } else {
+            (#Light).switch_on()
+          }
+          previousTime = currentTim
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3882
+    generated_tokens: 233
+    elapsed_time: 8.312
+- command: 1초마다 확인하여 온도가 30도 미만이면서 25도 이상일 때마다 에어컨을 켜 줘.
+  devices:
+  - AirQualityDetector
+  - Humidifier
+  - Clock
+  - Fan
+  - AirConditioner
+  - AirPurifier
+  - Irrigator
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((30.0 <= temp) and (temp <= 25.0)) {
+        (#AirConditioner).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2719
+    generated_tokens: 65
+    elapsed_time: 3.383
+- command: 주말 오전에, 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않고 10초가 끝났을 때 조명이 켜져 있으면 조명을 켜 줘.
+  devices:
+  - LightSensor
+  - Clock
+  - SmokeDetector
+  - Light
+  - ContactSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * 6"
+    period: 1000
+    code: |-
+      last_move := (#Clock).clock_second
+      is_open := false
+      is_on := false
+      if ((#ContactSensor).contactSensor_contact == 'open') {
+        if ((#Clock).clock_second == (last_move + 10)) {
+          is_open = true
+        } else {
+          last_move = (#Clock).clock_second
+        }
+      }
+      if ((#Light).switch_switch == 'on') {
+        is_on = true
+      }
+      if ((is_open == true) and (is_on == true)) {
+        (#Light).switch_off()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4060
+    generated_tokens: 169
+    elapsed_time: 6.334
+- command: 실시간으로 확인하여 재실 센서가 감지 상태일 때마다 10초 대기 후 조명의 밝기를 현재 밝기로 맞춰줘.
+  devices:
+  - Clock
+  - PresenceSensor
+  - SmokeDetector
+  - Light
+  - TemperatureSensor
+  - LightSensor
+  - Switch
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      contact := ((#PresenceSensor).presenceSensor_presence == 'present')
+      contact_prev := contact
+      wait until(contact)
+      if (contact_prev == false) {
+        (#Light).switchLevel_alert()
+      }
+      contact_prev = contact
+  compare_results: []
+  model_info:
+    prompt_tokens: 4077
+    generated_tokens: 76
+    elapsed_time: 4.762
+- command: TV가 꺼져 있으면 10초 대기 후 다시 TV를 확인하여 켜져 있으면 TV를 켜 줘.
+  devices:
+  - SmartPlug
+  - Television
+  - Clock
+  - GasValve
+  - Refrigerator
+  - Relay
+  - Camera
+  - Switch
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#TV).switch_switch == 'off') {
+        (#Clock).clock_delay(0, 0, 10)
+        if ((#TV).switch_switch == 'on') {
+          (#TV).switch_on()
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2714
+    generated_tokens: 78
+    elapsed_time: 3.796
+- command: 월, 수, 금에 실시간으로 확인하여 창문이 열려 있지 않으면 창문을 닫아 줘.
+  devices:
+  - Curtain
+  - Clock
+  - Shade
+  - Valve
+  - ContactSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 * * * *"
+    period: 1000
+    code: |-
+      if ((#Clock).clock_weekday == "monday" or (#Clock).clock_weekday == "wednesday" or (#Clock).clock_weekday == " friday") {
+        if ((#Window).windowControl_window != "open") {
+          (#Window).windowControl_close()
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3952
+    generated_tokens: 93
+    elapsed_time: 3.838

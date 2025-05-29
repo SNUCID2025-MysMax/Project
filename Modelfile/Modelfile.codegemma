@@ -7,9 +7,10 @@ TEMPLATE """{{ if .System }}<|im_start|>system
 {{ end }}<|im_start|>assistant
 {{ .Response }}<|im_end|>
 """
-PARAMETER repeat_penalty 1
+PARAMETER repeat_penalty 1.2
 PARAMETER stop "<|im_start|>"
 PARAMETER stop "<|im_end|>"
 PARAMETER penalize_newline false
-PARAMETER temperature 1.5
+PARAMETER top_p 0.9
+PARAMETER temperature 0.9
 PARAMETER min_p 0.1

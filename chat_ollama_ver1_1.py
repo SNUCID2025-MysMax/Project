@@ -74,7 +74,6 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
             response = ollama.chat(
                 model=model,
                 messages=[
-                    # {"role": role, "content": description},
                     {"role": role, "content": grammar},
                     {"role": role, "content": service_doc},
                     {"role": "user", "content": prompt},
@@ -83,13 +82,36 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
             )
 
             full_response = ""
+            start_time = time.time()
+            timeout_triggered = False
             last_chunk = None
+
             for chunk in response:
+                if time.time() - start_time > 15: # 10초 이상 걸리면 중단
+                    break
                 last_chunk = chunk
+
                 if 'message' in chunk and 'content' in chunk['message']:
                     content = chunk['message']['content']
-                    full_response += content
-                    print(content, end='', flush=True)
+                    
+                    # 시간 초과 이후 개행 처리
+                    if timeout_triggered:
+                        if '\n' in content:
+                            # 개행 전까지만 추가
+                            cutoff = content.index('\n') + 1  # 개행 포함
+                            full_response += content[:cutoff]
+                            print(content[:cutoff], end='', flush=True)
+                            break
+                        else:
+                            full_response += content
+                            print(content, end='', flush=True)
+                    else:
+                        full_response += content
+                        print(content, end='', flush=True)
+
+                        # 시간 초과 여부 갱신
+                        if time.time() - start_time > 10:
+                            timeout_triggered = True
 
             elapsed = time.time() - start_time
 
@@ -215,7 +237,7 @@ def main():
 
     
 
-    for i in range(0, 16):
+    for i in range(1,16):
 
         with open(f"./Testset/Testset/category_{i}.yaml", "r") as f:
             results = []
@@ -226,7 +248,7 @@ def main():
                 # label = item["answer"]
                 
                 resp, service_selected, info = run_test_case(
-                    model, model_bge, user_command, classes, False
+                    model, model_bge, user_command, classes, True
                 )
                 print(f"#명령어: {user_command}")
                 print(f"#총 응답 시간 : {info['elapsed_time']}초")

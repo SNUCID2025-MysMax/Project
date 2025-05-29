@@ -1,0 +1,283 @@
+- command: 창문이 열리면 알람의 사이렌을 울려 줘.
+  devices:
+  - Blind
+  - Siren
+  - Curtain
+  - Clock
+  - Alarm
+  - ContactSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == "open")
+      (#Alarm).alarm_siren()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2701
+    generated_tokens: 40
+    elapsed_time: 1.259
+- command: 토양 수분이 20% 이상이었다가 이하가 되면 관개 장치를 작동시켜 줘.
+  devices:
+  - Humidifier
+  - SoilMoistureSensor
+  - WeatherProvider
+  - Clock
+  - Fan
+  - Irrigator
+  - LeakSensor
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 20.0)
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+      (#Irrigator).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2713
+    generated_tokens: 71
+    elapsed_time: 2.172
+- command: 움직임이 감지되면 최대 3번까지 조명을 켜 줘.
+  devices:
+  - Clock
+  - MotionSensor
+  - Buttonx4
+  - Light
+  - Relay
+  - LightSensor
+  - Camera
+  - Siren
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#MovementSensor).movementSensor_movement == 'found')
+      (#Light).switch_on()
+      wait until((#Light).switch_switch == 'on')
+      if (any(#Light).switch_switch == 'on') {
+        (#Light).switch_on()
+      }
+      wait until((#Light).switch_switch == 'on')
+      if (any(#Light).switch_switch == 'on') {
+        (#Light).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2705
+    generated_tokens: 121
+    elapsed_time: 3.663
+- command: 온도가 35도 이상이 되면 에어컨을 켜 줘.
+  devices:
+  - Humidifier
+  - AirQualityDetector
+  - Clock
+  - Dehumidifier
+  - Fan
+  - AirConditioner
+  - AirPurifier
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)
+      (#AirConditioner).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2703
+    generated_tokens: 46
+    elapsed_time: 1.442
+- command: 습도가 80% 이상이 되면 블라인드를 내려 줘.
+  devices:
+  - Blind
+  - Humidifier
+  - SoilMoistureSensor
+  - WeatherProvider
+  - Shade
+  - Dehumidifier
+  - Clock
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#HumiditySensor).humidityMeasurement_humidity >= 80.0)
+      (#Blind).blindControl_close()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2704
+    generated_tokens: 45
+    elapsed_time: 1.409
+- command: 블라인드가 닫히면 ‘블라인드가 닫혔습니다’라고 말해 줘.
+  devices:
+  - Blind
+  - Curtain
+  - Clock
+  - Shade
+  - Valve
+  - Relay
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Blind).blindControl_blind == 'closed')
+      (# tongue).tongueControl_set tong ue(1)
+      (# tongue).tongueControl_set tong ue(1)
+      (# tongue).tongueControl_set tong ue(1)
+      (# tongue).tongueControl_set tong ue(1)
+      (# tongue).tongueControl_set tong ue(1)
+  compare_results: []
+  model_info:
+    prompt_tokens: 2709
+    generated_tokens: 106
+    elapsed_time: 3.207
+- command: TV가 꺼지면 스피커를 꺼 줘.
+  devices:
+  - Speaker
+  - Television
+  - Clock
+  - Fan
+  - AirPurifier
+  - Relay
+  - Camera
+  - Switch
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#TV).switch_switch == "off")
+      (#Speaker).switch_off()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2698
+    generated_tokens: 39
+    elapsed_time: 1.231
+- command: 커튼이 3번 열렸다 닫히면 조명을 꺼 줘.
+  devices:
+  - Blind
+  - Siren
+  - Curtain
+  - Clock
+  - Light
+  - Relay
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      curtain_open_count := 0
+      if ((#Curtain).windowControl_window == 'open') {
+        curtain_open_count = curtain_open_count + 1
+        if (curtain_open_count >= 3) {
+          (#Light).switch_off()
+          break
+        }
+      } else if ((#Curtain).windowControl_window == 'closed') {
+        curtain_open_count = 0
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2704
+    generated_tokens: 121
+    elapsed_time: 3.657
+- command: 제습기가 꺼지면 다시 켜 줘.
+  devices:
+  - Humidifier
+  - Clock
+  - Dehumidifier
+  - Dishwasher
+  - Fan
+  - AirConditioner
+  - Irrigator
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dryer).switch_switch == "off")
+      (#Dryer).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dryer).switch_switch == "on")
+      (#Dryer).switch_off()
+  - name: "Scenario3"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dryer).switch_switch == "off")
+      (#Dryer).switch_on()
+  - name: "Scenario4"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dryer).switch_switch == "on")
+      (#Dryer).switch_off()
+  - name: "Scenario5"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dryer).switch_switch == "off")
+      (#Dryer).switch_on()
+  - name: "Scenario6"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dryer).switch_switch == "on")
+      (#Dryer).switch_off()
+  - name: "Scenario7"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dryer).switch_switch == "off")
+      (#Dryer).switch_on()
+  - name: "Scenario8"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dryer).switch_switch == "on")
+      (#Dryer).switch_off()
+  compare_results: []
+  model_info:
+    prompt_tokens: null
+    generated_tokens: null
+    elapsed_time: 10.07
+- command: 재실 센서에서 더 이상 감지가 안 되면 ‘문이 열렸습니다’라고 말해 줘.
+  devices:
+  - Clock
+  - PresenceSensor
+  - SoundSensor
+  - TemperatureSensor
+  - Valve
+  - ContactSensor
+  - Window
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#PresenceSensor).presenceSensor_presence == 'not_present')
+      (# Szkale ).mediaPlayer_playContent("문이 열렸습니다")
+  compare_results: []
+  model_info:
+    prompt_tokens: 3678
+    generated_tokens: 52
+    elapsed_time: 2.329
