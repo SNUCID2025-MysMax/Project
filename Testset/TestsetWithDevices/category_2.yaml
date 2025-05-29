@@ -13,9 +13,9 @@
       }
   devices:
   - Curtain
-  - Window
   - Irrigator
   - Light
+  - Window
   - SoilMoistureSensor
 - command: 환풍기가 꺼져 있고 이산화탄소 수치가 1000 이상이며 커튼이 닫혀 있으면 환풍기를 켜고 커튼을 열어 줘. 조명이 꺼져 있고 온도가 27도 이상이면 조명을 켜고 블라인드를 닫아 줘.
   code:
@@ -33,11 +33,11 @@
       }
   devices:
   - Curtain
-  - AirQualityDetector
-  - Fan
-  - Light
   - Blind
+  - Fan
+  - AirQualityDetector
   - TemperatureSensor
+  - Light
 - command: 에어컨이 꺼져 있고 온도가 29도 이상이며 습도가 70% 이상이면 제습기를 제습 모드로 설정하고 켜 줘. 커튼이 열려 있고 조명이 꺼져 있으면 커튼을 닫고 조명을 켜 줘.
   code:
   - name: Scenario1
@@ -53,12 +53,12 @@
         (#Light).switch_on()
       }
   devices:
-  - HumiditySensor
   - Curtain
-  - Dehumidifier
-  - Light
   - AirConditioner
   - TemperatureSensor
+  - Light
+  - Dehumidifier
+  - HumiditySensor
 - command: 조명이 꺼져 있고 움직임이 감지되지 않으며 커튼이 열려 있으면 조명을 켜고 커튼을 닫아 줘. 관수기가 꺼져 있고 창문이 닫혀 있으면 관수기를 켜고 창문을 열어 줘.
   code:
   - name: Scenario1
@@ -76,9 +76,9 @@
   devices:
   - Curtain
   - MotionSensor
-  - Window
   - Irrigator
   - Light
+  - Window
 - command: 블라인드가 열려 있고 조명이 꺼져 있으며 습도가 80% 이상이면 블라인드를 닫고 조명을 켜 줘. 창문이 닫혀 있고 에어컨이 꺼져 있으면 창문을 열고 에어컨을 켜 줘.
   code:
   - name: Scenario1
@@ -94,11 +94,11 @@
         (#AirConditioner).switch_on()
       }
   devices:
-  - HumiditySensor
-  - Window
-  - Light
   - Blind
   - AirConditioner
+  - Light
+  - Window
+  - HumiditySensor
 - command: TV가 꺼져 있고 블라인드가 닫혀 있으며 커튼이 열려 있으면 TV를 켜고 블라인드를 열어 줘. 에어컨이 자동 모드가 아니고 꺼져 있으면 자동 모드로 설정하고 전원을 켜 줘.
   code:
   - name: Scenario1
@@ -114,10 +114,10 @@
         (#AirConditioner).switch_on()
       }
   devices:
-  - Television
   - Curtain
-  - AirConditioner
   - Blind
+  - AirConditioner
+  - Television
 - command: 스피커가 정지 상태이고 조명이 꺼져 있으며 커튼이 닫혀 있으면 스피커를 재생 상태로 전환하고 커튼을 열어 줘. TV가 켜져 있고 조명 밝기가 80 이상이면 밝기를 50으로 낮춰 줘.
   code:
   - name: Scenario1
@@ -132,10 +132,10 @@
         (#Light).switchLevel_setLevel(50, 0)
       }
   devices:
-  - Television
-  - Speaker
   - Curtain
   - Light
+  - Television
+  - Speaker
 - command: 문이 열려 있고 알람이 꺼져 있으면 사이렌을 울리고 블라인드가 열려 있으면 닫아 줘. 에어컨이 꺼져 있고 온도가 30도 이상이면 냉방 모드로 설정하고 켜 줘.
   code:
   - name: Scenario1
@@ -153,12 +153,12 @@
         (#AirConditioner).switch_on()
       }
   devices:
-  - DoorLock
   - Blind
+  - DoorLock
+  - Alarm
   - AirConditioner
   - Siren
   - TemperatureSensor
-  - Alarm
 - command: TV가 꺼져 있고 커튼이 닫혀 있으며 선풍기가 꺼져 있으면 TV를 켜고 커튼을 열어 줘. 스피커가 재생 중이고 조명이 꺼져 있으면 조명을 켜고 블라인드를 닫아 줘.
   code:
   - name: Scenario1
@@ -174,12 +174,12 @@
         (#Blind).blind_close()
       }
   devices:
-  - Television
   - Curtain
-  - Fan
-  - Light
   - Blind
+  - Fan
+  - Television
   - Speaker
+  - Light
 - command: TV가 켜져 있고 스피커가 꺼져 있으며 조명이 꺼져 있으면 스피커를 켜고 조명을 켜 줘. 에어컨이 난방 모드이고 온도가 21도 이상이면 에어컨을 끄고 블라인드를 닫아 줘.
   code:
   - name: Scenario1
@@ -195,9 +195,9 @@
         (#Blind).blind_close()
       }
   devices:
-  - Television
-  - Light
   - Blind
-  - Speaker
   - AirConditioner
+  - Television
+  - Speaker
   - TemperatureSensor
+  - Light

@@ -14,10 +14,10 @@
       (#Pump).switch_off()
       break
   devices:
+  - TemperatureSensor
+  - Irrigator
   - Pump
   - SoilMoistureSensor
-  - Irrigator
-  - TemperatureSensor
 - command: 펌프가 꺼지면 스피커를 켜고, 토양 습도 센서의 값이 20% 이하가 되면 관개 장치를 켜 줘.
   code:
   - name: Scenario1
@@ -33,9 +33,9 @@
       wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
       (#Irrigator).switch_on()
   devices:
-  - Pump
-  - Speaker
   - SoilMoistureSensor
+  - Speaker
+  - Pump
   - Irrigator
 - command: 토양 습도 센서의 값이 25% 이하로 떨어진 후 10초 동안 값이 변하지 않으면 알람의 사이렌을 울려 줘. 그리고 조명은 그냥 꺼 줘.
   code:
@@ -72,9 +72,9 @@
     code: |-
       (#Light).switch_off()
   devices:
-  - SoilMoistureSensor
   - Light
   - Alarm
+  - SoilMoistureSensor
 - command: 실시간으로 확인하여 조명이 켜지면 펌프를 켜 줘, 토양 습도 센서의 값이 30% 이하로 떨어지면 블라인드를 닫아 줘.
   code:
   - name: Scenario1
@@ -90,10 +90,10 @@
       wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
       (#Blind).blind_close()
   devices:
-  - Pump
-  - SoilMoistureSensor
   - Light
   - Blind
+  - Pump
+  - SoilMoistureSensor
 - command: 관개 장치가 꺼지고 나서 토양 습도 센서의 값이 20% 이하로 떨어지면 사이렌과 경광등을 켜 줘. 커튼이 닫혀 있으면 열어 줘.
   code:
   - name: Scenario1
@@ -113,8 +113,8 @@
   devices:
   - Curtain
   - SoilMoistureSensor
-  - Irrigator
   - Alarm
+  - Irrigator
 - command: 실시간으로 확인하여 문이 열릴 때마다 조명을 켜 줘, TV가 꺼지면 스피커를 끄고 블라인드를 닫아 줘.
   code:
   - name: Scenario1
@@ -138,11 +138,11 @@
       (#Speaker).switch_off()
       (#Blind).blind_close()
   devices:
-  - Television
-  - Light
-  - DoorLock
-  - Speaker
   - Blind
+  - DoorLock
+  - Television
+  - Speaker
+  - Light
 - command: 제습기가 꺼지면 켜 줘, 조명이 꺼져 있으면 밝기를 50퍼센트로 설정해 줘.
   code:
   - name: Scenario1
@@ -159,8 +159,8 @@
         (#Light).switchLevel_setLevel(50, 0)
       }
   devices:
-  - Dehumidifier
   - Light
+  - Dehumidifier
 - command: 창문이 열리면 블라인드를 닫고, 조명이 꺼지면 선풍기를 켜 줘.
   code:
   - name: Scenario1
@@ -176,10 +176,10 @@
       wait until((#Light).switch_switch == 'off')
       (#Fan).switch_on()
   devices:
-  - Fan
-  - Window
   - Light
   - Blind
+  - Window
+  - Fan
 - command: 실시간으로 확인하여 움직임이 감지되면 커튼을 닫고, 지금 알람의 사이렌을 울려 줘.
   code:
   - name: Scenario1
@@ -195,8 +195,8 @@
       (#Alarm).alarm_siren()
   devices:
   - Curtain
-  - MotionSensor
   - Alarm
+  - MotionSensor
 - command: 창문이 열리면 10초 후 커튼을 열어 줘. 창문과 상관없이, 5초마다 조명을 켰다 꺼 줘.
   code:
   - name: Scenario1
@@ -212,7 +212,7 @@
     code: |-
       (#Light).switch_toggle()
   devices:
-  - Clock
   - Curtain
-  - Window
+  - Clock
   - Light
+  - Window

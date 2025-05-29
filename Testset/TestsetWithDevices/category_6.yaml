@@ -14,9 +14,9 @@
         }
       }
   devices:
-  - SoilMoistureSensor
   - Irrigator
   - AirQualityDetector
+  - SoilMoistureSensor
 - command: 3초 간격으로 조명을 10번 깜빡여 줘. 깜빡일 때마다 확인해서 비 감지 센서가 비를 감지하는 순간 반복을 중단해 줘.
   code:
   - name: Scenario1
@@ -35,8 +35,8 @@
       }
       count = count + 1
   devices:
-  - WeatherProvider
   - Light
+  - WeatherProvider
 - command: 1초마다 선풍기의 전원을 켜고 끄는 토글 동작을 반복해 줘. 매번 동작 직전에 습도를 확인해서 80% 이상이면 반복을 즉시 중단해 줘.
   code:
   - name: Scenario1
@@ -87,8 +87,8 @@
       (#Irrigator).switch_off()
   devices:
   - Clock
-  - LightSensor
   - Irrigator
+  - LightSensor
 - command: 2초마다 거실 조명을 켰다 껐다 반복해 줘. 조명을 끌 때마다 확인해서 창문이 열려 있는 게 감지되면 반복을 즉시 중단해 줘.
   code:
   - name: Scenario1
@@ -104,8 +104,8 @@
         }
       }
   devices:
-  - Window
   - Light
+  - Window
 - command: 3초마다 텔레비전의 볼륨을 1씩 증가시켜서 5단계가 되면 초기값으로 되돌리는 동작을 반복해 줘. 초기값으로 되돌릴 때 확인해서 움직임이 감지되면 반복을 중단해 줘.
   code:
   - name: Scenario1
@@ -125,8 +125,8 @@
       }
       (#Television).audioVolume_setVolume(volume)
   devices:
-  - Television
   - MotionSensor
+  - Television
 - command: 10초마다 블라인드를 완전히 닫아 줘. 그 때마다 확인해서 TV가 켜져 있으면 즉시 반복을 종료해.
   code:
   - name: Scenario1
@@ -139,8 +139,8 @@
         break
       }
   devices:
-  - Television
   - Blind
+  - Television
 - command: 2초마다 알람의 사이렌을 1초간 울렸다 꺼지게 하고, 알람의 사이렌을 울릴 때마다 창문이 닫혀 있는지 확인해서 닫혀 있으면 반복을 중단해 줘.
   code:
   - name: Scenario1
@@ -156,8 +156,8 @@
       }
   devices:
   - Clock
-  - Window
   - Alarm
+  - Window
 - command: 5초마다 실내 공기청정기를 ‘자동’ 모드로 전환해 줘. 그 때마다 확인해서 창문이 열려 있으면 모든 반복을 종료해 줘.
   code:
   - name: Scenario1
@@ -170,5 +170,5 @@
         break
       }
   devices:
-  - AirPurifier
   - Window
+  - AirPurifier

@@ -14,9 +14,9 @@
         (#Blind).blind_close()
       }
   devices:
-  - Irrigator
-  - Window
   - Blind
+  - Window
+  - Irrigator
 - command: 실시간으로 확인하여 5초마다 토양 습도 센서의 값이 20 퍼센트 이하이면 관개 장치를 켜고, 60 퍼센트 이상이면 관개 장치를 꺼 줘.
   code:
   - name: Scenario1
@@ -30,8 +30,8 @@
         (#Irrigator).switch_off()
       }
   devices:
-  - SoilMoistureSensor
   - Irrigator
+  - SoilMoistureSensor
 - command: 실시간으로 확인하여 온도가 28도 이상이면 선풍기를 켜고, 습도가 80% 이상이면 제습기를 켜 줘.
   code:
   - name: Scenario1
@@ -47,10 +47,10 @@
         (#Dehumidifier).switch_on()
       }
   devices:
-  - HumiditySensor
+  - TemperatureSensor
   - Dehumidifier
   - Fan
-  - TemperatureSensor
+  - HumiditySensor
 - command: 실시간으로 확인하여 조명이 켜져 있을 때마다 블라인드를 닫고, 꺼져 있으면 블라인드를 열어 줘.
   code:
   - name: Scenario1
@@ -79,9 +79,9 @@
       (#Fan).fanControl_setFanSpeed(10)
       (#Pump).switch_toggle()
   devices:
-  - Pump
-  - Fan
   - Clock
+  - Fan
+  - Pump
 - command: 실시간으로 확인하여 움직임이 감지되었을 때마다 조명을 켜고, 선풍기 속도를 10 높여 줘.
   code:
   - name: Scenario1
@@ -96,9 +96,9 @@
         (#Fan).fanControl_setFanSpeed(new_speed)
       }
   devices:
+  - Light
   - Fan
   - MotionSensor
-  - Light
 - command: 실시간으로 확인하여 창문이 열려 있으면 블라인드를 닫고, 창문이 닫혀 있으면 커튼을 열어 줘. 또한 실시간으로 확인하여 알람의 사이렌이 울리고 있지 않다면 즉시 알람의 사이렌을 울려 줘.
   code:
   - name: Scenario1
@@ -116,10 +116,10 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Curtain
-  - Window
   - Blind
+  - Window
+  - Alarm
 - command: 매주 금요일 오후 6시에 조명이 켜져 있으면 밝기를 30으로 낮추고, TV가 꺼져 있으면 TV를 켜 줘. 선풍기가 꺼져 있으면 선풍기도 켜 줘.
   code:
   - name: Scenario1
@@ -136,9 +136,9 @@
         (#Fan).switch_on()
       }
   devices:
-  - Television
-  - Fan
   - Light
+  - Fan
+  - Television
 - command: 창문이 닫혔을 때부터 5초마다 블라인드를 열었다 닫았다 반복해 줘.
   code:
   - name: Scenario1
@@ -161,8 +161,8 @@
         }
       }
   devices:
-  - Window
   - Blind
+  - Window
 - command: 매일 아침 8시에 스피커가 꺼져 있으면 스피커를 켜고 ‘오늘 날씨입니다’라고 말해 줘. 이후 조명이 꺼져 있으면 켜고 블라인드를 열어 줘.
   code:
   - name: Scenario1
@@ -178,6 +178,6 @@
         }
       }
   devices:
-  - Speaker
   - Light
   - Blind
+  - Speaker

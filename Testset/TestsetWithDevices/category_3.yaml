@@ -63,8 +63,8 @@
         break
       }
   devices:
-  - Dehumidifier
   - Clock
+  - Dehumidifier
 - command: 10초마다 알람과 사이렌을 껐다 켰다 반복해 줘.
   code:
   - name: Scenario1
@@ -82,8 +82,8 @@
         alarm_state = true
       }
   devices:
-  - Siren
   - Alarm
+  - Siren
 - command: 매일 30초마다 선풍기를 껐다 켰다 반복해 줘.
   code:
   - name: Scenario1
