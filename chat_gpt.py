@@ -93,7 +93,9 @@ def main():
                 service_selected.add("Clock")
                 service_doc = "\n".join([classes[i] for i in service_selected])
                 
-                prompt = prompt = f"Generate SoP Lang code for \"{user_command}\""
+                current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+
+                prompt = f"Current Time: {current_time}\nGenerate SoP Lang code for \"{user_command}\""
 
                 response = client.chat.completions.create(
                     model="gpt-4",

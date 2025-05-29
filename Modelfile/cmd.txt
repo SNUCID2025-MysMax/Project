@@ -1,0 +1,3 @@
+ollama create codegemma -f Modelfile.codegemma
+
+ollama create qwen2.5-coder -f Modelfile.qwen

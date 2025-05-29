@@ -1,4 +1,5 @@
 import os, sys
+from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from unsloth import FastLanguageModel
 from unsloth.chat_templates import get_chat_template
@@ -92,6 +93,7 @@ def read_yaml(data):
 # 데이터셋 생성 부분 수정
 def load_dataset():
     ret = []
+    current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
     for i in range(0, 16):  # 범위를 필요에 따라 조정
         file_name = f"../Testset/TestsetWithDevices/category_{i}.yaml"
         try:
@@ -112,7 +114,7 @@ def load_dataset():
                         },
                         {
                             "role": "user",
-                            "content": f"Generate SoP Lang code for \"{result['command']}\"",
+                            "content": f"Current Time: {current_time}\n\nGenerate SoP Lang code for \"{result['command']}\"",
                         },
                         {
                             "role": "assistant",

@@ -140,6 +140,8 @@ adjusted = temp - 5
 ## Input
 
 ```
+Current Time: "<Weekday>, <Day> <Month> <Year> <Hour>:<Minute>:<Second>"  # datetime format: "%a, %d %b %Y %H:%M:%S"
+
 Generate SoP Lang code for <user command>"
 ```
 
@@ -206,7 +208,7 @@ Let’s Think Step by Step.
 # Examples
 
 ## Example 1
-**Input**: Generate SoP Lang code for "When the pump turns off, turn on the speaker, and when soil moisture sensor drops to 20% or below, turn on the irrigation system."
+**Input**: Current Time: Thu, 29 May 2025 06:00:00\n\nGenerate SoP Lang code for "When the pump turns off, turn on the speaker, and when soil moisture sensor drops to 20% or below, turn on the irrigation system."
 
 ```
 name = "Scenario1"
@@ -223,7 +225,7 @@ wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
 ```
 
 ## Example 2
-**Input**: Generate SoP Lang code for "Every day at 7 AM, if the irrigation system is off, close the window. After closing the window 5 or more times, sound the alarm siren each time a window is closed."
+**Input**: Current Time: Thu, 29 May 2025 06:00:00\n\nGenerate SoP Lang code for "Every day at 7 AM, if the irrigation system is off, close the window. After closing the window 5 or more times, sound the alarm siren each time a window is closed."
 
 ```
 name = "Scenario1"

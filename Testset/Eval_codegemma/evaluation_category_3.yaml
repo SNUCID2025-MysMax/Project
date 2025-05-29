@@ -1,0 +1,242 @@
+- command: 지금 바로 관수기를 작동해 줘.
+  devices:
+  - Recorder
+  - Humidifier
+  - Clock
+  - Irrigator
+  - LeakSensor
+  - Dishwasher
+  - Dehumidifier
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Irrigator).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2696
+    generated_tokens: 27
+    elapsed_time: 1.004
+- command: 매일 아침 8시에 조명을 켜 줘.
+  devices:
+  - AirPurifier
+  - Clock
+  - LightSensor
+  - AirConditioner
+  - Light
+  - Blind
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8 * * *"
+    period: 0
+    code: |-
+      (#Light).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2699
+    generated_tokens: 31
+    elapsed_time: 1.108
+- command: 매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘.
+  devices:
+  - ContactSensor
+  - Curtain
+  - Clock
+  - DoorLock
+  - AirConditioner
+  - Blind
+  - Window
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 18 * * *"
+    period: 15000
+    code: |-
+      counter := 0
+      if ((counter >= 0) and (counter < 6)) {
+        (#Window).windowControl_close()
+        counter = counter + 1
+        (#Window).windowControl_open()
+      } else {
+        break
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2715
+    generated_tokens: 86
+    elapsed_time: 2.716
+- command: 주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘.
+  devices:
+  - Relay
+  - Curtain
+  - Clock
+  - DoorLock
+  - Shade
+  - GasValve
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: "30 22 * * 6,0"
+    period: 180000
+    code: |-
+      count := 0
+      if ((#Clock).clock_hour == 22) {
+        if ((#Clock).clock_minute == 30) {
+          count = count + 1
+        }
+        if ((#Clock).clock_hour == 23) {
+          if ((#Clock).clock_minute == 0) {
+            count = count + 1
+          }
+        }
+      }
+      if (count >= 2) {
+        break
+      }
+      (#Blind).blindControl_close()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2713
+    generated_tokens: 151
+    elapsed_time: 4.614
+- command: 주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘.
+  devices:
+  - AirPurifier
+  - Humidifier
+  - Clock
+  - Fan
+  - AirConditioner
+  - Dishwasher
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 22 * * 6,0"
+    period: 3000
+    code: |-
+      if ((#Clock).clock_hour == 22) {
+        if ((#Clock).clock_minute == 10) {
+          break
+        }
+        (#Dryer).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2710
+    generated_tokens: 80
+    elapsed_time: 2.544
+- command: 10초마다 알람과 사이렌을 껐다 켰다 반복해 줘.
+  devices:
+  - Relay
+  - Buttonx4
+  - Clock
+  - Alarm
+  - Siren
+  - Camera
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      alert_flag := true
+      if (alert_flag) {
+        (#Alarm).alarm_off()
+        alert_flag = false
+      } else {
+        (#Alarm).alarm_siren()
+        alert_flag = true
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2708
+    generated_tokens: 73
+    elapsed_time: 2.339
+- command: 매일 30초마다 선풍기를 껐다 켰다 반복해 줘.
+  devices:
+  - AirPurifier
+  - Humidifier
+  - Clock
+  - Fan
+  - AirConditioner
+  - Dishwasher
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 30000
+    code: |-
+      switch := (#Fan).switch_switch
+      if (switch == 'on') {
+        (#Fan).switch_off()
+      } else {
+        (#Fan).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 2708
+    generated_tokens: 63
+    elapsed_time: 2.047
+- command: 매일 자정에 TV를 꺼 줘.
+  devices:
+  - AirPurifier
+  - Curtain
+  - Clock
+  - Television
+  - AirConditioner
+  - Dishwasher
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: -1
+    code: |-
+      (#TV).switch_off()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2695
+    generated_tokens: 31
+    elapsed_time: 1.115
+- command: 5초마다 텔레비전 볼륨을 1씩 높여 줘.
+  devices:
+  - Clock
+  - Fan
+  - Television
+  - LightSensor
+  - Alarm
+  - Irrigator
+  - Button
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      tv_volume := (#TV).tvVolume_tvVolume
+      tv_volume = tv_volume + 1
+      (#TV).tvVolume_setTvVolume(tv_volume)
+  compare_results: []
+  model_info:
+    prompt_tokens: 2703
+    generated_tokens: 59
+    elapsed_time: 1.931
+- command: 평일 오전 8시부터 자정까지 한 시간마다 조명을 켜 줘.
+  devices:
+  - AirPurifier
+  - Curtain
+  - Clock
+  - LightSensor
+  - Light
+  - Blind
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8-23 * * 1-5"
+    period: 3600000
+    code: |-
+      (#Light).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 2706
+    generated_tokens: 44
+    elapsed_time: 1.495

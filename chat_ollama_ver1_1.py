@@ -11,6 +11,24 @@ from Evaluation.compare_soplang_ir import extract_logic_expressions, compare_cod
 
 import ollama
 
+import yaml
+from yaml.representer import SafeRepresenter
+
+class LiteralString(str):
+    pass
+
+def literal_str_representer(dumper, data):
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
+
+yaml.add_representer(LiteralString, literal_str_representer)
+
+class QuotedString(str):
+    pass
+
+def quoted_str_representer(dumper, data):
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+
+
 with open("./Grammar/SoP_Lang_Description.md", "r") as f:
     description = f.read()
 
@@ -45,8 +63,9 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
 
     service_doc = "\n".join([classes[i] for i in service_selected])
     # service_doc = "#Devices\n"+"\n".join([json.dumps(classes[i]) for i in service_selected])
-    
-    prompt = f"Generate SoP Lang code for \"{user_command}\""
+    current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+
+    prompt = f"Current Time: {current_time}\nGenerate SoP Lang code for \"{user_command}\""
 
     role = "system"
 
@@ -163,9 +182,13 @@ def main():
     # select sllm
     # model = "exaone3.5:7.8b"
     model = "qwen2.5-coder:7b"  # very good
-    # model = "gemma3:12b" # good
+    model = "gemma3:4b" # good
     # model = "codellama:7b"  # good
     # model = "codegemma:7b" # good
+
+    # finetuned
+    model = "codegemma"
+    # model = "qwen2.5-coder"
 
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
@@ -173,13 +196,13 @@ def main():
     hybrid_recommend(model_bge, "에어컨", max_k=7)
     print("Embedding loaded")
 
-    # Load llm
-    response = ollama.chat(
-        model = model,
-        messages=[{"role":"system", "content":"Do not print anything."},
-                  {"role": "user", "content": "hi"}],
-    )
-    print(f"LLM loaded - {model}")
+    # # Load llm
+    # response = ollama.chat(
+    #     model = model,
+    #     messages=[{"role":"system", "content":"Do not print anything."},
+    #               {"role": "user", "content": "hi"}],
+    # )
+    # print(f"LLM loaded - {model}")
 
     # 태그, 서비스 목록 불러오기
 
@@ -190,85 +213,92 @@ def main():
     # with open("./ServiceExtraction/integration/service_list_ver1.5.3.json", "r") as f:
     #     classes = json.load(f)
 
-    results = []
+    
 
-    with open("./Testset/test.json", "r") as f:
-        data = json.load(f)
-        for item in data:
-            user_command = item["query"]
-            # label = item["answer"]
-            
-            resp, service_selected, info = run_test_case(
-                model, model_bge, user_command, classes, False
-            )
-            print(f"#명령어: {user_command}")
-            print(f"#총 응답 시간 : {info['elapsed_time']}초")
-            print(f"#디바이스 추출: {list(service_selected)} ({info["bge_elapsed_time"]}초)")
-            print(f"#모델 응답 시간: {info["llm_elapsed_time"]}초")
-            print("#응답:\n", resp)
-            print("="*30)
-            
-            code = ""
-            try:
-                code = parse_scenarios(extract_last_code_block(resp))
-            except:
+    for i in range(0, 16):
+
+        with open(f"./Testset/Testset/category_{i}.yaml", "r") as f:
+            results = []
+            data = yaml.safe_load(f)
+
+            for item in data:
+                user_command = item["command"]
+                # label = item["answer"]
+                
+                resp, service_selected, info = run_test_case(
+                    model, model_bge, user_command, classes, False
+                )
+                print(f"#명령어: {user_command}")
+                print(f"#총 응답 시간 : {info['elapsed_time']}초")
+                print(f"#디바이스 추출: {list(service_selected)} ({info["bge_elapsed_time"]}초)")
+                print(f"#모델 응답 시간: {info["llm_elapsed_time"]}초")
+                print("#응답:\n", resp)
+                print("="*30)
+                
                 try:
-                    code = parse_scenarios(resp)
+                    code = parse_scenarios(extract_last_code_block(resp))['code']
                 except:
-                    code = ""
-            # print("변환된 코드:\n", code)
-            # print("-"*30)
+                    try:
+                        code = parse_scenarios(resp)['code']
+                    except:
+                        code = [{'name': 'Scenario1', 'cron': '', 'period': -1, 'code': '(#AirConditioner).switch_on()\n'}]
 
-            entry = {
-                "command": user_command,
-                "devices": list(service_selected),
-                "generated_code": resp,
-                # "label": label,
-                "compare_results": [],
-                "model_info": {
-                    "prompt_tokens": info["prompt_tokens"],
-                    "generated_tokens": info["generated_tokens"],
-                    "elapsed_time": info["elapsed_time"],
+                for c in code:
+                    c["code"] = LiteralString(c["code"].strip())
+
+                # print("변환된 코드:\n", code)
+                # print("-"*30)
+
+                entry = {
+                    "command": user_command,
+                    "devices": list(service_selected),
+                    "generated_code": code,
+                    # "label": label,
+                    "compare_results": [],
+                    "model_info": {
+                        "prompt_tokens": info["prompt_tokens"],
+                        "generated_tokens": info["generated_tokens"],
+                        "elapsed_time": info["elapsed_time"],
+                    }
                 }
-            }
 
-        #     entry["len_check"] = {
-        #         "len_generated_code": len(code),
-        #         "len_label_code": len(label),
-        #         "len_is_equal": len(code) == len(label)
-        #     }
+            #     entry["len_check"] = {
+            #         "len_generated_code": len(code),
+            #         "len_label_code": len(label),
+            #         "len_is_equal": len(code) == len(label)
+            #     }
 
-        #     # Syntax 체크
-        #     entry["syntax_errors"] = []
-        #     for c in code:
-        #         try:
-        #             parse_code_to_ast(c)
-        #         except Exception as e:
-        #             entry["syntax_errors"].append(str(e))
-                    
-            
-        #     for i, (gen, gold) in enumerate(zip(code, label), start=1):
-        #         gold_wrapped = {
-        #             "name": gold["name"],
-        #             "cron": gold["cron"],
-        #             "period": gold["period"],
-        #             "script": gold["code"]
-        #         }
+            #     # Syntax 체크
+            #     entry["syntax_errors"] = []
+            #     for c in code:
+            #         try:
+            #             parse_code_to_ast(c)
+            #         except Exception as e:
+            #             entry["syntax_errors"].append(str(e))
+                        
+                
+            #     for i, (gen, gold) in enumerate(zip(code, label), start=1):
+            #         gold_wrapped = {
+            #             "name": gold["name"],
+            #             "cron": gold["cron"],
+            #             "period": gold["period"],
+            #             "script": gold["code"]
+            #         }
 
-        #         gen_wrapped = {
-        #             "name": gen["name"],
-        #             "cron": gen["cron"],
-        #             "period": gen["period"],
-        #             "script": gen["code"]
-        #         }
+            #         gen_wrapped = {
+            #             "name": gen["name"],
+            #             "cron": gen["cron"],
+            #             "period": gen["period"],
+            #             "script": gen["code"]
+            #         }
 
-        #         result = evaluate_pair(gold_wrapped, gen_wrapped)
-        #         entry["compare_results"].append(result)
-            results.append(entry)
+            #         result = evaluate_pair(gold_wrapped, gen_wrapped)
+            #         entry["compare_results"].append(result)
+                results.append(entry)
 
-    # 저장하기
-    with open("./Testset/evaluation_results.json", "w", encoding="utf-8") as out_file:
-        json.dump(results, out_file, indent=2, ensure_ascii=False)
+        # 저장하기
+        with open(f"./Testset/Eval_codegemma/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
+            yaml.dump(results, out_file, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
         
     del model
     gc.collect()

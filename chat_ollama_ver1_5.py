@@ -48,7 +48,9 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
     # service_doc = "\n".join([classes[i] for i in service_selected])
     service_doc = "#Devices\n"+"\n".join([json.dumps(classes[i]) for i in service_selected])
     
-    prompt = f"Generate SoP Lang code for \"{user_command}\""
+    current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+
+    prompt = f"Current Time: {current_time}\nGenerate SoP Lang code for \"{user_command}\""
 
     role = "user"
 
@@ -169,6 +171,10 @@ def main():
     model = "qwen2.5-coder:7b"
     model = "llama3.2:3b"
     model = "codellama:7b"
+
+    # finetuned
+    model = "codegemma"
+    model = "qwen2.5-coder"
 
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
