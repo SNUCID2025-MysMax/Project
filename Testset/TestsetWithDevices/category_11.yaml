@@ -9,9 +9,9 @@
 
       if (((#Clock).clock_month >= 3) and ((#Clock).clock_month <= 9)) {
         if ((monitoring == false) and ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)) {
-          (#Clock).clock_delay(0, 0, 5)
+          (#Clock).clock_delay(5000)
           (#Irrigator).switch_on()
-          (#Clock).clock_delay(0, 0, 10)
+          (#Clock).clock_delay(10000)
           (#Alarm).alarm_siren()
           start_time = (#Clock).clock_timestamp
           monitoring = true
@@ -31,9 +31,9 @@
   devices:
   - Irrigator
   - Blind
+  - SoilMoistureSensor
   - Clock
   - Alarm
-  - SoilMoistureSensor
 - command: 토양 습도 센서의 값이 25% 이하로 떨어지면 3초 간격으로 총 다섯 번 알람의 사이렌을 1초간 울리고, 그 후 10초 대기 후 블라인드를 닫아 줘.
   code:
   - name: Scenario1
@@ -49,20 +49,20 @@
       if (triggered == true) {
         if (i < 5) {
           (#Alarm).alarm_siren()
-          (#Clock).clock_delay(0, 0, 1)
+          (#Clock).clock_delay(1000)
           (#Alarm).alarm_off()
           i = i + 1
         } else {
-          (#Clock).clock_delay(0, 0, 10)
+          (#Clock).clock_delay(10000)
           (#Blind).blind_close()
           break
         }
       }
   devices:
+  - SoilMoistureSensor
+  - Clock
   - Blind
   - Alarm
-  - Clock
-  - SoilMoistureSensor
 - command: 실시간으로 확인하여 움직임이 감지되면 5초 대기 후 조명을 켜고, 10초 후 커튼을 열고, 15초 후 펌프가 꺼져 있으면 펌프를 켜 줘.
   code:
   - name: Scenario1
@@ -70,20 +70,20 @@
     period: -1
     code: |-
       wait until((#MotionSensor).motionSensor_motion == 'active')
-      (#Clock).clock_delay(0, 0, 5)
+      (#Clock).clock_delay(5000)
       (#Light).switch_on()
-      (#Clock).clock_delay(0, 0, 10)
+      (#Clock).clock_delay(10000)
       (#Curtain).curtain_open()
-      (#Clock).clock_delay(0, 0, 15)
+      (#Clock).clock_delay(15000)
       if ((#Pump).switch_switch == 'off') {
         (#Pump).switch_on()
       }
   devices:
   - Curtain
-  - Clock
-  - Light
   - MotionSensor
+  - Light
   - Pump
+  - Clock
 - command: 1월 1일에, 실시간으로 확인하여 조명이 꺼지면 3초 대기 후 펌프를 끄고, 5초 후 블라인드를 닫으며, 추가로 7초 후 조명을 다시 켠 다음 알람의 사이렌을 울려 줘.
   code:
   - name: Scenario1
@@ -92,20 +92,20 @@
     code: |-
       wait until((#Light).switch_switch == 'off')
       if (((#Clock).clock_month == 1) and ((#Clock).clock_day == 1)) {
-        (#Clock).clock_delay(0, 0, 3)
+        (#Clock).clock_delay(3000)
         (#Pump).switch_off()
-        (#Clock).clock_delay(0, 0, 5)
+        (#Clock).clock_delay(5000)
         (#Blind).blind_close()
-        (#Clock).clock_delay(0, 0, 7)
+        (#Clock).clock_delay(7000)
         (#Light).switch_on()
         (#Alarm).alarm_siren()
       }
   devices:
-  - Clock
   - Light
-  - Pump
-  - Alarm
   - Blind
+  - Pump
+  - Clock
+  - Alarm
 - command: 10초마다 확인하여 토양 습도 센서의 값이 두 번 연속으로 30% 이하가 된 다음, 그 상태가 1분 이상 유지되면 블라인드를 닫고 5초 후 ‘알람’이라고 두 번 말해 줘.
   code:
   - name: Scenario1
@@ -138,7 +138,7 @@
             duration = duration + 100
             if (duration >= 60000) {
               (#Blind).blind_close()
-              (#Clock).clock_delay(0, 0, 5)
+              (#Clock).clock_delay(5000)
               (#Speaker).mediaPlayback_speak("알람")
               (#Speaker).mediaPlayback_speak("알람")
               executed = true
@@ -151,9 +151,9 @@
       }
   devices:
   - Speaker
-  - Blind
-  - Clock
   - SoilMoistureSensor
+  - Clock
+  - Blind
 - command: 실시간으로 확인하여 커튼이 5초 연속 닫혀 있으면 커튼을 열고, 이후 10초 동안 움직임이 감지되지 않으면 조명을 꺼 줘.
   code:
   - name: Scenario1
@@ -203,24 +203,24 @@
       } else if (phase == 1) {
         if (count < 3) {
           (#Light).switch_toggle()
-          (#Clock).clock_delay(0, 0, 1)
+          (#Clock).clock_delay(1000)
           count = count + 1
         } else {
-          (#Clock).clock_delay(0, 0, 5)
+          (#Clock).clock_delay(5000)
           (#Speaker).switch_on()
           phase = 2
         }
       } else if (phase == 2) {
         wait until((#AirConditioner).switch_switch == 'off')
-        (#Clock).clock_delay(0, 0, 10)
+        (#Clock).clock_delay(10000)
         (#AirConditioner).switch_on()
         break
       }
   devices:
-  - Light
   - Speaker
   - AirConditioner
   - Clock
+  - Light
 - command: 에어컨이 켜지면 5초 후 블라인드를 닫고, 5초 더 기다린 후 커튼이 열려 있으면 커튼을 닫고, 이후 10초 후 조명 밝기를 10퍼센트로 낮춰 줘.
   code:
   - name: Scenario1
@@ -228,20 +228,20 @@
     period: -1
     code: |-
       wait until((#AirConditioner).switch_switch == 'on')
-      (#Clock).clock_delay(0, 0, 5)
+      (#Clock).clock_delay(5000)
       (#Blind).blind_close()
-      (#Clock).clock_delay(0, 0, 5)
+      (#Clock).clock_delay(5000)
       if ((#Curtain).curtain_curtain == 'open') {
         (#Curtain).curtain_close()
       }
-      (#Clock).clock_delay(0, 0, 10)
+      (#Clock).clock_delay(10000)
       (#Light).switchLevel_setLevel(10, 1)
   devices:
   - Curtain
-  - Clock
   - Light
-  - AirConditioner
   - Blind
+  - AirConditioner
+  - Clock
 - command: 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않으면 경광등을 켜고, 5초 후 조명을 최대 밝기로 켜 줘.
   code:
   - name: Scenario1
@@ -259,7 +259,7 @@
           noMotionDuration = noMotionDuration + 100
           if (noMotionDuration >= 10000) {
             (#Alarm).alarm_strobe()
-            (#Clock).clock_delay(0, 0, 5)
+            (#Clock).clock_delay(5000)
             (#Light).switchLevel_setLevel(100, 0)
             break
           }
@@ -268,10 +268,10 @@
         }
       }
   devices:
+  - MotionSensor
+  - Light
   - Clock
   - ContactSensor
-  - Light
-  - MotionSensor
   - Alarm
 - command: 매주 월요일 오전 9시부터 10시까지, 실시간으로 확인하여 창문이 열리고 나서 7초가 지난 시점에도 블라인드가 열려 있으면 블라인드를 닫고, 10초 후 커튼도 닫아 줘. 그리고 그 시간대에 실시간으로 확인하여 조명이 꺼지면 켜 줘.
   code:
@@ -301,7 +301,7 @@
         if (elapsed >= 7) {
           if ((#Blind).blind_blind == "open") {
             (#Blind).blind_close()
-            (#Clock).clock_delay(0, 0, 10)
+            (#Clock).clock_delay(10000)
             (#Curtain).curtain_close()
           }
           break
@@ -320,7 +320,7 @@
       }
   devices:
   - Curtain
-  - Clock
+  - Window
   - Light
   - Blind
-  - Window
+  - Clock

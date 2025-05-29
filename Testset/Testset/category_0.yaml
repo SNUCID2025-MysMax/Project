@@ -697,7 +697,7 @@
     cron: ""
     period: -1
     code: |-
-      (#Clock).clock_delay(1, 20, 30)
+      (#Clock).clock_delay(4830000)
 - command: "접촉 센서가 접촉되어 있으면 알람의 사이렌을 울려줘."
   code:
   - name: "Scenario1"

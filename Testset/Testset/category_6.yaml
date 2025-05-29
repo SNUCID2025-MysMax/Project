@@ -66,7 +66,7 @@
         break
       }
       (#Irrigator).switch_on()
-      (#Clock).clock_delay(0, 0, 5)
+      (#Clock).clock_delay(5000)
       lux = (#LightSensor).lightLevel_light
       if (lux >= 500.0) {
         (#Irrigator).switch_off()
@@ -124,7 +124,7 @@
     code: |-
       (#Alarm).alarm_siren()
       state = (#Window).windowControl_window
-      (#Clock).clock_delay(0, 0, 1)
+      (#Clock).clock_delay(1000)
       (#Alarm).alarm_off()
       if (state == 'closed') {
         break

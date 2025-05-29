@@ -103,8 +103,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - PresenceSensor
+  - Alarm
 - command: 에어컨의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -440,8 +440,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Blind
   - Alarm
+  - Blind
 - command: 블라인드가 열린 상태이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -452,8 +452,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Blind
   - Alarm
+  - Blind
 - command: 블라인드를 70 퍼센트로 설정해줘.
   code:
   - name: Scenario1
@@ -523,8 +523,8 @@
       states = (#Button).button_supportedButtonValues
       (#Speaker).mediaPlayback_speak(states)
   devices:
-  - Button
   - Speaker
+  - Button
 - command: 버튼1이 눌렸으면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -651,8 +651,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Camera
+  - Alarm
 - command: 가장 최근에 찍은 사진을 첨부파일로 이메일을 test@example.com 주소, 제목 '사진'과 내용 '사진입니다.'로 보내줘.
   code:
   - name: Scenario1
@@ -765,8 +765,8 @@
       states = (#Charger).chargingState_supportedChargingStates
       (#Speaker).mediaPlayback_speak(states)
   devices:
-  - Charger
   - Speaker
+  - Charger
 - command: 오늘 날짜가 2025년 5월 12일이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -777,8 +777,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 현재 시간이 2025년 5월 12일 오후 3시 15분이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -789,8 +789,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 오늘이 20일이면 알람의 사이렌을 울려줘
   code:
   - name: Scenario1
@@ -801,8 +801,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 현재 시간이 오후 3시이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -813,8 +813,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 오늘이 공휴일이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -825,8 +825,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 지금이 30분이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -837,8 +837,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 지금이 5월이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -849,8 +849,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 지금이 40초이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -861,8 +861,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 지금이 오후 3시 15분이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -873,8 +873,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 현재 Unix timestamp가 1747031637.23이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -885,8 +885,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 오늘이 금요일이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -897,8 +897,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 올해가 2025년이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -909,15 +909,15 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Clock
+  - Alarm
 - command: 1시간 20분 30초 뒤에 알람의 사이렌을 울려줘
   code:
   - name: Scenario1
     cron: ''
     period: -1
     code: |-
-      (#Clock).clock_delay(1, 20, 30)
+      (#Clock).clock_delay(4830000)
   devices:
   - Clock
 - command: 접촉 센서가 접촉되어 있으면 알람의 사이렌을 울려줘.
@@ -953,8 +953,8 @@
       states = (#Curtain).curtain_supportedCurtainCommands
       (#Speaker).mediaPlayback_speak(states)
   devices:
-  - Curtain
   - Speaker
+  - Curtain
 - command: 커튼을 닫아줘.
   code:
   - name: Scenario1
@@ -1052,8 +1052,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Dishwasher
   - Alarm
+  - Dishwasher
 - command: 식기세척기의 모드가 에코 모드면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -1064,8 +1064,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Dishwasher
   - Alarm
+  - Dishwasher
 - command: 식기세척기를 꺼줘.
   code:
   - name: Scenario1
@@ -1151,8 +1151,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Fan
+  - Alarm
 - command: 선풍기의 속도가 2000RPM 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -1163,8 +1163,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Fan
+  - Alarm
 - command: 선풍기의 속도를 1500RPM으로 설정해줘.
   code:
   - name: Scenario1
@@ -1279,7 +1279,7 @@
       (#Feeder).feederOperatingState_startFeeding()
   devices:
   - Feeder
-- command: 가스 측정기의 가스 사용량이 500kWh 이상이면 알람의 사이렌을 울려줘.
+- command: 가스 미터의 가스 사용량이 500kWh 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
     cron: ''
@@ -1291,7 +1291,7 @@
   devices:
   - GasMeter
   - Alarm
-- command: 가스 측정기의 가스 발열량이 1000kcal 이상이면 알람의 사이렌을 울려줘.
+- command: 가스 미터의 가스 발열량이 1000kcal 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
     cron: ''
@@ -1303,7 +1303,7 @@
   devices:
   - GasMeter
   - Alarm
-- command: 가스 측정기의 누적 가스 사용 시간이 10000초 이상이면 알람의 사이렌을 울려줘.
+- command: 가스 미터의 누적 가스 사용 시간이 10000초 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
     cron: ''
@@ -1315,7 +1315,7 @@
   devices:
   - GasMeter
   - Alarm
-- command: 가스 측정기의 가스 사용량이 20세제곱미터 이상이면 알람의 사이렌을 울려줘.
+- command: 가스 미터의 가스 사용량이 20세제곱미터 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
     cron: ''
@@ -1415,8 +1415,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Humidifier
   - Alarm
+  - Humidifier
 - command: 가습기의 모드가 자동이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -1427,8 +1427,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Humidifier
   - Alarm
+  - Humidifier
 - command: 가습기를 꺼줘.
   code:
   - name: Scenario1
@@ -1711,8 +1711,8 @@
       (#MenuProvider).menuProvider_menu('오늘 학생식당 점심')
       (#Speaker).mediaPlayback_speak(menu)
   devices:
-  - Speaker
   - MenuProvider
+  - Speaker
 - command: 오늘의 메뉴를 스피커로 출력해줘.
   code:
   - name: Scenario1
@@ -1722,8 +1722,8 @@
       menu = (#MenuProvider).menuProvider_todayMenu()
       (#Speaker).mediaPlayback_speak(menu)
   devices:
-  - Speaker
   - MenuProvider
+  - Speaker
 - command: 오늘의 식당을 스피커로 출력해줘.
   code:
   - name: Scenario1
@@ -1733,8 +1733,8 @@
       place = (#MenuProvider).menuProvider_todayPlace()
       (#Speaker).mediaPlayback_speak(menu)
   devices:
-  - Speaker
   - MenuProvider
+  - Speaker
 - command: 모션 센서가 활성 상태이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -1769,8 +1769,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - PresenceSensor
+  - Alarm
 - command: 펌프의 현재 동작 모드가 최대이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -1816,8 +1816,8 @@
       modes = (#Pump).pumpOperationMode_supportedOperationModes
       (#Speaker).mediaPlayback_speak(modes)
   devices:
-  - Speaker
   - Pump
+  - Speaker
 - command: 펌프가 열려있으면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2047,8 +2047,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Shade
+  - Alarm
 - command: 쉐이드가 완전히 열려 있는 상태면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2059,8 +2059,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Shade
+  - Alarm
 - command: 쉐이드가 지원하는 상태를 스피커로 출력해줘.
   code:
   - name: Scenario1
@@ -2178,8 +2178,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - SmartPlug
   - Alarm
+  - SmartPlug
 - command: 스마트 플러그의 전압이 220볼트 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2190,8 +2190,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - SmartPlug
   - Alarm
+  - SmartPlug
 - command: 스마트 플러그의 전류가 10암페어 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2202,8 +2202,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - SmartPlug
   - Alarm
+  - SmartPlug
 - command: 스마트 플러그의 소비 전력이 1000와트 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2214,8 +2214,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - SmartPlug
   - Alarm
+  - SmartPlug
 - command: 스마트 플러그를 꺼줘.
   code:
   - name: Scenario1
@@ -2265,8 +2265,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - SoilMoistureSensor
+  - Alarm
 - command: 소리 센서에서 소리가 감지되면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2416,8 +2416,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Recorder
+  - Alarm
 - command: 녹음기가 녹음 중이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2428,8 +2428,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Recorder
+  - Alarm
 - command: 녹음기를 꺼줘.
   code:
   - name: Scenario1
@@ -2722,8 +2722,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - WeatherProvider
+  - Alarm
 - command: 바깥의 미세먼지 농도가 100 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2734,8 +2734,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - WeatherProvider
+  - Alarm
 - command: 바깥의 초미세먼지 농도가 50 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2746,8 +2746,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - WeatherProvider
+  - Alarm
 - command: 기압이 1020hPa 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2758,8 +2758,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - WeatherProvider
+  - Alarm
 - command: 현재 바깥의 기온이 30도 이상이면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2770,8 +2770,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - WeatherProvider
+  - Alarm
 - command: 현재 날씨가 비가 오고 있으면 알람의 사이렌을 울려줘.
   code:
   - name: Scenario1
@@ -2782,8 +2782,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - WeatherProvider
+  - Alarm
 - command: 위도 37.5665, 경도 126.9780의 현재 날씨 정보를 스피커로 출력해줘.
   code:
   - name: Scenario1
@@ -2805,8 +2805,8 @@
         (#Alarm).alarm_siren()
       }
   devices:
-  - Alarm
   - Window
+  - Alarm
 - command: 창문을 닫아줘.
   code:
   - name: Scenario1

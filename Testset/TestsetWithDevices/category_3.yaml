@@ -49,8 +49,8 @@
         break
       }
   devices:
-  - Blind
   - Clock
+  - Blind
 - command: 주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘.
   code:
   - name: Scenario1

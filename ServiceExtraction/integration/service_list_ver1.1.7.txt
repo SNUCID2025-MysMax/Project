@@ -384,13 +384,11 @@ Device Clock:
 		clock_year (INTEGER): Current year
 	---
 	Methods:
-		clock_delay(hour: INTEGER, minute: INTEGER, second: INTEGER) -> VOID:
-			delay for a given amount of time
+		clock_delay(ms: INTEGER) -> VOID:
+			Delay execution for a given amount of time in milliseconds.
 	
 			Args:
-				hour (INTEGER): hour
-				minute (INTEGER): minute
-				second (INTEGER): second
+				ms (INTEGER): Time to delay in milliseconds.
 	
 	"""
 

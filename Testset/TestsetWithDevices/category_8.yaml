@@ -17,8 +17,8 @@
         (#Irrigator).switch_toggle()
       }
   devices:
-  - Irrigator
   - SoilMoistureSensor
+  - Irrigator
 - command: 온도가 30도를 초과하면 블라인드를 닫고, 이후 5초마다 알람의 사이렌을 울려 줘.
   code:
   - name: Scenario1
@@ -35,9 +35,9 @@
         (#Alarm).alarm_siren()
       }
   devices:
+  - Alarm
   - TemperatureSensor
   - Blind
-  - Alarm
 - command: 날씨 감지 센서에서 비가 감지되면 관개 장치를 바로 끄고, 이후 2초마다 알람을 꺼 줘.
   code:
   - name: Scenario1
@@ -54,9 +54,9 @@
         (#Alarm).alarm_off()
       }
   devices:
+  - WeatherProvider
   - Irrigator
   - Alarm
-  - WeatherProvider
 - command: 일조량이 200룩스 이하가 되면 4초마다 조명을 켜고, 2초 후에 꺼 주는 동작을 반복해 줘.
   code:
   - name: Scenario1
@@ -70,13 +70,13 @@
       }
       if (active == True) {
         (#Light).switch_on()
-        (#Clock).clock_delay(0, 0, 2)
+        (#Clock).clock_delay(2000)
         (#Light).switch_off()
       }
   devices:
-  - Light
   - LightSensor
   - Clock
+  - Light
 - command: 문이 처음 열릴 때 환풍기를 켜고, 이후 3초마다 습도를 확인해서 70% 이하가 될 때까지 환풍기를 켜고 끄는 동작을 반복해 줘.
   code:
   - name: Scenario1
@@ -96,9 +96,9 @@
         (#Fan).switch_toggle()
       }
   devices:
-  - DoorLock
   - HumiditySensor
   - Fan
+  - DoorLock
 - command: 조명이 켜지면 블라인드를 닫고, 이후 2초마다 커튼을 열었다 닫았다 반복해 줘.
   code:
   - name: Scenario1
@@ -113,14 +113,14 @@
       }
       if (active == True) {
         (#Curtain).curtain_open()
-        (#Clock).clock_delay(0, 0, 1)
+        (#Clock).clock_delay(1000)
         (#Curtain).curtain_close()
       }
   devices:
-  - Light
   - Curtain
-  - Blind
   - Clock
+  - Light
+  - Blind
 - command: TV가 처음 켜지면 5초마다 스피커를 켜고 3초 후에 끄는 동작을 반복해 줘.
   code:
   - name: Scenario1
@@ -134,12 +134,12 @@
       }
       if (active == True) {
         (#Speaker).switch_on()
-        (#Clock).clock_delay(0, 0, 3)
+        (#Clock).clock_delay(3000)
         (#Speaker).switch_off()
       }
   devices:
-  - Speaker
   - Television
+  - Speaker
   - Clock
 - command: 공기청정기가 꺼지면 2초마다 ‘공기청정기를 켜 주세요’라고 두 번 반복해서 스피커로 출력해줘.
   code:
@@ -180,9 +180,9 @@
         }
       }
   devices:
+  - Window
   - Light
   - Blind
-  - Window
 - command: 현관 문이 닫히면 즉시 조명을 끄고, 이후 3초마다 경광등을 켜 줘.
   code:
   - name: Scenario1
@@ -200,5 +200,5 @@
       }
   devices:
   - Siren
-  - DoorLock
   - Light
+  - DoorLock

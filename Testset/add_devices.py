@@ -28,10 +28,10 @@ yaml.SafeDumper.add_representer(QuotedString, quoted_str_representer)
 
 exclude = {"Wall", "SectorA", "SectorB", "Upper", "Lower", "Even", "Odd"}
 
-# # model_dir = os.path.expanduser("./models/bge-m3")
-# # model_bge = BGEM3FlagModel(model_dir, use_fp16=False, local_files_only=True)
-# # hybrid_recommend(model_bge, "에어컨", max_k=7)
-# # print("Embedding loaded")
+# model_dir = os.path.expanduser("./models/bge-m3")
+# model_bge = BGEM3FlagModel(model_dir, use_fp16=False, local_files_only=True)
+# hybrid_recommend(model_bge, "에어컨", max_k=7)
+# print("Embedding loaded")
 
 
 
@@ -70,7 +70,7 @@ exclude = {"Wall", "SectorA", "SectorB", "Upper", "Lower", "Even", "Odd"}
 #     with open(path_out, "w") as f:
 #         yaml.safe_dump(data, f, allow_unicode=True, sort_keys=False,  width=float('inf'), default_flow_style=False)
 
-##########################################33
+#############################################33
 import re
 
 for i in range(0,16):

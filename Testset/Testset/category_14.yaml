@@ -38,7 +38,7 @@
       triggered := false
       if ((#Irrigator).switch_switch == "off") {
         if (triggered == false) {
-          (#Clock).clock_delay(0, 0, 10)
+          (#Clock).clock_delay(10000)
           triggered = true
         }
       } else {
@@ -120,7 +120,7 @@
     period: 100
     code: |
       wait until((#OccupancySensor).presenceSensor_presence == 'present')
-      (#Clock).clock_delay(0, 0, 10)
+      (#Clock).clock_delay(10000)
       level = (#Light).switchLevel_level
       (#Light).switchLevel_setLevel(level, 1)
 - command: "TV가 꺼져 있으면 10초 대기 후 다시 TV를 확인하여 켜져 있으면 TV를 켜 줘."
@@ -130,7 +130,7 @@
     period: -1
     code: |
       if ((#Television).switch_switch == "off") {
-        (#Clock).clock_delay(0, 0, 10)
+        (#Clock).clock_delay(10000)
         if ((#Television).switch_switch == "on") {
           (#Television).switch_on()
         }

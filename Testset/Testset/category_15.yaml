@@ -16,7 +16,7 @@
             ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 1000.0) and 
             ((#AirQualityDetector).temperatureMeasurement_temperature >= 30.0) {
 
-          (#Clock).clock_delay(0, 0, 5)
+          (#Clock).clock_delay(5000)
           (#Window).windowControl_open()
 
           if ((#Fan).switch_switch == "off") {
@@ -76,7 +76,7 @@
       }
 
       if (state == 1 and (#Window #Lower #Odd).windowControl_window == 'open') {
-        (#Clock).clock_delay(0, 0, 5)
+        (#Clock).clock_delay(5000)
         (#Alarm).alarm_siren()
         alarm_time = (#Clock).clock_timestamp
         state = 2
@@ -108,7 +108,7 @@
 
       if (state == 3 and blink_mode == true) {
         (#Light).switch_toggle()
-        (#Clock).clock_delay(0, 0, 2)
+        (#Clock).clock_delay(2000)
       }
 
       if ((#DoorLock).doorControl_door == 'open' and door_open_flag == false) {
@@ -164,7 +164,7 @@
       }
 
       if (state == 2 and (#DoorLock).doorControl_door == 'closed') {
-        (#Clock).clock_delay(0, 0, 5)
+        (#Clock).clock_delay(5000)
         (#Alarm).alarm_siren()
         alarm_time = (#Clock).clock_timestamp
         blink_start = alarm_time
@@ -203,7 +203,7 @@
     code: |
       wait until((#HumiditySensor).relativeHumidityMeasurement_humidity >= 70.0)
       if ((#Window).windowControl_window == 'open') {
-        (#Clock).clock_delay(0, 0, 5)
+        (#Clock).clock_delay(5000)
         (#Dehumidifier).switch_on()
         wait until((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)
         (#AirConditioner).switch_on()
@@ -472,7 +472,7 @@
           (#Alarm).alarm_siren()
           siren_triggered = true
         }
-        (#Clock).clock_delay(0, 0, 5)
+        (#Clock).clock_delay(5000)
         state = 1
       }
 
@@ -486,8 +486,9 @@
       if (state == 2 and door_open_count >= 2) {
         (#Curtain).curtain_close()
         total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
         (#Alarm).alarm_siren()
-        (#Clock).clock_delay(0, 0, total_time)
+        (#Clock).clock_delay(total_time)
         (#Alarm).alarm_off()
         break
       }
@@ -518,7 +519,7 @@
     period: 100
     code: |
       wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
-      (#Clock).clock_delay(0, 0, 10)
+      (#Clock).clock_delay(10000)
       (#Speaker).mediaPlayback_speak("청소 중입니다")
   - name: "Scenario2"
     cron: ""
@@ -558,7 +559,7 @@
       motionDetected := false
       if (phase == 0) {
         if (((#Wall Light).switch_switch == "off") and ((#Curtain #Odd).curtain_curtain == "closed") and ((#ContactSensor).contactSensor_contact == "open")) {
-          (#Clock).clock_delay(0, 0, 5)
+          (#Clock).clock_delay(5000)
           (#Wall Light).switch_on()
           (#Window).windowControl_open()
           phase = 1

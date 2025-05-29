@@ -5,13 +5,13 @@
     period: -1
     code: |-
       if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
-        (#Clock).clock_delay(0, 0, 5)
+        (#Clock).clock_delay(5000)
         (#Irrigator).irrigatorOperatingState_startWatering()
       }
   devices:
   - Irrigator
-  - Clock
   - SoilMoistureSensor
+  - Clock
 - command: 창문이 열려 있고 온도가 35도 이상이면 10초 대기 후 블라인드를 내려 줘.
   code:
   - name: Scenario2
@@ -19,14 +19,14 @@
     period: -1
     code: |-
       if (((#Window).windowControl_window == 'open') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)) {
-        (#Clock).clock_delay(0, 0, 10)
+        (#Clock).clock_delay(10000)
         (#Blind).blind_close()
       }
   devices:
-  - TemperatureSensor
-  - Blind
   - Clock
   - Window
+  - TemperatureSensor
+  - Blind
 - command: 습도가 80% 이상이면 3초 뒤 제습기를 켜고, 7초 더 지난 후 창문을 닫아 줘.
   code:
   - name: Scenario3
@@ -34,14 +34,14 @@
     period: -1
     code: |-
       if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
-        (#Clock).clock_delay(0, 0, 3)
+        (#Clock).clock_delay(3000)
         (#Dehumidifier).switch_on()
-        (#Clock).clock_delay(0, 0, 7)
+        (#Clock).clock_delay(7000)
         (#Window).windowControl_close()
       }
   devices:
-  - Dehumidifier
   - HumiditySensor
+  - Dehumidifier
   - Clock
   - Window
 - command: 빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘.
@@ -51,13 +51,13 @@
     period: -1
     code: |-
       if ((#LightSensor).lightLevel_light <= 100.0) {
-        (#Clock).clock_delay(0, 0, 5)
+        (#Clock).clock_delay(5000)
         (#Light).switch_on()
       }
   devices:
-  - Light
   - LightSensor
   - Clock
+  - Light
 - command: 급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘.
   code:
   - name: Scenario5
@@ -65,12 +65,12 @@
     period: -1
     code: |-
       (#Irrigator).irrigatorOperatingState_startWatering()
-      (#Clock).clock_delay(0, 0, 10)
+      (#Clock).clock_delay(10000)
       (#Fan).switch_on()
   devices:
-  - Irrigator
   - Clock
   - Fan
+  - Irrigator
 - command: 창문이 열려 있으면 5초 후 커튼을 닫고, 10초 더 지난 뒤 블라인드를 닫아 줘.
   code:
   - name: Scenario6
@@ -78,16 +78,16 @@
     period: -1
     code: |-
       if ((#Window).windowControl_window == 'open') {
-        (#Clock).clock_delay(0, 0, 5)
+        (#Clock).clock_delay(5000)
         (#Curtain).curtain_close()
-        (#Clock).clock_delay(0, 0, 10)
+        (#Clock).clock_delay(10000)
         (#Blind).blind_close()
       }
   devices:
-  - Curtain
-  - Blind
   - Clock
+  - Curtain
   - Window
+  - Blind
 - command: 조명이 켜져 있으면 3초 대기 후 조명을 껐다가 3초 뒤 다시 켜 줘.
   code:
   - name: Scenario7
@@ -95,27 +95,27 @@
     period: -1
     code: |-
       if ((#Light).switch_switch == 'on') {
-        (#Clock).clock_delay(0, 0, 3)
+        (#Clock).clock_delay(3000)
         (#Light).switch_off()
-        (#Clock).clock_delay(0, 0, 3)
+        (#Clock).clock_delay(3000)
         (#Light).switch_on()
       }
   devices:
-  - Light
   - Clock
+  - Light
 - command: 7초 후에 조명을 끄고 5초 뒤 다시 켜 줘.
   code:
   - name: Scenario8
     cron: ''
     period: -1
     code: |-
-      (#Clock).clock_delay(0, 0, 7)
+      (#Clock).clock_delay(7000)
       (#Light).switch_off()
-      (#Clock).clock_delay(0, 0, 5)
+      (#Clock).clock_delay(5000)
       (#Light).switch_on()
   devices:
-  - Light
   - Clock
+  - Light
 - command: 문이 닫혀 있는데 5초가 지나도 창문이 열려 있지 않으면 블라인드를 열어 줘.
   code:
   - name: Scenario9
@@ -123,15 +123,15 @@
     period: -1
     code: |-
       if ((#DoorLock).doorControl_door == 'closed') {
-        (#Clock).clock_delay(0, 0, 5)
+        (#Clock).clock_delay(5000)
         if ((#Window).windowControl_window != 'open') {
             (#Blind).blind_open()
         }
       }
   devices:
-  - DoorLock
   - Blind
   - Clock
+  - DoorLock
   - Window
 - command: 커튼이 열린 상태라면 2초 뒤 조명을 50으로 낮추고, 다시 4초 기다려서 꺼 줘.
   code:
@@ -140,12 +140,12 @@
     period: -1
     code: |-
       if ((#Curtain).curtain_curtain == 'open') {
-        (#Clock).clock_delay(0, 0, 2)
+        (#Clock).clock_delay(2000)
         (#Light).switchLevel_setLevel(50, 0)
-        (#Clock).clock_delay(0, 0, 4)
+        (#Clock).clock_delay(4000)
         (#Light).switch_off()
       }
   devices:
   - Curtain
-  - Light
   - Clock
+  - Light

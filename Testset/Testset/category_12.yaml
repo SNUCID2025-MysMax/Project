@@ -162,7 +162,7 @@
     period: -1
     code: |-
       wait until((#Window).windowControl_window == 'open')
-      (#Clock).clock_delay(0, 0, 10)
+      (#Clock).clock_delay(10000)
       (#Curtain).curtain_open()
   - name: "Scenario2"
     cron: ""

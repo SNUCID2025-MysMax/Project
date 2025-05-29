@@ -17,8 +17,8 @@
         (#Odd #Blind).blind_close()
       }
   devices:
-  - Blind
   - Fan
+  - Blind
 - command: 홀수 태그가 붙은 선풍기 중 하나라도 켜져 있으면, 하단부에 있는 모든 관개 장치를 꺼 줘.
   code:
   - name: Scenario1
@@ -29,8 +29,8 @@
         all(#Lower #Irrigator).switch_off()
       }
   devices:
-  - Irrigator
   - Fan
+  - Irrigator
 - command: 짝수 태그가 붙은 창문이 열려 있으면 섹터 에이에 있는 선풍기를 꺼 줘.
   code:
   - name: Scenario1
@@ -74,8 +74,8 @@
         all(#Odd #Window).windowControl_open()
       }
   devices:
-  - Light
   - Window
+  - Light
 - command: 짝수 태그가 붙은 스피커 중 하나라도 켜져 있으면 섹터 비에 있는 조명을 모두 꺼 줘.
   code:
   - name: Scenario1
@@ -110,5 +110,5 @@
         all(#Fan).switch_on()
       }
   devices:
-  - Light
   - Fan
+  - Light

@@ -59,7 +59,7 @@
       }
       if (active == True) {
         (#Light).switch_on()
-        (#Clock).clock_delay(0, 0, 2)
+        (#Clock).clock_delay(2000)
         (#Light).switch_off()
       }
 - command: "문이 처음 열릴 때 환풍기를 켜고, 이후 3초마다 습도를 확인해서 70% 이하가 될 때까지 환풍기를 켜고 끄는 동작을 반복해 줘."
@@ -94,7 +94,7 @@
       }
       if (active == True) {
         (#Curtain).curtain_open()
-        (#Clock).clock_delay(0, 0, 1)
+        (#Clock).clock_delay(1000)
         (#Curtain).curtain_close()
       }
 - command: "TV가 처음 켜지면 5초마다 스피커를 켜고 3초 후에 끄는 동작을 반복해 줘."
@@ -110,7 +110,7 @@
       }
       if (active == True) {
         (#Speaker).switch_on()
-        (#Clock).clock_delay(0, 0, 3)
+        (#Clock).clock_delay(3000)
         (#Speaker).switch_off()
       }
 - command: "공기청정기가 꺼지면 2초마다 ‘공기청정기를 켜 주세요’라고 두 번 반복해서 스피커로 출력해줘."

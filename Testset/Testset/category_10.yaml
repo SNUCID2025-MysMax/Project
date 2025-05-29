@@ -64,11 +64,11 @@
         prev_state = current_state
         if ((toggle_count >= 4) and (humidity >= 65.0)) {
             (#Alarm).alarm_siren()
-            (#Clock).clock_delay(0, 0, 1)
+            (#Clock).clock_delay(1000)
             (#Alarm).alarm_off()
-            (#Clock).clock_delay(0, 0, 3)
+            (#Clock).clock_delay(3000)
             (#Alarm).alarm_siren()
-            (#Clock).clock_delay(0, 0, 1)
+            (#Clock).clock_delay(1000)
             (#Alarm).alarm_off()
             (#Curtain).curtain_close()
             toggle_count = 0
@@ -186,15 +186,15 @@
       prev_state = current_state
       if (long_open_count >= 3) {
         (#Alarm).alarm_siren()
-        (#Clock).clock_delay(0, 0, 1)
+        (#Clock).clock_delay(1000)
         (#Alarm).alarm_off()
-        (#Clock).clock_delay(0, 0, 3)
+        (#Clock).clock_delay(3000)
         (#Alarm).alarm_siren()
-        (#Clock).clock_delay(0, 0, 1)
+        (#Clock).clock_delay(1000)
         (#Alarm).alarm_off()
-        (#Clock).clock_delay(0, 0, 3)
+        (#Clock).clock_delay(3000)
         (#Alarm).alarm_siren()
-        (#Clock).clock_delay(0, 0, 1)
+        (#Clock).clock_delay(1000)
         (#Alarm).alarm_off()
         long_open_count = 0
         break
