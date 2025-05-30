@@ -105,8 +105,8 @@ def load_dataset():
                 devices = result['devices']
                 # 7개 이상의 장치가 없으면 무작위로 추가
                 if len(devices) < 7:
-                    devices = list(set(devices + random.sample(classes.keys(), 7 - len(devices))))
-                service_doc = "\n".join([classes[device] for device in result['devices'] if device in classes])
+                    devices = list(set(devices + random.sample(list(classes.keys()), 7 - len(devices))))
+                service_doc = "\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
                     "conversations": [
                         {

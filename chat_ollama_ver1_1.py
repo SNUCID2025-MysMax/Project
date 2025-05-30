@@ -1,4 +1,4 @@
-import os, sys, re, gc, json, time, pprint
+import os, sys, re, gc, json, time, pprint, requests
 from datetime import datetime
 from Grammar.grammar_ver1_1_4 import grammar
 from Embedding.embedding import hybrid_recommend
@@ -28,6 +28,26 @@ class QuotedString(str):
 def quoted_str_representer(dumper, data):
     return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
 
+# ✅ Deepl 번역 함수 (Google 번역 → Deepl로 교체)
+def deepl_translate(command, auth_key="6bc9c430-2abd-4f64-9f0d-09f6ac92441f:fx"):
+    url = "https://api-free.deepl.com/v2/translate"
+    data = {
+        "auth_key": auth_key,
+        "text": command,
+        "source_lang": "KO",
+        "target_lang": "EN"
+    }
+
+    try:
+        response = requests.post(url, data=data, timeout=10)
+        if response.status_code == 200:
+            return response.json()['translations'][0]['text']
+        else:
+            raise Exception(f"Error: {response.status_code}, {response.text}")
+    except Exception as e:
+        print(f"⚠️ 번역 실패: \"{command}\" → {e}")
+        return command  # 실패 시 원문 유지
+
 
 with open("./Grammar/SoP_Lang_Description.md", "r") as f:
     description = f.read()
@@ -53,17 +73,19 @@ def parse_code_to_ast(script: str):
     except Exception as e:
         print(f"Parse failed: {e}")  
 
-def run_test_case(model, model_bge, user_command, classes, use_stream=True):
+def run_test_case(model, model_bge, user_command_origin, user_command, classes, use_stream=True):
 
     start_time = time.time()
 
-    service_selected = set(i["key"] for i in hybrid_recommend(model_bge, user_command, max_k=7))
+    service_selected = set(i["key"] for i in hybrid_recommend(model_bge, user_command_origin, max_k=7))
     service_elapsed = time.time() - start_time
     service_selected.add("Clock")
 
     service_doc = "\n".join([classes[i] for i in service_selected])
     # service_doc = "#Devices\n"+"\n".join([json.dumps(classes[i]) for i in service_selected])
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+
+    # translated_command = deepl_translate(user_command)
 
     prompt = f"Current Time: {current_time}\nGenerate SoP Lang code for \"{user_command}\""
 
@@ -210,7 +232,7 @@ def main():
 
     # finetuned
     model = "codegemma"
-    # model = "qwen2.5-coder"
+    model = "qwen2.5-coder"
 
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
@@ -237,18 +259,21 @@ def main():
 
     
 
-    for i in range(1,16):
+    for i in range(0, 1):
+        with open(f"./Testset/TestsetWithDevices/category_{i}.yaml", "r") as f:
+            data_origin = yaml.safe_load(f)
 
-        with open(f"./Testset/Testset/category_{i}.yaml", "r") as f:
+        with open(f"./Testset/TestsetWithDevices_translated/category_{i}.yaml", "r") as f:
             results = []
             data = yaml.safe_load(f)
 
-            for item in data:
+            for idx, item in enumerate(data):
                 user_command = item["command"]
+                user_command_origin = data_origin[idx]["command"]
                 # label = item["answer"]
                 
                 resp, service_selected, info = run_test_case(
-                    model, model_bge, user_command, classes, True
+                    model, model_bge, user_command_origin, user_command, classes, True
                 )
                 print(f"#명령어: {user_command}")
                 print(f"#총 응답 시간 : {info['elapsed_time']}초")
@@ -319,7 +344,7 @@ def main():
                 results.append(entry)
 
         # 저장하기
-        with open(f"./Testset/Eval_codegemma/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
+        with open(f"./Testset/Eval_{model}/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
             yaml.dump(results, out_file, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
         
     del model
