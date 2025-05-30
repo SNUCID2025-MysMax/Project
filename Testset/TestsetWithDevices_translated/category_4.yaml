@@ -1,0 +1,132 @@
+- command: Sound the alarm's siren when the window opens.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#Window).windowControl_window == 'open')
+      (#Alarm).alarm_siren()
+  devices:
+  - Window
+  - Alarm
+- command: Turn on irrigation when soil moisture is above and below 20%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 20.0)
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 20.0)
+      (#Irrigator).switch_on()
+  devices:
+  - Irrigator
+  - SoilMoistureSensor
+- command: Turn on the light up to 3 times when motion is detected.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |
+      motion_count := 0
+      prev_motion := 'inactive'
+      current = (#MotionSensor).motionSensor_motion
+      if (current == 'active') and (prev_motion == 'inactive') {
+        if (motion_count < 3) {
+          (#Light).switch_on()
+          motion_count = motion_count + 1
+        }
+      }
+      prev_motion = current
+  devices:
+  - Light
+  - MotionSensor
+- command: Turn on the air conditioner when the temperature is above 35 degrees.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)
+      (#AirConditioner).switch_on()
+  devices:
+  - TemperatureSensor
+  - AirConditioner
+- command: Lower the blinds when the humidity is above 80%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0)
+      (#Blind).blind_close()
+  devices:
+  - Blind
+  - HumiditySensor
+- command: When the blinds are closed, say 'Blinds are closed'.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#Blind).blind_blind == 'closed')
+      (#Speaker).mediaPlayback_speak('Blinds are closed')
+  devices:
+  - Blind
+  - Speaker
+- command: Turn off the speakers when the TV is turned off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#Television).switch_switch == 'off')
+      (#Speaker).switch_off()
+  devices:
+  - Television
+  - Speaker
+- command: Turn off the light when the curtain opens and closes 3 times.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |
+      close_count := 0
+      prev_state := 'closed'
+      opened := false
+      curr = (#Curtain).curtain_curtain
+      if (curr == 'open') and (prev_state == 'closed') {
+        opened = true
+      }
+      if (curr == 'closed') and (prev_state == 'open') and (opened == true) {
+        close_count = close_count + 1
+        opened = false
+      }
+      prev_state = curr
+      if (close_count >= 3) {
+        (#Light).switch_off()
+        break
+      }
+  devices:
+  - Curtain
+  - Light
+- command: If the dehumidifier turns off, turn it back on.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#Dehumidifier).switch_switch == 'off')
+      (#Dehumidifier).switch_on()
+  devices:
+  - Dehumidifier
+- command: When the occupancy sensor no longer detects it, say 'Door is open'.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#PresenceSensor).presenceSensor_presence == 'not present')
+      (#Speaker).mediaPlayback_speak("Door is open")
+  devices:
+  - PresenceSensor
+  - Speaker

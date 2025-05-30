@@ -1,0 +1,204 @@
+- command: Turn on the waterer when the soil humidity is below 25% and check the status every 3 seconds thereafter, cycling the waterer off and on until the humidity is above 30%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+        (#Irrigator).switch_on()
+        active = True
+      }
+      if (active == True) {
+        if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 30.0) {
+            break
+        }
+        (#Irrigator).switch_toggle()
+      }
+  devices:
+  - Irrigator
+  - SoilMoistureSensor
+- command: Close the blinds when the temperature exceeds 30 degrees, and sound the alarm's siren every 5 seconds thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#TemperatureSensor).temperatureMeasurement_temperature > 30.0)
+        (#Blind).blind_close()
+        active = True
+      }
+      if (active == True) {
+        (#Alarm).alarm_siren()
+      }
+  devices:
+  - TemperatureSensor
+  - Blind
+  - Alarm
+- command: Turn off the irrigation device immediately when the weather sensor detects rain, and then turn off the alarm every two seconds thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#WeatherProvider).weatherProvider_weather == 'rain')
+        (#Irrigator).switch_off()
+        active = True
+      }
+      if (active == True) {
+        (#Alarm).alarm_off()
+      }
+  devices:
+  - Alarm
+  - WeatherProvider
+  - Irrigator
+- command: When the sunlight is below 200 lux, turn on the light every 4 seconds and turn it off after 2 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 4000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#LightSensor).lightLevel_light <= 200.0)
+        active = True
+      }
+      if (active == True) {
+        (#Light).switch_on()
+        (#Clock).clock_delay(2000)
+        (#Light).switch_off()
+      }
+  devices:
+  - Light
+  - Clock
+  - LightSensor
+- command: Turn on the fan when the door first opens, then check the humidity every 3 seconds and cycle the fan on and off until it's below 70%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Fan).switch_on()
+        active = True
+      }
+      if (active == True) {
+        if ((#HumiditySensor).relativeHumidityMeasurement_humidity <= 70.0) {
+            break
+        }
+        (#Fan).switch_toggle()
+      }
+  devices:
+  - DoorLock
+  - Fan
+  - HumiditySensor
+- command: Close the blinds when the lights come on, then open and close the curtains every two seconds thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switch_switch == 'on')
+        (#Blind).blind_close()
+        active = True
+      }
+      if (active == True) {
+        (#Curtain).curtain_open()
+        (#Clock).clock_delay(1000)
+        (#Curtain).curtain_close()
+      }
+  devices:
+  - Curtain
+  - Light
+  - Blind
+  - Clock
+- command: When the TV first turns on, turn on the speakers every 5 seconds and turn them off after 3 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).switch_on()
+        (#Clock).clock_delay(3000)
+        (#Speaker).switch_off()
+      }
+  devices:
+  - Clock
+  - Television
+  - Speaker
+- command: When the air purifier is turned off, repeat "Please turn on the air purifier" twice every 2 seconds to the speaker.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#AirPurifier).switch_switch == 'off')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please turn on the air purifier')
+        (#Speaker).mediaPlayback_speak('Please turn on the air purifier')
+      }
+  devices:
+  - AirPurifier
+  - Speaker
+- command: Turn off the lights when the window opens, and lower the blinds by 10% every second thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blindLevel_blindLevel
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'open')
+        (#Light).switch_off()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blindLevel_setBlindLevel(level)
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+  devices:
+  - Light
+  - Blind
+  - Window
+- command: Turn off the lights as soon as the front door closes, and then every three seconds thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'closed')
+        (#Light).switch_off()
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('strobe')
+      }
+  devices:
+  - Light
+  - DoorLock
+  - Siren

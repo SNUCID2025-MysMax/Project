@@ -1,0 +1,579 @@
+- command: Every weekday at 9 a.m., if the windows are closed, the carbon dioxide concentration is above 1000 ppm, and the temperature is above 30 degrees, open the windows after 5 seconds and turn on the fans if they are off.Then, check in real time and if the particulate matter concentration remains above 50 for one continuous minute, close the windows again and turn off the fans.If the humidity in the greenhouse is below 40% at that time, turn on the humidifier. Similarly, if the soil humidity is below 25% and the irrigation is turned off, water the plants.
+  code:
+  - name: Scenario1
+    cron: 0 9 * * *
+    period: 100
+    code: "phase := 0\nconsecutive_time := 0\n\nif ((#Clock).clock_weekday == \"saturday\") or ((#Clock).clock_weekday == \"sunday\") {\n  break\n}\n\nif (phase == 0) {\n  if ((#Window).windowControl_window == \"closed\") and \n      ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 1000.0) and \n      ((#AirQualityDetector).temperatureMeasurement_temperature >= 30.0) {\n\n    (#Clock).clock_delay(5000)\n    (#Window).windowControl_open()\n\n    if ((#Fan).switch_switch == \"off\") {\n      (#Fan).switch_on()\n    }\n\n    phase = 1\n  }\n\n} else if (phase == 1) {\n  if ((#AirQualityDetector).dustSensor_fineDustLevel >= 50) {\n    consecutive_time = consecutive_time + 100\n  } else {\n    consecutive_time = 0\n  }\n\n  if (consecutive_time >= 60000) {\n    (#Window).windowControl_close()\n    (#Fan).switch_off()\n\n    if ((#HumiditySensor).relativeHumidityMeasurement_humidity <= 40.0) {\n      (#Humidifier).switch_on()\n    }\n\n    if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0) and \n        ((#Irrigator).switch_switch == \"off\") {\n      (#Irrigator).switch_on()\n    }\n\n    break\n  }\n}\n"
+  devices:
+  - Fan
+  - AirQualityDetector
+  - Irrigator
+  - SoilMoistureSensor
+  - Humidifier
+  - Clock
+  - Window
+  - HumiditySensor
+- command: Every day at 9am, if the lights are off and the window with the odd tag at the bottom is closed, open all the blinds. Then, when that window is opened, wait 5 seconds and sound the alarm's siren. After the siren sounds, check in real-time for 10 seconds to make sure that the window has never been closed, and blink the light every 2 seconds. If the blinds are open, if the door has been opened and closed more than once between then and the end of the 10 seconds, turn off all air conditioners in the wall if the second opening is longer than the first.
+  code:
+  - name: Scenario1
+    cron: 0 9 * * *
+    period: 100
+    code: |
+      state := 0
+      blind_opened := false
+      alarm_time := 0
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+      blink_mode := false
+      window_closed_during_monitoring := false
+
+      if (state == 0) {
+        if ((#Light).switch_switch == 'off' and (#Window #Lower #Odd).windowControl_window == 'closed') {
+          all(#Blind).blind_open()
+          blind_opened = true
+        }
+        state = 1
+      }
+
+      if (state == 1 and (#Window #Lower #Odd).windowControl_window == 'open') {
+        (#Clock).clock_delay(5000)
+        (#Alarm).alarm_siren()
+        alarm_time = (#Clock).clock_timestamp
+        state = 2
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+
+        if ((now - alarm_time) <= 10 and (#Window #Lower #Odd).windowControl_window == 'closed') {
+          window_closed_during_monitoring = true
+        }
+
+        if ((now - alarm_time) >= 10) {
+          if (window_closed_during_monitoring == false) {
+            blink_mode = true
+          }
+
+          if (blind_opened == true and door_open_count >= 2) {
+            first_duration = first_open_end - first_open_start
+            second_duration = second_open_end - second_open_start
+            if (second_duration > first_duration) {
+              all(#AirConditioner #Wall).switch_off()
+            }
+          }
+
+          state = 3
+        }
+      }
+
+      if (state == 3 and blink_mode == true) {
+        (#Light).switch_toggle()
+        (#Clock).clock_delay(2000)
+      }
+
+      if ((#DoorLock).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+  devices:
+  - Blind
+  - DoorLock
+  - Alarm
+  - AirConditioner
+  - Light
+  - Clock
+  - Window
+- command: Check the humidity every 10 seconds from the time the window is opened with the air conditioner off, and if the humidity exceeds 60%, lower the blinds and turn off the lights. Then, when the door is closed, sound an alarm with a 5-second delay, blink the lights every 1 second while the door is open for 1 minute after the alarm sounds, and then check in real-time to say "door closed" over the speaker when the door is closed.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: "state := 0\ncheck_start := 0.0\nalarm_time := 0.0\nblink_phase := 0\nwait_start := 0.0\ndoor_opened := false\nblink_start := 0.0\n\nif (state == 0 and (#AirConditioner).switch_switch == 'off' and (#Window).windowControl_window == 'open') {\n  check_start = (#Clock).clock_timestamp\n  state = 1\n}\n\nif (state == 1) {\n  now = (#Clock).clock_timestamp\n  if ((now - check_start) >= 10) {\n    humidity = (#HumiditySensor).relativeHumidityMeasurement_humidity\n    if (humidity > 60.0) {\n      (#Blind).blind_close()\n      (#Light).switch_off()\n      state = 2\n    } else {\n      check_start = now\n    }\n  }\n}\n\nif (state == 2 and (#DoorLock).doorControl_door == 'closed') {\n  (#Clock).clock_delay(5000)\n  (#Alarm).alarm_siren()\n  alarm_time = (#Clock).clock_timestamp\n  blink_start = alarm_time\n  state = 3\n}\n\nif (state == 3) {\n  now = (#Clock).clock_timestamp\n\n  if ((now - alarm_time) > 60) {\n    break\n  }\n\n  if ((#DoorLock).doorControl_door == 'open') {\n    door_opened = true\n\n    if (blink_phase == 0) {\n      (#Light).switch_toggle()\n      wait_start = now\n      blink_phase = 1\n    } else if (blink_phase == 1 and (now - wait_start) >= 1) {\n      blink_phase = 0\n    }\n  }\n\n  if (door_opened == true and (#DoorLock).doorControl_door == 'closed') {\n    (#Speaker).mediaPlayback_speak(\"문이 닫혔습니다\")\n    break\n  }\n} \n"
+  devices:
+  - Blind
+  - DoorLock
+  - AirConditioner
+  - Speaker
+  - Light
+  - Alarm
+  - Clock
+  - Window
+  - HumiditySensor
+- command: Wait until the humidity is above 70%, then turn on the dehumidifier after 5 seconds if the window is open, and turn on the air conditioner if the temperature rises above 30 degrees after the dehumidifier is turned on. If the blinds are opened while the air conditioner is on, it will open and close the curtains every 10 seconds from then on. If it detects motion, it will turn off the alarm, and if there is no motion for 5 seconds, it will sound the alarm again.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity >= 70.0)
+      if ((#Window).windowControl_window == 'open') {
+        (#Clock).clock_delay(5000)
+        (#Dehumidifier).switch_on()
+        wait until((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)
+        (#AirConditioner).switch_on()
+      }
+  - name: Scenario2
+    cron: ''
+    period: 100
+    code: |
+      state := 0
+      curtain_phase := 0
+      start_time := 0.0
+      alarm_state := 0
+      motion_timer := 0.0
+      alarm_disabled_once := false
+
+      if (state == 0 and (#AirConditioner).switch_switch == 'on' and (#Blind).blind_blind == 'open') {
+        start_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+
+        if ((now - start_time) >= 10) {
+          if (curtain_phase == 0) {
+            (#Curtain).curtain_close()
+            curtain_phase = 1
+          } else {
+            (#Curtain).curtain_open()
+            curtain_phase = 0
+          }
+          start_time = now
+        }
+
+        if ((#MotionSensor).motionSensor_motion == 'active' and alarm_disabled_once == false) {
+          (#Alarm).alarm_off()
+          alarm_state = 1
+          motion_timer = now
+          alarm_disabled_once = true
+        }
+
+        if (alarm_state == 1 and (#MotionSensor).motionSensor_motion == 'inactive') {
+          now = (#Clock).clock_timestamp
+          if ((now - motion_timer) >= 5) {
+            (#Alarm).alarm_siren()
+            alarm_state = 0
+          }
+        }
+      }
+  devices:
+  - Blind
+  - AirConditioner
+  - Dehumidifier
+  - Curtain
+  - Alarm
+  - MotionSensor
+  - TemperatureSensor
+  - Clock
+  - Window
+  - HumiditySensor
+- command: If a door is opened with the lights on and windows closed, wait 3 seconds before sounding the siren. If the window doesn't open for 10 seconds after the siren sounds, close the curtains, turn off the lights, and turn on the fan at 50% speed. Then, if the temperature is above 27 degrees, switch your air conditioner to cool mode and repeat the motion detection three times, opening and closing the blinds every second. However, if the speaker turns on in the middle, stop everything and turn it off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |
+      state := 0
+      alarm_time := 0.0
+      door_open_time := 0.0
+      blind_count := 0
+      blind_phase := 0
+      blind_timer := 0.0
+      window_remained_closed := true
+
+      if ((#Speaker).switch_switch == 'on') {
+        (#Speaker).switch_off()
+        break
+      }
+
+      if (state == 0 and (#Light).switch_switch == 'on' and (#Window).windowControl_window == 'closed' and (#DoorLock).doorControl_door == 'open') {
+        door_open_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - door_open_time) >= 3) {
+          (#Siren).sirenMode_setSirenMode('siren')
+          alarm_time = now
+          window_remained_closed = true
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_time) <= 10 and (#Window).windowControl_window == 'open') {
+          window_remained_closed = false
+        }
+        if ((now - alarm_time) > 10) {
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        if (window_remained_closed == true) {
+          (#Curtain).curtain_close()
+          (#Light).switch_off()
+          (#Fan).fanSpeed_setSpeed = 50
+        }
+        state = 4
+      }
+
+      if (state == 4) {
+        if ((#TemperatureSensor).temperatureMeasurement_temperature >= 27.0) {
+          (#AirConditioner).airConditionerMode_setMode = 'cool'
+        }
+        state = 5
+      }
+
+      if (state == 5) {
+        if ((#MotionSensor).motionSensor_motion == 'active') {
+          blind_timer = (#Clock).clock_timestamp
+          state = 6
+        } else {
+          break
+        }
+      }
+
+      if (state == 6) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_timer) >= 1) {
+          if (blind_phase == 0) {
+            (#Blind).blind_open()
+            blind_phase = 1
+          } else {
+            (#Blind).blind_close()
+            blind_phase = 0
+            blind_count = blind_count + 1
+          }
+          blind_timer = now
+        }
+        if (blind_count >= 3) {
+          break
+        }
+      }
+  devices:
+  - Blind
+  - DoorLock
+  - Fan
+  - AirConditioner
+  - Speaker
+  - Clock
+  - Curtain
+  - MotionSensor
+  - Siren
+  - TemperatureSensor
+  - Light
+  - Window
+- command: If a person is detected with the lights off and windows open, wait 3 seconds before turning on the lights and 5 seconds before closing the blinds. Sound the alarm once every 10 seconds for one second, but after two alarms, switch the air conditioner to "cool" mode. However, if the door is opened after a person is detected, stop all motion and close the curtains.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |
+      state := 0
+      motion_time := 0.0
+      blind_time := 0.0
+      alarm_timer := 0.0
+      alarm_count := 0
+
+      if (state == 0 and (#Light).switch_switch == 'off' and (#Window).windowControl_window == 'open' and (#MotionSensor).motionSensor_motion == 'active') {
+        motion_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state >= 1 and (#DoorLock).doorControl_door == 'open') {
+        (#Curtain).curtain_close()
+        break
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - motion_time) >= 3) {
+          (#Light).switch_on()
+          blind_time = now
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_time) >= 5) {
+          (#Blind).blind_close()
+          alarm_timer = now
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 10) {
+          (#Alarm).alarm_siren()
+          alarm_timer = now
+          alarm_count = alarm_count + 1
+          state = 4
+        }
+      }
+
+      if (state == 4) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 1) {
+          (#Alarm).alarm_off()
+          if (alarm_count == 2) {
+            (#AirConditioner).airConditionerMode_setMode = 'cool'
+          }
+          state = 3
+        }
+      }
+  devices:
+  - Blind
+  - DoorLock
+  - AirConditioner
+  - Clock
+  - Curtain
+  - Alarm
+  - MotionSensor
+  - Light
+  - Window
+- command: Every Monday morning at 7am, set the lights to 20. Then check in real-time and open the blinds whenever it detects motion until midnight, and open and close the curtains twice, three seconds apart. Each time you adjust the curtains, turn on the fan if the windows are open and turn off the air conditioner if they're closed.
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |
+      (#Light).switch_setLevel = 20
+  - name: Scenario2
+    cron: 0 7 * * 1
+    period: 100
+    code: |
+      state := 0
+      curtain_timer := 0.0
+      curtain_phase := 0
+      curtain_action_count := 0
+
+      if ((#Clock).clock_dayOfWeek != 1) {
+        break
+      }
+
+      if (state == 0 and (#MotionSensor).motionSensor_motion == 'active') {
+        (#Blind).blind_open()
+        curtain_timer = (#Clock).clock_timestamp
+        curtain_action_count = 0
+        curtain_phase = 0
+        state = 1
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - curtain_timer) >= 3) {
+          if (curtain_phase == 0) {
+            (#Curtain).curtain_open()
+            curtain_phase = 1
+          } else {
+            (#Curtain).curtain_close()
+            curtain_phase = 0
+          }
+
+          if ((#Window).windowControl_window == 'open') {
+            (#Fan).switch_on()
+          } else {
+            (#AirConditioner).switch_off()
+          }
+
+          curtain_action_count = curtain_action_count + 1
+          curtain_timer = now
+        }
+
+        if (curtain_action_count >= 4) {
+          state = 0
+        }
+      }
+  devices:
+  - Blind
+  - Fan
+  - AirConditioner
+  - Clock
+  - Curtain
+  - MotionSensor
+  - Light
+  - Window
+- command: Sound the siren at 10pm every night if the bottom window is open and the even-tagged light is on. If you sound the siren, close the blinds after 5 seconds. After 5 seconds, regardless of whether you sounded the siren or not, check in real-time and close the curtains when the odd-tagged door opens and closes twice. After closing the curtains, turn the alarm's light on and off for the total time the door was opened twice.
+  code:
+  - name: Scenario1
+    cron: 0 22 * * *
+    period: 100
+    code: |
+      state := 0
+      siren_triggered := false
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+
+      if (state == 0) {
+        if ((#Window #Lower).windowControl_window == 'open' and (#Light #Even).switch_switch == 'on') {
+          (#Alarm).alarm_siren()
+          siren_triggered = true
+        }
+        (#Clock).clock_delay(5000)
+        state = 1
+      }
+
+      if (state == 1) {
+        if (siren_triggered == true) {
+          (#Blind).blind_close()
+        }
+        state = 2
+      }
+
+      if (state == 2 and door_open_count >= 2) {
+        (#Curtain).curtain_close()
+        total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(total_time)
+        (#Alarm).alarm_off()
+        break
+      }
+
+      if ((#DoorLock #Odd).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock #Odd).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+  devices:
+  - Curtain
+  - Blind
+  - DoorLock
+  - Alarm
+  - Light
+  - Clock
+  - Window
+- command: Check in real-time every day to make sure the robot vacuum is running and playing a "cleaning" voice over the speaker after 10 seconds whenever you move. It also turns on odd-tagged air purifiers when the humidity is above 60%. While the air purifier is on, use your smart remote to power off and on your TV every 3 seconds. Close the window whenever it's open for five consecutive minutes.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+  - name: Scenario2
+    cron: ''
+    period: -1
+    code: |
+      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity > 60.0)
+      (#AirPurifier #Odd).switch_on()
+  - name: Scenario3
+    cron: ''
+    period: 3000
+    code: |
+      if ((#AirPurifier #Odd).switch_switch == 'on') {
+        (#Television).switch_toggle()
+      }
+  - name: Scenario4
+    cron: ''
+    period: 100
+    code: |
+      open_duration := 0
+      if ((#Window).windowControl_window == 'open') {
+        open_duration = open_duration + 100
+      } else {
+        open_duration = 0
+      }
+      if (open_duration >= 300000) {
+        (#Window).windowControl_close()
+        open_duration = 0
+      }
+  devices:
+  - RobotCleaner
+  - MotionSensor
+  - Speaker
+  - Television
+  - Clock
+  - Window
+  - AirPurifier
+  - HumiditySensor
+- command: If a door is opened with wall lights off and odd-tagged curtains closed, turn on those lights and open the window after 5 seconds. If no motion is detected for the next 30 seconds, sound the alarm's siren. After the 30 seconds are up, if the air conditioner is off and the room temperature is above 28 degrees, turn on the air conditioner. Also, turn off the smart fans tagged with an even number if they're on, and leave them on if they're not.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      elapsed := 0
+      motionDetected := false
+      if (phase == 0) {
+        if (((#Wall Light).switch_switch == "off") and ((#Curtain #Odd).curtain_curtain == "closed") and ((#ContactSensor).contactSensor_contact == "open")) {
+          (#Clock).clock_delay(5000)
+          (#Wall Light).switch_on()
+          (#Window).windowControl_open()
+          phase = 1
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == "active") {
+          motionDetected = true
+        }
+        elapsed = elapsed + 100
+        if (elapsed >= 30000) {
+          if (motionDetected == false) {
+            (#Alarm).alarm_siren()
+          }
+          phase = 2
+        }
+      } else if (phase == 2) {
+        if (((#AirConditioner).switch_switch == "off") and ((#TemperatureSensor).temperatureMeasurement_temperature >= 28.0)) {
+          (#AirConditioner).switch_on()
+        }
+        if ((#Fan #Even).switch_switch == "on") {
+          (#Fan #Even).switch_off()
+        }
+        break
+      }
+  devices:
+  - AirConditioner
+  - Fan
+  - Curtain
+  - Alarm
+  - MotionSensor
+  - Window
+  - TemperatureSensor
+  - Clock
+  - ContactSensor

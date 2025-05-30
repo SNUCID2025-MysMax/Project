@@ -1,0 +1,326 @@
+- command: From March through September, check in real-time and turn on the irrigation after a 5-second wait if the soil moisture sensor reads 30% or less, wait another 10 seconds, sound the alarm's siren, and then close the blinds if the humidity value remains below 30% for 15 seconds after that.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      monitoring := false
+      start_time := 0
+
+      if (((#Clock).clock_month >= 3) and ((#Clock).clock_month <= 9)) {
+        if ((monitoring == false) and ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)) {
+          (#Clock).clock_delay(5000)
+          (#Irrigator).switch_on()
+          (#Clock).clock_delay(10000)
+          (#Alarm).alarm_siren()
+          start_time = (#Clock).clock_timestamp
+          monitoring = true
+        }
+      }
+
+      if (monitoring == true) {
+        current = (#Clock).clock_timestamp
+        if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 30.0) {
+          monitoring = false
+        } else if ((current - start_time) >= 15.0) {
+          (#Blind).blind_close()
+          monitoring = false
+          break
+        }
+      }
+  devices:
+  - Blind
+  - Alarm
+  - Irrigator
+  - Clock
+  - SoilMoistureSensor
+- command: If the soil moisture sensor drops below 25%, the alarm will sound the siren for one second for a total of five alarms at three-second intervals, followed by a 10-second wait before closing the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      i := 0
+      triggered := false
+      if (triggered == false) {
+        wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+        triggered = true
+      }
+      if (triggered == true) {
+        if (i < 5) {
+          (#Alarm).alarm_siren()
+          (#Clock).clock_delay(1000)
+          (#Alarm).alarm_off()
+          i = i + 1
+        } else {
+          (#Clock).clock_delay(10000)
+          (#Blind).blind_close()
+          break
+        }
+      }
+  devices:
+  - Clock
+  - Blind
+  - Alarm
+  - SoilMoistureSensor
+- command: Check in real-time and turn on the lights after 5 seconds if motion is detected, open the curtains after 10 seconds, turn on the pump if it's off after 15 seconds, etc.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(5000)
+      (#Light).switch_on()
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_open()
+      (#Clock).clock_delay(15000)
+      if ((#Pump).switch_switch == 'off') {
+        (#Pump).switch_on()
+      }
+  devices:
+  - Curtain
+  - MotionSensor
+  - Pump
+  - Clock
+  - Light
+- command: On January 1, check in real-time and when the lights go out, wait 3 seconds, turn off the pump, close the blinds after 5 seconds, turn the lights back on after an additional 7 seconds, and sound the alarm's siren.
+  code:
+  - name: Scenario1
+    cron: 0 0 1 1 *
+    period: 0
+    code: |-
+      wait until((#Light).switch_switch == 'off')
+      if (((#Clock).clock_month == 1) and ((#Clock).clock_day == 1)) {
+        (#Clock).clock_delay(3000)
+        (#Pump).switch_off()
+        (#Clock).clock_delay(5000)
+        (#Blind).blind_close()
+        (#Clock).clock_delay(7000)
+        (#Light).switch_on()
+        (#Alarm).alarm_siren()
+      }
+  devices:
+  - Blind
+  - Alarm
+  - Light
+  - Pump
+  - Clock
+- command: Check every 10 seconds to see if the soil moisture sensor reads 30% or less twice in a row, and if it stays that way for more than a minute, close the blinds and say "alarm" twice after 5 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      elapsed10s := 0
+      previousLow := false
+      confirmedLow := false
+      monitoring := false
+      duration := 0
+      executed := false
+
+      if (executed == false) {
+        if (monitoring == false) {
+          elapsed10s = elapsed10s + 100
+          if (elapsed10s >= 10000) {
+            current = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+            if ((current <= 30.0) and (previousLow == true)) {
+              confirmedLow = true
+              monitoring = true
+            } else {
+              confirmedLow = false
+            }
+            previousLow = (current <= 30.0)
+            elapsed10s = 0
+          }
+        } else {
+          if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+            duration = duration + 100
+            if (duration >= 60000) {
+              (#Blind).blind_close()
+              (#Clock).clock_delay(5000)
+              (#Speaker).mediaPlayback_speak("alarm")
+              (#Speaker).mediaPlayback_speak("alarm")
+              executed = true
+              break
+            }
+          } else {
+            duration = 0
+          }
+        }
+      }
+  devices:
+  - Blind
+  - Clock
+  - Speaker
+  - SoilMoistureSensor
+- command: Check in real-time to open the curtains if they've been closed for 5 consecutive seconds, and turn off the lights if no motion is detected for the next 10 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      closedDuration := 0
+      noMotionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'closed') {
+          closedDuration = closedDuration + 100
+          if (closedDuration >= 5000) {
+            (#Curtain).curtain_open()
+            phase = 1
+          }
+        } else {
+          closedDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Light).switch_off()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+  devices:
+  - Curtain
+  - Light
+  - MotionSensor
+- command: When the lights come on, blink the lights 3 times at 1 second intervals, wait 5 seconds before turning on the speakers, and from then on, check in real-time to turn on the air conditioner 10 seconds after it turns off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'on')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).switch_toggle()
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).switch_on()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'off')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).switch_on()
+        break
+      }
+  devices:
+  - Light
+  - AirConditioner
+  - Clock
+  - Speaker
+- command: When the air conditioner turns on, close the blinds after five seconds, wait another five seconds and close the curtains if they're open, and then turn the lights down to 10 percent brightness after 10 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'on')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_close()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'open') {
+        (#Curtain).curtain_close()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).switchLevel_setLevel(10, 1)
+  devices:
+  - Curtain
+  - Blind
+  - AirConditioner
+  - Clock
+  - Light
+- command: Check in real-time to turn on the alarm if no motion is detected for 10 seconds after the door is opened, and turn on the lights to full brightness after 5 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'open')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_strobe()
+            (#Clock).clock_delay(5000)
+            (#Light).switchLevel_setLevel(100, 0)
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+  devices:
+  - Alarm
+  - Light
+  - MotionSensor
+  - Clock
+  - ContactSensor
+- command: Every Monday morning, from 9 to 10 a.m., check in real-time and close the blinds if they're still open seven seconds after the window is opened, and close the curtains 10 seconds later. And during that time, check in real time and turn on the lights if they're off.
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_close()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_close()
+          }
+          break
+        }
+      }
+  - name: Scenario2
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_on()
+        break
+      }
+  devices:
+  - Curtain
+  - Blind
+  - Light
+  - Clock
+  - Window

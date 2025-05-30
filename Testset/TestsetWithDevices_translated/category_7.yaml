@@ -1,0 +1,186 @@
+- command: Check in real-time and turn on the waterer whenever the soil humidity drops below 25% and announce "Start watering" over the speaker.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0) {
+        if (triggered == false) {
+          (#Irrigator).switch_on()
+          (#Speaker).mediaPlayback_speak('Start watering')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - Irrigator
+  - Speaker
+  - SoilMoistureSensor
+- command: Check the status every 1 second and turn on the fan whenever the temperature exceeds 35 degrees.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        if (triggered == false) {
+          (#Fan).switch_on()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - TemperatureSensor
+  - Fan
+- command: Check the sunlight every 3 seconds and turn on the lights when it drops below 200 lux.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      triggered := false
+      if ((#LightSensor).lightLevel_light <= 200.0) {
+        if (triggered == false) {
+          (#Light).switch_on()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - Light
+  - LightSensor
+- command: Turn on sirens and lights whenever a door is opened. Check in real time and react by constantly checking the status.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#ContactSensor).contactSensor_contact == 'open') {
+        if (triggered == false) {
+          (#Siren).sirenMode_setSirenMode('strobe')
+          (#Light).switch_on()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - Light
+  - ContactSensor
+  - Siren
+- command: Whenever rain is detected in the current weather, turn off the irrigation and announce "Rain detected" to the speaker. The detection should only happen once a minute.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 60000
+    code: |-
+      triggered := false
+      if ((#WeatherProvider).weatherProvider_weather == 'rain') {
+        if (triggered == false) {
+          (#Irrigator).switch_off()
+          (#Speaker).mediaPlayback_speak('Rain detected')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - WeatherProvider
+  - Speaker
+  - Irrigator
+- command: Check in real-time and close the blinds whenever the living room window opens.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'open') {
+        if (triggered == false) {
+          (#Blind).blind_close()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - Blind
+  - Window
+- command: Open the curtains at the same time whenever the lights come on. I need to check the lights in real time.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Light).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Curtain).curtain_open()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - Curtain
+  - Light
+- command: Check status every 2 seconds and turn on the speakers whenever the TV turns on.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).switch_on()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - Television
+  - Speaker
+- command: Instantly turn on the alarm's light whenever the front door is opened. Check in real time.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'open') {
+        if (triggered == false) {
+          (#Alarm).alarm_strobe()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - DoorLock
+  - Alarm
+- command: Check the status of the air purifier every 1 second and turn it back on automatically if it turns off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('auto')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  devices:
+  - AirPurifier

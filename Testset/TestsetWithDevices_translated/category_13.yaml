@@ -1,0 +1,114 @@
+- command: Turn off the fan in sector A.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#SectorA #Fan).switch_off()
+  devices:
+  - Fan
+- command: If the fans in Sector B and Sector A are both on, close one of the odd-tagged blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((all(#Fan #SectorA).switch_switch == 'on') and (all(#Fan #SectorB).switch_switch == 'on')) {
+        (#Odd #Blind).blind_close()
+      }
+  devices:
+  - Blind
+  - Fan
+- command: If any of the odd-tagged fans are on, turn off all the irrigation at the bottom.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Odd #Fan).switch_switch == 'on') {
+        all(#Lower #Irrigator).switch_off()
+      }
+  devices:
+  - Fan
+  - Irrigator
+- command: Turn off the fan in Sector A if an even-tagged window is open.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Even #Window).windowControl_window == 'open') {
+        (#SectorA #Fan).switch_off()
+      }
+  devices:
+  - Window
+  - Fan
+- command: Turn off all odd-tagged irrigation devices in the sector rain.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      all(#SectorB #Odd #Irrigator).switch_off()
+  devices:
+  - Irrigator
+- command: If the even-tagged windows at the top are open, close the curtains.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Window).windowControl_window == 'open') {
+        (#Curtain).curtain_close()
+      }
+  devices:
+  - Curtain
+  - Window
+- command: If all the lights at the top are off, open all the windows tagged with odd numbers.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'off') {
+        all(#Odd #Window).windowControl_open()
+      }
+  devices:
+  - Light
+  - Window
+- command: If any of the even-tagged speakers are on, turn off all lights in the sector b.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).switch_switch == 'on') {
+        all(#SectorB #Light).switch_off()
+      }
+  devices:
+  - Light
+  - Speaker
+- command: If all odd-tagged blinds on the wall are open, turn off the lights.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'open') {
+        (#Light).switch_off()
+      }
+  devices:
+  - Blind
+  - Light
+- command: If any of the lights at the top or in sector A are on, turn on all the fans.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).switch_switch == 'on') or (any(#SectorA #Light).switch_switch == 'on')) {
+        all(#Fan).switch_on()
+      }
+  devices:
+  - Light
+  - Fan
