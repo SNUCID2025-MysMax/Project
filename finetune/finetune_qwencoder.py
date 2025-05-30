@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, random
 from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from unsloth import FastLanguageModel
@@ -94,13 +94,18 @@ def read_yaml(data):
 def load_dataset():
     ret = []
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+    
     for i in range(0, 16):  # 범위를 필요에 따라 조정
-        file_name = f"../Testset/TestsetWithDevices/category_{i}.yaml"
+        file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
                 data = yaml.safe_load(file)
             for item in data:
                 result = read_yaml(item)
+                devices = result['devices']
+                # 7개 이상의 장치가 없으면 무작위로 추가
+                if len(devices) < 7:
+                    devices = list(set(devices + random.sample(classes.keys(), 7 - len(devices))))
                 service_doc = "\n".join([classes[device] for device in result['devices'] if device in classes])
                 ret.append({
                     "conversations": [

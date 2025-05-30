@@ -108,7 +108,7 @@ def load_dataset():
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
 
     for i in range(0, 16):  # 범위를 필요에 따라 조정
-        file_name = f"../Testset/TestsetWithDevices/category_{i}.yaml"
+        file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
                 data = yaml.safe_load(file)
