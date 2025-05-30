@@ -127,7 +127,7 @@ def load_dataset():
                         },
                         {
                             "role": "user",
-                            "content": f"Current Time: {current_time}\n\nGenerate SoP Lang code for \"{result['command']}\"",
+                            "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
                         },
                         {
                             "role": "assistant",

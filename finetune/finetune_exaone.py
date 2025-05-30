@@ -74,7 +74,7 @@ def load_dataset():
                         },
                         {
                             "role": "user",
-                            "content": f"Generate SoP Lang code for \"{result['command']}\"",
+                            "content": f"Generate JOI Lang code for \"{result['command']}\"",
                         },
                         {
                             "role": "assistant",
