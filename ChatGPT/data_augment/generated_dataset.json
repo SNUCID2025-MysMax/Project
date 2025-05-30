@@ -1,82 +1,122 @@
 [
   {
-    "text": "\"연기 감지기가 실시간으로 확인하여 연기를 감지하면, 에어컨을 끄고 이후에 알림을 보내줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"16 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        if Tags(\"SmokeDetector\").smokeDetector_smoke == \"detected\":\n            Tags(\"AirConditioner\").switch_off()\n            # Notification code goes here\n            self.period = -1\n```"
+    "text": "\"로봇 청소기가 작동 중이고 청소 모드가 자동 모드일 때, 청소 모드를 부분 모드로 바꾸고 스위치를 꺼줘. 냉장고가 켜져 있고 급속 냉동이 꺼져 있을 때, 급속 냉동을 켜줘.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"연기를 감지할 경우 실시간으로 연기 감지기를 사용하여 에어컨을 끄고 그 후 알림을 발송해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"16 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        if Tags(\"SmokeDetector\").smokeDetector_smoke == \"detected\":\n            Tags(\"AirConditioner\").switch_off()\n            # Notification code goes here\n            self.period = -1\n```"
+    "text": "\"단일 청소 모드로 작동 중인 로봇 청소기를 찾았을 때, 이를 부분 모드로 전환하고 작동을 중지하세요. 또한 냉장고 전원이 켜져 있고 급속 냉동 모드가 비활성화 상태일 경우, 그것을 활성화해주세요.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"연기 감지기를 이용해 실시간으로 모니터링하고, 연기 발견 시 에어컨을 중단하고 알림을 전송해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"16 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        if Tags(\"SmokeDetector\").smokeDetector_smoke == \"detected\":\n            Tags(\"AirConditioner\").switch_off()\n            # Notification code goes here\n            self.period = -1\n```"
+    "text": "\"로봇 청소기가 동작 중이며, 자동 청소 모드로 설정되어 있다면, 청소 모드를 부분 모드로 변경하고 전원을 끄십시오. 냉장고가 작동 중이고 급속 냉동 모드가 꺼져 있다면, 급속 냉동 모드를 켜십시오.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"실시간으로 연기 감지기를 체크하고, 만약 연기를 발견하면 에어컨을 꺼주고 결과를 알려줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"16 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        if Tags(\"SmokeDetector\").smokeDetector_smoke == \"detected\":\n            Tags(\"AirConditioner\").switch_off()\n            # Notification code goes here\n            self.period = -1\n```"
+    "text": "\"로봇 청소기가 켜져 있는데 자동 청소 모드를 사용 중이라면, 이를 부분 청소 모드로 바꾸고 끄도록 해. 또한, 냉장고가 켜져있는데 급속 냉동기능이 꺼져 있다면, 그 기능을 켜줘.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"에어컨이 켜져 있는 상태이고, 현재 온도가 22도보다 낮을 때에는, 에어컨을 끄고 그리고 알림을 보내줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").switch_switch == \"on\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 22:\n            Tags(\"AirConditioner\").switch_off()\n            # here should be a code to send notification, but there is no available method in the given device classes\n```"
+    "text": "\"실시간으로 확인하여 알람이 켜져 있고 알람 볼륨이 중간일 때, 알람 볼륨을 최대로 설정하고 사이렌을 울려줘. 가습기가 꺼져 있고 모드가 자동일 때, 모드를 고로 바꾸고 스위치를 켜줘.\"",
+    "cron": "* * * * *",
+    "period": 100,
+    "script": ""
   },
   {
-    "text": "\"에어컨이 작동 중이며, 현재의 온도가 22도 이하라면, 에어컨의 작동을 중지시키고 알림을 발송해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").switch_switch == \"on\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 22:\n            Tags(\"AirConditioner\").switch_off()\n            # here should be a code to send notification, but there is no available method in the given device classes\n```"
+    "text": "\"만약 알람이 켜져 있고 볼륨이 중간 수준이라면, 실시간으로 검사하여 알람 볼륨을 최고로 조정하고 사이렌을 울리도록 하고, 만약 가습기가 꺼져있으면서 모드가 자동이라면, 모드를 '고'로 변경하고 가습기를 작동하라.\"",
+    "cron": "* * * * *",
+    "period": 100,
+    "script": ""
   },
   {
-    "text": "\"만약 에어컨이 켜져 있고, 온도가 22도 미만이라면, 에어컨을 종료하고 알림을 통보해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").switch_switch == \"on\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 22:\n            Tags(\"AirConditioner\").switch_off()\n            # here should be a code to send notification, but there is no available method in the given device classes\n```"
+    "text": "\"실시간 모니터링을 통해 알람이 작동 중이고 볼륨이 중간에 있는 경우, 알람 볼륨을 최대로 늘리고 사이렌을 울려. 동시에 가습기가 꺼져 있고 작동 모드가 자동인 경우, '고' 모드로 변경하고 가습기를 작동시켜.\"",
+    "cron": "* * * * *",
+    "period": 100,
+    "script": ""
   },
   {
-    "text": "\"에어컨이 켜진 상태에서, 현재의 온도가 22도보다 더 낮다면, 에어컨을 끄는 동시에 알림을 전해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").switch_switch == \"on\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 22:\n            Tags(\"AirConditioner\").switch_off()\n            # here should be a code to send notification, but there is no available method in the given device classes\n```"
+    "text": "\"알람이 켜져 있고 볼륨이 중간 수준일 때, 이를 실시간으로 감지하고 알람 볼륨을 최대로 높이고 사이렌을 켜라. 만약 가습기가 비활성화되어 있고 현재 모드가 자동이라면, 이를 '고' 모드로 전환하고 가습기를 켜라.\"",
+    "cron": "* * * * *",
+    "period": 100,
+    "script": ""
   },
   {
-    "text": "\"토양 습도 센서가 실시간으로 확인하여 습도가 70% 보다 높으면, 알림을 보내줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"17 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        soil_humidity = Tags(\"SoilMoistureSensor\").soilHumidityMeasurement_soilHumidity\n        if soil_humidity > 70:\n            # send notification\n            pass\n```"
+    "text": "\"세탁기가 꺼져 있고 세탁 모드가 자동 모드일 때, 세탁 모드를 강력 모드로 바꾸고 스위치를 켜줘. 냉장고가 켜져 있고 급속 냉동이 켜져 있을 때, 급속 냉동을 끄고 스위치를 꺼줘.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"토양 습도 센서를 이용해 실시간으로 습도를 감지하고, 이가 70%를 초과하면 알림을 전송해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"17 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        soil_humidity = Tags(\"SoilMoistureSensor\").soilHumidityMeasurement_soilHumidity\n        if soil_humidity > 70:\n            # send notification\n            pass\n```"
+    "text": "\"세탁기가 꺼져 있을 때와 세탁 설정이 자동 모드일 때, 강력 모드로 변경하고 작동시켜줘. 그리고 냉장고가 가동 중이며, 급속 냉동 모드가 활성화되어 있다면, 급속 냉동을 비활성화하고 냉장고를 꺼줘.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"알림을 보내주게, 토양 습도 센서가 실시간으로 습도를 측정하며 이 값이 70% 이상이라면.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"17 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        soil_humidity = Tags(\"SoilMoistureSensor\").soilHumidityMeasurement_soilHumidity\n        if soil_humidity > 70:\n            # send notification\n            pass\n```"
+    "text": "\"세탁기가 비활성화되어 있고 세탁 옵션이 자동 모드로 설정되어 있다면, 그것을 강력 모드로 바꾸고 세탁기를 작동해줘. 또한, 냉장고가 작동 중이고 급속 냉동이 활성화되어 있다면, 급속 냉동을 중단하고 냉장고의 전원을 끄도록 해줘.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"습도가 70%를 넘어가면, 토양 습도 센서를 통해 실시간으로 알림을 보내줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"17 3 16 5 5\"\n        self.period = 100\n\n    def run(self):\n        soil_humidity = Tags(\"SoilMoistureSensor\").soilHumidityMeasurement_soilHumidity\n        if soil_humidity > 70:\n            # send notification\n            pass\n```"
+    "text": "\"세탁기가 꺼져 있고 모드가 자동으로 설정되어 있다면, 강력 모드로 변경하고 가동해줘. 냉장고가 켜져 있고 급속 냉동 모드가 켜져 있을 경우, 급속 냉동을 중지하고 전원을 끄는 것이 좋겠어.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"에어컨을 냉방 모드로 설정하고, 이후에 목표 온도를 정확하게 24도로 설정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"AirConditioner\").airConditionerMode_setAirConditionerMode(\"cool\")\n        Tags(\"AirConditioner\").airConditionerMode_setTemperature(24)\n```"
+    "text": "\"로봇 청소기가 작동 중이고 청소 모드가 부분 모드일 때, 청소 모드를 반복 모드로 바꾸고 스위치를 꺼줘. 가습기가 켜져 있고 모드가 고일 때, 모드를 중으로 바꾸고 스위치를 꺼줘.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"에어컨을 냉방 모드로 바꾼 후, 목표 온도를 24도로 맞춰줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"AirConditioner\").airConditionerMode_setAirConditionerMode(\"cool\")\n        Tags(\"AirConditioner\").airConditionerMode_setTemperature(24)\n```"
+    "text": "\"부분 모드에서 청소를 수행하고 있는 로봇 청소기를 반복 모드로 전환하고, 그 후에는 그것을 끄도록 해. 또한, 고 모드에서 작동 중인 가습기는 중 모드로 변경하고, 이후에는 그것을 끄도록 해.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"냉방 모드로 에어컨을 조절하고, 그다음에는 24도로 온도를 설정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"AirConditioner\").airConditionerMode_setAirConditionerMode(\"cool\")\n        Tags(\"AirConditioner\").airConditionerMode_setTemperature(24)\n```"
+    "text": "\"로봇 청소기가 가동 중이며 부분 청소 모드를 사용하고 있을 경우, 이를 반복 청소 모드로 변경하고 전원을 끄도록 하여라. 또한 가습기가 켜져있고 현재 고 모드를 사용 중이라면, 이를 중 모드로 변경한 후에는 전원을 끄도록 하여라.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"에어컨이 냉방 모드로 작동하게 하고, 이어서 24도를 목표 온도로 정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        Tags(\"AirConditioner\").airConditionerMode_setAirConditionerMode(\"cool\")\n        Tags(\"AirConditioner\").airConditionerMode_setTemperature(24)\n```"
+    "text": "\"부분 청소 모드로 작동하는 로봇 청소기의 모드를 반복 모드로 바꾸고, 전원을 꺼주세요. 그리고 가습기가 고 모드로 가동 중이라면, 모드를 중으로 바꾸고 전원을 끄세요.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "script": ""
   },
   {
-    "text": "\"에어컨이 가열 모드로 설정되어 있는 상태이고, 목표 온도가 정확하게 20도보다 낮을 경우, 목표 온도를 20도로 설정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").airConditionerMode_airConditionerMode == \"heat\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 20:\n            Tags(\"AirConditioner\").airConditionerMode_setTemperature(20)\n```"
+    "text": "\"실시간으로 확인하여 알람이 꺼져 있고 알람 볼륨이 높을 때, 알람 볼륨을 중간으로 설정하고 사이렌을 울려줘. 세탁기가 켜져 있고 세탁 모드가 강력 모드일 때, 세탁 모드를 표준 모드로 바꾸고 스위치를 꺼줘.\"",
+    "cron": "* * * * *",
+    "period": 100,
+    "script": ""
   },
   {
-    "text": "\"에어컨이 가열 모드로 작동 중이며, 설정 온도가 20도 미만일 때에는 목표 온도를 20도로 조정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").airConditionerMode_airConditionerMode == \"heat\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 20:\n            Tags(\"AirConditioner\").airConditionerMode_setTemperature(20)\n```"
+    "text": "\"알람이 꺼져 있고 볼륨이 높을 경우, 실시간으로 확인해 알람 볼륨을 중간으로 조정하고 사이렌을 작동시켜줘. 또한, 세탁기가 작동 중이며 세탁 모드가 강력 모드일 경우, 세탁 모드를 표준으로 변경하고 전원을 끄도록 해줘.\"",
+    "cron": "* * * * *",
+    "period": 100,
+    "script": ""
   },
   {
-    "text": "\"가열 모드에서 작동하는 에어컨의 목표 온도가 20도 이하일 경우, 그 목표 온도를 20도로 바꿔줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").airConditionerMode_airConditionerMode == \"heat\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 20:\n            Tags(\"AirConditioner\").airConditionerMode_setTemperature(20)\n```"
+    "text": "\"알람이 꺼짐 상태이고 볼륨이 높다면, 실시간으로 판단하여 알람 볼륨을 중간 정도로 조절하고 사이렌을 켜줘. 세탁기가 작동하고 있는데 세탁 모드가 강력 모드라면, 세탁 모드를 표준 모드로 바꿔주고 전원 스위치를 끄도록 해줘.\"",
+    "cron": "* * * * *",
+    "period": 100,
+    "script": ""
   },
   {
-    "text": "\"에어컨이 가열 모드로 동작하고 있고, 만약 설정된 온도가 20도보다 작다면, 그 목표 온도를 20도로 설정해줘.\"",
-    "code": "```python\nclass Scenario1:\n    def __init__(self):\n        self.cron = \"* * * * *\"\n        self.period = -1\n\n    def run(self):\n        if Tags(\"AirConditioner\").airConditionerMode_airConditionerMode == \"heat\" and Tags(\"AirConditioner\").airConditionerMode_targetTemperature < 20:\n            Tags(\"AirConditioner\").airConditionerMode_setTemperature(20)\n```"
+    "text": "\"실시간으로 모니터링하며, 알람이 비활성화되고 볼륨이 높다면, 알람 볼륨을 중간 수준으로 맞추고 사이렌을 울려줘. 세탁기가 켜져 있는 상태에서 세탁 모드가 강력 모드라면, 세탁 모드를 표준으로 전환하고 전원을 종료해줘.\"",
+    "cron": "* * * * *",
+    "period": 100,
+    "script": ""
   }
 ]
