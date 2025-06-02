@@ -55,21 +55,45 @@ def deepl_translate(command, auth_key="6bc9c430-2abd-4f64-9f0d-09f6ac92441f:fx")
         print(f"⚠️ 번역 실패: \"{command}\" → {e}")
         return command  # 실패 시 원문 유지
 
-# 경로 설정
-input_dir = "./TestsetWithDevices"
-output_dir = "./TestsetWithDevices_translated"
-os.makedirs(output_dir, exist_ok=True)
+# # 경로 설정
+# input_dir = "./TestsetWithDevices"
+# output_dir = "./TestsetWithDevices_translated"
+# os.makedirs(output_dir, exist_ok=True)
 
-for f in os.listdir(input_dir):
-    data = yaml.safe_load(open(os.path.join(input_dir, f), "r", encoding="utf-8"))
-    for item in data:
-        print(item["code"])
-        item["command_translated"] = deepl_translate(item["command"])
-        time.sleep(0.3)
+# for f in os.listdir(input_dir):
+#     data = yaml.safe_load(open(os.path.join(input_dir, f), "r", encoding="utf-8"))
+#     for item in data:
+#         print(item["code"])
+#         item["command_translated"] = deepl_translate(item["command"])
+#         time.sleep(0.3)
 
-        for code in item["code"]:
-            code["code"] = LiteralString(code["code"])
-        # print(f"Processing: {item['command']}")
+#         for code in item["code"]:
+#             code["code"] = LiteralString(code["code"])
+#         # print(f"Processing: {item['command']}")
 
-    with open(os.path.join(output_dir, f), "w", encoding="utf-8") as f:
-        yaml.safe_dump(data, f, allow_unicode=True, sort_keys=False,  width=float('inf'), default_flow_style=False)
+#     with open(os.path.join(output_dir, f), "w", encoding="utf-8") as f:
+#         yaml.safe_dump(data, f, allow_unicode=True, sort_keys=False,  width=float('inf'), default_flow_style=False)
+
+# # 경로 설정
+# origin_dir = "./TestsetWithDevices"
+# input_dir = "./TestsetWithDevices_translated"
+# output_dir = "./TestsetWithDevices_translated2"
+# os.makedirs(output_dir, exist_ok=True)
+
+# for f in os.listdir(input_dir):
+#     data_origin = yaml.safe_load(open(os.path.join(origin_dir, f), "r", encoding="utf-8"))
+#     data = yaml.safe_load(open(os.path.join(input_dir, f), "r", encoding="utf-8"))
+#     ret = []
+#     for idx, item in enumerate(data):
+#         el = OrderedDict()
+#         el["command"] = item["command"]
+#         el["command_translated"] = item["command_translated"]
+#         el["code"] = [i["code"] for i in item["code"]]
+#         for code in el["code"]:
+#             code["code"] = LiteralString(code["code"])
+#         el["devices"] = data_origin[idx]["devices"]
+#         # print(f"Processing: {item['command']}")
+#         ret.append(el)
+
+#     with open(os.path.join(output_dir, f), "w", encoding="utf-8") as f:
+#         yaml.safe_dump(ret, f, allow_unicode=True, sort_keys=False,  width=float('inf'), default_flow_style=False)

@@ -75,7 +75,7 @@ classes = extract_classes_by_name(service_doc)
 
 def read_yaml(data):
     dic = {}
-    dic['command'] = data['command']
+    dic['command'] = data['command_translated']
     dic['devices'] = data['devices']
     s = ""
     sub = []

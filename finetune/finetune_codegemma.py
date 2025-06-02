@@ -87,7 +87,7 @@ classes = extract_classes_by_name(service_doc)
 
 def read_yaml(data):
     dic = {}
-    dic['command'] = data['command']
+    dic['command'] = data['command_translated']
     dic['devices'] = data['devices']
     s = ""
     sub = []
@@ -107,7 +107,7 @@ def load_dataset():
     ret = []
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
 
-    for i in range(0, 16):  # 범위를 필요에 따라 조정
+    for i in range(0, 1):  # 범위를 필요에 따라 조정
         file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
@@ -121,10 +121,10 @@ def load_dataset():
                 service_doc = "\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
                     "conversations": [
-                        {
-                            "role": "system",
-                            "content": grammar,
-                        },
+                        # {
+                        #     "role": "system",
+                        #     "content": grammar,
+                        # },
                         {
                             "role": "system", 
                             "content": service_doc,
@@ -161,7 +161,7 @@ MY_DATASET = MY_DATASET.map(
 print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
 print("샘플 데이터:")
 print(MY_DATASET[0]['text'][:500] + "..." if len(MY_DATASET) > 0 else "데이터 없음")
-
+# print(MY_DATASET[0]['text'])
 ######################################################################################
 
 
@@ -171,12 +171,12 @@ trainer = SFTTrainer(
     train_dataset = MY_DATASET,
     packing = True,  # Can make training 5x faster for short sequences.
     args = SFTConfig(
-        per_device_train_batch_size = 4,
-        gradient_accumulation_steps = 2,
-        warmup_steps = 5,
-        num_train_epochs = 2,
-        # max_steps = 20,
-        learning_rate = 2e-4,
+        per_device_train_batch_size = 2,
+        gradient_accumulation_steps = 4,
+        warmup_steps = 50,
+        num_train_epochs = 5,
+        # max_steps = 200,
+        learning_rate = 1e-4,
         optim = "adamw_8bit",
         weight_decay = 0.01,
         lr_scheduler_type = "cosine",
@@ -192,4 +192,6 @@ trainer = SFTTrainer(
 
 trainer_stats = trainer.train()
 
+# model.save_pretrained_merged("model", tokenizer, save_method="merged_16bit")
+model.save_pretrained("model")
 model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")

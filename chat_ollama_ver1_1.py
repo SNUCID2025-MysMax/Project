@@ -88,6 +88,7 @@ def run_test_case(model, model_bge, user_command_origin, user_command, classes, 
     # translated_command = deepl_translate(user_command)
 
     prompt = f"Current Time: {current_time}\nGenerate SoP Lang code for \"{user_command}\""
+    print(prompt[-100:])
 
     role = "system"
 
@@ -226,13 +227,13 @@ def main():
     # select sllm
     # model = "exaone3.5:7.8b"
     model = "qwen2.5-coder:7b"  # very good
-    model = "gemma3:4b" # good
+    # model = "gemma3:4b" # good
     # model = "codellama:7b"  # good
-    # model = "codegemma:7b" # good
+    model = "codegemma:7b" # good
 
     # finetuned
     model = "codegemma"
-    model = "qwen2.5-coder"
+    # model = "qwen2.5-coder"
 
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
@@ -257,19 +258,14 @@ def main():
     # with open("./ServiceExtraction/integration/service_list_ver1.5.3.json", "r") as f:
     #     classes = json.load(f)
 
-    
-
     for i in range(0, 1):
-        with open(f"./Testset/TestsetWithDevices/category_{i}.yaml", "r") as f:
-            data_origin = yaml.safe_load(f)
-
         with open(f"./Testset/TestsetWithDevices_translated/category_{i}.yaml", "r") as f:
             results = []
             data = yaml.safe_load(f)
 
             for idx, item in enumerate(data):
-                user_command = item["command"]
-                user_command_origin = data_origin[idx]["command"]
+                user_command = item["command_translated"]
+                user_command_origin = item["command"]
                 # label = item["answer"]
                 
                 resp, service_selected, info = run_test_case(

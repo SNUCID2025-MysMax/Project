@@ -11,6 +11,5 @@ PARAMETER repeat_penalty 1.2
 PARAMETER stop "<|im_start|>"
 PARAMETER stop "<|im_end|>"
 PARAMETER penalize_newline false
-PARAMETER top_p 0.9
 PARAMETER temperature 0.9
 PARAMETER min_p 0.1
