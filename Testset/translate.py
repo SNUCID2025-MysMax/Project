@@ -6,6 +6,7 @@ import importlib.util
 import glob
 from tqdm import tqdm
 import time
+from collections import OrderedDict
 
 import yaml
 from yaml.representer import SafeRepresenter
@@ -26,6 +27,10 @@ def quoted_str_representer(dumper, data):
 
 yaml.add_representer(QuotedString, quoted_str_representer)
 
+def represent_ordereddict(dumper, data):
+    return dumper.represent_dict(data.items())
+
+yaml.SafeDumper.add_representer(OrderedDict, represent_ordereddict)
 yaml.SafeDumper.add_representer(LiteralString, literal_str_representer)
 yaml.SafeDumper.add_representer(QuotedString, quoted_str_representer)
 
@@ -56,12 +61,10 @@ output_dir = "./TestsetWithDevices_translated"
 os.makedirs(output_dir, exist_ok=True)
 
 for f in os.listdir(input_dir):
-    if f.endswith("12.yaml"):
-        continue
     data = yaml.safe_load(open(os.path.join(input_dir, f), "r", encoding="utf-8"))
     for item in data:
         print(item["code"])
-        item["command"] = deepl_translate(item["command"])
+        item["command_translated"] = deepl_translate(item["command"])
         time.sleep(0.3)
 
         for code in item["code"]:
