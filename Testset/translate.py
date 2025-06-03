@@ -55,12 +55,24 @@ def deepl_translate(command, auth_key="6bc9c430-2abd-4f64-9f0d-09f6ac92441f:fx")
         print(f"⚠️ 번역 실패: \"{command}\" → {e}")
         return command  # 실패 시 원문 유지
 
+def translate_quoted_strings(code_str):
+    # 큰따옴표로 둘러싸인 문자열 추출
+    def replace_func(match):
+        original = match.group(0)  # "문자열"
+        inner = original[1:-1]     # 문자열
+        translated = deepl_translate(inner)
+        return f'"{translated}"'
+
+    return re.sub(r'"([^"\\]*(\\.[^"\\]*)*)"', replace_func, code_str)
+
 # # 경로 설정
 # input_dir = "./TestsetWithDevices"
 # output_dir = "./TestsetWithDevices_translated"
 # os.makedirs(output_dir, exist_ok=True)
 
 # for f in os.listdir(input_dir):
+#     if not f.endswith("16.yaml"):
+#         continue
 #     data = yaml.safe_load(open(os.path.join(input_dir, f), "r", encoding="utf-8"))
 #     for item in data:
 #         print(item["code"])
@@ -68,32 +80,38 @@ def deepl_translate(command, auth_key="6bc9c430-2abd-4f64-9f0d-09f6ac92441f:fx")
 #         time.sleep(0.3)
 
 #         for code in item["code"]:
+#             code["code"] = translate_quoted_strings(code["code"])
 #             code["code"] = LiteralString(code["code"])
 #         # print(f"Processing: {item['command']}")
 
 #     with open(os.path.join(output_dir, f), "w", encoding="utf-8") as f:
 #         yaml.safe_dump(data, f, allow_unicode=True, sort_keys=False,  width=float('inf'), default_flow_style=False)
 
-# # 경로 설정
-# origin_dir = "./TestsetWithDevices"
-# input_dir = "./TestsetWithDevices_translated"
-# output_dir = "./TestsetWithDevices_translated2"
-# os.makedirs(output_dir, exist_ok=True)
+# 경로 설정
+origin_dir = "./TestsetWithDevices"
+input_dir = "./TestsetWithDevices"
+output_dir = "./TestsetWithDevices_translated"
+os.makedirs(output_dir, exist_ok=True)
 
-# for f in os.listdir(input_dir):
-#     data_origin = yaml.safe_load(open(os.path.join(origin_dir, f), "r", encoding="utf-8"))
-#     data = yaml.safe_load(open(os.path.join(input_dir, f), "r", encoding="utf-8"))
-#     ret = []
-#     for idx, item in enumerate(data):
-#         el = OrderedDict()
-#         el["command"] = item["command"]
-#         el["command_translated"] = item["command_translated"]
-#         el["code"] = [i["code"] for i in item["code"]]
-#         for code in el["code"]:
-#             code["code"] = LiteralString(code["code"])
-#         el["devices"] = data_origin[idx]["devices"]
-#         # print(f"Processing: {item['command']}")
-#         ret.append(el)
+for f in os.listdir(input_dir):
+    if not f.endswith("16.yaml"):
+        continue
+    # data_origin = yaml.safe_load(open(os.path.join(origin_dir, f), "r", encoding="utf-8"))
+    data = yaml.safe_load(open(os.path.join(input_dir, f), "r", encoding="utf-8"))
+    ret = []
+    for idx, item in enumerate(data):
+        el = OrderedDict()
+        el["command"] = item["command"]
+        el["command_translated"] = deepl_translate(item["command"])
+        time.sleep(0.3)
+        for code in item["code"]:
+            code["code"] = translate_quoted_strings(code["code"])
+            code["code"] = LiteralString(code["code"])
+        el["code"] = item["code"]
+        time.sleep(0.3)
+        el["devices"] = item["devices"]
+        # print(f"Processing: {item['command']}")
+        ret.append(el)
 
-#     with open(os.path.join(output_dir, f), "w", encoding="utf-8") as f:
-#         yaml.safe_dump(ret, f, allow_unicode=True, sort_keys=False,  width=float('inf'), default_flow_style=False)
+    with open(os.path.join(output_dir, f), "w", encoding="utf-8") as f:
+        yaml.safe_dump(ret, f, allow_unicode=True, sort_keys=False,  width=float('inf'), default_flow_style=False)

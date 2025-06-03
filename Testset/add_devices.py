@@ -35,7 +35,7 @@ exclude = {"Wall", "SectorA", "SectorB", "Upper", "Lower", "Even", "Odd"}
 
 
 
-for i in range(0,16):
+for i in range(16,17):
     file_name = f"category_{i}.yaml"
     print(f"Processing file: {file_name}")
     path_in = f"./Testset/Testset/{file_name}"
@@ -71,29 +71,29 @@ for i in range(0,16):
         yaml.safe_dump(data, f, allow_unicode=True, sort_keys=False,  width=float('inf'), default_flow_style=False)
 
 #############################################33
-import re
+# import re
 
-for i in range(0,16):
-    file_name = f"category_{i}.yaml"
-    print(f"Processing file: {file_name}")
-    path_out = f"./Testset/TestsetWithDevices/{file_name}"
+# for i in range(0,16):
+#     file_name = f"category_{i}.yaml"
+#     print(f"Processing file: {file_name}")
+#     path_out = f"./Testset/TestsetWithDevices/{file_name}"
 
-    with open(path_out, "r") as f:
-        data = yaml.safe_load(f)
+#     with open(path_out, "r") as f:
+#         data = yaml.safe_load(f)
 
-    # 각 항목에 devices 키 추가
-    for item in tqdm.tqdm(data):
-        command = item["command"]
-        devices = item["devices"]
+#     # 각 항목에 devices 키 추가
+#     for item in tqdm.tqdm(data):
+#         command = item["command"]
+#         devices = item["devices"]
 
-        empty = []
-        for code in item["code"]:
-            text = code["code"]
-            matches = re.findall(r"#([A-Za-z0-9]+)(?=[^A-Za-z0-9])", text)
+#         empty = []
+#         for code in item["code"]:
+#             text = code["code"]
+#             matches = re.findall(r"#([A-Za-z0-9]+)(?=[^A-Za-z0-9])", text)
 
-            for match in matches:
+#             for match in matches:
                 
-                if match not in devices and match not in exclude:
-                    empty.append(match)
-        if empty != []:
-            print(i, command, empty)
+#                 if match not in devices and match not in exclude:
+#                     empty.append(match)
+#         if empty != []:
+#             print(i, command, empty)
