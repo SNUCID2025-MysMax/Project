@@ -158,6 +158,9 @@ MY_DATASET = MY_DATASET.map(
     remove_columns=["conversations"]
 )
 
+print(MY_DATASET[5]["conversations"])
+print(MY_DATASET[5]["text"])
+
 print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
 print("샘플 데이터:")
 print(MY_DATASET[0]['text'][:500] + "..." if len(MY_DATASET) > 0 else "데이터 없음")
@@ -173,13 +176,13 @@ trainer = SFTTrainer(
     args = SFTConfig(
         per_device_train_batch_size = 2,
         gradient_accumulation_steps = 4,
-        warmup_steps = 50,
+        warmup_steps = 5,
         num_train_epochs = 5,
         # max_steps = 200,
         learning_rate = 1e-4,
         optim = "adamw_8bit",
         weight_decay = 0.01,
-        lr_scheduler_type = "cosine",
+        lr_scheduler_type = "linear",
         seed = 3407,
         dataset_text_field = "text",
         report_to = "none",  # Use this for WandB etc
