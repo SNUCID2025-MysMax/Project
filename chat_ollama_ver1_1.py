@@ -1,6 +1,6 @@
 import os, sys, re, gc, json, time, pprint, requests
 from datetime import datetime
-from Grammar.grammar_ver1_1_4 import grammar
+from Grammar.grammar_ver1_1_5 import grammar
 from Embedding.embedding import hybrid_recommend
 from FlagEmbedding import BGEM3FlagModel
 
@@ -88,19 +88,23 @@ def run_test_case(model, model_bge, user_command_origin, user_command, classes, 
     # translated_command = deepl_translate(user_command)
 
     prompt = f"Current Time: {current_time}\nGenerate SoP Lang code for \"{user_command}\""
+    prompt = f"Generate SoP Lang code for \"{user_command}\""
     print(prompt[-100:])
 
     role = "system"
 
     try:
+        messages=[
+                    # {"role": role, "content": description},
+                    # {"role": role, "content": grammar},
+                    # {"role": role, "content": service_doc},
+                    {"role": "system", "content": grammar + "\n\n" + service_doc},
+                    {"role": "user", "content": prompt},
+                ]
         if use_stream:
             response = ollama.chat(
                 model=model,
-                messages=[
-                    {"role": role, "content": grammar},
-                    {"role": role, "content": service_doc},
-                    {"role": "user", "content": prompt},
-                ],
+                messages=messages,
                 stream=True
             )
 
@@ -148,12 +152,7 @@ def run_test_case(model, model_bge, user_command_origin, user_command, classes, 
         else:
             response = ollama.chat(
                 model=model,
-                messages=[
-                    # {"role": role, "content": description},
-                    {"role": role, "content": grammar},
-                    {"role": role, "content": service_doc},
-                    {"role": "user", "content": prompt},
-                ]
+                messages=messages,
             )
             full_response = response['message']['content']
             elapsed = time.time() - start_time

@@ -1,12 +1,14 @@
+import multiprocessing
 import os, sys, random
 from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from unsloth import FastLanguageModel
+from unsloth import FastLanguageModel, is_bfloat16_supported
 from unsloth.chat_templates import get_chat_template
 from trl import SFTTrainer, SFTConfig
 from datasets import Dataset
-from Grammar.grammar_ver1_1_4 import grammar
+from Grammar.grammar_ver1_1_5 import grammar
 import torch, yaml, re
+from torch.nn.attention import SDPBackend, sdpa_kernel
 
 max_seq_length = 4096  # Gemma sadly only supports max 8192 for now
 dtype = (
@@ -22,12 +24,14 @@ fourbit_models = [
     "unsloth/codegemma-7b-bnb-4bit",
 ] # More models at https://huggingface.co/unsloth
 
+model_name = "unsloth/codegemma-7b-bnb-4bit" 
+
 from transformers import AutoTokenizer
-original_tokenizer = AutoTokenizer.from_pretrained("unsloth/codegemma-7b-bnb-4bit")
+original_tokenizer = AutoTokenizer.from_pretrained(model_name)
 original_tokenizer.save_pretrained("model")
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "unsloth/codegemma-7b-bnb-4bit",  # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
+    model_name = model_name,  # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -51,20 +55,24 @@ model = FastLanguageModel.get_peft_model(
 tokenizer = get_chat_template(
     tokenizer,
     chat_template = "chatml", # Supports zephyr, chatml, mistral, llama, alpaca, vicuna, vicuna_old, unsloth
-    mapping = {
-        "role" : "role",
-        "content" : "content",
-        "user" : "user",
-        "assistant" : "assistant",
-        "system" : "system",
-    }, # ShareGPT style
-    map_eos_token = True, # Maps <|im_end|> to </s> instead
+    mapping = {"role" : "from", "content" : "value", "user" : "human", "assistant" : "gpt", "system": "system"}, # ShareGPT style
+    map_eos_token = False,
 )
+
+# 패딩 토큰 설정
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.unk_token or "<pad>"
 
 def formatting_prompts_func(examples):
     convos = examples["conversations"]
-    texts = [tokenizer.apply_chat_template(convo, tokenize = False, add_generation_prompt = False) for convo in convos]
-    return { "text" : texts, }
+    texts = []
+    for convo in convos:
+        text = tokenizer.apply_chat_template(convo, tokenize=False, add_generation_prompt=False)
+        # 중복 BOS 토큰 방지
+        if text.startswith('<bos>'):
+            text = text[5:]
+        texts.append(text)
+    return {"text": texts}
 pass
 
 ######################################################################################
@@ -107,7 +115,7 @@ def load_dataset():
     ret = []
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
 
-    for i in range(0, 1):  # 범위를 필요에 따라 조정
+    for i in range(0, 17):  # 범위를 필요에 따라 조정
         file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
@@ -115,27 +123,24 @@ def load_dataset():
             for item in data:
                 result = read_yaml(item)
                 devices = result['devices']
-                # 7개 이상의 장치가 없으면 무작위로 추가
-                if len(devices) < 7:
-                    devices = list(set(devices + random.sample(list(classes.keys()), 7 - len(devices))))
+                # # 7개 이상의 장치가 없으면 무작위로 추가
+                # if len(devices) < 7:
+                #     devices = list(set(devices + random.sample(list(classes.keys()), 7 - len(devices))))
                 service_doc = "\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
                     "conversations": [
                         # {
-                        #     "role": "system",
-                        #     "content": grammar,
+                        #     "from": "system", 
+                        #     "value": grammar + "\n\n" + service_doc,
                         # },
                         {
-                            "role": "system", 
-                            "content": service_doc,
+                            "from": "human",
+                            # "value": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
+                            "value": f"Generate JOI Lang code for \"{result['command']}\"",
                         },
                         {
-                            "role": "user",
-                            "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
-                        },
-                        {
-                            "role": "assistant",
-                            "content": result['code'],
+                            "from": "gpt",
+                            "value": result['code'],
                         }
                     ]
                 })
@@ -154,47 +159,61 @@ MY_DATASET = Dataset.from_list(data_set)
 MY_DATASET = MY_DATASET.map(
     formatting_prompts_func,
     batched=True,
-    batch_size=32,
-    remove_columns=["conversations"]
+    # batch_size=32,
+    # remove_columns=["conversations"]
 )
-
-print(MY_DATASET[5]["conversations"])
-print(MY_DATASET[5]["text"])
 
 print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
 print("샘플 데이터:")
-print(MY_DATASET[0]['text'][:500] + "..." if len(MY_DATASET) > 0 else "데이터 없음")
-# print(MY_DATASET[0]['text'])
+# print(MY_DATASET[0]['text'][:500] + "..." if len(MY_DATASET) > 0 else "데이터 없음")
+
+print(MY_DATASET[0]['text'])
+sample_text = MY_DATASET[0]['text']
+tokens = tokenizer.encode(sample_text)
+decoded = tokenizer.decode(tokens)
+print("Original:", sample_text)
+print("Decoded:", decoded)
 ######################################################################################
 
+# model = torch.compile(model)
 
 trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
     train_dataset = MY_DATASET,
-    packing = True,  # Can make training 5x faster for short sequences.
+    packing = False,  # Can make training 5x faster for short sequences.
     args = SFTConfig(
-        per_device_train_batch_size = 2,
-        gradient_accumulation_steps = 4,
-        warmup_steps = 5,
-        num_train_epochs = 5,
+        use_liger_kernel = True,
+        per_device_train_batch_size = 1,
+        gradient_accumulation_steps = 8,
+        warmup_steps = 50,
+        num_train_epochs = 2,
         # max_steps = 200,
-        learning_rate = 1e-4,
+        learning_rate = 2e-5,
         optim = "adamw_8bit",
         weight_decay = 0.01,
         lr_scheduler_type = "linear",
         seed = 3407,
         dataset_text_field = "text",
         report_to = "none",  # Use this for WandB etc
-        max_grad_norm = 0.3,
-        dataset_num_proc = 4,
-        dataloader_num_workers = 4,
+        max_grad_norm = 0.2,
+        dataset_num_proc = min(8, multiprocessing.cpu_count()),
+        dataloader_num_workers = min(8, multiprocessing.cpu_count()),
         logging_steps=50,
     ),
 )
 
-trainer_stats = trainer.train()
+with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
+    trainer_stats = trainer.train()
+
+# trainer_stats = trainer.train()
+
+# import gc
+# torch.cuda.empty_cache()
+# gc.collect()
+
+model.save_pretrained("model")
+tokenizer.save_pretrained("model")
 
 # model.save_pretrained_merged("model", tokenizer, save_method="merged_16bit")
-model.save_pretrained("model")
-model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")
+# model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")
