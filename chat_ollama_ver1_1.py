@@ -79,7 +79,7 @@ def run_test_case(model, model_bge, user_command_origin, user_command, classes, 
 
     start_time = time.time()
 
-    service_selected = set(i["key"] for i in hybrid_recommend(model_bge, user_command_origin, max_k=7))
+    service_selected = set(i["key"] for i in hybrid_recommend(model_bge, user_command_origin, max_k=10))
     service_elapsed = time.time() - start_time
     service_selected.add("Clock")
 
@@ -90,7 +90,7 @@ def run_test_case(model, model_bge, user_command_origin, user_command, classes, 
     # translated_command = deepl_translate(user_command)
 
     prompt = f"Current Time: {current_time}\nGenerate SoP Lang code for \"{user_command}\""
-    prompt = f"Generate SoP Lang code for \"{user_command}\""
+    # prompt = f"Generate SoP Lang code for \"{user_command}\""
     print(prompt[-100:])
 
     role = "system"
@@ -99,8 +99,8 @@ def run_test_case(model, model_bge, user_command_origin, user_command, classes, 
         messages=[
                     # {"role": role, "content": description},
                     # {"role": role, "content": grammar},
-                    # {"role": role, "content": service_doc},
-                    {"role": "system", "content": grammar + "\n\n" + service_doc},
+                    {"role": role, "content": service_doc},
+                    # {"role": "system", "content": grammar + "\n\n" + service_doc},
                     {"role": "user", "content": prompt},
                 ]
         if use_stream:
@@ -239,7 +239,7 @@ def main():
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
     model_bge = BGEM3FlagModel(model_dir, use_fp16=False, local_files_only=True)
-    hybrid_recommend(model_bge, "에어컨", max_k=7)
+    hybrid_recommend(model_bge, "에어컨", max_k=1)
     print("Embedding loaded")
 
     # Load SentenceTransformer
@@ -248,21 +248,22 @@ def main():
     # # Load llm
     # response = ollama.chat(
     #     model = model,
-    #     messages=[{"role":"system", "content":"Do not print anything."},
-    #               {"role": "user", "content": "hi"}],
+    #     messages=[{"role": "system", "content": "You are a helpful assistant."},
+    #     {"role": "user", "content": "Hello"}],
     # )
+    # print(response)
     # print(f"LLM loaded - {model}")
 
     # 태그, 서비스 목록 불러오기
 
-    with open("./ServiceExtraction/integration/service_list_ver1.1.7.txt", "r") as f:
+    with open("./ServiceExtraction/integration/service_list_ver1.1.8.txt", "r") as f:
         service_doc = f.read()
     classes = extract_classes_by_name(service_doc)
 
     # with open("./ServiceExtraction/integration/service_list_ver1.5.3.json", "r") as f:
     #     classes = json.load(f)
 
-    for i in range(0, 1):
+    for i in range(1, 2):
         with open(f"./Testset/TestsetWithDevices_translated/category_{i}.yaml", "r") as f:
             results = []
             data = yaml.safe_load(f)
@@ -282,7 +283,7 @@ def main():
                 print(f"#총 응답 시간 : {info['elapsed_time']}초")
                 print(f"#디바이스 추출: {list(service_selected)} ({info["bge_elapsed_time"]}초)")
                 print(f"#모델 응답 시간: {info["llm_elapsed_time"]}초")
-                print("#응답:\n", resp)
+                # print("#응답:\n", resp)
                 print("="*30)
                 
                 try:

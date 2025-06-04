@@ -1,0 +1,244 @@
+- command: If the soil moisture is below 30% and the lights are off, run the irrigation and turn on the lights.
+  devices:
+  - SoilMoistureSensor
+  - Blind
+  - Irrigator
+  - LightSensor
+  - Humidifier
+  - WeatherProvider
+  - Light
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+        if ((#Light).switch_switch == 'off') {
+          (#Irrigator).switch_on()
+          (#Light).switch_on()
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3810
+    generated_tokens: 77
+    elapsed_time: 3.572
+- command: If the temperature is above 33 degrees, turn on the dehumidifier and close the curtains.
+  devices:
+  - TemperatureSensor
+  - Curtain
+  - AirConditioner
+  - Dehumidifier
+  - Blind
+  - DoorLock
+  - Humidifier
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 33.0) {
+        (#Dehumidifier).dehumidifierMode_setDehumidifierMode('dehumidifying')
+        wait until((#Curtain).curtain_curtain == 'closed')
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3650
+    generated_tokens: 78
+    elapsed_time: 2.423
+- command: If the carbon dioxide is above 1000 ppm and the blinds are open, turn on the fan and close the blinds.
+  devices:
+  - Pump
+  - AirConditioner
+  - Fan
+  - Blind
+  - AirQualityDetector
+  - Humidifier
+  - AirPurifier
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide > 1000.0) and ((#Blind).blind_blind == 'open') {
+        (#Fan).switch_on()
+        (#Blind).airPurifierFanMode_airPurifierFanMode blind_close()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3967
+    generated_tokens: 73
+    elapsed_time: 2.516
+- command: If the temperature is above 29 degrees, the humidity is above 80%, and the lights are off, turn on the air conditioner and turn on the lights.
+  devices:
+  - TemperatureSensor
+  - AirConditioner
+  - Dehumidifier
+  - HumiditySensor
+  - Humidifier
+  - WeatherProvider
+  - Light
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 29.0) and \
+         ((#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0) and \
+         ((#Light).switch_switch == 'off'):
+          (#AirConditioner).airConditionerMode_setTemperature(30)
+          (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+          (#Light).colorControl_setColor("WHITE")
+          (#Light).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 3885
+    generated_tokens: 121
+    elapsed_time: 3.562
+- command: If the lights are on and the windows are closed, open the curtains and turn off the fan.
+  devices:
+  - Curtain
+  - AirConditioner
+  - Fan
+  - Blind
+  - Window
+  - Humidifier
+  - AirPurifier
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Blind).switch_switch == 'on') and ((#Window).windowControl_window == 'closed') {
+        (#Curtain).curtain_open()
+        (#Fan).switch_off()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3739
+    generated_tokens: 60
+    elapsed_time: 2.068
+- command: If the TV is off and the speakers are playing, turn on the TV and turn off the speakers.
+  devices:
+  - Television
+  - SmartPlug
+  - Camera
+  - Curtain
+  - Switch
+  - Relay
+  - Speaker
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'playing') {
+        (#Television).switch_on()
+        (#Speaker).mediaPlayback_stop()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3768
+    generated_tokens: 64
+    elapsed_time: 2.177
+- command: If the lights are on, the blinds are open, and motion is detected, turn off the lights and close the blinds.
+  devices:
+  - Curtain
+  - Relay
+  - SmokeDetector
+  - Blind
+  - DoorLock
+  - Clock
+  - Light
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'open') and ((#Clock).curtain_supportedCurtainCommands == 'detected'):
+        (#Light).switch_off()
+        (#Blind).blind_close()
+  compare_results: []
+  model_info:
+    prompt_tokens: 3617
+    generated_tokens: 72
+    elapsed_time: 2.27
+- command: If the alarm is off, the lights are off, and the curtains are open, sound the siren and turn on the lights.
+  devices:
+  - Curtain
+  - Relay
+  - Blind
+  - DoorLock
+  - Siren
+  - Window
+  - Clock
+  - Alarm
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Alarm).alarm_alarm == 'off') and ((#Blind).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'open') {
+        (#Alarm).sirenMode_setSirenMode('siren')
+        (#Blind).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3565
+    generated_tokens: 80
+    elapsed_time: 2.328
+- command: If the air conditioner is off and the curtains are closed, turn on the air conditioner and open the curtains.
+  devices:
+  - Pump
+  - Curtain
+  - AirConditioner
+  - Blind
+  - ContactSensor
+  - DoorLock
+  - Window
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#AirConditioner).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'closed') {
+        (#AirConditioner).switch_on()
+        (#Curtain).curtain_open()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3604
+    generated_tokens: 68
+    elapsed_time: 2.173
+- command: If your TV is on and the sound is off, turn it off and unmute it.
+  devices:
+  - Television
+  - RobotCleaner
+  - Relay
+  - Speaker
+  - SoundSensor
+  - AirPurifier
+  - Light
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == "on") and ((#Television).audioMute_muteStatus == "muted")) {
+        (#Television).switch_off()
+        (#Television).audioMute_unmute()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4042
+    generated_tokens: 68
+    elapsed_time: 2.444

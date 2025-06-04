@@ -1,21 +1,17 @@
-import multiprocessing
 import os, sys, random
-from tqdm import tqdm
 from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from unsloth import FastLanguageModel, is_bfloat16_supported
+from unsloth import FastLanguageModel
 from unsloth.chat_templates import get_chat_template
 from trl import SFTTrainer, SFTConfig
+from transformers import TrainingArguments, DataCollatorForSeq2Seq
 from datasets import Dataset
-from Grammar.grammar_ver1_1_5 import grammar
-import torch, yaml, re
-from torch.nn.attention import SDPBackend, sdpa_kernel
+from Grammar.grammar_ver1_1_4 import grammar
+import torch, yaml, re, subprocess
 
-max_seq_length = 3072  # Gemma sadly only supports max 8192 for now
-dtype = (
-    None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
-)
-load_in_4bit = True  # Use 4bit quantization to reduce memory usage. Can be False.
+max_seq_length = 4096 # Choose any! We auto support RoPE Scaling internally!
+dtype = None # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
+load_in_4bit = True # Use 4bit quantization to reduce memory usage. Can be False.
 
 # 4bit pre quantized models we support for 4x faster downloading + no OOMs.
 fourbit_models = [
@@ -25,14 +21,9 @@ fourbit_models = [
     "unsloth/codegemma-7b-bnb-4bit",
 ] # More models at https://huggingface.co/unsloth
 
-model_name = "unsloth/Qwen2.5-Coder-7B-bnb-4bit" 
-
-# from transformers import AutoTokenizer
-# original_tokenizer = AutoTokenizer.from_pretrained(model_name)
-# original_tokenizer.save_pretrained("model")
-
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = model_name,  # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
+    model_name = "unsloth/Qwen2.5-Coder-7B-bnb-4bit",
+    # model_name = "unsloth/qwen2.5-coder-3b-instruct-bnb-4bit",
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -44,12 +35,12 @@ model = FastLanguageModel.get_peft_model(
     r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
                       "gate_proj", "up_proj", "down_proj",],
-    lora_alpha = 32,
+    lora_alpha = 16,
     lora_dropout = 0, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
     random_state = 3407,
-    use_rslora = True,  # We support rank stabilized LoRA
+    use_rslora = False,  # We support rank stabilized LoRA
     loftq_config = None, # And LoftQ
 )
 
@@ -57,8 +48,6 @@ tokenizer = get_chat_template(
     tokenizer,
     chat_template = "qwen-2.5",
 )
-
-# tokenizer.add_bos_token = False
 
 def formatting_prompts_func(examples):
     convos = examples["conversations"]
@@ -80,7 +69,7 @@ def extract_classes_by_name(text: str):
 
     return class_dict
 
-with open("../ServiceExtraction/integration/service_list_ver1.1.8.txt", "r") as f:
+with open("../ServiceExtraction/integration/service_list_ver1.1.7.txt", "r") as f:
     service_doc = f.read()
 classes = extract_classes_by_name(service_doc)
 
@@ -105,8 +94,8 @@ def read_yaml(data):
 def load_dataset():
     ret = []
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
-
-    for i in range(0, 17):  # 범위를 필요에 따라 조정
+    
+    for i in range(0, 16):  # 범위를 필요에 따라 조정
         file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
@@ -114,29 +103,27 @@ def load_dataset():
             for item in data:
                 result = read_yaml(item)
                 devices = result['devices']
-                # # 7개 이상의 장치가 없으면 무작위로 추가
-                # if len(devices) < 7:
-                #     devices = list(set(devices + random.sample(list(classes.keys()), 7 - len(devices))))
-                service_doc = "\n---\n".join([classes[device] for device in devices if device in classes])
+                # 7개 이상의 장치가 없으면 무작위로 추가
+                if len(devices) < 7:
+                    devices = list(set(devices + random.sample(list(classes.keys()), 7 - len(devices))))
+                service_doc = "\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
                     "conversations": [
-                        # {
-                        #     "role": "system",
-                        #     "content": grammar,
-                        # },
+                        {
+                            "role": "system",
+                            "content": grammar,
+                        },
                         {
                             "role": "system", 
-                            # "content": grammar + "\n\n" + service_doc,
                             "content": service_doc,
                         },
                         {
                             "role": "user",
-                            # "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
-                            "content": f"Generate JOI Lang code for \"{result['command']}\"",
+                            "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
                         },
                         {
                             "role": "assistant",
-                            "content": "```\n"+result['code']+"\n```",
+                            "content": result['code'],
                         }
                     ]
                 })
@@ -155,75 +142,42 @@ MY_DATASET = Dataset.from_list(data_set)
 MY_DATASET = MY_DATASET.map(
     formatting_prompts_func,
     batched=True,
-    # batch_size=32,
-    # remove_columns=["conversations"]
+    batch_size=32,
+    remove_columns=["conversations"]
 )
 
 print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
-# print("샘플 데이터:")
-# print(MY_DATASET[0]['text'][:500] + "..." if len(MY_DATASET) > 0 else "데이터 없음")
+print("샘플 데이터:")
+print(MY_DATASET[0]['text'][:500] + "..." if len(MY_DATASET) > 0 else "데이터 없음")
 
-print(MY_DATASET[0]['text'])
-sample_text = MY_DATASET[0]['text']
-tokens = tokenizer.encode(sample_text)
-decoded = tokenizer.decode(tokens)
-print("Original:", sample_text)
-print("Decoded:", decoded)
-
-# 토큰 길이 측정
-lengths = []
-for example in tqdm(MY_DATASET):
-    text = example["text"]  # formatting_prompts_func 결과가 "text" 필드에 들어갔다면
-    tokens = tokenizer.encode(text, truncation=False)
-    lengths.append(len(tokens))
-
-# 통계 출력
-print(f"Total samples: {len(lengths)}")
-print(f"Max length: {max(lengths)}")
-print(f"Min length: {min(lengths)}")
-print(f"Average length: {sum(lengths) / len(lengths):.2f}")
 ######################################################################################
+
 
 trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
     train_dataset = MY_DATASET,
-    packing = False,  # Can make training 5x faster for short sequences.
+    packing = True,  # Can make training 5x faster for short sequences.
     args = SFTConfig(
-        use_liger_kernel = False,
         per_device_train_batch_size = 4,
-        gradient_accumulation_steps = 4,
-        warmup_steps = 0,
+        gradient_accumulation_steps = 2,
+        warmup_steps = 5,
         num_train_epochs = 2,
-        # max_steps = 200,
-        learning_rate = 2e-5, #1e-6
+        # max_steps = 20,
+        learning_rate = 2e-4,
         optim = "adamw_8bit",
-        weight_decay = 0.02,
-        lr_scheduler_type = "constant",
+        weight_decay = 0.01,
+        lr_scheduler_type = "linear",
         seed = 3407,
         dataset_text_field = "text",
         report_to = "none",  # Use this for WandB etc
-        max_grad_norm = 0.2,
-        dataset_num_proc = min(8, multiprocessing.cpu_count()),
-        dataloader_num_workers = min(8, multiprocessing.cpu_count()),
-        logging_steps= 10,
-        auto_find_batch_size = True,
-        fp16 = False,
-        bf16 = True, 
+        max_grad_norm = 0.3,
+        dataset_num_proc = 4,
+        dataloader_num_workers = 4,
+        logging_steps=50,
     ),
 )
 
-with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
-    trainer_stats = trainer.train()
+trainer_stats = trainer.train()
 
-# trainer_stats = trainer.train()
-
-# # import gc
-# # torch.cuda.empty_cache()
-# # gc.collect()
-
-model.save_pretrained("../models/qwenCoder-adapter")
-tokenizer.save_pretrained("../models/qwenCoder-adapter")
-
-# # model.save_pretrained_merged("model", tokenizer, save_method="merged_16bit")
-# # model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")
+model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")

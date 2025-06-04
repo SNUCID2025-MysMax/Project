@@ -1,5 +1,6 @@
 # import os, sys, random
 from datetime import datetime
+import re
 # from unsloth import FastLanguageModel
 # from unsloth.chat_templates import get_chat_template
 
@@ -27,28 +28,69 @@ import os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Grammar.grammar_ver1_1_5 import grammar
 
+# model, tokenizer = FastLanguageModel.from_pretrained(
+#     model_name = "model",
+#     max_seq_length = 4096,
+#     dtype = None,
+#     load_in_4bit = True,
+# )
+
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "model",
-    max_seq_length = 4096,
-    dtype = None,
-    load_in_4bit = True,
+    model_name="./codegemma",
+    max_seq_length=4096,
+    dtype=None,
+    load_in_4bit=True,
 )
+
+# ./model에서 어댑터 로드
+model.load_adapter("./model")
+
+def extract_classes_by_name(text: str):
+    # pattern = r'class\s+(\w+)\s*:\s*\n\s+"""(.*?)"""'
+    pattern = r'Device\s+(\w+)\s*:\s*\n\s+"""(.*?)"""'
+    matches = re.finditer(pattern, text, re.DOTALL)
+
+    class_dict = {}
+    for match in matches:
+        class_name = match.group(1)
+        full_class_def = match.group(0)  # 전체 클래스 문자열
+        class_dict[class_name] = full_class_def
+
+    return class_dict
+
+
+with open("../ServiceExtraction/integration/service_list_ver1.1.8.txt", "r") as f:
+    service_doc = f.read()
+classes = extract_classes_by_name(service_doc)
 
 FastLanguageModel.for_inference(model) # Enable native 2x faster inference
 
 current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
 messages = [
-    {"from": "human", "value": grammar},
-    {"from": "human", "value": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"Turn on the air conditioner.\""},
+    {"role": "system", "content": grammar},
+    {"role": "system", "content": classes["AirConditioner"]},
+    {"role": "user", "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"Set the air conditioner mode to cool\""},
 ]
 
 from unsloth.chat_templates import get_chat_template
 tokenizer = get_chat_template(
     tokenizer,
     chat_template = "chatml", # Supports zephyr, chatml, mistral, llama, alpaca, vicuna, vicuna_old, unsloth
-    mapping = {"role" : "from", "content" : "value", "user" : "human", "assistant" : "gpt", "system": "system"}, # ShareGPT style
-    map_eos_token = False, # Maps <|im_end|> to </s> instead
+    # mapping = {"role" : "from", "content" : "value", "user" : "human", "assistant" : "gpt", "system": "system"}, # ShareGPT style
+    map_eos_token = True, # Maps <|im_end|> to </s> instead
 )
+
+tokenizer.add_bos_token = False
+
+stop_tokens = [
+    "<|im_end|>",
+    "<|file_separator|>", 
+    "<|fim_prefix|>",
+    "<|fim_middle|>",
+    "<|fim_suffix|>"
+]
+
+stop_token_ids = [tokenizer.convert_tokens_to_ids(token) for token in stop_tokens if token in tokenizer.get_vocab()]
 
 inputs = tokenizer.apply_chat_template(
     messages,
@@ -57,11 +99,28 @@ inputs = tokenizer.apply_chat_template(
     return_tensors = "pt",
 ).to("cuda")
 
-from transformers import TextStreamer
-text_streamer = TextStreamer(tokenizer)
-_ = model.generate(
-    input_ids = inputs, 
-    eos_token_id=tokenizer.convert_tokens_to_ids("<|im_end|>"),
+# from transformers import TextStreamer
+# text_streamer = TextStreamer(tokenizer)
+# _ = model.generate(
+#     input_ids = inputs, 
+#     eos_token_id=stop_token_ids,  # 여러 stop 토큰 설정
+#     pad_token_id=tokenizer.pad_token_id,
+#     streamer = text_streamer, 
+#     max_new_tokens = 128, use_cache = True)
+
+outputs = model.generate(
+    input_ids=inputs, 
+    eos_token_id=stop_token_ids,
     pad_token_id=tokenizer.pad_token_id,
-    streamer = text_streamer, 
-    max_new_tokens = 128, use_cache = True)
+    max_new_tokens=128, 
+    use_cache=True
+)
+
+generated_ids = outputs[0][len(inputs[0]):]
+last_token_id = generated_ids[-1].item()
+
+if last_token_id in stop_token_ids:
+    generated_ids = generated_ids[:-1]  # 마지막 토큰 제거
+
+response_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+print(response_text.strip())

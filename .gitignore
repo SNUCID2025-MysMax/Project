@@ -205,3 +205,8 @@ llama.cpp
 
 llama.cpp2
 llama.cpp*
+
+
+unsloth_compiled_cache
+unsloth_training_checkpoints
+_unsloth_sentencepiece_temp
