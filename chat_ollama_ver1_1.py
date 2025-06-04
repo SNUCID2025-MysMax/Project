@@ -9,6 +9,8 @@ from Evaluation.soplang_parser_full import parser, lexer
 from Evaluation.soplang_ir_simulator import flatten_actions, generate_context_from_conditions
 from Evaluation.compare_soplang_ir import extract_logic_expressions, compare_codes 
 
+from sentence_transformers import SentenceTransformer, util
+from Validation.validate import validate_tmp
 import ollama
 
 import yaml
@@ -81,7 +83,7 @@ def run_test_case(model, model_bge, user_command_origin, user_command, classes, 
     service_elapsed = time.time() - start_time
     service_selected.add("Clock")
 
-    service_doc = "\n".join([classes[i] for i in service_selected])
+    service_doc = "\n---\n".join([classes[i] for i in service_selected])
     # service_doc = "#Devices\n"+"\n".join([json.dumps(classes[i]) for i in service_selected])
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
 
@@ -240,6 +242,9 @@ def main():
     hybrid_recommend(model_bge, "에어컨", max_k=7)
     print("Embedding loaded")
 
+    # Load SentenceTransformer
+    model_sentence = SentenceTransformer('paraphrase-MiniLM-L6-v2')
+
     # # Load llm
     # response = ollama.chat(
     #     model = model,
@@ -270,6 +275,9 @@ def main():
                 resp, service_selected, info = run_test_case(
                     model, model_bge, user_command_origin, user_command, classes, True
                 )
+
+                
+
                 print(f"#명령어: {user_command}")
                 print(f"#총 응답 시간 : {info['elapsed_time']}초")
                 print(f"#디바이스 추출: {list(service_selected)} ({info["bge_elapsed_time"]}초)")
@@ -286,7 +294,11 @@ def main():
                         code = [{'name': 'Scenario1', 'cron': '', 'period': -1, 'code': '(#AirConditioner).switch_on()\n'}]
 
                 for c in code:
-                    c["code"] = LiteralString(c["code"].strip())
+                    code_n = c["code"].strip()
+                    code_n = validate_tmp(code_n, classes, list(service_selected), model_sentence)
+                    if code_n == False:
+                        code_n = ""
+                    c["code"] = LiteralString(code_n)
 
                 # print("변환된 코드:\n", code)
                 # print("-"*30)

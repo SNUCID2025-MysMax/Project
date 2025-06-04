@@ -43,12 +43,12 @@ model = FastLanguageModel.get_peft_model(
     r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
                       "gate_proj", "up_proj", "down_proj",],
-    lora_alpha = 16,
+    lora_alpha = 32,
     lora_dropout = 0, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
     random_state = 3407,
-    use_rslora = False,  # We support rank stabilized LoRA
+    use_rslora = True,  # We support rank stabilized LoRA
     loftq_config = None, # And LoftQ
 )
 
@@ -89,7 +89,7 @@ def extract_classes_by_name(text: str):
 
     return class_dict
 
-with open("../ServiceExtraction/integration/service_list_ver1.1.7.txt", "r") as f:
+with open("../ServiceExtraction/integration/service_list_ver1.1.8.txt", "r") as f:
     service_doc = f.read()
 classes = extract_classes_by_name(service_doc)
 
@@ -126,7 +126,7 @@ def load_dataset():
                 # # 7개 이상의 장치가 없으면 무작위로 추가
                 # if len(devices) < 7:
                 #     devices = list(set(devices + random.sample(list(classes.keys()), 7 - len(devices))))
-                service_doc = "\n".join([classes[device] for device in devices if device in classes])
+                service_doc = "\n---\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
                     "conversations": [
                         # {
@@ -186,13 +186,13 @@ trainer = SFTTrainer(
         use_liger_kernel = True,
         per_device_train_batch_size = 1,
         gradient_accumulation_steps = 8,
-        warmup_steps = 50,
+        warmup_ratio = 0.05,
         num_train_epochs = 2,
         # max_steps = 200,
-        learning_rate = 2e-5,
+        learning_rate = 1e-5,
         optim = "adamw_8bit",
-        weight_decay = 0.01,
-        lr_scheduler_type = "linear",
+        weight_decay = 0.02,
+        lr_scheduler_type = "cosine",
         seed = 3407,
         dataset_text_field = "text",
         report_to = "none",  # Use this for WandB etc

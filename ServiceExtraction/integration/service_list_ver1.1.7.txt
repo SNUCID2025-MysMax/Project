@@ -1187,7 +1187,7 @@ Device Speaker:
 			paused: Media playback is in a "paused" state
 			playing: Media playback is in a "playing" state
 			stopped: Media playback is in a "stopped" state
-			fast
+			fast forward
 			rewinding: Media playback is in a "rewinding" state
 			buffering: Media playback is in a "buffering" state
 	---
