@@ -7,6 +7,7 @@ import json
 import re
 import sys
 import random
+from conversion import transform_code
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from grammar import grammar
 from conversion import transform_code
@@ -144,8 +145,14 @@ def generate_code_for_command(client, command, service_doc, now=None):
 
 # ===  GPT 프롬프트 구성 === #
 # 1: 디바이스 스킬 기반 명령 생성
+<<<<<<< HEAD
 def generate_commands(client, skills_dict, n=10, examples=None):
     devices_str = json.dumps(skills_dict, indent=2, ensure_ascii=False)
+=======
+def generate_commands(client, skills_dict, n=10, example=""):
+    devices_str = json.dumps(skills_dict, indent=2, ensure_ascii=False)
+    messages = load_prompt_roles("generate_prompt.txt", devices=devices_str, n=n, example=example)
+>>>>>>> 3b14c41 (chore)
 
     messages = load_prompt_roles(
         "generate_prompt.txt",
@@ -286,6 +293,40 @@ def load_command_examples(folder_path, file_num, start=0, end=None):
     return selected
 
 
+# 5: Python code 를 joi_lang 으로 변환
+def convert_to_joi_lang(data_pairs):
+    joi_pairs = []
+
+    for pair in data_pairs:
+        python_code = pair["code"]
+        try:
+            joi_result = transform_code(python_code)
+            if joi_result:
+                joi_code = joi_result[0]["code"]
+                joi_pairs.append({
+                    "text": pair["text"],
+                    "code": joi_code
+                })
+            else:
+                print(f"⚠️ 변환 실패 (결과 없음): {pair['text']}")
+        except Exception as e:
+            print(f"❌ 변환 중 오류 발생: {e} — {pair['text']}")
+
+    return joi_pairs
+
+# 6: 예시 변수 로드
+def load_example_variables(path):
+    with open(path, "r", encoding="utf-8") as f:
+        source = f.read()
+    tree = ast.parse(source)
+
+    result = {}
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name):
+            var_name = node.targets[0].id
+            if isinstance(node.value, ast.Constant) and isinstance(node.value.value, str):
+                result[var_name] = node.value.value.strip()
+    return result
 
 
 # === 실행 === #
@@ -296,11 +337,14 @@ if __name__ == "__main__":
     #print(sampled_device)
 =======
 
-    base_commands = generate_commands(client, sampled_device, n=20)
+    examples_by_category = load_example_variables("example.txt")
+    base_commands = generate_commands(client, sampled_device, n=20, example=examples_by_category)
+
     #print("생성된 명령어들\n", base_commands)
 
     refined_text = refine_commands(client, base_commands)
     #print("✅ 정제된 명령어들:\n", refined_text)
+<<<<<<< HEAD
 >>>>>>> 59d4c8d (chore)
     
     folder = r"C:\Users\김지후\Downloads\testt\Project\Testset\Testset\json"
@@ -331,3 +375,15 @@ if __name__ == "__main__":
         json.dump(data_pairs, f, ensure_ascii=False, indent=2)
 
     print(f"\n 총 {len(data_pairs)}개의 명령어-코드 쌍이 generated_dataset_3.json에 저장되었습니다.")
+=======
+        
+    data_pairs = process_refined_commands(client, refined_text, sampled_device, max_variants=3)
+    joi_pairs = convert_to_joi_lang(data_pairs)
+
+    # 🔽 파일로 저장
+    output_path = f"generated_output/generated_dataset_{category}.json"
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(joi_pairs, f, ensure_ascii=False, indent=2)
+    print(f"\n 총 {len(joi_pairs)}개의 명령어-코드 쌍이 generated_dataset.json에 저장되었습니다."    )
+>>>>>>> 3b14c41 (chore)
