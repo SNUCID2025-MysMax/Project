@@ -1,6 +1,5 @@
 {
     "python.analysis.extraPaths": [
-        "./Evaluation",
-        "./Grammar"
+        "./Evaluation"
     ]
 }
