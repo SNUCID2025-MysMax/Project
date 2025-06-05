@@ -137,6 +137,8 @@ def generate_code_for_command(client, command, service_doc, now=None):
 
 # ===  GPT 프롬프트 구성 === #
 # 1: 디바이스 스킬 기반 명령 생성
+
+
 def generate_commands(client, skills_dict, n=10, example=""):
     devices_str = json.dumps(skills_dict, indent=2, ensure_ascii=False)
     messages = load_prompt_roles("generate_prompt.txt", devices=devices_str, n=n, example=example)
@@ -322,13 +324,6 @@ if __name__ == "__main__":
     device_docs = parse_class_docstrings("../0.1.3_docstring_v3.txt")
     sampled_device = sample_device_classes(device_docs, k=10)
 
-
-    examples_by_category = load_example_variables("example.txt")
-    base_commands = generate_commands(client, sampled_device, n=20, example=examples_by_category)
-
-    #print("생성된 명령어들\n", base_commands)
-
-    
     folder = r"C:\Users\김지후\Downloads\testt\Project\Testset\Testset\json"
     examples = load_command_examples(folder, 3, start=5, end=10)
     # print(examples)
@@ -357,15 +352,4 @@ if __name__ == "__main__":
         json.dump(data_pairs, f, ensure_ascii=False, indent=2)
 
     print(f"\n 총 {len(data_pairs)}개의 명령어-코드 쌍이 generated_dataset_3.json에 저장되었습니다.")
-=======
-        
-    data_pairs = process_refined_commands(client, refined_text, sampled_device, max_variants=3)
-    joi_pairs = convert_to_joi_lang(data_pairs)
 
-    # 🔽 파일로 저장
-    output_path = f"generated_output/generated_dataset_{category}.json"
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(joi_pairs, f, ensure_ascii=False, indent=2)
-    print(f"\n 총 {len(joi_pairs)}개의 명령어-코드 쌍이 generated_dataset.json에 저장되었습니다."    )
->>>>>>> 3b14c41 (chore)
