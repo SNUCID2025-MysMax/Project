@@ -119,6 +119,7 @@ def read_yaml(data):
 
 # 데이터셋 생성 부분 수정
 def load_dataset():
+    global classes
     ret = []
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
 
@@ -223,7 +224,7 @@ trainer = SFTTrainer(
         warmup_steps = 0,
         num_train_epochs = 2,
         # max_steps = 200,
-        learning_rate = 2e-5, #1e-6
+        learning_rate = 2e-4, #1e-6
         optim = "adamw_8bit",
         weight_decay = 0.02,
         lr_scheduler_type = "constant",

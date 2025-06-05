@@ -10,7 +10,7 @@ from services.joi_tool import parse_scenarios, extract_last_code_block
 import logging
 logger = logging.getLogger("uvicorn")
 
-TIME_OUT = 10
+TIME_OUT = 15
 
 from transformers import TextStreamer
 

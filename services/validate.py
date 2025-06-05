@@ -41,6 +41,40 @@ def extract_accessors(dsl_text: str):
 
 def validate_accessors(code: str, tag_list, method_list, attribute_list, model) -> str:
 
+    # 문자열 리터럴을 임시로 보호하기 위한 함수들
+    def protect_strings(code):
+        """문자열 리터럴을 플레이스홀더로 치환"""
+        strings = []
+        
+        # 삼중 따옴표 문자열 (먼저 처리)
+        def replace_triple_quotes(match):
+            strings.append(match.group(0))
+            return f"__STRING_PLACEHOLDER_{len(strings)-1}__"
+        
+        # 단일/이중 따옴표 문자열
+        def replace_quotes(match):
+            strings.append(match.group(0))
+            return f"__STRING_PLACEHOLDER_{len(strings)-1}__"
+        
+        # 삼중 따옴표 문자열 처리 (""" 또는 ''')
+        code = re.sub(r'""".*?"""', replace_triple_quotes, code, flags=re.DOTALL)
+        code = re.sub(r"'''.*?'''", replace_triple_quotes, code, flags=re.DOTALL)
+        
+        # 일반 문자열 처리 (이스케이프 문자 고려)
+        code = re.sub(r'"(?:[^"\\]|\\.)*"', replace_quotes, code)
+        code = re.sub(r"'(?:[^'\\]|\\.)*'", replace_quotes, code)
+        
+        return code, strings
+    
+    def restore_strings(code, strings):
+        """플레이스홀더를 원래 문자열로 복원"""
+        for i, string in enumerate(strings):
+            code = code.replace(f"__STRING_PLACEHOLDER_{i}__", string)
+        return code
+
+    # 문자열 보호
+    protected_code, string_literals = protect_strings(code)
+
     tag_embeddings = model.encode(tag_list, convert_to_tensor=True)
     method_embeddings = model.encode(method_list, convert_to_tensor=True)
     attribute_embeddings = model.encode(attribute_list, convert_to_tensor=True)
@@ -85,10 +119,16 @@ def validate_accessors(code: str, tag_list, method_list, attribute_list, model) 
         best_match = attribute_list[scores.argmax().item()]
         return f".{best_match}"
         
-    code = re.sub(tag_pattern, validate_tag, code)
-    code = re.sub(method_pattern, validate_method, code)
-    code = re.sub(attribute_pattern, validate_attribute, code)
-
+    # code = re.sub(tag_pattern, validate_tag, code)
+    # code = re.sub(method_pattern, validate_method, code)
+    # code = re.sub(attribute_pattern, validate_attribute, code)
+    # 보호된 코드에서 패턴 매칭 수행
+    protected_code = re.sub(tag_pattern, validate_tag, protected_code)
+    protected_code = re.sub(method_pattern, validate_method, protected_code)
+    protected_code = re.sub(attribute_pattern, validate_attribute, protected_code)
+    
+    # 문자열 복원
+    code = restore_strings(protected_code, string_literals)
     return code
 
 def validate_tag_group(code: str, devices: list = []) -> bool:

@@ -1,57 +1,62 @@
 - command: Sound the siren.
   devices:
   - Alarm
-  - Button
-  - Curtain
-  - SoundSensor
-  - Buttonx4
-  - DoorLock
-  - Relay
-  - Camera
   - Recorder
+  - Buttonx4
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - Curtain
+  - Button
+  - Camera
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Siren).sirenMode_setSirenMode('siren')
+      (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.644
-    bge_elapsed_time: 0.875
-    llm_elapsed_time: 3.768
+    elapsed_time: 5.858
+    bge_elapsed_time: 1.044
+    llm_elapsed_time: 4.814
 - command: Sound the siren.
   devices:
   - Alarm
-  - Button
-  - Curtain
-  - SoundSensor
-  - Buttonx4
-  - DoorLock
-  - Relay
-  - Camera
   - Recorder
+  - Buttonx4
   - Siren
+  - Relay
   - Clock
-  generated_code: []
+  - DoorLock
+  - Curtain
+  - Button
+  - Camera
+  - SoundSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 47.298
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 47.173
+    elapsed_time: 3.175
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 3.049
 - command: Turn on the strobe.
   devices:
   - Alarm
-  - Curtain
-  - Shade
-  - Light
-  - Relay
-  - Camera
   - Blind
-  - Siren
-  - WeatherProvider
-  - Clock
   - LightSensor
+  - Siren
+  - Relay
+  - Clock
+  - Light
+  - Curtain
+  - Camera
+  - WeatherProvider
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -59,22 +64,22 @@
     code: |-
       (#Alarm).alarm_strobe()
   model_info:
-    elapsed_time: 3.394
+    elapsed_time: 3.38
     bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.27
+    llm_elapsed_time: 3.257
 - command: Turn on the strobe.
   devices:
   - Alarm
-  - Curtain
-  - Shade
-  - Light
-  - Relay
-  - Camera
   - Blind
-  - Siren
-  - WeatherProvider
-  - Clock
   - LightSensor
+  - Siren
+  - Relay
+  - Clock
+  - Light
+  - Curtain
+  - Camera
+  - WeatherProvider
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -82,138 +87,158 @@
     code: |-
       (#Alarm).alarm_strobe()
   model_info:
-    elapsed_time: 3.397
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.273
+    elapsed_time: 3.825
+    bge_elapsed_time: 0.592
+    llm_elapsed_time: 3.233
 - command: Turn on sirens and lights at the same time
   devices:
   - Alarm
-  - Curtain
-  - Shade
-  - Light
-  - Relay
-  - Camera
   - Blind
-  - Siren
-  - Clock
   - LightSensor
-  generated_code: []
+  - Siren
+  - Relay
+  - Clock
+  - Light
+  - Curtain
+  - Camera
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == "on")
+      (#Light).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Siren).switch_switch == "on")
+      (#Siren).switch_on()
   model_info:
-    elapsed_time: 2.13
+    elapsed_time: 5.548
     bge_elapsed_time: 0.128
-    llm_elapsed_time: 2.002
+    llm_elapsed_time: 5.42
 - command: Turn on sirens and lights at the same time
   devices:
   - Alarm
-  - Curtain
-  - Shade
-  - Light
-  - Relay
-  - Camera
   - Blind
-  - Siren
-  - Clock
   - LightSensor
+  - Siren
+  - Relay
+  - Clock
+  - Light
+  - Curtain
+  - Camera
+  - Shade
   generated_code: []
   model_info:
-    elapsed_time: 2.132
+    elapsed_time: 48.352
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 2.006
+    llm_elapsed_time: 48.225
 - command: Turn off both sirens and lights
   devices:
   - Alarm
-  - Curtain
-  - Shade
-  - Light
-  - Relay
-  - Camera
   - Blind
   - Siren
-  - WeatherProvider
+  - Relay
   - Clock
-  generated_code: []
+  - Light
+  - Curtain
+  - Camera
+  - WeatherProvider
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Light).switch_off()
+      (#Siren).switch_off()
   model_info:
-    elapsed_time: 48.603
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 48.473
+    elapsed_time: 3.682
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 3.553
 - command: Turn off both sirens and lights
   devices:
   - Alarm
-  - Curtain
-  - Shade
-  - Light
-  - Relay
-  - Camera
   - Blind
   - Siren
-  - WeatherProvider
+  - Relay
   - Clock
+  - Light
+  - Curtain
+  - Camera
+  - WeatherProvider
+  - Shade
   generated_code: []
   model_info:
-    elapsed_time: 49.201
+    elapsed_time: 48.779
     bge_elapsed_time: 0.128
-    llm_elapsed_time: 49.074
+    llm_elapsed_time: 48.651
 - command: Sound the alarm's siren when the occupancy sensor is detected.
   devices:
-  - Alarm
   - PresenceSensor
-  - LeakSensor
-  - SoundSensor
-  - FallDetector
+  - Alarm
   - MotionSensor
   - TemperatureSensor
-  - ContactSensor
+  - LeakSensor
   - Siren
   - Clock
+  - FallDetector
+  - ContactSensor
+  - SoundSensor
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#PresenceSensor).presenceSensor_presence == "present")
-      (#Alarm).alarm_siren()
+      if ((#PresenceSensor).presenceSensor_presence == "detected") {
+        (#Alarm).alarm_siren()
+      }
   model_info:
-    elapsed_time: 3.694
+    elapsed_time: 3.924
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 3.791
+- command: Sound the alarm's siren when the occupancy sensor is detected.
+  devices:
+  - PresenceSensor
+  - Alarm
+  - MotionSensor
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Clock
+  - FallDetector
+  - ContactSensor
+  - SoundSensor
+  - SmokeDetector
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#PresenceSensor).presenceSensor_presence == "detected") {
+        (#Alarm).alarm_siren()
+      }
+  model_info:
+    elapsed_time: 3.925
     bge_elapsed_time: 0.132
-    llm_elapsed_time: 3.561
-- command: Sound the alarm's siren when the occupancy sensor is detected.
-  devices:
-  - Alarm
-  - PresenceSensor
-  - LeakSensor
-  - SoundSensor
-  - FallDetector
-  - MotionSensor
-  - TemperatureSensor
-  - ContactSensor
-  - Siren
-  - Clock
-  - SmokeDetector
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      wait until((#PresenceSensor).presenceSensor_presence == "present")
-      (#Alarm).alarm_siren()
-  model_info:
-    elapsed_time: 3.697
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 3.566
+    llm_elapsed_time: 3.793
 - command: Sound the alarm's siren when the air conditioner is powered on.
   devices:
   - Alarm
   - Window
-  - Button
-  - Relay
-  - DoorLock
-  - Switch
-  - AirConditioner
-  - Siren
-  - Clock
   - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - AirConditioner
+  - DoorLock
   - Fan
+  - Button
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -223,22 +248,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.101
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.971
+    elapsed_time: 4.117
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 3.985
 - command: Sound the alarm's siren when the air conditioner is in cooling mode.
   devices:
   - Alarm
   - Window
-  - Humidifier
-  - SoundSensor
-  - Dehumidifier
-  - Pump
   - TemperatureSensor
-  - AirConditioner
+  - Humidifier
+  - Refrigerator
   - Siren
   - Clock
-  - Refrigerator
+  - Pump
+  - AirConditioner
+  - SoundSensor
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -248,22 +273,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.447
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.316
+    elapsed_time: 4.468
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.336
 - command: Sound the alarm's siren when the air conditioner's target temperature is 30 degrees.
   devices:
   - Alarm
-  - AirPurifier
-  - SoundSensor
   - TemperatureSensor
-  - AirConditioner
-  - HumiditySensor
   - Siren
-  - WeatherProvider
-  - AirQualityDetector
   - Clock
+  - AirConditioner
   - Fan
+  - HumiditySensor
+  - SoundSensor
+  - AirQualityDetector
+  - AirPurifier
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -273,26 +298,26 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.477
+    elapsed_time: 4.497
     bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.346
+    llm_elapsed_time: 4.366
 - command: Speaker out the modes supported by the air conditioner
   devices:
-  - AirPurifier
   - Humidifier
-  - Pump
-  - Dehumidifier
-  - Speaker
-  - AirConditioner
-  - Dishwasher
-  - WeatherProvider
   - Clock
-  - RobotCleaner
+  - Pump
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - Speaker
+  - RobotCleaner
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
-    period: 100
+    period: -1
     code: |-
       if ((#AirConditioner).airConditionerMode_supportedAcModes == "") {
         (#Speaker).mediaPlayback_speak("The air conditioner does not support any modes.")
@@ -300,22 +325,22 @@
         (#Speaker).mediaPlayback_speak("The air conditioner supports the following modes: " + (#AirConditioner).airConditionerMode_supportedAcModes)
       }
   model_info:
-    elapsed_time: 6.684
+    elapsed_time: 6.615
     bge_elapsed_time: 0.128
-    llm_elapsed_time: 6.556
+    llm_elapsed_time: 6.487
 - command: Turn off the air conditioner.
   devices:
-  - AirPurifier
-  - Curtain
-  - Humidifier
-  - Dehumidifier
-  - DoorLock
-  - AirConditioner
   - Blind
-  - WeatherProvider
-  - Dishwasher
+  - Humidifier
   - Clock
+  - Dishwasher
+  - AirConditioner
+  - DoorLock
   - Fan
+  - Curtain
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -323,90 +348,97 @@
     code: |-
       (#AirConditioner).switch_off()
   model_info:
-    elapsed_time: 3.445
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.322
+    elapsed_time: 3.453
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.329
 - command: Turn on the air conditioner.
   devices:
-  - AirPurifier
-  - Button
   - Humidifier
-  - Dehumidifier
-  - DoorLock
-  - Camera
-  - AirConditioner
-  - Dishwasher
-  - AirQualityDetector
   - Clock
+  - Dishwasher
+  - AirConditioner
+  - DoorLock
   - Fan
+  - Button
+  - Camera
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#AirConditioner).switch_on()
+      if ((#AirConditioner).airConditionerMode_airConditionerMode == "off") {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode("on")
+      }
   model_info:
-    elapsed_time: 3.502
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.38
+    elapsed_time: 5.067
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 4.942
 - command: Toggle the power of the air conditioner.
   devices:
+  - Irrigator
+  - Humidifier
+  - Clock
+  - Dishwasher
+  - AirConditioner
+  - SmartPlug
+  - Fan
+  - Light
   - Button
   - AirPurifier
-  - SmartPlug
-  - Humidifier
   - Dehumidifier
-  - Light
-  - AirConditioner
-  - Dishwasher
-  - Irrigator
-  - Clock
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       if ((#AirConditioner).switch_switch == "on") {
-        (#AirConditioner).switch_toggle()
+        (#AirConditioner).switch_off()
       } else {
-        (#AirConditioner).switch_toggle()
+        (#AirConditioner).switch_on()
       }
   model_info:
-    elapsed_time: 5.162
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 5.037
+    elapsed_time: 5.17
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 5.044
 - command: Set the air conditioner to auto mode.
   devices:
-  - AirPurifier
   - Window
-  - Shade
   - Humidifier
-  - Dehumidifier
-  - AirConditioner
-  - Dishwasher
-  - WeatherProvider
   - Clock
-  - RobotCleaner
+  - Dishwasher
+  - AirConditioner
+  - Shade
   - Fan
-  generated_code: []
+  - RobotCleaner
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
   model_info:
-    elapsed_time: 2.33
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 2.205
+    elapsed_time: 3.945
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.819
 - command: Set the target temperature for the air conditioner to 18 degrees.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
-  - TemperatureSensor
-  - AirConditioner
-  - Dishwasher
-  - Blind
-  - AirQualityDetector
   - Irrigator
+  - Blind
+  - TemperatureSensor
+  - Humidifier
   - Clock
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -414,22 +446,22 @@
     code: |-
       (#AirConditioner).airConditionerMode_setTemperature(18.0)
   model_info:
-    elapsed_time: 3.917
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 3.789
+    elapsed_time: 3.95
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.823
 - command: Sound the alarm's siren when the air purifier is powered on.
   devices:
-  - AirPurifier
   - Alarm
-  - Pump
-  - Relay
-  - Charger
-  - Switch
-  - AirConditioner
   - Siren
-  - AirQualityDetector
-  - RobotCleaner
+  - Relay
+  - Pump
   - Clock
+  - AirConditioner
+  - Charger
+  - RobotCleaner
+  - AirQualityDetector
+  - AirPurifier
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -439,22 +471,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.214
+    elapsed_time: 4.218
     bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.083
+    llm_elapsed_time: 4.087
 - command: Sound the alarm's siren when the air purifier is in sleep mode.
   devices:
-  - AirPurifier
   - Alarm
   - Window
   - Humidifier
-  - SoundSensor
-  - Dehumidifier
-  - AirConditioner
   - Siren
-  - AirQualityDetector
-  - RobotCleaner
   - Clock
+  - AirConditioner
+  - RobotCleaner
+  - SoundSensor
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -464,65 +496,75 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.557
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.427
+    elapsed_time: 4.595
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 4.465
 - command: Speaker out the modes your air purifier supports
   devices:
-  - AirPurifier
   - Humidifier
-  - Pump
-  - Dehumidifier
-  - Speaker
-  - AirConditioner
-  - Dishwasher
-  - AirQualityDetector
-  - RobotCleaner
   - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
   - Fan
-  generated_code: []
+  - Speaker
+  - RobotCleaner
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#AirPurifier).airPurifierFanMode_supportedAirPurifierFanModes != "") {
+        (#Speaker).mediaPlayback_speak((#AirPurifier).airPurifierFanMode_supportedAirPurifierFanModes)
+      }
   model_info:
-    elapsed_time: 48.852
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 48.723
+    elapsed_time: 5.595
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 5.468
 - command: Turn off the air purifier.
   devices:
-  - AirPurifier
   - Humidifier
-  - Pump
-  - Dehumidifier
-  - AirConditioner
-  - Dishwasher
-  - WeatherProvider
-  - AirQualityDetector
-  - RobotCleaner
   - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - RobotCleaner
+  - AirQualityDetector
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#AirPurifier).switch_switch == "on") {
-        (#AirPurifier).switch_off()
-      }
+      (#AirPurifier).switch_off()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      (#AirPurifier).switch_off()
   model_info:
-    elapsed_time: 4.43
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 4.306
+    elapsed_time: 4.853
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 4.73
 - command: Turn on the air purifier.
   devices:
-  - AirPurifier
   - Humidifier
-  - Pump
-  - Dehumidifier
-  - AirConditioner
-  - Dishwasher
-  - WeatherProvider
-  - AirQualityDetector
-  - RobotCleaner
   - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - RobotCleaner
+  - AirQualityDetector
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -530,45 +572,49 @@
     code: |-
       (#AirPurifier).switch_on()
   model_info:
-    elapsed_time: 3.679
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.556
+    elapsed_time: 3.677
+    bge_elapsed_time: 0.122
+    llm_elapsed_time: 3.554
 - command: Toggle the air purifier's power.
   devices:
-  - AirPurifier
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Light
-  - AirConditioner
-  - Dishwasher
-  - AirQualityDetector
   - Irrigator
+  - Humidifier
   - Clock
+  - Dishwasher
+  - AirConditioner
+  - SmartPlug
   - Fan
+  - Light
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#AirPurifier).switch_toggle()
+      if ((#AirPurifier).switch_switch == "on") {
+        (#AirPurifier).switch_off()
+      } else {
+        (#AirPurifier).switch_on()
+      }
   model_info:
-    elapsed_time: 3.627
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.503
+    elapsed_time: 5.186
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 5.061
 - command: Set the air purifier's mode to automatic.
   devices:
-  - AirPurifier
-  - Shade
   - Humidifier
-  - Pump
-  - Dehumidifier
-  - AirConditioner
-  - Dishwasher
-  - AirQualityDetector
-  - RobotCleaner
   - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
+  - Shade
   - Fan
+  - RobotCleaner
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -578,47 +624,47 @@
         (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode("auto")
       }
   model_info:
-    elapsed_time: 5.297
+    elapsed_time: 5.291
     bge_elapsed_time: 0.126
-    llm_elapsed_time: 5.172
+    llm_elapsed_time: 5.165
 - command: Sound the alarm's siren when the air quality meter reads 20 degrees.
   devices:
   - Alarm
-  - AirPurifier
-  - SoundSensor
+  - LightSensor
   - TemperatureSensor
+  - Siren
+  - Clock
   - AirConditioner
   - HumiditySensor
-  - Siren
-  - WeatherProvider
+  - SoundSensor
   - AirQualityDetector
-  - Clock
-  - LightSensor
+  - AirPurifier
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#AirQualityDetector).temperatureMeasurement_temperatureRange == 20.0) {
+      if ((#AirQualityDetector).temperatureMeasurement_temperature == 20.0) {
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.358
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.228
+    elapsed_time: 4.492
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.36
 - command: Sound the alarm's siren when the carbon dioxide concentration is above 800 ppm.
   devices:
   - Alarm
+  - TemperatureSensor
   - LeakSensor
-  - SoundSensor
+  - Siren
+  - Relay
+  - Clock
   - FallDetector
   - Charger
-  - TemperatureSensor
-  - Relay
-  - Siren
-  - WeatherProvider
+  - SoundSensor
   - AirQualityDetector
-  - Clock
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -628,72 +674,71 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.423
-    bge_elapsed_time: 0.131
+    elapsed_time: 4.424
+    bge_elapsed_time: 0.132
     llm_elapsed_time: 4.292
 - command: Sound the alarm's siren when the relative humidity on the air quality meter is above 70 percent.
   devices:
   - Alarm
-  - LeakSensor
-  - SoundSensor
-  - Humidifier
-  - SoilMoistureSensor
   - TemperatureSensor
-  - HumiditySensor
+  - Humidifier
+  - LeakSensor
   - Siren
-  - WeatherProvider
-  - AirQualityDetector
   - Clock
+  - HumiditySensor
+  - SoundSensor
+  - AirQualityDetector
+  - SoilMoistureSensor
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#AirQualityDetector).relativeHumidityMeasurement_humidity > 70.0) {
-        (#Alarm).alarm_siren()
-      }
+      wait until((#AirQualityDetector).relativeHumidityMeasurement_humidity > 70.0)
+      (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.279
-    bge_elapsed_time: 0.138
-    llm_elapsed_time: 4.141
+    elapsed_time: 4.136
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.004
 - command: Sound the alarm's siren when the indoor sulfur dust concentration is 150 micrograms or more.
   devices:
   - Alarm
-  - AirPurifier
-  - LeakSensor
-  - SoundSensor
-  - TemperatureSensor
-  - HumiditySensor
-  - Siren
-  - WeatherProvider
-  - AirQualityDetector
-  - Clock
   - LightSensor
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Clock
+  - HumiditySensor
+  - SoundSensor
+  - AirQualityDetector
+  - AirPurifier
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#AirQualityDetector).dustSensor_dustLevel >= 150.0) {
+      if ((#AirQualityDetector).dustSensor_dustLevel > 150.0) {
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.349
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 4.217
+    elapsed_time: 4.337
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.205
 - command: Sound the alarm's siren when indoor particulate matter levels are 35 micrograms or higher.
   devices:
   - Alarm
-  - AirPurifier
-  - SoundSensor
+  - LightSensor
   - TemperatureSensor
+  - Siren
+  - Clock
   - AirConditioner
   - HumiditySensor
-  - Siren
-  - WeatherProvider
+  - SoundSensor
   - AirQualityDetector
-  - Clock
-  - LightSensor
+  - AirPurifier
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -703,47 +748,46 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.376
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.244
+    elapsed_time: 4.381
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.249
 - command: Sound the alarm's siren when the indoor particulate matter concentration is 15 micrograms or more.
   devices:
   - Alarm
-  - AirPurifier
-  - LeakSensor
-  - SoundSensor
   - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Clock
   - AirConditioner
   - HumiditySensor
-  - Siren
-  - WeatherProvider
+  - SoundSensor
   - AirQualityDetector
-  - Clock
+  - AirPurifier
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#AirQualityDetector).dustSensor_dustLevel >= 15.0) {
-        (#Alarm).alarm_siren()
-      }
+      wait until((#AirQualityDetector).dustSensor_dustLevel >= 15.0)
+      (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.391
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.26
+    elapsed_time: 4.262
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.13
 - command: Sound the alarm's siren if the total volatile organic compound concentration is greater than 0.5 ppm.
   devices:
-  - Alarm
-  - LeakSensor
-  - SoundSensor
-  - Charger
-  - TemperatureSensor
-  - Relay
-  - HumiditySensor
-  - Siren
   - Irrigator
-  - AirQualityDetector
+  - Alarm
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Relay
   - Clock
+  - Charger
+  - HumiditySensor
+  - SoundSensor
+  - AirQualityDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -753,22 +797,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.329
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.195
+    elapsed_time: 4.322
+    bge_elapsed_time: 0.135
+    llm_elapsed_time: 4.187
 - command: Sound the alarm's siren when the alarm is in strobe mode.
   devices:
   - Alarm
   - Window
-  - Curtain
-  - Shade
-  - SoundSensor
-  - Relay
-  - Light
   - Blind
   - Siren
+  - Relay
   - Clock
+  - Light
+  - Curtain
+  - SoundSensor
   - SmokeDetector
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -778,47 +822,40 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.127
+    elapsed_time: 4.129
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.997
+    llm_elapsed_time: 3.998
 - command: If the volume of the alarm is high, sound the alarm's siren.
   devices:
   - Alarm
-  - Button
   - Window
-  - LeakSensor
-  - SoundSensor
-  - Curtain
-  - Relay
   - Blind
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
   - Valve
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Alarm).alarm_alarmVolume == "high") {
-        (#Alarm).alarm_siren()
-      }
+  - Curtain
+  - Button
+  - SoundSensor
+  generated_code: []
   model_info:
-    elapsed_time: 4.029
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 3.897
+    elapsed_time: 2.15
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 2.019
 - command: Sound the alarm's siren when the alarm battery is below 20 percent.
   devices:
   - Alarm
   - Window
-  - LeakSensor
-  - SoundSensor
-  - Relay
-  - Charger
   - TemperatureSensor
-  - Switch
-  - HumiditySensor
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - HumiditySensor
+  - SoundSensor
+  - Charger
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -828,50 +865,45 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.913
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 3.782
+    elapsed_time: 3.916
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 3.784
 - command: Turn on both the alarm's siren and lights.
   devices:
   - Alarm
-  - Curtain
-  - Window
-  - Buttonx4
-  - Light
-  - Relay
-  - Camera
   - Blind
-  - Siren
-  - Clock
   - LightSensor
+  - Buttonx4
+  - Window
+  - Siren
+  - Relay
+  - Clock
+  - Light
+  - Curtain
+  - Camera
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       (#Alarm).alarm_both()
-  - name: "Scenario2"
-    cron: ""
-    period: -1
-    code: |-
-      (#Alarm).alarm_both()
   model_info:
-    elapsed_time: 4.575
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.448
+    elapsed_time: 3.414
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.286
 - command: Turn off the alarm.
   devices:
   - Alarm
-  - Curtain
-  - Relay
-  - Light
-  - Switch
-  - DoorLock
-  - Camera
   - Blind
   - Siren
-  - WeatherProvider
+  - Relay
   - Clock
+  - DoorLock
+  - Light
+  - Curtain
+  - Camera
+  - Switch
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -879,63 +911,68 @@
     code: |-
       (#Alarm).alarm_off()
   model_info:
-    elapsed_time: 3.399
+    elapsed_time: 3.387
     bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.277
+    llm_elapsed_time: 3.264
 - command: Set the volume of the alarm to low.
   devices:
   - Alarm
-  - AirPurifier
-  - SoundSensor
-  - Buttonx4
-  - Light
-  - Relay
-  - Recorder
   - Blind
+  - Recorder
+  - Buttonx4
   - Siren
+  - Relay
   - Clock
   - Fan
+  - Light
+  - SoundSensor
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Alarm).alarm_setAlarmVolume("low")
+      (#Alarm).alarm_setAlarmVolume(low)
   model_info:
-    elapsed_time: 3.695
+    elapsed_time: 3.792
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.567
+    llm_elapsed_time: 3.665
 - command: Sound the alarm's siren.
   devices:
   - Alarm
-  - Button
-  - Curtain
-  - LeakSensor
   - Window
   - Buttonx4
-  - DoorLock
-  - Relay
-  - Camera
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
-  generated_code: []
+  - DoorLock
+  - Curtain
+  - Button
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 2.224
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 2.1
+    elapsed_time: 3.319
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 3.194
 - command: Turn on the alarm's light.
   devices:
   - Alarm
-  - Curtain
-  - Light
-  - Relay
-  - Camera
-  - DoorLock
   - Blind
-  - Siren
-  - WeatherProvider
-  - Clock
   - LightSensor
+  - Siren
+  - Relay
+  - Clock
+  - DoorLock
+  - Light
+  - Curtain
+  - Camera
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -943,49 +980,40 @@
     code: |-
       (#Alarm).alarm_strobe()
   model_info:
-    elapsed_time: 3.435
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.309
+    elapsed_time: 3.509
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 3.383
 - command: Sound the alarm's siren when the blinds are more than 50 percent open.
   devices:
   - Alarm
-  - Window
-  - Shade
-  - Curtain
-  - Relay
-  - DoorLock
-  - ContactSensor
   - Blind
+  - Window
   - Siren
+  - Relay
   - Clock
   - Valve
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Blind).blind_blind == "open") {
-        if ((#Blind).blindLevel_blindLevel > 50.0) {
-          (#Alarm).alarm_siren()
-        }
-      }
+  - DoorLock
+  - ContactSensor
+  - Curtain
+  - Shade
+  generated_code: []
   model_info:
-    elapsed_time: 4.994
-    bge_elapsed_time: 0.133
-    llm_elapsed_time: 4.861
+    elapsed_time: 2.146
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 2.012
 - command: Sound the alarm's siren when the blinds are open.
   devices:
-  - Window
   - Alarm
-  - Shade
-  - Curtain
-  - Relay
-  - DoorLock
-  - ContactSensor
   - Blind
+  - Window
   - Siren
+  - Relay
   - Clock
   - Valve
+  - DoorLock
+  - ContactSensor
+  - Curtain
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -995,114 +1023,114 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.952
+    elapsed_time: 3.973
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.822
+    llm_elapsed_time: 3.843
 - command: Set the blinds to 70 percent.
   devices:
+  - Blind
+  - LightSensor
+  - Buttonx4
+  - Siren
+  - Relay
+  - Clock
+  - Fan
+  - Light
+  - HumiditySensor
   - Curtain
   - Shade
-  - Buttonx4
-  - Light
-  - Relay
-  - Blind
-  - HumiditySensor
-  - Siren
-  - Clock
-  - LightSensor
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Blind).blindLevel_blindLevel != 70.0)
-      (#Blind).blindLevel_setBlindLevel(70)
+      if (all(#Blind).blindLevel_setBlindLevel(70)) {
+        all(#Blind).blindLevel_setBlindLevel(70)
+      }
   model_info:
-    elapsed_time: 4.576
+    elapsed_time: 4.674
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 4.45
+    llm_elapsed_time: 4.547
 - command: Close the blinds.
   devices:
+  - Blind
   - Alarm
-  - Curtain
-  - Shade
   - Window
+  - Clock
+  - Relay
+  - Valve
+  - DoorLock
+  - Curtain
   - Button
   - GasValve
-  - DoorLock
-  - Relay
+  - Shade
+  generated_code: []
+  model_info:
+    elapsed_time: 48.734
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 48.61
+- command: Open the blinds.
+  devices:
   - Blind
+  - Window
+  - Alarm
+  - Buttonx4
   - Clock
+  - Relay
   - Valve
+  - DoorLock
+  - Curtain
+  - Button
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Blind).blind_close()
+      if ((#Blind).blind_blind == "closed") {
+        (#Blind).blind_open()
+      }
   model_info:
-    elapsed_time: 3.231
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.107
-- command: Open the blinds.
-  devices:
-  - Button
-  - Curtain
-  - Shade
-  - Window
-  - Alarm
-  - Buttonx4
-  - DoorLock
-  - Relay
-  - Blind
-  - Clock
-  - Valve
-  generated_code: []
-  model_info:
-    elapsed_time: 2.216
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 2.092
+    elapsed_time: 4.35
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 4.225
 - command: Stop blind movement.
   devices:
   - Alarm
+  - Blind
+  - Buttonx4
+  - MotionSensor
+  - Siren
+  - Relay
+  - Clock
   - Curtain
   - Button
-  - Shade
-  - MotionSensor
-  - Buttonx4
-  - Relay
   - Camera
-  - Blind
-  - Siren
-  - Clock
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Blind).blind_blind == "closing") {
-        (#Blind).blind_pause()
-      }
-      if ((#Blind).blind_blind == "opening") {
-        (#Blind).blind_pause()
+      if ((#Blind).blind_blind == "open") {
+        (#Blind).blind_close()
       }
   model_info:
-    elapsed_time: 5.264
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 5.136
+    elapsed_time: 4.177
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 4.05
 - command: Sound the alarm's siren when the button is pressed.
   devices:
   - Alarm
-  - Button
-  - LeakSensor
-  - SoundSensor
   - Buttonx4
-  - Relay
-  - DoorLock
-  - Camera
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - Button
+  - Camera
+  - SoundSensor
   - Timer
   generated_code:
   - name: "Scenario1"
@@ -1113,22 +1141,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.042
+    elapsed_time: 4.11
     bge_elapsed_time: 0.129
-    llm_elapsed_time: 3.913
+    llm_elapsed_time: 3.981
 - command: If there are more than four buttons, sound the alarm's siren.
   devices:
   - Alarm
-  - Button
-  - Curtain
-  - LeakSensor
-  - SoundSensor
   - Window
   - Buttonx4
-  - Relay
   - TemperatureSensor
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - Curtain
+  - Button
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1138,48 +1166,44 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.23
-    bge_elapsed_time: 0.158
-    llm_elapsed_time: 4.072
+    elapsed_time: 4.263
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 4.134
 - command: Output the states supported by the button to the speaker.
   devices:
-  - Button
   - Alarm
-  - SoundSensor
-  - Buttonx4
-  - Speaker
-  - DoorLock
-  - Switch
   - Recorder
+  - Buttonx4
   - Siren
   - Clock
+  - DoorLock
   - Fan
+  - Speaker
+  - Button
+  - SoundSensor
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Button).button_supportedButtonValues == "") {
-        (#Speaker).mediaPlayback_speak("The button does not support any state.")
-      } else {
-        (#Speaker).mediaPlayback_speak("The button supports the following states: " + (#Button).button_supportedButtonValues)
-      }
+      (#Speaker).mediaPlayback_speak("The supported button values are pushed|held|double|pushed_2x|pushed_3x|pushed_4x|pushed_5x|pushed_6x|down|down_2x|down_3x|down_4x|down_5x|down_6x|down_hold|up|up_2x|up_3x|up_4x|up_5x|up_6x|up_hold|swipe_up|swipe_down|swipe_left|swipe_right.")
   model_info:
-    elapsed_time: 5.957
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 5.83
+    elapsed_time: 8.616
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 8.486
 - command: Sound the alarm's siren when button 1 is pressed.
   devices:
   - Alarm
-  - Button
-  - Curtain
-  - LeakSensor
-  - SoundSensor
   - Window
   - Buttonx4
-  - Relay
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - Curtain
+  - Button
+  - SoundSensor
   - Timer
   generated_code:
   - name: "Scenario1"
@@ -1190,22 +1214,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.024
+    elapsed_time: 4.073
     bge_elapsed_time: 0.129
-    llm_elapsed_time: 3.895
+    llm_elapsed_time: 3.944
 - command: Sound the alarm's siren when button 2 is pressed.
   devices:
   - Alarm
-  - Button
   - Window
-  - Curtain
-  - SoundSensor
-  - LeakSensor
   - Buttonx4
-  - Relay
-  - DoorLock
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - Curtain
+  - Button
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1215,70 +1239,70 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.985
+    elapsed_time: 4.028
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.855
+    llm_elapsed_time: 3.898
 - command: When button 3 is pressed twice, sound the alarm's siren.
   devices:
-  - Button
   - Alarm
-  - Curtain
   - Window
-  - SoundSensor
-  - LeakSensor
   - Buttonx4
-  - Relay
-  - DoorLock
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - Curtain
+  - Button
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Buttonx4).buttonx4_button3 == "pushed_2x")
+      wait until((#Button).button_button == "pushed_2x")
       (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.185
+    elapsed_time: 3.992
     bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.054
+    llm_elapsed_time: 3.861
 - command: When button 4 is swiped up, sound the alarm's siren.
   devices:
-  - Button
   - Alarm
-  - SoundSensor
-  - Pump
   - Buttonx4
-  - Relay
-  - DoorLock
-  - Switch
-  - Camera
   - Siren
+  - Relay
+  - Pump
   - Clock
+  - DoorLock
+  - Button
+  - Camera
+  - SoundSensor
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Buttonx4).buttonx4_button4 == "swipe_up")
+      wait until((#Button).button_button == "swipe_up")
       (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.302
+    elapsed_time: 4.19
     bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.171
+    llm_elapsed_time: 4.059
 - command: If the number of buttons is 4, sound the alarm's siren.
   devices:
   - Alarm
-  - Button
-  - Curtain
-  - LeakSensor
-  - SoundSensor
   - Window
   - Buttonx4
-  - Relay
-  - Light
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - Curtain
+  - Light
+  - Button
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1288,78 +1312,78 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.366
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 4.238
+    elapsed_time: 4.4
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 4.271
 - command: Output the states supported by the four buttons to the speaker.
   devices:
-  - Button
   - Alarm
-  - SoundSensor
-  - Pump
-  - Buttonx4
-  - Speaker
-  - DoorLock
-  - Switch
   - Recorder
+  - Buttonx4
   - Clock
+  - Pump
+  - DoorLock
   - Fan
+  - Speaker
+  - Button
+  - SoundSensor
+  - Switch
   generated_code: []
   model_info:
-    elapsed_time: 49.668
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 49.538
+    elapsed_time: 49.652
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 49.521
 - command: Add 5 and 3.
   devices:
-  - Button
-  - Curtain
-  - Buttonx4
-  - DoorLock
-  - Camera
-  - EmailProvider
   - Irrigator
+  - Buttonx4
   - Clock
-  - Calculator
+  - DoorLock
   - Fan
+  - Curtain
+  - Camera
+  - Button
+  - EmailProvider
+  - Calculator
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      add = 5 + 3
+      sum = calculator_add(5.0, 3.0)
   model_info:
-    elapsed_time: 3.368
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.245
+    elapsed_time: 3.692
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.568
 - command: Divide 10 by 2.
   devices:
-  - Button
   - Buttonx4
+  - Clock
   - DoorLock
   - Camera
-  - Clock
+  - Button
   - Calculator
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      result = (#Calculator).calculator_div(10.0, 2.0)
+      (#Calculator).calculator_div(10.0, 2.0)
   model_info:
-    elapsed_time: 3.584
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.462
+    elapsed_time: 3.483
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.36
 - command: Find the remainder of 10 divided by 3.
   devices:
   - Window
-  - Curtain
-  - Button
-  - Buttonx4
-  - DoorLock
-  - Camera
   - Blind
+  - Buttonx4
   - Clock
+  - DoorLock
+  - Curtain
+  - Camera
   - RobotCleaner
+  - Button
   - Calculator
   generated_code:
   - name: "Scenario1"
@@ -1368,15 +1392,15 @@
     code: |-
       result = calculator_mod(10.0, 3.0)
   model_info:
-    elapsed_time: 3.762
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.637
+    elapsed_time: 3.731
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 3.606
 - command: Multiply 7 and 8.
   devices:
-  - Button
   - Buttonx4
-  - Camera
   - Clock
+  - Camera
+  - Button
   - Calculator
   generated_code:
   - name: "Scenario1"
@@ -1385,43 +1409,43 @@
     code: |-
       result = (#Calculator).calculator_mul(7.0, 8.0)
   model_info:
-    elapsed_time: 3.492
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.369
+    elapsed_time: 3.496
+    bge_elapsed_time: 0.143
+    llm_elapsed_time: 3.353
 - command: Subtract 4 from 15.
   devices:
-  - Button
-  - Curtain
-  - Buttonx4
-  - DoorLock
-  - Camera
   - Blind
+  - Buttonx4
   - Clock
-  - Calculator
+  - DoorLock
   - Fan
+  - Curtain
+  - Camera
+  - Button
+  - Calculator
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      15 = 15 - 4
+      result = 15 - 4
   model_info:
-    elapsed_time: 3.37
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.248
+    elapsed_time: 3.311
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.188
 - command: Sound the alarm's siren when the camera is powered on.
   devices:
   - Alarm
-  - LeakSensor
-  - SoundSensor
-  - Relay
-  - Light
-  - Switch
-  - Camera
-  - Charger
   - Recorder
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - Light
+  - Camera
+  - SoundSensor
+  - Charger
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1431,22 +1455,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.083
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 3.953
+    elapsed_time: 4.071
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 3.941
 - command: Send an email with your most recent photo as an attachment to test@example.com with the subject line "Photo" and the content "This is a photo".
   devices:
-  - Button
-  - SoundSensor
-  - DoorLock
-  - TemperatureSensor
-  - Camera
   - Recorder
+  - TemperatureSensor
+  - MenuProvider
+  - Clock
+  - DoorLock
   - Charger
   - ContactSensor
+  - Camera
+  - Button
+  - SoundSensor
   - EmailProvider
-  - Clock
-  - MenuProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1454,46 +1478,44 @@
     code: |-
       (#EmailProvider).emailProvider_sendMailWithFile("test@example.clock_isHoliday", "Photo", "This is a photo", (#Camera).camera_image)
   model_info:
-    elapsed_time: 4.414
-    bge_elapsed_time: 0.14
-    llm_elapsed_time: 4.274
+    elapsed_time: 4.416
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 4.264
 - command: Send an email with your most recent video as an attachment to test@example.com with the subject line "Video" and the content "This is a video.
   devices:
-  - Button
   - Feeder
-  - DoorLock
-  - TemperatureSensor
-  - Camera
   - Recorder
-  - EmailProvider
+  - TemperatureSensor
+  - MenuProvider
   - Clock
   - Valve
-  - MenuProvider
+  - DoorLock
+  - Camera
+  - Button
+  - EmailProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Camera).camera_image != null) {
-        (#EmailProvider).emailProvider_sendMailWithFile("test@example.clock_isHoliday", "Video", "This is a video.", (#Camera).camera_image)
-      }
+      (#EmailProvider).emailProvider_sendMailWithFile("test@example.clock_isHoliday", "Video", "This is a video.", (#Camera).camera_video)
   model_info:
-    elapsed_time: 5.114
+    elapsed_time: 4.401
     bge_elapsed_time: 0.141
-    llm_elapsed_time: 4.973
+    llm_elapsed_time: 4.259
 - command: Turn off the camera.
   devices:
-  - Curtain
-  - Dehumidifier
-  - Relay
-  - Light
-  - Camera
-  - Recorder
-  - Speaker
   - Blind
-  - WeatherProvider
+  - Recorder
   - Siren
+  - Relay
   - Clock
+  - Light
+  - Speaker
+  - Camera
+  - Curtain
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1501,22 +1523,22 @@
     code: |-
       (#Camera).switch_off()
   model_info:
-    elapsed_time: 3.524
+    elapsed_time: 3.516
     bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.402
+    llm_elapsed_time: 3.394
 - command: Turn on the camera.
   devices:
+  - LightSensor
+  - Recorder
+  - Buttonx4
+  - Siren
+  - Relay
+  - Clock
+  - Fan
+  - Light
+  - Camera
   - Button
   - Dehumidifier
-  - Buttonx4
-  - Light
-  - Relay
-  - Camera
-  - Recorder
-  - Siren
-  - Clock
-  - LightSensor
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1524,22 +1546,22 @@
     code: |-
       (#Camera).switch_on()
   model_info:
-    elapsed_time: 3.611
+    elapsed_time: 3.511
     bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.489
+    llm_elapsed_time: 3.389
 - command: Toggle the camera's power.
   devices:
-  - Button
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Light
-  - Charger
-  - Camera
-  - Dishwasher
   - Irrigator
+  - Humidifier
   - Clock
+  - Dishwasher
+  - SmartPlug
   - Fan
+  - Light
+  - Camera
+  - Button
+  - Charger
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1547,22 +1569,22 @@
     code: |-
       (#Camera).switch_toggle()
   model_info:
-    elapsed_time: 3.532
+    elapsed_time: 3.538
     bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.408
+    llm_elapsed_time: 3.415
 - command: Take a photo with your camera.
   devices:
+  - LightSensor
+  - Buttonx4
+  - Recorder
+  - TemperatureSensor
+  - Clock
+  - Fan
+  - Light
+  - Camera
   - Button
   - Dehumidifier
-  - Buttonx4
-  - Light
-  - TemperatureSensor
-  - Camera
-  - Recorder
-  - Clock
   - Calculator
-  - LightSensor
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1570,39 +1592,40 @@
     code: |-
       (#Camera).camera_take()
   model_info:
-    elapsed_time: 3.503
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 3.382
+    elapsed_time: 3.508
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.385
 - command: Take a time-lapse video with your camera at speed 2 for 10 seconds.
   devices:
-  - Button
-  - Camera
   - Recorder
   - Clock
   - Fan
+  - Camera
+  - Button
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Camera).camera_takeTimelapse(duration = 10.0, speed = 2.0))
+      wait until((#Camera).switch_switch == "on")
+      (#Camera).camera_takeTimelapse(10.0, 2.0)
   model_info:
-    elapsed_time: 3.765
+    elapsed_time: 4.01
     bge_elapsed_time: 0.129
-    llm_elapsed_time: 3.636
+    llm_elapsed_time: 3.881
 - command: Sound the alarm's siren if the charger's voltage is above 230 volts.
   devices:
+  - Irrigator
   - Alarm
-  - SmartPlug
+  - TemperatureSensor
   - LeakSensor
+  - Siren
+  - Relay
+  - Clock
+  - SmartPlug
   - SoundSensor
   - Charger
-  - Relay
   - Switch
-  - TemperatureSensor
-  - Siren
-  - Irrigator
-  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1612,22 +1635,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.241
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.11
+    elapsed_time: 4.213
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.082
 - command: Sound an alarm siren when the charger's status is charging.
   devices:
   - Alarm
+  - Recorder
   - LeakSensor
+  - Siren
+  - Relay
+  - Clock
+  - Valve
   - SoundSensor
   - Charger
-  - Relay
   - Switch
-  - Recorder
-  - Siren
-  - Clock
   - SmokeDetector
-  - Valve
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1637,22 +1660,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.952
+    elapsed_time: 3.932
     bge_elapsed_time: 0.129
-    llm_elapsed_time: 3.824
+    llm_elapsed_time: 3.803
 - command: Sound the alarm's siren if the charger is drawing more than 10 amps.
   devices:
+  - Irrigator
   - Alarm
+  - TemperatureSensor
+  - Siren
+  - Relay
+  - Clock
   - SmartPlug
+  - Fan
   - SoundSensor
   - Charger
-  - Relay
-  - TemperatureSensor
   - Switch
-  - Siren
-  - Irrigator
-  - Clock
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1662,39 +1685,44 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.221
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.09
+    elapsed_time: 4.204
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.072
 - command: Output the status supported by the charger to the speaker.
   devices:
+  - Irrigator
   - Alarm
+  - Recorder
+  - Clock
+  - Relay
   - SmartPlug
-  - SoundSensor
+  - Fan
   - Speaker
+  - SoundSensor
   - Charger
   - Switch
-  - Recorder
-  - Relay
-  - Irrigator
-  - Clock
-  - Fan
-  generated_code: []
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak((#Charger).chargingState_supportedChargingStates)
   model_info:
-    elapsed_time: 2.256
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 2.127
+    elapsed_time: 3.827
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.7
 - command: If today's date is May 12, 2025, sound the alarm siren.
   devices:
   - Alarm
   - Window
-  - Curtain
-  - DoorLock
-  - Relay
+  - SmokeDetector
   - TemperatureSensor
   - Siren
-  - WeatherProvider
   - Clock
-  - SmokeDetector
+  - Relay
+  - DoorLock
+  - Curtain
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1704,45 +1732,55 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.186
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.056
+    elapsed_time: 4.184
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.053
 - command: If the current time is 3:15 PM on May 12, 2025, sound the alarm's siren.
   devices:
   - Alarm
   - Window
-  - Curtain
-  - DoorLock
-  - Relay
   - TemperatureSensor
   - Siren
-  - WeatherProvider
   - Clock
+  - Relay
+  - DoorLock
+  - Curtain
   - Timer
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Clock).clock_hour == 15 and (#Clock).clock_minute == 15 and (#Clock).clock_day == 12 and (#Clock).clock_month == 5 and (#Clock).clock_year == 2025) {
+      if (
+        ((#Clock).clock_hour == 15)
+        and
+        ((#Clock).clock_minute == 30)
+        and
+        ((#Clock).clock_day == 5)
+        and
+        ((#Clock).clock_month == 6)
+        and
+        ((#Clock).clock_year == 2025)
+      ) {
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 6.038
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 5.904
+    elapsed_time: 7.267
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 7.134
 - command: If today is the 20th, sound the alarm siren
   devices:
   - Alarm
   - Window
-  - DoorLock
-  - Relay
-  - TemperatureSensor
-  - Camera
-  - Siren
-  - WeatherProvider
-  - Clock
   - LightSensor
+  - TemperatureSensor
+  - Siren
+  - Clock
+  - Relay
+  - DoorLock
+  - Camera
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1752,21 +1790,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.905
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.779
+    elapsed_time: 3.865
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.738
 - command: If the current time is 3pm, sound the alarm's siren.
   devices:
-  - Alarm
   - Window
-  - Curtain
-  - DoorLock
-  - Relay
-  - TemperatureSensor
+  - Alarm
   - Recorder
+  - TemperatureSensor
   - Siren
-  - WeatherProvider
   - Clock
+  - Relay
+  - DoorLock
+  - Curtain
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1776,21 +1814,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.932
+    elapsed_time: 3.942
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.805
+    llm_elapsed_time: 3.815
 - command: If today is a holiday, sound the alarm's siren.
   devices:
   - Alarm
   - Window
-  - Curtain
-  - Relay
-  - DoorLock
-  - Camera
   - Recorder
   - Siren
-  - WeatherProvider
+  - Relay
   - Clock
+  - DoorLock
+  - Curtain
+  - Camera
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1801,44 +1839,44 @@
       }
   model_info:
     elapsed_time: 3.901
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.774
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.773
 - command: If it's 30 minutes from now, sound the alarm's siren.
   devices:
   - Alarm
-  - Curtain
-  - SoundSensor
-  - DoorLock
-  - TemperatureSensor
-  - Camera
   - Recorder
+  - TemperatureSensor
   - Siren
-  - WeatherProvider
   - Clock
+  - DoorLock
+  - Curtain
+  - Camera
+  - SoundSensor
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
-    period: 100
+    period: 1000
     code: |-
-      if ((#Clock).clock_delay(1800)) {
+      if ((#Clock).clock_time == 1530) {
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.1
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.974
+    elapsed_time: 4.23
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 4.103
 - command: If it's May, sound the alarm siren.
   devices:
   - Alarm
   - Window
-  - Curtain
-  - DoorLock
-  - TemperatureSensor
-  - Camera
   - Recorder
+  - TemperatureSensor
   - Siren
-  - WeatherProvider
   - Clock
+  - DoorLock
+  - Curtain
+  - Camera
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1848,20 +1886,20 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.988
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.862
+    elapsed_time: 3.987
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.86
 - command: If it's 40 seconds now, sound the alarm's siren.
   devices:
   - Alarm
-  - SoundSensor
-  - Buttonx4
-  - DoorLock
-  - TemperatureSensor
-  - Camera
   - Recorder
+  - Buttonx4
+  - TemperatureSensor
   - Siren
   - Clock
+  - DoorLock
+  - Camera
+  - SoundSensor
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -1872,21 +1910,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.02
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.893
+    elapsed_time: 4.024
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.897
 - command: If it's 3:15pm, blare the siren on your alarm.
   devices:
   - Alarm
   - Window
-  - DoorLock
-  - TemperatureSensor
-  - Relay
-  - Camera
   - Recorder
+  - TemperatureSensor
   - Siren
-  - WeatherProvider
   - Clock
+  - Relay
+  - DoorLock
+  - Camera
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1896,21 +1934,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.502
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 4.373
+    elapsed_time: 4.508
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.378
 - command: If the current Unix timestamp is 1747031637.23, sound the alarm siren.
   devices:
   - Alarm
   - Window
-  - SoundSensor
-  - DoorLock
-  - TemperatureSensor
   - Recorder
+  - LightSensor
+  - TemperatureSensor
   - Siren
   - Clock
+  - DoorLock
+  - SoundSensor
   - Timer
-  - LightSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1920,21 +1958,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.331
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.2
+    elapsed_time: 4.353
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.221
 - command: If today is Friday, sound the alarm siren.
   devices:
   - Alarm
   - Window
-  - SoundSensor
-  - DoorLock
-  - Relay
-  - TemperatureSensor
   - Recorder
+  - TemperatureSensor
   - Siren
-  - WeatherProvider
   - Clock
+  - Relay
+  - DoorLock
+  - SoundSensor
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1944,21 +1982,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.851
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.724
+    elapsed_time: 3.87
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.742
 - command: If the year is 2025, sound the alarm siren.
   devices:
   - Alarm
   - Window
-  - DoorLock
-  - Relay
-  - Light
-  - Switch
-  - Camera
   - Siren
-  - WeatherProvider
+  - Relay
   - Clock
+  - DoorLock
+  - Light
+  - Camera
+  - Switch
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -1968,44 +2006,44 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.176
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.051
+    elapsed_time: 4.195
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.065
 - command: Sound the alarm's siren in 1 hour, 20 minutes, 30 seconds
   devices:
   - Alarm
   - Window
-  - Curtain
-  - DoorLock
-  - Relay
-  - Camera
   - Siren
-  - WeatherProvider
   - Clock
+  - Relay
+  - DoorLock
+  - Curtain
+  - Camera
   - Timer
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
-    period: 1000
+    period: 100
     code: |-
       wait until((#Clock).clock_delay(hour: 1, minute: 20, second: 30))
       (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.612
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 4.484
+    elapsed_time: 4.589
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 4.46
 - command: Sound the alarm's siren when the contact sensor is in contact.
   devices:
-  - Alarm
   - PresenceSensor
-  - LeakSensor
-  - SoundSensor
-  - FallDetector
+  - Alarm
   - MotionSensor
   - TemperatureSensor
-  - ContactSensor
+  - LeakSensor
   - Siren
   - Clock
+  - FallDetector
+  - ContactSensor
+  - SoundSensor
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -2016,22 +2054,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.833
+    elapsed_time: 3.853
     bge_elapsed_time: 0.131
-    llm_elapsed_time: 3.702
+    llm_elapsed_time: 3.722
 - command: Sound the alarm's siren when the curtain is open.
   devices:
-  - Window
   - Alarm
-  - Curtain
-  - Shade
-  - DoorLock
-  - Relay
-  - ContactSensor
   - Blind
+  - Window
   - Siren
+  - Relay
   - Clock
   - Valve
+  - DoorLock
+  - ContactSensor
+  - Curtain
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2041,95 +2079,65 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.116
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 3.988
+    elapsed_time: 4.13
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 4.001
 - command: Output the states supported by the curtain to the speakers.
   devices:
-  - Alarm
-  - Curtain
-  - Window
-  - SoundSensor
-  - DoorLock
-  - Speaker
-  - ContactSensor
   - Blind
+  - Alarm
+  - Window
   - Siren
   - Clock
+  - DoorLock
+  - ContactSensor
   - Fan
+  - Speaker
+  - Curtain
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Curtain).curtain_supportedCurtainCommands != "") {
-        (#Speaker).mediaPlayback_speak((#Curtain).curtain_supportedCurtainCommands)
+      if ((#Curtain).curtain_curtain == "closed") {
+        (#Speaker).mediaPlayback_speak("The curtain is closed.")
+      }
+      if ((#Curtain).curtain_curtain == "closing") {
+        (#Speaker).mediaPlayback_speak("The curtain is closing.")
+      }
+      if ((#Curtain).curtain_curtain == "open") {
+        (#Speaker).mediaPlayback_speak("The curtain is open.")
+      }
+      if ((#Curtain).curtain_curtain == "opening") {
+        (#Speaker).mediaPlayback_speak("The curtain is opening.")
+      }
+      if ((#Curtain).curtain_curtain == "partially") {
+        (#Speaker).mediaPlayback_speak("The curtain is partially open.")
+      }
+      if ((#Curtain).curtain_curtain == "paused") {
+        (#Speaker).mediaPlayback_speak("The curtain is paused.")
+      }
+      if ((#Curtain).curtain_curtain == "unknown") {
+        (#Speaker).mediaPlayback_speak("The curtain is unknown.")
       }
   model_info:
-    elapsed_time: 4.75
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.624
+    elapsed_time: 13.68
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 13.553
 - command: Close the curtain.
   devices:
   - Window
-  - Curtain
-  - AirPurifier
+  - Blind
   - Humidifier
-  - Dehumidifier
-  - DoorLock
-  - Camera
-  - ContactSensor
-  - AirConditioner
-  - Blind
   - Clock
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Curtain).curtain_curtain == "open") {
-        (#Curtain).curtain_close()
-      }
-  model_info:
-    elapsed_time: 4.29
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 4.169
-- command: Open the curtain.
-  devices:
-  - Window
+  - DoorLock
+  - AirConditioner
+  - ContactSensor
   - Curtain
-  - Button
-  - AirPurifier
-  - DoorLock
   - Camera
-  - ContactSensor
-  - AirConditioner
-  - Blind
-  - Clock
-  - Fan
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Curtain).curtain_open()
-  model_info:
-    elapsed_time: 3.426
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.305
-- command: Stop the curtain.
-  devices:
-  - Window
-  - Curtain
   - AirPurifier
-  - Alarm
   - Dehumidifier
-  - DoorLock
-  - ContactSensor
-  - AirConditioner
-  - Blind
-  - Clock
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2137,40 +2145,93 @@
     code: |-
       (#Curtain).curtain_close()
   model_info:
-    elapsed_time: 3.419
+    elapsed_time: 3.417
     bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.296
+    llm_elapsed_time: 3.294
+- command: Open the curtain.
+  devices:
+  - Window
+  - Blind
+  - Clock
+  - DoorLock
+  - AirConditioner
+  - ContactSensor
+  - Fan
+  - Curtain
+  - Button
+  - Camera
+  - AirPurifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Curtain).curtain_open()
+  model_info:
+    elapsed_time: 3.478
+    bge_elapsed_time: 0.148
+    llm_elapsed_time: 3.33
+- command: Stop the curtain.
+  devices:
+  - Window
+  - Blind
+  - Alarm
+  - Clock
+  - DoorLock
+  - AirConditioner
+  - ContactSensor
+  - Fan
+  - Curtain
+  - AirPurifier
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Curtain).curtain_close()
+  model_info:
+    elapsed_time: 3.442
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 3.306
 - command: Sound the alarm siren when the dehumidifier is powered on.
   devices:
   - Alarm
   - Humidifier
-  - Dehumidifier
+  - Refrigerator
+  - Siren
   - Relay
+  - Clock
+  - Dishwasher
+  - AirConditioner
   - Charger
   - Switch
-  - AirConditioner
-  - Dishwasher
-  - Siren
-  - Clock
-  - Refrigerator
-  generated_code: []
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Dehumidifier).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
   model_info:
-    elapsed_time: 2.26
+    elapsed_time: 4.228
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 2.13
+    llm_elapsed_time: 4.098
 - command: Sound the alarm siren when the dehumidifier is in dehumidifying mode.
   devices:
   - Alarm
-  - Humidifier
-  - Pump
-  - Dehumidifier
   - Recorder
-  - AirConditioner
-  - Dishwasher
+  - Humidifier
   - Siren
-  - HumiditySensor
   - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
+  - HumiditySensor
   - RobotCleaner
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2180,22 +2241,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.64
+    elapsed_time: 4.63
     bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.509
+    llm_elapsed_time: 4.499
 - command: Turn off the dehumidifier.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
-  - AirConditioner
-  - Dishwasher
-  - HumiditySensor
-  - WeatherProvider
   - Blind
-  - AirQualityDetector
+  - Humidifier
   - Clock
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - HumiditySensor
+  - AirQualityDetector
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2203,120 +2264,120 @@
     code: |-
       (#Dehumidifier).switch_off()
   model_info:
-    elapsed_time: 3.581
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 3.45
+    elapsed_time: 3.578
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.456
 - command: Turn on the dehumidifier.
   devices:
-  - AirPurifier
+  - Irrigator
   - Humidifier
-  - Dehumidifier
-  - AirConditioner
+  - Refrigerator
+  - Clock
   - Dishwasher
+  - AirConditioner
+  - Fan
   - HumiditySensor
   - AirQualityDetector
-  - Irrigator
-  - Clock
-  - Refrigerator
-  - Fan
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Dehumidifier).switch_on()
+      wait until((#Dehumidifier).switch_switch == "on")
   model_info:
-    elapsed_time: 3.584
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 3.463
+    elapsed_time: 3.951
+    bge_elapsed_time: 0.122
+    llm_elapsed_time: 3.829
 - command: Toggle the dehumidifier's power.
   devices:
-  - AirPurifier
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Charger
-  - AirConditioner
-  - Dishwasher
   - Irrigator
-  - Clock
+  - Humidifier
   - Refrigerator
+  - Clock
+  - Dishwasher
+  - AirConditioner
+  - SmartPlug
   - Fan
+  - Charger
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       if ((#Dehumidifier).switch_switch == "on") {
-        (#Dehumidifier).switch_toggle()
+        (#Dehumidifier).switch_off()
       } else {
-        (#Dehumidifier).switch_toggle()
+        (#Dehumidifier).switch_on()
       }
   model_info:
-    elapsed_time: 5.106
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 4.983
+    elapsed_time: 5.123
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 4.994
 - command: Set the dehumidifier to cooling mode.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Pump
-  - Dehumidifier
-  - TemperatureSensor
-  - AirConditioner
-  - Dishwasher
   - Irrigator
-  - Clock
+  - TemperatureSensor
+  - Humidifier
   - Refrigerator
+  - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == "cooling")
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode("cooling")
   model_info:
-    elapsed_time: 4.246
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 4.121
+    elapsed_time: 4.016
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 3.89
 - command: Sound the alarm's siren when the dishwasher is powered on.
   devices:
   - Alarm
-  - SmartPlug
-  - Dehumidifier
+  - Refrigerator
+  - Siren
   - Relay
+  - Clock
+  - Dishwasher
+  - DoorLock
+  - SmartPlug
   - Charger
   - Switch
-  - DoorLock
-  - Dishwasher
-  - Siren
-  - Clock
-  - Refrigerator
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Dishwasher).switch_switch == "on") {
+      if ((#SmartPlug).switch_switch == "on") {
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.082
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 3.951
+    elapsed_time: 4.14
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.008
 - command: If the dishwasher is in Eco mode, the alarm will sound a siren.
   devices:
   - Alarm
-  - AirPurifier
   - Humidifier
-  - SoundSensor
-  - Dehumidifier
-  - AirConditioner
-  - Dishwasher
+  - Refrigerator
   - Siren
   - Clock
+  - Dishwasher
+  - AirConditioner
   - RobotCleaner
-  - Refrigerator
+  - SoundSensor
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2326,22 +2387,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.452
+    elapsed_time: 4.468
     bge_elapsed_time: 0.132
-    llm_elapsed_time: 4.32
+    llm_elapsed_time: 4.337
 - command: Turn off the dishwasher.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
-  - Feeder
-  - AirConditioner
-  - Dishwasher
   - Irrigator
-  - RobotCleaner
-  - Clock
+  - Feeder
+  - Humidifier
   - Refrigerator
+  - Clock
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - RobotCleaner
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2349,21 +2410,21 @@
     code: |-
       (#Dishwasher).switch_off()
   model_info:
-    elapsed_time: 3.524
+    elapsed_time: 3.533
     bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.4
+    llm_elapsed_time: 3.408
 - command: Turn on the dishwasher.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
-  - Feeder
-  - AirConditioner
-  - Dishwasher
   - Irrigator
-  - Clock
+  - Feeder
+  - Humidifier
   - Refrigerator
+  - Clock
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2371,87 +2432,73 @@
     code: |-
       (#Dishwasher).switch_on()
   model_info:
-    elapsed_time: 3.419
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.296
+    elapsed_time: 3.418
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.294
 - command: Toggle the dishwasher's power.
   devices:
-  - AirPurifier
-  - SmartPlug
+  - Irrigator
   - Humidifier
-  - Dehumidifier
+  - Refrigerator
+  - Clock
+  - Dishwasher
+  - SmartPlug
+  - Fan
   - Light
   - Charger
-  - Dishwasher
-  - Irrigator
-  - Clock
-  - Refrigerator
-  - Fan
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Dishwasher).switch_switch == "on") {
-        (#Dishwasher).switch_toggle()
-      } else {
-        (#Dishwasher).switch_toggle()
-      }
-  model_info:
-    elapsed_time: 4.901
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.775
-- command: Set your dishwasher to automatic mode.
-  devices:
   - AirPurifier
-  - Humidifier
   - Dehumidifier
-  - Feeder
-  - AirConditioner
-  - Dishwasher
-  - Clock
-  - RobotCleaner
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Dishwasher).dishwasherMode_setDishwasherMode("auto")
-  model_info:
-    elapsed_time: 3.511
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.385
-- command: Sound the alarm's siren if the door lock is open.
-  devices:
-  - Alarm
-  - Curtain
-  - Window
-  - SoundSensor
-  - DoorLock
-  - Relay
-  - ContactSensor
-  - Blind
-  - Siren
-  - Clock
-  - Valve
   generated_code: []
   model_info:
-    elapsed_time: 2.042
+    elapsed_time: 50.203
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 50.077
+- command: Set your dishwasher to automatic mode.
+  devices:
+  - Feeder
+  - Humidifier
+  - Clock
+  - Dishwasher
+  - AirConditioner
+  - RobotCleaner
+  - AirPurifier
+  - Dehumidifier
+  generated_code: []
+  model_info:
+    elapsed_time: 2.155
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 2.028
+- command: Sound the alarm's siren if the door lock is open.
+  devices:
+  - Window
+  - Alarm
+  - Blind
+  - Siren
+  - Relay
+  - Clock
+  - Valve
+  - DoorLock
+  - ContactSensor
+  - Curtain
+  - SoundSensor
+  generated_code: []
+  model_info:
+    elapsed_time: 48.758
     bge_elapsed_time: 0.129
-    llm_elapsed_time: 1.914
+    llm_elapsed_time: 48.629
 - command: Close the door lock.
   devices:
   - Window
-  - Curtain
-  - Button
-  - Dehumidifier
-  - DoorLock
-  - Camera
-  - ContactSensor
-  - AirConditioner
   - Blind
   - Clock
   - Valve
+  - DoorLock
+  - AirConditioner
+  - ContactSensor
+  - Curtain
+  - Button
+  - Camera
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2459,70 +2506,70 @@
     code: |-
       (#DoorLock).doorControl_close()
   model_info:
-    elapsed_time: 3.372
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.249
+    elapsed_time: 3.459
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.335
 - command: Unlock the door.
   devices:
   - Window
-  - Curtain
-  - Button
-  - Dehumidifier
-  - DoorLock
-  - Camera
-  - ContactSensor
-  - AirConditioner
   - Blind
   - Clock
+  - DoorLock
+  - AirConditioner
+  - ContactSensor
   - Fan
+  - Curtain
+  - Button
+  - Camera
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#DoorLock).doorControl_open()
+      if ((#DoorLock).switch_switch == "off") {
+        (#DoorLock).switch_on()
+      }
   model_info:
-    elapsed_time: 3.42
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.297
+    elapsed_time: 4.211
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 4.085
 - command: Send an email to test@example.com with the subject line "Alert" and the content "This is an emergency".
   devices:
+  - Irrigator
   - Alarm
   - Window
-  - SoundSensor
+  - Recorder
+  - TemperatureSensor
+  - Clock
   - FallDetector
   - DoorLock
-  - TemperatureSensor
-  - Recorder
+  - SoundSensor
   - EmailProvider
-  - Irrigator
-  - Clock
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#EmailProvider).emailProvider_sendMail("test@example.clock_isHoliday", "Alert", "This is an emergency")) {
-        break
-      }
+      (#EmailProvider).emailProvider_sendMail("test@example.clock_isHoliday", "Alert", "This is an emergency")
   model_info:
-    elapsed_time: 4.223
-    bge_elapsed_time: 0.135
-    llm_elapsed_time: 4.088
+    elapsed_time: 3.879
+    bge_elapsed_time: 0.137
+    llm_elapsed_time: 3.742
 - command: Sound the alarm's siren when the fan is powered on.
   devices:
   - Alarm
-  - AirPurifier
   - Humidifier
-  - Dehumidifier
-  - Relay
-  - Switch
-  - AirConditioner
-  - Siren
-  - Clock
   - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - AirConditioner
   - Fan
+  - AirPurifier
+  - Switch
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2532,22 +2579,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.186
+    elapsed_time: 4.196
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.056
+    llm_elapsed_time: 4.066
 - command: Sound the alarm's siren if the fan speed is above 2000 RPM.
   devices:
   - Alarm
-  - AirPurifier
   - Window
-  - Humidifier
-  - SoundSensor
-  - Relay
   - TemperatureSensor
-  - AirConditioner
+  - Humidifier
   - Siren
+  - Relay
   - Clock
+  - AirConditioner
   - Fan
+  - SoundSensor
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2557,41 +2604,36 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.25
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.119
+    elapsed_time: 4.26
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.13
 - command: Set the speed of the fan to 1500 RPM.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
-  - AirConditioner
   - Irrigator
+  - Humidifier
   - Clock
+  - AirConditioner
   - Fan
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Fan).fanControl_setFanSpeed(1500)
+  - AirPurifier
+  - Dehumidifier
+  generated_code: []
   model_info:
-    elapsed_time: 3.562
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.435
+    elapsed_time: 48.136
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 48.009
 - command: Set the speed of the fan to 80 percent.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
-  - TemperatureSensor
-  - AirConditioner
-  - HumiditySensor
-  - Dishwasher
-  - Blind
   - Irrigator
+  - Blind
+  - TemperatureSensor
+  - Humidifier
   - Clock
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - HumiditySensor
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2599,47 +2641,45 @@
     code: |-
       (#Fan).fanControl_setPercent(80)
   model_info:
-    elapsed_time: 3.627
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.501
+    elapsed_time: 3.623
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.495
 - command: Turn off the fan.
   devices:
-  - AirPurifier
-  - Curtain
-  - Humidifier
-  - Pump
-  - Dehumidifier
-  - AirConditioner
-  - Dishwasher
-  - WeatherProvider
   - Blind
+  - Humidifier
   - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - Curtain
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Fan).switch_switch == "on") {
-        (#Fan).switch_off()
-      }
+      (#Fan).switch_off()
   model_info:
-    elapsed_time: 4.294
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 4.173
+    elapsed_time: 3.525
+    bge_elapsed_time: 0.122
+    llm_elapsed_time: 3.403
 - command: Turn on the fan.
   devices:
-  - AirPurifier
-  - Curtain
-  - Humidifier
-  - Pump
-  - Dehumidifier
   - TemperatureSensor
-  - AirConditioner
-  - Dishwasher
-  - WeatherProvider
+  - Humidifier
   - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - Curtain
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2647,22 +2687,22 @@
     code: |-
       (#Fan).switch_on()
   model_info:
-    elapsed_time: 3.501
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 3.38
+    elapsed_time: 3.52
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.396
 - command: Toggle the fan's power.
   devices:
-  - AirPurifier
-  - Button
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Light
-  - AirConditioner
-  - Dishwasher
   - Irrigator
+  - Humidifier
   - Clock
+  - Dishwasher
+  - AirConditioner
+  - SmartPlug
   - Fan
+  - Light
+  - Button
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2674,40 +2714,47 @@
         (#Fan).switch_on()
       }
   model_info:
-    elapsed_time: 4.965
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 4.841
+    elapsed_time: 4.991
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 4.867
 - command: Sound the alarm's siren when the feeder is powered on.
   devices:
-  - Alarm
-  - SmartPlug
-  - GasValve
   - Feeder
-  - Charger
-  - Relay
-  - Switch
-  - Siren
+  - Alarm
   - Irrigator
-  - Clock
   - Refrigerator
-  generated_code: []
+  - Siren
+  - Relay
+  - Clock
+  - SmartPlug
+  - Charger
+  - GasValve
+  - Switch
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Feeder).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
   model_info:
-    elapsed_time: 2.301
+    elapsed_time: 4.211
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 2.171
+    llm_elapsed_time: 4.081
 - command: Sound the alarm siren when the feeder's status is feeding.
   devices:
-  - Alarm
-  - LeakSensor
   - Feeder
-  - Charger
-  - Relay
-  - Recorder
-  - Dishwasher
-  - Siren
+  - Alarm
   - Irrigator
-  - Clock
+  - Recorder
   - Refrigerator
+  - Siren
+  - LeakSensor
+  - Relay
+  - Dishwasher
+  - Clock
+  - Charger
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2717,22 +2764,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.343
+    elapsed_time: 4.344
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.213
+    llm_elapsed_time: 4.214
 - command: Turn off the feeder.
   devices:
-  - Humidifier
-  - Pump
-  - Dehumidifier
-  - GasValve
   - Feeder
-  - Charger
-  - Relay
-  - Dishwasher
-  - WeatherProvider
   - Irrigator
+  - Humidifier
   - Clock
+  - Relay
+  - Pump
+  - Dishwasher
+  - Charger
+  - GasValve
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2740,22 +2787,22 @@
     code: |-
       (#Feeder).switch_off()
   model_info:
-    elapsed_time: 3.559
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.436
+    elapsed_time: 3.468
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.345
 - command: Turn on the feeder.
   devices:
-  - Button
-  - Humidifier
-  - Pump
-  - Dehumidifier
   - Feeder
-  - Charger
-  - Camera
-  - Dishwasher
   - Irrigator
+  - Humidifier
   - Clock
+  - Pump
+  - Dishwasher
   - Fan
+  - Button
+  - Camera
+  - Charger
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2763,22 +2810,22 @@
     code: |-
       (#Feeder).switch_on()
   model_info:
-    elapsed_time: 3.555
+    elapsed_time: 3.659
     bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.432
+    llm_elapsed_time: 3.536
 - command: Toggle the power of the feeder.
   devices:
-  - Button
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
   - Feeder
-  - Charger
-  - Light
-  - Dishwasher
   - Irrigator
+  - Humidifier
   - Clock
+  - Dishwasher
+  - SmartPlug
   - Fan
+  - Light
+  - Button
+  - Charger
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2786,67 +2833,74 @@
     code: |-
       (#Feeder).switch_toggle()
   model_info:
-    elapsed_time: 3.568
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.441
+    elapsed_time: 3.573
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 3.448
 - command: Set the feeder's feed amount to 100 grams.
   devices:
-  - Humidifier
-  - Dehumidifier
-  - GasValve
   - Feeder
-  - Charger
-  - Light
-  - GasMeter
-  - Dishwasher
   - Irrigator
+  - Humidifier
   - Clock
+  - Dishwasher
   - Fan
+  - Light
+  - Charger
+  - GasMeter
+  - GasValve
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Feeder).feederPortion_setFeedPortion(100.0, "grams")
+      wait until((#Feeder).switch_switch == "off")
+      (#Light).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode <= 20.0)
+      (#Irrigator).switch_on()
   model_info:
-    elapsed_time: 4.099
+    elapsed_time: 6.488
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.972
+    llm_elapsed_time: 6.361
 - command: Start feeding the feeder.
   devices:
-  - Button
-  - Humidifier
-  - Pump
-  - Dehumidifier
   - Feeder
-  - Charger
-  - Dishwasher
-  - WeatherProvider
   - Irrigator
-  - Clock
+  - Humidifier
   - MenuProvider
+  - Clock
+  - Pump
+  - Dishwasher
+  - Button
+  - Charger
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Feeder).feederOperatingState_startFeeding()
+      (#Feeder).switch_on()
   model_info:
-    elapsed_time: 3.704
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.579
+    elapsed_time: 3.565
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.438
 - command: Sound the alarm siren when the gas meter shows gas usage of 500 kWh or more.
   devices:
-  - Alarm
-  - LeakSensor
-  - SoundSensor
-  - GasValve
-  - TemperatureSensor
-  - GasMeter
-  - Siren
   - Irrigator
-  - AirQualityDetector
+  - Alarm
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
   - Clock
+  - SoundSensor
+  - AirQualityDetector
+  - GasMeter
+  - GasValve
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -2857,21 +2911,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.313
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.182
+    elapsed_time: 4.312
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 4.178
 - command: Sound the alarm siren when the gas meter reads more than 1000 kcal of gas.
   devices:
-  - Alarm
-  - LeakSensor
-  - SoundSensor
-  - GasValve
-  - TemperatureSensor
-  - GasMeter
-  - Siren
-  - AirQualityDetector
   - Irrigator
+  - Alarm
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
   - Clock
+  - SoundSensor
+  - AirQualityDetector
+  - GasMeter
+  - GasValve
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -2881,20 +2935,20 @@
       wait until((#GasMeter).gasMeter_gasMeterCalorific > 1000.0)
       (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.371
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 4.239
+    elapsed_time: 4.374
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 4.24
 - command: Sound the siren of the alarm when the gas meter has a cumulative gas usage time of 10000 seconds or more.
   devices:
   - Alarm
-  - LeakSensor
-  - SoundSensor
-  - GasValve
   - TemperatureSensor
-  - GasMeter
+  - LeakSensor
   - Siren
-  - AirQualityDetector
   - Clock
+  - SoundSensor
+  - AirQualityDetector
+  - GasMeter
+  - GasValve
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -2904,46 +2958,47 @@
       wait until((#GasMeter).gasMeter_gasMeterTime >= 10000.0)
       (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.215
+    elapsed_time: 4.222
     bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.081
+    llm_elapsed_time: 4.087
 - command: Sound the alarm's siren when the gas meter reads more than 20 cubic meters of gas.
   devices:
-  - Alarm
-  - LeakSensor
-  - SoundSensor
-  - GasValve
-  - TemperatureSensor
-  - GasMeter
-  - Siren
-  - AirQualityDetector
   - Irrigator
-  - Clock
+  - Alarm
   - LightSensor
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Clock
+  - SoundSensor
+  - AirQualityDetector
+  - GasMeter
+  - GasValve
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#GasMeter).gasMeter_gasMeterVolume > 20.0)
-      (#Alarm).alarm_siren()
+      if ((#GasMeter).gasMeter_gasMeterVolume > 20.0) {
+        (#Alarm).alarm_siren()
+      }
   model_info:
-    elapsed_time: 4.188
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.054
+    elapsed_time: 4.34
+    bge_elapsed_time: 0.135
+    llm_elapsed_time: 4.206
 - command: Sound the alarm's siren if the gas valve is open.
   devices:
   - Alarm
   - Window
   - LeakSensor
-  - Pump
-  - GasValve
-  - DoorLock
-  - Relay
-  - GasMeter
   - Siren
-  - Clock
+  - Relay
+  - Pump
   - Valve
+  - DoorLock
+  - Clock
+  - GasMeter
+  - GasValve
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2953,21 +3008,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.04
-    bge_elapsed_time: 0.133
-    llm_elapsed_time: 3.907
+    elapsed_time: 4.062
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 3.931
 - command: Close the gas valve.
   devices:
-  - Alarm
-  - Curtain
-  - Humidifier
-  - Pump
-  - GasValve
-  - DoorLock
-  - GasMeter
   - Irrigator
+  - Alarm
+  - Humidifier
   - Clock
+  - Pump
   - Valve
+  - DoorLock
+  - Curtain
+  - GasMeter
+  - GasValve
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -2975,45 +3030,40 @@
     code: |-
       (#GasValve).valve_close()
   model_info:
-    elapsed_time: 3.33
-    bge_elapsed_time: 0.151
-    llm_elapsed_time: 3.178
+    elapsed_time: 3.323
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 3.197
 - command: Open the gas valve.
   devices:
-  - Alarm
-  - Button
-  - Humidifier
-  - Pump
-  - GasValve
-  - DoorLock
-  - GasMeter
   - Irrigator
+  - Alarm
+  - Humidifier
   - Clock
-  - Fan
+  - Pump
   - Valve
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#GasValve).valve_open()
+  - DoorLock
+  - Fan
+  - Button
+  - GasMeter
+  - GasValve
+  generated_code: []
   model_info:
-    elapsed_time: 3.454
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.33
+    elapsed_time: 2.302
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 2.176
 - command: Sound the alarm siren if the gas valve's gas usage is over 1000 kWh.
   devices:
-  - Alarm
-  - LeakSensor
-  - SoundSensor
-  - GasValve
-  - TemperatureSensor
-  - GasMeter
-  - Siren
   - Irrigator
+  - Alarm
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
   - Clock
-  - SmokeDetector
   - Valve
+  - SoundSensor
+  - GasMeter
+  - GasValve
+  - SmokeDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3023,22 +3073,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.311
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 4.179
+    elapsed_time: 4.327
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 4.193
 - command: Sound the alarm siren if the gas valve has a gas calorific value of 500 kcal or more.
   devices:
-  - Alarm
-  - SoundSensor
-  - GasValve
-  - Charger
-  - TemperatureSensor
-  - GasMeter
-  - Siren
   - Irrigator
-  - AirQualityDetector
+  - Alarm
+  - TemperatureSensor
+  - Siren
   - Clock
   - Valve
+  - Charger
+  - SoundSensor
+  - AirQualityDetector
+  - GasMeter
+  - GasValve
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3048,21 +3098,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.495
-    bge_elapsed_time: 0.133
-    llm_elapsed_time: 4.361
+    elapsed_time: 4.464
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 4.328
 - command: Sound the alarm siren if the gas valve has a cumulative gas usage time of 5000 seconds or more.
   devices:
   - Alarm
   - LeakSensor
-  - SoundSensor
-  - GasValve
-  - GasMeter
   - Siren
   - Clock
-  - AirQualityDetector
-  - SmokeDetector
   - Valve
+  - SoundSensor
+  - AirQualityDetector
+  - GasMeter
+  - GasValve
+  - SmokeDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3072,22 +3122,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.243
+    elapsed_time: 4.289
     bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.109
+    llm_elapsed_time: 4.156
 - command: Sound the alarm's siren if the gas valve is using more than 34 cubic meters of gas.
   devices:
-  - Alarm
-  - SoundSensor
-  - GasValve
-  - TemperatureSensor
-  - GasMeter
-  - Siren
   - Irrigator
-  - AirQualityDetector
+  - Alarm
+  - TemperatureSensor
+  - Siren
   - Clock
-  - SmokeDetector
   - Valve
+  - SoundSensor
+  - AirQualityDetector
+  - GasMeter
+  - GasValve
+  - SmokeDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3097,22 +3147,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.353
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.219
+    elapsed_time: 4.36
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 4.225
 - command: Sound an alarm siren when the humidifier is powered on.
   devices:
+  - Irrigator
   - Alarm
   - Humidifier
-  - Dehumidifier
+  - Siren
   - Relay
-  - Charger
+  - Clock
+  - Dishwasher
   - AirConditioner
   - HumiditySensor
-  - Siren
-  - Dishwasher
-  - Irrigator
-  - Clock
+  - Charger
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3122,22 +3172,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.194
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 4.065
+    elapsed_time: 4.199
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.068
 - command: Sound an alarm siren if the humidifier's mode is Auto.
   devices:
   - Alarm
   - Window
-  - Shade
   - Humidifier
-  - Dehumidifier
-  - AirConditioner
-  - Dishwasher
   - Siren
-  - WeatherProvider
   - Clock
+  - Dishwasher
+  - AirConditioner
+  - Shade
   - RobotCleaner
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3147,22 +3197,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.478
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 4.349
+    elapsed_time: 4.472
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 4.343
 - command: Turn off the humidifier.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
-  - SoilMoistureSensor
-  - AirConditioner
-  - Dishwasher
-  - HumiditySensor
-  - WeatherProvider
   - Blind
+  - Humidifier
   - Clock
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - HumiditySensor
+  - AirPurifier
+  - SoilMoistureSensor
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3170,22 +3220,22 @@
     code: |-
       (#Humidifier).switch_off()
   model_info:
-    elapsed_time: 3.45
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 3.329
+    elapsed_time: 3.454
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.331
 - command: Turn on the humidifier.
   devices:
-  - AirPurifier
+  - Irrigator
   - Humidifier
-  - Dehumidifier
-  - SoilMoistureSensor
-  - AirConditioner
+  - Clock
   - Dishwasher
+  - AirConditioner
+  - Fan
   - HumiditySensor
   - AirQualityDetector
-  - Irrigator
-  - Clock
-  - Fan
+  - AirPurifier
+  - SoilMoistureSensor
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3193,45 +3243,49 @@
     code: |-
       (#Humidifier).switch_on()
   model_info:
-    elapsed_time: 3.492
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 3.371
+    elapsed_time: 3.484
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.362
 - command: Toggle the humidifier's power.
   devices:
-  - AirPurifier
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Charger
-  - Light
-  - AirConditioner
-  - Dishwasher
   - Irrigator
+  - Humidifier
   - Clock
+  - Dishwasher
+  - AirConditioner
+  - SmartPlug
   - Fan
+  - Light
+  - Charger
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Humidifier).switch_toggle()
+      if ((#Humidifier).switch_switch == "on") {
+        (#Humidifier).switch_off()
+      } else {
+        (#Humidifier).switch_on()
+      }
   model_info:
-    elapsed_time: 3.61
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.487
+    elapsed_time: 5.173
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 5.048
 - command: Set the humidifier to strong mode.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Pump
-  - Dehumidifier
-  - SoilMoistureSensor
-  - AirConditioner
-  - Dishwasher
-  - HumiditySensor
   - Irrigator
+  - Humidifier
   - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - HumiditySensor
+  - AirPurifier
+  - SoilMoistureSensor
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3241,22 +3295,22 @@
         (#Humidifier).humidifierMode_setHumidifierMode("strong")
       }
   model_info:
-    elapsed_time: 4.864
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 4.74
+    elapsed_time: 4.885
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 4.749
 - command: Sound the alarm's siren when the humidity sensor reads a relative humidity of 70 percent or higher.
   devices:
   - Alarm
-  - LeakSensor
-  - SoundSensor
-  - Humidifier
-  - SoilMoistureSensor
   - TemperatureSensor
+  - Humidifier
+  - LeakSensor
+  - Siren
+  - Clock
   - ContactSensor
   - HumiditySensor
-  - Siren
+  - SoundSensor
   - AirQualityDetector
-  - Clock
+  - SoilMoistureSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3266,72 +3320,71 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.143
+    elapsed_time: 4.136
     bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.009
+    llm_elapsed_time: 4.001
 - command: Sound the alarm's siren when the irrigation device is powered on.
   devices:
+  - Irrigator
   - Alarm
+  - Recorder
   - LeakSensor
+  - Siren
   - Relay
+  - Clock
+  - DoorLock
   - Charger
   - Switch
-  - Recorder
-  - DoorLock
-  - Siren
   - WeatherProvider
-  - Irrigator
-  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Irrigator).switch_switch == 'on') {
+      if ((#Irrigator).switch_switch == "on") {
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.105
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.975
+    elapsed_time: 4.115
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 3.984
 - command: Sound the alarm's siren when the irrigation device has 3 liters of water.
   devices:
-  - Alarm
-  - LeakSensor
-  - SoundSensor
-  - GasValve
-  - Feeder
-  - Charger
-  - Relay
-  - Siren
-  - WeatherProvider
   - Irrigator
+  - Alarm
+  - Feeder
+  - LeakSensor
+  - Siren
+  - Relay
   - Clock
+  - SoundSensor
+  - Charger
+  - GasValve
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Irrigator).irrigatorPortion_waterPortion == 3.0) {
-        (#Alarm).alarm_siren()
-      }
+      wait until((#Irrigator).irrigatorPortion_waterPortion == 3.0)
+      (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.468
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.337
+    elapsed_time: 4.338
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.206
 - command: Sound the alarm's siren when the irrigation device's status is watering.
   devices:
-  - Alarm
-  - LeakSensor
-  - Pump
-  - Charger
-  - Relay
-  - Recorder
-  - Siren
-  - WeatherProvider
   - Irrigator
-  - Clock
+  - Alarm
+  - Recorder
+  - LeakSensor
+  - Siren
+  - Relay
+  - Pump
   - Valve
+  - Clock
+  - Charger
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3341,22 +3394,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.528
+    elapsed_time: 4.538
     bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.397
+    llm_elapsed_time: 4.406
 - command: Turn off the irrigation.
   devices:
-  - Alarm
-  - Curtain
-  - Humidifier
-  - Dehumidifier
-  - GasValve
-  - Relay
-  - Blind
-  - WeatherProvider
   - Irrigator
+  - Alarm
+  - Blind
+  - Humidifier
   - Clock
+  - Relay
   - Fan
+  - Curtain
+  - GasValve
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3364,22 +3417,22 @@
     code: |-
       (#Irrigator).switch_off()
   model_info:
-    elapsed_time: 3.511
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.386
+    elapsed_time: 3.527
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.403
 - command: Turn on the irrigation.
   devices:
-  - Alarm
-  - Humidifier
-  - Dehumidifier
-  - Feeder
-  - Relay
-  - Camera
-  - Dishwasher
-  - WeatherProvider
   - Irrigator
+  - Alarm
+  - Feeder
+  - Humidifier
   - Clock
+  - Relay
+  - Dishwasher
   - Fan
+  - Camera
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3387,122 +3440,122 @@
     code: |-
       (#Irrigator).switch_on()
   model_info:
-    elapsed_time: 3.497
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.374
+    elapsed_time: 3.499
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.376
 - command: Toggle the power of the irrigation device.
   devices:
-  - Button
-  - Alarm
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Charger
-  - Camera
-  - Dishwasher
   - Irrigator
+  - Alarm
+  - Humidifier
   - Clock
+  - Dishwasher
+  - SmartPlug
   - Fan
+  - Button
+  - Camera
+  - Charger
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Irrigator).switch_switch == "on") {
-        (#Irrigator).switch_off()
+      if ((#Humidifier).switch_switch == "on") {
+        (#Humidifier).switch_off()
       } else {
-        (#Irrigator).switch_on()
+        (#Humidifier).switch_on()
       }
   model_info:
-    elapsed_time: 5.112
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 4.987
+    elapsed_time: 4.826
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 4.7
 - command: Set the irrigation unit's watering volume to 5 liters.
   devices:
-  - Alarm
-  - LeakSensor
-  - Humidifier
-  - Dehumidifier
-  - GasValve
-  - Feeder
-  - Dishwasher
-  - WeatherProvider
   - Irrigator
+  - Feeder
+  - Alarm
+  - Humidifier
+  - LeakSensor
   - Clock
+  - Dishwasher
   - Fan
+  - GasValve
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Feeder).irrigatorPortion_waterPortion == 5.0)
-      (#Feeder).irrigatorPortion_setWaterPortion(5.0, liters)
+      wait until((#Irrigator).irrigatorPortion_waterPortion == 5.0)
+      (#Irrigator).irrigatorPortion_setWaterPortion(portion: 5.0, unit: liters)
   model_info:
-    elapsed_time: 4.915
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.789
+    elapsed_time: 5.35
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 5.223
 - command: Start watering your irrigation system.
   devices:
+  - Irrigator
+  - Feeder
   - Alarm
   - Humidifier
   - LeakSensor
-  - Dehumidifier
-  - Feeder
-  - Charger
+  - Clock
   - Dishwasher
-  - WeatherProvider
-  - Irrigator
-  - Clock
   - Fan
+  - Charger
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Feeder).irrigatorOperatingState_irrigatorOperatingState == "watering")
-      (#Feeder).irrigatorOperatingState_startWatering()
-  model_info:
-    elapsed_time: 4.699
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 4.574
-- command: Sound the alarm's siren when a leak is detected.
-  devices:
-  - Alarm
-  - LeakSensor
-  - SoundSensor
-  - GasValve
-  - FallDetector
-  - Relay
-  - Siren
-  - Irrigator
-  - Clock
-  - SmokeDetector
-  - Valve
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#LeakSensor).leakSensor_leakage == "detected") {
-        (#Alarm).alarm_siren()
+      if ((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == "idle") {
+        (#Irrigator).irrigatorOperatingState_startWatering()
       }
   model_info:
-    elapsed_time: 4.025
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.899
+    elapsed_time: 4.924
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 4.799
+- command: Sound the alarm's siren when a leak is detected.
+  devices:
+  - Irrigator
+  - Alarm
+  - LeakSensor
+  - Siren
+  - Relay
+  - Clock
+  - Valve
+  - FallDetector
+  - SoundSensor
+  - GasValve
+  - SmokeDetector
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#LeakSensor).leakSensor_leakage == "detected")
+      (#Alarm).alarm_siren()
+  model_info:
+    elapsed_time: 4.037
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.91
 - command: Sound the alarm's siren when the light is on.
   devices:
   - Alarm
   - Window
-  - Curtain
-  - SoundSensor
-  - Light
-  - Relay
-  - DoorLock
-  - Camera
-  - Siren
-  - Clock
   - LightSensor
+  - Siren
+  - Relay
+  - Clock
+  - DoorLock
+  - Light
+  - Curtain
+  - Camera
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3512,22 +3565,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.031
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.903
+    elapsed_time: 4.278
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 4.15
 - command: If the light has a hue of 30, sound the alarm's siren.
   devices:
   - Alarm
-  - Curtain
-  - SoundSensor
-  - Light
-  - Relay
-  - TemperatureSensor
-  - Camera
   - Blind
-  - Siren
-  - Clock
   - LightSensor
+  - TemperatureSensor
+  - Siren
+  - Relay
+  - Clock
+  - Light
+  - Curtain
+  - Camera
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3537,22 +3590,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.279
-    bge_elapsed_time: 0.137
-    llm_elapsed_time: 4.142
+    elapsed_time: 4.331
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 4.201
 - command: If the light has a saturation of 30, sound the alarm's siren.
   devices:
   - Alarm
-  - Curtain
-  - SoundSensor
-  - Light
-  - TemperatureSensor
-  - Camera
-  - Relay
   - Blind
-  - Siren
-  - Clock
   - LightSensor
+  - TemperatureSensor
+  - Siren
+  - Relay
+  - Clock
+  - Light
+  - Curtain
+  - Camera
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3562,46 +3615,47 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.269
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 4.143
+    elapsed_time: 4.291
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 4.161
 - command: Sound the alarm's siren when the light brightness is 100
   devices:
   - Alarm
-  - Window
-  - SoundSensor
-  - Light
-  - Relay
-  - Camera
-  - DoorLock
   - Blind
-  - Siren
-  - Clock
   - LightSensor
+  - Window
+  - Siren
+  - Relay
+  - Clock
+  - DoorLock
+  - Light
+  - Camera
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#LightSensor).lightLevel_light == 100.0)
-      (#Alarm).alarm_siren()
+      if ((#Light).lightLevel_light == 100.0) {
+        (#Alarm).alarm_siren()
+      }
   model_info:
-    elapsed_time: 4.174
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 4.047
+    elapsed_time: 4.28
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 4.152
 - command: Set the light to red.
   devices:
   - Alarm
-  - Curtain
-  - Buttonx4
-  - Light
-  - Relay
-  - Camera
   - Blind
-  - Siren
-  - Clock
   - LightSensor
+  - Buttonx4
+  - Siren
+  - Relay
+  - Clock
   - Fan
+  - Light
+  - Curtain
+  - Camera
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3609,19 +3663,19 @@
     code: |-
       (#Light).colorControl_setColor("255|0|0")
   model_info:
-    elapsed_time: 4.002
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.877
+    elapsed_time: 4.012
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 3.886
 - command: Set the hue of the light to 70.
   devices:
-  - Alarm
-  - Buttonx4
-  - Light
   - Blind
+  - Alarm
+  - LightSensor
+  - Buttonx4
   - Siren
   - Clock
-  - LightSensor
   - Fan
+  - Light
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3629,22 +3683,22 @@
     code: |-
       (#Light).colorControl_setHue(70.0)
   model_info:
-    elapsed_time: 3.589
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.463
+    elapsed_time: 3.599
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.473
 - command: Set the saturation of the light to 90.
   devices:
-  - Alarm
-  - Shade
-  - Humidifier
-  - Light
-  - Camera
-  - AirConditioner
   - Blind
-  - HumiditySensor
-  - Clock
+  - Alarm
   - LightSensor
+  - Humidifier
+  - Clock
+  - AirConditioner
   - Fan
+  - Light
+  - HumiditySensor
+  - Camera
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3652,236 +3706,229 @@
     code: |-
       (#Light).colorControl_setSaturation(90.0)
   model_info:
-    elapsed_time: 3.727
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.603
+    elapsed_time: 3.747
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 3.622
 - command: Set the brightness of the light to 80 with a speed of 5.
   devices:
+  - Irrigator
   - Alarm
-  - AirPurifier
-  - Humidifier
+  - Blind
+  - LightSensor
   - Buttonx4
+  - Humidifier
+  - Clock
+  - Fan
   - Light
   - Camera
-  - Blind
-  - Irrigator
-  - Clock
-  - LightSensor
-  - Fan
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
-    period: -1
+    period: 100
     code: |-
-      (#Light).blindLevel_setBlindLevel(level: 80, rate: 5)
+      if ((#Light).switchLevel_levelRange == "min|max") {
+        (#Light).switchLevel_setLevel(80, 5)
+      }
   model_info:
-    elapsed_time: 4.177
+    elapsed_time: 4.916
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 4.05
+    llm_elapsed_time: 4.789
 - command: Turn on alert mode for lights.
   devices:
   - Alarm
-  - Dehumidifier
-  - Light
-  - Relay
-  - DoorLock
   - Blind
+  - LightSensor
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - Light
   - RobotCleaner
   - SmokeDetector
-  - LightSensor
-  generated_code: []
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Light).switch_on()
   model_info:
-    elapsed_time: 49.165
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 49.04
+    elapsed_time: 3.363
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 3.237
 - command: Turn off the lights.
   devices:
-  - Alarm
-  - Curtain
-  - Dehumidifier
-  - Light
-  - Relay
-  - Camera
   - Blind
-  - Siren
-  - WeatherProvider
-  - Clock
+  - Alarm
   - LightSensor
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Light).switch_off()
-  - name: "Scenario2"
-    cron: ""
-    period: -1
-    code: |-
-      (#Light).switch_off()
+  - Siren
+  - Relay
+  - Clock
+  - Light
+  - Curtain
+  - Camera
+  - WeatherProvider
+  - Dehumidifier
+  generated_code: []
   model_info:
-    elapsed_time: 4.675
+    elapsed_time: 49.664
     bge_elapsed_time: 0.123
-    llm_elapsed_time: 4.552
+    llm_elapsed_time: 49.542
 - command: Light it up.
   devices:
-  - Alarm
-  - Curtain
-  - Buttonx4
-  - Light
-  - Relay
-  - Camera
-  - DoorLock
   - Blind
-  - Siren
-  - Clock
+  - Alarm
   - LightSensor
+  - Buttonx4
+  - Siren
+  - Relay
+  - Clock
+  - DoorLock
+  - Light
+  - Curtain
+  - Camera
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Light).switch_switch == "off") {
+      if (all(#Light).switch_switch == 'off') {
+        all(#Light).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.246
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 4.122
+- command: Toggle the power of the light.
+  devices:
+  - LightSensor
+  - Buttonx4
+  - Humidifier
+  - Clock
+  - Relay
+  - Dishwasher
+  - SmartPlug
+  - Fan
+  - Light
+  - Camera
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Light).switch_switch == "on") {
+        (#Light).switch_off()
+      } else {
         (#Light).switch_on()
       }
   model_info:
-    elapsed_time: 4.154
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 4.032
-- command: Toggle the power of the light.
-  devices:
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Buttonx4
-  - Light
-  - Relay
-  - Camera
-  - Dishwasher
-  - Clock
-  - LightSensor
-  - Fan
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Light).switch_toggle()
-  model_info:
-    elapsed_time: 3.586
+    elapsed_time: 4.876
     bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.463
+    llm_elapsed_time: 4.752
 - command: Sound the alarm's siren when the light sensor's brightness value is above 500 lux.
   devices:
   - Alarm
-  - LeakSensor
-  - SoundSensor
-  - SoilMoistureSensor
+  - LightSensor
   - MotionSensor
-  - Light
   - TemperatureSensor
-  - HumiditySensor
+  - LeakSensor
   - Siren
   - Clock
-  - LightSensor
+  - Light
+  - HumiditySensor
+  - SoundSensor
+  - SoilMoistureSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#LightSensor).lightLevel_light > 500.0) {
-        (#Alarm).alarm_siren()
-      }
+      wait until((#LightSensor).lightLevel_light > 500.0)
+      (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.161
+    elapsed_time: 4.034
     bge_elapsed_time: 0.135
-    llm_elapsed_time: 4.026
+    llm_elapsed_time: 3.899
 - command: Play today's 학생식당 lunch menu over the speakers.
   devices:
   - Alarm
-  - Speaker
-  - TemperatureSensor
-  - Camera
   - Recorder
-  - Dishwasher
-  - EmailProvider
-  - Clock
-  - Calculator
-  - Fan
+  - TemperatureSensor
   - MenuProvider
+  - Clock
+  - Dishwasher
+  - Fan
+  - Speaker
+  - Camera
+  - EmailProvider
+  - Calculator
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#MenuProvider).menuProvider_menu("오늘 학생식당 점심") != "") {
-        (#Speaker).mediaPlayback_play((#MenuProvider).menuProvider_menu("오늘 학생식당 점심"))
-      }
+      wait until((#Clock).clock_hour == 15)
+      wait until((#Clock).clock_minute == 39)
+      (#Speaker).mediaPlayback_speak((#MenuProvider).menuProvider_menu("학생식당|점심"))
   model_info:
-    elapsed_time: 5.423
+    elapsed_time: 5.512
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 5.295
+    llm_elapsed_time: 5.385
 - command: Output today's menu to the speakers.
   devices:
-  - Button
   - Alarm
+  - Recorder
   - Buttonx4
+  - MenuProvider
+  - Clock
   - DoorLock
+  - Fan
   - Speaker
   - Camera
-  - Recorder
-  - Clock
+  - Button
   - Calculator
-  - Fan
-  - MenuProvider
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#MenuProvider).menuProvider_menu("today") != "") {
-        (#Speaker).mediaPlayback_speak((#MenuProvider).menuProvider_menu("today"))
-      }
+  generated_code: []
   model_info:
-    elapsed_time: 4.974
+    elapsed_time: 49.871
     bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.848
+    llm_elapsed_time: 49.744
 - command: Play the restaurant of the day on the speaker.
   devices:
   - Alarm
-  - SoundSensor
+  - Recorder
+  - MenuProvider
+  - Clock
+  - Dishwasher
   - DoorLock
+  - Fan
   - Speaker
   - Camera
-  - Recorder
-  - Dishwasher
-  - Clock
+  - SoundSensor
   - Calculator
-  - Fan
-  - MenuProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Speaker).mediaPlayback_play((#MenuProvider).menuProvider_todayPlace())
+      (#MenuProvider).menuProvider_menu("restaurant of the day")
   model_info:
-    elapsed_time: 3.848
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.721
+    elapsed_time: 3.675
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.547
 - command: Sound the alarm's siren when the motion sensor is active.
   devices:
-  - Alarm
   - PresenceSensor
+  - Alarm
   - Window
-  - LeakSensor
-  - SoundSensor
   - MotionSensor
   - TemperatureSensor
-  - ContactSensor
+  - LeakSensor
   - Siren
   - Clock
+  - ContactSensor
+  - SoundSensor
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -3892,22 +3939,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.864
+    elapsed_time: 3.871
     bge_elapsed_time: 0.132
-    llm_elapsed_time: 3.733
+    llm_elapsed_time: 3.738
 - command: Sound the alarm's siren when motion is detected.
   devices:
-  - Alarm
   - PresenceSensor
-  - LeakSensor
-  - SoundSensor
-  - FallDetector
+  - Alarm
   - MotionSensor
-  - DoorLock
-  - Relay
-  - ContactSensor
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - FallDetector
+  - ContactSensor
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3917,21 +3964,21 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.87
+    elapsed_time: 3.869
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.74
+    llm_elapsed_time: 3.738
 - command: Sound the alarm's siren when a presence sensor is detected.
   devices:
-  - Alarm
   - PresenceSensor
-  - LeakSensor
-  - SoundSensor
-  - FallDetector
+  - Alarm
   - MotionSensor
   - TemperatureSensor
-  - ContactSensor
+  - LeakSensor
   - Siren
   - Clock
+  - FallDetector
+  - ContactSensor
+  - SoundSensor
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -3942,22 +3989,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.863
+    elapsed_time: 3.872
     bge_elapsed_time: 0.132
-    llm_elapsed_time: 3.732
+    llm_elapsed_time: 3.74
 - command: Sound an alarm siren when the pump's current operating mode is maximized.
   devices:
   - Alarm
   - Window
-  - Pump
-  - SoundSensor
-  - Charger
   - TemperatureSensor
-  - AirConditioner
   - Siren
   - Clock
-  - RobotCleaner
+  - Pump
   - Valve
+  - AirConditioner
+  - RobotCleaner
+  - SoundSensor
+  - Charger
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -3967,47 +4014,47 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.222
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 4.091
+    elapsed_time: 4.231
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.1
 - command: If the pump's set operation mode is default, sound the alarm's siren.
   devices:
   - Alarm
   - Window
-  - Button
-  - Pump
-  - AirConditioner
   - Siren
-  - WeatherProvider
   - Clock
-  - RobotCleaner
-  - Fan
+  - Pump
   - Valve
+  - AirConditioner
+  - Fan
+  - RobotCleaner
+  - Button
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Pump).pumpOperationMode_currentOperationMode == "default") {
+      if ((#Pump).pumpOperationMode_operationMode == "default") {
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.482
-    bge_elapsed_time: 0.136
-    llm_elapsed_time: 4.346
+    elapsed_time: 4.426
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.295
 - command: Sound the alarm siren when the pump is powered on.
   devices:
   - Alarm
-  - SmartPlug
-  - Pump
-  - GasValve
-  - Relay
-  - Charger
-  - Switch
   - Siren
-  - Clock
-  - Fan
+  - Relay
+  - Pump
   - Valve
+  - Clock
+  - SmartPlug
+  - Fan
+  - Charger
+  - GasValve
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4017,65 +4064,58 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.088
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.958
+    elapsed_time: 4.104
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 3.972
 - command: Output the modes supported by the pump to the speaker.
   devices:
-  - AirPurifier
-  - Button
   - Humidifier
-  - Pump
-  - Dehumidifier
-  - GasValve
-  - Speaker
-  - AirConditioner
   - Clock
-  - RobotCleaner
+  - Pump
+  - AirConditioner
   - Fan
+  - Speaker
+  - RobotCleaner
+  - Button
+  - AirPurifier
+  - GasValve
+  - Dehumidifier
   generated_code: []
   model_info:
-    elapsed_time: 49.723
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 49.595
+    elapsed_time: 49.798
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 49.669
 - command: Sound the alarm's siren when the pump is open.
   devices:
   - Alarm
   - Window
-  - Curtain
   - LeakSensor
-  - Pump
-  - GasValve
-  - DoorLock
   - Siren
   - Clock
-  - Fan
+  - Pump
   - Valve
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Pump).pump_pump == "open") {
-        (#Alarm).alarm_siren()
-      }
+  - DoorLock
+  - Fan
+  - Curtain
+  - GasValve
+  generated_code: []
   model_info:
-    elapsed_time: 4.049
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.919
+    elapsed_time: 2.203
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 2.072
 - command: Set the pump's operation mode to maximum.
   devices:
+  - Irrigator
+  - Humidifier
+  - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
+  - Fan
+  - RobotCleaner
   - Button
   - AirPurifier
-  - Humidifier
-  - Pump
   - Dehumidifier
-  - AirConditioner
-  - Dishwasher
-  - Irrigator
-  - RobotCleaner
-  - Clock
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4083,45 +4123,52 @@
     code: |-
       (#Pump).pumpOperationMode_setOperationMode("maximum")
   model_info:
-    elapsed_time: 3.813
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.682
+    elapsed_time: 3.804
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.677
 - command: Turn off the pump.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Pump
-  - Dehumidifier
-  - GasValve
-  - AirConditioner
-  - WeatherProvider
   - Irrigator
-  - RobotCleaner
+  - Humidifier
   - Clock
+  - Pump
+  - AirConditioner
   - Fan
+  - RobotCleaner
+  - AirPurifier
+  - GasValve
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Pump).switch_off()
+      wait until((#Pump).switch_switch == "off")
+      (#Pump).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode <= 20.0)
+      (#Irrigator).switch_on()
   model_info:
-    elapsed_time: 3.602
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.48
+    elapsed_time: 6.416
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 6.292
 - command: Turn on the pump.
   devices:
-  - AirPurifier
-  - Button
-  - Humidifier
-  - Pump
-  - Dehumidifier
-  - GasValve
-  - AirConditioner
   - Irrigator
+  - Humidifier
   - Clock
-  - Fan
+  - Pump
   - Valve
+  - AirConditioner
+  - Fan
+  - Button
+  - AirPurifier
+  - GasValve
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4129,22 +4176,22 @@
     code: |-
       (#Pump).switch_on()
   model_info:
-    elapsed_time: 3.525
+    elapsed_time: 3.534
     bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.403
+    llm_elapsed_time: 3.411
 - command: Toggle the power of the pump.
   devices:
-  - Button
-  - SmartPlug
-  - Humidifier
-  - Pump
-  - Dehumidifier
-  - Buttonx4
-  - Charger
-  - Dishwasher
   - Irrigator
+  - Buttonx4
+  - Humidifier
   - Clock
+  - Pump
+  - Dishwasher
+  - SmartPlug
   - Fan
+  - Button
+  - Charger
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4153,69 +4200,67 @@
       (#Pump).switch_toggle()
   model_info:
     elapsed_time: 3.629
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.504
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 3.503
 - command: Close the pump.
   devices:
-  - AirPurifier
-  - Curtain
-  - Humidifier
-  - Pump
-  - Dehumidifier
-  - GasValve
-  - Blind
   - Irrigator
+  - Blind
+  - Humidifier
   - Clock
-  - Fan
+  - Pump
   - Valve
+  - Fan
+  - Curtain
+  - AirPurifier
+  - GasValve
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Pump).switch_switch == "on") {
-        (#Pump).switch_off()
-      }
+      (#Pump).pump_close()
   model_info:
-    elapsed_time: 4.255
+    elapsed_time: 3.5
     bge_elapsed_time: 0.123
-    llm_elapsed_time: 4.132
+    llm_elapsed_time: 3.377
 - command: Open the pump.
   devices:
+  - Irrigator
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - AirConditioner
+  - Fan
   - Button
   - AirPurifier
-  - Humidifier
-  - Pump
-  - Dehumidifier
   - GasValve
-  - AirConditioner
-  - Irrigator
-  - Clock
-  - Fan
-  - Valve
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Pump).valve_open()
+      (#Pump).switch_on()
   model_info:
-    elapsed_time: 3.524
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.401
+    elapsed_time: 3.518
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.396
 - command: Sound the alarm's siren when the refrigerator is powered on.
   devices:
   - Alarm
   - Window
-  - Relay
   - TemperatureSensor
-  - DoorLock
-  - Switch
-  - AirConditioner
-  - Camera
-  - Siren
-  - Clock
   - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - AirConditioner
+  - DoorLock
+  - Camera
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4225,47 +4270,40 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.077
+    elapsed_time: 4.073
     bge_elapsed_time: 0.131
-    llm_elapsed_time: 3.946
+    llm_elapsed_time: 3.942
 - command: Sound an alarm siren if the refrigerator's defrost feature is on.
   devices:
   - Alarm
   - Window
-  - SoundSensor
-  - Relay
-  - DoorLock
   - TemperatureSensor
-  - AirConditioner
-  - Siren
-  - Clock
-  - SmokeDetector
   - Refrigerator
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Refrigerator).refrigeration_defrost == "on") {
-        (#Alarm).alarm_siren()
-      }
+  - Siren
+  - Relay
+  - Clock
+  - DoorLock
+  - AirConditioner
+  - SoundSensor
+  - SmokeDetector
+  generated_code: []
   model_info:
-    elapsed_time: 4.131
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.0
+    elapsed_time: 2.182
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 2.036
 - command: Sound an alarm siren when the refrigerator's quick cool function is turned off.
   devices:
   - Alarm
   - Window
-  - Relay
   - TemperatureSensor
-  - DoorLock
-  - Switch
-  - AirConditioner
-  - Siren
-  - Clock
-  - SmokeDetector
   - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - DoorLock
+  - AirConditioner
+  - Switch
+  - SmokeDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4275,22 +4313,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.145
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 4.012
+    elapsed_time: 4.148
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 4.015
 - command: Sound the alarm siren when the refrigerator's deep freeze function is on.
   devices:
   - Alarm
   - Window
-  - SoundSensor
-  - DoorLock
   - TemperatureSensor
-  - Relay
-  - AirConditioner
-  - Dishwasher
-  - Siren
-  - Clock
   - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - Dishwasher
+  - AirConditioner
+  - DoorLock
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4300,22 +4338,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.155
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.024
+    elapsed_time: 4.164
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.031
 - command: Turn off the refrigerator.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
-  - DoorLock
   - TemperatureSensor
-  - Camera
-  - AirConditioner
-  - Dishwasher
-  - Clock
+  - Humidifier
   - Refrigerator
+  - Clock
+  - Dishwasher
+  - AirConditioner
+  - DoorLock
   - Fan
+  - Camera
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4323,22 +4361,22 @@
     code: |-
       (#Refrigerator).switch_off()
   model_info:
-    elapsed_time: 3.45
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.328
+    elapsed_time: 3.44
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.317
 - command: Toggle the refrigerator's power.
   devices:
-  - SmartPlug
+  - Irrigator
   - Humidifier
-  - Dehumidifier
+  - Refrigerator
+  - Clock
+  - Dishwasher
+  - AirConditioner
+  - SmartPlug
+  - Fan
   - Light
   - Charger
-  - AirConditioner
-  - Dishwasher
-  - Irrigator
-  - Clock
-  - Refrigerator
-  - Fan
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4346,69 +4384,73 @@
     code: |-
       (#Refrigerator).switch_toggle()
   model_info:
-    elapsed_time: 3.651
+    elapsed_time: 3.565
     bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.526
+    llm_elapsed_time: 3.44
 - command: Turn on the refrigerator's defrost feature.
   devices:
-  - AirPurifier
-  - Curtain
   - Alarm
-  - Humidifier
-  - Dehumidifier
-  - DoorLock
   - TemperatureSensor
-  - AirConditioner
-  - Dishwasher
-  - Clock
+  - Humidifier
   - Refrigerator
+  - Clock
+  - Dishwasher
+  - AirConditioner
+  - DoorLock
+  - Curtain
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Refrigerator).switch_switch == "on")
       (#Refrigerator).refrigeration_setDefrost("on")
   model_info:
-    elapsed_time: 4.361
+    elapsed_time: 3.692
     bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.236
+    llm_elapsed_time: 3.566
 - command: Turn on your refrigerator's fast cooling function.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
+  - Irrigator
   - Feeder
   - TemperatureSensor
-  - AirConditioner
-  - Dishwasher
-  - Irrigator
-  - Clock
+  - Humidifier
   - Refrigerator
+  - Clock
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Refrigerator).refrigeration_setRapidCooling("on")
+      wait until((#Refrigerator).refrigeration_setRapidCooling('on'))
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Refrigerator).refrigeration_setRapidCooling('on'))
   model_info:
-    elapsed_time: 3.755
+    elapsed_time: 5.471
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.629
+    llm_elapsed_time: 5.343
 - command: Turn off your refrigerator's deep freeze function.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
   - Feeder
-  - TemperatureSensor
-  - AirConditioner
-  - Dishwasher
   - Irrigator
-  - Clock
+  - TemperatureSensor
+  - Humidifier
   - Refrigerator
+  - Clock
+  - Dishwasher
+  - AirConditioner
   - Fan
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4416,22 +4458,22 @@
     code: |-
       (#Refrigerator).refrigeration_setRapidFreezing("off")
   model_info:
-    elapsed_time: 3.766
+    elapsed_time: 3.764
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.64
+    llm_elapsed_time: 3.637
 - command: Sound the alarm siren when the robot vacuum is powered on.
   devices:
   - Alarm
-  - AirPurifier
-  - SmartPlug
-  - SoundSensor
-  - Relay
-  - Charger
-  - Switch
-  - Siren
-  - Clock
-  - RobotCleaner
   - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - SmartPlug
+  - RobotCleaner
+  - SoundSensor
+  - Charger
+  - AirPurifier
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4441,22 +4483,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.123
-    bge_elapsed_time: 0.13
+    elapsed_time: 4.125
+    bge_elapsed_time: 0.131
     llm_elapsed_time: 3.994
 - command: Sound an alarm siren when the robot vacuum is in automatic mode.
   devices:
+  - Feeder
   - Alarm
   - Window
-  - AirPurifier
-  - SoundSensor
-  - Feeder
   - Recorder
-  - AirConditioner
-  - Dishwasher
   - Siren
   - Clock
+  - Dishwasher
+  - AirConditioner
   - RobotCleaner
+  - SoundSensor
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4466,68 +4508,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.448
+    elapsed_time: 4.455
     bge_elapsed_time: 0.128
-    llm_elapsed_time: 4.32
+    llm_elapsed_time: 4.326
 - command: Turn off the robot vacuum.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
   - Feeder
+  - Irrigator
+  - Humidifier
+  - Clock
   - Relay
-  - AirConditioner
   - Dishwasher
+  - AirConditioner
+  - RobotCleaner
+  - AirPurifier
   - WeatherProvider
-  - Irrigator
-  - RobotCleaner
-  - Clock
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#RobotCleaner).switch_off()
-  model_info:
-    elapsed_time: 3.56
-    bge_elapsed_time: 0.141
-    llm_elapsed_time: 3.419
-- command: Turn on the robot vacuum.
-  devices:
-  - AirPurifier
-  - Button
-  - Humidifier
   - Dehumidifier
-  - Feeder
-  - Light
-  - AirConditioner
-  - Dishwasher
-  - Irrigator
-  - RobotCleaner
-  - Clock
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#RobotCleaner).switch_on()
-  model_info:
-    elapsed_time: 3.641
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 3.52
-- command: Toggle the robot vacuum's power.
-  devices:
-  - AirPurifier
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Light
-  - Charger
-  - Dishwasher
-  - Irrigator
-  - RobotCleaner
-  - Clock
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4535,24 +4531,68 @@
     code: |-
       if ((#RobotCleaner).switch_switch == "on") {
         (#RobotCleaner).switch_off()
-      } else {
-        (#RobotCleaner).switch_on()
       }
   model_info:
-    elapsed_time: 5.032
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 4.908
+    elapsed_time: 4.358
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 4.235
+- command: Turn on the robot vacuum.
+  devices:
+  - Feeder
+  - Irrigator
+  - Humidifier
+  - Clock
+  - Dishwasher
+  - AirConditioner
+  - Light
+  - RobotCleaner
+  - Button
+  - AirPurifier
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#RobotCleaner).switch_on()
+  model_info:
+    elapsed_time: 3.645
+    bge_elapsed_time: 0.122
+    llm_elapsed_time: 3.523
+- command: Toggle the robot vacuum's power.
+  devices:
+  - Irrigator
+  - Humidifier
+  - Clock
+  - Dishwasher
+  - SmartPlug
+  - Fan
+  - Light
+  - RobotCleaner
+  - Charger
+  - AirPurifier
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#RobotCleaner).switch_toggle()
+  model_info:
+    elapsed_time: 3.563
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 3.438
 - command: Set the robot vacuum's cleaning mode to manual.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Pump
-  - Dehumidifier
   - Feeder
-  - AirConditioner
-  - Dishwasher
+  - Humidifier
   - Clock
+  - Pump
+  - Dishwasher
+  - AirConditioner
   - RobotCleaner
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4560,49 +4600,22 @@
     code: |-
       (#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode("manual")
   model_info:
-    elapsed_time: 3.787
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.662
+    elapsed_time: 3.805
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.678
 - command: Sound the alarm's siren when the shades are more than 40% open.
   devices:
-  - Window
   - Alarm
-  - Shade
-  - Curtain
-  - SoundSensor
+  - Blind
+  - Window
+  - Siren
+  - Clock
   - DoorLock
   - ContactSensor
-  - Blind
-  - Siren
+  - Curtain
   - HumiditySensor
-  - Clock
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Shade).windowShade_windowShade == "open") {
-        if ((#Shade).windowShadeLevel_shadeLevel > 40.0) {
-          (#Alarm).alarm_siren()
-        }
-      }
-  model_info:
-    elapsed_time: 5.135
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 5.004
-- command: Sound the alarm's siren when the shade is fully open.
-  devices:
-  - Alarm
-  - Window
+  - SoundSensor
   - Shade
-  - Curtain
-  - DoorLock
-  - Relay
-  - ContactSensor
-  - Blind
-  - Siren
-  - Clock
-  - Valve
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4612,65 +4625,95 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.088
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.957
-- command: Output the states supported by the shade to the speaker.
+    elapsed_time: 4.07
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 3.939
+- command: Sound the alarm's siren when the shade is fully open.
   devices:
   - Alarm
-  - Shade
-  - SoundSensor
-  - Speaker
-  - Relay
-  - Switch
-  - Recorder
+  - Blind
+  - Window
   - Siren
-  - WeatherProvider
+  - Relay
   - Clock
-  - Fan
+  - Valve
+  - DoorLock
+  - ContactSensor
+  - Curtain
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Speaker).switch_switch == "on") {
-        (#Speaker).mediaPlayback_speak((#Shade).windowShade_supportedWindowShadeCommands)
+      if ((#Shade).windowShade_windowShade == "open") {
+        (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.714
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 4.587
+    elapsed_time: 4.09
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 3.959
+- command: Output the states supported by the shade to the speaker.
+  devices:
+  - Alarm
+  - Recorder
+  - Siren
+  - Relay
+  - Clock
+  - Fan
+  - Speaker
+  - SoundSensor
+  - Switch
+  - WeatherProvider
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak((#Shade).windowShade_supportedWindowShadeCommands)
+  model_info:
+    elapsed_time: 3.951
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.822
 - command: Set the shade to 50 percent.
   devices:
+  - Blind
+  - LightSensor
+  - Buttonx4
+  - Clock
+  - Dehumidifier
+  - Fan
+  - Light
+  - HumiditySensor
   - Button
   - Shade
-  - Dehumidifier
-  - Buttonx4
-  - Light
-  - Blind
-  - HumiditySensor
-  - Clock
   - Calculator
-  - LightSensor
-  - Fan
-  generated_code: []
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Shade).windowShadeLevel_shadeLevel != 50) {
+        (#Shade).windowShadeLevel_setShadeLevel(50)
+      }
   model_info:
-    elapsed_time: 49.945
+    elapsed_time: 4.801
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 49.818
+    llm_elapsed_time: 4.673
 - command: Close the shade.
   devices:
-  - Button
-  - Curtain
-  - Shade
-  - Dehumidifier
-  - Buttonx4
-  - DoorLock
-  - Relay
-  - Light
   - Blind
+  - Buttonx4
   - Clock
+  - Relay
   - Valve
+  - DoorLock
+  - Shade
+  - Curtain
+  - Light
+  - Button
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4680,49 +4723,49 @@
         (#Shade).windowShade_close()
       }
   model_info:
-    elapsed_time: 4.438
+    elapsed_time: 4.423
     bge_elapsed_time: 0.123
-    llm_elapsed_time: 4.315
+    llm_elapsed_time: 4.3
 - command: Open the shade.
   devices:
-  - Button
-  - Curtain
-  - Shade
-  - Dehumidifier
-  - Buttonx4
-  - DoorLock
-  - Light
   - Blind
-  - Clock
-  - Fan
+  - Buttonx4
   - MenuProvider
+  - Clock
+  - DoorLock
+  - Dehumidifier
+  - Fan
+  - Curtain
+  - Light
+  - Button
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Shade).windowShadeLevel_shadeLevel == "open") {
-        (#Shade).curtain_close()
+      if ((#DoorLock).windowShade_windowShade == "open") {
+        (#DoorLock).windowShade_close()
       } else {
-        (#Shade).curtain_open()
+        (#DoorLock).windowShade_open()
       }
   model_info:
-    elapsed_time: 4.974
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 4.852
+    elapsed_time: 5.301
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 5.178
 - command: Pause the shade movement.
   devices:
-  - Button
-  - Curtain
-  - Shade
-  - Dehumidifier
+  - Blind
   - MotionSensor
   - Buttonx4
-  - Relay
-  - Camera
-  - Blind
   - Clock
+  - Relay
+  - Shade
   - Fan
+  - Curtain
+  - Camera
+  - Button
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4730,47 +4773,47 @@
     code: |-
       (#Shade).windowShade_pause()
   model_info:
-    elapsed_time: 3.557
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.431
+    elapsed_time: 3.552
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.424
 - command: Sound the alarm's siren if it's on.
   devices:
   - Alarm
   - Window
-  - Curtain
   - LeakSensor
-  - SoundSensor
-  - DoorLock
-  - Relay
-  - Switch
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - Curtain
+  - SoundSensor
+  - Switch
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Alarm).switch_switch == 'on') {
-          (#Alarm).alarm_siren()
-        }
+      if ((#Alarm).alarm_alarm == "on") {
+        (#Alarm).alarm_siren()
+      }
   model_info:
-    elapsed_time: 4.065
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 3.938
+    elapsed_time: 3.855
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 3.726
 - command: If Siren mode is Siren, sound the alarm's siren.
   devices:
   - Alarm
   - Window
-  - SoundSensor
-  - Pump
-  - MotionSensor
-  - Relay
   - Recorder
-  - AirConditioner
+  - MotionSensor
   - Siren
+  - Relay
+  - Pump
   - Clock
+  - AirConditioner
   - RobotCleaner
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4782,38 +4825,43 @@
   model_info:
     elapsed_time: 4.144
     bge_elapsed_time: 0.129
-    llm_elapsed_time: 4.016
+    llm_elapsed_time: 4.015
 - command: Turn off the siren.
   devices:
   - Alarm
+  - Blind
+  - Buttonx4
+  - Siren
+  - Relay
+  - Clock
+  - DoorLock
   - Curtain
+  - Camera
   - Button
   - AirPurifier
-  - Buttonx4
-  - Relay
-  - DoorLock
-  - Camera
-  - Blind
-  - Siren
-  - Clock
-  generated_code: []
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Siren).switch_off()
   model_info:
-    elapsed_time: 2.397
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 2.276
+    elapsed_time: 3.517
+    bge_elapsed_time: 0.122
+    llm_elapsed_time: 3.395
 - command: Turn on the siren.
   devices:
   - Alarm
-  - Button
-  - Curtain
-  - Buttonx4
-  - Relay
-  - Light
-  - Camera
   - Blind
+  - Buttonx4
   - Siren
+  - Relay
   - Clock
   - Fan
+  - Light
+  - Curtain
+  - Camera
+  - Button
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4821,22 +4869,22 @@
     code: |-
       (#Siren).switch_on()
   model_info:
-    elapsed_time: 3.541
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 3.42
+    elapsed_time: 3.547
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 3.424
 - command: Toggle the siren power.
   devices:
   - Alarm
-  - Button
   - Buttonx4
-  - Light
-  - Relay
-  - Switch
-  - Camera
-  - Charger
   - Siren
+  - Relay
   - Clock
   - Fan
+  - Light
+  - Button
+  - Camera
+  - Charger
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4844,45 +4892,45 @@
     code: |-
       (#Siren).switch_toggle()
   model_info:
-    elapsed_time: 3.521
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.398
+    elapsed_time: 3.516
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.392
 - command: Set the siren mode to strobe.
   devices:
   - Alarm
-  - Curtain
-  - Shade
-  - Light
-  - Relay
-  - Camera
-  - AirConditioner
   - Blind
-  - Siren
-  - Clock
   - LightSensor
+  - Siren
+  - Relay
+  - Clock
+  - AirConditioner
+  - Light
+  - Curtain
+  - Camera
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Siren).sirenMode_setSirenMode("strobe")
+      (#Siren).sirenMode_setSirenMode('strobe')
   model_info:
     elapsed_time: 3.691
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.566
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.564
 - command: Sound the alarm's siren when the smart plug is powered on.
   devices:
   - Alarm
+  - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - DoorLock
+  - Television
   - SmartPlug
   - Light
-  - Relay
-  - Switch
   - Charger
-  - DoorLock
-  - Siren
-  - Television
-  - Clock
-  - Refrigerator
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4892,22 +4940,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.337
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.207
+    elapsed_time: 4.338
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.206
 - command: Sound the alarm's siren if the smart plug is over 220 volts.
   devices:
-  - Alarm
-  - SmartPlug
-  - Charger
-  - Light
-  - Switch
-  - Relay
-  - Siren
-  - Television
   - Irrigator
-  - Clock
+  - Alarm
   - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - Television
+  - SmartPlug
+  - Light
+  - Charger
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4917,22 +4965,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.569
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 4.437
+    elapsed_time: 4.575
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 4.442
 - command: Sound the alarm's siren if the smart plug is drawing more than 10 amps.
   devices:
+  - Irrigator
   - Alarm
+  - Refrigerator
+  - Siren
+  - Relay
+  - Clock
   - SmartPlug
+  - Fan
   - Light
   - Charger
   - Switch
-  - Relay
-  - Siren
-  - Irrigator
-  - Clock
-  - Refrigerator
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4942,22 +4990,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.511
+    elapsed_time: 4.526
     bge_elapsed_time: 0.133
-    llm_elapsed_time: 4.378
+    llm_elapsed_time: 4.394
 - command: Sound the alarm siren when a smart plug draws more than 1000 watts.
   devices:
+  - Irrigator
   - Alarm
+  - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - Television
   - SmartPlug
   - Light
   - Charger
   - Switch
-  - Relay
-  - Siren
-  - Irrigator
-  - Television
-  - Clock
-  - Refrigerator
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4967,22 +5015,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.61
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.478
+    elapsed_time: 4.612
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.48
 - command: Turn off the smart plug.
   devices:
-  - AirPurifier
-  - Button
-  - SmartPlug
-  - Dehumidifier
-  - Light
+  - Refrigerator
+  - Clock
   - Relay
-  - Switch
   - DoorLock
   - Television
-  - Clock
-  - Refrigerator
+  - SmartPlug
+  - Light
+  - Button
+  - AirPurifier
+  - Switch
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -4990,22 +5038,22 @@
     code: |-
       (#SmartPlug).switch_off()
   model_info:
-    elapsed_time: 3.576
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.452
+    elapsed_time: 3.569
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 3.445
 - command: Turn on the smart plug.
   devices:
-  - Button
-  - SmartPlug
-  - Dehumidifier
-  - Light
-  - Relay
-  - Switch
-  - Television
   - Irrigator
-  - Clock
   - Refrigerator
+  - Clock
+  - Relay
+  - Television
+  - SmartPlug
   - Fan
+  - Light
+  - Button
+  - Switch
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5013,22 +5061,22 @@
     code: |-
       (#SmartPlug).switch_on()
   model_info:
-    elapsed_time: 3.651
-    bge_elapsed_time: 0.124
+    elapsed_time: 3.652
+    bge_elapsed_time: 0.125
     llm_elapsed_time: 3.527
 - command: Toggle the power of the smart plug.
   devices:
-  - Button
+  - Irrigator
+  - Refrigerator
+  - Clock
+  - Dishwasher
   - SmartPlug
-  - Dehumidifier
+  - Fan
   - Light
+  - Button
   - Charger
   - Switch
-  - Dishwasher
-  - Irrigator
-  - Clock
-  - Refrigerator
-  - Fan
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5036,21 +5084,21 @@
     code: |-
       (#SmartPlug).switch_toggle()
   model_info:
-    elapsed_time: 3.578
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.451
+    elapsed_time: 3.674
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.546
 - command: Sound the alarm's siren when smoke is detected by the smoke detector.
   devices:
-  - Alarm
   - PresenceSensor
+  - Alarm
   - LeakSensor
-  - SoundSensor
-  - FallDetector
-  - Relay
-  - Charger
   - Siren
-  - AirQualityDetector
+  - Relay
   - Clock
+  - FallDetector
+  - Charger
+  - SoundSensor
+  - AirQualityDetector
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -5061,22 +5109,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.967
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.836
+    elapsed_time: 3.96
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 3.829
 - command: Sound the alarm siren when the soil moisture sensor's soil moisture reading is 30 percent or less.
   devices:
   - Alarm
-  - LeakSensor
-  - SoundSensor
-  - SoilMoistureSensor
-  - TemperatureSensor
-  - HumiditySensor
-  - Siren
-  - WeatherProvider
-  - AirQualityDetector
-  - Clock
   - LightSensor
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Clock
+  - HumiditySensor
+  - SoundSensor
+  - AirQualityDetector
+  - SoilMoistureSensor
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5085,45 +5133,21 @@
       wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
       (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 4.122
+    elapsed_time: 4.132
     bge_elapsed_time: 0.138
-    llm_elapsed_time: 3.985
+    llm_elapsed_time: 3.994
 - command: Sound the alarm's siren when sound is detected by the sound sensor.
   devices:
-  - Alarm
   - PresenceSensor
-  - LeakSensor
-  - SoundSensor
-  - FallDetector
+  - Alarm
   - MotionSensor
   - TemperatureSensor
-  - ContactSensor
-  - Siren
-  - Clock
-  - SmokeDetector
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      wait until((#SoundSensor).soundSensor_sound == "detected")
-      (#Alarm).alarm_siren()
-  model_info:
-    elapsed_time: 3.728
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 3.598
-- command: Sound the alarm's siren when the sound detection level is above 70 dB.
-  devices:
-  - Alarm
   - LeakSensor
-  - SoundSensor
-  - FallDetector
-  - TemperatureSensor
-  - Recorder
-  - HumiditySensor
   - Siren
-  - AirQualityDetector
   - Clock
+  - FallDetector
+  - ContactSensor
+  - SoundSensor
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -5134,22 +5158,47 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.924
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 3.793
+    elapsed_time: 3.87
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 3.74
+- command: Sound the alarm's siren when the sound detection level is above 70 dB.
+  devices:
+  - Alarm
+  - Recorder
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Clock
+  - FallDetector
+  - HumiditySensor
+  - SoundSensor
+  - AirQualityDetector
+  - SmokeDetector
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#SoundSensor).soundSensor_sound == "detected") {
+        (#Alarm).alarm_siren()
+      }
+  model_info:
+    elapsed_time: 3.972
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 3.84
 - command: Sound the alarm's siren when the speaker is powered on.
   devices:
   - Alarm
-  - SoundSensor
-  - Speaker
-  - Relay
-  - Switch
   - Recorder
-  - Camera
-  - Light
   - Siren
-  - Charger
+  - Relay
   - Clock
+  - Speaker
+  - Light
+  - Camera
+  - SoundSensor
+  - Charger
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5159,22 +5208,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.193
+    elapsed_time: 4.186
     bge_elapsed_time: 0.131
-    llm_elapsed_time: 4.062
+    llm_elapsed_time: 4.055
 - command: Sound the alarm's siren when the speaker is playing.
   devices:
   - Alarm
-  - Button
-  - LeakSensor
-  - SoundSensor
-  - Speaker
-  - Relay
-  - DoorLock
   - Recorder
-  - Camera
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - Speaker
+  - Camera
+  - Button
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5185,71 +5234,57 @@
       }
   model_info:
     elapsed_time: 4.179
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 4.052
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 4.05
 - command: Output commands to the speaker that the speaker supports.
   devices:
-  - Button
   - Alarm
-  - SoundSensor
   - Buttonx4
-  - Speaker
-  - DoorLock
-  - Camera
-  - Television
   - Clock
-  - Calculator
+  - DoorLock
+  - Television
   - Fan
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 100
-    code: |-
-      if ((#Speaker).mediaPlayback_supportedPlaybackCommands == "") {
-        (#Speaker).mediaPlayback_speak("The speaker does not support any commands.")
-      } else {
-        (#Speaker).mediaPlayback_speak("The speaker supports the following commands: " + (#Speaker).mediaPlayback_supportedPlaybackCommands)
-      }
+  - Speaker
+  - Button
+  - Camera
+  - SoundSensor
+  - Calculator
+  generated_code: []
   model_info:
-    elapsed_time: 6.359
+    elapsed_time: 50.111
     bge_elapsed_time: 0.128
-    llm_elapsed_time: 6.232
+    llm_elapsed_time: 49.983
 - command: Turn off your speakers.
   devices:
-  - AirPurifier
-  - Curtain
   - Alarm
-  - Speaker
-  - Relay
-  - Camera
   - Recorder
   - Siren
-  - Television
+  - Relay
   - Clock
+  - Television
   - Fan
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Speaker).switch_off()
+  - Speaker
+  - Curtain
+  - Camera
+  - AirPurifier
+  generated_code: []
   model_info:
-    elapsed_time: 3.597
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.474
+    elapsed_time: 2.418
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 2.293
 - command: Turn on your speakers.
   devices:
-  - AirPurifier
-  - Button
   - Alarm
-  - SoundSensor
-  - Buttonx4
-  - Speaker
-  - Camera
   - Recorder
+  - Buttonx4
   - Siren
   - Clock
   - Fan
+  - Speaker
+  - Camera
+  - Button
+  - SoundSensor
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5257,120 +5292,117 @@
     code: |-
       (#Speaker).switch_on()
   model_info:
-    elapsed_time: 3.515
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.392
+    elapsed_time: 3.604
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.479
 - command: Toggle the power of the speaker.
   devices:
-  - Button
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Buttonx4
-  - Light
-  - Speaker
-  - Dishwasher
   - Irrigator
+  - Buttonx4
+  - Humidifier
   - Clock
+  - Dishwasher
+  - SmartPlug
   - Fan
+  - Speaker
+  - Light
+  - Button
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       (#Speaker).switch_toggle()
-  - name: "Scenario2"
-    cron: ""
-    period: -1
-    code: |-
-      (#Speaker).switch_toggle()
   model_info:
-    elapsed_time: 4.916
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 4.792
+    elapsed_time: 3.728
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 3.603
 - command: Fast-forward the playback of the speaker.
   devices:
-  - AirPurifier
-  - Button
-  - Humidifier
-  - SoundSensor
-  - Dehumidifier
-  - Buttonx4
-  - Speaker
-  - Camera
   - Recorder
+  - Buttonx4
+  - Humidifier
   - Clock
   - Fan
+  - Speaker
+  - Camera
+  - Button
+  - SoundSensor
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Speaker).mediaPlayback_fastForward()
+      if ((#Speaker).mediaPlayback_playbackStatus == "fast forward") {
+        (#Speaker).mediaPlayback_fastForward()
+      }
   model_info:
-    elapsed_time: 3.628
+    elapsed_time: 4.536
     bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.502
+    llm_elapsed_time: 4.41
 - command: Pause playback on the speaker.
   devices:
   - Alarm
-  - Curtain
-  - AirPurifier
-  - SoundSensor
-  - Speaker
-  - Relay
-  - Camera
   - Recorder
   - Siren
+  - Relay
   - Clock
   - Fan
+  - Curtain
+  - Speaker
+  - Camera
+  - SoundSensor
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
+      wait until((#Speaker).mediaPlayback_playbackStatus == "playing")
       (#Speaker).mediaPlayback_pause()
   model_info:
-    elapsed_time: 3.448
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.322
+    elapsed_time: 4.543
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 4.416
 - command: Rewind the speaker's playback.
   devices:
   - Alarm
-  - Curtain
-  - AirPurifier
-  - SoundSensor
-  - Speaker
-  - Relay
-  - Recorder
   - Blind
+  - Recorder
   - Siren
+  - Relay
   - Clock
   - Fan
+  - Curtain
+  - Speaker
+  - SoundSensor
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Speaker).mediaPlayback_playbackStatus == "rewinding")
       (#Speaker).mediaPlayback_rewind()
   model_info:
-    elapsed_time: 4.197
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 4.072
+    elapsed_time: 3.688
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 3.555
 - command: Stop the speaker from playing.
   devices:
   - Alarm
-  - Curtain
-  - AirPurifier
-  - SoundSensor
-  - Speaker
-  - Camera
   - Recorder
   - Siren
-  - WeatherProvider
   - Clock
   - Fan
+  - Curtain
+  - Speaker
+  - Camera
+  - SoundSensor
+  - AirPurifier
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5379,20 +5411,20 @@
       wait until((#Speaker).mediaPlayback_playbackStatus == "playing")
       (#Speaker).mediaPlayback_stop()
   model_info:
-    elapsed_time: 4.248
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 4.123
+    elapsed_time: 5.057
+    bge_elapsed_time: 0.792
+    llm_elapsed_time: 4.264
 - command: Play music.mp3 on the speaker.
   devices:
-  - AirPurifier
-  - Button
   - Alarm
-  - SoundSensor
-  - Speaker
-  - Camera
   - Recorder
   - Clock
   - Fan
+  - Speaker
+  - Camera
+  - Button
+  - SoundSensor
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5400,21 +5432,21 @@
     code: |-
       (#Speaker).mediaPlayback_play("music.audioRecord_recordStatus")
   model_info:
-    elapsed_time: 3.599
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.473
+    elapsed_time: 3.592
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.464
 - command: Speaker says, "This is a test".
   devices:
   - Alarm
-  - SoundSensor
-  - Charger
-  - DoorLock
-  - Speaker
   - Recorder
   - TemperatureSensor
-  - Switch
-  - Relay
   - Clock
+  - Relay
+  - DoorLock
+  - Speaker
+  - SoundSensor
+  - Charger
+  - Switch
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -5422,28 +5454,23 @@
     period: -1
     code: |-
       (#Speaker).mediaPlayback_speak("This is a test")
-  - name: "Scenario2"
-    cron: ""
-    period: -1
-    code: |-
-      (#Speaker).mediaPlayback_speak("This is a test")
   model_info:
-    elapsed_time: 4.866
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 4.738
+    elapsed_time: 3.48
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 3.351
 - command: Sound an alarm siren when the recorder is powered on.
   devices:
   - Alarm
+  - Recorder
   - LeakSensor
-  - SoundSensor
+  - Siren
   - Relay
+  - Clock
   - Speaker
   - Camera
-  - Recorder
-  - Switch
+  - SoundSensor
   - Charger
-  - Siren
-  - Clock
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5453,47 +5480,40 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.021
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 3.892
+    elapsed_time: 4.013
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 3.883
 - command: Sound the alarm siren when the recorder is recording.
   devices:
   - Alarm
-  - Button
-  - LeakSensor
-  - SoundSensor
-  - Speaker
-  - Relay
-  - Camera
   - Recorder
-  - Charger
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Recorder).audioRecord_recordStatus == "recording") {
-        (#Alarm).alarm_siren()
-      }
+  - Speaker
+  - Camera
+  - Button
+  - SoundSensor
+  - Charger
+  generated_code: []
   model_info:
-    elapsed_time: 4.201
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 4.074
+    elapsed_time: 2.247
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 2.118
 - command: Turn off the recorder.
   devices:
-  - AirPurifier
-  - Button
-  - Dehumidifier
-  - Relay
-  - Speaker
-  - Camera
   - Recorder
   - Siren
-  - WeatherProvider
+  - Relay
   - Clock
   - Fan
+  - Speaker
+  - Camera
+  - Button
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5501,90 +5521,96 @@
     code: |-
       (#Recorder).switch_off()
   model_info:
-    elapsed_time: 3.528
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 3.407
+    elapsed_time: 3.804
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.681
 - command: Turn on the recorder.
   devices:
+  - Irrigator
+  - Recorder
+  - Buttonx4
+  - Clock
+  - Relay
+  - Fan
+  - Speaker
+  - Camera
   - Button
   - AirPurifier
   - Dehumidifier
-  - Buttonx4
-  - Speaker
-  - Relay
-  - Camera
-  - Recorder
-  - Irrigator
-  - Clock
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
+      wait until((#Recorder).switch_switch == "on")
       (#Recorder).switch_on()
   model_info:
-    elapsed_time: 3.625
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.503
+    elapsed_time: 4.365
+    bge_elapsed_time: 0.312
+    llm_elapsed_time: 4.052
 - command: Toggle the recorder's power.
   devices:
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Speaker
-  - Charger
-  - Camera
-  - Recorder
-  - Dishwasher
   - Irrigator
+  - Recorder
+  - Humidifier
   - Clock
+  - Dishwasher
+  - SmartPlug
   - Fan
+  - Speaker
+  - Camera
+  - Charger
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Recorder).switch_toggle()
+      if ((#Recorder).switch_switch == "on") {
+        (#Recorder).switch_off()
+      } else {
+        (#Recorder).switch_on()
+      }
   model_info:
-    elapsed_time: 3.426
+    elapsed_time: 4.92
     bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.302
+    llm_elapsed_time: 4.796
 - command: Record 10 seconds with a recorder and save it as test.wav.
   devices:
+  - Recorder
+  - TemperatureSensor
+  - Clock
+  - Charger
+  - Fan
+  - Speaker
+  - Camera
   - Button
   - SoundSensor
-  - Speaker
-  - TemperatureSensor
-  - Camera
-  - Recorder
-  - Charger
   - AirQualityDetector
-  - Clock
-  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
+      wait until((#Recorder).switch_switch == "off")
       (#Recorder).audioRecord_record("test.mediaPlayback_playbackStatus", 10.0)
   model_info:
-    elapsed_time: 3.817
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 3.688
+    elapsed_time: 4.534
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 4.404
 - command: Sound the alarm's siren when the switch is powered on.
   devices:
   - Alarm
-  - Button
-  - SmartPlug
-  - Relay
-  - Light
-  - Switch
-  - Charger
-  - DoorLock
-  - Siren
-  - Clock
   - Refrigerator
+  - Siren
+  - Relay
+  - Clock
+  - DoorLock
+  - SmartPlug
+  - Light
+  - Button
+  - Charger
+  - Switch
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5594,22 +5620,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.193
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.063
+    elapsed_time: 4.216
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.085
 - command: Switch off.
   devices:
-  - Button
-  - SmartPlug
-  - Dehumidifier
-  - Buttonx4
-  - Relay
-  - Light
-  - Switch
-  - Speaker
   - Blind
+  - Buttonx4
   - Clock
+  - Relay
+  - SmartPlug
   - Fan
+  - Light
+  - Speaker
+  - Button
+  - Switch
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5617,109 +5643,110 @@
     code: |-
       (#Switch).switch_off()
   model_info:
-    elapsed_time: 3.691
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.569
+    elapsed_time: 3.604
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 3.475
 - command: Switch on.
   devices:
-  - Button
+  - Irrigator
+  - Buttonx4
+  - Clock
+  - Relay
   - Pump
-  - Dehumidifier
-  - Buttonx4
-  - Relay
-  - Light
-  - Switch
   - DoorLock
-  - Irrigator
-  - Clock
   - Fan
-  generated_code: []
-  model_info:
-    elapsed_time: 50.196
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 50.075
-- command: Toggle the power of the switch.
-  devices:
-  - Button
-  - SmartPlug
-  - Humidifier
-  - Dehumidifier
-  - Buttonx4
   - Light
-  - Relay
+  - Button
   - Switch
-  - Irrigator
-  - Clock
-  - Fan
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Switch).switch_switch == "on") {
-        (#Switch).switch_off()
-      } else {
-        (#Switch).switch_on()
-      }
+      (#Switch).switch_on()
   model_info:
-    elapsed_time: 4.897
+    elapsed_time: 3.545
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 3.417
+- command: Toggle the power of the switch.
+  devices:
+  - Irrigator
+  - Buttonx4
+  - Humidifier
+  - Clock
+  - Relay
+  - SmartPlug
+  - Fan
+  - Light
+  - Button
+  - Switch
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Switch).switch_toggle()
+  model_info:
+    elapsed_time: 3.526
     bge_elapsed_time: 0.125
-    llm_elapsed_time: 4.772
+    llm_elapsed_time: 3.401
 - command: Sound the alarm's siren when the TV is powered on.
   devices:
   - Alarm
-  - Button
-  - LeakSensor
+  - Refrigerator
+  - Siren
   - Relay
+  - LeakSensor
+  - Clock
+  - Television
   - Light
   - Camera
+  - Button
   - Switch
-  - Siren
-  - Television
-  - Clock
-  - Refrigerator
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Television).switch_switch == "on") {
-        (#Alarm).alarm_siren()
-      }
+  generated_code: []
   model_info:
-    elapsed_time: 4.311
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 4.183
+    elapsed_time: 2.413
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 2.283
 - command: If the current TV channel is named "9 o'clock news" sound the alarm's siren.
   devices:
   - Alarm
   - Window
-  - Curtain
-  - LeakSensor
-  - GasValve
-  - DoorLock
   - Recorder
+  - LeakSensor
   - Siren
-  - Television
   - Clock
-  generated_code: []
+  - DoorLock
+  - Television
+  - Curtain
+  - GasValve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Television).tvChannel_tvChannelName == "9 o'clock news") {
+        (#Alarm).alarm_siren()
+      }
   model_info:
-    elapsed_time: 48.569
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 48.438
+    elapsed_time: 4.346
+    bge_elapsed_time: 0.143
+    llm_elapsed_time: 4.203
 - command: Sound the alarm's siren if the volume on your TV is above 50.
   devices:
-  - Alarm
-  - LeakSensor
-  - SoundSensor
-  - Light
-  - Relay
-  - TemperatureSensor
-  - Blind
-  - Siren
-  - Television
   - Irrigator
+  - Alarm
+  - Blind
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Relay
   - Clock
+  - Television
+  - Light
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5729,22 +5756,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.355
+    elapsed_time: 4.48
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.225
+    llm_elapsed_time: 4.35
 - command: Sound the alarm's siren when the TV is muted.
   devices:
   - Alarm
-  - LeakSensor
-  - SoundSensor
-  - Relay
-  - Speaker
-  - DoorLock
   - Recorder
+  - LeakSensor
   - Siren
-  - Television
-  - RobotCleaner
+  - Relay
   - Clock
+  - DoorLock
+  - Television
+  - Speaker
+  - RobotCleaner
+  - SoundSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5754,22 +5781,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.212
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 4.084
+    elapsed_time: 4.504
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 4.375
 - command: Turn off your TV.
   devices:
-  - AirPurifier
-  - Curtain
-  - Dehumidifier
+  - Blind
+  - Clock
   - Relay
+  - Television
   - Light
+  - Curtain
   - Camera
   - Speaker
+  - AirPurifier
   - Switch
-  - Blind
-  - Television
-  - Clock
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5779,22 +5806,22 @@
         (#Television).switch_off()
       }
   model_info:
-    elapsed_time: 4.288
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 4.166
+    elapsed_time: 4.284
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 4.162
 - command: Turn on your TV.
   devices:
-  - Button
-  - AirPurifier
-  - Light
-  - Relay
-  - Camera
-  - Speaker
-  - Dishwasher
-  - Television
   - Irrigator
   - Clock
+  - Relay
+  - Dishwasher
+  - Television
   - Fan
+  - Light
+  - Speaker
+  - Camera
+  - Button
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5802,22 +5829,22 @@
     code: |-
       (#Television).switch_on()
   model_info:
-    elapsed_time: 3.629
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 3.508
+    elapsed_time: 3.717
+    bge_elapsed_time: 0.122
+    llm_elapsed_time: 3.595
 - command: Toggle the power of your TV.
   devices:
-  - Button
-  - SmartPlug
+  - Irrigator
   - Humidifier
-  - Dehumidifier
+  - Clock
+  - Dishwasher
+  - Television
+  - SmartPlug
+  - Fan
   - Light
   - Camera
-  - Dishwasher
-  - Irrigator
-  - Television
-  - Clock
-  - Fan
+  - Button
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5829,22 +5856,22 @@
         (#Television).switch_toggle()
       }
   model_info:
-    elapsed_time: 4.993
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 4.871
+    elapsed_time: 5.075
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 4.951
 - command: Turn down a TV channel.
   devices:
-  - Button
-  - Curtain
+  - Irrigator
+  - Blind
+  - Clock
   - Relay
   - DoorLock
-  - Camera
-  - Blind
-  - Irrigator
   - Television
-  - Clock
-  - Calculator
   - Fan
+  - Curtain
+  - Camera
+  - Button
+  - Calculator
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -5854,217 +5881,222 @@
         (#Television).tvChannel_channelDown()
       }
   model_info:
-    elapsed_time: 4.363
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 4.242
+    elapsed_time: 4.368
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 4.244
 - command: Upload a TV channel.
   devices:
-  - Button
-  - Curtain
+  - Irrigator
   - Feeder
-  - Camera
   - Blind
-  - Irrigator
-  - Television
-  - Clock
-  - Calculator
-  - Fan
   - MenuProvider
-  generated_code: []
-  model_info:
-    elapsed_time: 2.42
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 2.297
-- command: Set the TV channel to 7.
-  devices:
-  - Button
-  - Buttonx4
-  - Light
-  - Camera
-  - Dishwasher
-  - Blind
-  - Irrigator
-  - Television
   - Clock
-  - Calculator
+  - Television
   - Fan
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Television).tvChannel_setTvChannel(7)
-  model_info:
-    elapsed_time: 3.96
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.835
-- command: Set the TV channel to "9 o'clock news".
-  devices:
   - Curtain
-  - GasValve
   - Camera
-  - AirConditioner
-  - Dishwasher
-  - Blind
-  - Television
-  - Irrigator
-  - Clock
-  - Fan
+  - Button
+  - Calculator
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Clock).clock_time == 1300) {
-        (#Television).tvChannel_setTvChannelName("9 o'clock news")
+      if ((#Television).switch_switch == "on") {
+        if ((#Television).tvChannel_tvChannel == 0) {
+          if ((#Television).tvChannel_tvChannelName == "") {
+            (#Television).tvChannel_setTvChannelName("TV1")
+          }
+        }
       }
   model_info:
-    elapsed_time: 4.77
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.644
-- command: Set the volume on your TV to 30.
+    elapsed_time: 6.445
+    bge_elapsed_time: 0.123
+    llm_elapsed_time: 6.322
+- command: Set the TV channel to 7.
   devices:
-  - Alarm
-  - AirPurifier
-  - Light
-  - Camera
-  - AirConditioner
-  - Blind
   - Irrigator
-  - Television
+  - Blind
+  - Buttonx4
   - Clock
-  - LightSensor
+  - Dishwasher
+  - Television
   - Fan
+  - Light
+  - Button
+  - Camera
+  - Calculator
+  generated_code: []
+  model_info:
+    elapsed_time: 50.715
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 50.59
+- command: Set the TV channel to "9 o'clock news".
+  devices:
+  - Irrigator
+  - Blind
+  - Clock
+  - Dishwasher
+  - AirConditioner
+  - Television
+  - Fan
+  - Curtain
+  - Camera
+  - GasValve
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Television).audioVolume_setVolume(30)
+      wait until((#Clock).clock_hour == 15)
+      (#Television).tvChannel_setTvChannelName("9 o'clock news")
   model_info:
-    elapsed_time: 3.921
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.796
+    elapsed_time: 4.547
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 4.419
+- command: Set the volume on your TV to 30.
+  devices:
+  - Irrigator
+  - Blind
+  - Alarm
+  - LightSensor
+  - Clock
+  - AirConditioner
+  - Television
+  - Fan
+  - Light
+  - Camera
+  - AirPurifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Television).audioVolume_setVolume(30)
+      }
+  model_info:
+    elapsed_time: 4.613
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 4.487
 - command: Turn down the volume on your TV.
   devices:
   - Alarm
-  - AirPurifier
-  - Curtain
+  - Blind
+  - LightSensor
+  - Clock
+  - Television
+  - Fan
   - Speaker
   - Light
   - Camera
-  - Blind
-  - Television
-  - Clock
-  - LightSensor
-  - Fan
+  - Curtain
+  - AirPurifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Television).audioVolume_volumeDown()
+      if ((#Television).switch_switch == "on") {
+        (#Television).audioVolume_volumeDown()
+      }
   model_info:
-    elapsed_time: 3.696
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 3.573
+    elapsed_time: 4.469
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 4.345
 - command: Turn up the volume on your TV.
   devices:
+  - Irrigator
   - Alarm
-  - Button
+  - Blind
+  - LightSensor
+  - Clock
+  - Television
+  - Fan
   - Light
   - Speaker
   - Camera
-  - Blind
-  - Irrigator
-  - Television
-  - Clock
-  - LightSensor
-  - Fan
+  - Button
   generated_code: []
   model_info:
-    elapsed_time: 50.557
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 50.434
+    elapsed_time: 2.497
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 2.373
 - command: Mute the TV.
   devices:
-  - AirPurifier
   - Alarm
+  - LightSensor
+  - Clock
+  - Relay
+  - Dishwasher
+  - Television
   - Speaker
   - Light
   - Camera
-  - Relay
-  - Dishwasher
   - AirQualityDetector
-  - Television
-  - Clock
-  - LightSensor
+  - AirPurifier
   generated_code: []
   model_info:
-    elapsed_time: 2.41
-    bge_elapsed_time: 0.123
-    llm_elapsed_time: 2.287
+    elapsed_time: 2.423
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 2.299
 - command: Unmute your TV.
   devices:
-  - AirPurifier
   - Alarm
-  - Dehumidifier
-  - Relay
-  - Speaker
   - Recorder
+  - Clock
+  - Relay
   - Dishwasher
   - Television
+  - Speaker
   - RobotCleaner
   - AirQualityDetector
-  - Clock
+  - AirPurifier
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       if ((#Television).audioMute_muteStatus == "unmuted") {
-        (#Television).audioMute_unmute()
+        break
       }
+      (#Television).audioMute_unmute()
   model_info:
-    elapsed_time: 4.527
+    elapsed_time: 4.699
     bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.402
+    llm_elapsed_time: 4.573
 - command: Set your TV's mute state to Mute.
   devices:
-  - AirPurifier
-  - Humidifier
-  - Dehumidifier
-  - Speaker
-  - Relay
-  - Recorder
-  - Dishwasher
   - Irrigator
-  - Television
-  - RobotCleaner
+  - Recorder
+  - Humidifier
   - Clock
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Television).audioMute_mute()
+  - Relay
+  - Dishwasher
+  - Television
+  - Speaker
+  - RobotCleaner
+  - AirPurifier
+  - Dehumidifier
+  generated_code: []
   model_info:
-    elapsed_time: 3.568
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 3.439
+    elapsed_time: 49.847
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 49.719
 - command: Sound the alarm's siren if the current room temperature is above 25 degrees.
   devices:
   - Alarm
-  - SoundSensor
-  - DoorLock
   - TemperatureSensor
-  - Camera
-  - AirConditioner
-  - HumiditySensor
   - Siren
-  - WeatherProvider
-  - AirQualityDetector
   - Clock
+  - AirConditioner
+  - DoorLock
+  - HumiditySensor
+  - Camera
+  - SoundSensor
+  - AirQualityDetector
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -6074,22 +6106,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.305
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 4.175
+    elapsed_time: 4.316
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.185
 - command: Sound the alarm's siren when the valve is open.
   devices:
-  - Window
   - Alarm
+  - Window
   - LeakSensor
-  - Pump
-  - GasValve
-  - DoorLock
-  - Relay
-  - ContactSensor
   - Siren
-  - Clock
+  - Relay
+  - Pump
   - Valve
+  - DoorLock
+  - Clock
+  - ContactSensor
+  - GasValve
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -6099,68 +6131,65 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.991
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 3.864
+    elapsed_time: 3.988
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 3.858
 - command: Close the valve.
   devices:
-  - Alarm
-  - Curtain
-  - LeakSensor
-  - Pump
-  - Dehumidifier
-  - GasValve
-  - Blind
   - Irrigator
+  - Blind
+  - Alarm
+  - LeakSensor
   - Clock
-  - Fan
+  - Pump
   - Valve
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Valve).valve_close()
+  - Fan
+  - Curtain
+  - GasValve
+  - Dehumidifier
+  generated_code: []
   model_info:
-    elapsed_time: 3.408
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.286
+    elapsed_time: 48.909
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 48.786
 - command: Open the valve.
   devices:
-  - Button
-  - Curtain
-  - LeakSensor
-  - Pump
-  - GasValve
-  - Charger
-  - Blind
   - Irrigator
+  - Blind
+  - LeakSensor
   - Clock
-  - Fan
+  - Pump
   - Valve
+  - Fan
+  - Curtain
+  - Button
+  - Charger
+  - GasValve
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Valve).valve_open()
+      if ((#GasValve).valve_valve == "closed") {
+        (#GasValve).valve_open()
+      }
   model_info:
-    elapsed_time: 3.4
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.278
+    elapsed_time: 4.266
+    bge_elapsed_time: 0.125
+    llm_elapsed_time: 4.141
 - command: Sound the alarm's siren when the humidity outside is above 80 percent.
   devices:
   - Alarm
-  - LeakSensor
-  - SoundSensor
-  - Humidifier
-  - SoilMoistureSensor
   - TemperatureSensor
-  - HumiditySensor
+  - Humidifier
+  - LeakSensor
   - Siren
-  - WeatherProvider
-  - AirQualityDetector
   - Clock
+  - HumiditySensor
+  - SoundSensor
+  - AirQualityDetector
+  - SoilMoistureSensor
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -6170,46 +6199,47 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.269
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 4.137
+    elapsed_time: 4.271
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.14
 - command: Sound the alarm's siren when the particulate matter concentration outside is above 100.
   devices:
   - Alarm
-  - AirPurifier
-  - LeakSensor
-  - SoundSensor
-  - TemperatureSensor
-  - HumiditySensor
-  - Siren
-  - WeatherProvider
-  - AirQualityDetector
-  - Clock
   - SmokeDetector
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Clock
+  - HumiditySensor
+  - SoundSensor
+  - AirQualityDetector
+  - AirPurifier
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity > 100.0)
-      (#Alarm).alarm_siren()
+      if ((#WeatherProvider).weatherProvider_pm10Weather > 100.0) {
+        (#Alarm).alarm_siren()
+      }
   model_info:
-    elapsed_time: 4.386
+    elapsed_time: 4.419
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.255
+    llm_elapsed_time: 4.289
 - command: Sound the alarm's siren when the outside particulate matter concentration is above 50.
   devices:
   - Alarm
-  - AirPurifier
-  - LeakSensor
-  - SoundSensor
-  - TemperatureSensor
-  - HumiditySensor
-  - Siren
-  - WeatherProvider
-  - AirQualityDetector
-  - Clock
   - LightSensor
+  - TemperatureSensor
+  - LeakSensor
+  - Siren
+  - Clock
+  - HumiditySensor
+  - SoundSensor
+  - AirQualityDetector
+  - AirPurifier
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -6219,70 +6249,64 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.378
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.248
+    elapsed_time: 4.392
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.26
 - command: Sound the alarm's siren when the barometric pressure is above 1020 hPa.
   devices:
   - Alarm
   - Window
-  - LeakSensor
-  - SoundSensor
-  - Relay
   - TemperatureSensor
-  - AirConditioner
+  - LeakSensor
   - Siren
-  - WeatherProvider
+  - Relay
   - Clock
   - Valve
+  - AirConditioner
+  - SoundSensor
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#Clock).temperatureMeasurement_temperature > 1020.0)
-      (#Alarm).alarm_siren()
+      if ((#Clock).temperatureMeasurement_temperature > 1020.0) {
+        (#Alarm).alarm_siren()
+      }
   model_info:
-    elapsed_time: 4.221
+    elapsed_time: 4.36
     bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.092
+    llm_elapsed_time: 4.23
 - command: Sound the alarm's siren if it's currently above 30 degrees outside.
   devices:
   - Alarm
   - Window
-  - SoundSensor
-  - DoorLock
   - TemperatureSensor
-  - Camera
+  - Siren
+  - Clock
+  - DoorLock
   - AirConditioner
   - HumiditySensor
-  - Siren
+  - Camera
+  - SoundSensor
   - WeatherProvider
-  - Clock
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#WeatherProvider).weatherProvider_temperatureWeather > 30.0) {
-        (#Alarm).alarm_siren()
-      }
+  generated_code: []
   model_info:
-    elapsed_time: 4.282
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.152
+    elapsed_time: 2.178
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 2.046
 - command: Sound the alarm's siren if the current weather is rainy.
   devices:
   - Alarm
   - Window
-  - LeakSensor
-  - SoundSensor
-  - DoorLock
-  - TemperatureSensor
   - Recorder
+  - TemperatureSensor
+  - LeakSensor
   - Siren
-  - WeatherProvider
   - Clock
+  - DoorLock
+  - SoundSensor
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -6292,45 +6316,46 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.957
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 3.828
+    elapsed_time: 3.96
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 3.831
 - command: Play the current weather information for latitude 37.5665 and longitude 126.9780 over the speaker.
   devices:
-  - SoundSensor
-  - Speaker
+  - LightSensor
   - TemperatureSensor
+  - Clock
   - DoorLock
   - ContactSensor
+  - Speaker
   - HumiditySensor
-  - WeatherProvider
+  - SoundSensor
   - AirQualityDetector
-  - Clock
-  - LightSensor
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#WeatherProvider).weatherProvider_getWeatherInfo(lat: 37.5665, lon: 126.9780))
-      (#Speaker).mediaPlayback_play((#WeatherProvider).weatherProvider_getWeatherInfo(lat: 37.5665, lon: 126.9780))
+      if ((#WeatherProvider).weatherProvider_getWeatherInfo(37.5665, 126.9780).clock_delay() > 0) {
+        (#Speaker).mediaPlayback_speak((#WeatherProvider).weatherProvider_getWeatherInfo(37.5665, 126.9780))
+      }
   model_info:
-    elapsed_time: 6.328
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 6.198
+    elapsed_time: 6.305
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 6.172
 - command: Sound the alarm's siren when a window is open.
   devices:
   - Alarm
   - Window
-  - Curtain
-  - Shade
-  - DoorLock
-  - Camera
-  - ContactSensor
   - Blind
   - Siren
-  - WeatherProvider
   - Clock
+  - DoorLock
+  - ContactSensor
+  - Curtain
+  - Camera
+  - WeatherProvider
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -6340,22 +6365,22 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.141
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 4.014
+    elapsed_time: 4.158
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 4.031
 - command: Close the window.
   devices:
-  - Window
-  - Curtain
-  - Shade
-  - Dehumidifier
-  - DoorLock
-  - Camera
-  - ContactSensor
-  - AirConditioner
   - Blind
-  - WeatherProvider
+  - Window
   - Clock
+  - DoorLock
+  - AirConditioner
+  - ContactSensor
+  - Dehumidifier
+  - Curtain
+  - Camera
+  - WeatherProvider
+  - Shade
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -6363,46 +6388,39 @@
     code: |-
       (#Window).windowControl_close()
   model_info:
-    elapsed_time: 3.391
-    bge_elapsed_time: 0.124
-    llm_elapsed_time: 3.267
+    elapsed_time: 3.394
+    bge_elapsed_time: 0.122
+    llm_elapsed_time: 3.272
 - command: Open a window.
   devices:
   - Window
-  - Curtain
-  - Shade
-  - DoorLock
-  - Camera
-  - ContactSensor
-  - AirConditioner
   - Blind
-  - WeatherProvider
   - Clock
+  - DoorLock
+  - AirConditioner
+  - ContactSensor
   - Fan
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#ContactSensor).contactSensor_contact == "open") {
-        (#Window).windowControl_close()
-      }
+  - Curtain
+  - Camera
+  - WeatherProvider
+  - Shade
+  generated_code: []
   model_info:
-    elapsed_time: 4.23
-    bge_elapsed_time: 0.121
-    llm_elapsed_time: 4.109
+    elapsed_time: 49.196
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 49.07
 - command: Sound the alarm's siren when a fall is detected by the fall detection sensor.
   devices:
-  - Alarm
   - PresenceSensor
-  - LeakSensor
-  - SoundSensor
-  - FallDetector
+  - Alarm
   - MotionSensor
   - TemperatureSensor
-  - ContactSensor
+  - LeakSensor
   - Siren
   - Clock
+  - FallDetector
+  - ContactSensor
+  - SoundSensor
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -6413,46 +6431,45 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.875
-    bge_elapsed_time: 0.135
-    llm_elapsed_time: 3.74
+    elapsed_time: 3.877
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 3.741
 - command: Sound the alarm's siren when an occupancy sensor is detected.
   devices:
-  - Alarm
   - PresenceSensor
-  - LeakSensor
-  - SoundSensor
-  - FallDetector
+  - Alarm
   - MotionSensor
   - TemperatureSensor
-  - ContactSensor
+  - LeakSensor
   - Siren
   - Clock
+  - FallDetector
+  - ContactSensor
+  - SoundSensor
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#PresenceSensor).presenceSensor_presence == "present") {
-        (#Alarm).alarm_siren()
-      }
+      wait until((#PresenceSensor).presenceSensor_presence == "detected")
+      (#Alarm).alarm_siren()
   model_info:
-    elapsed_time: 3.919
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.789
+    elapsed_time: 3.872
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 3.741
 - command: Sound the alarm's siren when the relay is powered on.
   devices:
   - Alarm
-  - SmartPlug
+  - Siren
   - Relay
+  - Clock
+  - DoorLock
+  - SmartPlug
   - Light
-  - Switch
   - Camera
   - Charger
-  - DoorLock
-  - Siren
-  - Clock
+  - Switch
   - SmokeDetector
   generated_code:
   - name: "Scenario1"
@@ -6463,50 +6480,45 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 4.113
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.983
+    elapsed_time: 4.11
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 3.979
 - command: Turn off the relay.
   devices:
-  - Alarm
-  - Curtain
-  - Button
-  - Relay
-  - Light
-  - Camera
   - Blind
-  - Siren
-  - WeatherProvider
-  - Clock
+  - Alarm
   - LightSensor
+  - Siren
+  - Relay
+  - Clock
+  - Light
+  - Curtain
+  - Camera
+  - Button
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       (#Relay).switch_off()
-  - name: "Scenario2"
-    cron: ""
-    period: -1
-    code: |-
-      (#Relay).switch_off()
   model_info:
-    elapsed_time: 4.692
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 4.57
+    elapsed_time: 3.513
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 3.386
 - command: Turn on the relay.
   devices:
   - Alarm
-  - Button
+  - Blind
+  - LightSensor
   - Buttonx4
+  - Siren
   - Relay
+  - Clock
+  - Fan
   - Light
   - Camera
-  - Blind
-  - Siren
-  - Clock
-  - LightSensor
-  - Fan
+  - Button
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -6514,22 +6526,22 @@
     code: |-
       (#Relay).switch_on()
   model_info:
-    elapsed_time: 3.52
-    bge_elapsed_time: 0.122
-    llm_elapsed_time: 3.397
+    elapsed_time: 3.518
+    bge_elapsed_time: 0.124
+    llm_elapsed_time: 3.395
 - command: Toggle the power of the relay.
   devices:
-  - Button
-  - Alarm
-  - SmartPlug
-  - Buttonx4
-  - Relay
-  - Light
-  - Charger
-  - Camera
   - Irrigator
+  - Alarm
+  - Buttonx4
   - Clock
+  - Relay
+  - SmartPlug
   - Fan
+  - Light
+  - Button
+  - Camera
+  - Charger
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -6537,37 +6549,41 @@
     code: |-
       (#Relay).switch_toggle()
   model_info:
-    elapsed_time: 3.595
-    bge_elapsed_time: 0.125
-    llm_elapsed_time: 3.47
+    elapsed_time: 3.597
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 3.471
 - command: Add a 60-second timer named Test Timer.
   devices:
-  - Alarm
-  - Charger
-  - TemperatureSensor
-  - Camera
-  - DoorLock
-  - GasMeter
-  - HumiditySensor
   - Irrigator
+  - Alarm
+  - TemperatureSensor
   - Clock
+  - DoorLock
+  - Charger
+  - HumiditySensor
+  - Camera
   - Timer
-  generated_code: []
+  - GasMeter
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
   model_info:
-    elapsed_time: 48.259
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 48.131
+    elapsed_time: 3.006
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 2.877
 - command: If a timer named Test Timer exists, sound the alarm siren.
   devices:
-  - Alarm
   - PresenceSensor
-  - LeakSensor
-  - SoundSensor
-  - DoorLock
+  - Alarm
   - TemperatureSensor
-  - Relay
+  - LeakSensor
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - SoundSensor
   - Timer
   generated_code:
   - name: "Scenario1"
@@ -6578,94 +6594,79 @@
         (#Alarm).alarm_siren()
       }
   model_info:
-    elapsed_time: 3.841
+    elapsed_time: 3.846
     bge_elapsed_time: 0.132
-    llm_elapsed_time: 3.71
+    llm_elapsed_time: 3.714
 - command: When a timer named Test Timer goes off, sound an alarm siren.
   devices:
   - Alarm
-  - SoundSensor
-  - DoorLock
   - TemperatureSensor
-  - Relay
-  - Camera
   - Siren
+  - Relay
   - Clock
+  - DoorLock
+  - Camera
+  - SoundSensor
   - Timer
   - SmokeDetector
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      wait until((#Timer).timer_isExist("Test Timer"))
-      (#Alarm).alarm_siren()
+  generated_code: []
   model_info:
-    elapsed_time: 3.754
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.624
+    elapsed_time: 47.452
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 47.321
 - command: Reset a timer named Test Timer.
   devices:
-  - Button
   - Alarm
-  - Buttonx4
-  - Speaker
-  - DoorLock
-  - Camera
   - Recorder
+  - Buttonx4
   - Clock
-  - Timer
+  - DoorLock
   - Fan
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      timer_reset("Test Timer")
+  - Speaker
+  - Camera
+  - Button
+  - Timer
+  generated_code: []
   model_info:
-    elapsed_time: 3.424
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 3.298
+    elapsed_time: 49.353
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 49.225
 - command: Set a timer named Test Timer to 120 seconds.
   devices:
-  - Alarm
-  - Humidifier
-  - SoundSensor
-  - Dehumidifier
-  - TemperatureSensor
-  - Camera
   - Irrigator
+  - Alarm
+  - TemperatureSensor
+  - Humidifier
   - Clock
-  - Timer
   - Fan
-  generated_code:
-  - name: Scenario1
-    cron: ''
-    period: -1
-    code: ""
+  - Camera
+  - SoundSensor
+  - Timer
+  - Dehumidifier
+  generated_code: []
   model_info:
-    elapsed_time: 3.186
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.059
+    elapsed_time: 2.193
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 2.065
 - command: Start a timer named Test Timer.
   devices:
-  - Alarm
-  - Button
-  - DoorLock
-  - TemperatureSensor
-  - Camera
-  - Recorder
-  - Clock
   - Irrigator
-  - Timer
+  - Alarm
+  - Recorder
+  - TemperatureSensor
+  - Clock
+  - DoorLock
   - Fan
+  - Camera
+  - Button
+  - Timer
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      timer_set("Test Timer", 0.0)
+      timer_set("Test Timer", 10.0)
   model_info:
-    elapsed_time: 3.514
+    elapsed_time: 3.549
     bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.387
+    llm_elapsed_time: 3.421

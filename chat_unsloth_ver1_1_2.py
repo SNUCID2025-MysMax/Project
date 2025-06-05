@@ -103,7 +103,7 @@ def run_test_case_unsloth(model, tokenizer, stop_token_ids, model_name, user_com
     return response, elapsed
 
 def main():
-    model_name = "gemma3"
+    model_name = "codegemma"
 
     model, tokenizer = FastLanguageModel.from_pretrained(
         model_name=f"./models/{model_name}-model",
@@ -111,7 +111,7 @@ def main():
         dtype=None,
         load_in_4bit=True,
     )
-    model.load_adapter(f"./models/{model_name}-adapter")
+    model.load_adapter(f"./models/{model_name}-adapter-250605")
     FastLanguageModel.for_inference(model)
 
     tokenizer = get_chat_template(tokenizer, chat_template="chatml" if model_name != "gemma3" else "gemma-3", map_eos_token=True)
@@ -125,7 +125,7 @@ def main():
         service_doc = f.read()
     classes = extract_classes_by_name(service_doc)
 
-    for i in range(1,2):
+    for i in range(0, 1):
         with open(f"./Testset/TestsetWithDevices_translated/category_{i}.yaml", "r") as f:
             results = []
             data = yaml.safe_load(f)
@@ -174,7 +174,8 @@ def main():
                     c["code"] = LiteralString(code_n if code_n else "")
 
                 entry = {
-                    "command": user_command,
+                    "command": user_command_origin,
+                    "command_translated": user_command,
                     "devices": list(service_selected),
                     "generated_code": code,
                     "model_info": {

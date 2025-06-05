@@ -7,7 +7,7 @@ from unsloth import FastLanguageModel, is_bfloat16_supported
 from unsloth.chat_templates import get_chat_template
 from trl import SFTTrainer, SFTConfig
 from datasets import Dataset
-from Grammar.grammar_ver1_1_5 import grammar
+from Grammar.grammar_ver1_1_6 import grammar
 import torch, yaml, re
 from torch.nn.attention import SDPBackend, sdpa_kernel
 
@@ -106,6 +106,7 @@ def read_yaml(data):
 
 # 데이터셋 생성 부분 수정
 def load_dataset():
+    global classes
     ret = []
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
 
@@ -130,10 +131,10 @@ def load_dataset():
                 service_doc = "\n---\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
                     "conversations": [
-                        # {
-                        #     "role": "system",
-                        #     "content": grammar,
-                        # },
+                        {
+                            "role": "system",
+                            "content": grammar,
+                        },
                         {
                             "role": "system", 
                             # "content": grammar + "\n\n" + service_doc,
@@ -208,7 +209,7 @@ trainer = SFTTrainer(
         warmup_steps = 0,
         num_train_epochs = 2,
         # max_steps = 200,
-        learning_rate = 2e-5, #1e-6
+        learning_rate = 2e-4, #1e-6
         optim = "adamw_8bit",
         weight_decay = 0.02,
         lr_scheduler_type = "constant",
