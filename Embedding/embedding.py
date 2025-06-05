@@ -28,7 +28,7 @@ def colbert_softmax_maxsim(query_vec, doc_vecs, temperature=0.05):
     return np.sum(weights * max_sim)
 
 # 하이브리드 추천 함수
-def hybrid_recommend(model, query, top_k=10, max_k=15, weights=(0.6, 0.3, 0.1)):
+def hybrid_recommend(model, query, devices_available=None, top_k=10, max_k=15, weights=(0.6, 0.3, 0.1)):
     query_emb = model.encode(
         [query], 
         return_dense=True,
@@ -58,13 +58,19 @@ def hybrid_recommend(model, query, top_k=10, max_k=15, weights=(0.6, 0.3, 0.1)):
 
     sorted_indices = np.argsort(combined_scores)[::-1]
 
+    if devices_available is not None:
+        available_set = set(d.lower() for d in devices_available)
+        sorted_indices = [i for i in sorted_indices if metadata['keys'][i].lower() in available_set]
+
     gap_threshold = 0.01
     initial_top = 5
-    top_indices = [sorted_indices[0]]
-
-    for i in range(1, len(sorted_indices)):
+    top_indices = []
+    for i in range(len(sorted_indices)):
         if len(top_indices) >= max_k:
             break
+        if i == 0:
+            top_indices.append(sorted_indices[i])
+            continue
         prev = combined_scores[top_indices[-1]]
         curr = combined_scores[sorted_indices[i]]
         if curr >= 0.5 or abs(prev - curr) <= gap_threshold or len(top_indices) < initial_top:
