@@ -1,4 +1,5 @@
 import json
+import logging
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Dict, Any, Optional
@@ -11,8 +12,10 @@ from services.loader import load_all_resources
 
 app = FastAPI()
 
-MODEL_NAME = "qwenCoder"
+logger = logging.getLogger("uvicorn")
+MODEL_NAME = "gemma3"
 MODEL_RESOURCES = load_all_resources(MODEL_NAME)
+logger.info(f"resources loaded for {MODEL_NAME}")
 
 with open("./resources/things.json", "r", encoding="utf-8") as f:
     DEFAULT_CONNECTED_DEVICES = json.load(f)

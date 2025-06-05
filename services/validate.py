@@ -1,6 +1,8 @@
 import re, json
 from sentence_transformers import SentenceTransformer, util
-from translate import deepl_translate
+from services.translate import deepl_translate
+
+THRESHOLD = 0.7 
 
 def extract_classes_by_name(text: str):
     # pattern = r'class\s+(\w+)\s*:\s*\n\s+"""(.*?)"""'
@@ -53,6 +55,9 @@ def validate_accessors(code: str, tag_list, method_list, attribute_list, model) 
             return tag
         query = model.encode(tag, convert_to_tensor=True)
         scores = util.cos_sim(query, tag_embeddings)[0]
+        best_score = scores.max().item()
+        if best_score < THRESHOLD:
+            return tag
         best_match = tag_list[scores.argmax().item()]
         return best_match
     
@@ -62,6 +67,9 @@ def validate_accessors(code: str, tag_list, method_list, attribute_list, model) 
             return f".{method}("
         query = model.encode(method, convert_to_tensor=True)
         scores = util.cos_sim(query, method_embeddings)[0]
+        best_score = scores.max().item()
+        if best_score < THRESHOLD:
+            return f".{method}("
         best_match = method_list[scores.argmax().item()]
         return f".{best_match}("
 
@@ -71,6 +79,9 @@ def validate_accessors(code: str, tag_list, method_list, attribute_list, model) 
             return f".{attr}"
         query = model.encode(attr, convert_to_tensor=True)
         scores = util.cos_sim(query, attribute_embeddings)[0]
+        best_score = scores.max().item()
+        if best_score < THRESHOLD:
+            return f".{attr}"
         best_match = attribute_list[scores.argmax().item()]
         return f".{best_match}"
         

@@ -1,5 +1,5 @@
 # model_loader.py
-
+import unsloth
 import os, re
 from unsloth import FastLanguageModel
 from unsloth.chat_templates import get_chat_template
@@ -8,7 +8,6 @@ from transformers import AutoTokenizer
 from peft import PeftModel
 
 from FlagEmbedding import BGEM3FlagModel
-from Grammar.grammar_ver1_1_5 import grammar
 
 # 서비스 문서 파싱 함수
 def extract_classes_by_name(text: str):

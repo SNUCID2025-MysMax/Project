@@ -1,14 +1,19 @@
 # run.py
 
-import os, re, json, copy
+import os, re, json, copy, torch
 import concurrent.futures
 from datetime import datetime
-from translate import deepl_translate
+from services.translate import deepl_translate
 from Embedding.embedding import hybrid_recommend
-from validate import validate
-from joi_tool import parse_scenarios, extract_last_code_block
+from services.validate import validate
+from services.joi_tool import parse_scenarios, extract_last_code_block
+import logging
+logger = logging.getLogger("uvicorn")
 
 TIME_OUT = 10
+
+from transformers import TextStreamer
+
 
 # == 모델 호출 함수 == (타임아웃 용)
 def call_model(model, inputs, stop_token_ids, tokenizer):
@@ -17,7 +22,8 @@ def call_model(model, inputs, stop_token_ids, tokenizer):
         eos_token_id=stop_token_ids,
         pad_token_id=tokenizer.pad_token_id,
         max_new_tokens=128,
-        use_cache=True
+        use_cache=True,
+        streamer = TextStreamer(tokenizer, skip_prompt = True),
     )
 
 # === JOI 코드 생성 함수 ===
@@ -72,6 +78,9 @@ def generate_joi_code(
         sentence_translated = deepl_translate(sentence)
     except Exception:
         sentence_translated = sentence 
+    logger.info(f"Translated Sentence: {sentence_translated}")
+
+    # sentence_translated = sentence
 
     # == 모델 호출 및 생성 ==
     # for vision models
@@ -108,21 +117,24 @@ def generate_joi_code(
     #     # max_new_tokens=128,
     #     use_cache=True
     # )
-    outputs = ""
+
+    response = ""
     with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
         future = executor.submit(call_model, llm_model, inputs, stop_token_ids, tokenizer)
         try:
             outputs = future.result(timeout=TIME_OUT)
+            generated_ids = outputs[0][len(inputs[0]):]
+            
+            # Fixed condition check
+            if len(generated_ids) > 0 and generated_ids[-1].item() in stop_token_ids:
+                generated_ids = generated_ids[:-1]
+
+            response = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
         except concurrent.futures.TimeoutError:
-            outputs = ""
+            response = ""
+
     end = datetime.now()
-
-    generated_ids = outputs[0][len(inputs[0]):]
-    if generated_ids and generated_ids[-1].item() in stop_token_ids:
-        generated_ids = generated_ids[:-1]
-
-    response = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
-
+    logger.info(f"\nModel Response:\n{response}")
     # --- 파싱 ---
     try:
         code = parse_scenarios(extract_last_code_block(response))['code']
@@ -141,6 +153,7 @@ def generate_joi_code(
         code_piece = validate(code_piece, device_classes, list(tag_device.keys()), tag_sets, sim_model)
         c["code"] = code_piece
 
+    logger.info(f"\nReturn:\n{code}")
     return {
         "code": code,
         "log": {
