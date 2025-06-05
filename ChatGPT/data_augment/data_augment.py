@@ -111,9 +111,18 @@ def process_refined_commands(client, refined_text, service_doc, max_variants=3):
             #print(code_obj)
             # 모든 문장에 동일한 코드 할당
 
+            for variant in all_variants:
+                data_pairs.append({
+                    "text": variant,
+                    "cron": code_obj.get("cron", ""),
+                    "period": code_obj.get("period", -1),
+                    "code": code_obj.get("code", code_obj if isinstance(code_obj, str) else "")
+                })
+
             for i, variant in enumerate(all_variants):
                 #print(f"  {i+1}. {variant}")
                 data_pairs.append({"text": variant, "code": code})
+
 
         except Exception as e:
             print(f"❌ '{command}' 처리 실패: {e}")
@@ -271,7 +280,14 @@ def load_command_examples(folder_path, file_num, start=0, end=None):
 if __name__ == "__main__":
     device_docs = parse_class_docstrings("../0.1.3_docstring_v3.txt")
     sampled_device = sample_device_classes(device_docs, k=10)
-    #print(sampled_device)
+
+
+    base_commands = generate_commands(client, sampled_device, n=20)
+    #print("생성된 명령어들\n", base_commands)
+
+    refined_text = refine_commands(client, base_commands)
+    #print("✅ 정제된 명령어들:\n", refined_text)
+
     
     folder = r"C:\Users\user\OneDrive\문서\GitHub\Project\Testset\Testset\json"
     examples = load_command_examples(folder, 3, start=6, end=10)
