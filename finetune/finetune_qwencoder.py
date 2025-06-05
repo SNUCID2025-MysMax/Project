@@ -55,10 +55,11 @@ model = FastLanguageModel.get_peft_model(
 
 tokenizer = get_chat_template(
     tokenizer,
-    chat_template = "qwen-2.5",
+    chat_template = "chatml",
+    map_eos_token=True,
 )
 
-# tokenizer.add_bos_token = False
+tokenizer.add_bos_token = False
 
 def formatting_prompts_func(examples):
     convos = examples["conversations"]

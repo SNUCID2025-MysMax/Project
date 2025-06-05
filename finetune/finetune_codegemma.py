@@ -210,7 +210,7 @@ trainer = SFTTrainer(
         warmup_steps = 0,
         num_train_epochs = 2,
         # max_steps = 200,
-        learning_rate = 2e-6, #1e-6
+        learning_rate = 2e-5, #1e-6
         optim = "adamw_8bit",
         weight_decay = 0.02,
         lr_scheduler_type = "constant",
@@ -227,8 +227,8 @@ trainer = SFTTrainer(
     ),
 )
 
-# with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
-#     trainer_stats = trainer.train()
+with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
+    trainer_stats = trainer.train()
 
 # trainer_stats = trainer.train()
 

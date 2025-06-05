@@ -233,7 +233,7 @@ def main():
     model = "codegemma:7b" # good
 
     # finetuned
-    model = "codegemma"
+    model = "gemmacode"
     # model = "qwen2.5-coder"
 
     # Load Embedding

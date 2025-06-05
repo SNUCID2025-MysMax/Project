@@ -51,7 +51,7 @@ FastLanguageModel.for_inference(model) # Enable native 2x faster inference
 
 current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
 command = "Turn on the air conditioner"
-command = "Set the air conditioner mode to cool"
+# command = "Set the air conditioner mode to cool"
 messages = [
     {"role": "system", "content": grammar},
     {"role": "system", "content": classes["AirConditioner"]},
@@ -109,10 +109,18 @@ elif model_name == "gemma3":
     stop_token_ids = [tokenizer.tokenizer.convert_tokens_to_ids(token) for token in stop_tokens if token in tokenizer.tokenizer.get_vocab()]
 
 elif model_name == "qwenCoder":
+    # tokenizer = get_chat_template(
+    #     tokenizer,
+    #     chat_template = "qwen-2.5",
+    # )
     tokenizer = get_chat_template(
         tokenizer,
-        chat_template = "qwen-2.5",
+        chat_template = "chatml",
+        map_eos_token = True,
     )
+
+    tokenizer.add_bos_token = False
+
 
     stop_tokens = [
         "<|im_end|>",
