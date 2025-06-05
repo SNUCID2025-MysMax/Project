@@ -1,409 +1,247 @@
-- command: 5초마다 토양 습도를 측정해서 30% 이하이면 급수기를 켜 줘. 만약 그 때 온도가 35도 이상이면 급수기를 끄고 반복도 종료해 줘.
+- command: Every 5 seconds, it measures the soil humidity and turns on the waterer if it's below 30%. If the temperature is above 35 degrees at that time, turn off the waterer and end the cycle.
   devices:
   - Humidifier
-  - SoilMoistureSensor
-  - Clock
   - Dehumidifier
-  - AirConditioner
-  - Irrigator
+  - SoilMoistureSensor
   - TemperatureSensor
+  - AirConditioner
   - HumiditySensor
+  - WeatherProvider
+  - Dishwasher
+  - Irrigator
+  - AirQualityDetector
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 5000
     code: |-
-      weight := 0.0
-      temp := 0.0
-      height := 0.0
-      width := 0.0
-      area := 0.0
-      weight = (#WeightSensor).weightMeasurement_weight
-      temp = (#TemperatureSensor).temperatureMeasurement_temperature
-      height = (#HeightSensor).heightMeasurement_height
-      width = (#WidthSensor).widthMeasurement_width
-      area = width * height
-      if ((area >= 10) and (area <= 20)) {
-        if ((weight <= 2) and (weight >= 1)) {
-          if ((temp >= 35.0)) {
-            (#Irrigator).switch_off()
-          } else {
-            (#Irrigator).switch_on()
-          }
-        }
+      if ((#AirConditioner).airConditionerMode_targetTemperature == "open") {
+        open_duration = open_duration + 1000
       }
-  compare_results: []
   model_info:
-    prompt_tokens: 2744
-    generated_tokens: 188
-    elapsed_time: 5.685
-- command: 3초 간격으로 조명을 10번 깜빡여 줘. 깜빡일 때마다 확인해서 비 감지 센서가 비를 감지하는 순간 반복을 중단해 줘.
+    elapsed_time: 4.627
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 4.482
+- command: Blink the light 10 times in 3-second intervals. Check after each blink and stop the loop the moment the rain sensor detects rain.
   devices:
+  - LeakSensor
+  - SoundSensor
+  - Light
+  - TemperatureSensor
+  - Camera
+  - HumiditySensor
   - WeatherProvider
+  - Irrigator
   - Clock
   - SmokeDetector
-  - Light
-  - LeakSensor
-  - Irrigator
-  - TemperatureSensor
   - LightSensor
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 3000
-    code: |-
-      counter := 0
-      if (counter < 10) {
-        (#Light).switch_toggle()
-        counter = counter + 1
-      } else {
-        break
-      }
-  compare_results: []
+  generated_code: []
   model_info:
-    prompt_tokens: 2734
-    generated_tokens: 61
-    elapsed_time: 1.896
-- command: 1초마다 선풍기의 전원을 켜고 끄는 토글 동작을 반복해 줘. 매번 동작 직전에 습도를 확인해서 80% 이상이면 반복을 즉시 중단해 줘.
+    elapsed_time: 48.757
+    bge_elapsed_time: 0.145
+    llm_elapsed_time: 48.612
+- command: Repeat the toggle action of powering the fan on and off every second. Check the humidity just before each action and stop the loop immediately if it's above 80%.
   devices:
+  - AirPurifier
+  - SmartPlug
   - Humidifier
-  - Clock
   - Dehumidifier
-  - Dishwasher
-  - Fan
+  - SoilMoistureSensor
   - AirConditioner
-  - Irrigator
   - HumiditySensor
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 1000
-    code: |-
-      height := (# Szkb).heightMeasurement_height
-      height = height + 1
-      if (height >= 100) {
-        break
-      }
-      height = height - 1
-      if (height <= 50) {
-        break
-      }
-      if ((# Szkb).heightMeasurement_height >= 80.0) {
-        break
-      }
-  - name: "Scenario2"
-    cron: ""
-    period: -1
-    code: |-
-      height := (# Szkb).heightMeasurement_height
-      height = height + 1
-      if (height >= 100) {
-        break
-      }
-      height = height - 1
-      if (height <= 50) {
-        break
-      }
-      if ((# Szkb).heightMeasurement_height >= 80.0) {
-        break
-      }
-  - name: "Scenario3"
-    cron: ""
-    period: 1000
-    code: |-
-      height := (# Szkb).heightMeasurement_height
-      height = height + 1
-      if (height >= 100) {
-        break
-      }
-      height = height - 1
-      if (height <= 50) {
-        break
-      }
-      if ((# Szkb).heightMeasurement_height >= 80.0) {
-        break
-      }
-  compare_results: []
-  model_info:
-    prompt_tokens: 2743
-    generated_tokens: 299
-    elapsed_time: 9.036
-- command: 5초마다 블라인드를 10퍼센트씩 닫아줘. 더 이상 못 내릴 때까지.
-  devices:
-  - Blind
-  - Curtain
+  - Dishwasher
+  - Irrigator
   - Clock
-  - Shade
+  - Fan
+  generated_code: []
+  model_info:
+    elapsed_time: 49.339
+    bge_elapsed_time: 0.147
+    llm_elapsed_time: 49.192
+- command: Close the blinds by 10 percent every 5 seconds. Until you can't lower them anymore.
+  devices:
   - Button
+  - Curtain
+  - Shade
+  - Alarm
   - GasValve
-  - Valve
   - Relay
+  - DoorLock
+  - Blind
+  - Irrigator
+  - Clock
+  - Valve
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 5000
     code: |-
-      height := (#Blind).blindControl_height
-      if (height > 10) {
-        height = height - 10
-      } else {
-        break
+      if (all(#Blind).blind_blind == "open") {
+        all(#Blind).blindLevel_setBlindLevel(90)
       }
-      (#Blind).blindControl_setHeight(height)
-  compare_results: []
   model_info:
-    prompt_tokens: 2712
-    generated_tokens: 69
-    elapsed_time: 2.137
-- command: 10초마다 관개기를 켰다가 5초 뒤에 꺼 줘. 관개기를 끌 때, 켤 때 모두 확인해서 일조량이 500룩스 이상이면 관개기를 끄고 반복을 종료해 줘.
+    elapsed_time: 4.637
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 4.503
+- command: Turn on the irrigation every 10 seconds and turn it off after 5 seconds. Check the irrigation both on and off, and if the sunlight is above 500 lux, turn off the irrigation and end the loop.
   devices:
   - Humidifier
-  - WeatherProvider
-  - Clock
-  - Dishwasher
+  - Dehumidifier
+  - GasValve
+  - Light
   - AirConditioner
+  - Dishwasher
+  - WeatherProvider
   - Irrigator
-  - Light
-  - LightSensor
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 10000
-    code: |-
-      prev := -1
-      current := (#Clock).clock_hour * 3600 + (#Clock).clock_minute * 60 + (#Clock).clock_second
-      if (current - prev >= 10) {
-        prev = current
-        if ((#Clock).clock_hour * 3600 + (#Clock).clock_minute * 60 + (#Clock).clock_second - current >= 5) {
-          if ((#LightSensor).lightSensor_light >= 500) {
-            break
-          }
-          (#Irrigator).switch_on()
-          (#Clock).clock_delay(5)
-          (#Irrigator).switch_off()
-        }
-      }
-  - name: "Scenario2"
-    cron: ""
-    period: -1
-    code: |-
-      break
-  compare_results: []
-  model_info:
-    prompt_tokens: 2746
-    generated_tokens: 199
-    elapsed_time: 6.066
-- command: 2초마다 거실 조명을 켰다 껐다 반복해 줘. 조명을 끌 때마다 확인해서 창문이 열려 있는 게 감지되면 반복을 즉시 중단해 줘.
-  devices:
-  - Curtain
   - Clock
-  - Light
-  - ContactSensor
-  - Camera
+  - LightSensor
+  - Fan
+  generated_code: []
+  model_info:
+    elapsed_time: 50.026
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 49.873
+- command: Turn the living room light on and off every two seconds. Check each time it turns off the light and stop the loop immediately if it detects that a window is open.
+  devices:
   - Window
+  - Curtain
   - DoorLock
+  - Light
+  - Camera
+  - ContactSensor
+  - Relay
+  - Blind
+  - Clock
+  - SmokeDetector
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 2000
     code: |-
-      checked := false
-      checked2 := false
-      if ((checked == false)) {
-        checked = true
-        (#Light).switch_off()
-        if ((checked2 == false) and ((#Window).windowControl_window == 'open')) {
-          checked2 = true
-          break
-        }
-      } else {
-        checked = false
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        break
+      }
+      if ((#Light).switch_switch == "off") {
         (#Light).switch_on()
       }
-  - name: "Scenario2"
-    cron: ""
-    period: 100
-    code: |-
-      checked3 := false
-      checked4 := false
-      checked5 := false
-      checked6 := false
-      checked7 := false
-      checked8 := false
-      checked9 := false
-      checked10 := false
-      checked11 := false
-      checked12 := false
-      checked13 := false
-      checked14 := false
-      checked15 := false
-      checked16 := false
-      checked17 := false
-      checked18 := false
-      checked19 := false
-      checked20 := false
-      checked21 := false
-      checked22 := false
-      checked23 := false
-      checked24 := false
-      checked25 := false
-      checked26 := false
-      checked27 := false
-      checked28 := false
-      checked29 := false
-      checked30 := false
-      checked31 := false
-      checked32 := false
-      checked33 := false
-      checked34 := false
-      checked35 := false
-      checked36 := false
-      checked37 := false
-  compare_results: []
+      if ((#Light).switch_switch == "on") {
+        (#Light).switch_off()
+      }
   model_info:
-    prompt_tokens: null
-    generated_tokens: null
-    elapsed_time: 10.034
-- command: 3초마다 텔레비전의 볼륨을 1씩 증가시켜서 5단계가 되면 초기값으로 되돌리는 동작을 반복해 줘. 초기값으로 되돌릴 때 확인해서 움직임이 감지되면 반복을 중단해 줘.
+    elapsed_time: 6.191
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 6.045
+- command: Every 3 seconds, increase the volume of the TV by 1 and repeat the behavior, returning it to its initial value at step 5. When returning to the initial value, check for motion and stop the loop if it detects any.
   devices:
-  - Television
-  - Clock
-  - MotionSensor
   - Alarm
   - Button
-  - Irrigator
+  - GasValve
+  - MotionSensor
   - Light
   - Relay
+  - Camera
+  - Speaker
+  - Irrigator
+  - Television
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 3000
     code: |-
-      volume := (#Television).tvVolume_tvVolume
-      if (volume >= 5) {
-        break
-      } else {
-        (#Television).tvVolume_setTvVolume(volume + 1)
+      volume := 0
+      if (volume < 10) {
+        volume = volume + 1
+        if (volume == 5) {
+          if ((#MotionSensor).motionSensor_motion == "active") {
+            break
+          }
+        }
+        (#Television).tvChannel_setTvChannel(volume)
       }
-  compare_results: []
   model_info:
-    prompt_tokens: 2753
-    generated_tokens: 68
-    elapsed_time: 2.153
-- command: 10초마다 블라인드를 완전히 닫아 줘. 그 때마다 확인해서 TV가 켜져 있으면 즉시 반복을 종료해.
+    elapsed_time: 6.854
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 6.702
+- command: Every 10 seconds, close the blinds completely. Check each time and end the loop immediately if the TV is still on.
   devices:
-  - Blind
-  - Television
   - Curtain
-  - RobotCleaner
-  - Clock
   - Shade
   - GasValve
   - Relay
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 10000
-    code: |-
-      bl vt := (# Blind). blindControl_blindPosition == "closed"
-      tv vt := (# TV). switch_switch == "on"
-      if (bl vt) {
-        (# Blind). blindControl_setBlindPosition("closed")
-      }
-      if (tv vt) {
-        break
-      }
-  - name: "Scenario2"
-    cron: ""
-    period: 10000
-    code: |-
-      bl vt := (# Blind). blindControl_blindPosition == "closed"
-      tv vt := (# TV). switch_switch == "on"
-      if (bl vt) {
-        (# Blind). blindControl_setBlindPosition("closed")
-      }
-      if (tv vt) {
-        break
-      }
-  - name: "Scenario3"
-    cron: ""
-    period: 10000
-    code: |-
-      bl vt := (# Blind). blindControl_blindPosition == "closed"
-      tv vt := (# TV). switch_switch == "on"
-      if (bl vt) {
-        (# Blind). blindControl_setBlindPosition("closed")
-      }
-      if (tv vt) {
-        break
-      }
-  - name: "Scenario4"
-    cron: ""
-    period: 10000
-    code: |-
-      bl vt := (# Blind). blindControl_blindPosition == "closed"
-      tv vt := (# TV). switch_switch == "on"
-      if (bl vt) {
-        (# Blind). blindControl_setBlindPosition("closed")
-  compare_results: []
-  model_info:
-    prompt_tokens: null
-    generated_tokens: null
-    elapsed_time: 10.304
-- command: 2초마다 알람의 사이렌을 1초간 울렸다 꺼지게 하고, 알람의 사이렌을 울릴 때마다 창문이 닫혀 있는지 확인해서 닫혀 있으면 반복을 중단해 줘.
-  devices:
+  - Light
+  - Switch
+  - Blind
   - Siren
-  - Curtain
+  - Television
+  - RobotCleaner
   - Clock
-  - Alarm
-  - ContactSensor
-  - Window
-  - DoorLock
   generated_code:
   - name: "Scenario1"
     cron: ""
-    period: 2000
+    period: 10000
     code: |-
-      alert := False
-      alert_count := 0
-      if (alert == False) {
-        alert = True
-        alert_count = alert_count + 1
-        (#Alarm).alarm_siren()
-        (#Alarm).alarm_off()
-        if ((#Window).windowControl_window == 'closed') {
+      blinds := 0
+      if ((#Clock).clock_isHoliday) {
+        if (blinds < 100) {
+          blinds = blinds + 10
+          (#Blind).blindLevel_setBlindLevel(blinds)
+        }
+        if ((#Television).switch_switch == 'on') {
           break
         }
-      } else {
-        break
       }
-  compare_results: []
   model_info:
-    prompt_tokens: 4076
-    generated_tokens: 105
-    elapsed_time: 4.33
-- command: 5초마다 실내 공기청정기를 ‘자동’ 모드로 전환해 줘. 그 때마다 확인해서 창문이 열려 있으면 모든 반복을 종료해 줘.
+    elapsed_time: 7.094
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 6.958
+- command: Every two seconds, make the alarm's siren blare for one second and then turn it off, and every time it blares the siren, make sure the window is closed and stop the loop if it is.
   devices:
+  - Alarm
+  - Curtain
+  - Window
+  - SoundSensor
+  - DoorLock
+  - Relay
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 48.211
+    bge_elapsed_time: 0.148
+    llm_elapsed_time: 48.062
+- command: Every 5 seconds, switch the room air purifier to 'silent' mode. Check each time and end all iterations if a window is open.
+  devices:
+  - AirPurifier
+  - Window
+  - Shade
   - Humidifier
+  - Dehumidifier
+  - DoorLock
+  - AirConditioner
+  - WeatherProvider
   - AirQualityDetector
   - RobotCleaner
   - Clock
-  - Dehumidifier
-  - AirConditioner
-  - AirPurifier
-  - Window
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 5000
     code: |-
-      state := (#Window).windowControl_window
-      if (state == "open") {
+      isWindowOpen := false
+      if ((#AirConditioner).airConditionerMode_targetTemperature == "open") {
+        isWindowOpen = true
+      }
+      if ((#AirPurifier).airPurifierFanMode_airPurifierFanMode == "silent") {
+        isWindowOpen = false
+      }
+      if (isWindowOpen) {
         break
       }
-      (#AirCleaner).airCleanerMode_setAirCleanerMode("auto")
-  compare_results: []
   model_info:
-    prompt_tokens: 2730
-    generated_tokens: 60
-    elapsed_time: 3.288
+    elapsed_time: 6.807
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 6.666

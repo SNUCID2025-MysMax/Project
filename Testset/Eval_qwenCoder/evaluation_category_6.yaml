@@ -1,0 +1,295 @@
+- command: Every 5 seconds, it measures the soil humidity and turns on the waterer if it's below 30%. If the temperature is above 35 degrees at that time, turn off the waterer and end the cycle.
+  devices:
+  - Irrigator
+  - HumiditySensor
+  - TemperatureSensor
+  - Dehumidifier
+  - SoilMoistureSensor
+  - WeatherProvider
+  - Clock
+  - AirQualityDetector
+  - Humidifier
+  - Dishwasher
+  - AirConditioner
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+        (#Humidifier).switch_on()
+        if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+          (#Humidifier).switch_off()
+          break
+        }
+      }
+  model_info:
+    elapsed_time: 5.376
+    bge_elapsed_time: 0.147
+    llm_elapsed_time: 5.229
+- command: Blink the light 10 times in 3-second intervals. Check after each blink and stop the loop the moment the rain sensor detects rain.
+  devices:
+  - LightSensor
+  - Irrigator
+  - HumiditySensor
+  - TemperatureSensor
+  - Light
+  - WeatherProvider
+  - SmokeDetector
+  - Clock
+  - LeakSensor
+  - Camera
+  - SoundSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      count := 0
+      while (count < 10 ) {
+        (#Light).switch_toggle()
+        wait until((#Clock).clock_delay(3000))
+        if ((#TemperatureSensor).weatherProvider_weather == 'detected') {
+          break
+        }
+        count = count + 1
+      }
+  model_info:
+    elapsed_time: 5.302
+    bge_elapsed_time: 0.147
+    llm_elapsed_time: 5.156
+- command: Repeat the toggle action of powering the fan on and off every second. Check the humidity just before each action and stop the loop immediately if it's above 80%.
+  devices:
+  - Irrigator
+  - HumiditySensor
+  - Dehumidifier
+  - SoilMoistureSensor
+  - Clock
+  - AirPurifier
+  - Fan
+  - Humidifier
+  - Dishwasher
+  - AirConditioner
+  - SmartPlug
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
+        break
+      }
+      (#Fan).switch_toggle()
+  model_info:
+    elapsed_time: 3.833
+    bge_elapsed_time: 0.147
+    llm_elapsed_time: 3.686
+- command: Close the blinds by 10 percent every 5 seconds. Until you can't lower them anymore.
+  devices:
+  - Blind
+  - Valve
+  - Irrigator
+  - Button
+  - Shade
+  - Relay
+  - Alarm
+  - Clock
+  - Curtain
+  - GasValve
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      if ((#Blind).blindLevel_blindLevel >= 10) {
+        (#Blind).blindLevel_setBlindLevel((#Blind).blindLevel_blindLevel - 10)
+      }
+  model_info:
+    elapsed_time: 4.398
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.266
+- command: Turn on the irrigation every 10 seconds and turn it off after 5 seconds. Check the irrigation both on and off, and if the sunlight is above 500 lux, turn off the irrigation and end the loop.
+  devices:
+  - LightSensor
+  - Irrigator
+  - Dehumidifier
+  - Light
+  - WeatherProvider
+  - Clock
+  - GasValve
+  - Fan
+  - Humidifier
+  - Dishwasher
+  - AirConditioner
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      irrigator_on := false
+      if (irrigator_on == false) {
+        (#Irrigator).switch_on()
+        irrigator_on = true
+        wait until((#Clock).clock_second == 5)
+        (#Irrigator).switch_off()
+        irrigator_on = false
+        break
+      }
+      wait until((#LightSensor).lightLevel_light >= 500.0)
+      (#Irrigator).switch_off()
+      break
+  model_info:
+    elapsed_time: 6.841
+    bge_elapsed_time: 0.153
+    llm_elapsed_time: 6.688
+- command: Turn the living room light on and off every two seconds. Check each time it turns off the light and stop the loop immediately if it detects that a window is open.
+  devices:
+  - Blind
+  - ContactSensor
+  - Light
+  - SmokeDetector
+  - Clock
+  - Relay
+  - Curtain
+  - Camera
+  - DoorLock
+  - Window
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |-
+      if ((#Light #Window).switch_switch == 'off') {
+        (#Light #Window).switch_on()
+        wait until((#Window).windowControl_window == 'open')
+        break
+      }
+  model_info:
+    elapsed_time: 4.171
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 4.026
+- command: Every 3 seconds, increase the volume of the TV by 1 and repeat the behavior, returning it to its initial value at step 5. When returning to the initial value, check for motion and stop the loop if it detects any.
+  devices:
+  - MotionSensor
+  - Irrigator
+  - Button
+  - Light
+  - Speaker
+  - Relay
+  - Alarm
+  - Clock
+  - Camera
+  - GasValve
+  - Television
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      initial_volume = (#Television).audioVolume_volume
+      current_volume = initial_volume
+      if (current_volume == initial_volume) {
+        (#Television).audioVolume_volumeUp()
+        current = 1
+      } else if (current_volume == initial_volume + 1) {
+        (#Television).audioVolume_volumeUp()
+        current_volume = current_volume + 1
+        if (current_volume == initial_volume + 2) {
+          current_volume = initial_volume
+          if ((#MotionSensor).motionSensor_motion == 'active') {
+            break
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 8.107
+    bge_elapsed_time: 0.153
+    llm_elapsed_time: 7.954
+- command: Every 10 seconds, close the blinds completely. Check each time and end the loop immediately if the TV is still on.
+  devices:
+  - Blind
+  - RobotCleaner
+  - Light
+  - Shade
+  - Relay
+  - Switch
+  - Clock
+  - Curtain
+  - GasValve
+  - Siren
+  - Television
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      if ((#Blind).blind_blind == 'open') {
+        (#Blind).blind_close()
+        wait until((#Blind).blind_blind == 'closed')
+        break
+      }
+      if ((#Television).switch_switch == 'on') {
+        break
+      }
+  model_info:
+    elapsed_time: 5.236
+    bge_elapsed_time: 0.137
+    llm_elapsed_time: 5.099
+- command: Every two seconds, make the alarm's siren blare for one second and then turn it off, and every time it blares the siren, make sure the window is closed and stop the loop if it is.
+  devices:
+  - Blind
+  - ContactSensor
+  - Clock
+  - Alarm
+  - Relay
+  - Curtain
+  - Siren
+  - DoorLock
+  - Window
+  - SoundSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |-
+      wait until((#Alarm).alarm_alarm == 'on')
+      (#Alarm).alarm_siren()
+      (#Alarm).alarm_off()
+  - name: "Scenario2"
+    cron: ""
+    period: 2000
+    code: |-
+      wait until((#Alarm).alarm_alarm == 'on')
+      (#Window).windowControl_close()
+      break
+  model_info:
+    elapsed_time: 5.085
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 4.935
+- command: Every 5 seconds, switch the room air purifier to 'silent' mode. Check each time and end all iterations if a window is open.
+  devices:
+  - Dehumidifier
+  - RobotCleaner
+  - Shade
+  - WeatherProvider
+  - Clock
+  - AirPurifier
+  - DoorLock
+  - AirQualityDetector
+  - Humidifier
+  - Window
+  - AirConditioner
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      if ((#Window).windowControl_window == 'open') {
+        break
+      }
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('silent')
+  model_info:
+    elapsed_time: 4.271
+    bge_elapsed_time: 0.14
+    llm_elapsed_time: 4.131

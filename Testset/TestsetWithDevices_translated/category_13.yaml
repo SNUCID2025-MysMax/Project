@@ -48,7 +48,7 @@
   - Window
   - Fan
 - command: 섹터 비에 있는 홀수 태그가 붙은 관개 장치를 모두 꺼 줘.
-  command_translated: Turn off all odd-tagged irrigation devices in the sector rain.
+  command_translated: Turn off all odd-tagged irrigation devices in the sector B.
   code:
   - name: Scenario1
     cron: ''

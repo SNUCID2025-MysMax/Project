@@ -1,5 +1,5 @@
 import multiprocessing
-import os, sys, random
+import os, sys, random, copy
 from tqdm import tqdm
 from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -87,6 +87,8 @@ with open("../ServiceExtraction/integration/service_list_ver1.1.8.txt", "r") as 
     service_doc = f.read()
 classes = extract_classes_by_name(service_doc)
 
+classes_copy = copy.deepcopy(classes)
+
 def read_yaml(data):
     dic = {}
     dic['command'] = data['command_translated']
@@ -111,6 +113,13 @@ def load_dataset():
 
     for i in range(0, 17):  # 범위를 필요에 따라 조정
         file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
+        if (i == 13):
+            extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even",]
+            for key in classes.keys():
+                doc = classes[key]
+                lines = doc.splitlines()
+                new_lines = lines[:4] + [f"    #{tag}" for tag in sorted(set(extra_tags))] + lines[4:]
+                classes[key] = "\n".join(new_lines)
         try:
             with open(file_name, "r", encoding="utf-8") as file:
                 data = yaml.safe_load(file)
@@ -147,7 +156,8 @@ def load_dataset():
             print(f"파일을 찾을 수 없습니다: {file_name}")
         except Exception as e:
             print(f"데이터 처리 중 오류: {e}")
-    
+        if (i == 13):
+            classes = classes_copy 
     return ret
 
 # 커스텀 데이터셋 생성

@@ -21,7 +21,7 @@ def call_model(model, inputs, stop_token_ids, tokenizer):
         input_ids=inputs,
         eos_token_id=stop_token_ids,
         pad_token_id=tokenizer.pad_token_id,
-        max_new_tokens=128,
+        max_new_tokens=1024,
         use_cache=True,
         streamer = TextStreamer(tokenizer, skip_prompt = True),
     )
@@ -125,9 +125,12 @@ def generate_joi_code(
             outputs = future.result(timeout=TIME_OUT)
             generated_ids = outputs[0][len(inputs[0]):]
             
-            # Fixed condition check
-            if len(generated_ids) > 0 and generated_ids[-1].item() in stop_token_ids:
-                generated_ids = generated_ids[:-1]
+            # # Fixed condition check
+            # if len(generated_ids) > 0 and generated_ids[-1].item() in stop_token_ids:
+            #     generated_ids = generated_ids[:-1]
+            stop_indexes = [i for i, tok_id in enumerate(generated_ids) if tok_id in stop_token_ids]
+            if stop_indexes:
+                generated_ids = generated_ids[:stop_indexes[0]]
 
             response = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
         except concurrent.futures.TimeoutError:

@@ -1,4 +1,4 @@
-import os, sys, re, gc, yaml, time, json
+import os, sys, re, gc, yaml, time, json, copy
 from datetime import datetime
 import concurrent.futures
 
@@ -16,7 +16,7 @@ from sentence_transformers import SentenceTransformer
 
 from yaml.representer import SafeRepresenter
 
-TIME_OUT = 10
+TIME_OUT = 20
 
 class LiteralString(str): pass
 def literal_str_representer(dumper, data):
@@ -71,7 +71,7 @@ def call_model(model, inputs, stop_token_ids, tokenizer):
         input_ids=inputs,
         eos_token_id=stop_token_ids,
         pad_token_id=tokenizer.pad_token_id,
-        max_new_tokens=128,
+        max_new_tokens=1024,
         use_cache=True,
     )
 
@@ -91,8 +91,11 @@ def run_test_case_unsloth(model, tokenizer, stop_token_ids, model_name, user_com
         try:
             outputs = future.result(timeout=TIME_OUT)
             generated_ids = outputs[0][len(inputs[0]):]
-            if len(generated_ids) > 0 and generated_ids[-1].item() in stop_token_ids:
-                generated_ids = generated_ids[:-1]
+            # if len(generated_ids) > 0 and generated_ids[-1].item() in stop_token_ids:
+            #     generated_ids = generated_ids[:-1]
+            stop_indexes = [i for i, tok_id in enumerate(generated_ids) if tok_id in stop_token_ids]
+            if stop_indexes:
+                generated_ids = generated_ids[:stop_indexes[0]]
             response = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
         except concurrent.futures.TimeoutError:
             response = ""
@@ -100,7 +103,7 @@ def run_test_case_unsloth(model, tokenizer, stop_token_ids, model_name, user_com
     return response, elapsed
 
 def main():
-    model_name = "qwenCoder"
+    model_name = "gemma3"
 
     model, tokenizer = FastLanguageModel.from_pretrained(
         model_name=f"./models/{model_name}-model",
@@ -122,7 +125,7 @@ def main():
         service_doc = f.read()
     classes = extract_classes_by_name(service_doc)
 
-    for i in range(0, 1):
+    for i in range(1,2):
         with open(f"./Testset/TestsetWithDevices_translated/category_{i}.yaml", "r") as f:
             results = []
             data = yaml.safe_load(f)
@@ -136,9 +139,23 @@ def main():
                 service_selected.add("Clock")
                 bge_elapsed = time.time() - start_bge
 
+                
+                if (i == 13):
+                    classes_copy = copy.deepcopy(classes)
+                    extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even",]
+                    for key in classes.keys():
+                        doc = classes[key]
+                        lines = doc.splitlines()
+                        new_lines = lines[:4] + [f"    #{tag}" for tag in sorted(set(extra_tags))] + lines[4:]
+                        classes[key] = "\n".join(new_lines)
+
+
                 resp, llm_elapsed = run_test_case_unsloth(
                     model, tokenizer, stop_token_ids, model_name, user_command_origin, user_command, classes, service_selected
                 )
+
+                if (i == 13):
+                    classes = classes_copy 
 
                 print(f"Command: {user_command_origin}")
                 print(f"code: {resp}")
