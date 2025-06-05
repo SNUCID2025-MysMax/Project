@@ -49,7 +49,7 @@ classes = extract_classes_by_name(service_doc)
 
 FastLanguageModel.for_inference(model) # Enable native 2x faster inference
 
-current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 command = "Turn on the air conditioner"
 # command = "Set the air conditioner mode to cool"
 messages = [
@@ -123,27 +123,12 @@ elif model_name == "qwenCoder":
 
 
     stop_tokens = [
-        "<|im_end|>",
-        "<|endoftext|>",
-        "<|file_sep|>", 
-        "<|fim_prefix|>",
-        "<|fim_middle|>",
-        "<|fim_suffix|>",
-        "<|fim_pad|>",
-        "<|repo_name|>",
-        "<|im_start|>",
-        "<|object_ref_start|>",
-        "<|object_ref_end|>",
-        "<|box_start|>",
-        "<|box_end|>",
-        "<|quad_start|>",
-        "<|quad_end|>",
-        "<|vision_start|>",
-        "<|vision_end|>",
-        "<|vision_pad|>",
-        "<|image_pad|>",
-        "<|video_pad|>"
-    ]
+            "<|im_end|>", "<|endoftext|>", "<|file_sep|>", "<|fim_prefix|>", "<|fim_middle|>",
+            "<|fim_suffix|>", "<|fim_pad|>", "<|repo_name|>", "<|im_start|>",
+            "<|object_ref_start|>", "<|object_ref_end|>", "<|box_start|>", "<|box_end|>",
+            "<|quad_start|>", "<|quad_end|>", "<|vision_start|>", "<|vision_end|>",
+            "<|vision_pad|>", "<|image_pad|>", "<|video_pad|>"
+        ]
     stop_token_ids = [tokenizer.convert_tokens_to_ids(token) for token in stop_tokens if token in tokenizer.get_vocab()]
 
 inputs = tokenizer.apply_chat_template(

@@ -69,8 +69,8 @@ def load_all_resources(model_name: str):
 
     # 4. 임베딩 및 문장 유사도 모델
     embed_model = BGEM3FlagModel(os.path.join(root_dir, "models", "bge-m3"), use_fp16=False, local_files_only=True)
-    sim_model = SentenceTransformer("paraphrase-MiniLM-L6-v2")
-    # sim_model = SentenceTransformer(os.path.join(root_dir, "models", "paraphrase-MiniLM-L6-v2"))
+    # sim_model = SentenceTransformer("paraphrase-MiniLM-L6-v2")
+    sim_model = SentenceTransformer(os.path.join(root_dir, "models", "paraphrase-MiniLM-L6-v2"))
 
     return {
         "model": model,
