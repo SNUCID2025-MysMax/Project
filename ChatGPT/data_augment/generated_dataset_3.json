@@ -1,0 +1,152 @@
+[
+  {
+    "text": "'매 15초마다 알람의 호루라기와 비상등을 켰다 껐다를 반복해 줘.'",
+    "cron": "* * * * *",
+    "period": 15000,
+    "code": "(#Alarm).siren_toggle()\n(#EmergencyLight).switch_toggle()"
+  },
+  {
+    "text": "'5초 간격으로 알람의 사이렌과 경광등을 작동시켰다 멈췄다를 반복적으로 해 줘.'",
+    "cron": "* * * * *",
+    "period": 5000,
+    "code": "is_alarm_on := (False)\nif (is_alarm_on) {\n    (#Alarm).off()\n    (#Alert).off()\n    is_alarm_on = False\n} else {\n    (#Alarm).on()\n    (#Alert).on()\n    is_alarm_on = True\n}"
+  },
+  {
+    "text": "'경보의 사이렌과 경광등을 7초마다 껐다 켜줄래?'",
+    "cron": "* * * * *",
+    "period": 7000,
+    "code": "(#경보).사이렌_켜기()\n(#경보).경광등_켜기()\n(#Clock).clock_delay(7, 0, 0)\n(#경보).사이렌_끄기()\n(#경보).경광등_끄기()"
+  },
+  {
+    "text": "'10초마다 경보의 경보등과 사이렌을 가동하다 중지하다를 반복해봐.'",
+    "cron": "* * * * *",
+    "period": 10000,
+    "code": "is_on := (False)\nif (not (is_on)) {\n    (#Alert).switch_on()\n    is_on = True\n} else {\n    (#Alert).switch_off()\n    is_on = False\n}"
+  },
+  {
+    "text": "'알람의 사이렌과 경광등을 매 20초마다 가동시켰다 멈췄다를 반복으로 해 줘.'",
+    "cron": "* * * * *",
+    "period": 20000,
+    "code": "flag := (False)\nif (flag) {\n    (#Alarm).siren_off()\n    (#Alarm).light_off()\n} else {\n    (#Alarm).siren_on()\n    (#Alarm).light_on()\n}\nflag = not flag"
+  },
+  {
+    "text": "\"매 분마다 에어컨을 작동 중지해 줘.\"",
+    "cron": "* * * * *",
+    "period": -1,
+    "code": "(#AirConditioner).switch_off()"
+  },
+  {
+    "text": "\"45초 간격으로 냉풍기를 비활성화해 줘.\"",
+    "cron": "* * * * *",
+    "period": 45000,
+    "code": "(#AirConditioner).switch_off()"
+  },
+  {
+    "text": "\"다음부터는 1분마다 냉풍기를 멈춰 줘.\"",
+    "cron": "* * * * *",
+    "period": 60000,
+    "code": "(#AirConditioner).switch_off()"
+  },
+  {
+    "text": "\"기다릴 필요 없이 매 20초마다 에어컨을 종료해 줘.\"",
+    "cron": "* * * * *",
+    "period": 20000,
+    "code": "(#AirConditioner).switch_off()"
+  },
+  {
+    "text": "\"30초마다 선풍기 작동을 중지해 줘.\"",
+    "cron": "* * * * *",
+    "period": 30000,
+    "code": "(#AirConditioner).switch_off()"
+  },
+  {
+    "text": "\"매일 0시에 블라인드를 닫아 주세요.\"",
+    "cron": "0 0 * * *",
+    "period": -1,
+    "code": "(#Curtain).curtain_close()"
+  },
+  {
+    "text": "\"커튼을 매일 밤 12시에 꼭 닫아 줘.\"",
+    "cron": "0 0 * * *",
+    "period": -1,
+    "code": "(#Curtain).curtain_close()"
+  },
+  {
+    "text": "\"매일 자정에 블라인드를 내려 줘.\"",
+    "cron": "0 0 * * *",
+    "period": -1,
+    "code": "(#Curtain).curtain_close()"
+  },
+  {
+    "text": "\"블라인드를 매일 자정에 내려 주세요.\"",
+    "cron": "0 0 * * *",
+    "period": -1,
+    "code": "(#Curtain).curtain_close()"
+  },
+  {
+    "text": "\"매일 새벽 12시에 커튼을 내려 주세요.\"",
+    "cron": "0 0 * * *",
+    "period": -1,
+    "code": "(#Curtain).curtain_close()"
+  },
+  {
+    "text": "\"5초마다 텔레비전 소리를 한 단계씩 증가시켜 줘.\"",
+    "cron": "* * * * *",
+    "period": 5000,
+    "code": "(#Television).audioVolume_volumeUp()"
+  },
+  {
+    "text": "\"7초 간격으로 TV 볼륨을 한 단계 올려 줘.\"",
+    "cron": "* * * * *",
+    "period": 7000,
+    "code": "(#Television).audioVolume_volumeUp()"
+  },
+  {
+    "text": "\"TV의 소리 크기를 5초마다 1씩 높여 줘.\"",
+    "cron": "51 9 6 6 5",
+    "period": 5000,
+    "code": "current_volume = (#Television).audioVolume_volume\nnew_volume = current_volume + 1\n(#Television).audioVolume_setVolume(new_volume)"
+  },
+  {
+    "text": "\"텔레비전 볼륨을 2씩 증가시켜 줘. 그리고 이걸 5초에 한 번씩 하거든.\"",
+    "cron": "* * * * *",
+    "period": 5000,
+    "code": "current_volume = (#Television).audioVolume_volume\nnew_volume = current_volume + 2\n(#Television).audioVolume_setVolume(new_volume)"
+  },
+  {
+    "text": "\"매 10초마다 TV 볼륨을 1단계씩 상승시켜 줘.\"",
+    "cron": "58 9 6 6 5",
+    "period": 10000,
+    "code": "volume = (#Television).audioVolume_volume\nnew_volume = volume + 1\n(#Television).audioVolume_setVolume(new_volume)"
+  },
+  {
+    "text": "'매주 수요일 낮 12시에 사운드 시스템을 작동시켜 줘.'",
+    "cron": "0 12 * * 3",
+    "period": -1,
+    "code": "(#SoundSystem).switch_on()"
+  },
+  {
+    "text": "'매주 수요일 아침 9시 45분에 오디오 장비를 가동해 줘.'",
+    "cron": "45 9 * * 3",
+    "period": -1,
+    "code": "(#AudioDevice).switch_on()"
+  },
+  {
+    "text": "'매주 수요일 오전 10시에 스피커를 꺼 줘.'",
+    "cron": "0 10 * * 3",
+    "period": -1,
+    "code": "(#Speaker).switch_off()"
+  },
+  {
+    "text": "'스피커를 매주 수요일 오전 10시에 켜 줘.'",
+    "cron": "0 10 * * 3",
+    "period": -1,
+    "code": "(#Speaker).switch_on()"
+  },
+  {
+    "text": "'매주 수요일 오전 10시에 사운드 장치를 작동을 멈춰 줘.'",
+    "cron": "0 10 * * 3",
+    "period": -1,
+    "code": "(#SoundDevice).switch_off()"
+  }
+]
