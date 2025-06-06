@@ -1,5 +1,5 @@
 - command: 창문이 열려 있고 조명이 꺼져 있으며 커튼이 닫혀 있으면 조명을 켜고 커튼을 열어 줘. 또한 관수기가 꺼져 있고 토양 수분이 40% 이하이면 관수기를 작동시켜 줘.
-  command_translated: If windows are open, lights are off, and curtains are closed, turn on the lights and open the curtains. Also, if the irrigation is off and the soil moisture is below 40%, turn on the irrigation.
+  command_translated: If windows are open, lights are off, and curtains are closed, turn on the lights and open the curtains. Also, if the irrigator is off and the soil moisture is below 40%, turn on the irrigator.
   code:
   - name: Scenario1
     cron: ''
@@ -63,7 +63,7 @@
   - Dehumidifier
   - HumiditySensor
 - command: 조명이 꺼져 있고 움직임이 감지되지 않으며 커튼이 열려 있으면 조명을 켜고 커튼을 닫아 줘. 관수기가 꺼져 있고 창문이 닫혀 있으면 관수기를 켜고 창문을 열어 줘.
-  command_translated: If the lights are off, no motion is detected, and the curtains are open, turn on the lights and close the curtains. If the irrigation is off and the windows are closed, turn on the irrigation and open the windows.
+  command_translated: If the lights are off, no motion is detected, and the curtains are open, turn on the lights and close the curtains. If the irrigator is off and the windows are closed, turn on the irrigator and open the windows.
   code:
   - name: Scenario1
     cron: ''
@@ -105,7 +105,7 @@
   - Window
   - HumiditySensor
 - command: TV가 꺼져 있고 블라인드가 닫혀 있으며 커튼이 열려 있으면 TV를 켜고 블라인드를 열어 줘. 에어컨이 자동 모드가 아니고 꺼져 있으면 자동 모드로 설정하고 전원을 켜 줘.
-  command_translated: If the TV is off, the blinds are closed, and the curtains are open, turn on the TV and open the blinds. If your air conditioner is not in auto mode and is off, set it to auto mode and turn it on.
+  command_translated: If the TV is off, the blinds are closed, and the curtains are open, turn on the TV and open the blinds. If the air conditioner is not in auto mode and is off, set it to auto mode and turn it on.
   code:
   - name: Scenario1
     cron: ''
@@ -125,7 +125,7 @@
   - AirConditioner
   - Television
 - command: 스피커가 정지 상태이고 조명이 꺼져 있으며 커튼이 닫혀 있으면 스피커를 재생 상태로 전환하고 커튼을 열어 줘. TV가 켜져 있고 조명 밝기가 80 이상이면 밝기를 50으로 낮춰 줘.
-  command_translated: If the speakers are stopped, the lights are off, and the curtains are closed, switch the speakers to playback and open the curtains. If your TV is on and the light brightness is 80 or higher, turn the brightness down to 50.
+  command_translated: If the speaker is in stop mode, the lights are off, and the curtains are closed, switch the speaker to playback and open the curtains. If the TV is on and the light brightness is 80 or higher, turn the brightness down to 50.
   code:
   - name: Scenario1
     cron: ''

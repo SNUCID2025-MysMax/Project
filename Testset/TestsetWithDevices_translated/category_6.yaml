@@ -1,5 +1,5 @@
 - command: 5초마다 토양 습도를 측정해서 30% 이하이면 급수기를 켜 줘. 만약 그 때 온도가 35도 이상이면 급수기를 끄고 반복도 종료해 줘.
-  command_translated: Every 5 seconds, it measures the soil humidity and turns on the waterer if it's below 30%. If the temperature is above 35 degrees at that time, turn off the waterer and end the cycle.
+  command_translated: Measure soil moisture every 5 seconds, and if it is below 30%, turn on the irrigator. If the temperature is above 35 degrees at that time, turn off the irrigator and stop the loop.
   code:
   - name: Scenario1
     cron: ''
@@ -71,7 +71,7 @@
   devices:
   - Blind
 - command: 10초마다 관개기를 켰다가 5초 뒤에 꺼 줘. 관개기를 끌 때, 켤 때 모두 확인해서 일조량이 500룩스 이상이면 관개기를 끄고 반복을 종료해 줘.
-  command_translated: Turn on the irrigation every 10 seconds and turn it off after 5 seconds. Check the irrigation both on and off, and if the sunlight is above 500 lux, turn off the irrigation and end the loop.
+  command_translated: Turn on the irrigator every 10 seconds and turn it off after 5 seconds. Check the irrigator both on and off, and if the sunlight is above 500 lux, turn off the irrigator and stop the loop.
   code:
   - name: Scenario1
     cron: ''
@@ -113,7 +113,7 @@
   - Light
   - Window
 - command: 3초마다 텔레비전의 볼륨을 1씩 증가시켜서 5단계가 되면 초기값으로 되돌리는 동작을 반복해 줘. 초기값으로 되돌릴 때 확인해서 움직임이 감지되면 반복을 중단해 줘.
-  command_translated: Every 3 seconds, increase the volume of the TV by 1 and repeat the behavior, returning it to its initial value at step 5. When returning to the initial value, check for motion and stop the loop if it detects any.
+  command_translated: Every 3 seconds, increase the television volume by 1 level. When it reaches level 5, reset it to the initial value. Repeat this cycle. If motion is detected at the moment of reset, stop the repetition.
   code:
   - name: Scenario1
     cron: ''
@@ -135,7 +135,7 @@
   - MotionSensor
   - Television
 - command: 10초마다 블라인드를 완전히 닫아 줘. 그 때마다 확인해서 TV가 켜져 있으면 즉시 반복을 종료해.
-  command_translated: Every 10 seconds, close the blinds completely. Check each time and end the loop immediately if the TV is still on.
+  command_translated: Every 10 seconds, close the blinds completely. Check each time and end the loop immediately if the TV is on.
   code:
   - name: Scenario1
     cron: ''
@@ -150,7 +150,7 @@
   - Blind
   - Television
 - command: 2초마다 알람의 사이렌을 1초간 울렸다 꺼지게 하고, 알람의 사이렌을 울릴 때마다 창문이 닫혀 있는지 확인해서 닫혀 있으면 반복을 중단해 줘.
-  command_translated: Every two seconds, make the alarm's siren blare for one second and then turn it off, and every time it blares the siren, make sure the window is closed and stop the loop if it is.
+  command_translated: Every two seconds, turn the alarm siren on for 1 second, then turn it off, and every time it turn on the siren, make sure the window is closed and stop the loop if it is.
   code:
   - name: Scenario1
     cron: ''
@@ -168,7 +168,7 @@
   - Alarm
   - Window
 - command: 5초마다 실내 공기청정기를 ‘자동’ 모드로 전환해 줘. 그 때마다 확인해서 창문이 열려 있으면 모든 반복을 종료해 줘.
-  command_translated: Every 5 seconds, switch the room air purifier to 'silent' mode. Check each time and end all iterations if a window is open.
+  command_translated: Every 5 seconds, switch the room air purifier to 'auto' mode. Check each time and stop the loop if a window is open.
   code:
   - name: Scenario1
     cron: ''

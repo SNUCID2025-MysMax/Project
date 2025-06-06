@@ -19,7 +19,7 @@
   devices:
   - Light
 - command: 매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘.
-  command_translated: I want you to close and open the curtains every 15 seconds between 6pm and 7pm every day.
+  command_translated: Close and open the curtains every 15 seconds between 6pm and 7pm every day.
   code:
   - name: Scenario1
     cron: 0 18 * * *
@@ -118,7 +118,7 @@
   devices:
   - Television
 - command: 5초마다 텔레비전 볼륨을 1씩 높여 줘.
-  command_translated: Increase the volume of your television by 1 every 5 seconds.
+  command_translated: Increase the volume of the television by 1 every 5 seconds.
   code:
   - name: Scenario1
     cron: ''

@@ -1,5 +1,5 @@
 - command: 토양 수분이 30% 이하이고 조명이 꺼져 있으면 관개 장치를 작동시키고 조명을 켜 줘.
-  command_translated: If the soil moisture is below 30% and the lights are off, run the irrigation and turn on the lights.
+  command_translated: If the soil moisture is below 30% and the lights are off, turn on the irrigator and the light.
   code:
   - name: Scenario1
     cron: ''
@@ -76,7 +76,7 @@
   - Window
   - Fan
 - command: TV가 꺼져 있고 스피커가 재생 중이면 TV를 켜고 스피커를 꺼 줘.
-  command_translated: If the TV is off and the speakers are playing, turn on the TV and turn off the speakers.
+  command_translated: If the TV is off and the speaker is playing, turn on the TV and turn off the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -134,7 +134,7 @@
   - Curtain
   - AirConditioner
 - command: TV가 켜져 있고 소리가 꺼져 있으면 TV를 끄고 음소거를 해제해 줘.
-  command_translated: If your TV is on and the sound is off, turn it off and unmute it.
+  command_translated: If the TV is on and the sound is off, turn it off and unmute it.
   code:
   - name: Scenario1
     cron: ''

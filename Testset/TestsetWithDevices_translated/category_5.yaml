@@ -63,7 +63,7 @@
   - Light
   - LightSensor
 - command: 급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘.
-  command_translated: After running the waterer, wait 10 seconds before turning on the fan.
+  command_translated: After running the irrigator, wait 10 seconds before turning on the fan.
   code:
   - name: Scenario5
     cron: ''

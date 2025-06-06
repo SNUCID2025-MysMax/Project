@@ -1,5 +1,5 @@
 - command: 실시간으로 확인해서 토양 습도가 25% 이하로 떨어질 때마다 급수기를 켜고 '급수 시작'이라고 스피커로 출력해줘.
-  command_translated: Check in real-time and turn on the waterer whenever the soil humidity drops below 25% and announce "Start watering" over the speaker.
+  command_translated: Check in real-time and turn on the irrigator whenever the soil humidity drops below 25% and announce "Start watering" via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -39,7 +39,7 @@
   - TemperatureSensor
   - Fan
 - command: 3초마다 일조량을 확인해서 200룩스 이하로 떨어지면 조명을 켜 줘.
-  command_translated: Check the sunlight every 3 seconds and turn on the lights when it drops below 200 lux.
+  command_translated: Check the sunlight every 3 seconds and turn on the lights if it drops below 200 lux.
   code:
   - name: Scenario1
     cron: ''
@@ -79,7 +79,7 @@
   - ContactSensor
   - Siren
 - command: 현재 날씨에서 비가 감지될 때마다 관개 장치를 꺼 주고 '비가 감지되었습니다'라고 스피커로 출력해줘. 감지는 1분에 한번씩만 하자.
-  command_translated: Whenever rain is detected in the current weather, turn off the irrigation and announce "Rain detected" to the speaker. The detection should only happen once a minute.
+  command_translated: Whenever rain is detected in the current weather, turn off the irrigator and announce "Rain detected" via the speaker. Let's detect only once a minutae.
   code:
   - name: Scenario1
     cron: ''
@@ -119,7 +119,7 @@
   - Blind
   - Window
 - command: 조명이 켜질 때마다 커튼을 동시에 열어 줘. 실시간으로 조명을 체크해야 해.
-  command_translated: Open the curtains at the same time whenever the lights come on. I need to check the lights in real time.
+  command_translated: Open the curtains at the same time whenever the lights come on. Check the lights in real time.
   code:
   - name: Scenario1
     cron: ''
@@ -176,7 +176,7 @@
   - DoorLock
   - Alarm
 - command: 1초마다 공기청정기 상태를 확인해서 꺼지면 자동 모드로 다시 켜 줘.
-  command_translated: Check the status of the air purifier every 1 second and turn it back on automatically if it turns off.
+  command_translated: Check the status of the air purifier every 1 second and turn it back on and set to auto mode if it turns off.
   code:
   - name: Scenario1
     cron: ''

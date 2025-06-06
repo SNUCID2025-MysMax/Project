@@ -118,7 +118,7 @@
   - Curtain
   - Light
 - command: 제습기가 꺼지면 다시 켜 줘.
-  command_translated: If the dehumidifier turns off, turn it back on.
+  command_translated: Turn the dehumidifier back on when it turns off.
   code:
   - name: Scenario1
     cron: ''

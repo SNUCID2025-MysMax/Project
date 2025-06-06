@@ -39,7 +39,7 @@
   devices:
   - Siren
 - command: 사이렌과 경광등을 동시에 켜 줘
-  command_translated: Turn on sirens and lights at the same time
+  command_translated: Turn on the siren and the strobe at the same time
   code:
   - name: Scenario1
     cron: ''
@@ -49,7 +49,7 @@
   devices:
   - Alarm
 - command: 사이렌과 경광등을 동시에 켜 줘
-  command_translated: Turn on sirens and lights at the same time
+  command_translated: Turn on the siren and the strobe at the same time
   code:
   - name: Scenario1
     cron: ''
@@ -59,7 +59,7 @@
   devices:
   - Siren
 - command: 사이렌과 경광등을 둘 다 꺼 줘
-  command_translated: Turn off both sirens and lights
+  command_translated: Turn off both the siren and the strobe
   code:
   - name: Scenario1
     cron: ''
@@ -69,7 +69,7 @@
   devices:
   - Alarm
 - command: 사이렌과 경광등을 둘 다 꺼 줘
-  command_translated: Turn off both sirens and lights
+  command_translated: Turn off both the siren and the strobe
   code:
   - name: Scenario1
     cron: ''
@@ -79,7 +79,7 @@
   devices:
   - Siren
 - command: 재실 센서가 감지 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the occupancy sensor is detected.
+  command_translated: Sound the alarm's siren if the occupancy sensor is detected.
   code:
   - name: Scenario1
     cron: ''
@@ -92,7 +92,7 @@
   - Alarm
   - OccupancySensor
 - command: 재실 센서가 감지 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the occupancy sensor is detected.
+  command_translated: Sound the alarm's siren if the occupancy sensor is detected.
   code:
   - name: Scenario1
     cron: ''
@@ -105,7 +105,7 @@
   - Alarm
   - PresenceSensor
 - command: 에어컨의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the air conditioner is powered on.
+  command_translated: Sound the alarm's siren if the air conditioner is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -118,7 +118,7 @@
   - Alarm
   - AirConditioner
 - command: 에어컨의 모드가 냉방 모드면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the air conditioner is in cooling mode.
+  command_translated: Sound the alarm's siren if the air conditioner is in cooling mode.
   code:
   - name: Scenario1
     cron: ''
@@ -131,7 +131,7 @@
   - Alarm
   - AirConditioner
 - command: 에어컨의 목표 온도가 30도면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the air conditioner's target temperature is 30 degrees.
+  command_translated: Sound the alarm's siren if the air conditioner's target temperature is 30 degrees.
   code:
   - name: Scenario1
     cron: ''
@@ -206,7 +206,7 @@
   devices:
   - AirConditioner
 - command: 공기청정기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the air purifier is powered on.
+  command_translated: Sound the alarm's siren if the air purifier is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -219,7 +219,7 @@
   - Alarm
   - AirPurifier
 - command: 공기청정기가 수면 모드면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the air purifier is in sleep mode.
+  command_translated: Sound the alarm's siren if the air purifier is in sleep mode.
   code:
   - name: Scenario1
     cron: ''
@@ -232,7 +232,7 @@
   - Alarm
   - AirPurifier
 - command: 공기청정기가 지원하는 모드를 스피커로 출력해줘
-  command_translated: Speaker out the modes your air purifier supports
+  command_translated: Speaker out the modes the air purifier supports
   code:
   - name: Scenario1
     cron: ''
@@ -284,7 +284,7 @@
   devices:
   - AirPurifier
 - command: 공기질 측정기의 측정 온도가 20도이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the air quality meter reads 20 degrees.
+  command_translated: Sound the alarm's siren If the temperature measured by the air quality meter is 20 degrees.
   code:
   - name: Scenario1
     cron: ''
@@ -297,7 +297,7 @@
   - Alarm
   - AirQualityDetector
 - command: 이산화탄소 농도가 800ppm 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the carbon dioxide concentration is above 800 ppm.
+  command_translated: Sound the alarm's siren if the carbon dioxide concentration is above 800 ppm.
   code:
   - name: Scenario1
     cron: ''
@@ -310,7 +310,7 @@
   - Alarm
   - AirQualityDetector
 - command: 공기질 측정기의 상대 습도가 70퍼센트 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the relative humidity on the air quality meter is above 70 percent.
+  command_translated: Sound the alarm's siren if the relative humidity on the air quality meter is above 70 percent.
   code:
   - name: Scenario1
     cron: ''
@@ -323,7 +323,7 @@
   - Alarm
   - AirQualityDetector
 - command: 실내 황사 농도가 150마이크로그램 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the indoor sulfur dust concentration is 150 micrograms or more.
+  command_translated: Sound the alarm's siren if the indoor yellow dust concentration is 150 micrograms or more.
   code:
   - name: Scenario1
     cron: ''
@@ -336,7 +336,7 @@
   - Alarm
   - AirQualityDetector
 - command: 실내 미세먼지 농도가 35마이크로그램 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when indoor particulate matter levels are 35 micrograms or higher.
+  command_translated: Sound the alarm's siren if indoor particulate matter concentration is 35 micrograms or higher.
   code:
   - name: Scenario1
     cron: ''
@@ -349,7 +349,7 @@
   - Alarm
   - AirQualityDetector
 - command: 실내 초미세먼지 농도가 15마이크로그램 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the indoor particulate matter concentration is 15 micrograms or more.
+  command_translated: Sound the alarm's siren if the indoor fine particulate matter concentration is 15 micrograms or more.
   code:
   - name: Scenario1
     cron: ''
@@ -375,7 +375,7 @@
   - Alarm
   - AirQualityDetector
 - command: 알람이 경광등 모드이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the alarm is in strobe mode.
+  command_translated: Sound the alarm's siren if the alarm is in strobe mode.
   code:
   - name: Scenario1
     cron: ''
@@ -399,7 +399,7 @@
   devices:
   - Alarm
 - command: 알람 배터리 상태가 20퍼센트 이하이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the alarm battery is below 20 percent.
+  command_translated: Sound the alarm's siren if the alarm battery is below 20 percent.
   code:
   - name: Scenario1
     cron: ''
@@ -411,7 +411,7 @@
   devices:
   - Alarm
 - command: 알람의 사이렌과 경광등을 모두 켜줘.
-  command_translated: Turn on both the alarm's siren and lights.
+  command_translated: Turn on both the alarm's siren and strobe.
   code:
   - name: Scenario1
     cron: ''
@@ -461,7 +461,7 @@
   devices:
   - Alarm
 - command: 블라인드가 50 퍼센트 이상 열려있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the blinds are more than 50 percent open.
+  command_translated: Sound the alarm's siren if the blinds are more than 50 percent open.
   code:
   - name: Scenario1
     cron: ''
@@ -474,7 +474,7 @@
   - Blind
   - Alarm
 - command: 블라인드가 열린 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the blinds are open.
+  command_translated: Sound the alarm's siren if the blinds are open.
   code:
   - name: Scenario1
     cron: ''
@@ -527,7 +527,7 @@
   devices:
   - Blind
 - command: 버튼이 눌렸으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the button is pressed.
+  command_translated: Sound the alarm's siren if the button is pressed.
   code:
   - name: Scenario1
     cron: ''
@@ -553,7 +553,7 @@
   - Alarm
   - Button
 - command: 버튼이 지원하는 상태를 스피커로 출력해줘.
-  command_translated: Output the states supported by the button to the speaker.
+  command_translated: Announce the button's supported states via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -565,7 +565,7 @@
   - Speaker
   - Button
 - command: 버튼1이 눌렸으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when button 1 is pressed.
+  command_translated: Sound the alarm's siren if button 1 is pressed.
   code:
   - name: Scenario1
     cron: ''
@@ -578,7 +578,7 @@
   - Alarm
   - Buttonx4
 - command: 버튼2가 눌린 상태면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when button 2 is pressed.
+  command_translated: Sound the alarm's siren if button 2 is pressed.
   code:
   - name: Scenario1
     cron: ''
@@ -591,7 +591,7 @@
   - Alarm
   - Buttonx4
 - command: 버튼3이 두 번 눌렸으면 알람의 사이렌을 울려줘.
-  command_translated: When button 3 is pressed twice, sound the alarm's siren.
+  command_translated: if button 3 is pressed twice, sound the alarm's siren.
   code:
   - name: Scenario1
     cron: ''
@@ -604,7 +604,7 @@
   - Alarm
   - Buttonx4
 - command: 버튼4가 위로 스와이프되었으면 알람의 사이렌을 울려줘.
-  command_translated: When button 4 is swiped up, sound the alarm's siren.
+  command_translated: if button 4 is swiped up, sound the alarm's siren.
   code:
   - name: Scenario1
     cron: ''
@@ -630,7 +630,7 @@
   - Alarm
   - Buttonx4
 - command: 4개짜리 버튼이 지원하는 상태를 스피커로 출력해줘.
-  command_translated: Output the states supported by the four buttons to the speaker.
+  command_translated: Announce the states supported by the button x4 via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -692,7 +692,7 @@
   devices:
   - Calculator
 - command: 카메라의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the camera is powered on.
+  command_translated: Sound the alarm's siren if the camera is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -704,8 +704,8 @@
   devices:
   - Alarm
   - Camera
-- command: 가장 최근에 찍은 사진을 첨부파일로 이메일을 test@example.com 주소, 제목 '사진'과 내용 '사진입니다.'로 보내줘.
-  command_translated: Send an email with your most recent photo as an attachment to test@example.com with the subject line "Photo" and the content "This is a photo".
+- command: 가장 최근에 찍은 사진을 첨부파일로 이메일을 'test@example.com' 주소, 제목 '사진'과 내용 '사진입니다.'로 보내줘.
+  command_translated: Send an email with the most recent photo as an attachment to 'test@example.com' with the subject line "Photo" and the content "This is a photo".
   code:
   - name: Scenario1
     cron: ''
@@ -716,8 +716,8 @@
   devices:
   - EmailProvider
   - Camera
-- command: 가장 최근에 찍은 동영상을 첨부파일로 이메일을 test@example.com 주소, 제목 '동영상'과 내용 '동영상입니다.'로 보내줘
-  command_translated: Send an email with your most recent video as an attachment to test@example.com with the subject line "Video" and the content "This is a video.
+- command: 가장 최근에 찍은 동영상을 첨부파일로 이메일을 'test@example.com' 주소, 제목 '동영상'과 내용 '동영상입니다.'로 보내줘
+  command_translated: Send an email with the most recent video as an attachment to 'test@example.com' with the subject line "Video" and the content "This is a video.
   code:
   - name: Scenario1
     cron: ''
@@ -759,7 +759,7 @@
   devices:
   - Camera
 - command: 카메라로 사진을 찍어줘.
-  command_translated: Take a photo with your camera.
+  command_translated: Take a photo with the camera.
   code:
   - name: Scenario1
     cron: ''
@@ -769,7 +769,7 @@
   devices:
   - Camera
 - command: 카메라로 10초 동안 속도 2로 타임랩스 영상을 촬영해줘.
-  command_translated: Take a time-lapse video with your camera at speed 2 for 10 seconds.
+  command_translated: Take a time-lapse video with the camera at speed 2 for 10 seconds.
   code:
   - name: Scenario1
     cron: ''
@@ -792,7 +792,7 @@
   - Charger
   - Alarm
 - command: 충전기의 상태가 충전 중이면 알람의 사이렌을 울려줘.
-  command_translated: Sound an alarm siren when the charger's status is charging.
+  command_translated: Sound an alarm siren if the charger's status is charging.
   code:
   - name: Scenario1
     cron: ''
@@ -818,7 +818,7 @@
   - Charger
   - Alarm
 - command: 충전기가 지원하는 상태를 스피커로 출력해줘.
-  command_translated: Output the status supported by the charger to the speaker.
+  command_translated: Annonce the status supported by the charger via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -830,7 +830,7 @@
   - Charger
   - Speaker
 - command: 오늘 날짜가 2025년 5월 12일이면 알람의 사이렌을 울려줘.
-  command_translated: If today's date is May 12, 2025, sound the alarm siren.
+  command_translated: If today's date is May 12, 2025, sound the alarm's siren.
   code:
   - name: Scenario1
     cron: ''
@@ -934,7 +934,7 @@
   - Clock
   - Alarm
 - command: 지금이 오후 3시 15분이면 알람의 사이렌을 울려줘.
-  command_translated: If it's 3:15pm, blare the siren on your alarm.
+  command_translated: If it's 3:15pm, blare the siren on the alarm.
   code:
   - name: Scenario1
     cron: ''
@@ -996,7 +996,7 @@
   devices:
   - Clock
 - command: 접촉 센서가 접촉되어 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the contact sensor is in contact.
+  command_translated: Sound the alarm's siren if the contact sensor is in contact.
   code:
   - name: Scenario1
     cron: ''
@@ -1009,7 +1009,7 @@
   - ContactSensor
   - Alarm
 - command: 커튼이 열림 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the curtain is open.
+  command_translated: Sound the alarm's siren if the curtain is open.
   code:
   - name: Scenario1
     cron: ''
@@ -1022,7 +1022,7 @@
   - Curtain
   - Alarm
 - command: 커튼이 지원하는 상태를 스피커로 출력해줘.
-  command_translated: Output the states supported by the curtain to the speakers.
+  command_translated: Announce the states supported by the curtain via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -1053,8 +1053,8 @@
       (#Curtain).curtain_open()
   devices:
   - Curtain
-- command: 커튼을 멈춰줘.
-  command_translated: Stop the curtain.
+- command: 커튼의 움직임을 멈춰줘.
+  command_translated: Stop the curtain from moving.
   code:
   - name: Scenario1
     cron: ''
@@ -1064,7 +1064,7 @@
   devices:
   - Curtain
 - command: 제습기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the dehumidifier is powered on.
+  command_translated: Sound the alarm siren if the dehumidifier is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -1077,7 +1077,7 @@
   - Dehumidifier
   - Alarm
 - command: 제습기의 모드가 제습 중이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the dehumidifier is in dehumidifying mode.
+  command_translated: Sound the alarm siren if the dehumidifier is in dehumidifying mode.
   code:
   - name: Scenario1
     cron: ''
@@ -1130,7 +1130,7 @@
   devices:
   - Dehumidifier
 - command: 식기세척기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the dishwasher is powered on.
+  command_translated: Sound the alarm's siren if the dishwasher is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -1186,7 +1186,7 @@
   devices:
   - Dishwasher
 - command: 식기세척기를 자동 모드로 설정해줘.
-  command_translated: Set your dishwasher to automatic mode.
+  command_translated: Set the dishwasher to automatic mode.
   code:
   - name: Scenario1
     cron: ''
@@ -1219,7 +1219,7 @@
   devices:
   - DoorLock
 - command: 도어락을 열어줘.
-  command_translated: Unlock the door.
+  command_translated: Open the door lock.
   code:
   - name: Scenario1
     cron: ''
@@ -1228,8 +1228,8 @@
       (#DoorLock).doorControl_open()
   devices:
   - DoorLock
-- command: 이메일을 test@example.com 주소로 제목 '알림'과 내용 '긴급 상황입니다.'로 보내줘.
-  command_translated: Send an email to test@example.com with the subject line "Alert" and the content "This is an emergency".
+- command: 이메일을 'test@example.com' 주소로 제목 '알림'과 내용 '긴급 상황입니다.'로 보내줘.
+  command_translated: Send an email to 'test@example.com' with the subject line "Alert" and the content "This is an emergency".
   code:
   - name: Scenario1
     cron: ''
@@ -1239,7 +1239,7 @@
   devices:
   - EmailProvider
 - command: 선풍기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the fan is powered on.
+  command_translated: Sound the alarm's siren if the fan is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -1315,7 +1315,7 @@
   devices:
   - Fan
 - command: 사료 공급기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the feeder is powered on.
+  command_translated: Sound the alarm's siren if the feeder is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -1328,7 +1328,7 @@
   - Feeder
   - Alarm
 - command: 사료 공급기의 상태가 급식 중이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the feeder's status is feeding.
+  command_translated: Sound the alarm siren if the feeder's status is feeding.
   code:
   - name: Scenario1
     cron: ''
@@ -1391,7 +1391,7 @@
   devices:
   - Feeder
 - command: 가스 미터의 가스 사용량이 500kWh 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the gas meter shows gas usage of 500 kWh or more.
+  command_translated: Sound the alarm siren if the gas meter shows gas usage of 500 kWh or more.
   code:
   - name: Scenario1
     cron: ''
@@ -1404,7 +1404,7 @@
   - Alarm
   - GasMeter
 - command: 가스 미터의 가스 발열량이 1000kcal 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the gas meter reads more than 1000 kcal of gas.
+  command_translated: Sound the alarm siren if the gas meter reads more than 1000 kcal of gas.
   code:
   - name: Scenario1
     cron: ''
@@ -1417,7 +1417,7 @@
   - Alarm
   - GasMeter
 - command: 가스 미터의 누적 가스 사용 시간이 10000초 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the siren of the alarm when the gas meter has a cumulative gas usage time of 10000 seconds or more.
+  command_translated: Sound the siren of the alarm if the gas meter has a cumulative gas usage time of 10000 seconds or more.
   code:
   - name: Scenario1
     cron: ''
@@ -1430,7 +1430,7 @@
   - Alarm
   - GasMeter
 - command: 가스 미터의 가스 사용량이 20세제곱미터 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the gas meter reads more than 20 cubic meters of gas.
+  command_translated: Sound the alarm's siren if the gas meter reads more than 20 cubic meters of gas.
   code:
   - name: Scenario1
     cron: ''
@@ -1528,7 +1528,7 @@
   - Alarm
   - GasValve
 - command: 가습기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound an alarm siren when the humidifier is powered on.
+  command_translated: Sound an alarm siren if the humidifier is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -1594,7 +1594,7 @@
   devices:
   - Humidifier
 - command: 습도 센서의 상대 습도가 70퍼센트 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the humidity sensor reads a relative humidity of 70 percent or higher.
+  command_translated: Sound the alarm's siren if the humidity sensor reads a relative humidity of 70 percent or higher.
   code:
   - name: Scenario1
     cron: ''
@@ -1607,7 +1607,7 @@
   - Alarm
   - HumiditySensor
 - command: 관개 장치의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the irrigation device is powered on.
+  command_translated: Sound the alarm's siren if the irrigator is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -1620,7 +1620,7 @@
   - Alarm
   - Irrigator
 - command: 관개 장치의 급수량이 3리터이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the irrigation device has 3 liters of water.
+  command_translated: Sound the alarm's siren if the irrigator has 3 liters of water.
   code:
   - name: Scenario1
     cron: ''
@@ -1633,7 +1633,7 @@
   - Alarm
   - Irrigator
 - command: 관개 장치의 상태가 급수 중이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the irrigation device's status is watering.
+  command_translated: Sound the alarm's siren if the irrigator's status is watering.
   code:
   - name: Scenario1
     cron: ''
@@ -1646,7 +1646,7 @@
   - Alarm
   - Irrigator
 - command: 관개 장치를 꺼줘.
-  command_translated: Turn off the irrigation.
+  command_translated: Turn off the irrigator.
   code:
   - name: Scenario1
     cron: ''
@@ -1656,7 +1656,7 @@
   devices:
   - Irrigator
 - command: 관개 장치를 켜줘.
-  command_translated: Turn on the irrigation.
+  command_translated: Turn on the irrigator.
   code:
   - name: Scenario1
     cron: ''
@@ -1666,7 +1666,7 @@
   devices:
   - Irrigator
 - command: 관개 장치의 전원을 토글해줘.
-  command_translated: Toggle the power of the irrigation device.
+  command_translated: Toggle the power of the irrigator.
   code:
   - name: Scenario1
     cron: ''
@@ -1676,7 +1676,7 @@
   devices:
   - Irrigator
 - command: 관개 장치의 급수량을 5리터로 설정해줘.
-  command_translated: Set the irrigation unit's watering volume to 5 liters.
+  command_translated: Set the water supply of the irrigator to 5 liters.
   code:
   - name: Scenario1
     cron: ''
@@ -1686,7 +1686,7 @@
   devices:
   - Irrigator
 - command: 관개 장치의 급수를 시작해줘.
-  command_translated: Start watering your irrigation system.
+  command_translated: Start watering the irrigator.
   code:
   - name: Scenario1
     cron: ''
@@ -1696,7 +1696,7 @@
   devices:
   - Irrigator
 - command: 누수가 감지되면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when a leak is detected.
+  command_translated: Sound the alarm's siren if a leak is detected.
   code:
   - name: Scenario1
     cron: ''
@@ -1709,7 +1709,7 @@
   - LeakSensor
   - Alarm
 - command: 조명이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the light is on.
+  command_translated: Sound the alarm's siren if the light is on.
   code:
   - name: Scenario1
     cron: ''
@@ -1748,7 +1748,7 @@
   - Light
   - Alarm
 - command: 조명 밝기가 100이면 알람의 사이렌을 울려줘
-  command_translated: Sound the alarm's siren when the light brightness is 100
+  command_translated: Sound the alarm's siren if the light brightness is 100
   code:
   - name: Scenario1
     cron: ''
@@ -1821,7 +1821,7 @@
   devices:
   - Light
 - command: 조명을 켜줘.
-  command_translated: Light it up.
+  command_translated: Turn on the lights.
   code:
   - name: Scenario1
     cron: ''
@@ -1841,7 +1841,7 @@
   devices:
   - Light
 - command: 조도 센서의 밝기 값이 500룩스 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the light sensor's brightness value is above 500 lux.
+  command_translated: Sound the alarm's siren if the light sensor's brightness value is above 500 lux.
   code:
   - name: Scenario1
     cron: ''
@@ -1854,7 +1854,7 @@
   - Alarm
   - LightSensor
 - command: 오늘 학생식당 점심 메뉴를 스피커로 출력해줘.
-  command_translated: Play today's 학생식당 lunch menu over the speakers.
+  command_translated: Announce today's 학생식당 lunch menu via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -1866,7 +1866,7 @@
   - Speaker
   - MenuProvider
 - command: 오늘의 메뉴를 스피커로 출력해줘.
-  command_translated: Output today's menu to the speakers.
+  command_translated: Announce today's menu via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -1878,7 +1878,7 @@
   - Speaker
   - MenuProvider
 - command: 오늘의 식당을 스피커로 출력해줘.
-  command_translated: Play the restaurant of the day on the speaker.
+  command_translated: Announce today's restaurant via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -1890,7 +1890,7 @@
   - Speaker
   - MenuProvider
 - command: 모션 센서가 활성 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the motion sensor is active.
+  command_translated: Sound the alarm's siren if the motion sensor is active.
   code:
   - name: Scenario1
     cron: ''
@@ -1903,7 +1903,7 @@
   - Alarm
   - MotionSensor
 - command: 움직임이 감지되고 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when motion is detected.
+  command_translated: Sound the alarm's siren if motion is detected.
   code:
   - name: Scenario1
     cron: ''
@@ -1916,7 +1916,7 @@
   - Alarm
   - MotionSensor
 - command: 존재 감지 센서가 감지 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when a presence sensor is detected.
+  command_translated: Sound the alarm's siren if a presence sensor is detected.
   code:
   - name: Scenario1
     cron: ''
@@ -1929,7 +1929,7 @@
   - Alarm
   - PresenceSensor
 - command: 펌프의 현재 동작 모드가 최대이면 알람의 사이렌을 울려줘.
-  command_translated: Sound an alarm siren when the pump's current operating mode is maximized.
+  command_translated: Sound an alarm siren if the pump's current operating mode is maximum.
   code:
   - name: Scenario1
     cron: ''
@@ -1955,7 +1955,7 @@
   - Alarm
   - Pump
 - command: 펌프의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the pump is powered on.
+  command_translated: Sound the alarm siren if the pump is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -1968,7 +1968,7 @@
   - Alarm
   - Pump
 - command: 펌프가 지원하는 모드를 스피커로 출력해줘.
-  command_translated: Output the modes supported by the pump to the speaker.
+  command_translated: Announce the modes supported by the pump via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -1980,7 +1980,7 @@
   - Speaker
   - Pump
 - command: 펌프가 열려있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the pump is open.
+  command_translated: Sound the alarm's siren if the pump is open.
   code:
   - name: Scenario1
     cron: ''
@@ -2053,7 +2053,7 @@
   devices:
   - Pump
 - command: 냉장고의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the refrigerator is powered on.
+  command_translated: Sound the alarm's siren if the refrigerator is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -2066,7 +2066,7 @@
   - Alarm
   - Refrigerator
 - command: 냉장고의 성에 제거 기능이 켜저 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound an alarm siren if the refrigerator's defrost feature is on.
+  command_translated: Sound an alarm siren if the refrigerator's defrost function is on.
   code:
   - name: Scenario1
     cron: ''
@@ -2079,7 +2079,7 @@
   - Alarm
   - Refrigerator
 - command: 냉장고의 급속 냉각 기능이 꺼져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound an alarm siren when the refrigerator's quick cool function is turned off.
+  command_translated: Sound an alarm siren if the refrigerator's rapid cooling function is turned off.
   code:
   - name: Scenario1
     cron: ''
@@ -2092,7 +2092,7 @@
   - Alarm
   - Refrigerator
 - command: 냉장고의 급속 냉동 기능이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the refrigerator's deep freeze function is on.
+  command_translated: Sound the alarm siren if the refrigerator's rapid freezing function is on.
   code:
   - name: Scenario1
     cron: ''
@@ -2125,7 +2125,7 @@
   devices:
   - Refrigerator
 - command: 냉장고의 성에 제거 기능을 켜줘.
-  command_translated: Turn on the refrigerator's defrost feature.
+  command_translated: Turn on the refrigerator's defrost function.
   code:
   - name: Scenario1
     cron: ''
@@ -2135,7 +2135,7 @@
   devices:
   - Refrigerator
 - command: 냉장고의 급속 냉각 기능을 켜줘.
-  command_translated: Turn on your refrigerator's fast cooling function.
+  command_translated: Turn on the refrigerator's rapid cooling function.
   code:
   - name: Scenario1
     cron: ''
@@ -2145,7 +2145,7 @@
   devices:
   - Refrigerator
 - command: 냉장고의 급속 냉동 기능을 꺼줘.
-  command_translated: Turn off your refrigerator's deep freeze function.
+  command_translated: Turn off the refrigerator's rapid freezing function.
   code:
   - name: Scenario1
     cron: ''
@@ -2155,7 +2155,7 @@
   devices:
   - Refrigerator
 - command: 로봇 청소기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the robot vacuum is powered on.
+  command_translated: Sound the alarm siren if the robot vacuum is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -2168,7 +2168,7 @@
   - RobotCleaner
   - Alarm
 - command: 로봇 청소기가 자동 모드이면 알람의 사이렌을 울려줘.
-  command_translated: Sound an alarm siren when the robot vacuum is in automatic mode.
+  command_translated: Sound an alarm siren if the robot vacuum is in automatic mode.
   code:
   - name: Scenario1
     cron: ''
@@ -2221,7 +2221,7 @@
   devices:
   - RobotCleaner
 - command: 쉐이드가 40퍼센트 이상 열려 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the shades are more than 40% open.
+  command_translated: Sound the alarm's siren if the shade is more than 40% open.
   code:
   - name: Scenario1
     cron: ''
@@ -2234,7 +2234,7 @@
   - Shade
   - Alarm
 - command: 쉐이드가 완전히 열려 있는 상태면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the shade is fully open.
+  command_translated: Sound the alarm's siren if the shade is fully open.
   code:
   - name: Scenario1
     cron: ''
@@ -2247,7 +2247,7 @@
   - Shade
   - Alarm
 - command: 쉐이드가 지원하는 상태를 스피커로 출력해줘.
-  command_translated: Output the states supported by the shade to the speaker.
+  command_translated: Announce the states supported by the shade via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -2299,7 +2299,7 @@
   devices:
   - Shade
 - command: 사이렌이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren if it's on.
+  command_translated: Sound the alarm's siren if the siren is on.
   code:
   - name: Scenario1
     cron: ''
@@ -2312,7 +2312,7 @@
   - Alarm
   - Siren
 - command: 사이렌 모드가 사이렌이면 알람의 사이렌을 울려줘.
-  command_translated: If Siren mode is Siren, sound the alarm's siren.
+  command_translated: If the siren mode is Siren, sound the alarm's siren.
   code:
   - name: Scenario1
     cron: ''
@@ -2365,7 +2365,7 @@
   devices:
   - Siren
 - command: 스마트 플러그의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the smart plug is powered on.
+  command_translated: Sound the alarm's siren if the smart plug is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -2404,7 +2404,7 @@
   - SmartPlug
   - Alarm
 - command: 스마트 플러그의 소비 전력이 1000와트 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when a smart plug draws more than 1000 watts.
+  command_translated: Sound the alarm siren if a smart plug draws more than 1000 watts.
   code:
   - name: Scenario1
     cron: ''
@@ -2447,7 +2447,7 @@
   devices:
   - SmartPlug
 - command: 연기 감지기에서 연기가 감지되면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when smoke is detected by the smoke detector.
+  command_translated: Sound the alarm's siren if smoke is detected by the smoke detector.
   code:
   - name: Scenario1
     cron: ''
@@ -2460,7 +2460,7 @@
   - Alarm
   - SmokeDetector
 - command: 토양 습도 센서의 토양 습도 측정값이 30퍼센트 이하이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the soil moisture sensor's soil moisture reading is 30 percent or less.
+  command_translated: Sound the alarm siren if the soil moisture sensor's soil moisture reading is 30 percent or less.
   code:
   - name: Scenario1
     cron: ''
@@ -2473,7 +2473,7 @@
   - Alarm
   - SoilMoistureSensor
 - command: 소리 센서에서 소리가 감지되면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when sound is detected by the sound sensor.
+  command_translated: Sound the alarm's siren if sound is detected by the sound sensor.
   code:
   - name: Scenario1
     cron: ''
@@ -2486,7 +2486,7 @@
   - Alarm
   - SoundSensor
 - command: 소리 감지 레벨이 70dB 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the sound detection level is above 70 dB.
+  command_translated: Sound the alarm's siren if the sound detection level is above 70 dB.
   code:
   - name: Scenario1
     cron: ''
@@ -2499,7 +2499,7 @@
   - Alarm
   - SoundSensor
 - command: 스피커의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the speaker is powered on.
+  command_translated: Sound the alarm's siren if the speaker is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -2512,7 +2512,7 @@
   - Alarm
   - Speaker
 - command: 스피커가 재생 중이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the speaker is playing.
+  command_translated: Sound the alarm's siren if the speaker is playing.
   code:
   - name: Scenario1
     cron: ''
@@ -2525,7 +2525,7 @@
   - Alarm
   - Speaker
 - command: 스피커가 지원하는 명령어를 스피커로 출력해줘.
-  command_translated: Output commands to the speaker that the speaker supports.
+  command_translated: Announce commands that the speaker supports via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -2536,7 +2536,7 @@
   devices:
   - Speaker
 - command: 스피커를 꺼줘.
-  command_translated: Turn off your speakers.
+  command_translated: Turn off the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -2546,7 +2546,7 @@
   devices:
   - Speaker
 - command: 스피커를 켜줘.
-  command_translated: Turn on your speakers.
+  command_translated: Turn on the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -2606,7 +2606,7 @@
   devices:
   - Speaker
 - command: 스피커에서 music.mp3를 재생해줘.
-  command_translated: Play music.mp3 on the speaker.
+  command_translated: Play 'music.mp3' on the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -2616,7 +2616,7 @@
   devices:
   - Speaker
 - command: 스피커에서 '지금은 테스트 중입니다.'를 말해줘.
-  command_translated: Speaker says, "This is a test".
+  command_translated: Speak "This is a test" through the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -2626,7 +2626,7 @@
   devices:
   - Speaker
 - command: 녹음기의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound an alarm siren when the recorder is powered on.
+  command_translated: Sound an alarm siren if the recorder is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -2639,7 +2639,7 @@
   - Alarm
   - Recorder
 - command: 녹음기가 녹음 중이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm siren when the recorder is recording.
+  command_translated: Sound the alarm siren if the recorder is recording.
   code:
   - name: Scenario1
     cron: ''
@@ -2692,7 +2692,7 @@
   devices:
   - Recorder
 - command: 스위치의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the switch is powered on.
+  command_translated: Sound the alarm's siren if the switch is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -2735,7 +2735,7 @@
   devices:
   - Switch
 - command: TV의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the TV is powered on.
+  command_translated: Sound the alarm's siren if the TV is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -2761,7 +2761,7 @@
   - Alarm
   - Television
 - command: TV의 볼륨이 50 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren if the volume on your TV is above 50.
+  command_translated: Sound the alarm's siren if the volume on the TV is above 50.
   code:
   - name: Scenario1
     cron: ''
@@ -2774,7 +2774,7 @@
   - Alarm
   - Television
 - command: TV가 음소거 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the TV is muted.
+  command_translated: Sound the alarm's siren if the TV is muted.
   code:
   - name: Scenario1
     cron: ''
@@ -2787,7 +2787,7 @@
   - Alarm
   - Television
 - command: TV를 꺼줘.
-  command_translated: Turn off your TV.
+  command_translated: Turn off the TV.
   code:
   - name: Scenario1
     cron: ''
@@ -2797,7 +2797,7 @@
   devices:
   - Television
 - command: TV를 켜줘.
-  command_translated: Turn on your TV.
+  command_translated: Turn on the TV.
   code:
   - name: Scenario1
     cron: ''
@@ -2807,7 +2807,7 @@
   devices:
   - Television
 - command: TV의 전원을 토글해줘.
-  command_translated: Toggle the power of your TV.
+  command_translated: Toggle the power of the TV.
   code:
   - name: Scenario1
     cron: ''
@@ -2857,7 +2857,7 @@
   devices:
   - Television
 - command: TV의 볼륨을 30으로 설정해줘.
-  command_translated: Set the volume on your TV to 30.
+  command_translated: Set the volume on the TV to 30.
   code:
   - name: Scenario1
     cron: ''
@@ -2867,7 +2867,7 @@
   devices:
   - Television
 - command: TV의 볼륨을 낮춰줘.
-  command_translated: Turn down the volume on your TV.
+  command_translated: Turn down the volume on the TV.
   code:
   - name: Scenario1
     cron: ''
@@ -2877,7 +2877,7 @@
   devices:
   - Television
 - command: TV의 볼륨을 높여줘.
-  command_translated: Turn up the volume on your TV.
+  command_translated: Turn up the volume on the TV.
   code:
   - name: Scenario1
     cron: ''
@@ -2897,7 +2897,7 @@
   devices:
   - Television
 - command: TV의 음소거 상태를 해제해줘.
-  command_translated: Unmute your TV.
+  command_translated: Unmute the TV.
   code:
   - name: Scenario1
     cron: ''
@@ -2907,7 +2907,7 @@
   devices:
   - Television
 - command: TV의 음소거 상태를 음소거로 설정해줘.
-  command_translated: Set your TV's mute state to Mute.
+  command_translated: Set the TV's mute state to Mute.
   code:
   - name: Scenario1
     cron: ''
@@ -2930,7 +2930,7 @@
   - TemperatureSensor
   - Alarm
 - command: 밸브가 열린 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the valve is open.
+  command_translated: Sound the alarm's siren if the valve is open.
   code:
   - name: Scenario1
     cron: ''
@@ -2963,7 +2963,7 @@
   devices:
   - Valve
 - command: 바깥 습도가 80퍼센트 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the humidity outside is above 80 percent.
+  command_translated: Sound the alarm's siren if the humidity outside is above 80 percent.
   code:
   - name: Scenario1
     cron: ''
@@ -2976,7 +2976,7 @@
   - Alarm
   - WeatherProvider
 - command: 바깥의 미세먼지 농도가 100 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the particulate matter concentration outside is above 100.
+  command_translated: Sound the alarm's siren if the particulate matter concentration outside is above 100.
   code:
   - name: Scenario1
     cron: ''
@@ -2989,7 +2989,7 @@
   - Alarm
   - WeatherProvider
 - command: 바깥의 초미세먼지 농도가 50 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the outside particulate matter concentration is above 50.
+  command_translated: Sound the alarm's siren if the outside fine particulate matter concentration is above 50.
   code:
   - name: Scenario1
     cron: ''
@@ -3002,7 +3002,7 @@
   - Alarm
   - WeatherProvider
 - command: 기압이 1020hPa 이상이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the barometric pressure is above 1020 hPa.
+  command_translated: Sound the alarm's siren if the barometric pressure is above 1020 hPa.
   code:
   - name: Scenario1
     cron: ''
@@ -3041,7 +3041,7 @@
   - Alarm
   - WeatherProvider
 - command: 위도 37.5665, 경도 126.9780의 현재 날씨 정보를 스피커로 출력해줘.
-  command_translated: Play the current weather information for latitude 37.5665 and longitude 126.9780 over the speaker.
+  command_translated: Announce the current weather information for latitude 37.5665 and longitude 126.9780 via the speaker.
   code:
   - name: Scenario1
     cron: ''
@@ -3053,7 +3053,7 @@
   - WeatherProvider
   - Speaker
 - command: 창문이 열린 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when a window is open.
+  command_translated: Sound the alarm's siren if a window is open.
   code:
   - name: Scenario1
     cron: ''
@@ -3086,7 +3086,7 @@
   devices:
   - Window
 - command: 낙상 감지 센서에서 낙상이 감지된 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when a fall is detected by the fall detection sensor.
+  command_translated: Sound the alarm's siren if a fall is detected by the fall detection sensor.
   code:
   - name: Scenario1
     cron: ''
@@ -3099,7 +3099,7 @@
   - FallDetector
   - Alarm
 - command: 점유 센서가 감지 상태이면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when an occupancy sensor is detected.
+  command_translated: Sound the alarm's siren if an occupancy sensor is detected.
   code:
   - name: Scenario1
     cron: ''
@@ -3112,7 +3112,7 @@
   - Alarm
   - OccupancySensor
 - command: 릴레이의 전원이 켜져 있으면 알람의 사이렌을 울려줘.
-  command_translated: Sound the alarm's siren when the relay is powered on.
+  command_translated: Sound the alarm's siren if the relay is powered on.
   code:
   - name: Scenario1
     cron: ''
@@ -3178,7 +3178,7 @@
   - Timer
   - Alarm
 - command: 테스트 타이머라는 이름의 타이머가 하면 알람의 사이렌을 울려줘.
-  command_translated: When a timer named Test Timer goes off, sound an alarm siren.
+  command_translated: if a timer named Test Timer goes off, sound an alarm siren.
   code:
   - name: Scenario1
     cron: ''

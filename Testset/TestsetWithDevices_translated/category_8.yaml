@@ -1,5 +1,5 @@
 - command: 토양 습도가 25% 이하가 되면 급수기를 켜고 이후 3초마다 상태를 확인해서 습도가 30% 이상이 될 때까지 급수기를 껐다 켰다 반복해 줘.
-  command_translated: Turn on the waterer when the soil humidity is below 25% and check the status every 3 seconds thereafter, cycling the waterer off and on until the humidity is above 30%.
+  command_translated: Turn on the irrigator when the soil humidity is below 25% and check the status every 3 seconds thereafter, cycling the irrigator off and on until the humidity is above 30%.
   code:
   - name: Scenario1
     cron: ''
@@ -41,7 +41,7 @@
   - Blind
   - Alarm
 - command: 날씨 감지 센서에서 비가 감지되면 관개 장치를 바로 끄고, 이후 2초마다 알람을 꺼 줘.
-  command_translated: Turn off the irrigation device immediately when the weather sensor detects rain, and then turn off the alarm every two seconds thereafter.
+  command_translated: Turn off the irrigator immediately when the weather sensor detects rain, and then turn off the alarm every two seconds thereafter.
   code:
   - name: Scenario1
     cron: ''
