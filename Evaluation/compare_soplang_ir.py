@@ -42,10 +42,7 @@ def extract_logic_expressions(ast):
 
 #Z3(논리식 비교 라이브러리) 를 사용하기 위한 전처리 과정
 def condition_to_z3(cond):
-    if cond is None:
-        return BoolVal(True)
-
-    if not isinstance(cond, dict):
+    if cond is None or not isinstance(cond, dict):
         return BoolVal(True)
 
     op_map = {
@@ -61,12 +58,20 @@ def condition_to_z3(cond):
     right = cond["right"]
     op = cond["op"]
 
-    if isinstance(right, str):
-        return BoolVal(True)
+    try:
+        # 실수형 판단
+        if isinstance(right, float):
+            l = Real(left) if isinstance(left, str) else left
+            r = RealVal(right)
+        else:
+            l = Int(left) if isinstance(left, str) else left
+            r = IntVal(right)
 
-    l = Int(left) if isinstance(left, str) else left
-    r = IntVal(right)
-    return op_map[op](l, r)
+        return op_map[op](l, r)
+
+    except Exception as e:
+        #print(f"[Z3 WARN] Failed to convert condition: {cond} → {e}")
+        return BoolVal(True)
 
 
 def are_equivalent(logic1, logic2):

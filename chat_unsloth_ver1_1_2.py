@@ -2,19 +2,21 @@ import os, sys, re, gc, yaml, time, json, copy
 from datetime import datetime
 import concurrent.futures
 
-from unsloth import FastLanguageModel
-from unsloth.chat_templates import get_chat_template
-from transformers import AutoTokenizer
-from peft import PeftModel
+# from unsloth import FastLanguageModel
+# from unsloth.chat_templates import get_chat_template
+# from transformers import AutoTokenizer
+# from peft import PeftModel
 
-from FlagEmbedding import BGEM3FlagModel
-from Embedding.embedding import hybrid_recommend
-from Grammar.grammar_ver1_1_5 import grammar
-from Testset.joi_extraction_tool import parse_scenarios, extract_last_code_block
-from Validation.validate import validate_tmp
-from sentence_transformers import SentenceTransformer
+# from FlagEmbedding import BGEM3FlagModel
+# from Embedding.embedding import hybrid_recommend
+# from Grammar.grammar_ver1_1_5 import grammar
+# from Testset.joi_extraction_tool import parse_scenarios, extract_last_code_block
+# from Validation.validate import validate_tmp
+# from sentence_transformers import SentenceTransformer
 
 from yaml.representer import SafeRepresenter
+
+from Evaluation.compare_soplang_ir import  compare_codes
 
 TIME_OUT = 20
 
@@ -101,6 +103,65 @@ def run_test_case_unsloth(model, tokenizer, stop_token_ids, model_name, user_com
             response = ""
     elapsed = time.time() - start
     return response, elapsed
+
+
+def load_yaml(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+
+def compare_all(model_name: str):
+    # 경로 설정
+    gold_path = f"./Testset/Testset"
+    pred_path = f"./Testset/Eval_{model_name}"
+
+    # 모든 YAML 파일 반복
+    for file in os.listdir(gold_path):
+        if not file.endswith(".yaml"):
+            continue
+        
+        print(f"\n==== Comparing: {file} ====")
+
+        # Load gold + prediction
+        with open(os.path.join(gold_path, file), 'r', encoding='utf-8') as f1:
+            gold_data = yaml.safe_load(f1)
+        with open(os.path.join(pred_path, f"evaluation_{file}"), 'r', encoding='utf-8') as f2:
+            pred_data = yaml.safe_load(f2)
+        
+        
+        for ex_idx, (gold_item, pred_item) in enumerate(zip(gold_data, pred_data)):
+            gold_scenarios = gold_item["code"]
+            pred_scenarios = pred_item["generated_code"]
+
+            if len(gold_scenarios) != len(pred_scenarios):
+                print(f"[Example {ex_idx+1}] ⚠️ 길이 불일치 - gold: {len(gold_scenarios)}, pred: {len(pred_scenarios)}")
+                continue
+
+            for sc_idx, (g, p) in enumerate(zip(gold_scenarios, pred_scenarios)):
+                gold = {
+                    "name": g["name"],
+                    "cron": g["cron"],
+                    "period": g["period"],
+                    "script": g["code"]
+                }
+                pred = {
+                    "name": p["name"],
+                    "cron": p["cron"],
+                    "period": p["period"],
+                    "script": p["code"]
+                }
+
+                result = compare_codes(gold, pred)
+
+                print(f"\n[Example {ex_idx + 1} - Scenario {sc_idx + 1}]")
+                print(f"- cron            : {result['cron_equal']}  ({result['cron']['gold']} vs {result['cron']['pred']})")
+                print(f"- period          : {result['period_equal']}  ({result['period']['gold']} vs {result['period']['pred']})")
+                print(f"- logic equivalent: {result['logic_equivalent']}")
+                print(f"- script similarity: {result['script_similarity']:.3f}")
+                print(f"- ast similarity  : {result['ast_similarity']:.3f}")
+            
+
+
 
 def main():
     model_name = "codegemma"
@@ -193,5 +254,8 @@ def main():
     del model
     gc.collect()
 
+
+
 if __name__ == "__main__":
-    main()
+    #main()
+    compare_all("codegemma")

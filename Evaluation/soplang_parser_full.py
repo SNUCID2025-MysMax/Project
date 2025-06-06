@@ -1,8 +1,9 @@
-# soplang_parser_full.py - loop 제거 후 간결화된 PLY parser
+# soplang_parser_full.py - Fixed TAG parsing logic and simplified AST rules
 
 import ply.lex as lex
 import ply.yacc as yacc
 
+# --------- TOKENS ---------
 tokens = (
     'INTEGER', 'DOUBLE', 'IDENTIFIER', 'STRING_LITERAL',
     'GE', 'LE', 'EQ', 'NE', 'ASSIGN', 'DECLARE',
@@ -10,7 +11,17 @@ tokens = (
     'MILLISECOND', 'SECOND', 'MINUTE', 'HOUR', 'DAY',
     'WAIT_UNTIL', 'IF', 'ELSE', 'NOT', 'OR', 'AND',
     'GT', 'LT', 'LBRACE', 'RBRACE', 'ANY', 'ALL',
-    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'DELAY'
+    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'DELAY',
+    'TAG', 'PERCENT'
+)
+
+precedence = (
+    ('left', 'OR'),
+    ('left', 'AND'),
+    ('left', 'EQ', 'NE'),
+    ('left', 'GT', 'GE', 'LT', 'LE'),
+    ('left', 'PLUS', 'MINUS'),
+    ('left', 'TIMES', 'DIVIDE'),
 )
 
 t_COMMA = r','
@@ -33,13 +44,14 @@ t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
-
+t_TAG = r'\#[A-Za-z0-9_]+'
+t_PERCENT = r'%'
 
 def t_WAIT_UNTIL(t): r'wait\suntil'; return t
 def t_IF(t): r'if'; return t
 def t_ELSE(t): r'else'; return t
 def t_NOT(t): r'not'; return t
-def t_OR(t): r'or'; return t
+def t_OR(t): r'or|\|\|'; return t
 def t_AND(t): r'and|\&\&'; return t
 def t_MILLISECOND(t): r'MSEC'; return t
 def t_SECOND(t): r'SEC'; return t
@@ -61,8 +73,8 @@ def t_INTEGER(t):
     return t
 
 def t_STRING_LITERAL(t):
-    r'(\"([^\\"]|\\.)*\"|\'([^\\\']|\\.)*\')'
-    t.value = t.value[1:-1]  # Remove the surrounding quotes
+    r'(\"([^\\\"]|\\.)*\"|\'([^\\\']|\\.)*\')'
+    t.value = t.value[1:-1]
     return t
 
 def t_IDENTIFIER(t):
@@ -79,7 +91,7 @@ def t_error(t):
 
 lexer = lex.lex()
 
-# -------- PARSER --------
+# --------- PARSER ---------
 
 def p_scenario(p):
     'scenario : statement_list'
@@ -99,84 +111,97 @@ def p_statement(p):
                  | compound_statement'''
     p[0] = p[1]
 
-def p_compound_statement(p):
-    'compound_statement : LBRACE statement_list RBRACE'
-    p[0] = {"type": "Block", "body": p[2]}
+def p_tag_list(p):
+    '''tag_list : TAG
+                | tag_list TAG'''
+    if len(p) == 2:
+        p[0] = [p[1]]
+    else:
+        p[0] = p[1] + [p[2]]
 
+def p_tag_expression(p):
+    'tag_expression : LPAREN tag_list RPAREN'
+    p[0] = {"type": "TagAccess", "tags": p[2]}
+
+def p_attr_access(p):
+    'expression : tag_expression DOT IDENTIFIER'
+    p[0] = {"type": "AttrAccess", "tags": p[1]["tags"], "attr": p[3]}
+
+def p_method_call(p):
+    '''expression : tag_expression DOT IDENTIFIER LPAREN input RPAREN
+                  | tag_expression DOT IDENTIFIER LPAREN RPAREN'''
+    p[0] = {
+        "type": "MethodCall",
+        "tags": p[1]["tags"],
+        "method": p[3],
+        "args": p[5] if len(p) == 7 else []
+    }
+
+def p_action(p):
+    '''action : LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN RPAREN
+              | LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN input RPAREN'''
+    p[0] = {
+        "type": "Action",
+        "target": p[2],
+        "service": p[5],
+        "args": [] if len(p) == 8 else p[7]
+    }
+
+def p_all_action(p):
+    '''all_action : ALL LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN RPAREN
+                  | ALL LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN input RPAREN'''
+    p[0] = {
+        "type": "AllAction",
+        "target": p[3],
+        "service": p[6],
+        "args": [] if len(p) == 9 else p[8]
+    }
+def p_expression_boolean(p):
+    '''expression : expression AND expression
+                  | expression OR expression'''
+    p[0] = {"type": "BoolOp", "op": p[2].lower(), "left": p[1], "right": p[3]}
+def p_expression_all_attr_access(p):
+    'expression : ALL LPAREN tag_list RPAREN DOT IDENTIFIER'
+    p[0] = {
+        "type": "AllAttrAccess",
+        "target": p[3],
+        "attr": p[6]
+    }
+    
+def p_expression_percent(p):
+    'expression : expression PERCENT'
+    p[0] = {"type": "Percent", "value": p[1]}  
+      
 def p_assignment(p):
     '''assignment : IDENTIFIER ASSIGN expression
                   | IDENTIFIER DECLARE expression'''
     assign_type = "Declare" if p[2] == ':=' else "Assign"
     p[0] = {"type": assign_type, "target": p[1], "value": p[3]}
 
-def p_expression(p):
+def p_expression_literals(p):
     '''expression : IDENTIFIER
                   | INTEGER
                   | DOUBLE
-                  | STRING_LITERAL
-                  | tag_expression DOT IDENTIFIER
-                  | tag_expression DOT IDENTIFIER LPAREN input RPAREN
-                  | tag_expression DOT IDENTIFIER LPAREN RPAREN
-                  | ANY LPAREN tag_list RPAREN DOT IDENTIFIER'''
-    if len(p) == 2:
-        p[0] = p[1]
-    elif len(p) == 4:
-        p[0] = {"type": "AttrAccess", "tags": p[1]["tags"], "attr": p[3]}
-    elif len(p) == 6:
-        p[0] = {"type": "MethodCall", "tags": p[1]["tags"], "method": p[3], "args": []}
-    else:
-        p[0] = {"type": "MethodCall", "tags": p[1]["tags"], "method": p[3], "args": p[5]}
+                  | STRING_LITERAL'''
+    p[0] = p[1]
 
 def p_expression_binary(p):
     '''expression : expression PLUS expression
                   | expression MINUS expression
                   | expression TIMES expression
                   | expression DIVIDE expression'''
-    p[0] = {
-        "type": "BinaryOp",
-        "op": p[2],
-        "left": p[1],
-        "right": p[3]
-    }
+    p[0] = {"type": "BinaryOp", "op": p[2], "left": p[1], "right": p[3]}
+    
 
-
-def p_action(p):
-    '''action : LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN RPAREN
-              | LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN input RPAREN'''
-    if len(p) == 8:
-        p[0] = {
-            "type": "Action",
-            "target": p[2],
-            "service": p[5],
-            "args": []
-        }
-    else:
-        p[0] = {
-            "type": "Action",
-            "target": p[2],
-            "service": p[5],
-            "args": p[7]
-        }
-
-def p_tag_expression(p):
-    'tag_expression : LPAREN tag_list RPAREN'
-    p[0] = {"type": "TagAccess", "tags": p[2]}
-
-def p_tag_list(p):
-    '''tag_list : HASH IDENTIFIER
-                | HASH IDENTIFIER tag_list'''
-    if len(p) == 3:
-        p[0] = [f"#{p[2]}"]
-    else:
-        p[0] = [f"#{p[2]}"] + p[3]
-
+    
 def p_input(p):
     '''input : expression
              | input COMMA expression'''
-    if len(p) == 2:
-        p[0] = [p[1]]
-    else:
-        p[0] = p[1] + [p[3]]
+    p[0] = [p[1]] if len(p) == 2 else p[1] + [p[3]]
+
+def p_compound_statement(p):
+    'compound_statement : LBRACE statement_list RBRACE'
+    p[0] = {"type": "Block", "body": p[2]}
 
 def p_if_statement(p):
     'if_statement : IF LPAREN condition_list RPAREN compound_statement else_clause'
@@ -190,7 +215,6 @@ def p_else_clause(p):
 def p_delay_statement(p):
     'statement : DELAY LPAREN expression RPAREN'
     p[0] = {"type": "Delay", "value": p[3]}
-
 
 def p_condition_list(p):
     '''condition_list : condition
@@ -206,7 +230,8 @@ def p_condition_list(p):
         p[0] = {"op": "not", "expr": p[2]}
     else:
         p[0] = {"op": p[2], "left": p[1], "right": p[3]}
-
+        
+    
 def p_condition(p):
     '''condition : expression GE expression
                  | expression LE expression
@@ -241,17 +266,9 @@ def p_empty(p):
     p[0] = []
 
 def p_error(p):
-    print("Syntax error at", p)
-    
-def p_all_action(p):
-    '''all_action : ALL LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN RPAREN
-                  | ALL LPAREN tag_list RPAREN DOT IDENTIFIER LPAREN input RPAREN'''
-    p[0] = {
-        "type": "AllAction",
-        "target": p[3],
-        "service": p[6],
-        "args": [] if len(p) == 8 else p[8]
-    }
-
+    if p:
+        print(f"Syntax error at token {p.type} ({p.value}) line {p.lineno} col {p.lexpos}")
+    else:
+        print("Syntax error at EOF")
 
 parser = yacc.yacc()

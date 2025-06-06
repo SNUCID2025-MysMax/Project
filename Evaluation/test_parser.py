@@ -160,104 +160,119 @@ class TestSoplangIrSimulator(unittest.TestCase):
                     print(f"  → Action: {target}.{service}({args})")
 
 """              
-class TestAll(unittest.TestCase):
+# class TestAll(unittest.TestCase):
 
-    def test_code_vs_label(self):
-        code = [
-            {
-                "name": "Label1",
-                "cron": "*/1 * * * *",
-                "period": 180000,
-                "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"
-            },
-            {
-                "name": "Label2",
-                "cron": "*/1 * * * *",
-                "period": 300000,
-                "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"
-            },
-            {
-                "name": "문턱값 높음",
-                "cron": "* * * * *",
-                "period": 1000,
-                "code": "if (temperature > 30) {\n  (#fan).on()\n}"
-            }
-        ]
+#     def test_code_vs_label(self):
+#         code = [
+#             {
+#                 "name": "Label1",
+#                 "cron": "*/1 * * * *",
+#                 "period": 180000,
+#                 "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"
+#             },
+#             {
+#                 "name": "Label2",
+#                 "cron": "*/1 * * * *",
+#                 "period": 300000,
+#                 "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"
+#             },
+#             {
+#                 "name": "문턱값 높음",
+#                 "cron": "* * * * *",
+#                 "period": 1000,
+#                 "code": "if (temperature > 30) {\n  (#fan).on()\n}"
+#             }
+#         ]
 
-        label = [
-            {
-                "name": "Label1",
-                "cron": "*/1 * * * *",
-                "period": 180000,
-                "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"
-            },
-            {
-                "name": "Label2",
-                "cron": "*/1 * * * *",
-                "period": 300000,
-                "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"
-            },
-            {
-                "name": "문턱값 높음",
-                "cron": "* * * * *",
-                "period": 1000,
-                "code": "if (temperature >= 30) {\n  (#fan).on()\n}"
-            }
-        ]
-        def parse_code_to_ast(script: str):
-            wrapped = f"{{\n{script}\n}}"
-            return parser.parse(wrapped, lexer=lexer)
-        for i, (gen, gold) in enumerate(zip(code, label), start=1):
-            print(f"\n[Test{i}]")
+#         label = [
+#             {
+#                 "name": "Label1",
+#                 "cron": "*/1 * * * *",
+#                 "period": 180000,
+#                 "code": "\nbutton_state = (#Button).button_button\nif (button_state != 'pushed') {\n    (#Button).switch_toggle()\n}\n"
+#             },
+#             {
+#                 "name": "Label2",
+#                 "cron": "*/1 * * * *",
+#                 "period": 300000,
+#                 "code": "\nac_state = (#AirConditioner).switch_switch\nif (ac_state == 'off') {\n    (#AirConditioner).switch_on()\n} else if (ac_state == 'on') {\n    (#AirConditioner).switch_off()\n}\n"
+#             },
+#             {
+#                 "name": "문턱값 높음",
+#                 "cron": "* * * * *",
+#                 "period": 1000,
+#                 "code": "if (temperature >= 30) {\n  (#fan).on()\n}"
+#             }
+#         ]
+#         def parse_code_to_ast(script: str):
+#             wrapped = f"{{\n{script}\n}}"
+#             return parser.parse(wrapped, lexer=lexer)
+#         for i, (gen, gold) in enumerate(zip(code, label), start=1):
+#             print(f"\n[Test{i}]")
 
-            gold_wrapped = {
-                "name": gold["name"],
-                "cron": gold["cron"],
-                "period": gold["period"],
-                "script": gold["code"]
-            }
+#             gold_wrapped = {
+#                 "name": gold["name"],
+#                 "cron": gold["cron"],
+#                 "period": gold["period"],
+#                 "script": gold["code"]
+#             }
 
-            gen_wrapped = {
-                "name": gen["name"],
-                "cron": gen["cron"],
-                "period": gen["period"],
-                "script": gen["code"]
-            }
+#             gen_wrapped = {
+#                 "name": gen["name"],
+#                 "cron": gen["cron"],
+#                 "period": gen["period"],
+#                 "script": gen["code"]
+#             }
 
-            result = compare_codes(gold_wrapped, gen_wrapped)
+#             result = compare_codes(gold_wrapped, gen_wrapped)
 
-            print(f"- cron : {result['cron_equal']}")
-            print(f"- period : {result['period_equal']}")
-            print(f"- ast_similarity: {result['ast_similarity']:.3f}")
-            print(f"- script similarity: {result['script_similarity']:.3f}")
-            print("\n→ Simulated Action Traces:")
-        try:
-            gold_ast = parse_code_to_ast(gold["code"])
-            gen_ast = parse_code_to_ast(gen["code"])
+#             print(f"- cron : {result['cron_equal']}")
+#             print(f"- period : {result['period_equal']}")
+#             print(f"- ast_similarity: {result['ast_similarity']:.3f}")
+#             print(f"- script similarity: {result['script_similarity']:.3f}")
+#             print("\n→ Simulated Action Traces:")
+#         try:
+#             gold_ast = parse_code_to_ast(gold["code"])
+#             gen_ast = parse_code_to_ast(gen["code"])
 
-            logic = extract_logic_expressions(gold_ast)
-            contexts = generate_context_from_conditions(logic)
+#             logic = extract_logic_expressions(gold_ast)
+#             contexts = generate_context_from_conditions(logic)
 
-            for ctx_idx, ctx in enumerate(contexts):
-                gold_trace = flatten_actions(gold_ast, ctx.copy())
-                gen_trace = flatten_actions(gen_ast, ctx.copy())
+#             for ctx_idx, ctx in enumerate(contexts):
+#                 gold_trace = flatten_actions(gold_ast, ctx.copy())
+#                 gen_trace = flatten_actions(gen_ast, ctx.copy())
 
-                gold_actions = [a for a in gold_trace if a[0] == "Action"]
-                gen_actions = [a for a in gen_trace if a[0] == "Action"]
+#                 gold_actions = [a for a in gold_trace if a[0] == "Action"]
+#                 gen_actions = [a for a in gen_trace if a[0] == "Action"]
 
-                max_len = max(len(gold_actions), len(gen_actions))
-                for j in range(max_len):
-                    g = gold_actions[j] if j < len(gold_actions) else "❌ Missing"
-                    p = gen_actions[j] if j < len(gen_actions) else "❌ Missing"
+#                 max_len = max(len(gold_actions), len(gen_actions))
+#                 for j in range(max_len):
+#                     g = gold_actions[j] if j < len(gold_actions) else "❌ Missing"
+#                     p = gen_actions[j] if j < len(gen_actions) else "❌ Missing"
 
-                    if g != p:
-                        print(f"\n❌ MISMATCH @ Context #{ctx_idx+1}, Step {j}")
-                        print(f"→ Variables: {ctx}")
-                        print(f"→ Gold Action: {g}")
-                        print(f"→ Pred Action: {p}")
+#                     if g != p:
+#                         print(f"\n❌ MISMATCH @ Context #{ctx_idx+1}, Step {j}")
+#                         print(f"→ Variables: {ctx}")
+#                         print(f"→ Gold Action: {g}")
+#                         print(f"→ Pred Action: {p}")
 
-        except Exception as e:
-            print(f"❌ Simulation failed: {e}")    
+#         except Exception as e:
+#             print(f"❌ Simulation failed: {e}")    
+
+class ParserTestCase(unittest.TestCase):
+    def test_basic_if(self):
+        code = '''
+        {
+          count := 0
+          if (count >= 3) {
+            (#A).run()
+          }
+        }
+        '''
+        result = parser.parse(code, lexer=lexer)
+        self.assertIsNotNone(result)
 
 if __name__ == '__main__':
+    result = parser.parse("count := 0\nif (count >= 3) { (#A).run() }", lexer=lexer)
+    print(result)
     unittest.main()
