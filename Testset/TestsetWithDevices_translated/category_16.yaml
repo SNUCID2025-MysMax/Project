@@ -9,7 +9,7 @@
   devices:
   - Speaker
 - command: 날 우울하게 만드는 뉴스를 감지하면 위로의 말을 해 줘.
-  command_translated: If it detects news that makes me depressed, say something uplifting.
+  command_translated: If you detects news that makes me depressed, say something uplifting.
   code:
   - name: Scenario1
     cron: ''
@@ -19,7 +19,7 @@
   devices:
   - Speaker
 - command: 고양이가 기분이 좋을 때마다 박수를 쳐 줘.
-  command_translated: Clap your cat whenever he's in a good mood.
+  command_translated: Clap whenever your cat is in a good mood.
   code:
   - name: Scenario1
     cron: ''
@@ -39,7 +39,7 @@
   devices:
   - Speaker
 - command: 집이 외로워 보이면 음악을 틀어 줘.
-  command_translated: If your house seems lonely, play some music.
+  command_translated: If the house seems lonely, play some music.
   code:
   - name: Scenario1
     cron: ''
@@ -59,7 +59,7 @@
   devices:
   - Speaker
 - command: 스마트폰 배터리가 20% 이하가 되면 커튼을 닫아 줘.
-  command_translated: Close the curtains when your smartphone's battery is below 20%.
+  command_translated: Close the curtains when your smartphone's battery drops below 20%.
   code:
   - name: Scenario1
     cron: ''
@@ -69,7 +69,7 @@
   devices:
   - Speaker
 - command: 오늘 중요한 발표가 있으면 행운을 빌어 줘.
-  command_translated: If you have a big announcement today, wish me luck.
+  command_translated: If there is a big announcement today, wish me luck.
   code:
   - name: Scenario1
     cron: ''
