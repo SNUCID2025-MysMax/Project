@@ -1,276 +1,239 @@
-- command: Every night at midnight, turn off the fan if it is off. Also turn off the fan whenever
+- command: 매일 자정 선풍기가 꺼져 있으면 선풍기를 꺼 줘. 또한 그 때마다 선풍기를 꺼 줘
+  command_translated: Every night at midnight, turn off the fan if it is off. Also, turn off the fan again at that time
   devices:
-  - Dehumidifier
-  - TemperatureSensor
   - RobotCleaner
-  - WeatherProvider
-  - Clock
-  - AirPurifier
   - Curtain
-  - Fan
   - Humidifier
-  - AirConditioner
+  - TemperatureSensor
+  - AirPurifier
+  - Fan
+  - Clock
+  - WeatherProvider
   - Pump
+  - AirConditioner
+  - Dehumidifier
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 5.933
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 5.781
+- command: 주말에는 관개 장치가 꺼지면 관개 장치를 꺼 줘.
+  command_translated: On weekends, turn off the irrigation when it turns off.
+  devices:
+  - LeakSensor
+  - Curtain
+  - Dehumidifier
+  - Humidifier
+  - Alarm
+  - Valve
+  - Clock
+  - Relay
+  - Irrigator
+  - WeatherProvider
+  - GasValve
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 7.65
+    bge_elapsed_time: 0.145
+    llm_elapsed_time: 7.505
+- command: 실시간으로 확인하여 블라인드가 닫힌 상태에서 또 닫히면 전등을 켜 줘
+  command_translated: Check in real-time, and turn on the light if the blinds are closed again while already closed.
+  devices:
+  - Siren
+  - Window
+  - Shade
+  - Switch
+  - Blind
+  - Valve
+  - Alarm
+  - Light
+  - Clock
+  - Relay
+  - DoorLock
   generated_code:
   - name: "Scenario1"
-    cron: "0 0 * * *"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#Blind).blind_blind == "closed") {
+        (#Light).switch_on()
+      }
+  model_info:
+    elapsed_time: 3.477
+    bge_elapsed_time: 0.147
+    llm_elapsed_time: 3.33
+- command: 매일, 실시간으로 확인하여 관개 장치가 꺼질 때마다 10초간 기다리는 것을 반복해 줘
+  command_translated: Check daily, in real time, and repeat the 10-second wait each time the irrigation device is turned off.
+  devices:
+  - LeakSensor
+  - Relay
+  - Shade
+  - Alarm
+  - SmartPlug
+  - Clock
+  - Irrigator
+  - Charger
+  - WeatherProvider
+  - GasValve
+  generated_code: []
+  model_info:
+    elapsed_time: 50.575
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 50.427
+- command: 실시간으로 확인하여 선풍기가 꺼져 있으면서 움직임이 감지되지 않다가 감지되는 순간 그 때부터 10초 간격으로 전등이 꺼져 있으면 끄고, 켜져 있으면 켜 줘
+  command_translated: Check in real-time. if the fan is off and motion was not detected but then becomes active, then starting from that moment, every 10 seconds, turn off the light if it's off, or turn it on if it's on.
+  devices:
+  - SmokeDetector
+  - MotionSensor
+  - Switch
+  - ContactSensor
+  - Light
+  - Fan
+  - PresenceSensor
+  - Clock
+  - Relay
+  - DoorLock
+  - Refrigerator
+  generated_code: []
+  model_info:
+    elapsed_time: 49.485
+    bge_elapsed_time: 0.168
+    llm_elapsed_time: 49.317
+- command: 1초마다 확인하여 온도가 30도 미만이면서 25도 이상일 때마다 에어컨을 켜 줘.
+  command_translated: Check every second to turn on the air conditioner whenever the temperature is below 30 degrees but above 25 degrees.
+  devices:
+  - DoorLock
+  - Dehumidifier
+  - Humidifier
+  - WeatherProvider
+  - Fan
+  - AirPurifier
+  - Clock
+  - Irrigator
+  - AirQualityDetector
+  - AirConditioner
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
     period: 1000
     code: |-
-      if ((#Clock).clock_hour == 0) {
-        if ((#Fan).switch_switch == 'off') {
-          (#Fan).switch_off()
-        }
+      if ((#TemperatureSensor).temperatureMeasurement_temperature < 30.0) and ((#TemperatureSensor).temperatureMeasurement_temperature > 25.0) {
+        (#AirConditioner).switch_on()
       }
+  model_info:
+    elapsed_time: 4.632
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 4.483
+- command: 주말 오전에, 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않고 10초가 끝났을 때 조명이 켜져 있으면 조명을 켜 줘.
+  command_translated: On a weekend morning, check in real-time and turn on the lights if no motion is detected for 10 seconds after the time when the door is opened and the lights are on at the end of the 10 seconds.
+  devices:
+  - SmokeDetector
+  - Window
+  - ContactSensor
+  - Camera
+  - Light
+  - PresenceSensor
+  - Clock
+  - DoorLock
+  - LightSensor
+  - Relay
+  generated_code: []
+  model_info:
+    elapsed_time: 48.462
+    bge_elapsed_time: 0.161
+    llm_elapsed_time: 48.301
+- command: 실시간으로 확인하여 재실 센서가 감지 상태일 때마다 10초 대기 후 조명의 밝기를 현재 밝기로 맞춰줘.
+  command_translated: Check in real-time to adjust lights to their current brightness after a 10-second wait whenever an occupancy sensor is detected.
+  devices:
+  - SmokeDetector
+  - SoundSensor
+  - MotionSensor
+  - Switch
+  - ContactSensor
+  - Light
+  - PresenceSensor
+  - Clock
+  - AirQualityDetector
+  - LightSensor
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      wait until(any(#PresenceSensor).presenceSensor_presence == 'present')
+      all(#Light).switchLevel_setLevel(#Light).switchLevel_level, 10)
+  - name: "Scenario2"
+    cron: ""
+    period: 1000
+    code: |-
+      wait until(any(#PresenceSensor).presenceSensor_presence == 'not_present')
+      all(#Light).switchLevel_setLevel(#Light).switchLevel_level, 100)
+  model_info:
+    elapsed_time: 6.338
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 6.186
+- command: TV가 꺼져 있으면 10초 대기 후 다시 TV를 확인하여 켜져 있으면 TV를 켜 줘.
+  command_translated: If the TV is off, wait 10 seconds, then check the TV again and turn it on if it's on.
+  devices:
+  - SmokeDetector
+  - Television
+  - Speaker
+  - Switch
+  - SmartPlug
+  - Camera
+  - Clock
+  - Relay
+  - Irrigator
+  - Refrigerator
+  - GasValve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Television).switch_switch == "off")
+      wait until((#Television).switch_switch == "on")
+      (#Television).switch_on()
   - name: "Scenario2"
     cron: ""
     period: -1
     code: |-
-      wait until((#Clock).clock_hour == 0)
-      (#Fan).switch_off()
+      wait until((#Television).switch_switch == "off")
+      wait until((#Television).switch_switch == "on")
+      (#Television).switch_on()
   model_info:
-    elapsed_time: 6.118
-    bge_elapsed_time: 0.138
-    llm_elapsed_time: 5.981
-- command: On weekends, turn off the irrigation when it's off.
+    elapsed_time: 6.245
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 6.096
+- command: 월, 수, 금에 실시간으로 확인하여 창문이 열려 있지 않으면 창문을 닫아 줘.
+  command_translated: Check in real-time on Mon, Wed, Fri and close the window if it's not open.
   devices:
-  - Valve
-  - Irrigator
-  - Dehumidifier
-  - WeatherProvider
-  - Relay
-  - Alarm
-  - LeakSensor
   - Curtain
-  - GasValve
-  - Clock
-  - Humidifier
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if (((#Clock).clock_weekday == 'saturday') or ((#Clock).clock_weekday == 'sunday')) {
-        if ((#Irrigator).switch_switch == 'off') {
-          (#Irrigator).switch_off()
-        }
-      }
-  model_info:
-    elapsed_time: 4.803
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.673
-- command: Check in real-time to make sure the blinds are closed and turn on the lights when they're closed again
-  devices:
-  - Blind
-  - Valve
-  - Light
-  - Shade
-  - Relay
-  - Switch
-  - Alarm
-  - Siren
-  - DoorLock
-  - Clock
   - Window
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 100
-    code: |-
-      if ((#Blind).blind_blind == 'closed') {
-        (#Light).switch_on()
-      }
-  model_info:
-    elapsed_time: 3.47
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 3.337
-- command: Check daily, in real time, and repeat the 10-second wait each time the irrigation device is turned off.
-  devices:
-  - Irrigator
-  - Charger
-  - WeatherProvider
   - Shade
-  - Clock
-  - Relay
-  - LeakSensor
-  - Alarm
-  - GasValve
-  - SmartPlug
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 10000
-    code: |-
-      wait until((#Irrigator).switch_switch == 'off')
-      wait until((#Irrigator).switch_switch == 'off')
-      wait until((#Irrigator).switch_switch == 'off')
-      wait until((#Irrigator).switch_switch == 'off')
-      wait until((#Irrigator).switch_switch == 'off')
-      wait until((#Irrigator).switch_switch == 'off')
-      wait until((#Irrigator).switch_switch == 'off')
-      wait until((#Irrigator).switch_switch == 'off')
-      wait until((#Irrigator).switch_switch == 'off')
-      wait until((#Irrigator).switch_switch == 'off')
-  model_info:
-    elapsed_time: 8.928
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 8.796
-- command: Check in real-time to see if the fan is off and no motion is detected, and then turn it off if it is, or on if it is, every 10 seconds from then on.
-  devices:
-  - MotionSensor
-  - ContactSensor
-  - Light
-  - Refrigerator
-  - SmokeDetector
-  - Relay
-  - Switch
-  - Clock
-  - DoorLock
-  - Fan
-  - PresenceSensor
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 10000
-    code: |-
-      if ((#Fan).switch_switch == 'off') {
-        if ((#MotionSensor).motionSensor_motion == 'inactive') {
-          (#Fan).switch_off()
-        } else {
-          (#Fan).switch_on()
-        }
-      }
-  model_info:
-    elapsed_time: 4.595
-    bge_elapsed_time: 0.154
-    llm_elapsed_time: 4.441
-- command: Check every second to turn on the air conditioner whenever the temperature is below 30 degrees but above 25 degrees.
-  devices:
-  - Irrigator
-  - TemperatureSensor
-  - Dehumidifier
-  - WeatherProvider
-  - Clock
-  - AirPurifier
-  - DoorLock
-  - Fan
-  - AirQualityDetector
-  - Humidifier
-  - AirConditioner
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 1000
-    code: |-
-      if ((#TemperatureSensor).temperatureMeasurement_temperature < 30.0) {
-        if ((#TemperatureSensor).temperatureMeasurement_temperature > 25.0) {
-          (#AirConditioner).switch_on()
-        }
-      }
-  model_info:
-    elapsed_time: 4.774
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.64
-- command: On a weekend morning, check in real-time and turn on the lights if no motion is detected for 10 seconds after the door is opened and the lights are on at the end of the 10 seconds.
-  devices:
-  - LightSensor
-  - ContactSensor
-  - Light
-  - SmokeDetector
-  - Clock
-  - Relay
-  - Camera
-  - DoorLock
-  - PresenceSensor
-  - Window
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 100
-    code: |-
-      wait until((#Clock).clock_weekday == 'saturday' or (#Clock).clock_weekday == 'sunday')
-      wait until((#DoorLock).doorControl_door == 'open')
-      wait until((#Light).switch_switch == 'on')
-      wait until((#PresenceSensor).presenceSensor_presence == 'not_present'), timeout = 10000
-      (#Light).switch_on()
-  model_info:
-    elapsed_time: 5.808
-    bge_elapsed_time: 0.148
-    llm_elapsed_time: 5.66
-- command: Check in real-time to adjust lights to their current brightness after a 10-second wait whenever an occupancy sensor is detected.
-  devices:
-  - LightSensor
-  - MotionSensor
-  - ContactSensor
-  - TemperatureSensor
-  - Light
-  - SmokeDetector
-  - Clock
-  - Switch
-  - PresenceSensor
-  - AirQualityDetector
-  - SoundSensor
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 10000
-    code: |-
-      wait until((#PresenceSensor).presenceSensor_presence == 'present')
-      (#Light).switchLevel_setLevel((#Light).switchLevel_level, 0)
-  model_info:
-    elapsed_time: 3.85
-    bge_elapsed_time: 0.137
-    llm_elapsed_time: 3.713
-- command: If the TV is off, wait 10 seconds, then check the TV again and turn it on if it's on.
-  devices:
-  - Irrigator
-  - Speaker
-  - Refrigerator
-  - SmokeDetector
-  - Relay
-  - Switch
-  - Clock
-  - Camera
-  - GasValve
-  - Television
-  - SmartPlug
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Television).switch_switch == 'off') {
-        (#Clock).clock_delay(10000)
-        if ((#Television).switch_switch == 'on') {
-          (#Television).switch_on()
-        }
-      }
-  model_info:
-    elapsed_time: 4.817
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.683
-- command: Check in real-time on Mon, Wed, Fri and close the window if it's not open.
-  devices:
-  - Valve
   - Blind
   - ContactSensor
-  - Shade
-  - WeatherProvider
+  - Valve
   - Clock
-  - Curtain
   - DoorLock
+  - WeatherProvider
   - GasValve
-  - Window
   generated_code:
-  - name: "Scenario1"
-    cron: "0 0 1 1 *"
-    period: 1000
-    code: |-
-      if (((#Clock).clock_weekday == 'monday') or ((#Clock).clock_weekday == 'wednesday') or ((#Clock).clock_weekday == 'friday')) {
-        if ((#Window).windowControl_window == 'open') {
-          (#Window).windowControl_close()
-        }
-      }
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
   model_info:
-    elapsed_time: 5.638
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 5.507
+    elapsed_time: 6.795
+    bge_elapsed_time: 0.147
+    llm_elapsed_time: 6.648

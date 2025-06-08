@@ -1,240 +1,241 @@
-- command: Sing "Happy Birthday" on my birthday.
+- command: 내 생일이 되면 "생일 축하합니다" 노래를 불러 줘.
+  command_translated: Sing "Happy Birthday" on my birthday.
   devices:
-  - Timer
-  - Calculator
-  - Button
   - EmailProvider
-  - Feeder
   - Speaker
-  - Clock
   - Camera
   - Recorder
+  - Calculator
+  - Timer
   - MenuProvider
+  - Feeder
+  - Clock
+  - Button
   generated_code:
   - name: "Scenario1"
-    cron: ""
-    period: -1
+    cron: "0 14 8 6 *\"  # 2025-06-08 14:00:00"
+    period: 0
     code: |-
-      if (((#Clock).clock_date == 20250605) and ((#Clock).clock_datetime == 20250605125005)) {
+      if ((#Clock).clock_date == 20250608) {
         (#Speaker).mediaPlayback_speak("Happy Birthday!")
       }
   model_info:
-    elapsed_time: 4.86
-    bge_elapsed_time: 0.135
-    llm_elapsed_time: 4.725
-- command: If it detects news that makes me depressed, say something uplifting.
+    elapsed_time: 5.245
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 5.099
+- command: 날 우울하게 만드는 뉴스를 감지하면 위로의 말을 해 줘.
+  command_translated: If you detects news that makes me depressed, say something uplifting.
   devices:
+  - AirQualityDetector
+  - LeakSensor
+  - Curtain
+  - FallDetector
   - Calculator
   - Charger
-  - Relay
-  - Clock
-  - LeakSensor
-  - Curtain
-  - DoorLock
-  - Fan
-  - AirQualityDetector
   - SoundSensor
-  - FallDetector
+  - Clock
+  - Fan
+  - DoorLock
+  - Relay
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#FallDetector).fallDetection_fall == 'fall') {
-        (#SoundSensor).fanControl_setFanSpeed("Stay strong and keep going!")
+      if ((#Fan).clock_weekday == "depressing") {
+        (#SoundSensor).curtain_open("Cheer up! Life is full of ups and downs. Remember to take care of yourself and seek support when needed.")
       }
   model_info:
-    elapsed_time: 3.61
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 3.481
-- command: Clap your cat whenever he's in a good mood.
+    elapsed_time: 4.337
+    bge_elapsed_time: 0.144
+    llm_elapsed_time: 4.194
+- command: 고양이가 기분이 좋을 때마다 박수를 쳐 줘.
+  command_translated: Clap whenever your cat is in a good mood.
   devices:
-  - Button
-  - Feeder
   - Speaker
-  - RobotCleaner
-  - Clock
   - AirPurifier
   - LeakSensor
   - Camera
+  - Clock
+  - SoundSensor
+  - Feeder
   - Buttonx4
+  - RobotCleaner
+  - Button
   - Fan
-  - SoundSensor
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Speaker).button_supportedButtonValues == 'happy') {
-        (#Speaker).mediaPlayback_speak('Clap your cat!')
-      }
+  generated_code: []
   model_info:
-    elapsed_time: 4.15
-    bge_elapsed_time: 0.126
-    llm_elapsed_time: 4.023
-- command: Emotionally adjust the light to match my mood right now.
-  devices:
-  - Blind
-  - LightSensor
-  - Light
-  - Shade
-  - Relay
-  - Clock
-  - Camera
-  - DoorLock
-  - Fan
-  - Humidifier
-  - Curtain
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Light).colorControl_setColor("255|255|255")
-  model_info:
-    elapsed_time: 3.314
+    elapsed_time: 51.978
     bge_elapsed_time: 0.141
-    llm_elapsed_time: 3.173
-- command: If your house seems lonely, play some music.
+    llm_elapsed_time: 51.837
+- command: 지금 내 기분에 맞춰 조명을 감성적으로 조절해 줘.
+  command_translated: Emotionally adjust the light to match my mood right now.
   devices:
-  - Television
-  - Dehumidifier
-  - Speaker
+  - LightSensor
+  - Humidifier
+  - Camera
+  - Blind
+  - Curtain
+  - Shade
+  - Light
   - Clock
+  - Fan
+  - DoorLock
+  - Relay
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Light).colorControl_setSaturation()
+  model_info:
+    elapsed_time: 2.884
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 2.742
+- command: 집이 외로워 보이면 음악을 틀어 줘.
+  command_translated: If the house seems lonely, play some music.
+  devices:
+  - Humidifier
+  - AirConditioner
+  - Speaker
   - AirPurifier
   - Camera
-  - DoorLock
-  - PresenceSensor
-  - Humidifier
-  - Curtain
-  - AirConditioner
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#PresenceSensor).presenceSensor_presence == 'not_present') {
-        (#Speaker).mediaPlayback_speak("Music is playing.")
-        (#Speaker).mediaPlayback_play("https:
-      }
-  model_info:
-    elapsed_time: 4.571
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 4.445
-- command: Automatically call the police if it looks dangerous outside.
-  devices:
-  - WeatherProvider
-  - Relay
-  - Alarm
-  - LeakSensor
-  - Siren
-  - Camera
-  - DoorLock
-  - Switch
-  - Window
-  - Clock
-  - FallDetector
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#WeatherProvider).weatherProvider_getWeatherInfo((#Clock).clock_date, (#Clock).clock_date)
-      weather = (#WeatherProvider).weatherProvider_weather
-      if (weather == 'tornado' or weather == 'hail' or weather == 'thunderstorm') {
-        (#Siren).camera_takeTimelapse("Calling the police...")
-        (#Camera).alarm_off('911')
-      }
-  model_info:
-    elapsed_time: 5.884
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 5.757
-- command: Close the curtains when your smartphone's battery is below 20%.
-  devices:
-  - Blind
-  - ContactSensor
-  - TemperatureSensor
-  - Light
-  - WeatherProvider
-  - Clock
-  - Alarm
-  - Curtain
-  - DoorLock
-  - Window
-  - SmartPlug
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#SmartPlug).battery_battery < 20.0) {
-        (#Curtain).curtain_close()
-      }
-  model_info:
-    elapsed_time: 3.605
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.478
-- command: If you have a big announcement today, wish me luck.
-  devices:
-  - Button
-  - EmailProvider
-  - WeatherProvider
-  - Relay
+  - Television
   - Clock
   - Curtain
-  - DoorLock
-  - Fan
-  - Window
-  - MenuProvider
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#MenuProvider).menuProvider_menu("today") == "big announcement") {
-        (#Window).fanControl_setFanSpeed("Good luck!")
-      }
-  model_info:
-    elapsed_time: 3.724
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 3.597
-- command: Ask your robot vacuum cleaner to make you a cup of coffee.
-  devices:
-  - Irrigator
   - Dehumidifier
+  - PresenceSensor
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until(any(#PresenceSensor).presenceSensor_presence == "not_present")
+      (#Speaker).mediaPlayback_speak("Play some music")
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until(any(#PresenceSensor).presenceSensor_presence == "present")
+      (#Speaker).mediaPlayback_stop()
+  model_info:
+    elapsed_time: 5.382
+    bge_elapsed_time: 0.141
+    llm_elapsed_time: 5.24
+- command: 밖이 위험해 보이면 자동으로 경찰에 전화해 줘.
+  command_translated: Automatically call the police if it looks dangerous outside.
+  devices:
+  - Switch
+  - LeakSensor
+  - Camera
+  - Clock
+  - Window
+  - FallDetector
+  - Alarm
+  - Siren
+  - WeatherProvider
+  - DoorLock
+  - Relay
+  generated_code: []
+  model_info:
+    elapsed_time: 48.748
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 48.607
+- command: 스마트폰 배터리가 20% 이하가 되면 커튼을 닫아 줘.
+  command_translated: Close the curtains when your smartphone's battery drops below 20%.
+  devices:
+  - SmartPlug
+  - Blind
+  - Window
+  - Curtain
+  - Alarm
+  - Light
+  - Clock
+  - TemperatureSensor
+  - WeatherProvider
+  - DoorLock
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#SmartPlug).battery_battery < 20.0)
+      (#Curtain).curtain_close()
+  model_info:
+    elapsed_time: 3.517
+    bge_elapsed_time: 0.143
+    llm_elapsed_time: 3.374
+- command: 오늘 중요한 발표가 있으면 행운을 빌어 줘.
+  command_translated: If there is a big announcement today, wish me luck.
+  devices:
+  - Fan
+  - EmailProvider
+  - Clock
+  - Window
+  - Curtain
+  - MenuProvider
+  - Button
+  - WeatherProvider
+  - DoorLock
+  - Relay
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until(any(#Button).clock_weekday == "big")
+      (#Window).fanControl_setFanSpeed("Wish you luck!")
+  model_info:
+    elapsed_time: 3.538
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 3.396
+- command: 로봇청소기에게 커피 한 잔 타 달라고 부탁해 줘.
+  command_translated: Ask your robot vacuum cleaner to make you a cup of coffee.
+  devices:
+  - Humidifier
+  - AirConditioner
+  - AirPurifier
+  - Dishwasher
+  - Camera
+  - Irrigator
   - Feeder
+  - Dehumidifier
   - RobotCleaner
   - Clock
-  - AirPurifier
-  - Camera
   - Fan
-  - Humidifier
-  - Dishwasher
-  - AirConditioner
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#RobotCleaner).switch_off()
-      (#Feeder).switch_on()
+      wait until(#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode == "manual"
+      (#Camera).camera_takeTimelapse("Please wait while I make you a cup of coffee.")
+      (#Humidifier).switch_on()
+      wait until(#Humidifier).switch_switch == "on"
+      (#Humidifier).dehumidifierMode_setDehumidifierMode("brew")
+      wait until(#Humidifier).humidifierMode_humidifierMode == "brew"
+      (#Humidifier).switch_off()
+      (#Camera).camera_takeTimelapse("Your coffee is ready. Enjoy!")
   model_info:
-    elapsed_time: 3.196
-    bge_elapsed_time: 0.15
-    llm_elapsed_time: 3.046
-- command: Do a happy dance.
+    elapsed_time: 7.763
+    bge_elapsed_time: 0.143
+    llm_elapsed_time: 7.621
+- command: 기분 좋게 춤춰 줘.
+  command_translated: Do a happy dance.
   devices:
   - LightSensor
   - MotionSensor
-  - Button
-  - Light
-  - Clock
   - AirPurifier
   - LeakSensor
   - Camera
-  - DoorLock
+  - Clock
   - Buttonx4
+  - Light
+  - Button
   - Fan
+  - DoorLock
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -242,6 +243,6 @@
     code: |-
       (#Camera).camera_takeTimelapse("Do a happy dance.")
   model_info:
-    elapsed_time: 3.171
-    bge_elapsed_time: 0.196
-    llm_elapsed_time: 2.975
+    elapsed_time: 3.113
+    bge_elapsed_time: 0.14
+    llm_elapsed_time: 2.972

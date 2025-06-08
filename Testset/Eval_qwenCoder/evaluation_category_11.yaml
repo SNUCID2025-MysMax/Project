@@ -1,337 +1,277 @@
-- command: From March through September, check in real-time and turn on the irrigation after a 5-second wait if the soil moisture sensor reads 30% or less, wait another 10 seconds, sound the alarm's siren, and then close the blinds if the humidity value remains below 30% for 15 seconds after that.
+- command: 3월부터 9월까지, 실시간으로 확인하여 토양 습도 센서의 값이 30% 이하이면 5초 대기 후 관개 장치를 켜고, 추가로 10초 대기 후 알람의 사이렌을 울린 다음, 그 후로부터 15초 동안 습도 값이 계속 30% 이하이면 블라인드를 닫아 줘.
+  command_translated: From March through September, check in real-time and turn on the irrigation after a 5-second wait if the soil moisture sensor reads 30% or less, wait another 10 seconds, sound the alarm's siren. After that, if the soil moisture remains at or below 30% continuously for the next 15 seconds, close the blinds.
   devices:
-  - Blind
-  - HumiditySensor
-  - TemperatureSensor
-  - Shade
-  - WeatherProvider
-  - Clock
-  - Alarm
-  - LeakSensor
   - Siren
+  - LeakSensor
+  - Shade
+  - Blind
   - Humidifier
-  - SoilMoistureSensor
-  generated_code:
-  - name: "Scenario1"
-    cron: "0 3 * * 2-8"
-    period: 1000
-    code: ""
-  - name: "Scenario2"
-    cron: ""
-    period: 1000
-    code: |-
-      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
-      (#Siren).blind_open("Irrigation system is on.")
-      (#Clock).clock_delay(5000)
-      (#Alarm).alarm_siren()
-      (#Clock).clock_delay(10000)
-      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity >= 30.0)
-      (#Blind).blind_close()
-  model_info:
-    elapsed_time: 8.217
-    bge_elapsed_time: 0.178
-    llm_elapsed_time: 8.039
-- command: If the soil moisture sensor drops below 25%, the alarm will sound the siren for one second for a total of five alarms at three-second intervals, followed by a 10-second wait before closing the blinds.
-  devices:
-  - Blind
   - HumiditySensor
-  - TemperatureSensor
-  - Shade
-  - WeatherProvider
-  - Clock
   - Alarm
-  - LeakSensor
-  - Siren
+  - Clock
   - SoilMoistureSensor
+  - WeatherProvider
+  - TemperatureSensor
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 17.55
+    bge_elapsed_time: 0.176
+    llm_elapsed_time: 17.374
+- command: 토양 습도 센서의 값이 25% 이하로 떨어지면 3초 간격으로 총 다섯 번 알람의 사이렌을 1초간 울리고, 그 후 10초 대기 후 블라인드를 닫아 줘.
+  command_translated: If the soil moisture sensor drops below 25%, sound the alarm siren five times at 3-second intervals, each time for 1 second, followed by a 10-second wait before closing the blinds.
+  devices:
+  - Siren
+  - LeakSensor
   - SoundSensor
+  - Shade
+  - Blind
+  - Alarm
+  - HumiditySensor
+  - Clock
+  - SoilMoistureSensor
+  - WeatherProvider
+  - TemperatureSensor
   generated_code: []
   model_info:
-    elapsed_time: 25.153
-    bge_elapsed_time: 0.158
-    llm_elapsed_time: 24.995
-- command: Check in real-time and turn on the lights after 5 seconds if motion is detected, open the curtains after 10 seconds, turn on the pump if it's off after 15 seconds, etc.
+    elapsed_time: 49.349
+    bge_elapsed_time: 0.168
+    llm_elapsed_time: 49.182
+- command: 실시간으로 확인하여 움직임이 감지되면 5초 대기 후 조명을 켜고, 10초 후 커튼을 열고, 15초 후 펌프가 꺼져 있으면 펌프를 켜 줘.
+  command_translated: Check in real-time and turn on the lights after 5 seconds if motion is detected, open the curtains after 10 seconds, turn on the pump if it's off after 15 seconds.
   devices:
+  - SmokeDetector
+  - MotionSensor
+  - Curtain
   - Valve
-  - MotionSensor
-  - Light
-  - SmokeDetector
-  - Clock
-  - Curtain
   - Camera
-  - GasValve
-  - DoorLock
+  - Light
   - PresenceSensor
+  - Clock
+  - DoorLock
   - Pump
+  - GasValve
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 1000
     code: |-
-      wait until((#MotionSensor).motionSensor_motion == 'active')
+      wait until((#MotionSensor).motionSensor_motion == "active")
       (#Light).switch_on()
+      wait until(#Clock).clock_delay(5000)
       (#Curtain).curtain_open()
-      wait until((#Pump).switch_switch == 'off')
-      (#Pump).switch_on()
+      wait until(#Clock).clock_delay(10000)
+      if ((#Pump).switch_switch == "off") {
+        (#Pump).switch_on()
+      }
   model_info:
-    elapsed_time: 4.652
-    bge_elapsed_time: 0.159
-    llm_elapsed_time: 4.493
-- command: On January 1, check in real-time and when the lights go out, wait 3 seconds, turn off the pump, close the blinds after 5 seconds, turn the lights back on after an additional 7 seconds, and sound the alarm's siren.
+    elapsed_time: 6.022
+    bge_elapsed_time: 0.167
+    llm_elapsed_time: 5.855
+- command: 1월 1일에, 실시간으로 확인하여 조명이 꺼지면 3초 대기 후 펌프를 끄고, 5초 후 블라인드를 닫으며, 추가로 7초 후 조명을 다시 켠 다음 알람의 사이렌을 울려 줘.
+  command_translated: On January 1, check in real-time and when the lights turns off, wait 3 seconds, turn off the pump, close the blinds after 5 seconds, turn the lights back on after an additional 7 seconds, and sound the alarm's siren.
   devices:
-  - Blind
-  - Light
-  - Shade
-  - SmokeDetector
-  - Relay
-  - Alarm
-  - Clock
   - Siren
-  - GasValve
-  - Pump
-  generated_code:
-  - name: "Scenario1"
-    cron: "0 1 1 * *"
-    period: 100
-    code: |-
-      wait until((#Clock).clock_date == 20250101)
-      wait until((#Light).switch_switch == 'off')
-      (#Clock).clock_delay(3000)
-      (#Pump).switch_off()
-      (#Blind).blind_close()
-      (#Clock).clock_delay(5000)
-      (#Light).switch_on()
-      (#Alarm).alarm_siren()
-  model_info:
-    elapsed_time: 6.677
-    bge_elapsed_time: 0.174
-    llm_elapsed_time: 6.504
-- command: Check every 10 seconds to see if the soil moisture sensor reads 30% or less twice in a row, and if it stays that way for more than a minute, close the blinds and say "alarm" twice after 5 seconds.
-  devices:
-  - Blind
-  - MotionSensor
-  - LightSensor
-  - HumiditySensor
-  - TemperatureSensor
-  - Shade
-  - WeatherProvider
-  - Clock
-  - LeakSensor
-  - Humidifier
-  - SoilMoistureSensor
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 10000
-    code: |-
-      count := 0
-      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
-        count = count + 1
-      } else {
-        count = 0
-      }
-      if (count >= 2) {
-        wait until((#Clock).clock_timestamp >= (#Clock).clock_timestamp + 60000)
-        (#Blind).blind_close()
-        (#LightSensor).blind_open("alarm")
-        (#LightSensor).blind_open("alarm")
-      }
-  model_info:
-    elapsed_time: 7.333
-    bge_elapsed_time: 0.165
-    llm_elapsed_time: 7.168
-- command: Check in real-time to open the curtains if they've been closed for 5 consecutive seconds, and turn off the lights if no motion is detected for the next 10 seconds.
-  devices:
-  - Blind
-  - MotionSensor
-  - ContactSensor
-  - Light
   - SmokeDetector
+  - Shade
+  - Blind
+  - Alarm
+  - Light
   - Clock
+  - Relay
+  - Pump
+  - GasValve
+  generated_code: []
+  model_info:
+    elapsed_time: 22.518
+    bge_elapsed_time: 0.164
+    llm_elapsed_time: 22.354
+- command: 10초마다 확인하여 토양 습도 센서의 값이 두 번 연속으로 30% 이하가 된 다음, 그 상태가 1분 이상 유지되면 블라인드를 닫고 5초 후 ‘알람’이라고 두 번 말해 줘.
+  command_translated: Check every 10 seconds to see if the soil moisture sensor reads 30% or less twice in a row, and if it stays that way for more than a minute, close the blinds and announce "alarm" twice via the speaker after 5 seconds.
+  devices:
+  - LeakSensor
+  - LightSensor
+  - MotionSensor
+  - Shade
+  - Blind
+  - Humidifier
+  - HumiditySensor
+  - Clock
+  - SoilMoistureSensor
+  - WeatherProvider
+  - TemperatureSensor
+  generated_code: []
+  model_info:
+    elapsed_time: 49.131
+    bge_elapsed_time: 0.167
+    llm_elapsed_time: 48.964
+- command: 실시간으로 확인하여 커튼이 5초 연속 닫혀 있으면 커튼을 열고, 이후 10초 동안 움직임이 감지되지 않으면 조명을 꺼 줘.
+  command_translated: Check in real-time to open the curtains if they've been closed for 5 consecutive seconds, and turn off the lights if no motion is detected for the next 10 seconds.
+  devices:
+  - SmokeDetector
   - Curtain
-  - DoorLock
-  - PresenceSensor
-  - Camera
+  - MotionSensor
   - Window
+  - Blind
+  - ContactSensor
+  - Camera
+  - Light
+  - PresenceSensor
+  - Clock
+  - DoorLock
   generated_code:
   - name: "Scenario1"
     cron: ""
-    period: 1000
+    period: 100
     code: |-
       closed_duration := 0
       if ((#Curtain).curtain_curtain == "closed") {
-        closed_duration = closed_duration + 1000
-      } else {
-        closed_duration = 0
-      }
-      if (closed_duration >= 5000) {
-        (#Curtain).curtain_open()
-        closed_duration = 0
-      }
-  - name: "Scenario2"
-    cron: ""
-    period: 1000
-    code: |-
-      motion_detected := false
-      if ((#MotionSensor).motionSensor_motion == "active") {
-        motion_detected = true
-      }
-      if (motion_detected == false) {
-        wait until((#MotionSensor).motionSensor_motion == "active")
-        motion_detected = true
-      }
-      wait until((#MotionSensor).motionSensor_motion == "inactive")
-      wait until((#MotionSensor).motionSensor_motion == "active")
-      wait until((#MotionSensor).motionSensor_motion == "inactive")
-      wait until((#MotionSensor).motionSensor_motion == "active")
-      wait until((#MotionSensor).motionSensor_motion == "inactive")
-      wait until((#MotionSensor).motionSensor_motion == "active")
-      wait until((#MotionSensor).motionSensor_motion == "inactive")
-      wait until((#MotionSensor).motionSensor_motion == "active")
-      wait until((#MotionSensor).motionSensor_motion == "inactive")
-      (#Light).switch_off()
-  model_info:
-    elapsed_time: 15.19
-    bge_elapsed_time: 0.16
-    llm_elapsed_time: 15.029
-- command: When the lights come on, blink the lights 3 times at 1 second intervals, wait 5 seconds before turning on the speakers, and from then on, check in real-time to turn on the air conditioner 10 seconds after it turns off.
-  devices:
-  - Timer
-  - Speaker
-  - Light
-  - Clock
-  - Relay
-  - AirPurifier
-  - Camera
-  - Curtain
-  - Siren
-  - AirConditioner
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      wait until((#Light).switch_switch == 'on')
-      (#Light).switch_off()
-      (#Light).switch_on()
-      (#Light).switch_off()
-      (#Light).switch_on()
-      (#Light).switch_off()
-      (#Light).switch_on()
-      (#Speaker).mediaPlayback_speak("Wait 5 seconds before turning on the speakers.")
-      (#Clock).clock_delay(5000)
-      (#Speaker).switch_on()
-  - name: "Scenario2"
-    cron: ""
-    period: 100
-    code: |-
-      if ((#Clock).clock_isHoliday == false) {
-        if ((#AirConditioner).switch_switch == 'off') {
-          (#Clock).clock_delay(10000)
-          (#AirConditioner).switch_on()
+        closed_duration = closed_duration + 100
+        if (closed_duration >= 5000) {
+          (#Curtain).curtain_open()
+          closed_duration = 0
         }
       }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      motion_duration := 0
+      if ((#MotionSensor).motionSensor_motion == "active") {
+        motion_duration = motion_duration + 100
+      } else {
+        motion_duration = 0
+      }
+      if (motion_duration >= 10000) {
+        (#Light).switch_off()
+        motion_duration = 0
+      }
   model_info:
-    elapsed_time: 9.722
-    bge_elapsed_time: 0.175
-    llm_elapsed_time: 9.546
-- command: When the air conditioner turns on, close the blinds after five seconds, wait another five seconds and close the curtains if they're open, and then turn the lights down to 10 percent brightness after 10 seconds.
+    elapsed_time: 9.441
+    bge_elapsed_time: 0.158
+    llm_elapsed_time: 9.283
+- command: 조명이 켜지면 1초 간격으로 조명을 3번 깜빡이고, 이후 5초 대기 후 스피커를 켜고, 그 다음부터는 실시간으로 확인하여 에어컨이 꺼지면 10초 후 켜 줘.
+  command_translated: When the lights come on, blink the lights 3 times at 1 second intervals, wait 5 seconds before turning on the speakers, and from then on, check in real-time to turn on the air conditioner 10 seconds after it turns off.
   devices:
-  - Blind
-  - LightSensor
-  - Light
-  - Shade
-  - WeatherProvider
-  - Clock
-  - AirPurifier
+  - Siren
   - Curtain
-  - DoorLock
+  - Relay
+  - Speaker
+  - Timer
+  - Camera
+  - Light
+  - AirPurifier
+  - Clock
+  - AirConditioner
+  generated_code: []
+  model_info:
+    elapsed_time: 51.554
+    bge_elapsed_time: 0.166
+    llm_elapsed_time: 51.388
+- command: 에어컨이 켜지면 5초 후 블라인드를 닫고, 5초 더 기다린 후 커튼이 열려 있으면 커튼을 닫고, 이후 10초 후 조명 밝기를 10퍼센트로 낮춰 줘.
+  command_translated: When the air conditioner turns on, close the blinds after five seconds, wait another five seconds and close the curtains if they're open, and then turn the lights down to 10 percent brightness after 10 seconds.
+  devices:
+  - Curtain
   - Window
+  - Shade
+  - Blind
+  - Light
+  - WeatherProvider
+  - AirPurifier
+  - Clock
+  - DoorLock
+  - LightSensor
   - AirConditioner
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      wait until((#AirConditioner).switch_switch == 'on')
+      wait until((#AirConditioner).switch_switch == "on")
       (#Blind).blind_close()
-      (#Clock).clock_delay(5000)
-      if ((#Curtain).windowControl_window == 'open') {
-        (#Curtain).windowControl_close()
-      }
-      (#Clock).clock_delay(10000)
-      (#Light).switchLevel_setLevel(10, 100)
+      wait until(#Blind).blind_blind == "closed")
+      wait until(#Curtain).curtain_curtain == "open")
+      (#Curtain).curtain_close()
+      wait until(#Curtain).curtain_curtain == "closed")
+      wait until(#Light).switch_switch == "on")
+      (#Light).switchLevel_setLevel(10, 1000)
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until(#AirConditioner).switch_switch == "on")
+      (#Blind).blind_close()
+      wait until(#Blind).blind_blind == "closed")
+      wait until(#Curtain).curtain_curtain == "open")
+      (#Curtain).curtain_close()
+      wait until(#Curtain).curtain_curtain == "closed")
+      wait until(#Light).switch_switch == "on")
+      (#Light).switchLevel_setLevel(10, 1000)
   model_info:
-    elapsed_time: 6.444
-    bge_elapsed_time: 0.173
-    llm_elapsed_time: 6.27
-- command: Check in real-time to turn on the alarm if no motion is detected for 10 seconds after the door is opened, and turn on the lights to full brightness after 5 seconds.
+    elapsed_time: 12.801
+    bge_elapsed_time: 0.169
+    llm_elapsed_time: 12.631
+- command: 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않으면 경광등을 켜고, 5초 후 조명을 최대 밝기로 켜 줘.
+  command_translated: Check in real-time to turn on the alarm's strobe if no motion is detected for 10 seconds after the door is opened, and turn on the lights to full brightness after 5 seconds.
   devices:
-  - LightSensor
-  - MotionSensor
-  - ContactSensor
-  - Light
-  - SmokeDetector
-  - Clock
-  - Alarm
   - Siren
-  - DoorLock
-  - Camera
+  - SmokeDetector
+  - MotionSensor
   - Window
+  - ContactSensor
+  - Alarm
+  - Camera
+  - Light
+  - Clock
+  - DoorLock
+  - LightSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 100
     code: |-
-      motion_detected := false
-      wait until((#DoorLock).doorControl_door == 'open')
-      (#Alarm).alarm_siren()
+      wait until((#DoorLock).doorControl_door == "open")
+      wait until((#MotionSensor).motionSensor_motion == "inactive")
+      wait until((#Clock).clock_second - open_time >= 10)
+      (#Alarm).alarm_strobe()
+      wait until((#Clock).clock_second - open_time >= 5)
+      (#Light).switchLevel_setLevel(100, 0)
   - name: "Scenario2"
     cron: ""
     period: 100
     code: |-
-      wait until((#DoorLock).doorControl_door == 'closed')
-      wait until((#MotionSensor).motionSensor_motion == 'active')
-      (#Light).switch_on()
+      wait until((#DoorLock).doorControl_door == "open")
+      wait until((#MotionSensor).motionSensor_motion == "inactive")
+      wait until((#Clock).clock_second - open_time >= 10)
+      (#Alarm).alarm_strobe()
+      wait until((#Clock).clock_second - open_time >= 5)
       (#Light).switchLevel_setLevel(100, 0)
   model_info:
-    elapsed_time: 6.466
+    elapsed_time: 10.491
     bge_elapsed_time: 0.158
-    llm_elapsed_time: 6.309
-- command: Every Monday morning, from 9 to 10 a.m., check in real-time and close the blinds if they're still open seven seconds after the window is opened, and close the curtains 10 seconds later. And during that time, check in real time and turn on the lights if they're off.
+    llm_elapsed_time: 10.332
+- command: 매주 월요일 오전 9시부터 10시까지, 실시간으로 확인하여 창문이 열리고 나서 7초가 지난 시점에도 블라인드가 열려 있으면 블라인드를 닫고, 10초 후 커튼도 닫아 줘. 그리고 그 시간대에 실시간으로 확인하여 조명이 꺼지면 켜 줘.
+  command_translated: Every Monday morning, from 9 to 10 a.m., check in real-time and close the blinds if they're still open seven seconds after the time when the window is opened, and close the curtains 10 seconds later. And during that time, check in real time and turn on the lights if they're off.
   devices:
-  - Blind
-  - Valve
-  - ContactSensor
-  - Light
-  - Shade
-  - Clock
-  - Relay
   - Curtain
-  - DoorLock
   - Window
+  - Shade
+  - Blind
+  - ContactSensor
+  - Valve
+  - Light
+  - Clock
+  - DoorLock
+  - Relay
   generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 100
-    code: |-
-      wait until((#Clock).clock_weekday == 'monday' and (#Clock).clock_hour == 9 and (#Clock).clock_minute == 0)
-      (#Window).windowControl_open()
-      wait until((#Clock).clock_second >= 7)
-      if ((#Blind).blind_blind == 'open') {
-        (#Blind).blind_close()
-      }
-      wait until((#Clock).clock_second >= 10)
-      (#Curtain).curtain_close()
-  - name: "Scenario2"
-    cron: ""
-    period: 100
-    code: |-
-      wait until((#Clock).clock_weekday == 'monday' and (#Clock).clock_hour == 9 and (#Clock).clock_minute == 0)
-      wait until((#Window).windowControl_window == 'open')
-      if ((#Light).switch_switch == 'off') {
-        (#Light).switch_on()
-      }
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
   model_info:
-    elapsed_time: 10.557
-    bge_elapsed_time: 0.166
-    llm_elapsed_time: 10.391
+    elapsed_time: 18.158
+    bge_elapsed_time: 0.171
+    llm_elapsed_time: 17.987

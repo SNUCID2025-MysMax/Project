@@ -11,7 +11,7 @@ from Grammar.grammar_ver1_1_6 import grammar
 import torch, yaml, re
 from torch.nn.attention import SDPBackend, sdpa_kernel
 
-max_seq_length = 3072  # Gemma sadly only supports max 8192 for now
+max_seq_length = 4096  # Gemma sadly only supports max 8192 for now
 dtype = (
     None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 )
@@ -41,7 +41,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 
 model = FastLanguageModel.get_peft_model(
     model,
-    r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+    r = 32, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
                       "gate_proj", "up_proj", "down_proj",],
     lora_alpha = 32,
@@ -125,9 +125,6 @@ def load_dataset():
             for item in data:
                 result = read_yaml(item)
                 devices = result['devices']
-                # # 7개 이상의 장치가 없으면 무작위로 추가
-                # if len(devices) < 7:
-                #     devices = list(set(devices + random.sample(list(classes.keys()), 7 - len(devices))))
                 service_doc = "\n---\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
                     "conversations": [
@@ -142,8 +139,8 @@ def load_dataset():
                         },
                         {
                             "role": "user",
-                            # "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
-                            "content": f"Generate JOI Lang code for \"{result['command']}\"",
+                            "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
+                            # "content": f"Generate JOI Lang code for \"{result['command']}\"",
                         },
                         {
                             "role": "assistant",
@@ -203,26 +200,27 @@ trainer = SFTTrainer(
     train_dataset = MY_DATASET,
     packing = False,  # Can make training 5x faster for short sequences.
     args = SFTConfig(
-        use_liger_kernel = False,
+        use_liger_kernel = True,
         per_device_train_batch_size = 4,
         gradient_accumulation_steps = 4,
-        warmup_steps = 0,
-        num_train_epochs = 2,
-        # max_steps = 200,
-        learning_rate = 2e-4, #1e-6
+        warmup_steps = 10,
+        num_train_epochs = 3,
+        learning_rate = 2e-5, #1e-6
         optim = "adamw_8bit",
-        weight_decay = 0.02,
-        lr_scheduler_type = "constant",
+        weight_decay = 0.01,
+        lr_scheduler_type = "cosine",
         seed = 3407,
         dataset_text_field = "text",
-        report_to = "none",  # Use this for WandB etc
-        max_grad_norm = 0.2,
+        report_to = "none",
+        max_grad_norm = 0.3,
         dataset_num_proc = min(8, multiprocessing.cpu_count()),
-        dataloader_num_workers = min(8, multiprocessing.cpu_count()),
-        logging_steps= 10,
+        dataloader_num_workers = min(4, multiprocessing.cpu_count()),
+        logging_steps= 5,
         auto_find_batch_size = True,
         fp16 = False,
         bf16 = True, 
+        remove_unused_columns = False,
+        dataloader_pin_memory = False,
     ),
 )
 
