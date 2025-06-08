@@ -58,35 +58,36 @@
   - Window
   - Fan
 - command: 2초마다 체크해서 매일 오전 6시부터 9시 사이에 조명이 켜져 있는 누적 시간이 10분 이상이고, 관개 장치가 세 번 이상 꺼졌다 켜졌으면 스피커로 '관수 완료되었습니다'라고 말해 줘.
-  command_translated: Check every two seconds, and if the cumulative time the lights are on between 6 a.m. and 9 a.m. each day is 10 minutes or more, and the irrigator has been turned off and on three or more times, say "Watering complete" through the speaker.
+  command_translated: Check every two seconds, and if the cumulative time the lights are on between 6 a.m. and 9 a.m. each day is 10 minutes or more, and the irrigator has been turned off and on three or more times during that same period, announce "Watering complete" via the speaker.
   code:
   - name: Scenario1
-    cron: ''
+    cron: 0 6 * * *
     period: 2000
     code: |-
       light_on_duration := 0
-      irrigator_off_then_on := false
+      irrigator_toggle_count := 0
       prev_irrigator := ""
-      irrigator_off_detected := false
-      if ((#Clock).clock_hour >= 6 and (#Clock).clock_hour < 9) {
+
+      if ((#Clock).clock_hour < 9) {
         if ((#Light).switch_switch == 'on') {
-          light_on_duration += 2000
+          light_on_duration = light_on_duration + 2000
         }
+
         current_irrigator = (#Irrigator).switch_switch
         if ((prev_irrigator == 'on') and (current_irrigator == 'off')) {
-          irrigator_off_detected = true
-        }
-        if (irrigator_off_detected and current_irrigator == 'on') {
-          irrigator_off_then_on = true
+          irrigator_toggle_count = irrigator_toggle_count + 1
         }
         prev_irrigator = current_irrigator
-        if ((light_on_duration >= 600000) and (irrigator_off_then_on == true)) {
+
+        if ((light_on_duration >= 600000) and (irrigator_toggle_count >= 3)) {
           (#Speaker).mediaPlayback_speak("Watering complete")
           break
         }
+      } else {
+        break
       }
-- command: 실시간으로 확인하여 5분 이내에 토양 습도 센서 값이 연속으로 3회 15 이하를 기록하고 그 중 두 번째 값이 가장 낮았다면 관개 장치를 켜고 블라인드를 닫아 줘. 단, 3월은 제외하고.
-  command_translated: Check in real time, and if the soil moisture sensor value is below 15 three times in a row within five minutes, and the second value is the lowest, turn on the irrigation device and close the blinds. However, this does not apply to March.
+- command: 실시간으로 확인하여 토양 습도 센서 값이 연속으로 3회 15 이하를 기록하고 그 중 두 번째 값이 가장 낮았다면 관개 장치를 켜고 블라인드를 닫아 줘. 단, 3월은 제외하고.
+  command_translated: Check in real time, and if the soil moisture sensor value is below 15 three times in a row, and the second value is the lowest, turn on the irrigation device and close the blinds. However, this does not apply to March.
   code:
   - name: Scenario1
     cron: ''
@@ -95,20 +96,15 @@
       h1 := 100
       h2 := 100
       h3 := 100
-      t1 := 0
-      t2 := 0
-      t3 := 0
+
       if ((#Clock).clock_month != 3) {
         h1 = h2
-        t1 = t2
         h2 = h3
-        t2 = t3
         h3 = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
-        t3 = (#Clock).clock_timestamp
-        if (((h1 <= 15) and (h2 <= 15) and (h3 <= 15)) and (t3 - t1 <= 300) and ((h2 < h1) and (h2 < h3))) {
+
+        if ((h1 <= 15) and (h2 <= 15) and (h3 <= 15) and (h2 < h1) and (h2 < h3)) {
           (#Irrigator).switch_on()
           (#Blind).blind_close()
-          break
         }
       }
 - command: 매시간 0분부터 30분까지, 3초마다 확인해서 제습기가 켜졌다 꺼진 횟수가 4번 이상이고, 그 때 습도가 65% 이상이면 사이렌을 1초간, 3초 간격으로 두 번 울리고 그 후 커튼을 닫아 줘.
