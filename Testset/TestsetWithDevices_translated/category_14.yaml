@@ -1,5 +1,5 @@
 - command: 매일 자정 선풍기가 꺼져 있으면 선풍기를 꺼 줘. 또한 그 때마다 선풍기를 꺼 줘
-  command_translated: Every night at midnight, turn off the fan if it is off. Also turn off the fan whenever
+  command_translated: Every night at midnight, turn off the fan if it is off. Also, turn off the fan again at that time
   code:
   - name: Scenario1
     cron: 0 0 * * *
@@ -12,7 +12,7 @@
   devices:
   - Fan
 - command: 주말에는 관개 장치가 꺼지면 관개 장치를 꺼 줘.
-  command_translated: On weekends, turn off the irrigation when it's off.
+  command_translated: On weekends, turn off the irrigation when it turns off.
   code:
   - name: Scenario1
     cron: 0 0 * * 6,0
@@ -23,7 +23,7 @@
   devices:
   - Irrigator
 - command: 실시간으로 확인하여 블라인드가 닫힌 상태에서 또 닫히면 전등을 켜 줘
-  command_translated: Check in real-time to make sure the blinds are closed and turn on the lights when they're closed again
+  command_translated: Check in real-time, and turn on the light if the blinds are closed again while already closed.
   code:
   - name: Scenario1
     cron: ''
@@ -59,7 +59,7 @@
   - Clock
   - Irrigator
 - command: 실시간으로 확인하여 선풍기가 꺼져 있으면서 움직임이 감지되지 않다가 감지되는 순간 그 때부터 10초 간격으로 전등이 꺼져 있으면 끄고, 켜져 있으면 켜 줘
-  command_translated: Check in real-time to see if the fan is off and no motion is detected, and then turn it off if it is, or on if it is, every 10 seconds from then on.
+  command_translated: Check in real-time. if the fan is off and motion was not detected but then becomes active, then starting from that moment, every 10 seconds, turn off the light if it's off, or turn it on if it's on.
   code:
   - name: Scenario1
     cron: ''
@@ -108,7 +108,7 @@
   - TemperatureSensor
   - AirConditioner
 - command: 주말 오전에, 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않고 10초가 끝났을 때 조명이 켜져 있으면 조명을 켜 줘.
-  command_translated: On a weekend morning, check in real-time and turn on the lights if no motion is detected for 10 seconds after the door is opened and the lights are on at the end of the 10 seconds.
+  command_translated: On a weekend morning, check in real-time and turn on the lights if no motion is detected for 10 seconds after the time when the door is opened and the lights are on at the end of the 10 seconds.
   code:
   - name: Scenario1
     cron: 0 0 * * 6,0

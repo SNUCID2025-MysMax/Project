@@ -35,7 +35,7 @@
   - Irrigator
   - SoilMoistureSensor
 - command: 실시간으로 확인하여 온도가 28도 이상이면 선풍기를 켜고, 습도가 80% 이상이면 제습기를 켜 줘.
-  command_translated: Check in real-time to turn on a fan if the temperature is above 28 degrees, or a dehumidifier if the humidity is above 80%.
+  command_translated: Check in real time, turn on the fan if the temperature is above 28 degrees; and turn on the dehumidifier if the humidity is above 80%.
   code:
   - name: Scenario1
     cron: ''
@@ -55,7 +55,7 @@
   - Fan
   - HumiditySensor
 - command: 실시간으로 확인하여 조명이 켜져 있을 때마다 블라인드를 닫고, 꺼져 있으면 블라인드를 열어 줘.
-  command_translated: Check in real-time to close the blinds whenever the lights are on and open them when they're off.
+  command_translated: Check in real-time to close the blinds whenever the lights are on and open the blinds when they're off.
   code:
   - name: Scenario1
     cron: ''
@@ -87,7 +87,7 @@
   - Clock
   - Fan
   - Pump
-- command: 실시간으로 확인하여 움직임이 감지되었을 때마다 조명을 켜고, 선풍기 속도를 10 높여 줘.
+- command: 실시간으로 확인하여 움직임이 감지될 때마다 조명을 켜고, 선풍기 속도를 10 높여 줘.
   command_translated: Check in real-time to turn on lights and increase fan speed by 10 whenever motion is detected.
   code:
   - name: Scenario1
@@ -106,7 +106,7 @@
   - Fan
   - MotionSensor
 - command: 실시간으로 확인하여 창문이 열려 있으면 블라인드를 닫고, 창문이 닫혀 있으면 커튼을 열어 줘. 또한 실시간으로 확인하여 알람의 사이렌이 울리고 있지 않다면 즉시 알람의 사이렌을 울려 줘.
-  command_translated: Check in real-time to close the blinds if the window is open, or open the curtains if the window is closed. It also checks in real time and immediately sounds the alarm's siren if it's not already sounding.
+  command_translated: Check in real time. if the window is open, close the blinds. if it is closed, open the curtains. Also, if the alarm's siren is not sounding, sound it immediately.
   code:
   - name: Scenario1
     cron: ''
@@ -148,7 +148,7 @@
   - Fan
   - Television
 - command: 창문이 닫혔을 때부터 5초마다 블라인드를 열었다 닫았다 반복해 줘.
-  command_translated: Open, close, and repeat the blinds every 5 seconds from the time the window is closed.
+  command_translated: Open, close, and repeat the blinds every 5 seconds from the time when the window is closed.
   code:
   - name: Scenario1
     cron: ''
@@ -173,7 +173,7 @@
   - Blind
   - Window
 - command: 매일 아침 8시에 스피커가 꺼져 있으면 스피커를 켜고 ‘오늘 날씨입니다’라고 말해 줘. 이후 조명이 꺼져 있으면 켜고 블라인드를 열어 줘.
-  command_translated: Every morning at 8am, if the speaker is off, turn it on and say 'This is the weather today'. Then, if the lights are off, turn them on and open the blinds.
+  command_translated: Every morning at 8am, if the speaker is off, turn it on and announce 'This is the weather today' via the speaker. Then, if the lights are off, turn them on and open the blinds.
   code:
   - name: Scenario1
     cron: 0 8 * * *

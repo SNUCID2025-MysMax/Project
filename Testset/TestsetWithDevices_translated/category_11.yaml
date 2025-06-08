@@ -1,5 +1,5 @@
 - command: 3월부터 9월까지, 실시간으로 확인하여 토양 습도 센서의 값이 30% 이하이면 5초 대기 후 관개 장치를 켜고, 추가로 10초 대기 후 알람의 사이렌을 울린 다음, 그 후로부터 15초 동안 습도 값이 계속 30% 이하이면 블라인드를 닫아 줘.
-  command_translated: From March through September, check in real-time and turn on the irrigation after a 5-second wait if the soil moisture sensor reads 30% or less, wait another 10 seconds, sound the alarm's siren, and then close the blinds if the humidity value remains below 30% for 15 seconds after that.
+  command_translated: From March through September, check in real-time and turn on the irrigation after a 5-second wait if the soil moisture sensor reads 30% or less, wait another 10 seconds, sound the alarm's siren. After that, if the soil moisture remains at or below 30% continuously for the next 15 seconds, close the blinds.
   code:
   - name: Scenario1
     cron: ''
@@ -36,7 +36,7 @@
   - Clock
   - SoilMoistureSensor
 - command: 토양 습도 센서의 값이 25% 이하로 떨어지면 3초 간격으로 총 다섯 번 알람의 사이렌을 1초간 울리고, 그 후 10초 대기 후 블라인드를 닫아 줘.
-  command_translated: If the soil moisture sensor drops below 25%, the alarm will sound the siren for one second for a total of five alarms at three-second intervals, followed by a 10-second wait before closing the blinds.
+  command_translated: If the soil moisture sensor drops below 25%, sound the alarm siren five times at 3-second intervals, each time for 1 second, followed by a 10-second wait before closing the blinds.
   code:
   - name: Scenario1
     cron: ''
@@ -66,7 +66,7 @@
   - Alarm
   - SoilMoistureSensor
 - command: 실시간으로 확인하여 움직임이 감지되면 5초 대기 후 조명을 켜고, 10초 후 커튼을 열고, 15초 후 펌프가 꺼져 있으면 펌프를 켜 줘.
-  command_translated: Check in real-time and turn on the lights after 5 seconds if motion is detected, open the curtains after 10 seconds, turn on the pump if it's off after 15 seconds, etc.
+  command_translated: Check in real-time and turn on the lights after 5 seconds if motion is detected, open the curtains after 10 seconds, turn on the pump if it's off after 15 seconds.
   code:
   - name: Scenario1
     cron: ''
@@ -88,7 +88,7 @@
   - Clock
   - Light
 - command: 1월 1일에, 실시간으로 확인하여 조명이 꺼지면 3초 대기 후 펌프를 끄고, 5초 후 블라인드를 닫으며, 추가로 7초 후 조명을 다시 켠 다음 알람의 사이렌을 울려 줘.
-  command_translated: On January 1, check in real-time and when the lights go out, wait 3 seconds, turn off the pump, close the blinds after 5 seconds, turn the lights back on after an additional 7 seconds, and sound the alarm's siren.
+  command_translated: On January 1, check in real-time and when the lights turns off, wait 3 seconds, turn off the pump, close the blinds after 5 seconds, turn the lights back on after an additional 7 seconds, and sound the alarm's siren.
   code:
   - name: Scenario1
     cron: 0 0 1 1 *
@@ -111,7 +111,7 @@
   - Pump
   - Clock
 - command: 10초마다 확인하여 토양 습도 센서의 값이 두 번 연속으로 30% 이하가 된 다음, 그 상태가 1분 이상 유지되면 블라인드를 닫고 5초 후 ‘알람’이라고 두 번 말해 줘.
-  command_translated: Check every 10 seconds to see if the soil moisture sensor reads 30% or less twice in a row, and if it stays that way for more than a minute, close the blinds and say "alarm" twice after 5 seconds.
+  command_translated: Check every 10 seconds to see if the soil moisture sensor reads 30% or less twice in a row, and if it stays that way for more than a minute, close the blinds and announce "alarm" twice via the speaker after 5 seconds.
   code:
   - name: Scenario1
     cron: ''
@@ -251,7 +251,7 @@
   - Clock
   - Light
 - command: 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않으면 경광등을 켜고, 5초 후 조명을 최대 밝기로 켜 줘.
-  command_translated: Check in real-time to turn on the alarm if no motion is detected for 10 seconds after the door is opened, and turn on the lights to full brightness after 5 seconds.
+  command_translated: Check in real-time to turn on the alarm's strobe if no motion is detected for 10 seconds after the door is opened, and turn on the lights to full brightness after 5 seconds.
   code:
   - name: Scenario1
     cron: ''
@@ -283,7 +283,7 @@
   - Clock
   - ContactSensor
 - command: 매주 월요일 오전 9시부터 10시까지, 실시간으로 확인하여 창문이 열리고 나서 7초가 지난 시점에도 블라인드가 열려 있으면 블라인드를 닫고, 10초 후 커튼도 닫아 줘. 그리고 그 시간대에 실시간으로 확인하여 조명이 꺼지면 켜 줘.
-  command_translated: Every Monday morning, from 9 to 10 a.m., check in real-time and close the blinds if they're still open seven seconds after the window is opened, and close the curtains 10 seconds later. And during that time, check in real time and turn on the lights if they're off.
+  command_translated: Every Monday morning, from 9 to 10 a.m., check in real-time and close the blinds if they're still open seven seconds after the time when the window is opened, and close the curtains 10 seconds later. And during that time, check in real time and turn on the lights if they're off.
   code:
   - name: Scenario1
     cron: 0 9 * * 1
