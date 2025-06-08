@@ -83,19 +83,11 @@ def sample_device_classes(class_dict, k=3):
 import re
 from datetime import datetime
 
-def process_refined_commands(client, refined_text, service_doc, max_variants=3):
+def process_refined_commands(client, base_commands, service_doc, max_variants=3):
     data_pairs = []
-
-    # 1. 번호 있는 줄만 추출
-    refined_commands = [
-        re.sub(r"^\d+\.\s*", "", line).strip()
-        for line in refined_text.split("\n")
-        if re.match(r"^\d+\.\s*", line.strip())
-    ]
-
-    # 2. 명령어별 유사문장 및 코드 생성
-    for idx, command in enumerate(refined_commands, start=1):
-        #print(f"\n📌 명령어 {idx}: {command}")
+    base_commands = ast.literal_eval(base_commands)
+    for command in base_commands:
+        print(command)
         try:
             # 유사 문장 생성
             variants_text = expand_variants(client, command, n=max_variants)
@@ -104,17 +96,15 @@ def process_refined_commands(client, refined_text, service_doc, max_variants=3):
                 for v in variants_text.split("\n") if v.strip()
             ]
             all_variants = [command] + variants
+            print(all_variants)
 
             # 코드 생성
             current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
             code_obj = generate_python_from_text(client, command, service_doc, current_time)
             code_obj = transform_code(code_obj)[0]
-            #print(code_obj)
-            # 모든 문장에 동일한 코드 할당
 
-            for i, variant in enumerate(all_variants):
-                #print(f"  {i+1}. {variant}")
-                data_pairs.append({"text": variant, "code": code})
+            for variant in all_variants:
+                data_pairs.append({"text": variant, "code": code_obj})
 
 
         except Exception as e:
@@ -139,22 +129,21 @@ def generate_code_for_command(client, command, service_doc, now=None):
 # 1: 디바이스 스킬 기반 명령 생성
 
 
-def generate_commands(client, skills_dict, n=10, example=""):
+def generate_commands(client, skills_dict, n=10, examples="", category_context=""):
     devices_str = json.dumps(skills_dict, indent=2, ensure_ascii=False)
-    messages = load_prompt_roles("generate_prompt.txt", devices=devices_str, n=n, example=example)
-
-
     messages = load_prompt_roles(
-        "generate_prompt.txt",
-        devices=devices_str,
-        n=n,
-        examples=examples or ""
+        "generate_prompt_english.txt", 
+        devices=devices_str, 
+        n=n, 
+        examples=examples, 
+        context=category_context
     )
 
     response = client.chat.completions.create(
         model="gpt-4",
         messages=messages,
-        temperature=0.7
+        temperature=0.7,
+        
     )
     return response.choices[0].message.content.strip()
 
@@ -173,7 +162,7 @@ def refine_commands(client, commands_text):
 
 # 3: 유사 명령어 생성 
 def expand_variants(client, example, n=3):
-    messages = load_prompt_roles("variant_prompt.txt", command=example, n=n)
+    messages = load_prompt_roles("variant_prompt_english.txt", command=example, n=n)
     
     response = client.chat.completions.create(model="gpt-4", messages=messages, temperature=0.8)
     return response.choices[0].message.content.strip()
@@ -210,7 +199,7 @@ Please generate a full SoPLang JSON block with:
         temperature=0.7
     )
     content = response.choices[0].message.content.strip()
-    #print (content)
+    print (content)
     return content
 
 # def convert_dataset_to_joi_code(client, data_pairs):
@@ -267,20 +256,19 @@ def convert_data_pairs_to_joi_pairs(data_pairs):
 
 
 
-def load_command_examples(folder_path, file_num, start=0, end=None):
+def load_command_examples(folder_path, file_num, start=0, end=None, context_map=None):
     json_files = sorted(glob.glob(os.path.join(folder_path, f"category_{file_num}.json")))
     
     examples = []
     for file_path in json_files:
         with open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-            # 각 항목은 {"command": "..."} 형태라고 가정
             examples.extend([item["command"] for item in data if "command" in item])
 
     # 일부 샘플만 추출 (예: 5~10개)
     selected = examples[start:end] if end else examples
-    #print(selected)
-    return selected
+    category_context = context_map[file_num] if context_map and file_num in context_map else ""
+    return selected, category_context
 
 
 # 5: Python code 를 joi_lang 으로 변환
@@ -318,6 +306,9 @@ def load_example_variables(path):
                 result[var_name] = node.value.value.strip()
     return result
 
+def load_category_contexts(json_file_path):
+    with open(json_file_path, "r", encoding="utf-8") as f:
+        return {int(k): v for k, v in json.load(f).items()}
 
 # === 실행 === #
 if __name__ == "__main__":
@@ -325,27 +316,10 @@ if __name__ == "__main__":
     sampled_device = sample_device_classes(device_docs, k=10)
 
     folder = r"C:\Users\김지후\Downloads\testt\Project\Testset\Testset\json"
-    examples = load_command_examples(folder, 3, start=5, end=10)
-    # print(examples)
-    # base_commands = generate_commands(client, sampled_device, n=50, examples=examples)
-    data_pairs = []
-
-    for command in examples:
-        variants = expand_variants(client, command, n=5)
-        print("생성된 명령어\n", variants)
-        variants = [v.strip(" 1234567890.").strip() for v in variants.split("\n") if v.strip()]
-        
-        for v in variants:
-            generated_code = generate_code_for_command(client, v, sampled_device)
-            data_pairs.append({
-                "text": v,
-                "cron": generated_code.get("cron", ""),
-                "period": generated_code.get("period", -1),
-                "code": generated_code.get("code", "")
-            })
-    # data_pairs = process_refined_commands(client, refined_text, sampled_device, max_variants=3)
-    # #joi_code = convert_dataset_to_joi_code(client, data_pairs)
-    # #joi_code = convert_data_pairs_to_joi_pairs(data_pairs)
+    context_map = load_category_contexts("category_contexts.json")
+    examples, category_context = load_command_examples(folder, 3, start=5, end=10)
+    base_commands = generate_commands(client, sampled_device, n=5, examples=examples, category_context = category_context)
+    data_pairs = process_refined_commands(client, base_commands, sampled_device, max_variants=3)
     
     # # 🔽 파일로 저장
     with open("generated_dataset_3.json", "w", encoding="utf-8") as f:

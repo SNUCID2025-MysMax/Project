@@ -1,1202 +1,182 @@
 [
   {
-    "text": "\"가스 밸브를 닫아.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"가스 밸브를 잠가 주세요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"가스 밸브를 폐쇄해야 해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"가스 밸브를 차단해 주십시오.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"전등을 꺼.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_off()"
-  },
-  {
-    "text": "\"전등을 끄는 것이 좋겠어.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_off()"
-  },
-  {
-    "text": "\"전등을 종료해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_off()"
-  },
-  {
-    "text": "\"전등을 끄도록 하자.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_off()"
-  },
-  {
-    "text": "\"에어컨을 켜.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_on()"
-  },
-  {
-    "text": "\"에어컨을 작동시켜.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_on()"
-  },
-  {
-    "text": "\"에어컨을 활성화해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_on()"
-  },
-  {
-    "text": "\"에어컨을 시작해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_on()"
-  },
-  {
-    "text": "\"가스 밸브를 열어.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_open()"
-  },
-  {
-    "text": "\"가스 밸브를 풀어줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_open()"
-  },
-  {
-    "text": "\"가스 밸브를 개방해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_open()"
-  },
-  {
-    "text": "\"가스 밸브를 활성화시켜.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_open()"
-  },
-  {
-    "text": "\"전등을 켜.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_on()"
-  },
-  {
-    "text": "\"전등을 활성화해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_on()"
-  },
-  {
-    "text": "\"전등을 키워.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_on()"
-  },
-  {
-    "text": "\"조명을 켜줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_on()"
-  },
-  {
-    "text": "\"에어컨을 꺼.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_off()"
-  },
-  {
-    "text": "\"에어컨을 종료해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_off()"
-  },
-  {
-    "text": "\"에어컨을 중지시켜.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_off()"
-  },
-  {
-    "text": "\"에어컨의 작동을 멈춰.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_off()"
-  },
-  {
-    "text": "\"창문을 닫아.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_close()"
-  },
-  {
-    "text": "\"창문을 닫아주실래요?\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_close()"
-  },
-  {
-    "text": "\"창문을 닫는 것이 어떨까요?\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_close()"
-  },
-  {
-    "text": "\"창문을 닫아주시면 좋겠어요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_close()"
-  },
-  {
-    "text": "\"창문을 열어.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_open()"
-  },
-  {
-    "text": "\"창문을 열어 주시겠어요?\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_open()"
-  },
-  {
-    "text": "\"창문을 열어 달라는 요청이 들어왔습니다.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_open()"
-  },
-  {
-    "text": "\"창문을 열기를 원합니다.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_open()"
-  },
-  {
-    "text": "\"전등의 색깔을 파란색으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "hue = 67\nsaturation = 100\ncolor = {'hue': hue, 'saturation': saturation}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"전등 색깔을 파랑으로 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "hue = 67\nsaturation = 100\ncolor = {'hue': hue, 'saturation': saturation}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"전등의 색깔을 파란색으로 조정해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "hue = 67\nsaturation = 100\ncolor = {'hue': hue, 'saturation': saturation}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"전등을 파란색으로 전환시켜.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "hue = 67\nsaturation = 100\ncolor = {'hue': hue, 'saturation': saturation}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"에어컨의 모드를 히터로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('heat')"
-  },
-  {
-    "text": "\"히터 모드로 에어컨을 전환해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('heat')"
-  },
-  {
-    "text": "\"에어컨을 히터 모드로 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('heat')"
-  },
-  {
-    "text": "\"에어컨의 작동 모드를 히터로 전환해 주세요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('heat')"
-  },
-  {
-    "text": "\"에어컨의 모드를 냉방으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
-  },
-  {
-    "text": "\"에어컨을 냉방 모드로 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
-  },
-  {
-    "text": "\"에어컨의 작동 모드를 냉방으로 바꾸어봐.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
-  },
-  {
-    "text": "\"에어컨을 냉방 설정으로 전환해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('cool')"
-  },
-  {
-    "text": "\"가스 밸브를 열고 5분 후에 닫아.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_open()\n(#Clock).clock_delay(0, 5, 0)\n(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"5분 뒤에 닫기 전에 가스 밸브를 열어.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_open()\n(#Clock).clock_delay(0, 5, 0)\n(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"가스 밸브를 열고, 그 다음 5분 기다린 후에 닫아.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_open()\n(#Clock).clock_delay(0, 5, 0)\n(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"가스 밸브를 열은 후 5분 지나면 닫아.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_open()\n(#Clock).clock_delay(0, 5, 0)\n(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"에어컨의 온도를 26도로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(26)"
-  },
-  {
-    "text": "\"에어컨의 온도를 26도로 조정해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(26)"
-  },
-  {
-    "text": "\"에어컨의 온도를 26도로 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(26)"
-  },
-  {
-    "text": "\"에어컨의 온도를 26도로 맞춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(26)"
-  },
-  {
-    "text": "\"전등의 밝기를 50%로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(50, 0)"
-  },
-  {
-    "text": "\"전등 밝기를 절반으로 줄여.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(50, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 중간 수준으로 조절해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(50, 0)"
-  },
-  {
-    "text": "\"전등을 50% 밝기로 맞춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(50, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 100%로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(100, 0)"
-  },
-  {
-    "text": "\"전등 밝기를 최대로 맞춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(100, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 전부 키워.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(100, 0)"
-  },
-  {
-    "text": "\"전등을 가장 밝게 해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(100, 0)"
-  },
-  {
-    "text": "\"에어컨의 온도를 18도로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(18)"
-  },
-  {
-    "text": "\"에어컨의 온도를 18도로 조절해주길 바랍니다.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(18)"
-  },
-  {
-    "text": "\"에어컨의 온도를 18도로 낮춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(18)"
-  },
-  {
-    "text": "\"에어컨의 온도를 18도로 맞추어 주세요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(18)"
-  },
-  {
-    "text": "\"전등의 색깔을 빨간색으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 0, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등의 색을 빨간색으로 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 0, 'saturation': 100})"
-  },
-  {
-    "text": "\"빨간색으로 전등의 색을 조정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 0, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등의 색깔을 빨간색으로 전환시켜.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 0, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등의 색깔을 초록색으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 33, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"전등의 색깔을 초록으로 바꿔주세요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 33, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"전등의 색을 초록색으로 전환해 주세요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 33, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"초록색으로 전등 색깔을 설정해 주세요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 33, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"에어컨의 모드를 자동으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('auto')"
-  },
-  {
-    "text": "\"에어컨 모드를 자동으로 전환해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('auto')"
-  },
-  {
-    "text": "\"에어컨의 작동 모드를 자동으로 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('auto')"
-  },
-  {
-    "text": "\"에어컨을 자동 모드로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('auto')"
-  },
-  {
-    "text": "\"전등의 상태를 토글해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_toggle()"
-  },
-  {
-    "text": "\"전등의 상태를 전환해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_toggle()"
-  },
-  {
-    "text": "\"전등 상태를 바꿔봐.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_toggle()"
-  },
-  {
-    "text": "\"전등을 켜거나 끄도록 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switch_toggle()"
-  },
-  {
-    "text": "\"에어컨의 상태를 토글해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_toggle()"
-  },
-  {
-    "text": "\"에어컨의 상태를 전환해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_toggle()"
-  },
-  {
-    "text": "\"에어컨 상태를 바꾸도록 시행해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_toggle()"
-  },
-  {
-    "text": "\"에어컨의 상태를 변경하도록 하여라.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_toggle()"
-  },
-  {
-    "text": "\"가스 밸브의 상태를 토글해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_toggle()"
-  },
-  {
-    "text": "\"가스 밸브의 상태를 전환해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_toggle()"
-  },
-  {
-    "text": "\"가스 밸브의 작동 상태를 바꿔봐.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_toggle()"
-  },
-  {
-    "text": "\"가스 밸브를 다른 상태로 바꾸어줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#GasValve).valve_toggle()"
-  },
-  {
-    "text": "\"창문의 상태를 토글해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_open() if (#Window).windowControl_window == 'closed' else (#Window).windowControl_close()"
-  },
-  {
-    "text": "\"창문의 상태를 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_open() if (#Window).windowControl_window == 'closed' else (#Window).windowControl_close()"
-  },
-  {
-    "text": "\"창문 상태를 전환시켜줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_open() if (#Window).windowControl_window == 'closed' else (#Window).windowControl_close()"
-  },
-  {
-    "text": "\"창문의 상태를 변경해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Window).windowControl_open() if (#Window).windowControl_window == 'closed' else (#Window).windowControl_close()"
-  },
-  {
-    "text": "\"전등의 색상을 황색으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 50, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등 색상을 노랗게 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 50, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등의 색을 황색으로 조정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 50, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등의 색상을 황색으로 전환시켜줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 50, 'saturation': 100})"
-  },
-  {
-    "text": "\"에어컨을 2시간 후에 꺼.\"",
-    "cron": "49 23 29 5 *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_off()"
-  },
-  {
-    "text": "\"2시간 뒤에 에어컨을 끄도록 해.\"",
-    "cron": "49 23 29 5 *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_off()"
-  },
-  {
-    "text": "\"에어컨을 두 시간 지나고 나서 끄도록 설정해.\"",
-    "cron": "49 23 29 5 *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_off()"
-  },
-  {
-    "text": "\"에어컨이 2시간 후에 종료되도록 조정해.\"",
-    "cron": "49 23 29 5 *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_off()"
-  },
-  {
-    "text": "\"가스 밸브를 10분 후에 닫아.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 10, 0)\n(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"10분이 지난 후에 가스 밸브를 닫아야 해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 10, 0)\n(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"10분 후에 가스 밸브를 종료하도록 해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 10, 0)\n(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"10분 동안 기다렸다가 가스 밸브를 막아.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 10, 0)\n(#GasValve).valve_close()"
-  },
-  {
-    "text": "\"창문을 30분 후에 닫아.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 30, 0)\n(#Window).windowControl_close()"
-  },
-  {
-    "text": "\"30분이 지나면 창문을 닫아줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 30, 0)\n(#Window).windowControl_close()"
-  },
-  {
-    "text": "\"창문을 30분 뒤에는 꼭 닫아줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 30, 0)\n(#Window).windowControl_close()"
-  },
-  {
-    "text": "\"30분 후에 창문을 닫기를 요청해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 30, 0)\n(#Window).windowControl_close()"
-  },
-  {
-    "text": "\"전등을 15분 후에 꺼.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 15, 0)\n(#Light).switch_off()"
-  },
-  {
-    "text": "\"15분 뒤에 전등을 끄도록 해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 15, 0)\n(#Light).switch_off()"
-  },
-  {
-    "text": "\"전등이 15분 후에 꺼지도록 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 15, 0)\n(#Light).switch_off()"
-  },
-  {
-    "text": "\"15분 후에 전등이 꺼질 수 있게 해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 15, 0)\n(#Light).switch_off()"
-  },
-  {
-    "text": "\"전등의 색깔을 보라색으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 75, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"전등 색깔을 보라색으로 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 75, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"전등을 보라색으로 전환해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 75, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"전등의 색을 보라로 수정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 75, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"에어컨의 온도를 22도로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(22)"
-  },
-  {
-    "text": "\"에어컨 온도를 22도로 조정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(22)"
-  },
-  {
-    "text": "\"에어컨의 온도를 22도로 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(22)"
-  },
-  {
-    "text": "\"에어컨의 온도를 22도로 맞춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(22)"
-  },
-  {
-    "text": "\"전등의 밝기를 75%로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(75, 0)"
-  },
-  {
-    "text": "\"전등 밝기를 75%로 조절해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(75, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 75%로 낮춰.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(75, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 75%로 만들어.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(75, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 25%로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "light_level = 25\n(#Light).switchLevel_setLevel(light_level, 0)"
-  },
-  {
-    "text": "\"전등 밝기를 25 퍼센트로 조정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "light_level = 25\n(#Light).switchLevel_setLevel(light_level, 0)"
-  },
-  {
-    "text": "\"전등이 25% 밝게 빛나게 해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "light_level = 25\n(#Light).switchLevel_setLevel(light_level, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 1/4로 낮춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "light_level = 25\n(#Light).switchLevel_setLevel(light_level, 0)"
-  },
-  {
-    "text": "\"에어컨의 온도를 20도로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(20)"
-  },
-  {
-    "text": "\"에어컨 온도를 20도로 맞춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(20)"
-  },
-  {
-    "text": "\"에어컨의 온도를 20도로 조정해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(20)"
-  },
-  {
-    "text": "\"에어컨의 온도를 20도로 변경해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(20)"
-  },
-  {
-    "text": "\"전등의 색깔을 오렌지색으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 20, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등 색깔을 오렌지로 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 20, 'saturation': 100})"
-  },
-  {
-    "text": "\"오렌지색으로 전등 색상을 조정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 20, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등의 색깔을 오렌지색으로 전환해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 20, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등의 색깔을 노란색으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 60, 'saturation': 100})"
-  },
-  {
-    "text": "\"노란색으로 전등의 색깔을 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 60, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등 색깔을 노란색으로 조정해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 60, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등을 노란색으로 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 60, 'saturation': 100})"
-  },
-  {
-    "text": "\"에어컨의 모드를 히트로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('heat')"
-  },
-  {
-    "text": "\"에어컨 모드를 히트로 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('heat')"
-  },
-  {
-    "text": "\"히트 모드로 에어컨을 전환해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('heat')"
-  },
-  {
-    "text": "\"에어컨을 히트 모드로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setAirConditionerMode('heat')"
-  },
-  {
-    "text": "\"전등의 상태를 5분 후에 토글해.\"",
-    "cron": "56 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 5, 0)\n(#Light).switch_toggle()"
-  },
-  {
-    "text": "\"전등의 상태를 5분 뒤에 변경해.\"",
-    "cron": "56 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 5, 0)\n(#Light).switch_toggle()"
-  },
-  {
-    "text": "\"5분이 지난 후에 전등의 상태를 바꿔.\"",
-    "cron": "56 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 5, 0)\n(#Light).switch_toggle()"
-  },
-  {
-    "text": "\"5분 후에 전등의 상태를 전환해주세요.\"",
-    "cron": "56 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 5, 0)\n(#Light).switch_toggle()"
-  },
-  {
-    "text": "\"에어컨의 상태를 10분 후에 토글해.\"",
-    "cron": "51 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=10, second=0)\n(#AirConditioner).switch_toggle()"
-  },
-  {
-    "text": "\"10분 뒤에 에어컨 상태를 변경해.\"",
-    "cron": "51 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=10, second=0)\n(#AirConditioner).switch_toggle()"
-  },
-  {
-    "text": "\"에어컨의 상태를 10분 후에 바꿔.\"",
-    "cron": "51 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=10, second=0)\n(#AirConditioner).switch_toggle()"
-  },
-  {
-    "text": "\"10분 후에 에어컨을 다른 상태로 전환해.\"",
-    "cron": "51 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=10, second=0)\n(#AirConditioner).switch_toggle()"
-  },
-  {
-    "text": "\"가스 밸브의 상태를 15분 후에 토글해.\"",
-    "cron": "51 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=15, second=0)\nif ((#GasValve).valve_valve == 'open') {\n    (#GasValve).valve_close()\n} else {\n    (#GasValve).valve_open()\n}"
-  },
-  {
-    "text": "\"15분이 지난 후에 가스 밸브의 상태를 전환해.\"",
-    "cron": "51 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=15, second=0)\nif ((#GasValve).valve_valve == 'open') {\n    (#GasValve).valve_close()\n} else {\n    (#GasValve).valve_open()\n}"
-  },
-  {
-    "text": "\"15분 후에는 가스 밸브의 상태를 바꿔.\"",
-    "cron": "51 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=15, second=0)\nif ((#GasValve).valve_valve == 'open') {\n    (#GasValve).valve_close()\n} else {\n    (#GasValve).valve_open()\n}"
-  },
-  {
-    "text": "\"가스 밸브의 상태를 15분 뒤에 변경해.\"",
-    "cron": "51 21 29 5 4",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=15, second=0)\nif ((#GasValve).valve_valve == 'open') {\n    (#GasValve).valve_close()\n} else {\n    (#GasValve).valve_open()\n}"
-  },
-  {
-    "text": "\"창문의 상태를 30분 후에 토글해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 30, 0)\n(#Window).windowControl_open() if (#Window).windowControl_window == 'closed' else (#Window).windowControl_close()"
-  },
-  {
-    "text": "\"창문의 상태를 30분 뒤에 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 30, 0)\n(#Window).windowControl_open() if (#Window).windowControl_window == 'closed' else (#Window).windowControl_close()"
-  },
-  {
-    "text": "\"30분 후에 창문의 상태를 변경해 주세요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 30, 0)\n(#Window).windowControl_open() if (#Window).windowControl_window == 'closed' else (#Window).windowControl_close()"
-  },
-  {
-    "text": "\"30분이 지나면 창문의 상태를 전환해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 30, 0)\n(#Window).windowControl_open() if (#Window).windowControl_window == 'closed' else (#Window).windowControl_close()"
-  },
-  {
-    "text": "\"전등의 색상을 청록색으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 50, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등의 색을 청록색으로 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 50, 'saturation': 100})"
-  },
-  {
-    "text": "\"청록색으로 전등의 색상을 조정해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 50, 'saturation': 100})"
-  },
-  {
-    "text": "\"전등을 청록색으로 색 변경을 해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).colorControl_setColor({'hue': 50, 'saturation': 100})"
-  },
-  {
-    "text": "\"에어컨을 3시간 후에 켜.\"",
-    "cron": "51 0 30 5 *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_on()"
-  },
-  {
-    "text": "\"3시간 뒤에 에어컨을 켜기로 설정해.\"",
-    "cron": "51 0 30 5 *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_on()"
-  },
-  {
-    "text": "\"에어컨을 3시간 후에 작동시켜.\"",
-    "cron": "51 0 30 5 *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_on()"
-  },
-  {
-    "text": "\"3시간 후에 에어컨이 켜질 수 있도록 해.\"",
-    "cron": "51 0 30 5 *",
-    "period": -1,
-    "code": "(#AirConditioner).switch_on()"
-  },
-  {
-    "text": "\"가스 밸브를 20분 후에 열어.\"",
-    "cron": "51 21 29 5 *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 20, 0)\n(#GasValve).valve_open()"
-  },
-  {
-    "text": "\"20분이 지난 후에 가스 밸브를 열어주세요.\"",
-    "cron": "51 21 29 5 *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 20, 0)\n(#GasValve).valve_open()"
-  },
-  {
-    "text": "\"20분 뒤에 가스 밸브를 개방해.\"",
-    "cron": "51 21 29 5 *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 20, 0)\n(#GasValve).valve_open()"
-  },
-  {
-    "text": "\"20분 후에 가스 밸브를 작동시켜.\"",
-    "cron": "51 21 29 5 *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 20, 0)\n(#GasValve).valve_open()"
-  },
-  {
-    "text": "\"창문을 45분 후에 열어.\"",
-    "cron": "52 21 29 5 5",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 45, 0)\n(#Window).windowControl_open()"
-  },
-  {
-    "text": "\"45분 뒤에 창문을 열어주세요.\"",
-    "cron": "52 21 29 5 5",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 45, 0)\n(#Window).windowControl_open()"
-  },
-  {
-    "text": "\"창문을 여는 것을 45분 후로 예약해.\"",
-    "cron": "52 21 29 5 5",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 45, 0)\n(#Window).windowControl_open()"
-  },
-  {
-    "text": "\"창문이 45분 후에 열리도록 설정해.\"",
-    "cron": "52 21 29 5 5",
-    "period": -1,
-    "code": "(#Clock).clock_delay(0, 45, 0)\n(#Window).windowControl_open()"
-  },
-  {
-    "text": "\"전등을 30분 후에 켜.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=30, second=0)\n(#Light).switch_on()"
-  },
-  {
-    "text": "\"전등을 30분 뒤에 켜주길 바랍니다.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=30, second=0)\n(#Light).switch_on()"
-  },
-  {
-    "text": "\"30분 후에 전등을 켜는 것이 좋겠습니다.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=30, second=0)\n(#Light).switch_on()"
-  },
-  {
-    "text": "\"전등은 30분 이후에 켜도록 해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Clock).clock_delay(hour=0, minute=30, second=0)\n(#Light).switch_on()"
-  },
-  {
-    "text": "\"전등의 색깔을 핑크색으로 변경해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 83, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"핑크색으로 전등의 색을 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 83, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"전등의 색깔을 핑크로 바꾸도록 해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 83, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"핑크색으로 전등의 색깔을 변경해주세요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "color = {'hue': 83, 'saturation': 100}\n(#Light).colorControl_setColor(color)"
-  },
-  {
-    "text": "\"에어컨의 온도를 24도로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(24)"
-  },
-  {
-    "text": "\"에어컨을 24도로 조정해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(24)"
-  },
-  {
-    "text": "\"에어컨의 온도를 24도로 바꿔.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(24)"
-  },
-  {
-    "text": "\"에어컨의 온도를 24도로 맞춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(24)"
-  },
-  {
-    "text": "\"전등의 밝기를 80%로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(80, 0)"
-  },
-  {
-    "text": "\"전등 밝기를 팔십 퍼센트로 조절해 줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(80, 0)"
-  },
-  {
-    "text": "\"80퍼센트로 전등의 밝기를 맞춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(80, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 80퍼센트로 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#Light).switchLevel_setLevel(80, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 20%로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "level = 20\n(#Light).switchLevel_setLevel(level, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 20퍼센트로 조절해주세요.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "level = 20\n(#Light).switchLevel_setLevel(level, 0)"
-  },
-  {
-    "text": "\"전등 밝기를 20%로 낮추어 주십시오.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "level = 20\n(#Light).switchLevel_setLevel(level, 0)"
-  },
-  {
-    "text": "\"전등의 밝기를 20%로 맞춰주길 바랍니다.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "level = 20\n(#Light).switchLevel_setLevel(level, 0)"
-  },
-  {
-    "text": "\"에어컨의 온도를 16도로 설정해.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(16)"
-  },
-  {
-    "text": "\"에어컨을 16도로 조정해줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(16)"
-  },
-  {
-    "text": "\"에어컨의 온도를 16도로 바꿔줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(16)"
-  },
-  {
-    "text": "\"에어컨의 온도를 16도로 맞춰줘.\"",
-    "cron": "* * * * *",
-    "period": -1,
-    "code": "(#AirConditioner).airConditionerMode_setTemperature(16)"
+    "text": "Turn off the air conditioner right now.",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "(#AirConditioner).switch_off()"
+    }
+  },
+  {
+    "text": "\"Could you please switch off the air conditioning immediately?\"",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "(#AirConditioner).switch_off()"
+    }
+  },
+  {
+    "text": "\"I need you to shut down the air conditioner at this very moment.\"",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "(#AirConditioner).switch_off()"
+    }
+  },
+  {
+    "text": "\"Please, deactivate the air conditioner straight away.\"",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "(#AirConditioner).switch_off()"
+    }
+  },
+  {
+    "text": "Set the feeder to dispense 2 servings at 8 AM every day.",
+    "code": {
+      "name": "Scenario1",
+      "cron": "0 8 * * *",
+      "period": -1,
+      "code": "(#Feeder).feederPortion_setFeedPortion(2, 'servings')\n(#Feeder).feederOperatingState_startFeeding()"
+    }
+  },
+  {
+    "text": "Could you please program the feeder to release two servings daily at 8 in the morning?",
+    "code": {
+      "name": "Scenario1",
+      "cron": "0 8 * * *",
+      "period": -1,
+      "code": "(#Feeder).feederPortion_setFeedPortion(2, 'servings')\n(#Feeder).feederOperatingState_startFeeding()"
+    }
+  },
+  {
+    "text": "I'd like you to adjust the feeder's settings to distribute two portions every day at 8 AM",
+    "code": {
+      "name": "Scenario1",
+      "cron": "0 8 * * *",
+      "period": -1,
+      "code": "(#Feeder).feederPortion_setFeedPortion(2, 'servings')\n(#Feeder).feederOperatingState_startFeeding()"
+    }
+  },
+  {
+    "text": "Could you arrange for the feeder to dispense two servings each day when the clock strikes 8 in the morning?",
+    "code": {
+      "name": "Scenario1",
+      "cron": "0 8 * * *",
+      "period": -1,
+      "code": "(#Feeder).feederPortion_setFeedPortion(2, 'servings')\n(#Feeder).feederOperatingState_startFeeding()"
+    }
+  },
+  {
+    "text": "When the presence sensor detects someone, immediately turn on the alarm siren.",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "if (((#PresenceSensor).presenceSensor_presence == 'present')) {\n    (#Alarm).alarm_siren()\n}"
+    }
+  },
+  {
+    "text": "Should the presence sensor perceive someone's presence, make sure to activate the alarm siren without delay",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "if (((#PresenceSensor).presenceSensor_presence == 'present')) {\n    (#Alarm).alarm_siren()\n}"
+    }
+  },
+  {
+    "text": "If someone is detected by the presence sensor, I want the alarm siren to be turned on right away",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "if (((#PresenceSensor).presenceSensor_presence == 'present')) {\n    (#Alarm).alarm_siren()\n}"
+    }
+  },
+  {
+    "text": "The moment the presence sensor picks up on someone, it's crucial to swiftly switch on the alarm siren",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "if (((#PresenceSensor).presenceSensor_presence == 'present')) {\n    (#Alarm).alarm_siren()\n}"
+    }
+  },
+  {
+    "text": "After 10 seconds, toggle the switch of the irrigator.",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "(#Irrigator).switch_toggle()\n(#Clock).clock_delay(0, 0, 10)\n(#Irrigator).switch_toggle()"
+    }
+  },
+  {
+    "text": "Wait for ten seconds and then flip the switch on the irrigator",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "(#Irrigator).switch_toggle()\n(#Clock).clock_delay(0, 0, 10)\n(#Irrigator).switch_toggle()"
+    }
+  },
+  {
+    "text": "Allow ten seconds to pass before changing the state of the irrigator's switch",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "(#Irrigator).switch_toggle()\n(#Clock).clock_delay(0, 0, 10)\n(#Irrigator).switch_toggle()"
+    }
+  },
+  {
+    "text": "Following a ten-second pause, please alter the position of the irrigator's switch",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": -1,
+      "code": "(#Irrigator).switch_toggle()\n(#Clock).clock_delay(0, 0, 10)\n(#Irrigator).switch_toggle()"
+    }
+  },
+  {
+    "text": "Every 5 minutes, check if the contact sensor is open and if it is, turn on the light.",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": 300000,
+      "code": "if (((#ContactSensor).contactSensor_contact == 'open')) {\n    (#Light).switch_on()\n}"
+    }
+  },
+  {
+    "text": "\"Could you please monitor the contact sensor every five minutes and if it's open, could you switch the light on?\"",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": 300000,
+      "code": "if (((#ContactSensor).contactSensor_contact == 'open')) {\n    (#Light).switch_on()\n}"
+    }
+  },
+  {
+    "text": "\"Every five minutes, could you make sure to verify whether the contact sensor is open and, in the affirmative, turn on the light for me?\"",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": 300000,
+      "code": "if (((#ContactSensor).contactSensor_contact == 'open')) {\n    (#Light).switch_on()\n}"
+    }
+  },
+  {
+    "text": "\"I'd like you to inspect the contact sensor every five minutes and if it happens to be open, please illuminate the room by switching on the light.\"",
+    "code": {
+      "name": "Scenario1",
+      "cron": "* * * * *",
+      "period": 300000,
+      "code": "if (((#ContactSensor).contactSensor_contact == 'open')) {\n    (#Light).switch_on()\n}"
+    }
   }
 ]
