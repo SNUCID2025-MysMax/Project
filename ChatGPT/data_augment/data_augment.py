@@ -11,7 +11,7 @@ from conversion import transform_code
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from grammar import grammar
 from conversion import transform_code
-import glob
+import yaml
 
 load_dotenv()
 apikey = os.getenv("OPENAI_API_KEY")
@@ -83,11 +83,16 @@ def sample_device_classes(class_dict, k=3):
 import re
 from datetime import datetime
 
-def process_refined_commands(client, base_commands, service_doc, max_variants=3):
+def process_refined_commands(client, base_commands, service_doc, max_variants):
     data_pairs = []
-    base_commands = ast.literal_eval(base_commands)
+    if isinstance(base_commands, str):
+        base_commands = [
+            line.strip(" 1234567890.-").strip()
+            for line in base_commands.split("\n")
+            if line.strip()
+        ]
     for command in base_commands:
-        print(command)
+        #print(command)
         try:
             # 유사 문장 생성
             variants_text = expand_variants(client, command, n=max_variants)
@@ -96,7 +101,7 @@ def process_refined_commands(client, base_commands, service_doc, max_variants=3)
                 for v in variants_text.split("\n") if v.strip()
             ]
             all_variants = [command] + variants
-            print(all_variants)
+            #print(all_variants)
 
             # 코드 생성
             current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
@@ -112,25 +117,15 @@ def process_refined_commands(client, base_commands, service_doc, max_variants=3)
 
     return data_pairs
 
-def generate_code_for_command(client, command, service_doc, now=None):
-    """
-    주어진 명령어(command)에 대해 코드 오브젝트를 생성하고 변환하여 반환한다.
-    """
-    try:
-        current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
-        code_obj = generate_python_from_text(client, command, service_doc, current_time)
-        transformed = transform_code(code_obj)
-        return transformed[0] if transformed else {}
-    except Exception as e:
-        print(f"❌ 코드 생성 실패 ({command}): {e}")
-        return {}
 
 # ===  GPT 프롬프트 구성 === #
 # 1: 디바이스 스킬 기반 명령 생성
 
 
-def generate_commands(client, skills_dict, n=10, examples="", category_context=""):
+def generate_commands(client, skills_dict, n, examples="", category_context=""):
     devices_str = json.dumps(skills_dict, indent=2, ensure_ascii=False)
+    if isinstance(examples, list):
+        examples = "\n".join(f"{i+1}. {ex}" for i, ex in enumerate(examples))
     messages = load_prompt_roles(
         "generate_prompt_english.txt", 
         devices=devices_str, 
@@ -143,8 +138,11 @@ def generate_commands(client, skills_dict, n=10, examples="", category_context="
         model="gpt-4",
         messages=messages,
         temperature=0.7,
-        
     )
+    usage = response.usage
+    print(response.choices[0].message.content.strip())
+    print("Input tokens:", usage.prompt_tokens)
+    print("Output tokens:", usage.completion_tokens)
     return response.choices[0].message.content.strip()
 
 
@@ -161,10 +159,14 @@ def refine_commands(client, commands_text):
 
 
 # 3: 유사 명령어 생성 
-def expand_variants(client, example, n=3):
+def expand_variants(client, example, n):
     messages = load_prompt_roles("variant_prompt_english.txt", command=example, n=n)
     
     response = client.chat.completions.create(model="gpt-4", messages=messages, temperature=0.8)
+    usage = response.usage
+    print(response.choices[0].message.content.strip())
+    print("Input tokens:", usage.prompt_tokens)
+    print("Output tokens:", usage.completion_tokens)
     return response.choices[0].message.content.strip()
 
 
@@ -198,41 +200,13 @@ Please generate a full SoPLang JSON block with:
         messages=messages,
         temperature=0.7
     )
+    usage = response.usage
+    print(response.choices[0].message.content.strip())
+    print("Input tokens:", usage.prompt_tokens)
+    print("Output tokens:", usage.completion_tokens)
     content = response.choices[0].message.content.strip()
-    print (content)
+    
     return content
-
-# def convert_dataset_to_joi_code(client, data_pairs):
-#     joi_data = []
-
-#     for i, pair in enumerate(data_pairs):
-#         python_code = pair["code"]
-#         text = pair["text"]
-
-#         # GPT 프롬프트 구성
-#         messages = load_prompt_roles("joi_prompt.txt", python_code=python_code)
-
-#         try:
-#             response = client.chat.completions.create(
-#                 model="gpt-4",
-#                 messages=messages,
-#                 temperature=0.7
-#             )
-#             joi_code = response.choices[0].message.content.strip()
-
-#             print(f"\n✅ 변환된 JOI Lang 코드 ({i+1}/{len(data_pairs)}):")
-#             print(joi_code)
-
-#         except Exception as e:
-#             print(f"❌ JOI 변환 실패 (index {i}): {e}")
-#             joi_code = None
-
-#         joi_data.append({
-#             "text": text,
-#             "joi_code": joi_code
-#         })
-#     print(f"\n✅ 총 {len(joi_data)}개의 명령어-JOI 코드 쌍이 generated_dataset.json에 저장되었습니다.")
-#     return joi_data
 
 def convert_data_pairs_to_joi_pairs(data_pairs):
     joi_pairs = []
@@ -257,15 +231,14 @@ def convert_data_pairs_to_joi_pairs(data_pairs):
 
 
 def load_command_examples(folder_path, file_num, start=0, end=None, context_map=None):
-    json_files = sorted(glob.glob(os.path.join(folder_path, f"category_{file_num}.json")))
+    yaml_file = os.path.join(folder_path, f"category_{file_num}.yaml")
     
     examples = []
-    for file_path in json_files:
-        with open(file_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            examples.extend([item["command"] for item in data if "command" in item])
+    if os.path.exists(yaml_file):
+        with open(yaml_file, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+            examples.extend([item["command_translated"] for item in data if "command_translated" in item])
 
-    # 일부 샘플만 추출 (예: 5~10개)
     selected = examples[start:end] if end else examples
     category_context = context_map[file_num] if context_map and file_num in context_map else ""
     return selected, category_context
@@ -315,15 +288,18 @@ if __name__ == "__main__":
     device_docs = parse_class_docstrings("../0.1.3_docstring_v3.txt")
     sampled_device = sample_device_classes(device_docs, k=10)
 
-    folder = r"C:\Users\김지후\Downloads\testt\Project\Testset\Testset\json"
+    folder = r"C:\Users\김지후\Downloads\testt\Project\Testset\TestsetWithDevices_translated"
     context_map = load_category_contexts("category_contexts.json")
-    examples, category_context = load_command_examples(folder, 3, start=5, end=10)
-    base_commands = generate_commands(client, sampled_device, n=5, examples=examples, category_context = category_context)
-    data_pairs = process_refined_commands(client, base_commands, sampled_device, max_variants=3)
+    examples, category_context = load_command_examples(folder, 1, start=5, end=10)
+    #print(examples)
+    base_commands = generate_commands(client, sampled_device, n=1, examples=examples, category_context = category_context)
+    with open("generated_dataset_1.json", "w", encoding="utf-8") as f:
+         json.dump(base_commands, f, ensure_ascii=False, indent=2)
+    # data_pairs = process_refined_commands(client, base_commands, sampled_device, max_variants=1)
     
-    # # 🔽 파일로 저장
-    with open("generated_dataset_3.json", "w", encoding="utf-8") as f:
-        json.dump(data_pairs, f, ensure_ascii=False, indent=2)
+    # # # 🔽 파일로 저장
+    # with open("generated_dataset_1.json", "w", encoding="utf-8") as f:
+    #     json.dump(data_pairs, f, ensure_ascii=False, indent=2)
 
-    print(f"\n 총 {len(data_pairs)}개의 명령어-코드 쌍이 generated_dataset_3.json에 저장되었습니다.")
+    print(f"\n 총 {len(data_pairs)}개의 명령어-코드 쌍이 generated_dataset_1.json에 저장되었습니다.")
 

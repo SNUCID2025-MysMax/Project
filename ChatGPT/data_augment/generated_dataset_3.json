@@ -1,182 +1,182 @@
 [
   {
-    "text": "Turn off the air conditioner right now.",
+    "text": "Turn off the air purifier with the tag \"living room\" and then turn it on after 10 seconds",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
       "period": -1,
-      "code": "(#AirConditioner).switch_off()"
+      "code": "(#AirPurifier #living room).switch_off()\n(#Clock).clock_delay(0, 0, 10)\n(#AirPurifier #living room).switch_on()"
     }
   },
   {
-    "text": "\"Could you please switch off the air conditioning immediately?\"",
+    "text": "Could you please switch off the living room air purifier and then reactivate it after a ten-second pause?",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
       "period": -1,
-      "code": "(#AirConditioner).switch_off()"
+      "code": "(#AirPurifier #living room).switch_off()\n(#Clock).clock_delay(0, 0, 10)\n(#AirPurifier #living room).switch_on()"
     }
   },
   {
-    "text": "\"I need you to shut down the air conditioner at this very moment.\"",
+    "text": "I'd like you to power down the air purifier labelled 'living room', and then restore power to it after waiting for ten seconds",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
       "period": -1,
-      "code": "(#AirConditioner).switch_off()"
+      "code": "(#AirPurifier #living room).switch_off()\n(#Clock).clock_delay(0, 0, 10)\n(#AirPurifier #living room).switch_on()"
     }
   },
   {
-    "text": "\"Please, deactivate the air conditioner straight away.\"",
+    "text": "Please deactivate the 'living room' air purifier and after a lapse of ten seconds, switch it back on",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
       "period": -1,
-      "code": "(#AirConditioner).switch_off()"
+      "code": "(#AirPurifier #living room).switch_off()\n(#Clock).clock_delay(0, 0, 10)\n(#AirPurifier #living room).switch_on()"
     }
   },
   {
-    "text": "Set the feeder to dispense 2 servings at 8 AM every day.",
+    "text": "For the humidifier tagged as \"bedroom\", turn off the device at midnight and turn it on every morning at 7 AM",
     "code": {
       "name": "Scenario1",
-      "cron": "0 8 * * *",
+      "cron": "0 0 * * *",
       "period": -1,
-      "code": "(#Feeder).feederPortion_setFeedPortion(2, 'servings')\n(#Feeder).feederOperatingState_startFeeding()"
+      "code": "(#Humidifier #bedroom).switch_off()"
     }
   },
   {
-    "text": "Could you please program the feeder to release two servings daily at 8 in the morning?",
+    "text": "Please ensure that the humidifier marked as \"bedroom\" is switched off at the stroke of midnight and is powered back on each morning at 7 AM",
     "code": {
       "name": "Scenario1",
-      "cron": "0 8 * * *",
+      "cron": "0 0 * * *",
       "period": -1,
-      "code": "(#Feeder).feederPortion_setFeedPortion(2, 'servings')\n(#Feeder).feederOperatingState_startFeeding()"
+      "code": "(#Humidifier #bedroom).switch_off()"
     }
   },
   {
-    "text": "I'd like you to adjust the feeder's settings to distribute two portions every day at 8 AM",
+    "text": "I'd like you to turn off the \"bedroom\" tagged humidifier when the clock hits midnight and then turn it back on every day at 7 in the morning",
     "code": {
       "name": "Scenario1",
-      "cron": "0 8 * * *",
+      "cron": "0 0 * * *",
       "period": -1,
-      "code": "(#Feeder).feederPortion_setFeedPortion(2, 'servings')\n(#Feeder).feederOperatingState_startFeeding()"
+      "code": "(#Humidifier #bedroom).switch_off()"
     }
   },
   {
-    "text": "Could you arrange for the feeder to dispense two servings each day when the clock strikes 8 in the morning?",
+    "text": "Can you make sure the humidifier identified as \"bedroom\" is turned off at the end of each day at midnight and subsequently switched on every morning at 7 AM?",
     "code": {
       "name": "Scenario1",
-      "cron": "0 8 * * *",
+      "cron": "0 0 * * *",
       "period": -1,
-      "code": "(#Feeder).feederPortion_setFeedPortion(2, 'servings')\n(#Feeder).feederOperatingState_startFeeding()"
+      "code": "(#Humidifier #bedroom).switch_off()"
     }
   },
   {
-    "text": "When the presence sensor detects someone, immediately turn on the alarm siren.",
+    "text": "Open the valve tagged as \"kitchen\" when the temperature exceeds 30°C",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": -1,
-      "code": "if (((#PresenceSensor).presenceSensor_presence == 'present')) {\n    (#Alarm).alarm_siren()\n}"
+      "period": 100,
+      "code": "if (((#AirQualityDetector).temperatureMeasurement_temperature > 30)) {\n    (#Valve #kitchen).valve_open()\n}"
     }
   },
   {
-    "text": "Should the presence sensor perceive someone's presence, make sure to activate the alarm siren without delay",
+    "text": "Should the temperature go beyond 30°C, please ensure that the valve labelled \"kitchen\" is opened",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": -1,
-      "code": "if (((#PresenceSensor).presenceSensor_presence == 'present')) {\n    (#Alarm).alarm_siren()\n}"
+      "period": 100,
+      "code": "if (((#AirQualityDetector).temperatureMeasurement_temperature > 30)) {\n    (#Valve #kitchen).valve_open()\n}"
     }
   },
   {
-    "text": "If someone is detected by the presence sensor, I want the alarm siren to be turned on right away",
+    "text": "Once the temperature surpasses 30°C, you must open the valve that carries the \"kitchen\" tag",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": -1,
-      "code": "if (((#PresenceSensor).presenceSensor_presence == 'present')) {\n    (#Alarm).alarm_siren()\n}"
+      "period": 100,
+      "code": "if (((#AirQualityDetector).temperatureMeasurement_temperature > 30)) {\n    (#Valve #kitchen).valve_open()\n}"
     }
   },
   {
-    "text": "The moment the presence sensor picks up on someone, it's crucial to swiftly switch on the alarm siren",
+    "text": "Given a temperature rise above 30°C, it's crucial to open the \"kitchen\" tagged valve",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": -1,
-      "code": "if (((#PresenceSensor).presenceSensor_presence == 'present')) {\n    (#Alarm).alarm_siren()\n}"
+      "period": 100,
+      "code": "if (((#AirQualityDetector).temperatureMeasurement_temperature > 30)) {\n    (#Valve #kitchen).valve_open()\n}"
     }
   },
   {
-    "text": "After 10 seconds, toggle the switch of the irrigator.",
+    "text": "Switch off the dehumidifier tagged as \"basement\" as soon as the humidity is below 50%",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": -1,
-      "code": "(#Irrigator).switch_toggle()\n(#Clock).clock_delay(0, 0, 10)\n(#Irrigator).switch_toggle()"
+      "period": 100,
+      "code": "if (((#AirQualityDetector).relativeHumidityMeasurement_humidity < 50)) {\n    (#Dehumidifier).switch_off()\n    period = -1\n}"
     }
   },
   {
-    "text": "Wait for ten seconds and then flip the switch on the irrigator",
+    "text": "\"Once the humidity dips below 50%, please turn off the dehumidifier labeled 'basement'.\"",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": -1,
-      "code": "(#Irrigator).switch_toggle()\n(#Clock).clock_delay(0, 0, 10)\n(#Irrigator).switch_toggle()"
+      "period": 100,
+      "code": "if (((#AirQualityDetector).relativeHumidityMeasurement_humidity < 50)) {\n    (#Dehumidifier).switch_off()\n    period = -1\n}"
     }
   },
   {
-    "text": "Allow ten seconds to pass before changing the state of the irrigator's switch",
+    "text": "\"If the humidity level falls under 50%, please deactivate the 'basement' dehumidifier immediately.\"",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": -1,
-      "code": "(#Irrigator).switch_toggle()\n(#Clock).clock_delay(0, 0, 10)\n(#Irrigator).switch_toggle()"
+      "period": 100,
+      "code": "if (((#AirQualityDetector).relativeHumidityMeasurement_humidity < 50)) {\n    (#Dehumidifier).switch_off()\n    period = -1\n}"
     }
   },
   {
-    "text": "Following a ten-second pause, please alter the position of the irrigator's switch",
+    "text": "\"As soon as the moisture level hits below 50%, could you please shut down the dehumidifier tagged as 'basement'?\"",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": -1,
-      "code": "(#Irrigator).switch_toggle()\n(#Clock).clock_delay(0, 0, 10)\n(#Irrigator).switch_toggle()"
+      "period": 100,
+      "code": "if (((#AirQualityDetector).relativeHumidityMeasurement_humidity < 50)) {\n    (#Dehumidifier).switch_off()\n    period = -1\n}"
     }
   },
   {
-    "text": "Every 5 minutes, check if the contact sensor is open and if it is, turn on the light.",
+    "text": "Activate the siren tagged as \"front door\" immediately when it is detected that the light level falls below 10 lux",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": 300000,
-      "code": "if (((#ContactSensor).contactSensor_contact == 'open')) {\n    (#Light).switch_on()\n}"
+      "period": 100,
+      "code": "if (((#LightSensor).lightLevel_light < 10)) {\n    (#Siren #front door).switch_on()\n}"
     }
   },
   {
-    "text": "\"Could you please monitor the contact sensor every five minutes and if it's open, could you switch the light on?\"",
+    "text": "As soon as it's noticed that the light level drops under 10 lux, immediately turn on the siren labeled \"front door\"",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": 300000,
-      "code": "if (((#ContactSensor).contactSensor_contact == 'open')) {\n    (#Light).switch_on()\n}"
+      "period": 100,
+      "code": "if (((#LightSensor).lightLevel_light < 10)) {\n    (#Siren #front door).switch_on()\n}"
     }
   },
   {
-    "text": "\"Every five minutes, could you make sure to verify whether the contact sensor is open and, in the affirmative, turn on the light for me?\"",
+    "text": "The moment the light level goes below 10 lux, promptly set off the siren identified as \"front door\"",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": 300000,
-      "code": "if (((#ContactSensor).contactSensor_contact == 'open')) {\n    (#Light).switch_on()\n}"
+      "period": 100,
+      "code": "if (((#LightSensor).lightLevel_light < 10)) {\n    (#Siren #front door).switch_on()\n}"
     }
   },
   {
-    "text": "\"I'd like you to inspect the contact sensor every five minutes and if it happens to be open, please illuminate the room by switching on the light.\"",
+    "text": "Promptly enable the \"front door\" siren once the light level is detected to dip beneath 10 lux",
     "code": {
       "name": "Scenario1",
       "cron": "* * * * *",
-      "period": 300000,
-      "code": "if (((#ContactSensor).contactSensor_contact == 'open')) {\n    (#Light).switch_on()\n}"
+      "period": 100,
+      "code": "if (((#LightSensor).lightLevel_light < 10)) {\n    (#Siren #front door).switch_on()\n}"
     }
   }
 ]
