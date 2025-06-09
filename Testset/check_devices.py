@@ -1,29 +1,47 @@
-import os, sys, tqdm, re
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-# from FlagEmbedding import BGEM3FlagModel
-# from Embedding.embedding import hybrid_recommend
 
+import os, sys, tqdm, re
 import yaml
 from yaml.representer import SafeRepresenter
 
-class LiteralString(str):
-    pass
+from ruamel.yaml import YAML
+from ruamel.yaml.scalarstring import LiteralScalarString
+from ruamel.yaml.scalarstring import DoubleQuotedScalarString
 
-def literal_str_representer(dumper, data):
-    return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
+yaml = YAML()
+yaml.default_flow_style = False
+yaml.allow_unicode = True
+yaml.width = float('inf')
 
-yaml.add_representer(LiteralString, literal_str_representer)
+# test_dir = "./TestsetWithDevices_translated"
+# output_dir = "./TestsetWithDevices_translated2"
+# for i in range(0, 17):
+#     file_name = f"{test_dir}/category_{i}.yaml"
+#     output_name = f"{output_dir}/category_{i}.yaml"
 
-class QuotedString(str):
-    pass
+#     ret = []
 
-def quoted_str_representer(dumper, data):
-    return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+#     with open(file_name, "r") as f:
+#         data = yaml.load(f)
 
-yaml.add_representer(QuotedString, quoted_str_representer)
-
-yaml.SafeDumper.add_representer(LiteralString, literal_str_representer)
-yaml.SafeDumper.add_representer(QuotedString, quoted_str_representer)
+#     print(file_name)
+#     for idx,item in enumerate(data):
+#         ret_dict = {}
+#         ret_dict["command"] = DoubleQuotedScalarString(item["command"])
+#         ret_dict["command_translated"] = DoubleQuotedScalarString(item["command_translated"])
+#         code_lst = []
+#         for code in item["code"]:
+#             code_dict = {}
+#             code_dict["name"] = DoubleQuotedScalarString(code["name"])
+#             code_dict["cron"] = DoubleQuotedScalarString(code["cron"])
+#             code_dict["period"] = code["period"]
+#             raw_code = code["code"].strip().replace('\\n', '\n').replace('\\"', '"').replace("\\'", '"').replace("'", '"')
+#             code_dict["code"] = LiteralScalarString(raw_code+'\n')
+#             code_lst.append(code_dict)
+#         ret_dict["code"] = code_lst
+#         ret_dict["devices"] = item["devices"]
+#         ret.append(ret_dict)
+#     with open(output_name, "w") as f:
+#         yaml.dump(ret, f)
 
 
 exclude = {"Wall", "SectorA", "SectorB", "Upper", "Lower", "Even", "Odd"}
@@ -37,15 +55,14 @@ for i in range(0, 17):
     print(f"Processing file: {file_name}")
 
     with open(file_name, "r") as f:
-        data = yaml.safe_load(f)
+        data = yaml.load(f)
     
     with open(generated_name, "r") as f:
-        generated_data = yaml.safe_load(f)
+        generated_data = yaml.load(f)
 
-    # 각 항목에 devices 키 추가
     for idx, item in enumerate(data):
         generated_item = generated_data[idx]
-        # print(generated_item["devices"])
+        
         for code in item["code"]:
             text = code["code"]
             matches = re.findall(r"#([A-Za-z0-9]+)(?=[^A-Za-z0-9])", text)
@@ -54,7 +71,8 @@ for i in range(0, 17):
         for match in matches:
             if match not in generated_item["devices"]:
                 ret.append(match)
-        print(ret)
+        if ret:
+            print(generated_item["command"], ret)
 
 #############################################33
 # import re
@@ -65,7 +83,7 @@ for i in range(0, 17):
 #     path_out = f"./Testset/TestsetWithDevices/{file_name}"
 
 #     with open(path_out, "r") as f:
-#         data = yaml.safe_load(f)
+#         data = yaml.load(f)
 
 #     # 각 항목에 devices 키 추가
 #     for item in tqdm.tqdm(data):

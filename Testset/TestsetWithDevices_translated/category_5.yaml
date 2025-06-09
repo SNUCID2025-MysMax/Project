@@ -1,10 +1,10 @@
-- command: 토양 습도가 30% 미만이면 5초 후 급수기를 작동해 줘.
-  command_translated: If the soil humidity is below 30%, wait 5 seconds before activating the waterer.
+- command: "토양 습도가 30% 미만이면 5초 후 급수기를 작동해 줘."
+  command_translated: "If the soil humidity is below 30%, wait 5 seconds before activating the waterer."
   code:
-  - name: Scenario1
-    cron: ''
+  - name: "Scenario1"
+    cron: ""
     period: -1
-    code: |-
+    code: |
       if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
         (#Clock).clock_delay(5000)
         (#Irrigator).irrigatorOperatingState_startWatering()
@@ -13,14 +13,14 @@
   - Clock
   - Irrigator
   - SoilMoistureSensor
-- command: 창문이 열려 있고 온도가 35도 이상이면 10초 대기 후 블라인드를 내려 줘.
-  command_translated: If a window is open and the temperature is above 35 degrees, wait 10 seconds before lowering the blinds.
+- command: "창문이 열려 있고 온도가 35도 이상이면 10초 대기 후 블라인드를 내려 줘."
+  command_translated: "If a window is open and the temperature is above 35 degrees, wait 10 seconds before lowering the blinds."
   code:
-  - name: Scenario2
-    cron: ''
+  - name: "Scenario2"
+    cron: ""
     period: -1
-    code: |-
-      if (((#Window).windowControl_window == 'open') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)) {
+    code: |
+      if (((#Window).windowControl_window == "open") and ((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)) {
         (#Clock).clock_delay(10000)
         (#Blind).blind_close()
       }
@@ -29,13 +29,13 @@
   - Clock
   - Window
   - Blind
-- command: 습도가 80% 이상이면 3초 뒤 제습기를 켜고, 7초 더 지난 후 창문을 닫아 줘.
-  command_translated: If the humidity is above 80%, turn on the dehumidifier after 3 seconds and close the window after another 7 seconds.
+- command: "습도가 80% 이상이면 3초 뒤 제습기를 켜고, 7초 더 지난 후 창문을 닫아 줘."
+  command_translated: "If the humidity is above 80%, turn on the dehumidifier after 3 seconds and close the window after another 7 seconds."
   code:
-  - name: Scenario3
-    cron: ''
+  - name: "Scenario3"
+    cron: ""
     period: -1
-    code: |-
+    code: |
       if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
         (#Clock).clock_delay(3000)
         (#Dehumidifier).switch_on()
@@ -47,13 +47,13 @@
   - Dehumidifier
   - HumiditySensor
   - Window
-- command: 빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘.
-  command_translated: If the light intensity is below 100 lux, wait 5 seconds before turning on the LED light.
+- command: "빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘."
+  command_translated: "If the light intensity is below 100 lux, wait 5 seconds before turning on the LED light."
   code:
-  - name: Scenario4
-    cron: ''
+  - name: "Scenario4"
+    cron: ""
     period: -1
-    code: |-
+    code: |
       if ((#LightSensor).lightLevel_light <= 100.0) {
         (#Clock).clock_delay(5000)
         (#Light).switch_on()
@@ -62,13 +62,13 @@
   - Clock
   - Light
   - LightSensor
-- command: 급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘.
-  command_translated: After running the irrigator, wait 10 seconds before turning on the fan.
+- command: "급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘."
+  command_translated: "After running the irrigator, wait 10 seconds before turning on the fan."
   code:
-  - name: Scenario5
-    cron: ''
+  - name: "Scenario5"
+    cron: ""
     period: -1
-    code: |-
+    code: |
       (#Irrigator).irrigatorOperatingState_startWatering()
       (#Clock).clock_delay(10000)
       (#Fan).switch_on()
@@ -76,14 +76,14 @@
   - Clock
   - Fan
   - Irrigator
-- command: 창문이 열려 있으면 5초 후 커튼을 닫고, 10초 더 지난 뒤 블라인드를 닫아 줘.
-  command_translated: If the window is open, close the curtains after 5 seconds, and close the blinds after another 10 seconds.
+- command: "창문이 열려 있으면 5초 후 커튼을 닫고, 10초 더 지난 뒤 블라인드를 닫아 줘."
+  command_translated: "If the window is open, close the curtains after 5 seconds, and close the blinds after another 10 seconds."
   code:
-  - name: Scenario6
-    cron: ''
+  - name: "Scenario6"
+    cron: ""
     period: -1
-    code: |-
-      if ((#Window).windowControl_window == 'open') {
+    code: |
+      if ((#Window).windowControl_window == "open") {
         (#Clock).clock_delay(5000)
         (#Curtain).curtain_close()
         (#Clock).clock_delay(10000)
@@ -94,14 +94,14 @@
   - Clock
   - Window
   - Blind
-- command: 조명이 켜져 있으면 3초 대기 후 조명을 껐다가 3초 뒤 다시 켜 줘.
-  command_translated: If the light is on, wait 3 seconds, turn off the light, and then turn it back on after 3 seconds.
+- command: "조명이 켜져 있으면 3초 대기 후 조명을 껐다가 3초 뒤 다시 켜 줘."
+  command_translated: "If the light is on, wait 3 seconds, turn off the light, and then turn it back on after 3 seconds."
   code:
-  - name: Scenario7
-    cron: ''
+  - name: "Scenario7"
+    cron: ""
     period: -1
-    code: |-
-      if ((#Light).switch_switch == 'on') {
+    code: |
+      if ((#Light).switch_switch == "on") {
         (#Clock).clock_delay(3000)
         (#Light).switch_off()
         (#Clock).clock_delay(3000)
@@ -110,13 +110,13 @@
   devices:
   - Light
   - Clock
-- command: 7초 후에 조명을 끄고 5초 뒤 다시 켜 줘.
-  command_translated: Turn off the light after 7 seconds and turn it back on after 5 seconds.
+- command: "7초 후에 조명을 끄고 5초 뒤 다시 켜 줘."
+  command_translated: "Turn off the light after 7 seconds and turn it back on after 5 seconds."
   code:
-  - name: Scenario8
-    cron: ''
+  - name: "Scenario8"
+    cron: ""
     period: -1
-    code: |-
+    code: |
       (#Clock).clock_delay(7000)
       (#Light).switch_off()
       (#Clock).clock_delay(5000)
@@ -124,16 +124,16 @@
   devices:
   - Clock
   - Light
-- command: 문이 닫혀 있는데 5초가 지나도 창문이 열려 있지 않으면 블라인드를 열어 줘.
-  command_translated: If the door is closed and the window is not open after 5 seconds, open the blinds.
+- command: "문이 닫혀 있는데 5초가 지나도 창문이 열려 있지 않으면 블라인드를 열어 줘."
+  command_translated: "If the door is closed and the window is not open after 5 seconds, open the blinds."
   code:
-  - name: Scenario9
-    cron: ''
+  - name: "Scenario9"
+    cron: ""
     period: -1
-    code: |-
-      if ((#DoorLock).doorControl_door == 'closed') {
+    code: |
+      if ((#DoorLock).doorControl_door == "closed") {
         (#Clock).clock_delay(5000)
-        if ((#Window).windowControl_window != 'open') {
+        if ((#Window).windowControl_window != "open") {
             (#Blind).blind_open()
         }
       }
@@ -142,14 +142,14 @@
   - DoorLock
   - Window
   - Blind
-- command: 커튼이 열린 상태라면 2초 뒤 조명을 50으로 낮추고, 다시 4초 기다려서 꺼 줘.
-  command_translated: If the curtains are open, turn the lights down to 50 after 2 seconds, then wait another 4 seconds to turn them off.
+- command: "커튼이 열린 상태라면 2초 뒤 조명을 50으로 낮추고, 다시 4초 기다려서 꺼 줘."
+  command_translated: "If the curtains are open, turn the lights down to 50 after 2 seconds, then wait another 4 seconds to turn them off."
   code:
-  - name: Scenario10
-    cron: ''
+  - name: "Scenario10"
+    cron: ""
     period: -1
-    code: |-
-      if ((#Curtain).curtain_curtain == 'open') {
+    code: |
+      if ((#Curtain).curtain_curtain == "open") {
         (#Clock).clock_delay(2000)
         (#Light).switchLevel_setLevel(50, 0)
         (#Clock).clock_delay(4000)
