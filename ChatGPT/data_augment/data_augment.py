@@ -138,12 +138,10 @@ def generate_code_for_command(client, command, service_doc, now=None):
 # ===  GPT 프롬프트 구성 === #
 # 1: 디바이스 스킬 기반 명령 생성
 
-
 def generate_commands(client, skills_dict, n=10, example=""):
     devices_str = json.dumps(skills_dict, indent=2, ensure_ascii=False)
     messages = load_prompt_roles("generate_prompt.txt", devices=devices_str, n=n, example=example)
-
-
+    
     messages = load_prompt_roles(
         "generate_prompt.txt",
         devices=devices_str,
