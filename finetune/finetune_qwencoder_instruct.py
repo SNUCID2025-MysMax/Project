@@ -11,7 +11,8 @@ from Grammar.grammar_ver1_1_6 import grammar
 import torch, yaml, re
 from torch.nn.attention import SDPBackend, sdpa_kernel
 
-max_seq_length = 4096  # Gemma sadly only supports max 8192 for now
+max_seq_length = 5120
+# max_seq_length = 3072
 dtype = (
     None  # None for auto detection. Float16 for Tesla T4, V100, Bfloat16 for Ampere+
 )
@@ -127,10 +128,13 @@ def load_dataset():
                         #     "role": "system",
                         #     "content": grammar,
                         # },
+                        # {
+                        #     "role": "system",
+                        #     "content": service_doc,
+                        # },
                         {
-                            "role": "system", 
-                            # "content": grammar + "\n\n" + service_doc,
-                            "content": service_doc,
+                            "role": "system",
+                            "content": f"<grammar>\n{grammar}</grammar>\n\n<devices>{service_doc}</devices>",
                         },
                         {
                             "role": "user",
@@ -164,7 +168,7 @@ MY_DATASET = MY_DATASET.map(
 )
 
 print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
-print(MY_DATASET[0]['text'])
+# print(MY_DATASET[0]['text'])
 sample_text = MY_DATASET[0]['text']
 tokens = tokenizer.encode(sample_text)
 decoded = tokenizer.decode(tokens)
@@ -205,7 +209,7 @@ trainer = SFTTrainer(
         report_to = "none",
         max_grad_norm = 0.3,
         dataset_num_proc = min(8, multiprocessing.cpu_count()),
-        dataloader_num_workers = 0,
+        dataloader_num_workers = min(4, multiprocessing.cpu_count()),
         logging_steps= 5,
         auto_find_batch_size = True,
         fp16 = False,
