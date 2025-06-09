@@ -1,0 +1,263 @@
+- command: Sound the alarm's siren when the window opens.
+  devices:
+  - Alarm
+  - Window
+  - Curtain
+  - Shade
+  - DoorLock
+  - Camera
+  - ContactSensor
+  - AirConditioner
+  - Blind
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        (#Alarm).alarm_siren()
+      }
+  model_info:
+    elapsed_time: 4.187
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 4.058
+- command: Turn on irrigation when soil moisture is above and below 20%.
+  devices:
+  - Shade
+  - Humidifier
+  - LeakSensor
+  - Pump
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - HumiditySensor
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 20.0)
+      (#Irrigator).switch_on()
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 20.0)
+      (#Irrigator).switch_on()
+  model_info:
+    elapsed_time: 5.819
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 5.689
+- command: Turn on the light up to 3 times when motion is detected.
+  devices:
+  - Alarm
+  - Button
+  - MotionSensor
+  - Buttonx4
+  - Light
+  - Relay
+  - Camera
+  - Siren
+  - Clock
+  - SmokeDetector
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      count := 0
+      if ((#MotionSensor).motionSensor_motion == "active") {
+        if (count < 3) {
+          count = count + 1
+          (#Light).switch_on()
+        }
+      }
+  model_info:
+    elapsed_time: 5.474
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 5.341
+- command: Turn on the air conditioner when the temperature is above 35 degrees.
+  devices:
+  - AirPurifier
+  - Humidifier
+  - Dehumidifier
+  - TemperatureSensor
+  - AirConditioner
+  - HumiditySensor
+  - WeatherProvider
+  - Dishwasher
+  - AirQualityDetector
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        (#AirConditioner).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.508
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 4.38
+- command: Lower the blinds when the humidity is above 80%.
+  devices:
+  - Shade
+  - Humidifier
+  - Dehumidifier
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - Blind
+  - WeatherProvider
+  - HumiditySensor
+  - AirQualityDetector
+  - Irrigator
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0) {
+        (#Blind).blind_close()
+      }
+  model_info:
+    elapsed_time: 4.396
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 4.267
+- command: When the blinds are closed, say 'Blinds are closed'.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - GasValve
+  - DoorLock
+  - Relay
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Blind).blind_blind == "closed")
+      (#Siren).blind_open("Blinds are closed")
+  model_info:
+    elapsed_time: 4.106
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 3.974
+- command: Turn off the speakers when the TV is turned off.
+  devices:
+  - AirPurifier
+  - Curtain
+  - Alarm
+  - Relay
+  - Speaker
+  - Camera
+  - Switch
+  - Siren
+  - Television
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "off") {
+        (#Speaker).switch_off()
+      }
+  model_info:
+    elapsed_time: 4.257
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 4.131
+- command: Turn off the light when the curtain opens and closes 3 times.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Buttonx4
+  - DoorLock
+  - Light
+  - Relay
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      count := 0
+      if ((#Curtain).curtain_curtain == "open") {
+        count = count + 1
+        if (count >= 3) {
+          (#Light).switch_off()
+        }
+      }
+      if ((#Curtain).curtain_curtain == "closed") {
+        count = count + 1
+        if (count >= 3) {
+          (#Light).switch_off()
+        }
+      }
+  model_info:
+    elapsed_time: 7.73
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 7.599
+- command: If the dehumidifier turns off, turn it back on.
+  devices:
+  - AirPurifier
+  - Humidifier
+  - Pump
+  - Dehumidifier
+  - AirConditioner
+  - Dishwasher
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - Refrigerator
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Dehumidifier).switch_switch == "off") {
+        (#Dehumidifier).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.512
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 4.385
+- command: When the occupancy sensor no longer detects it, say 'Door is open'.
+  devices:
+  - Window
+  - PresenceSensor
+  - LeakSensor
+  - SoundSensor
+  - MotionSensor
+  - DoorLock
+  - TemperatureSensor
+  - ContactSensor
+  - Clock
+  - SmokeDetector
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#PresenceSensor).presenceSensor_presence == "not_present")
+      (#SoundSensor).doorControl_open("Door is open")
+  model_info:
+    elapsed_time: 3.936
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 3.803

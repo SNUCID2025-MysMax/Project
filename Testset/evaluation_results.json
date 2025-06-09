@@ -1,1 +1,82 @@
-[]
+[
+  {
+    "command": "에어컨을 켜줘.",
+    "devices": [
+      "Fan",
+      "Dehumidifier",
+      "AirPurifier",
+      "DoorLock",
+      "Humidifier",
+      "Button",
+      "AirConditioner",
+      "Clock"
+    ],
+    "generated_code": "name = \"Scenario1\"\ncron = \"\"\nperiod = -1\n(#AirConditioner).switch_on()",
+    "compare_results": [],
+    "model_info": {
+      "prompt_tokens": 2691,
+      "generated_tokens": 27,
+      "elapsed_time": 4.753
+    }
+  },
+  {
+    "command": "Turn on the air conditioner.",
+    "devices": [
+      "Fan",
+      "Dehumidifier",
+      "AirPurifier",
+      "AirQualityDetector",
+      "WeatherProvider",
+      "Humidifier",
+      "AirConditioner",
+      "Clock"
+    ],
+    "generated_code": "name = \"Scenario1\"\ncron = \"\"\nperiod = -1\n(#AirConditioner).switch_on()",
+    "compare_results": [],
+    "model_info": {
+      "prompt_tokens": 2689,
+      "generated_tokens": 27,
+      "elapsed_time": 0.993
+    }
+  },
+  {
+    "command": "온도가 30도 이상이면 창문을 열어줘.",
+    "devices": [
+      "Window",
+      "DoorLock",
+      "TemperatureSensor",
+      "WeatherProvider",
+      "Blind",
+      "Curtain",
+      "AirConditioner",
+      "Clock"
+    ],
+    "generated_code": "name = \"Scenario1\"\ncron = \"\"\nperiod = -1\nif ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0) {\n  (#Window).windowControl_open()\n}",
+    "compare_results": [],
+    "model_info": {
+      "prompt_tokens": 2700,
+      "generated_tokens": 48,
+      "elapsed_time": 1.612
+    }
+  },
+  {
+    "command": "If the temperature is above 30 degrees, open the window.",
+    "devices": [
+      "ContactSensor",
+      "Window",
+      "DoorLock",
+      "TemperatureSensor",
+      "WeatherProvider",
+      "Curtain",
+      "AirConditioner",
+      "Clock"
+    ],
+    "generated_code": "name = \"Scenario1\"\ncron = \"\"\nperiod = -1\nif ((#TemperatureSensor).temperatureMeasurement_temperature > 30.0) {\n  (#Window).windowControl_open()\n}",
+    "compare_results": [],
+    "model_info": {
+      "prompt_tokens": 2697,
+      "generated_tokens": 48,
+      "elapsed_time": 1.607
+    }
+  }
+]

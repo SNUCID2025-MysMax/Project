@@ -1,0 +1,211 @@
+- command: Every weekday at 9 a.m., if the windows are closed, the carbon dioxide concentration is above 1000 ppm, and the temperature is above 30 degrees, open the windows after 5 seconds and turn on the fans if they are off.Then, check in real time and if the particulate matter concentration remains above 50 for one continuous minute, close the windows again and turn off the fans.If the humidity in the greenhouse is below 40% at that time, turn on the humidifier. Similarly, if the soil humidity is below 25% and the irrigation is turned off, water the plants.
+  devices:
+  - AirPurifier
+  - Window
+  - Humidifier
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - AirConditioner
+  - HumiditySensor
+  - WeatherProvider
+  - AirQualityDetector
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |-
+      if (((#Clock).clock_hour == 9) and ((#Clock).clock_minute == 0)) {
+        if (all(#Window).windowControl_window == "closed") {
+          if ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide > 1000.0) {
+            if ((#TemperatureSensor).temperatureMeasurement_temperature > 30.0) {
+              wait until((#Window).windowControl_window == "open")
+              (#Fan).switch_on()
+            }
+          }
+        }
+        if (all(#Window).windowControl_window == "open") {
+          if ((#AirQualityDetector).dustSensor_fineDustLevel > 50.0) {
+            if ((#AirQualityDetector).dustSensor_veryFineDustLevel > 50.0) {
+              if ((#AirQualityDetector).dustSensor_dustLevel > 50.0) {
+                if ((#AirQualityDetector).tvocMeasurement_tvocLevel > 50.0) {
+                  wait until((#Window).windowControl_window == "closed")
+                  (#Fan).switch_off()
+                }
+              }
+            }
+          }
+        }
+        if ((#HumiditySensor).relativeHumidityMeasurement_humidity < 40.0) {
+          (#Humidifier).switch_on()
+        }
+        if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 25.0) {
+          if ((#AirPurifier).switch_switch == 'off') {
+            (#AirPurifier).switch_on()
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 20.116
+    bge_elapsed_time: 0.188
+    llm_elapsed_time: 19.928
+- command: Every day at 9am, if the lights are off and the window with the odd tag at the bottom is closed, open all the blinds. Then, when that window is opened, wait 5 seconds and sound the alarm's siren. After the siren sounds, check in real-time for 10 seconds to make sure that the window has never been closed, and blink the light every 2 seconds. If the blinds are open, if the door has been opened and closed more than once between then and the end of the 10 seconds, turn off all air conditioners in the wall if the second opening is longer than the first.
+  devices:
+  - Alarm
+  - Window
+  - Shade
+  - Curtain
+  - DoorLock
+  - ContactSensor
+  - AirConditioner
+  - Blind
+  - Siren
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 2.692
+    bge_elapsed_time: 0.613
+    llm_elapsed_time: 2.079
+- command: Check the humidity every 10 seconds from the time the window is opened with the air conditioner off, and if the humidity exceeds 60%, lower the blinds and turn off the lights. Then, when the door is closed, sound an alarm with a 5-second delay, blink the lights every 1 second while the door is open for 1 minute after the alarm sounds, and then check in real-time to say "door closed" over the speaker when the door is closed.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Humidifier
+  - Dehumidifier
+  - DoorLock
+  - ContactSensor
+  - AirConditioner
+  - HumiditySensor
+  - Blind
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 50.502
+    bge_elapsed_time: 0.977
+    llm_elapsed_time: 49.525
+- command: Wait until the humidity is above 70%, then turn on the dehumidifier after 5 seconds if the window is open, and turn on the air conditioner if the temperature rises above 30 degrees after the dehumidifier is turned on. If the blinds are opened while the air conditioner is on, it will open and close the curtains every 10 seconds from then on. If it detects motion, it will turn off the alarm, and if there is no motion for 5 seconds, it will sound the alarm again.
+  devices:
+  - Window
+  - Curtain
+  - Humidifier
+  - Dehumidifier
+  - DoorLock
+  - TemperatureSensor
+  - AirConditioner
+  - Blind
+  - HumiditySensor
+  - AirQualityDetector
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 2.299
+    bge_elapsed_time: 0.187
+    llm_elapsed_time: 2.112
+- command: If a door is opened with the lights on and windows closed, wait 3 seconds before sounding the siren. If the window doesn't open for 10 seconds after the siren sounds, close the curtains, turn off the lights, and turn on the fan at 50% speed. Then, if the temperature is above 27 degrees, switch your air conditioner to cool mode and repeat the motion detection three times, opening and closing the blinds every second. However, if the speaker turns on in the middle, stop everything and turn it off.
+  devices:
+  - Window
+  - Curtain
+  - Alarm
+  - Humidifier
+  - DoorLock
+  - ContactSensor
+  - AirConditioner
+  - Blind
+  - Siren
+  - Clock
+  - Fan
+  generated_code: []
+  model_info:
+    elapsed_time: 49.286
+    bge_elapsed_time: 0.207
+    llm_elapsed_time: 49.079
+- command: If a person is detected with the lights off and windows open, wait 3 seconds before turning on the lights and 5 seconds before closing the blinds. Sound the alarm once every 10 seconds for one second, but after two alarms, switch the air conditioner to "cool" mode. However, if the door is opened after a person is detected, stop all motion and close the curtains.
+  devices:
+  - Window
+  - Curtain
+  - PresenceSensor
+  - Shade
+  - DoorLock
+  - Light
+  - ContactSensor
+  - AirConditioner
+  - Blind
+  - Siren
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 49.432
+    bge_elapsed_time: 0.178
+    llm_elapsed_time: 49.255
+- command: Every Monday morning at 7am, set the lights to 20. Then check in real-time and open the blinds whenever it detects motion until midnight, and open and close the curtains twice, three seconds apart. Each time you adjust the curtains, turn on the fan if the windows are open and turn off the air conditioner if they're closed.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - AirPurifier
+  - DoorLock
+  - Light
+  - AirConditioner
+  - Blind
+  - Clock
+  - LightSensor
+  generated_code: []
+  model_info:
+    elapsed_time: 2.304
+    bge_elapsed_time: 0.167
+    llm_elapsed_time: 2.138
+- command: Sound the siren at 10pm every night if the bottom window is open and the even-tagged light is on. If you sound the siren, close the blinds after 5 seconds. After 5 seconds, regardless of whether you sounded the siren or not, check in real-time and close the curtains when the odd-tagged door opens and closes twice. After closing the curtains, turn the alarm's light on and off for the total time the door was opened twice.
+  devices:
+  - Alarm
+  - Curtain
+  - Window
+  - Shade
+  - DoorLock
+  - Relay
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 2.224
+    bge_elapsed_time: 0.185
+    llm_elapsed_time: 2.039
+- command: Check in real-time every day to make sure the robot vacuum is running and playing a "cleaning" voice over the speaker after 10 seconds whenever you move. It also turns on odd-tagged air purifiers when the humidity is above 60%. While the air purifier is on, use your smart remote to power off and on your TV every 3 seconds. Close the window whenever it's open for five consecutive minutes.
+  devices:
+  - AirPurifier
+  - Humidifier
+  - Dehumidifier
+  - Speaker
+  - AirConditioner
+  - HumiditySensor
+  - Dishwasher
+  - Television
+  - AirQualityDetector
+  - RobotCleaner
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 50.393
+    bge_elapsed_time: 0.183
+    llm_elapsed_time: 50.21
+- command: If a door is opened with wall lights off and odd-tagged curtains closed, turn on those lights and open the window after 5 seconds. If no motion is detected for the next 30 seconds, sound the alarm's siren. After the 30 seconds are up, if the air conditioner is off and the room temperature is above 28 degrees, turn on the air conditioner. Also, turn off the smart fans tagged with an even number if they're on, and leave them on if they're not.
+  devices:
+  - Window
+  - Curtain
+  - Alarm
+  - Humidifier
+  - DoorLock
+  - TemperatureSensor
+  - Light
+  - ContactSensor
+  - AirConditioner
+  - Siren
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 49.438
+    bge_elapsed_time: 0.192
+    llm_elapsed_time: 49.246

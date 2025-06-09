@@ -44,7 +44,7 @@
       } else {
         triggered = false
       }
-- command: "문이 열릴 때마다 알람의 사이렌을 울리고 조명을 켜 줘. 실시간으로 확인해서 상태를 계속 검사해서 반응해 줘."
+- command: "문이 열릴 때마다 경광등과 조명을 켜 줘. 실시간으로 확인해서 상태를 계속 검사해서 반응해 줘."
   code:
   - name: "Scenario1"
     cron: ""
@@ -53,7 +53,7 @@
       triggered := false
       if ((#ContactSensor).contactSensor_contact == 'open') {
         if (triggered == false) {
-          (#Alarm).alarm_siren()
+          (#Siren).sirenMode_setSirenMode('strobe')
           (#Light).switch_on()
           triggered = true
         }

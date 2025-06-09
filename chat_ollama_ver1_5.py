@@ -4,7 +4,7 @@ from Grammar.grammar_ver1_5_1 import grammar
 from Embedding.embedding import hybrid_recommend
 from FlagEmbedding import BGEM3FlagModel
 
-from Testset.joi_extraction import parse_scenarios
+from Testset.joi_extraction_tool import parse_scenarios, extract_last_code_block
 from Evaluation.soplang_parser_full import parser, lexer
 from Evaluation.soplang_ir_simulator import flatten_actions, generate_context_from_conditions
 from Evaluation.compare_soplang_ir import extract_logic_expressions, compare_codes 
@@ -48,7 +48,9 @@ def run_test_case(model, model_bge, user_command, classes, use_stream=True):
     # service_doc = "\n".join([classes[i] for i in service_selected])
     service_doc = "#Devices\n"+"\n".join([json.dumps(classes[i]) for i in service_selected])
     
-    prompt = f"Generate SoP Lang code for \"{user_command}\""
+    current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+
+    prompt = f"Current Time: {current_time}\nGenerate SoP Lang code for \"{user_command}\""
 
     role = "user"
 
@@ -170,6 +172,10 @@ def main():
     model = "llama3.2:3b"
     model = "codellama:7b"
 
+    # finetuned
+    model = "codegemma"
+    model = "qwen2.5-coder"
+
     # Load Embedding
     model_dir = os.path.expanduser("./models/bge-m3")
     model_bge = BGEM3FlagModel(model_dir, use_fp16=False, local_files_only=True)
@@ -206,24 +212,25 @@ def main():
             )
             print(f"#명령어: {user_command}")
             print(f"#총 응답 시간 : {info['elapsed_time']}초")
-            print(f"#디바이스 추출: {service_selected} ({info["bge_elapsed_time"]}초)")
+            print(f"#디바이스 추출: {list(service_selected)} ({info["bge_elapsed_time"]}초)")
             print(f"#모델 응답 시간: {info["llm_elapsed_time"]}초")
             print("#응답:\n", resp)
             print("="*30)
-            
-        #     resp = extract_last_python_block(resp)
-        #     print(resp)
-        #     code = ""
-        #     try:
-        #         code = parse_scenarios(resp)
-        #     except:
-        #         code = ""
-        #     print("변환된 코드:\n", code)
-        #     print("-"*30)
+
+            code = ""
+            try:
+                code = parse_scenarios(extract_last_code_block(resp))
+            except:
+                try:
+                    code = parse_scenarios(resp)
+                except:
+                    code = ""
+            print("변환된 코드:\n", code)
+            print("-"*30)
 
         #     entry = {
-        #         "user_command": user_command,
-        #         "devices": service_selected,
+        #         "command": user_command,
+        #         "devices": list(service_selected),
         #         "generated_code": resp,
         #         "label": label,
         #         "compare_results": [],

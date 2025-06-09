@@ -1,0 +1,235 @@
+- command: From March through September, check in real-time and turn on the irrigation after a 5-second wait if the soil moisture sensor reads 30% or less, wait another 10 seconds, sound the alarm's siren, and then close the blinds if the humidity value remains below 30% for 15 seconds after that.
+  devices:
+  - Alarm
+  - Shade
+  - Humidifier
+  - LeakSensor
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - HumiditySensor
+  - WeatherProvider
+  - Blind
+  - Siren
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 2.23
+    bge_elapsed_time: 0.161
+    llm_elapsed_time: 2.068
+- command: If the soil moisture sensor drops below 25%, the alarm will sound the siren for one second for a total of five alarms at three-second intervals, followed by a 10-second wait before closing the blinds.
+  devices:
+  - Alarm
+  - Shade
+  - LeakSensor
+  - SoundSensor
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - HumiditySensor
+  - Siren
+  - WeatherProvider
+  - Blind
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 2.202
+    bge_elapsed_time: 0.155
+    llm_elapsed_time: 2.047
+- command: Check in real-time and turn on the lights after 5 seconds if motion is detected, open the curtains after 10 seconds, turn on the pump if it's off after 15 seconds, etc.
+  devices:
+  - Curtain
+  - PresenceSensor
+  - Pump
+  - GasValve
+  - MotionSensor
+  - Light
+  - DoorLock
+  - Camera
+  - Clock
+  - SmokeDetector
+  - Valve
+  generated_code: []
+  model_info:
+    elapsed_time: 48.955
+    bge_elapsed_time: 0.153
+    llm_elapsed_time: 48.802
+- command: On January 1, check in real-time and when the lights go out, wait 3 seconds, turn off the pump, close the blinds after 5 seconds, turn the lights back on after an additional 7 seconds, and sound the alarm's siren.
+  devices:
+  - Alarm
+  - Shade
+  - Pump
+  - GasValve
+  - Relay
+  - Light
+  - Blind
+  - Siren
+  - Clock
+  - SmokeDetector
+  generated_code: []
+  model_info:
+    elapsed_time: 49.656
+    bge_elapsed_time: 0.15
+    llm_elapsed_time: 49.506
+- command: Check every 10 seconds to see if the soil moisture sensor reads 30% or less twice in a row, and if it stays that way for more than a minute, close the blinds and say "alarm" twice after 5 seconds.
+  devices:
+  - Shade
+  - LeakSensor
+  - Humidifier
+  - SoilMoistureSensor
+  - MotionSensor
+  - TemperatureSensor
+  - Blind
+  - HumiditySensor
+  - WeatherProvider
+  - Clock
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      count := 0
+      last_read := -1
+      if (all(#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+        count = count + 1
+        if (count >= 2) {
+          if (all(#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+            if (all(#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+              all(#Blind).blind_close()
+              all(#LightSensor).blind_open("alarm")
+              all(#LightSensor).blind_open("alarm")
+            }
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 9.547
+    bge_elapsed_time: 0.153
+    llm_elapsed_time: 9.394
+- command: Check in real-time to open the curtains if they've been closed for 5 consecutive seconds, and turn off the lights if no motion is detected for the next 10 seconds.
+  devices:
+  - Window
+  - Curtain
+  - PresenceSensor
+  - MotionSensor
+  - DoorLock
+  - Light
+  - Camera
+  - ContactSensor
+  - Blind
+  - Clock
+  - SmokeDetector
+  generated_code: []
+  model_info:
+    elapsed_time: 48.093
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 47.951
+- command: When the lights come on, blink the lights 3 times at 1 second intervals, wait 5 seconds before turning on the speakers, and from then on, check in real-time to turn on the air conditioner 10 seconds after it turns off.
+  devices:
+  - AirPurifier
+  - Curtain
+  - Speaker
+  - Light
+  - Camera
+  - Relay
+  - AirConditioner
+  - Siren
+  - Clock
+  - Timer
+  generated_code: []
+  model_info:
+    elapsed_time: 49.78
+    bge_elapsed_time: 0.153
+    llm_elapsed_time: 49.627
+- command: When the air conditioner turns on, close the blinds after five seconds, wait another five seconds and close the curtains if they're open, and then turn the lights down to 10 percent brightness after 10 seconds.
+  devices:
+  - AirPurifier
+  - Curtain
+  - Shade
+  - Window
+  - Light
+  - DoorLock
+  - AirConditioner
+  - Blind
+  - WeatherProvider
+  - Clock
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == "on")
+      wait until((#Clock).clock_delay(5))
+      (#Blind).blind_close()
+      wait until((#Clock).clock_delay(5))
+      if ((#Curtain).curtain_curtain == "open") {
+        (#Curtain).curtain_close()
+      }
+      wait until((#Clock).clock_delay(10))
+      (#Light).switchLevel_setLevel(10, 100)
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == "on")
+      wait until((#Clock).clock_delay(5))
+      (#Blind).blind_close()
+      wait until((#Clock).clock_delay(5))
+      if ((#Curtain).curtain_curtain == "open") {
+        (#Curtain).curtain_close()
+      }
+      wait until((#Clock).clock_delay(10))
+      (#Light).switchLevel_setLevel(10, 100)
+  model_info:
+    elapsed_time: 14.171
+    bge_elapsed_time: 0.156
+    llm_elapsed_time: 14.014
+- command: Check in real-time to turn on the alarm if no motion is detected for 10 seconds after the door is opened, and turn on the lights to full brightness after 5 seconds.
+  devices:
+  - Window
+  - Alarm
+  - MotionSensor
+  - DoorLock
+  - Light
+  - Camera
+  - ContactSensor
+  - Siren
+  - Clock
+  - SmokeDetector
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#MotionSensor).motionSensor_motion == "inactive") {
+        if (time_elapsed >= 10000) {
+          (#Alarm).alarm_off()
+        }
+      }
+      if ((#DoorLock).doorControl_door == "open") {
+        if (time_elapsed >= 5000) {
+          (#Light).windowControl_close()
+        }
+      }
+  model_info:
+    elapsed_time: 7.103
+    bge_elapsed_time: 0.145
+    llm_elapsed_time: 6.958
+- command: Every Monday morning, from 9 to 10 a.m., check in real-time and close the blinds if they're still open seven seconds after the window is opened, and close the curtains 10 seconds later. And during that time, check in real time and turn on the lights if they're off.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - DoorLock
+  - Relay
+  - Light
+  - ContactSensor
+  - Blind
+  - Clock
+  - Valve
+  generated_code: []
+  model_info:
+    elapsed_time: 48.683
+    bge_elapsed_time: 0.158
+    llm_elapsed_time: 48.525

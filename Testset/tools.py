@@ -1,4 +1,4 @@
-import re,json,os
+import re,json,os, copy
 
 import yaml
 from yaml.representer import SafeRepresenter
@@ -70,17 +70,11 @@ def parse_scenarios(script: str):
       "code": scenarios
     }
 
+def extract_last_code_block(text):
+    pattern = r"```(?:.*?\n)?(.*?)```"
+    matches = re.findall(pattern, text, re.DOTALL)
+    return matches[-1] if matches else None
 
-with open("./test.txt", "r", encoding="utf-8") as f:
-    dsl_codes = f.read()
-
-# # print(json.dumps(parse_scenarios(dsl_code), indent=2))
-with open("./test.yaml", "w", encoding="utf-8") as f:
-    yaml.dump([parse_scenarios(dsl_codes)], f, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
-    # yaml.dump([parse_scenarios_with_command(dsl_code.strip()) for dsl_code in dsl_codes.split("------")],
-    #            f, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
-
-# --------------------------------------------------------------------------------------#
 # yaml 속성을 LiteralString으로 변환
 def print_yaml(file):
   with open(file, "r", encoding="utf-8") as f:
@@ -88,9 +82,11 @@ def print_yaml(file):
     result = []
     for item in data:
       s = ""
-      s += item['command'] + "\n"
+      s += f"Generate SoP Lang code for \"{item['command']}\"\n```\n"
       sub = []
-      for i in item['code']:
+      for idx, i in enumerate(item['code']):
+        if idx < 5:
+            continue
         k = ""
         k += f"name = \"{i['name']}\"\n"
         k += f"cron = \"{i['cron']}\"\n"
@@ -98,73 +94,44 @@ def print_yaml(file):
         k += i['code'].strip() + "\n"
         sub.append(k)
       s += "---\n".join(sub)
+      s += "```\n"
       # print(item['code'][0]['code'].strip())
       result.append(s)
-    print('\n'.join(result))
-print_yaml("./Testset/category_13.yaml")
-
-# --------------------------------------------------------------------------------------#
-
-# # 줄바꿈 변환
-# def process_fields(data, quote_fields, literal_fields):
-#     if isinstance(data, list):
-#         for item in data:
-#             process_fields(item, quote_fields, literal_fields)
-#     elif isinstance(data, dict):
-#         for key, value in data.items():
-#             if key in quote_fields and isinstance(value, str):
-#                 # 줄바꿈 제거 및 큰따옴표로 감싸기
-#                 single_line = re.sub(r'\s*\n\s*', ' ', value).strip()
-#                 data[key] = QuotedString(single_line)
-#             elif key in literal_fields and isinstance(value, str):
-#                 # LiteralString으로 변환
-#                 data[key] = LiteralString(value)
-#             else:
-#                 process_fields(value, quote_fields, literal_fields)
+    return('\n'.join(result))
 
 
-# for file in os.listdir("./Testset"):
-#   if file.endswith("yaml"):
-#     with open(f"./Testset/{file}", "r", encoding="utf-8") as f:
-#       yaml_data = yaml.safe_load(f)
-#     process_fields(yaml_data, quote_fields=["command", "name", "cron"], literal_fields=["code"])
-#     with open(f"./Testset/{file}", "w", encoding="utf-8") as f:
-#       yaml.dump(yaml_data, f, allow_unicode=True, sort_keys=False, default_flow_style=False, width=float('inf'))
+# for i in range(1,16):
+#     filename = f"category_{i}"
+#     with open(f"./Testset/Eval_gpt/evaluation_{filename}.yaml", "r") as f:
+#         script = yaml.safe_load(f)
+    
+    
+#     for item in script:
+#         gen = item["generated_code"]
 
-# # 예전 json을 yaml로 변환
-# def adjust_indentation(code_str, from_spaces=4, to_spaces=2):
-#     lines = code_str.splitlines()
-#     adjusted_lines = [
-#         line.replace(' ' * from_spaces, ' ' * to_spaces, 1) if line.startswith(' ' * from_spaces) else line
-#         for line in lines
-#     ]
-#     return '\n'.join(adjusted_lines)
+#         try:
+#             code = parse_scenarios(extract_last_code_block(gen))['code']
+#         except:
+#             try:
+#                 code = parse_scenarios(gen)['code']
+#             except:
+#                 print("failed")
+#                 code = [{'name': 'Scenario1', 'cron': '', 'period': -1, 'code': '(#AirConditioner).switch_on()\n'}]
+#         item["transformed_code"] = code
 
-# for file in os.listdir("./Testset"):
-#   if file.endswith(".json"):
-#     try:
-#       with open(f"./Testset/{file}", "r", encoding="utf-8") as f:
-#         data = json.load(f)
-#     except Exception as e:
-#       print(f"❌ {file} 읽는 중 오류 발생: {e}")
-#       continue
+#         label = item["label"]
 
-#     result = []
+#         label_for_yaml = copy.deepcopy(label)
+#         for l in label_for_yaml:
+#             l["code"] = LiteralString(l["code"])
 
-#     for item in data:
-#       result.append({
-#         "command": item["command"],
-#         "code": [
-#           {
-#             "name": i["name"],
-#             "cron": i["cron"],
-#             "period": i["period"],
-#             "code": LiteralString(adjust_indentation(i["code"]))
-#           }
-#           for i in item["code"]
-#         ]
-#       })
-#     with open(f"./Testset/{file[:-5]}.yaml", "w", encoding="utf-8") as f:
-#       yaml.dump(result, f, indent=2, allow_unicode=True, sort_keys=False)
+#         code_for_yaml = copy.deepcopy(code)
+#         for c in code_for_yaml:
+#             c["code"] = LiteralString(c["code"])
 
+#         item["label"] = label_for_yaml
+#         item["generated_code"] = LiteralString(item["generated_code"])
+#         item["transformed_code"] = code_for_yaml
 
+#     with open(f"./Testset/Eval_gpt/evaluation_{filename}.yaml", "w", encoding="utf-8") as out_file:
+#         yaml.dump(script, out_file, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))

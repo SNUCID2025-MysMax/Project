@@ -1,0 +1,218 @@
+- devices:
+  - Clock
+  - Blind
+  - Siren
+  - Window
+  - Curtain
+  - Alarm
+  - ContactSensor
+  - DoorLock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    wait until((#Window).windowControl_window == 'open')
+    (#Alarm).alarm_siren()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#Window).windowControl_window == 'open')
+      (#Alarm).alarm_siren()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#Window).windowControl_window == 'open')
+      (#Alarm).alarm_siren()
+  compare_results: []
+  model_info:
+    prompt_tokens: 3690
+    completion_tokens: 37
+    total_tokens: 3727
+  command: 창문이 열리면 알람의 사이렌을 울려 줘.
+- devices:
+  - Irrigator
+  - Fan
+  - Clock
+  - WeatherProvider
+  - LeakSensor
+  - HumiditySensor
+  - SoilMoistureSensor
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    aboveFlag := true
+    while (true) {
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 20.0) {
+        aboveFlag = true
+      } else if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 20.0 and aboveFlag == true) {
+        (#Irrigator).switch_on()
+        break
+      }
+      (#Clock).clock_delay(hour: 0, minute: 0, second: 1)
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      aboveFlag := true
+      while (true) {
+        if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 20.0) {
+          aboveFlag = true
+        } else if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 20.0 and aboveFlag == true) {
+          (#Irrigator).switch_on()
+          break
+        }
+        (#Clock).clock_delay(hour: 0, minute: 0, second: 1)
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 20.0)
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 20.0)
+      (#Irrigator).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 3782
+    completion_tokens: 130
+    total_tokens: 3912
+  command: 토양 수분이 20% 이상이었다가 이하가 되면 관개 장치를 작동시켜 줘.
+- devices:
+  - Relay
+  - Clock
+  - MotionSensor
+  - Buttonx4
+  - Camera
+  - Light
+  - Siren
+  - LightSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 1000
+    count := 0
+    if ((#MotionSensor).motionSensor_motion == "active" and count < 3) {
+      (#Light).switch_on()
+      count = count + 1
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      count := 0
+      if ((#MotionSensor).motionSensor_motion == "active" and count < 3) {
+        (#Light).switch_on()
+        count = count + 1
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |
+      motion_count := 0
+      prev_motion := 'inactive'
+      current = (#MotionSensor).motionSensor_motion
+      if (current == 'active') and (prev_motion == 'inactive') {
+        if (motion_count < 3) {
+          (#Light).switch_on()
+          motion_count = motion_count + 1
+        }
+      }
+      prev_motion = current
+  compare_results: []
+  model_info:
+    prompt_tokens: 4220
+    completion_tokens: 59
+    total_tokens: 4279
+  command: 움직임이 감지되면 최대 3번까지 조명을 켜 줘.
+- devices:
+  - Clock
+  - Fan
+  - Dehumidifier
+  - AirPurifier
+  - TemperatureSensor
+  - AirQualityDetector
+  - AirConditioner
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    wait until((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)
+    (#AirConditioner).switch_on()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)
+      (#AirConditioner).switch_on()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)
+      (#AirConditioner).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 4240
+    completion_tokens: 41
+    total_tokens: 4281
+  command: 온도가 35도 이상이 되면 에어컨을 켜 줘.
+- devices:
+  - Clock
+  - Dehumidifier
+  - WeatherProvider
+  - Blind
+  - HumiditySensor
+  - Shade
+  - SoilMoistureSensor
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 1000
+    if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
+      (#Blind).blind_close()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
+        (#Blind).blind_close()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0)
+      (#Blind).blind_close()
+  compare_results: []
+  model_info:
+    prompt_tokens: 3948
+    completion_tokens: 47
+    total_tokens: 3995
+  command: 습도가 80% 이상이 되면 블라인드를 내려 줘.

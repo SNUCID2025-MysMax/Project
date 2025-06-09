@@ -1,0 +1,192 @@
+- devices:
+  - AirConditioner
+  - Dehumidifier
+  - AirPurifier
+  - Curtain
+  - Humidifier
+  - Dishwasher
+  - Fan
+  - Clock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    (#Fan #SectorA).switch_off()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Fan #SectorA).switch_off()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#SectorA #Fan).switch_off()
+  compare_results: []
+  model_info:
+    prompt_tokens: 4425
+    completion_tokens: 26
+    total_tokens: 4451
+  command: 섹터 에이에 있는 선풍기를 꺼 줘.
+- devices:
+  - Siren
+  - Curtain
+  - Humidifier
+  - Shade
+  - Fan
+  - Clock
+  - Blind
+  - Valve
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if ((any(#Fan #SectorB).switch_switch == 'on') and (any(#Fan #SectorA).switch_switch == 'on')) {
+      if ((#Blind #Odd).blind_blind == 'open') {
+        (#Blind #Odd).blind_close()
+      }
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((any(#Fan #SectorB).switch_switch == 'on') and (any(#Fan #SectorA).switch_switch == 'on')) {
+        if ((#Blind #Odd).blind_blind == 'open') {
+          (#Blind #Odd).blind_close()
+        }
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((all(#Fan #SectorA).switch_switch == 'on') and (all(#Fan #SectorB).switch_switch == 'on')) {
+        (#Odd #Blind).blind_close()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4035
+    completion_tokens: 78
+    total_tokens: 4113
+  command: 섹터 비와 섹터 에이에 있는 선풍기가 모두 켜져 있으면 홀수 태그가 붙은 블라인드 중 하나를 닫아 줘.
+- devices:
+  - AirConditioner
+  - Dehumidifier
+  - AirPurifier
+  - Humidifier
+  - Fan
+  - Irrigator
+  - Clock
+  - WeatherProvider
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if (any(#Fan #Odd).switch_switch == 'on') {
+      all(#Irrigator #Bottom).switch_off()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#Fan #Odd).switch_switch == 'on') {
+        all(#Irrigator #Bottom).switch_off()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Odd #Fan).switch_switch == 'on') {
+        all(#Lower #Irrigator).switch_off()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4631
+    completion_tokens: 45
+    total_tokens: 4676
+  command: 홀수 태그가 붙은 선풍기 중 하나라도 켜져 있으면, 하단부에 있는 모든 관개 장치를 꺼 줘.
+- devices:
+  - AirConditioner
+  - Curtain
+  - Window
+  - Humidifier
+  - Fan
+  - Clock
+  - DoorLock
+  - Blind
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if (any(#Window #Even).windowControl_window == 'open') {
+      (#Fan #SectorA).switch_off()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#Window #Even).windowControl_window == 'open') {
+        (#Fan #SectorA).switch_off()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Even #Window).windowControl_window == 'open') {
+        (#SectorA #Fan).switch_off()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3928
+    completion_tokens: 44
+    total_tokens: 3972
+  command: 짝수 태그가 붙은 창문이 열려 있으면 섹터 에이에 있는 선풍기를 꺼 줘.
+- devices:
+  - Relay
+  - LeakSensor
+  - WeatherProvider
+  - Alarm
+  - Humidifier
+  - Clock
+  - Irrigator
+  - Charger
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    all(#Irrigator #SectorB #Odd).switch_off()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      all(#Irrigator #SectorB #Odd).switch_off()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      all(#SectorB #Odd #Irrigator).switch_off()
+  compare_results: []
+  model_info:
+    prompt_tokens: 4005
+    completion_tokens: 31
+    total_tokens: 4036
+  command: 섹터 비에 있는 홀수 태그가 붙은 관개 장치를 모두 꺼 줘.

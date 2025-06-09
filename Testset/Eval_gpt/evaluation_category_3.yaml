@@ -1,0 +1,199 @@
+- command: 지금 바로 관수기를 작동해 줘.
+  devices:
+  - Dishwasher
+  - Humidifier
+  - Irrigator
+  - Camera
+  - Dehumidifier
+  - Recorder
+  - LeakSensor
+  - Clock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    (#Irrigator).switch_on()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Irrigator).switch_on()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      (#Irrigator).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 4584
+    completion_tokens: 25
+    total_tokens: 4609
+- command: 매일 아침 8시에 조명을 켜 줘.
+  devices:
+  - Light
+  - AirPurifier
+  - Camera
+  - LightSensor
+  - AirConditioner
+  - Blind
+  - Clock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = "0 8 * * *"
+    period = -1
+    (#Light).switch_on()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 8 * * *"
+    period: -1
+    code: |
+      (#Light).switch_on()
+  label:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |
+      (#Light).switch_on()
+  compare_results: []
+  model_info:
+    prompt_tokens: 4597
+    completion_tokens: 30
+    total_tokens: 4627
+- command: 매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘.
+  devices:
+  - Window
+  - AirConditioner
+  - Curtain
+  - ContactSensor
+  - Blind
+  - Clock
+  - DoorLock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = "0 18 * * *"
+    period = 15000
+    (#Curtain).curtain_close()
+    wait until((#Clock).clock_hour == 19)
+    ---
+    name = "Scenario2"
+    cron = "0 18 * * *"
+    period = 15000
+    (#Curtain).curtain_open()
+    wait until((#Clock).clock_hour == 19)
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 18 * * *"
+    period: 15000
+    code: |
+      (#Curtain).curtain_close()
+      wait until((#Clock).clock_hour == 19)
+  - name: "Scenario2"
+    cron: "0 18 * * *"
+    period: 15000
+    code: |
+      (#Curtain).curtain_open()
+      wait until((#Clock).clock_hour == 19)
+  label:
+  - name: Scenario1
+    cron: 0 18 * * *
+    period: 15000
+    code: |
+      curtain_action := true
+      if ((#Clock).clock_hour == 18) {
+        if (curtain_action == true) {
+          (#Curtain).curtain_close()
+          curtain_action = false
+        } else {
+          (#Curtain).curtain_open()
+          curtain_action = true
+        }
+      } else {
+        break
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3898
+    completion_tokens: 90
+    total_tokens: 3988
+- command: 주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘.
+  devices:
+  - GasValve
+  - Shade
+  - Relay
+  - Curtain
+  - Blind
+  - Clock
+  - DoorLock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = "0 22 * * 6,7"
+    period = 180000
+    (#Blind).blind_close()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 22 * * 6,7"
+    period: 180000
+    code: |
+      (#Blind).blind_close()
+  label:
+  - name: Scenario1
+    cron: 0 22 * * 6,0
+    period: 180000
+    code: |
+      if ((#Clock).clock_hour == 22) {
+        (#Blind).blind_close()
+      } else {
+        break
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4076
+    completion_tokens: 35
+    total_tokens: 4111
+- command: 주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘.
+  devices:
+  - Dishwasher
+  - AirPurifier
+  - Humidifier
+  - Dehumidifier
+  - Fan
+  - AirConditioner
+  - Clock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = "0 22 * * 6,7"
+    period = 3000
+    (#Dehumidifier).switch_on()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 22 * * 6,7"
+    period: 3000
+    code: |
+      (#Dehumidifier).switch_on()
+  label:
+  - name: Scenario1
+    cron: 0 22 * * 6,0
+    period: 3000
+    code: |
+      if ((#Clock).clock_hour == 22) {
+        (#Dehumidifier).switch_on()
+      } else {
+        break
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4659
+    completion_tokens: 37
+    total_tokens: 4696

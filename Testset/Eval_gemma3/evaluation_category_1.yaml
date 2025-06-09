@@ -1,0 +1,255 @@
+- command: If the soil moisture is below 30% and the lights are off, run the irrigation and turn on the lights.
+  devices:
+  - Blind
+  - Clock
+  - Light
+  - WeatherProvider
+  - Shade
+  - Relay
+  - Irrigator
+  - Humidifier
+  - LightSensor
+  - SoilMoistureSensor
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
+      if ((#LightSensor).lightLevel_light == 0) {
+        (#Irrigator).switch_on()
+        (#Light).switch_on()
+      }
+  model_info:
+    elapsed_time: 18.029
+    bge_elapsed_time: 3.148
+    llm_elapsed_time: 14.881
+- command: If the temperature is above 33 degrees, turn on the dehumidifier and close the curtains.
+  devices:
+  - AirConditioner
+  - Blind
+  - Clock
+  - Dehumidifier
+  - Humidifier
+  - ContactSensor
+  - TemperatureSensor
+  - HumiditySensor
+  - DoorLock
+  - AirQualityDetector
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#TemperatureSensor).temperatureMeasurement_temperature > 33.0)
+      (#Dehumidifier).switch_on()
+      (#Curtain).curtain_close()
+  model_info:
+    elapsed_time: 9.36
+    bge_elapsed_time: 0.144
+    llm_elapsed_time: 9.216
+- command: If the carbon dioxide is above 1000 ppm and the blinds are open, turn on the fan and close the blinds.
+  devices:
+  - Blind
+  - AirConditioner
+  - Clock
+  - Shade
+  - Valve
+  - Humidifier
+  - AirPurifier
+  - AirQualityDetector
+  - Pump
+  - GasValve
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      # turn fan on
+      wait until((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide > 1000.0)
+      (#Fan).switch_on()
+      # open blinds
+      wait until((#Shade).windowShade_windowShade == 'open')
+      # close blinds
+      (#Shade).windowShade_close()
+  model_info:
+    elapsed_time: 13.941
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 13.792
+- command: If the temperature is above 29 degrees, the humidity is above 80%, and the lights are off, turn on the air conditioner and turn on the lights.
+  devices:
+  - AirConditioner
+  - Clock
+  - Light
+  - WeatherProvider
+  - Dehumidifier
+  - Humidifier
+  - LightSensor
+  - AirQualityDetector
+  - TemperatureSensor
+  - HumiditySensor
+  - Curtain
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 13.892
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 13.746
+- command: If the lights are on and the windows are closed, open the curtains and turn off the fan.
+  devices:
+  - Blind
+  - AirConditioner
+  - Clock
+  - Dehumidifier
+  - Humidifier
+  - AirPurifier
+  - ContactSensor
+  - Window
+  - DoorLock
+  - Curtain
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Blind).switch_switch == "on") and ((#Window).windowControl_window == "closed") {
+        (#Curtain).curtain_open()
+        (#Fan).switch_off()
+      }
+  model_info:
+    elapsed_time: 10.042
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 9.9
+- command: If the TV is off and the speakers are playing, turn on the TV and turn off the speakers.
+  devices:
+  - Speaker
+  - Television
+  - Clock
+  - Light
+  - Switch
+  - Relay
+  - Fan
+  - Camera
+  - Curtain
+  - SmartPlug
+  - Refrigerator
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 10.581
+    bge_elapsed_time: 0.144
+    llm_elapsed_time: 10.436
+- command: If the lights are on, the blinds are open, and motion is detected, turn off the lights and close the blinds.
+  devices:
+  - Blind
+  - SmokeDetector
+  - Clock
+  - Light
+  - Relay
+  - Valve
+  - ContactSensor
+  - Window
+  - DoorLock
+  - Switch
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Light).switch_switch == 'on')
+      wait until((#Light).windowControl_window == 'open')
+      wait until((#ContactSensor).contactSensor_contact == "detect")
+      (#Light).switch_off()
+      (#Light).windowControl_close()
+  model_info:
+    elapsed_time: 12.0
+    bge_elapsed_time: 0.151
+    llm_elapsed_time: 11.85
+- command: If the alarm is off, the lights are off, and the curtains are open, sound the siren and turn on the lights.
+  devices:
+  - Blind
+  - Clock
+  - Light
+  - Relay
+  - ContactSensor
+  - Alarm
+  - Siren
+  - DoorLock
+  - Window
+  - Curtain
+  - Pump
+  generated_code: []
+  model_info:
+    elapsed_time: 21.961
+    bge_elapsed_time: 0.145
+    llm_elapsed_time: 21.816
+- command: If the air conditioner is off and the curtains are closed, turn on the air conditioner and open the curtains.
+  devices:
+  - Blind
+  - AirConditioner
+  - Clock
+  - Valve
+  - Humidifier
+  - ContactSensor
+  - Pump
+  - Window
+  - DoorLock
+  - Curtain
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#AirConditioner).switch_switch == "off") and ((#Curtain).curtain_curtain == "closed") {
+        (#AirConditioner).switch_on()
+        (#Curtain).curtain_open()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#AirConditioner).switch_switch == "on") and ((#Curtain).curtain_curtain == "open") {
+        (#AirConditioner).switch_off()
+        (#Curtain).curtain_close()
+      }
+  model_info:
+    elapsed_time: 19.127
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 18.981
+- command: If your TV is on and the sound is off, turn it off and unmute it.
+  devices:
+  - Speaker
+  - SoundSensor
+  - Television
+  - Recorder
+  - Light
+  - Dishwasher
+  - Clock
+  - Relay
+  - AirPurifier
+  - Camera
+  - RobotCleaner
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Television).switch_switch == "on" and (#SoundSensor).soundSensor_sound == "idle" ->
+        (#Television).switch_off()
+        (#Television).colorControl_setColor(0)
+  model_info:
+    elapsed_time: 10.085
+    bge_elapsed_time: 0.144
+    llm_elapsed_time: 9.941

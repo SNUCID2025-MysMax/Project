@@ -1,0 +1,237 @@
+- devices:
+  - Irrigator
+  - Clock
+  - WeatherProvider
+  - LeakSensor
+  - HumiditySensor
+  - SoilMoistureSensor
+  - Speaker
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 100
+    (#Speaker).mediaPlayback_speak("급수 시작")
+    while ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0) {
+      (#Irrigator).switch_on()
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 25.0)
+    }
+    ```
+    Please let me know if you need further assistance!
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      (#Speaker).mediaPlayback_speak("급수 시작")
+      while ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0) {
+        (#Irrigator).switch_on()
+        wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 25.0)
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0) {
+        if (triggered == false) {
+          (#Irrigator).switch_on()
+          (#Speaker).mediaPlayback_speak('급수 시작')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4006
+    completion_tokens: 104
+    total_tokens: 4110
+  command: 실시간으로 확인해서 토양 습도가 25% 이하로 떨어질 때마다 급수기를 켜고 '급수 시작'이라고 스피커로 출력해줘.
+- devices:
+  - Clock
+  - Fan
+  - Dehumidifier
+  - AirPurifier
+  - TemperatureSensor
+  - AirQualityDetector
+  - AirConditioner
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 1000
+    if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+      (#Fan).switch_on()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        (#Fan).switch_on()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        if (triggered == false) {
+          (#Fan).switch_on()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4253
+    completion_tokens: 42
+    total_tokens: 4295
+  command: 1초마다 상태를 확인해서 온도가 35도를 초과할 때마다 환풍기를 켜 줘.
+- devices:
+  - Relay
+  - Irrigator
+  - Clock
+  - WeatherProvider
+  - TemperatureSensor
+  - Light
+  - LightSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 3000
+    if ((#LightSensor).lightLevel_light <= 200.0) {
+      (#Light).switch_on()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |
+      if ((#LightSensor).lightLevel_light <= 200.0) {
+        (#Light).switch_on()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      triggered := false
+      if ((#LightSensor).lightLevel_light <= 200.0) {
+        if (triggered == false) {
+          (#Light).switch_on()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3859
+    completion_tokens: 42
+    total_tokens: 3901
+  command: 3초마다 일조량을 확인해서 200룩스 이하로 떨어지면 조명을 켜 줘.
+- devices:
+  - Relay
+  - Clock
+  - Siren
+  - Window
+  - ContactSensor
+  - Alarm
+  - Light
+  - DoorLock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 100
+    wait until((#DoorLock).doorControl_door == 'open')
+    (#Alarm).alarm_siren()
+    (#Light).switch_on()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      wait until((#DoorLock).doorControl_door == 'open')
+      (#Alarm).alarm_siren()
+      (#Light).switch_on()
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#ContactSensor).contactSensor_contact == 'open') {
+        if (triggered == false) {
+          (#Alarm).alarm_siren()
+          (#Light).switch_on()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3941
+    completion_tokens: 44
+    total_tokens: 3985
+  command: 문이 열릴 때마다 알람의 사이렌을 울리고 조명을 켜 줘. 실시간으로 확인해서 상태를 계속 검사해서 반응해 줘.
+- devices:
+  - SmokeDetector
+  - Irrigator
+  - Clock
+  - WeatherProvider
+  - LeakSensor
+  - TemperatureSensor
+  - Speaker
+  - SoundSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 60000
+    wait until((#WeatherProvider).weatherProvider_weather == 'rain')
+    (#Irrigator).switch_off()
+    (#Speaker).mediaPlayback_speak(text='비가 감지되었습니다')
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |
+      wait until((#WeatherProvider).weatherProvider_weather == 'rain')
+      (#Irrigator).switch_off()
+      (#Speaker).mediaPlayback_speak(text='비가 감지되었습니다')
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 60000
+    code: |-
+      triggered := false
+      if ((#WeatherProvider).weatherProvider_weather == 'rain') {
+        if (triggered == false) {
+          (#Irrigator).switch_off()
+          (#Speaker).mediaPlayback_speak('비가 감지되었습니다')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3886
+    completion_tokens: 58
+    total_tokens: 3944
+  command: 현재 날씨에서 비가 감지될 때마다 관개 장치를 꺼 주고 '비가 감지되었습니다'라고 스피커로 출력해줘. 감지는 1분에 한번씩만 하자.

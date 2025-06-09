@@ -1,0 +1,260 @@
+- command: Check in real-time and turn on the waterer whenever the soil humidity drops below 25% and announce "Start watering" over the speaker.
+  devices:
+  - LeakSensor
+  - Humidifier
+  - Dehumidifier
+  - SoilMoistureSensor
+  - Pump
+  - Speaker
+  - TemperatureSensor
+  - HumiditySensor
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 25.0) {
+        (#Pump).switch_on()
+        (#Speaker).mediaPlayback_speak("Start watering")
+      }
+  model_info:
+    elapsed_time: 5.106
+    bge_elapsed_time: 0.141
+    llm_elapsed_time: 4.965
+- command: Check the status every 1 second and turn on the fan whenever the temperature exceeds 35 degrees.
+  devices:
+  - AirPurifier
+  - Humidifier
+  - Dehumidifier
+  - TemperatureSensor
+  - AirConditioner
+  - HumiditySensor
+  - WeatherProvider
+  - AirQualityDetector
+  - Irrigator
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        (#Fan).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.585
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 4.448
+- command: Check the sunlight every 3 seconds and turn on the lights when it drops below 200 lux.
+  devices:
+  - Alarm
+  - Relay
+  - Light
+  - TemperatureSensor
+  - Camera
+  - Blind
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      if ((#LightSensor).lightLevel_light < 200.0) {
+        (#Light).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.539
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.407
+- command: Turn on sirens and lights whenever a door is opened. Check in real time and react by constantly checking the status.
+  devices:
+  - Window
+  - Alarm
+  - Curtain
+  - Shade
+  - DoorLock
+  - Light
+  - Relay
+  - ContactSensor
+  - Siren
+  - Clock
+  - SmokeDetector
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        (#Light).switch_on()
+        (#Siren).switch_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        (#Light).switch_on()
+        (#Siren).switch_on()
+      }
+  model_info:
+    elapsed_time: 7.109
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 6.974
+- command: Whenever rain is detected in the current weather, turn off the irrigation and announce "Rain detected" to the speaker. The detection should only happen once a minute.
+  devices:
+  - LeakSensor
+  - SoundSensor
+  - SoilMoistureSensor
+  - Speaker
+  - TemperatureSensor
+  - Recorder
+  - HumiditySensor
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - SmokeDetector
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |-
+      if ((#WeatherProvider).weatherProvider_weather == "rain") {
+        (#Irrigator).switch_off()
+        (#Speaker).mediaPlayback_speak("Rain detected")
+      }
+  model_info:
+    elapsed_time: 4.934
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 4.788
+- command: Check in real-time and close the blinds whenever the living room window opens.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Alarm
+  - GasValve
+  - DoorLock
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        (#Blind).blind_close()
+      }
+  model_info:
+    elapsed_time: 4.206
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 4.075
+- command: Open the curtains at the same time whenever the lights come on. I need to check the lights in real time.
+  devices:
+  - Window
+  - Curtain
+  - DoorLock
+  - Light
+  - Relay
+  - ContactSensor
+  - Camera
+  - Blind
+  - Siren
+  - Clock
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Light).switch_switch == "on") {
+        (#Curtain).curtain_open()
+      }
+  model_info:
+    elapsed_time: 4.124
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 3.993
+- command: Check status every 2 seconds and turn on the speakers whenever the TV turns on.
+  devices:
+  - Alarm
+  - GasValve
+  - Relay
+  - Speaker
+  - Camera
+  - Switch
+  - DoorLock
+  - Siren
+  - Irrigator
+  - Television
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Speaker).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.347
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 4.215
+- command: Instantly turn on the alarm's light whenever the front door is opened. Check in real time.
+  devices:
+  - Alarm
+  - Window
+  - Shade
+  - Curtain
+  - DoorLock
+  - Light
+  - Relay
+  - ContactSensor
+  - Siren
+  - Clock
+  - SmokeDetector
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        (#Alarm).alarm_strobe()
+      }
+  model_info:
+    elapsed_time: 4.238
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 4.103
+- command: Check the status of the air purifier every 1 second and turn it back on automatically if it turns off.
+  devices:
+  - AirPurifier
+  - Shade
+  - Humidifier
+  - Pump
+  - Dehumidifier
+  - AirConditioner
+  - Dishwasher
+  - WeatherProvider
+  - AirQualityDetector
+  - RobotCleaner
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      if ((#AirPurifier).switch_switch == "off") {
+        (#AirPurifier).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.645
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 4.512

@@ -1,64 +1,49 @@
-name = "Scenario1"
-cron = "0 9 * * *"
-period = 100
-phase := 0
-open_count := 0
-open_time_1 := 0.0
-open_time_2 := 0.0
-blind_open_time := 0.0
-alarm_triggered := false
-open_duration := 0
-blink_timer := 0
-
-if (phase == 0) {
-  if ((#Light).switch_switch == 'off' and (#Window).windowControl_window == 'closed')) {
-    (#Blind).blind_open()
-    blind_open_time = (#Clock).clock_timestamp
-    phase = 1
-  }
-}
-
-if (phase == 1) {
-  if ((#Window).windowControl_window == 'open') {
-    open_count = open_count + 1
-    if (open_count == 1) {
-      open_time_1 = (#Clock).clock_timestamp
-    } else if (open_count == 2) {
-      open_time_2 = (#Clock).clock_timestamp
-    }
-    phase = 2
-    blink_timer = 0
-    open_duration = 0
-  }
-}
-
-if (phase == 2) {
-  blink_timer = blink_timer + 100
-  if ((#Window).windowControl_window == 'open') {
-    open_duration = open_duration + 100
-  } else {
-    open_duration = 0
-  }
-
-  if (blink_timer >= 5000 and alarm_triggered == false) {
-    (#Alarm).alarm_siren()
-    alarm_triggered = true
-  }
-
-  if (alarm_triggered and open_duration >= 10000) {
-    (#Light).switch_toggle()
-    (#Clock).clock_delay(0, 0, 2)
-    (#Light).switch_toggle()
-  }
-
-  if ((#Window).windowControl_window == 'closed') {
-    phase = 3
-  }
-}
-
-if (phase == 3) {
-  if ((open_count >= 2) and (open_time_2 > open_time_1)) {
-    (#AirConditioner).switch_off()
-  }
-  break
-}
+name = "BirthdaySong"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("생일 날짜를 알 수 있는 정보가 없습니다.")
+---
+name = "SadNewsComfort"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("뉴스를 이해하거나 분석할 수 있는 기능이 없습니다. 그리고 어떤 말을 해야 위로가 되는지도 알 수 없습니다.")
+---
+name = "CatHappyClap"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("고양이의 기분을 감지할 수 있는 기능이 없습니다. 박수를 치는 기능이 없습니다.")
+---
+name = "MoodLighting"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("현재 사용자의 기분 상태를 알 수 없습니다. 감성적인 조명 설정이 불가능합니다.")
+---
+name = "LonelyHomeMusic"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("집이 외로워 보인다는 상태를 판단할 수 있는 기능이 없습니다.")
+---
+name = "DangerPoliceCall"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("밖이 위험한지를 판단하거나 경찰에 전화를 거는 기능이 없습니다.")
+---
+name = "LowBatteryCurtain"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("스마트폰 배터리 상태를 알 수 있는 기능이 없습니다.")
+---
+name = "ImportantPresentationWish"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("오늘 중요한 발표가 있는지 알 수 없습니다. 행운을 비는 기능이 없습니다.")
+---
+name = "RobotCoffeeRequest"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("로봇청소기에게 커피를 타 달라고 요청할 수 없습니다.")
+---
+name = "DanceJoyfully"
+cron = ""
+period = -1
+(#Speaker).mediaPlayback_speak("기분 좋게 춤을 출 수 있는 디바이스가 없습니다.")

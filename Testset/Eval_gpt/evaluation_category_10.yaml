@@ -1,0 +1,373 @@
+- devices:
+  - Irrigator
+  - Clock
+  - Valve
+  - Blind
+  - WeatherProvider
+  - GasValve
+  - Curtain
+  - Pump
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 1000
+    irrigatorState := (#Irrigator).switch_switch
+    irrigatorCount := 0
+    pumpState := (#Pump).switch_switch
+    pumpCount := 0
+    while (true) {
+      if ((#Irrigator).switch_switch == 'off' and irrigatorState == 'on') {
+        irrigatorCount = irrigatorCount + 1
+      }
+      if ((#Pump).switch_switch == 'on' and pumpState == 'off') {
+        pumpCount = pumpCount + 1
+      }
+      irrigatorState = (#Irrigator).switch_switch
+      pumpState = (#Pump).switch_switch
+      if (irrigatorCount > 4 and pumpCount >= 2) {
+        (#Blind).blind_close()
+        (#Curtain).curtain_close()
+        break
+      }
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      irrigatorState := (#Irrigator).switch_switch
+      irrigatorCount := 0
+      pumpState := (#Pump).switch_switch
+      pumpCount := 0
+      while (true) {
+        if ((#Irrigator).switch_switch == 'off' and irrigatorState == 'on') {
+          irrigatorCount = irrigatorCount + 1
+        }
+        if ((#Pump).switch_switch == 'on' and pumpState == 'off') {
+          pumpCount = pumpCount + 1
+        }
+        irrigatorState = (#Irrigator).switch_switch
+        pumpState = (#Pump).switch_switch
+        if (irrigatorCount > 4 and pumpCount >= 2) {
+          (#Blind).blind_close()
+          (#Curtain).curtain_close()
+          break
+        }
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      prev_irrigator_state := (#Irrigator).switch_switch
+      irrigator_off_to_on_count := 0
+      prev_pump_state := (#Pump).switch_switch
+      pump_on_count := 0
+      irrigator_state = (#Irrigator).switch_switch
+      pump_state = (#Pump).switch_switch
+      if ((prev_irrigator_state == 'off') and (irrigator_state == 'on')) {
+        irrigator_off_to_on_count = irrigator_off_to_on_count + 1
+      }
+      prev_irrigator_state = irrigator_state
+      if ((pump_state == 'on') and (prev_pump_state != 'on')) {
+        pump_on_count = pump_on_count + 1
+      }
+      prev_pump_state = pump_state
+      if ((irrigator_off_to_on_count > 4) and (pump_on_count >= 2)) {
+        (#Blind).blind_close()
+        (#Curtain).curtain_close()
+        break
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4367
+    completion_tokens: 198
+    total_tokens: 4565
+  command: 1초마다 확인하여 관개 장치가 꺼졌다 켜진 횟수가 4번을 초과하고 펌프가 2번 이상 작동했으면 블라인드를 닫고 커튼을 내려 줘.
+- devices:
+  - Clock
+  - Valve
+  - Blind
+  - Shade
+  - Window
+  - Curtain
+  - ContactSensor
+  - DoorLock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 100
+    window_open_counter := 0
+    fan_always_on := true
+    previous_window_status := (#Window).windowControl_window
+    while (true) {
+      if ((#Window).windowControl_window == 'open' and previous_window_status == 'closed') {
+        window_open_counter = window_open_counter + 1
+      }
+      if ((#Fan).switch_switch == 'off') {
+        fan_always_on = false
+      }
+      if (window_open_counter >= 3 and fan_always_on == true) {
+        (#Fan).switch_off()
+        (#Blind).blind_close()
+        break
+      }
+      previous_window_status = (#Window).windowControl_window
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      window_open_counter := 0
+      fan_always_on := true
+      previous_window_status := (#Window).windowControl_window
+      while (true) {
+        if ((#Window).windowControl_window == 'open' and previous_window_status == 'closed') {
+          window_open_counter = window_open_counter + 1
+        }
+        if ((#Fan).switch_switch == 'off') {
+          fan_always_on = false
+        }
+        if (window_open_counter >= 3 and fan_always_on == true) {
+          (#Fan).switch_off()
+          (#Blind).blind_close()
+          break
+        }
+        previous_window_status = (#Window).windowControl_window
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      prev_window_state := (#Window).windowControl_window
+      window_open_to_close_count := 0
+      fan_off_detected := False
+      window_state = (#Window).windowControl_window
+      fan_state = (#Fan).switch_switch
+      if ((prev_window_state == 'open') and (window_state == 'closed')) {
+        window_open_to_close_count = window_open_to_close_count + 1
+      }
+      prev_window_state = window_state
+      if (fan_state == 'off') {
+        fan_off_detected = True
+      }
+      if ((window_open_to_close_count >= 3) and (fan_off_detected == False)) {
+        (#Fan).switch_off()
+        (#Blind).blind_close()
+        break
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3648
+    completion_tokens: 157
+    total_tokens: 3805
+  command: 실시간으로 검사해서 창문이 열렸다 닫힌 횟수가 3번 이상이고, 그 사이 선풍기가 한 번도 꺼지지 않았으면 선풍기를 꺼 주고 블라인드를 닫아 줘.
+- devices:
+  - Clock
+  - Dehumidifier
+  - HumiditySensor
+  - AirQualityDetector
+  - AirConditioner
+  - Curtain
+  - Siren
+  - Humidifier
+  generated_code: "```\nname = \"Scenario1\"\ncron = \"0 * * * *\"\nperiod = 3000\nswitchedCount := 0\nprevState := (#Dehumidifier).switch_switch\nrepeat := false\nif ((repeat == false) and ((#Clock).clock_minute >= 0) and ((#Clock).clock_minute <= 30)) {\n  if ((#Dehumidifier).switch_switch != prevState) {\n    switchedCount += 1\n    prevState = (#Dehumidifier).switch_switch\n  }\n  if ((switchedCount >= 4) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 65.0)) {\n    repeat = true\n    (#Siren).switch_on()\n    (#Clock).clock_delay(0, 0, 1)\n    (#Siren).switch_off()\n    (#Clock).clock_delay(0, 0, 3)\n    (#Siren).switch_on()\n    (#Clock).clock_delay(0, 0, 1)\n    (#Siren).switch_off()\n    (#Clock).clock_delay(0, 0, 3)\n    (#Curtain).curtain_close()\n    switchTimeout := ((#Clock).clock_minute) + 1\n    if (switchTimeout == 60) {\n      switchTimeout = 0\n    }\n    switchedCount := 0\n  }    \n} else if ((#Clock).clock_minute > 30) {\n  repeat = false\n  switchedCount := 0\n}\n```"
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 * * * *"
+    period: 3000
+    code: "switchedCount := 0\nprevState := (#Dehumidifier).switch_switch\nrepeat := false\nif ((repeat == false) and ((#Clock).clock_minute >= 0) and ((#Clock).clock_minute <= 30)) {\n  if ((#Dehumidifier).switch_switch != prevState) {\n    switchedCount += 1\n    prevState = (#Dehumidifier).switch_switch\n  }\n  if ((switchedCount >= 4) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 65.0)) {\n    repeat = true\n    (#Siren).switch_on()\n    (#Clock).clock_delay(0, 0, 1)\n    (#Siren).switch_off()\n    (#Clock).clock_delay(0, 0, 3)\n    (#Siren).switch_on()\n    (#Clock).clock_delay(0, 0, 1)\n    (#Siren).switch_off()\n    (#Clock).clock_delay(0, 0, 3)\n    (#Curtain).curtain_close()\n    switchTimeout := ((#Clock).clock_minute) + 1\n    if (switchTimeout == 60) {\n      switchTimeout = 0\n    }\n    switchedCount := 0\n  }    \n} else if ((#Clock).clock_minute > 30) {\n  repeat = false\n  switchedCount := 0\n}\n"
+  label:
+  - name: Scenario1
+    cron: 0 * * * *
+    period: 3000
+    code: |-
+      prev_state := (#Dehumidifier).switch_switch
+      toggle_count := 0
+      minute = (#Clock).clock_minute
+      if (minute <= 30) {
+        current_state = (#Dehumidifier).switch_switch
+        humidity = (#AirQualityDetector).relativeHumidityMeasurement_humidity
+        if ((prev_state == 'off') and (current_state == 'on')) {
+            toggle_count = toggle_count + 1
+        }
+        prev_state = current_state
+        if ((toggle_count >= 4) and (humidity >= 65.0)) {
+            (#Alarm).alarm_siren()
+            (#Clock).clock_delay(0, 0, 1)
+            (#Alarm).alarm_off()
+            (#Clock).clock_delay(0, 0, 3)
+            (#Alarm).alarm_siren()
+            (#Clock).clock_delay(0, 0, 1)
+            (#Alarm).alarm_off()
+            (#Curtain).curtain_close()
+            toggle_count = 0
+            break
+        }
+      } else {
+        break
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4062
+    completion_tokens: 319
+    total_tokens: 4381
+  command: 매시간 0분부터 30분까지, 3초마다 확인해서 제습기가 켜졌다 꺼진 횟수가 4번 이상이고, 그 때 습도가 65% 이상이면 알람의 사이렌을 1초간, 3초 간격으로 두 번 울리고 그 후 커튼을 닫아 줘.
+- devices:
+  - Clock
+  - Dehumidifier
+  - Refrigerator
+  - TemperatureSensor
+  - Dishwasher
+  - AirConditioner
+  - AirQualityDetector
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 600000
+    temp_arr := [0, 0, 0]
+    temp = (#TemperatureSensor).temperatureMeasurement_temperature
+    temp_arr = [temp_arr[1], temp_arr[2], temp]
+    if ( (temp_arr[1] > temp_arr[0]) and (temp_arr[2] > temp_arr[1]) and ((#AirConditioner).switch_switch == 'off') ) {
+      (#AirConditioner).switch_on()
+      (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 600000
+    code: |
+      temp_arr := [0, 0, 0]
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_arr = [temp_arr[1], temp_arr[2], temp]
+      if ( (temp_arr[1] > temp_arr[0]) and (temp_arr[2] > temp_arr[1]) and ((#AirConditioner).switch_switch == 'off') ) {
+        (#AirConditioner).switch_on()
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 600000
+    code: |-
+      temp_1 := -999.0
+      temp_2 := -999.0
+      temp_3 := -999.0
+      current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_1 = temp_2
+      temp_2 = temp_3
+      temp_3 = current_temp
+      if ((temp_1 != -999.0) and (temp_2 != -999.0) and (temp_3 != -999.0)) {
+        rise_1 = temp_2 - temp_1
+        rise_2 = temp_3 - temp_2
+        if ((rise_1 > 5.0) and (rise_2 > 5.0)) {
+            if ((#AirConditioner).switch_switch == 'off') {
+                (#AirConditioner).switch_on()
+                (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+                break
+            }
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4448
+    completion_tokens: 126
+    total_tokens: 4574
+  command: 10분마다 확인하여 온도가 5도 이상 연속으로 세 번 상승하고 에어컨이 꺼져 있으면 에어컨을 키고 냉방 모드로 설정해줘
+- devices:
+  - Relay
+  - Clock
+  - Speaker
+  - Camera
+  - Light
+  - LightSensor
+  - Television
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 5000
+    off_duration := 0
+    count := 0
+    today := (#Clock).clock_weekday
+    if (today != "wednesday") {
+      if ((#Television).switch_switch == 'on') {
+        if (off_duration >= 600000) {
+          count = count + 1
+        }
+        off_duration = 0
+      } else {
+        off_duration = off_duration + 5000
+      }
+      if (count >= 2) {
+        (#Speaker).switch_on()
+        (#Light).switchLevel_setLevel(60)
+      }
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |
+      off_duration := 0
+      count := 0
+      today := (#Clock).clock_weekday
+      if (today != "wednesday") {
+        if ((#Television).switch_switch == 'on') {
+          if (off_duration >= 600000) {
+            count = count + 1
+          }
+          off_duration = 0
+        } else {
+          off_duration = off_duration + 5000
+        }
+        if (count >= 2) {
+          (#Speaker).switch_on()
+          (#Light).switchLevel_setLevel(60)
+        }
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).switch_switch
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'wednesday') {
+        current_state = (#Television).switch_switch
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'off') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'off') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).switch_on()
+            (#Light).switchLevel_setLevel(60, 0)
+            break
+        }
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4398
+    completion_tokens: 136
+    total_tokens: 4534
+  command: 시각 상관없이 항상, 5초마다 체크해서 TV가 10분 동안 꺼져 있었다가 켜지는 이벤트가 두 번 이상 발생했으면, 스피커를 켜고 조명을 60으로 맞춰 줘. 단, 수요일에는 빼고

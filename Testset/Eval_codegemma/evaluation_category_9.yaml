@@ -1,0 +1,295 @@
+- command: Every morning at 7 am, if the irrigation is off and the windows are closed, turn on the irrigation and open the windows. Then, when the irrigation turns on, close the blinds.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Alarm
+  - GasValve
+  - DoorLock
+  - Relay
+  - Blind
+  - WeatherProvider
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |-
+      if ((#Clock).clock_hour == 7) and ((#Clock).clock_minute == 0) {
+        if ((#WeatherProvider).switch_switch == 'off') and ((#Window).windowControl_window == 'closed') {
+          (#WeatherProvider).switch_on()
+          (#Window).windowControl_open()
+        }
+        if ((#WeatherProvider).switch_switch == 'on') {
+          (#Blind).blind_close()
+        }
+      }
+  model_info:
+    elapsed_time: 8.167
+    bge_elapsed_time: 0.157
+    llm_elapsed_time: 8.01
+- command: Check in real time and turn on the irrigation every 5 seconds if the soil moisture sensor reads 20 percent or less, and turn off the irrigation if it reads 60 percent or more.
+  devices:
+  - Humidifier
+  - LeakSensor
+  - Dehumidifier
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - HumiditySensor
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - LightSensor
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0) {
+        (#Irrigator).switch_on()
+      }
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 60.0) {
+        (#Irrigator).switch_off()
+      }
+  model_info:
+    elapsed_time: 6.15
+    bge_elapsed_time: 0.15
+    llm_elapsed_time: 6.0
+- command: Check in real-time to turn on a fan if the temperature is above 28 degrees, or a dehumidifier if the humidity is above 80%.
+  devices:
+  - Humidifier
+  - Dehumidifier
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - AirConditioner
+  - HumiditySensor
+  - WeatherProvider
+  - AirQualityDetector
+  - Irrigator
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 28.0) {
+        (#Fan).switch_on()
+      }
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0) {
+        (#Dehumidifier).switch_on()
+      }
+  model_info:
+    elapsed_time: 5.852
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 5.716
+- command: Check in real-time to close the blinds whenever the lights are on and open them when they're off.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - DoorLock
+  - Relay
+  - Light
+  - Switch
+  - Blind
+  - Siren
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#Light).switch_switch == "on") {
+        (#Blind).blind_close()
+      } else {
+        (#Blind).blind_open()
+      }
+  model_info:
+    elapsed_time: 4.758
+    bge_elapsed_time: 0.138
+    llm_elapsed_time: 4.62
+- command: On weekends, every 5 seconds, turn the pump on if it's off, off if it's on, and set the fan speed to 10.
+  devices:
+  - AirPurifier
+  - Humidifier
+  - Pump
+  - Dehumidifier
+  - GasValve
+  - AirConditioner
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      if ((#Clock).clock_weekday == "saturday") {
+        if ((#Pump).switch_switch == "off") {
+          (#Pump).switch_on()
+        } else {
+          (#Pump).switch_off()
+        }
+        (#Fan).fanControl_setPercent(10)
+      }
+      if ((#Clock).clock_weekday == "sunday") {
+        if ((#Pump).switch_switch == "off") {
+          (#Pump).switch_on()
+        } else {
+          (#Pump).switch_off()
+        }
+        (#Fan).fanControl_setPercent(10)
+      }
+  model_info:
+    elapsed_time: 9.787
+    bge_elapsed_time: 0.141
+    llm_elapsed_time: 9.646
+- command: Check in real-time to turn on lights and increase fan speed by 10 whenever motion is detected.
+  devices:
+  - AirPurifier
+  - Humidifier
+  - MotionSensor
+  - Light
+  - TemperatureSensor
+  - DoorLock
+  - AirConditioner
+  - Clock
+  - SmokeDetector
+  - LightSensor
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#MotionSensor).motionSensor_motion == "active") {
+        (#Light).switch_on()
+        (#Fan).fanControl_setFanSpeed((#Fan).fanControl_fanSpeed + 10)
+      }
+  model_info:
+    elapsed_time: 5.324
+    bge_elapsed_time: 0.137
+    llm_elapsed_time: 5.187
+- command: Check in real-time to close the blinds if the window is open, or open the curtains if the window is closed. It also checks in real time and immediately sounds the alarm's siren if it's not already sounding.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Alarm
+  - DoorLock
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  - SmokeDetector
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        (#Blind).blind_close()
+        (#Curtain).curtain_open()
+        if ((#Alarm).alarm_alarm == "off") {
+          (#Alarm).alarm_siren()
+        }
+      }
+  model_info:
+    elapsed_time: 5.907
+    bge_elapsed_time: 0.151
+    llm_elapsed_time: 5.756
+- command: Every Friday at 6pm, if the lights are on, turn them down to 30, and if the TV is off, turn it on. If the fan is off, turn it on.
+  devices:
+  - AirPurifier
+  - Curtain
+  - Humidifier
+  - Light
+  - Camera
+  - AirConditioner
+  - Television
+  - Clock
+  - LightSensor
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |-
+      if ((#Clock).clock_weekday == "friday") and ((#Clock).clock_hour == 18) {
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switchLevel_setLevel(30, 100)
+        }
+        if ((#Television).switch_switch == 'off') {
+          (#Television).switch_on()
+        }
+        if ((#Fan).switch_switch == 'off') {
+          (#Fan).switch_on()
+        }
+      }
+  model_info:
+    elapsed_time: 8.703
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 8.551
+- command: Open, close, and repeat the blinds every 5 seconds from the time the window is closed.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Alarm
+  - GasValve
+  - DoorLock
+  - Camera
+  - ContactSensor
+  - Blind
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      if ((#Window).windowControl_window == "closed") {
+        (#Blind).blind_open()
+        (#Blind).blind_close()
+      }
+  model_info:
+    elapsed_time: 4.596
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 4.463
+- command: Every morning at 8am, if the speaker is off, turn it on and say 'This is the weather today'. Then, if the lights are off, turn them on and open the blinds.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Relay
+  - Speaker
+  - Light
+  - Blind
+  - WeatherProvider
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |-
+      if (((#Clock).clock_hour == 8) and ((#Clock).clock_minute == 0)) {
+        if ((#Speaker).switch_switch == 'off') {
+          (#Speaker).switch_on()
+          (#Speaker).mediaPlayback_speak("This is the weather today")
+        }
+        if ((#Light).switch_switch == 'off') {
+          (#Light).switch_on()
+          (#Blind).blind_open()
+        }
+      }
+  model_info:
+    elapsed_time: 8.121
+    bge_elapsed_time: 0.151
+    llm_elapsed_time: 7.97

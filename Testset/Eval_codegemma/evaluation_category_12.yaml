@@ -1,0 +1,252 @@
+- command: Check in real-time to turn on the irrigation when the soil moisture sensor reads 30% or less, and also check every second to turn off the pump when the temperature exceeds 25 degrees.
+  devices:
+  - Humidifier
+  - Pump
+  - Dehumidifier
+  - SoilMoistureSensor
+  - LeakSensor
+  - TemperatureSensor
+  - HumiditySensor
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
+      (#Irrigator).switch_on()
+  - name: "Scenario2"
+    cron: "*/1 * * * * *"
+    period: 100
+    code: |-
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 25.0) {
+        (#Pump).switch_off()
+      }
+  model_info:
+    elapsed_time: 7.0
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 6.848
+- command: Turn on the speaker when the pump is off, and turn on the irrigation when the soil moisture sensor reads 20% or less.
+  devices:
+  - Humidifier
+  - Pump
+  - LeakSensor
+  - SoilMoistureSensor
+  - Speaker
+  - TemperatureSensor
+  - HumiditySensor
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Pump).switch_switch == "off")
+      (#Speaker).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+      (#Irrigator).switch_on()
+  model_info:
+    elapsed_time: 6.24
+    bge_elapsed_time: 0.144
+    llm_elapsed_time: 6.096
+- command: If the soil moisture sensor's reading drops below 25% and doesn't change for 10 seconds, sound the alarm's siren. And just turn off the lights.
+  devices:
+  - Alarm
+  - LeakSensor
+  - SoundSensor
+  - Humidifier
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - HumiditySensor
+  - Siren
+  - WeatherProvider
+  - Clock
+  - LightSensor
+  generated_code: []
+  model_info:
+    elapsed_time: 48.244
+    bge_elapsed_time: 0.148
+    llm_elapsed_time: 48.096
+- command: Check in real-time to turn on the pump when the lights come on, or close the blinds when the soil moisture sensor drops below 30%.
+  devices:
+  - Shade
+  - Humidifier
+  - Pump
+  - Dehumidifier
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - HumiditySensor
+  - Blind
+  - WeatherProvider
+  - Clock
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#LightSensor).lightLevel_light > 0.0) {
+        (#Pump).switch_on()
+      }
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+        (#Blind).blind_close()
+      }
+  model_info:
+    elapsed_time: 5.698
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 5.548
+- command: Turn on the siren and lights if the soil moisture sensor drops below 20% after the irrigation is turned off. Open the curtains if they are closed.
+  devices:
+  - Alarm
+  - Curtain
+  - Shade
+  - Humidifier
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - HumiditySensor
+  - WeatherProvider
+  - Blind
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Humidifier).switch_switch == "off")
+      (#Siren).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+      (#WeatherProvider).switch_on()
+      name = "Scenario3"
+      cron = ""
+      period = -1
+      if ((#Curtain).curtain_curtain == "closed") {
+        (#Curtain).curtain_open()
+      }
+  model_info:
+    elapsed_time: 8.263
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 8.111
+- command: Check in real-time to turn on the lights whenever a door is opened, turn off the speakers when the TV is turned off, and close the blinds.
+  devices:
+  - Curtain
+  - Shade
+  - Speaker
+  - DoorLock
+  - Light
+  - Relay
+  - Switch
+  - Blind
+  - Siren
+  - Television
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 49.979
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 49.837
+- command: If the dehumidifier is off, turn it on; if the lights are off, set the brightness to 50 percent.
+  devices:
+  - Humidifier
+  - Dehumidifier
+  - Refrigerator
+  - Light
+  - AirConditioner
+  - HumiditySensor
+  - Dishwasher
+  - Blind
+  - Clock
+  - LightSensor
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Dehumidifier).switch_switch == "off") {
+        (#Dehumidifier).switch_on()
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(50)
+      }
+  model_info:
+    elapsed_time: 5.81
+    bge_elapsed_time: 0.137
+    llm_elapsed_time: 5.673
+- command: Close the blinds when the windows are open, turn on the fan when the lights are off.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Humidifier
+  - AirPurifier
+  - DoorLock
+  - ContactSensor
+  - AirConditioner
+  - Blind
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        (#Blind).blind_close()
+      }
+      if ((#Shade).switch_switch == "off") {
+        (#Fan).switch_on()
+      }
+  model_info:
+    elapsed_time: 5.429
+    bge_elapsed_time: 0.135
+    llm_elapsed_time: 5.294
+- command: Check in real-time, close the curtains when motion is detected, and sound the siren of your alarm now.
+  devices:
+  - Alarm
+  - Curtain
+  - Window
+  - SoundSensor
+  - MotionSensor
+  - DoorLock
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  - SmokeDetector
+  generated_code: []
+  model_info:
+    elapsed_time: 48.197
+    bge_elapsed_time: 0.135
+    llm_elapsed_time: 48.061
+- command: If a window is open, open the curtains after 10 seconds. Turn the lights on and off every 5 seconds, regardless of the window.
+  devices:
+  - Window
+  - Curtain
+  - DoorLock
+  - Light
+  - Camera
+  - ContactSensor
+  - AirConditioner
+  - Blind
+  - Clock
+  - LightSensor
+  generated_code: []
+  model_info:
+    elapsed_time: 48.742
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 48.6

@@ -89,7 +89,7 @@
     period: 0
     code: |
       (#Television).switch_off()
-- command: "5초마다 스피커 볼륨을 1씩 높여 줘."
+- command: "5초마다 텔레비전 볼륨을 1씩 높여 줘."
   code:
   - name: "Scenario1"
     cron: ""

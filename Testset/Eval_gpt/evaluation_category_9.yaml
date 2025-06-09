@@ -1,0 +1,254 @@
+- devices:
+  - Clock
+  - WeatherProvider
+  - Blind
+  - Valve
+  - Shade
+  - Window
+  - Curtain
+  - DoorLock
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = "0 7 * * *"
+    period = 0
+    if (((#Irrigator).switch_switch == 'off') and ((#Window).windowControl_window == 'closed')) {
+      (#Irrigator).switch_on()
+      (#Window).windowControl_open()
+    }
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = -1
+    wait until((#Irrigator).switch_switch == 'on')
+    (#Blind).blind_close()
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: "0 7 * * *"
+    period: 0
+    code: |
+      if (((#Irrigator).switch_switch == 'off') and ((#Window).windowControl_window == 'closed')) {
+        (#Irrigator).switch_on()
+        (#Window).windowControl_open()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#Irrigator).switch_switch == 'on')
+      (#Blind).blind_close()
+  label:
+  - name: Scenario1
+    cron: 0 7 * * *
+    period: 100
+    code: |-
+      name = "Scenario1"
+      cron = "0 7 * * *"
+      period = -1
+      if ((#Irrigator).switch_switch == 'off' and (#Window).windowControl_window == 'closed') {
+        (#Irrigator).switch_on()
+        (#Window).windowControl_open()
+        wait until((#Irrigator).switch_switch == 'on')
+        (#Blind).blind_close()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3875
+    completion_tokens: 104
+    total_tokens: 3979
+  command: 매일 오전 7시에 관개 장치가 꺼져 있고 창문이 닫혀 있으면 관개 장치를 켜고 창문을 열어 줘. 이후 관개 장치가 켜지면 블라인드를 닫아 줘.
+- devices:
+  - Irrigator
+  - Clock
+  - WeatherProvider
+  - LeakSensor
+  - HumiditySensor
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 5000
+    if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0) {
+      (#Irrigator).switch_on()
+    } else if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 60.0) {
+      (#Irrigator).switch_off()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0) {
+        (#Irrigator).switch_on()
+      } else if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 60.0) {
+        (#Irrigator).switch_off()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      soil_humidity = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+      if (soil_humidity <= 20.0) {
+        (#Irrigator).switch_on()
+      } else if (soil_humidity >= 60.0) {
+        (#Irrigator).switch_off()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3630
+    completion_tokens: 91
+    total_tokens: 3721
+  command: 실시간으로 확인하여 5초마다 토양 습도 센서의 값이 20 퍼센트 이하이면 관개 장치를 켜고, 60 퍼센트 이상이면 관개 장치를 꺼 줘.
+- devices:
+  - Clock
+  - Dehumidifier
+  - Fan
+  - HumiditySensor
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - AirConditioner
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 100
+    if ((#TemperatureSensor).temperatureMeasurement_temperature >= 28.0) {
+      (#Fan).switch_on()
+    }
+    if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
+      (#Dehumidifier).switch_on()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if ((#TemperatureSensor).temperatureMeasurement_temperature >= 28.0) {
+        (#Fan).switch_on()
+      }
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0) {
+        (#Dehumidifier).switch_on()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      temperature = (#TemperatureSensor).temperatureMeasurement_temperature
+      humidity = (#HumiditySensor).relativeHumidityMeasurement_humidity
+      if (temperature >= 28.0) {
+        (#Fan).switch_on()
+      }
+      if (humidity >= 80.0) {
+        (#Dehumidifier).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3748
+    completion_tokens: 72
+    total_tokens: 3820
+  command: 실시간으로 확인하여 온도가 28도 이상이면 선풍기를 켜고, 습도가 80% 이상이면 제습기를 켜 줘.
+- devices:
+  - Relay
+  - Clock
+  - Valve
+  - Blind
+  - Shade
+  - Light
+  - DoorLock
+  - Switch
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = 100
+    if ((#Light).switch_switch == 'on') {
+        (#Blind).blind_close()
+    } else if ((#Light).switch_switch == 'off') {
+        (#Blind).blind_open()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if ((#Light).switch_switch == 'on') {
+          (#Blind).blind_close()
+      } else if ((#Light).switch_switch == 'off') {
+          (#Blind).blind_open()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      light_status = (#Light).switch_switch
+      if (light_status == 'on') {
+        (#Blind).blind_close()
+      } else if (light_status == 'off') {
+        (#Blind).blind_open()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4054
+    completion_tokens: 60
+    total_tokens: 4114
+  command: 실시간으로 확인하여 조명이 켜져 있을 때마다 블라인드를 닫고, 꺼져 있으면 블라인드를 열어 줘.
+- devices:
+  - Irrigator
+  - Fan
+  - Dehumidifier
+  - Clock
+  - AirPurifier
+  - AirConditioner
+  - Pump
+  - Humidifier
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = "* * * * 6,7"
+    period = 5000
+    if ((#Pump).switch_switch == 'off') {
+      (#Pump).switch_on()
+    } else if ((#Pump).switch_switch == 'on') {
+      (#Pump).switch_off()
+    }
+    all(#Fan).fanControl_setFanSpeed = 10
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: "* * * * 6,7"
+    period: 5000
+    code: |
+      if ((#Pump).switch_switch == 'off') {
+        (#Pump).switch_on()
+      } else if ((#Pump).switch_switch == 'on') {
+        (#Pump).switch_off()
+      }
+      all(#Fan).fanControl_setFanSpeed = 10
+  label:
+  - name: Scenario1
+    cron: 0 0 * * 6,7
+    period: 5000
+    code: |-
+      weekday = (#Clock).clock_weekday
+      if ((weekday != 'saturday') and (weekday != 'sunday')) {
+        break
+      }
+      (#Fan).fanControl_setFanSpeed(10)
+      (#Pump).switch_toggle()
+  compare_results: []
+  model_info:
+    prompt_tokens: 4763
+    completion_tokens: 84
+    total_tokens: 4847
+  command: 주말에는 5초마다 펌프가 꺼져 있으면 켜고, 켜져 있으면 꺼 주고, 선풍기 속도를 10으로 설정해 줘.

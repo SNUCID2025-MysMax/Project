@@ -1,0 +1,247 @@
+- command: Turn off the fan in sector A.
+  devices:
+  - AirPurifier
+  - Curtain
+  - Humidifier
+  - Pump
+  - Dehumidifier
+  - AirConditioner
+  - Dishwasher
+  - Blind
+  - WeatherProvider
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Fan #Upper).switch_switch == "on") {
+        (#Fan #Upper).switch_off()
+      }
+  model_info:
+    elapsed_time: 4.81
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 4.681
+- command: If the fans in Sector B and Sector A are both on, close one of the odd-tagged blinds.
+  devices:
+  - Curtain
+  - Shade
+  - Humidifier
+  - Dehumidifier
+  - DoorLock
+  - AirConditioner
+  - Blind
+  - Siren
+  - Clock
+  - Fan
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Fan #AirConditioner).switch_switch == "on") and ((#Fan #Valve).switch_switch == "on") {
+        (#Blind #Blind).blind_close()
+      }
+  model_info:
+    elapsed_time: 5.232
+    bge_elapsed_time: 0.143
+    llm_elapsed_time: 5.089
+- command: If any of the odd-tagged fans are on, turn off all the irrigation at the bottom.
+  devices:
+  - AirPurifier
+  - Curtain
+  - Humidifier
+  - Pump
+  - Dehumidifier
+  - AirConditioner
+  - Dishwasher
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if (any(#Upper).switch_switch == "on") {
+        all(#Upper).irrigatorPortion_setWaterPortion()
+      }
+  model_info:
+    elapsed_time: 4.834
+    bge_elapsed_time: 0.138
+    llm_elapsed_time: 4.696
+- command: Turn off the fan in Sector A if an even-tagged window is open.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Humidifier
+  - Dehumidifier
+  - DoorLock
+  - ContactSensor
+  - AirConditioner
+  - Blind
+  - Clock
+  - Fan
+  generated_code: []
+  model_info:
+    elapsed_time: 2.433
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 2.297
+- command: Turn off all odd-tagged irrigation devices in the sector B.
+  devices:
+  - Alarm
+  - LeakSensor
+  - Humidifier
+  - GasValve
+  - Charger
+  - Relay
+  - Dishwasher
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Clock).clock_isHoliday) {
+        if ((#LeakSensor).irrigatorOperatingState_irrigatorOperatingState == "error") {
+          if ((#Irrigator).switch_switch == 'on') {
+            (#Irrigator).switch_off()
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 6.379
+    bge_elapsed_time: 0.132
+    llm_elapsed_time: 6.248
+- command: If the even-tagged windows at the top are open, close the curtains.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Alarm
+  - GasValve
+  - DoorLock
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Window #Window #Window).windowControl_window == "open") {
+        (#Curtain).curtain_close()
+      }
+  model_info:
+    elapsed_time: 4.521
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 4.388
+- command: If all the lights at the top are off, open all the windows tagged with odd numbers.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Alarm
+  - DoorLock
+  - Light
+  - Relay
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if (all(#Window).switch_switch == 'off') {
+        all(#Window).windowControl_open()
+      }
+  model_info:
+    elapsed_time: 4.522
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 4.387
+- command: If any of the even-tagged speakers are on, turn off all lights in the sector b.
+  devices:
+  - Alarm
+  - Curtain
+  - Buttonx4
+  - Speaker
+  - Relay
+  - Light
+  - Blind
+  - Siren
+  - Television
+  - Clock
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (any(#Speaker #Speaker).switch_switch == 'on') {
+        all(#Light #Speaker).switch_off()
+      }
+  model_info:
+    elapsed_time: 4.912
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 4.777
+- command: If all odd-tagged blinds on the wall are open, turn off the lights.
+  devices:
+  - Alarm
+  - Curtain
+  - Shade
+  - Window
+  - Light
+  - Relay
+  - DoorLock
+  - Blind
+  - Siren
+  - Clock
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if (all(#Blind).blind_blind == "open") {
+        all(#Light).switch_off()
+      }
+  model_info:
+    elapsed_time: 4.487
+    bge_elapsed_time: 0.135
+    llm_elapsed_time: 4.352
+- command: If any of the lights at the top or in sector A are on, turn on all the fans.
+  devices:
+  - AirPurifier
+  - Curtain
+  - Humidifier
+  - Pump
+  - Dehumidifier
+  - Light
+  - AirConditioner
+  - Dishwasher
+  - Clock
+  - Refrigerator
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if (any(#Upper #Upper).switch_switch == 'on') {
+        all(#Fan).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.93
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 4.794

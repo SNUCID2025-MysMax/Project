@@ -1,0 +1,247 @@
+- command: Every 5 seconds, it measures the soil humidity and turns on the waterer if it's below 30%. If the temperature is above 35 degrees at that time, turn off the waterer and end the cycle.
+  devices:
+  - Humidifier
+  - Dehumidifier
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - AirConditioner
+  - HumiditySensor
+  - WeatherProvider
+  - Dishwasher
+  - Irrigator
+  - AirQualityDetector
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      if ((#AirConditioner).airConditionerMode_targetTemperature == "open") {
+        open_duration = open_duration + 1000
+      }
+  model_info:
+    elapsed_time: 4.627
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 4.482
+- command: Blink the light 10 times in 3-second intervals. Check after each blink and stop the loop the moment the rain sensor detects rain.
+  devices:
+  - LeakSensor
+  - SoundSensor
+  - Light
+  - TemperatureSensor
+  - Camera
+  - HumiditySensor
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - SmokeDetector
+  - LightSensor
+  generated_code: []
+  model_info:
+    elapsed_time: 48.757
+    bge_elapsed_time: 0.145
+    llm_elapsed_time: 48.612
+- command: Repeat the toggle action of powering the fan on and off every second. Check the humidity just before each action and stop the loop immediately if it's above 80%.
+  devices:
+  - AirPurifier
+  - SmartPlug
+  - Humidifier
+  - Dehumidifier
+  - SoilMoistureSensor
+  - AirConditioner
+  - HumiditySensor
+  - Dishwasher
+  - Irrigator
+  - Clock
+  - Fan
+  generated_code: []
+  model_info:
+    elapsed_time: 49.339
+    bge_elapsed_time: 0.147
+    llm_elapsed_time: 49.192
+- command: Close the blinds by 10 percent every 5 seconds. Until you can't lower them anymore.
+  devices:
+  - Button
+  - Curtain
+  - Shade
+  - Alarm
+  - GasValve
+  - Relay
+  - DoorLock
+  - Blind
+  - Irrigator
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      if (all(#Blind).blind_blind == "open") {
+        all(#Blind).blindLevel_setBlindLevel(90)
+      }
+  model_info:
+    elapsed_time: 4.637
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 4.503
+- command: Turn on the irrigation every 10 seconds and turn it off after 5 seconds. Check the irrigation both on and off, and if the sunlight is above 500 lux, turn off the irrigation and end the loop.
+  devices:
+  - Humidifier
+  - Dehumidifier
+  - GasValve
+  - Light
+  - AirConditioner
+  - Dishwasher
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - LightSensor
+  - Fan
+  generated_code: []
+  model_info:
+    elapsed_time: 50.026
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 49.873
+- command: Turn the living room light on and off every two seconds. Check each time it turns off the light and stop the loop immediately if it detects that a window is open.
+  devices:
+  - Window
+  - Curtain
+  - DoorLock
+  - Light
+  - Camera
+  - ContactSensor
+  - Relay
+  - Blind
+  - Clock
+  - SmokeDetector
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |-
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        break
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_on()
+      }
+      if ((#Light).switch_switch == "on") {
+        (#Light).switch_off()
+      }
+  model_info:
+    elapsed_time: 6.191
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 6.045
+- command: Every 3 seconds, increase the volume of the TV by 1 and repeat the behavior, returning it to its initial value at step 5. When returning to the initial value, check for motion and stop the loop if it detects any.
+  devices:
+  - Alarm
+  - Button
+  - GasValve
+  - MotionSensor
+  - Light
+  - Relay
+  - Camera
+  - Speaker
+  - Irrigator
+  - Television
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      volume := 0
+      if (volume < 10) {
+        volume = volume + 1
+        if (volume == 5) {
+          if ((#MotionSensor).motionSensor_motion == "active") {
+            break
+          }
+        }
+        (#Television).tvChannel_setTvChannel(volume)
+      }
+  model_info:
+    elapsed_time: 6.854
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 6.702
+- command: Every 10 seconds, close the blinds completely. Check each time and end the loop immediately if the TV is still on.
+  devices:
+  - Curtain
+  - Shade
+  - GasValve
+  - Relay
+  - Light
+  - Switch
+  - Blind
+  - Siren
+  - Television
+  - RobotCleaner
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      blinds := 0
+      if ((#Clock).clock_isHoliday) {
+        if (blinds < 100) {
+          blinds = blinds + 10
+          (#Blind).blindLevel_setBlindLevel(blinds)
+        }
+        if ((#Television).switch_switch == 'on') {
+          break
+        }
+      }
+  model_info:
+    elapsed_time: 7.094
+    bge_elapsed_time: 0.136
+    llm_elapsed_time: 6.958
+- command: Every two seconds, make the alarm's siren blare for one second and then turn it off, and every time it blares the siren, make sure the window is closed and stop the loop if it is.
+  devices:
+  - Alarm
+  - Curtain
+  - Window
+  - SoundSensor
+  - DoorLock
+  - Relay
+  - ContactSensor
+  - Blind
+  - Siren
+  - Clock
+  generated_code: []
+  model_info:
+    elapsed_time: 48.211
+    bge_elapsed_time: 0.148
+    llm_elapsed_time: 48.062
+- command: Every 5 seconds, switch the room air purifier to 'silent' mode. Check each time and end all iterations if a window is open.
+  devices:
+  - AirPurifier
+  - Window
+  - Shade
+  - Humidifier
+  - Dehumidifier
+  - DoorLock
+  - AirConditioner
+  - WeatherProvider
+  - AirQualityDetector
+  - RobotCleaner
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      isWindowOpen := false
+      if ((#AirConditioner).airConditionerMode_targetTemperature == "open") {
+        isWindowOpen = true
+      }
+      if ((#AirPurifier).airPurifierFanMode_airPurifierFanMode == "silent") {
+        isWindowOpen = false
+      }
+      if (isWindowOpen) {
+        break
+      }
+  model_info:
+    elapsed_time: 6.807
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 6.666

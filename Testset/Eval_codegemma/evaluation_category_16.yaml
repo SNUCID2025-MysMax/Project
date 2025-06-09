@@ -1,0 +1,262 @@
+- command: Sing "Happy Birthday" on my birthday.
+  devices:
+  - Button
+  - Feeder
+  - Speaker
+  - Camera
+  - Recorder
+  - EmailProvider
+  - Clock
+  - Timer
+  - Calculator
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Clock).clock_day == 5) {
+        if ((#Clock).clock_month == 6) {
+          if ((#Clock).clock_year == 2025) {
+            (#Speaker).mediaPlayback_speak("Happy Birthday")
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 6.038
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 5.907
+- command: If it detects news that makes me depressed, say something uplifting.
+  devices:
+  - Curtain
+  - LeakSensor
+  - SoundSensor
+  - FallDetector
+  - DoorLock
+  - Relay
+  - Charger
+  - AirQualityDetector
+  - Clock
+  - Calculator
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Fan).tvocMeasurement_tvocLevel == false) {
+        (#SoundSensor).fanControl_setFanSpeed("The news is not uplifting.")
+      }
+  model_info:
+    elapsed_time: 4.252
+    bge_elapsed_time: 0.128
+    llm_elapsed_time: 4.123
+- command: Clap your cat whenever he's in a good mood.
+  devices:
+  - AirPurifier
+  - Button
+  - LeakSensor
+  - SoundSensor
+  - Feeder
+  - Speaker
+  - Buttonx4
+  - Camera
+  - Clock
+  - RobotCleaner
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Speaker).button_numberOfButtons == "good") {
+        (#Speaker).feederOperatingState_startFeeding()
+      }
+  model_info:
+    elapsed_time: 4.384
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 4.257
+- command: Emotionally adjust the light to match my mood right now.
+  devices:
+  - Curtain
+  - Shade
+  - Humidifier
+  - DoorLock
+  - Light
+  - Camera
+  - Relay
+  - Blind
+  - Clock
+  - LightSensor
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Light).lightLevel_light < 100.0) {
+        (#Light).colorControl_setColor("0|0|0")
+      } else {
+        (#Light).colorControl_setColor("255|255|255")
+      }
+  model_info:
+    elapsed_time: 5.829
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 5.703
+- command: If your house seems lonely, play some music.
+  devices:
+  - AirPurifier
+  - PresenceSensor
+  - Curtain
+  - Humidifier
+  - Dehumidifier
+  - Speaker
+  - DoorLock
+  - Camera
+  - AirConditioner
+  - Television
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#PresenceSensor).presenceSensor_presence == "not_present") {
+        (#Speaker).mediaPlayback_play("https:
+      }
+  model_info:
+    elapsed_time: 5.009
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 4.884
+- command: Automatically call the police if it looks dangerous outside.
+  devices:
+  - Alarm
+  - Window
+  - LeakSensor
+  - FallDetector
+  - DoorLock
+  - Relay
+  - Camera
+  - Switch
+  - Siren
+  - WeatherProvider
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#WeatherProvider).weatherProvider_weather == "thunderstorm") {
+        (#Camera).alarm_off()
+      }
+  model_info:
+    elapsed_time: 4.024
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 3.898
+- command: Close the curtains when your smartphone's battery is below 20%.
+  devices:
+  - Alarm
+  - Curtain
+  - Window
+  - SmartPlug
+  - DoorLock
+  - Light
+  - TemperatureSensor
+  - ContactSensor
+  - Blind
+  - WeatherProvider
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#SmartPlug).battery_battery < 20.0) {
+        (#Curtain).curtain_close()
+      }
+  model_info:
+    elapsed_time: 4.402
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 4.276
+- command: If you have a big announcement today, wish me luck.
+  devices:
+  - Button
+  - Window
+  - Curtain
+  - DoorLock
+  - Relay
+  - WeatherProvider
+  - EmailProvider
+  - Clock
+  - Fan
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Clock).clock_delay("big announcement")) {
+        (#Window).switch_on("luck")
+      }
+  model_info:
+    elapsed_time: 4.136
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 4.009
+- command: Ask your robot vacuum cleaner to make you a cup of coffee.
+  devices:
+  - AirPurifier
+  - Humidifier
+  - Dehumidifier
+  - Feeder
+  - Camera
+  - AirConditioner
+  - Dishwasher
+  - Irrigator
+  - RobotCleaner
+  - Clock
+  - Fan
+  generated_code: []
+  model_info:
+    elapsed_time: 49.786
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 49.659
+- command: Do a happy dance.
+  devices:
+  - Button
+  - AirPurifier
+  - LeakSensor
+  - MotionSensor
+  - Buttonx4
+  - DoorLock
+  - Light
+  - Camera
+  - Clock
+  - LightSensor
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Clock).clock_hour == 14)
+      wait until((#Clock).clock_minute == 06)
+      wait until((#Clock).clock_second == 48)
+      wait until((#Clock).clock_date == 20250605)
+      wait until((#Clock).clock_datetime == 20250605140648)
+      wait until((#Clock).clock_day == 5)
+      wait until((#Clock).clock_hour == 14)
+      wait until((#Clock).clock_isHoliday == false)
+      wait until((#Clock).clock_minute == 6)
+      wait until((#Clock).clock_month == 6)
+      wait until((#Clock).clock_second == 48)
+      wait until((#Clock).clock_time == 1406)
+      wait until((#Clock).clock_timestamp == 1433611208000)
+      wait until((#Clock).clock_weekday == "sunday")
+      wait until((#Clock).clock_year == 2025)
+      (#Camera).switch_on()
+      wait until((#Camera).switch_switch == "on")
+      (#Camera).camera_takeTimelapse("Do a happy dance.")
+  model_info:
+    elapsed_time: 16.223
+    bge_elapsed_time: 0.126
+    llm_elapsed_time: 16.097

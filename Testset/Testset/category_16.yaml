@@ -1,0 +1,71 @@
+- command: "내 생일이 되면 “생일 축하합니다” 노래를 불러 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("생일 날짜를 알 수 있는 정보가 없습니다.")
+- command: "날 우울하게 만드는 뉴스를 감지하면 위로의 말을 해 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("뉴스를 이해하거나 분석할 수 있는 기능이 없습니다. 그리고 어떤 말을 해야 위로가 되는지도 알 수 없습니다.")
+- command: "고양이가 기분이 좋을 때마다 박수를 쳐 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("고양이의 기분을 감지할 수 있는 기능이 없습니다. 박수를 치는 기능이 없습니다.")
+- command: "지금 내 기분에 맞춰 조명을 감성적으로 조절해 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("현재 사용자의 기분 상태를 알 수 없습니다. 감성적인 조명 설정이 불가능합니다.")
+- command: "집이 외로워 보이면 음악을 틀어 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("집이 외로워 보인다는 상태를 판단할 수 있는 기능이 없습니다.")
+- command: "밖이 위험해 보이면 자동으로 경찰에 전화해 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("밖이 위험한지를 판단하거나 경찰에 전화를 거는 기능이 없습니다.")
+- command: "스마트폰 배터리가 20% 이하가 되면 커튼을 닫아 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("스마트폰 배터리 상태를 알 수 있는 기능이 없습니다.")
+- command: "오늘 중요한 발표가 있으면 행운을 빌어 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("오늘 중요한 발표가 있는지 알 수 없습니다. 행운을 비는 기능이 없습니다.")
+- command: "로봇청소기에게 커피 한 잔 타 달라고 부탁해 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("로봇청소기에게 커피를 타 달라고 요청할 수 없습니다.")
+- command: "기분 좋게 춤춰 줘."
+  code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("기분 좋게 춤을 출 수 있는 디바이스가 없습니다.")
+

@@ -94,14 +94,14 @@
       if (((#Television).switch_switch == 'on') and ((#Light).switchLevel_level >= 80)) {
         (#Light).switchLevel_setLevel(50, 0)
       }
-- command: "문이 열려 있고 알람이 꺼져 있으면 알람의 사이렌을 울리고 블라인드가 열려 있으면 닫아 줘. 에어컨이 꺼져 있고 온도가 30도 이상이면 냉방 모드로 설정하고 켜 줘."
+- command: "문이 열려 있고 알람이 꺼져 있으면 사이렌을 울리고 블라인드가 열려 있으면 닫아 줘. 에어컨이 꺼져 있고 온도가 30도 이상이면 냉방 모드로 설정하고 켜 줘."
   code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |
       if (((#DoorLock).doorControl_door == 'open') and ((#Alarm).alarm_alarm == 'off')) {
-        (#Alarm).alarm_siren()
+        (#Siren).sirenMode_setSirenMode('siren')
         if ((#Blind).blind_blind == 'open') {
           (#Blind).blind_close()
         }

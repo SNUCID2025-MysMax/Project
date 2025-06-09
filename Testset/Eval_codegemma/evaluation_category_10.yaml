@@ -1,0 +1,264 @@
+- command: Check every second and close the blinds and lower the curtains if the number of times the irrigation has turned off and on exceeds 4 and the pump has run more than 2 times.
+  devices:
+  - Alarm
+  - Curtain
+  - Window
+  - Pump
+  - GasValve
+  - Relay
+  - Blind
+  - WeatherProvider
+  - Irrigator
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      count := 0
+      if ((#Pump).switch_switch == "on") {
+        count = count + 1
+        if (count >= 2) {
+          (#Blind).blind_close()
+          (#Curtain).curtain_close()
+        }
+      }
+  model_info:
+    elapsed_time: 6.018
+    bge_elapsed_time: 0.151
+    llm_elapsed_time: 5.868
+- command: If the real-time check shows that the window has been opened and closed more than three times, and the fan hasn't turned off in between, turn off the fan and close the blinds.
+  devices:
+  - Window
+  - Curtain
+  - Shade
+  - Humidifier
+  - Pump
+  - DoorLock
+  - ContactSensor
+  - AirConditioner
+  - Blind
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      count := 0
+      if ((#ContactSensor).contactSensor_contact == "open") {
+        count = count + 1
+        if (count >= 3) {
+          (#Humidifier).switch_off()
+          (#Blind).blind_close()
+        }
+      }
+  model_info:
+    elapsed_time: 5.871
+    bge_elapsed_time: 0.15
+    llm_elapsed_time: 5.721
+- command: Check every hour from 0 to 30 minutes, every 3 seconds, and if the dehumidifier has turned on and off more than 4 times and the humidity is above 65%, the siren will sound twice, once for 1 second and once for 3 seconds, then close the curtains.
+  devices:
+  - Curtain
+  - Humidifier
+  - Dehumidifier
+  - SoilMoistureSensor
+  - AirConditioner
+  - HumiditySensor
+  - Siren
+  - Blind
+  - AirQualityDetector
+  - Irrigator
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      count := 0
+      if ((#Clock).clock_hour == 0) {
+        if ((#Clock).clock_minute <= 30) {
+          if ((#Clock).clock_second % 3 == 0) {
+            if ((#Dehumidifier).switch_switch == 'on') {
+              if ((#Dehumidifier).switch_switch == 'off') {
+                if (count >= 4) {
+                  if ((#HumiditySensor).relativeHumidityMeasurement_humidity > 65.0) {
+                    (#Siren).sirenMode_setSirenMode('both')
+                    (#Siren).sirenMode_setSirenMode('off')
+                    (#Curtain).curtain_close()
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 11.1
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 10.951
+- command: Check every 10 minutes and if the temperature rises by more than 5 degrees three times in a row and the air conditioner is off, turn on the air conditioner and set it to cooling mode.
+  devices:
+  - Humidifier
+  - Pump
+  - Dehumidifier
+  - DoorLock
+  - TemperatureSensor
+  - AirConditioner
+  - Dishwasher
+  - AirQualityDetector
+  - Clock
+  - Refrigerator
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |-
+      count := 0
+      lastTemp := 0.0
+      if ((#Clock).clock_minute == 0) {
+        if ((#TemperatureSensor).temperatureMeasurement_temperature > lastTemp + 5.0) {
+          count = count + 1
+        }
+        lastTemp = (#TemperatureSensor).temperatureMeasurement_temperature
+        if (count >= 3) {
+          if ((#AirConditioner).airConditionerMode_airConditionerMode == 'off') {
+            (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+            (#AirConditioner).switch_on()
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 9.917
+    bge_elapsed_time: 0.141
+    llm_elapsed_time: 9.775
+- command: Always, regardless of the time of day, check every 5 seconds and if there are two or more events where the TV has been off for 10 minutes and then turned on, turn on the speakers and set the lights to 60. Except on Wednesdays
+  devices:
+  - Button
+  - Relay
+  - Speaker
+  - Light
+  - Camera
+  - Switch
+  - Siren
+  - Television
+  - Clock
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      if ((#Clock).clock_weekday != "wednesday") {
+        if (all(#Television).switch_switch == "off") {
+          if (all(#Television).switch_switch == "on") {
+            if (all(#Television).switch_switch == "on") {
+              all(#Speaker).switch_on()
+              all(#Light).switchLevel_setLevel(60, 100)
+            }
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 7.925
+    bge_elapsed_time: 0.155
+    llm_elapsed_time: 7.769
+- command: Check every 3 seconds and close all blinds if the lights stay off for more than 3 minutes and then come back on twice in a row.
+  devices:
+  - Alarm
+  - Curtain
+  - Shade
+  - Relay
+  - Light
+  - Switch
+  - Blind
+  - Siren
+  - Clock
+  - SmokeDetector
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      count := 0
+      if ((#Light).switch_switch == "off") {
+        count = count + 1
+        if (count >= 120) {
+          all(#Blind).blind_close()
+        }
+      }
+  model_info:
+    elapsed_time: 5.586
+    bge_elapsed_time: 0.142
+    llm_elapsed_time: 5.444
+- command: On Monday afternoon, check every second and if there are three consecutive occasions where the time from door opening to door closing is 15 seconds or more, sound the alarm's siren three times, for one second and three seconds apart.
+  devices:
+  - Alarm
+  - Window
+  - Curtain
+  - SoundSensor
+  - DoorLock
+  - Relay
+  - ContactSensor
+  - Siren
+  - Clock
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      count := 0
+      if ((#Clock).clock_weekday == "monday") and ((#Clock).clock_hour >= 13) and ((#Clock).clock_hour < 15) {
+        if (count == 3) {
+          (#Alarm).alarm_siren()
+          count = 0
+        }
+        if ((#DoorLock).doorControl_door == "open") {
+          if ((#DoorLock).doorControl_door == "closed") {
+            if ((#Clock).clock_time - (#DoorLock).doorControl_door >= 15.0) {
+              count = count +
+            }
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 9.417
+    bge_elapsed_time: 0.153
+    llm_elapsed_time: 9.264
+- command: If the percentage of doors that are open when motion is detected is greater than 50%, then open the windows whenever the lights are turned on afterward.
+  devices:
+  - Window
+  - PresenceSensor
+  - Shade
+  - Curtain
+  - MotionSensor
+  - DoorLock
+  - Light
+  - ContactSensor
+  - Blind
+  - Clock
+  - LightSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      open_count := 0
+      if ((#MotionSensor).motionSensor_motion == "active") {
+        if ((#ContactSensor).contactSensor_contact == "open") {
+          open_count = open_count + 1
+        }
+        if (open_count > 50.0) {
+          if ((#Light).switch_switch == "on") {
+            (#Window).windowControl_open()
+          }
+        }
+      }
+  model_info:
+    elapsed_time: 7.581
+    bge_elapsed_time: 0.144
+    llm_elapsed_time: 7.436

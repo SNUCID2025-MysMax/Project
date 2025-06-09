@@ -1,0 +1,264 @@
+- devices:
+  - SoilMoistureSensor
+  - Curtain
+  - Clock
+  - Irrigator
+  - Blind
+  - Humidifier
+  - Pump
+  - Window
+  generated_code: "```\nname = \"Scenario1\"\ncron = \"\"\nperiod = -1\nif ((#Window).windowControl_window == 'open' and \n    (#Light).switch_switch == 'off' and \n    (#Curtain).curtain_curtain == 'closed') {\n  (#Light).switch_on()\n  (#Curtain).curtain_open()\n}\n---\nname = \"Scenario2\"\ncron = \"\"\nperiod = -1\nif ((#Irrigator).switch_switch == 'off' and \n    (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 40.0) {\n  (#Irrigator).switch_on()\n}\n```"
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: "if ((#Window).windowControl_window == 'open' and \n    (#Light).switch_switch == 'off' and \n    (#Curtain).curtain_curtain == 'closed') {\n  (#Light).switch_on()\n  (#Curtain).curtain_open()\n}\n"
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: "if ((#Irrigator).switch_switch == 'off' and \n    (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 40.0) {\n  (#Irrigator).switch_on()\n}\n"
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if (((#Window).windowControl_window == 'open') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Light).switch_on()
+        (#Curtain).curtain_open()
+      }
+      if (((#Irrigator).switch_switch == 'off') and ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 40.0)) {
+        (#Irrigator).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4117
+    completion_tokens: 142
+    total_tokens: 4259
+  command: 창문이 열려 있고 조명이 꺼져 있으며 커튼이 닫혀 있으면 조명을 켜고 커튼을 열어 줘. 또한 관수기가 꺼져 있고 토양 수분이 40% 이하이면 관수기를 작동시켜 줘.
+- devices:
+  - Curtain
+  - Fan
+  - Clock
+  - Blind
+  - Humidifier
+  - AirQualityDetector
+  - AirConditioner
+  - TemperatureSensor
+  generated_code: "```\nname = \"Scenario1\"\ncron = \"\"\nperiod = -1\nif ((#Fan).switch_switch == 'off' and \n    (#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 1000.0 and \n    (#Curtain).curtain_curtain == 'closed') {\n  (#Fan).switch_on()\n  (#Curtain).curtain_open()\n}\n---\nname = \"Scenario2\"\ncron = \"\"\nperiod = -1\nif ((#Light).switch_switch == 'off' and \n    (#TemperatureSensor).temperatureMeasurement_temperature >= 27.0) {\n  (#Light).switch_on()\n  (#Blind).blind_close()\n}\n```"
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: "if ((#Fan).switch_switch == 'off' and \n    (#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 1000.0 and \n    (#Curtain).curtain_curtain == 'closed') {\n  (#Fan).switch_on()\n  (#Curtain).curtain_open()\n}\n"
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: "if ((#Light).switch_switch == 'off' and \n    (#TemperatureSensor).temperatureMeasurement_temperature >= 27.0) {\n  (#Light).switch_on()\n  (#Blind).blind_close()\n}\n"
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if (((#Fan).switch_switch == 'off') and ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide >= 1000.0) and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Fan).switch_on()
+        (#Curtain).curtain_open()
+      }
+      if (((#Light).switch_switch == 'off') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 27.0)) {
+        (#Light).switch_on()
+        (#Blind).blind_close()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4051
+    completion_tokens: 145
+    total_tokens: 4196
+  command: 환풍기가 꺼져 있고 이산화탄소 수치가 1000 이상이며 커튼이 닫혀 있으면 환풍기를 켜고 커튼을 열어 줘. 조명이 꺼져 있고 온도가 27도 이상이면 조명을 켜고 블라인드를 닫아 줘.
+- devices:
+  - Light
+  - HumiditySensor
+  - Curtain
+  - Clock
+  - Humidifier
+  - AirConditioner
+  - Dehumidifier
+  - TemperatureSensor
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if (((#AirConditioner).switch_switch == 'off') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 29.0) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 70.0)) {
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode('dehumidifying')
+      (#Dehumidifier).switch_on()
+    }
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = -1
+    if (((#Curtain).curtain_curtain == 'open') and ((#Light).switch_switch == 'off')) {
+      (#Curtain).curtain_close()
+      (#Light).switch_on()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#AirConditioner).switch_switch == 'off') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 29.0) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 70.0)) {
+        (#Dehumidifier).dehumidifierMode_setDehumidifierMode('dehumidifying')
+        (#Dehumidifier).switch_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Curtain).curtain_curtain == 'open') and ((#Light).switch_switch == 'off')) {
+        (#Curtain).curtain_close()
+        (#Light).switch_on()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if (((#AirConditioner).switch_switch == 'off') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 29.0) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 70.0)) {
+        (#Dehumidifier).airConditionerMode_setAirConditionerMode('dehumidifying')
+        (#Dehumidifier).switch_on()
+      }
+      if (((#Curtain).curtain_curtain == 'open') and ((#Light).switch_switch == 'off')) {
+        (#Curtain).curtain_close()
+        (#Light).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 4175
+    completion_tokens: 161
+    total_tokens: 4336
+  command: 에어컨이 꺼져 있고 온도가 29도 이상이며 습도가 70% 이상이면 제습기를 제습 모드로 설정하고 켜 줘. 커튼이 열려 있고 조명이 꺼져 있으면 커튼을 닫고 조명을 켜 줘.
+- devices:
+  - Curtain
+  - Clock
+  - Valve
+  - Blind
+  - DoorLock
+  - Pump
+  - ContactSensor
+  - Window
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if (((#Light).switch_switch == 'off') and ((#MotionSensor).motionSensor_motion == false) and ((#Curtain).curtain_curtain == 'open')) {
+      (#Light).switch_on()
+      (#Curtain).curtain_close()
+    }
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = -1
+    if (((#Irrigator).switch_switch == 'off') and ((#Window).windowControl_window == 'closed')) {
+      (#Irrigator).switch_on()
+      (#Window).windowControl_open()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Light).switch_switch == 'off') and ((#MotionSensor).motionSensor_motion == false) and ((#Curtain).curtain_curtain == 'open')) {
+        (#Light).switch_on()
+        (#Curtain).curtain_close()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Irrigator).switch_switch == 'off') and ((#Window).windowControl_window == 'closed')) {
+        (#Irrigator).switch_on()
+        (#Window).windowControl_open()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if (((#Light).switch_switch == 'off') and ((#MotionSensor).motionSensor_motion == 'inactive') and ((#Curtain).curtain_curtain == 'open')) {
+        (#Light).switch_on()
+        (#Curtain).curtain_close()
+      }
+      if (((#Irrigator).switch_switch == 'off') and ((#Window).windowControl_window == 'closed')) {
+        (#Irrigator).switch_on()
+        (#Window).windowControl_open()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3782
+    completion_tokens: 134
+    total_tokens: 3916
+  command: 조명이 꺼져 있고 움직임이 감지되지 않으며 커튼이 열려 있으면 조명을 켜고 커튼을 닫아 줘. 관수기가 꺼져 있고 창문이 닫혀 있으면 관수기를 켜고 창문을 열어 줘.
+- devices:
+  - Shade
+  - HumiditySensor
+  - Curtain
+  - Clock
+  - Blind
+  - Humidifier
+  - AirConditioner
+  - Window
+  generated_code: |-
+    ```
+    name = "Scenario1"
+    cron = ""
+    period = -1
+    if (((#Blind).blind_blind == 'open') and ((#Light).switch_switch == 'off') and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0)) {
+      (#Blind).blind_close()
+      (#Light).switch_on()
+    }
+    ---
+    name = "Scenario2"
+    cron = ""
+    period = -1
+    if (((#Window).windowControl_window == 'closed') and ((#AirConditioner).switch_switch == 'off')) {
+      (#Window).windowControl_open()
+      (#AirConditioner).switch_on()
+    }
+    ```
+  transformed_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Blind).blind_blind == 'open') and ((#Light).switch_switch == 'off') and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0)) {
+        (#Blind).blind_close()
+        (#Light).switch_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Window).windowControl_window == 'closed') and ((#AirConditioner).switch_switch == 'off')) {
+        (#Window).windowControl_open()
+        (#AirConditioner).switch_on()
+      }
+  label:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |
+      if (((#Blind).blind_blind == 'open') and ((#Light).switch_switch == 'off') and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0)) {
+        (#Blind).blind_close()
+        (#Light).switch_on()
+      }
+      if (((#Window).windowControl_window == 'closed') and ((#AirConditioner).switch_switch == 'off')) {
+        (#Window).windowControl_open()
+        (#AirConditioner).switch_on()
+      }
+  compare_results: []
+  model_info:
+    prompt_tokens: 3946
+    completion_tokens: 136
+    total_tokens: 4082
+  command: 블라인드가 열려 있고 조명이 꺼져 있으며 습도가 80% 이상이면 블라인드를 닫고 조명을 켜 줘. 창문이 닫혀 있고 에어컨이 꺼져 있으면 창문을 열고 에어컨을 켜 줘.
