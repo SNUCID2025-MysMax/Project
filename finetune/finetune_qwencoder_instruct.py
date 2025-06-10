@@ -38,10 +38,10 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 
 model = FastLanguageModel.get_peft_model(
     model,
-    r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+    r = 32, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
                       "gate_proj", "up_proj", "down_proj",],
-    lora_alpha = 16,
+    lora_alpha = 64,
     lora_dropout = 0, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
@@ -167,6 +167,10 @@ MY_DATASET = MY_DATASET.map(
     remove_columns=["conversations"],
 )
 
+dataset_split = MY_DATASET.train_test_split(test_size=0.15, seed=3407)
+train_dataset = dataset_split['train']
+eval_dataset = dataset_split['test']
+
 print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
 # print(MY_DATASET[0]['text'])
 sample_text = MY_DATASET[0]['text']
@@ -192,15 +196,16 @@ print(f"Average length: {sum(lengths) / len(lengths):.2f}")
 trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
-    train_dataset = MY_DATASET,
+    train_dataset = train_dataset,
+    eval_dataset= eval_dataset,
     packing = False,  # Can make training 5x faster for short sequences.
     args = SFTConfig(
         use_liger_kernel = True,
         per_device_train_batch_size = 4,
         gradient_accumulation_steps = 4,
-        warmup_steps = 10,
-        num_train_epochs = 3,
-        learning_rate = 1e-5, #1e-6
+        warmup_steps = 5,
+        num_train_epochs = 2,
+        learning_rate = 2e-5, #1e-6
         optim = "adamw_8bit",
         weight_decay = 0.01,
         lr_scheduler_type = "cosine",
@@ -216,6 +221,11 @@ trainer = SFTTrainer(
         bf16 = True, 
         remove_unused_columns = True,
         dataloader_pin_memory = False,
+        eval_steps=25,
+        save_steps = 25,
+        # load_best_model_at_end = True,
+        # metric_for_best_model = "eval_loss",
+        # greater_is_better = False,
     ),
 )
 
@@ -225,3 +235,58 @@ with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
 
 model.save_pretrained("../models/qwenCoder-adapter")
 tokenizer.save_pretrained("../models/qwenCoder-adapter")
+
+# 파인튜닝 정보 저장
+import os
+import json
+
+# 저장 경로 생성
+save_dir = "../models/qwenCoder-adapter"
+os.makedirs(save_dir, exist_ok=True)
+json_path = os.path.join(save_dir, "training_info.json")
+
+# LoRA 설정 추출
+peft_filter = ["base_model_name_or_path", "r", "lora_alpha", "lora_dropout", "target_modules"]
+peft_info = {}
+
+for adapter_name, config in model.peft_config.items():
+    peft_info[adapter_name] = {
+        k: list(getattr(config, k)) if isinstance(getattr(config, k), (set, tuple)) else getattr(config, k)
+        for k in peft_filter if hasattr(config, k)
+    }
+
+# Tokenizer 설정 추출
+tokenizer_info = {
+    "add_bos_token": tokenizer.add_bos_token,
+    "chat_template": getattr(tokenizer, "chat_template", "chatml (set manually)"),
+    "vocab_size": tokenizer.vocab_size,
+    "special_tokens_map": tokenizer.special_tokens_map,
+}
+
+# Trainer 설정 추출
+trainer_filter = [
+    "per_device_train_batch_size", "gradient_accumulation_steps",
+    "warmup_steps", "num_train_epochs", "learning_rate", "weight_decay",
+    "max_grad_norm", "lr_scheduler_type", "bf16", "fp16",
+    "dataloader_num_workers", "dataset_num_proc", "remove_unused_columns", "optim"
+]
+
+# 필터링 + max_seq_length 직접 포함
+trainer_info = {
+    k: trainer.args.to_dict()[k] for k in trainer_filter if k in trainer.args.to_dict()
+}
+
+# 전체 정보 구조화
+training_info = {
+    "model_name": model_name,
+    "max_seq_length": max_seq_length,
+    "lora_config": peft_info,
+    "tokenizer_config": tokenizer_info,
+    "trainer_config": trainer_info,
+}
+
+# JSON 저장
+with open(json_path, "w", encoding="utf-8") as f:
+    json.dump(training_info, f, indent=2, ensure_ascii=False)
+
+print(f"🔧 Training info saved to {json_path}")
