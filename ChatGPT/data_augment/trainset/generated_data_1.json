@@ -1,0 +1,1014 @@
+[
+  {
+    "command": "If the television is switched on and the speaker is paused, turn off the television and turn on the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'paused')) {\n  (#Television).switch_off()\n  (#Speaker).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you find the TV switched on and the speaker paused, your task is to power off the television and activate the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'paused')) {\n  (#Television).switch_off()\n  (#Speaker).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the television is on and the speaker is on pause, kindly make sure to switch off the television and switch on the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'paused')) {\n  (#Television).switch_off()\n  (#Speaker).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the situation arises where the television is turned on while the speaker is paused, it would be helpful if you could turn the TV off and ensure the speaker is turned on",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'paused')) {\n  (#Television).switch_off()\n  (#Speaker).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the television is off and the speaker is fast forwarding, turn on the television and pause the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'fast')) {\n  (#Television).switch_on()\n  (#Speaker).mediaPlayback_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the television be switched off and the speaker is in the fast-forward mode, kindly switch the television back on and halt the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'fast')) {\n  (#Television).switch_on()\n  (#Speaker).mediaPlayback_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the TV is not on and the speaker is racing through content, it would be appreciated if you could turn the TV on and stop the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'fast')) {\n  (#Television).switch_on()\n  (#Speaker).mediaPlayback_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you notice that the television is powered off while the speaker is skipping forward, please power the television on and put the speaker on pause",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'fast')) {\n  (#Television).switch_on()\n  (#Speaker).mediaPlayback_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the television is on and the speaker is buffering, turn off the television and stop the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'buffering')) {\n  (#Television).switch_off()\n  (#Speaker).mediaPlayback_stop()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the television is switched on and the speaker is going through a buffering phase, please be sure to shut down the television and halt the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'buffering')) {\n  (#Television).switch_off()\n  (#Speaker).mediaPlayback_stop()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the TV be active and the speaker be experiencing buffering issues, kindly power down the TV and cease the speaker's operation",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'buffering')) {\n  (#Television).switch_off()\n  (#Speaker).mediaPlayback_stop()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you notice the TV is running and the speaker is having buffering difficulties, please make sure to turn the TV off and put a stop to the speaker's activity",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'buffering')) {\n  (#Television).switch_off()\n  (#Speaker).mediaPlayback_stop()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the television is off and the speaker is stopped, turn on the television and fast forward the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'stopped')) {\n  (#Television).switch_on()\n  (#Speaker).mediaPlayback_fastForward()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that both the television is turned off and the speaker has ceased playback, please switch on the television and speed up the audio on the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'stopped')) {\n  (#Television).switch_on()\n  (#Speaker).mediaPlayback_fastForward()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Provided that the television is not currently on and the speaker is not playing any audio, I'd like you to power up the television and quicken the speaker's pace",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'stopped')) {\n  (#Television).switch_on()\n  (#Speaker).mediaPlayback_fastForward()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you find that the television is in an off state and the speaker isn't operational, kindly activate the television and expedite the speaker's process",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Speaker).mediaPlayback_playbackStatus == 'stopped')) {\n  (#Television).switch_on()\n  (#Speaker).mediaPlayback_fastForward()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the television is on and the speaker is rewinding, turn off the television and play the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'rewinding')) {\n  (#Television).switch_off()\n  (#Speaker).mediaPlayback_play(\"source\")\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the television be turned on and the speaker be in the process of rewinding, please switch off the television and activate the speaker's play function",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'rewinding')) {\n  (#Television).switch_off()\n  (#Speaker).mediaPlayback_play(\"source\")\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the television is operating and the speaker is rewinding, kindly power down the television and set the speaker to play",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'rewinding')) {\n  (#Television).switch_off()\n  (#Speaker).mediaPlayback_play(\"source\")\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you find that the television is switched on and the speaker is backtracking, I'd like you to turn the television off and commence playing on the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Speaker).mediaPlayback_playbackStatus == 'rewinding')) {\n  (#Television).switch_off()\n  (#Speaker).mediaPlayback_play(\"source\")\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the light is switched off, the blind is in a partially open state, and the motion sensor is inactive, then toggle the light switch and open the blind.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'off') and ((#Blind).blind_blind == 'partially') and ((#MotionSensor).motionSensor_motion == 'inactive')) {\n  (#Light).switch_toggle()\n  (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the light be turned off, the blind only slightly open, and the motion sensor idle, please activate the light switch and fully open the blind",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'off') and ((#Blind).blind_blind == 'partially') and ((#MotionSensor).motionSensor_motion == 'inactive')) {\n  (#Light).switch_toggle()\n  (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the light has been switched off, the blind is semi-open, and there's no activity on the motion sensor, kindly flip the light switch and open the blind all the way",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'off') and ((#Blind).blind_blind == 'partially') and ((#MotionSensor).motionSensor_motion == 'inactive')) {\n  (#Light).switch_toggle()\n  (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you find that the light switch is off, the blind is half-open, and the motion sensor is not detecting anything, you should turn on the light switch and open up the blind completely",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'off') and ((#Blind).blind_blind == 'partially') and ((#MotionSensor).motionSensor_motion == 'inactive')) {\n  (#Light).switch_toggle()\n  (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the light is on, the blind is closing, and the motion sensor is active, then turn the light off and pause the blind.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'closing') and ((#MotionSensor).motionSensor_motion == 'active')) {\n  (#Light).switch_off()\n  (#Blind).blind_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the illumination is currently active, the blinds are in the process of closing, and the motion detector is operational, then please extinguish the light and halt the movement of the blinds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'closing') and ((#MotionSensor).motionSensor_motion == 'active')) {\n  (#Light).switch_off()\n  (#Blind).blind_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the light is switched on, the blind is being shut, and the motion tracking system is working, kindly switch off the light and stop the blind's movement",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'closing') and ((#MotionSensor).motionSensor_motion == 'active')) {\n  (#Light).switch_off()\n  (#Blind).blind_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the light be burning, the blind descending, and the motion sensor be up and running, don't hesitate to douse the light source and suspend the operation of the blind immediately",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'closing') and ((#MotionSensor).motionSensor_motion == 'active')) {\n  (#Light).switch_off()\n  (#Blind).blind_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the light is off, the blind is open, and the motion sensor is inactive, then turn on the light and close the blind.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'off') and ((#Blind).blind_blind == 'open') and ((#MotionSensor).motionSensor_motion == 'inactive')) {\n  (#Light).switch_on()\n  (#Blind).blind_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the light is not on, the blind is not closed, and there's no activity detected by the motion sensor, then please switch on the light and draw the blind shut",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'off') and ((#Blind).blind_blind == 'open') and ((#MotionSensor).motionSensor_motion == 'inactive')) {\n  (#Light).switch_on()\n  (#Blind).blind_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you find the light turned off, the blinds wide open and no movement picked up by the motion sensor, then it is necessary to turn the light on and close the blinds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'off') and ((#Blind).blind_blind == 'open') and ((#MotionSensor).motionSensor_motion == 'inactive')) {\n  (#Light).switch_on()\n  (#Blind).blind_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you notice that the light is off, the blind has been left open, and the motion sensor fails to detect any activity, then kindly illuminate the room and pull the blinds closed",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'off') and ((#Blind).blind_blind == 'open') and ((#MotionSensor).motionSensor_motion == 'inactive')) {\n  (#Light).switch_on()\n  (#Blind).blind_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the light is on, the blind is partially open, and the motion sensor is active, then turn off the light and set the blind level to 50.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'partially') and ((#MotionSensor).motionSensor_motion == 'active')) {\n  (#Light).switch_off()\n  (#Blind).blindLevel_setBlindLevel(50)\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the light be on, the blind partially open, and the motion sensor engaged, kindly switch off the light and adjust the blind to a level of",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'partially') and ((#MotionSensor).motionSensor_motion == 'active')) {\n  (#Light).switch_off()\n  (#Blind).blindLevel_setBlindLevel(50)\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the light is turned on, the blind is not fully closed, and the motion sensor is operational, please proceed to extinguish the light and set the blind halfway open",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'partially') and ((#MotionSensor).motionSensor_motion == 'active')) {\n  (#Light).switch_off()\n  (#Blind).blindLevel_setBlindLevel(50)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the circumstances are such that the light is illuminated, the blind is ajar, and motion sensing is happening, then your task is to extinguish the light and set the blind setting to the midpoint",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Light).switch_switch == 'on') and ((#Blind).blind_blind == 'partially') and ((#MotionSensor).motionSensor_motion == 'active')) {\n  (#Light).switch_off()\n  (#Blind).blindLevel_setBlindLevel(50)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the alarm is off, the light switch is turned off, and the curtain is closed, then open the curtain and turn the light on.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarm == 'off') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'closed')) {\n  (#Curtain).curtain_open()\n  (#Light).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Provided that both the alarm and light switch are off and the curtain is shut, please proceed to open the curtain and switch the light on",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarm == 'off') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'closed')) {\n  (#Curtain).curtain_open()\n  (#Light).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Assuming the alarm has been deactivated, the light switch is off, and the curtain is drawn, we should then draw back the curtain and illuminate the room",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarm == 'off') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'closed')) {\n  (#Curtain).curtain_open()\n  (#Light).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the alarm is not activated, the light is off, and the curtain is closed, please pull back the curtain and power on the light",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarm == 'off') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'closed')) {\n  (#Curtain).curtain_open()\n  (#Light).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the alarm is on mute, the light switch is turned off, and the curtain is partially open, then we close the curtain and turn the light switch on.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarmVolume == 'mute') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#Curtain).curtain_close()\n  (#Light).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the alarm be silenced, the light switch off, and the curtain only slightly ajar, the appropriate action would be to fully close the curtain and turn on the light switch",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarmVolume == 'mute') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#Curtain).curtain_close()\n  (#Light).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the alarm isn't making any noise, the light switch isn't on, and the curtain isn't completely shut, then we need to completely close the curtain and activate the light switch",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarmVolume == 'mute') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#Curtain).curtain_close()\n  (#Light).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the alarm is muted, the light switch is in the off position, and the curtain is not entirely shut, then our response should be to shut the curtain all the way and switch the light on",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarmVolume == 'mute') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#Curtain).curtain_close()\n  (#Light).switch_on()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the alarm is off, the light is at 0 percent saturation, and the curtain is opening, then pause the curtain opening and toggle the light switch.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarm == 'off') and ((#Light).colorControl_saturation == 0) and ((#Curtain).curtain_curtain == 'opening')) {\n  (#Curtain).curtain_pause()\n  (#Light).switch_toggle()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the alarm is not active, the light saturation is at zero, and the curtains are in the process of opening, intercept the curtain movement and flip the light switch",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarm == 'off') and ((#Light).colorControl_saturation == 0) and ((#Curtain).curtain_curtain == 'opening')) {\n  (#Curtain).curtain_pause()\n  (#Light).switch_toggle()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the alarm be deactivated, and the light's saturation level is zero while the curtain is unfolding, then halt the curtain's activity and change the state of the light switch",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarm == 'off') and ((#Light).colorControl_saturation == 0) and ((#Curtain).curtain_curtain == 'opening')) {\n  (#Curtain).curtain_pause()\n  (#Light).switch_toggle()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you find that the alarm has been turned off, the light doesn't have any saturation, and the curtain is on its way up, do interrupt the curtain's motion and switch the light's state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarm == 'off') and ((#Light).colorControl_saturation == 0) and ((#Curtain).curtain_curtain == 'opening')) {\n  (#Curtain).curtain_pause()\n  (#Light).switch_toggle()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the alarm volume is low, the light switch is on, and the curtain is closing, then pause the curtain closing and turn off the light.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarmVolume == 'low') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closing')) {\n  (#Curtain).curtain_pause()\n  (#Light).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you notice that the alarm volume is faint, the light switch has been flipped on, and the curtains are in the process of closing, please halt the closing of the curtains and switch off the light",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarmVolume == 'low') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closing')) {\n  (#Curtain).curtain_pause()\n  (#Light).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the volume of the alarm is down, the lights are switched on, and the curtains are drawing closed, ensure to stop the curtains from closing any further and turn off the light",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarmVolume == 'low') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closing')) {\n  (#Curtain).curtain_pause()\n  (#Light).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you observe that the alarm's sound is at a low level, the light switch is active, and the curtain is on its way to being closed, then interrupt the motion of the curtain and extinguish the light",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Alarm).alarm_alarmVolume == 'low') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closing')) {\n  (#Curtain).curtain_pause()\n  (#Light).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the air conditioner is on and the curtain is opening, then turn off the air conditioner and pause the curtain movement.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'opening')) {\n  (#AirConditioner).switch_off()\n  (#Curtain).curtain_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the air conditioner is functioning while the curtain is simultaneously being drawn, it is needed to deactivate the air conditioner and halt the motion of the curtain",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'opening')) {\n  (#AirConditioner).switch_off()\n  (#Curtain).curtain_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the air conditioner be operational and the curtains are in the process of opening, the necessary action is to switch the air conditioner off and suspend the opening of the curtains",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'opening')) {\n  (#AirConditioner).switch_off()\n  (#Curtain).curtain_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you find the air conditioner running and the curtain in the motion of opening, it is advised to cease the operation of the air conditioner and stop the curtain's movement",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'opening')) {\n  (#AirConditioner).switch_off()\n  (#Curtain).curtain_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the air conditioner is in auto mode and the curtain is partially open, then set the air conditioner to cool mode and open the curtain fully.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n  (#Curtain).curtain_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the air conditioner be functioning in auto mode and the curtain only partly open, change the setting of the air conditioner to cool mode and fully open the curtain",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n  (#Curtain).curtain_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the air conditioner is operating on auto mode while the curtain is half open, switch the mode of the air conditioner to cooling and ensure the curtain is completely open",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n  (#Curtain).curtain_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you notice the air conditioner running in auto mode and the curtain is not fully open, adjust the air conditioner to the cool setting and draw the curtain wide open",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n  (#Curtain).curtain_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the air conditioner is in heat mode and the curtain is opening, then set the air conditioner to cool mode and pause the curtain movement.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#Curtain).curtain_curtain == 'opening')) {\n  (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n  (#Curtain).curtain_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the air conditioner be operating in heat mode and the curtain be in the process of opening, please switch the air conditioner to cool mode and momentarily halt the curtain's motion",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#Curtain).curtain_curtain == 'opening')) {\n  (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n  (#Curtain).curtain_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the air conditioner is set to heat and the curtain is being opened, please change the setting of the air conditioner to cool and temporarily stop the curtain from moving",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#Curtain).curtain_curtain == 'opening')) {\n  (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n  (#Curtain).curtain_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you notice that the air conditioner is running in the heat mode while the curtain is ascending, I'd like you to adjust the air conditioner to the cool setting and suspend the movement of the curtain momentarily",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#Curtain).curtain_curtain == 'opening')) {\n  (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')\n  (#Curtain).curtain_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the air conditioner is off and the curtain status is unknown, then turn on the air conditioner and close the curtain.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'unknown')) {\n  (#AirConditioner).switch_on()\n  (#Curtain).curtain_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the air conditioner be turned off while the curtain's status remains uncertain, please power up the air conditioner and draw the curtain closed",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'unknown')) {\n  (#AirConditioner).switch_on()\n  (#Curtain).curtain_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the air conditioner happens to be switched off and the condition of the curtain is unclear, please proceed to switch on the air conditioner and shut the curtain",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'unknown')) {\n  (#AirConditioner).switch_on()\n  (#Curtain).curtain_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If it turns out that the air conditioner is not running and we don't know whether the curtain is open or closed, could you please get the air conditioner started and ensure the curtain is closed?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'unknown')) {\n  (#AirConditioner).switch_on()\n  (#Curtain).curtain_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the air conditioner is on and the curtain is partially open, then turn off the air conditioner and close the curtain.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#AirConditioner).switch_off()\n  (#Curtain).curtain_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you notice that the air conditioner is running and the curtain is not fully closed, please make sure to switch off the air conditioner and draw the curtain completely",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#AirConditioner).switch_off()\n  (#Curtain).curtain_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the air conditioner is operating and the curtain is only half drawn, please proceed to cut off the air conditioner and fully shut the curtain",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#AirConditioner).switch_off()\n  (#Curtain).curtain_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If it's the case that the air conditioner is active and the curtain isn't entirely drawn, I'd like you to turn the air conditioner off and close the curtain all the way",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#AirConditioner).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'partially')) {\n  (#AirConditioner).switch_off()\n  (#Curtain).curtain_close()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the Television is currently on and the audio is unmuted, switch off the Television and set the audio to mute state.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'unmuted')) {\n  (#Television).switch_off()\n  (#Television).audioMute_mute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the TV is on at the moment and the sound isn't muted, please turn the TV off and mute the sound",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'unmuted')) {\n  (#Television).switch_off()\n  (#Television).audioMute_mute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you find the TV switched on and the volume un-muted, kindly power it down and put the audio on mute",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'unmuted')) {\n  (#Television).switch_off()\n  (#Television).audioMute_mute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the television is operating with the audio not silenced, go ahead and shut off the television while also setting the audio to a silenced state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'unmuted')) {\n  (#Television).switch_off()\n  (#Television).audioMute_mute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the Television is currently off and the audio is muted, switch on the Television and set the audio to unmute state.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_on()\n  (#Television).audioMute_unmute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the television is not active and the sound is turned off, turn on the television and unmute the sound",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_on()\n  (#Television).audioMute_unmute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the TV be in an off state and the sound muted, please power it up and turn the sound back on",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_on()\n  (#Television).audioMute_unmute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the TV is switched off and the audio is silenced, please wake the TV up and un-mute the audio",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'off') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_on()\n  (#Television).audioMute_unmute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the Television is currently on and the audio is muted, toggle the Television and set the audio to unmute state.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_toggle()\n  (#Television).audioMute_unmute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the audio on the television be muted while it's on, please switch off the television and ensure the audio is unmuted",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_toggle()\n  (#Television).audioMute_unmute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the TV is on with the sound muted, kindly turn the TV off and adjust the audio to an unmuted condition",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_toggle()\n  (#Television).audioMute_unmute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the TV is powered on but the sound is muted, you're requested to switch it off and set the audio to the unmuted mode",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_toggle()\n  (#Television).audioMute_unmute()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the Television is currently on and the audio is muted, switch off the Television and increase the audio volume.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_off()\n  (#Television).audioVolume_volumeUp()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the television be on with the sound muted, please turn it off and raise the volume level",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_off()\n  (#Television).audioVolume_volumeUp()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the television is powered on with the volume muted, kindly shut it down and augment the audio level",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_off()\n  (#Television).audioVolume_volumeUp()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you find the TV on but without any sound, please switch it off and boost up the volume",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_off()\n  (#Television).audioVolume_volumeUp()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the Television is currently on and the audio is muted, switch off the Television and decrease the TV channel.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_off()\n  (#Television).tvChannel_channelDown()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the Television is switched on with the sound muted, proceed to turn the Television off and dial down the TV channel",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_off()\n  (#Television).tvChannel_channelDown()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you find the Television powered up but with silent audio, please take action to power it down and shift the TV channel to a lower number",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_off()\n  (#Television).tvChannel_channelDown()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you notice that the Television is operating with the volume muted, I urge you to power it off and reduce the TV channel",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "if (((#Television).switch_switch == 'on') and ((#Television).audioMute_muteStatus == 'muted')) {\n  (#Television).switch_off()\n  (#Television).tvChannel_channelDown()\n}"
+      }
+    ]
+  }
+]

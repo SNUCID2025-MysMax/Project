@@ -1,0 +1,926 @@
+[
+  {
+    "command": "If the window is closed, delay for 10 minutes, then open the curtain, delay for 20 minutes, and then open the blind.",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'closed') {\n  (#Clock).clock_delay(0,10,0)\n  (#Curtain).curtain_open()\n  (#Clock).clock_delay(0,20,0)\n  (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the window be shut, wait for a period of ten minutes, thereafter draw the curtains back, wait for an additional twenty minutes before finally pulling up the blinds",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'closed') {\n  (#Clock).clock_delay(0,10,0)\n  (#Curtain).curtain_open()\n  (#Clock).clock_delay(0,20,0)\n  (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the window is closed, hold on for ten minutes, then proceed to unveil the curtain. After a further delay of twenty minutes, go ahead and lift the blind",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'closed') {\n  (#Clock).clock_delay(0,10,0)\n  (#Curtain).curtain_open()\n  (#Clock).clock_delay(0,20,0)\n  (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you find that the window is not open, pause for about ten minutes, then unroll the curtain. Subsequent to a twenty-minute wait, proceed to raise the blind",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'closed') {\n  (#Clock).clock_delay(0,10,0)\n  (#Curtain).curtain_open()\n  (#Clock).clock_delay(0,20,0)\n  (#Blind).blind_open()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the window is in an unknown state, delay for 2 hours, then pause the curtain, delay for 3 hours, and then pause the blind.",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'unknown') {\n  (#Clock).clock_delay(2,0,0)\n  (#Curtain).curtain_pause()\n  (#Clock).clock_delay(3,0,0)\n  (#Blind).blind_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the window's state is indeterminable, hold everything off for a span of 2 hours, after which you should put the curtain on hold, wait for another 3 hours, and finally, bring the blind to a stop",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'unknown') {\n  (#Clock).clock_delay(2,0,0)\n  (#Curtain).curtain_pause()\n  (#Clock).clock_delay(3,0,0)\n  (#Blind).blind_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Provided that the condition of the window is not discernible, suspend operations for two hours, subsequently freeze the curtain, wait for an additional three hours, and then halt the blind",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'unknown') {\n  (#Clock).clock_delay(2,0,0)\n  (#Curtain).curtain_pause()\n  (#Clock).clock_delay(3,0,0)\n  (#Blind).blind_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the window be in a state of uncertainty, enforce a delay of 2 hours, then proceed to suspend the curtain, endure a further delay of 3 hours, and subsequently bring the blind to a standstill",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'unknown') {\n  (#Clock).clock_delay(2,0,0)\n  (#Curtain).curtain_pause()\n  (#Clock).clock_delay(3,0,0)\n  (#Blind).blind_pause()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the window is open, delay for 1 hour and 30 minutes, close the curtain, delay for 2 hours, and then set the blind level to 50%.",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'open') {\n  (#Clock).clock_delay(1,30,0)\n  (#Curtain).curtain_close()\n  (#Clock).clock_delay(2,0,0)\n  (#Blind).blindLevel_setBlindLevel(50)\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you find the window open, wait for an hour and a half, then draw the curtain. After waiting 2 more hours, adjust the blinds to a half-closed position",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'open') {\n  (#Clock).clock_delay(1,30,0)\n  (#Curtain).curtain_close()\n  (#Clock).clock_delay(2,0,0)\n  (#Blind).blindLevel_setBlindLevel(50)\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the window is ajar, pause for ninety minutes, proceed to shut the curtain, hang on for another couple of hours, and finally, ensure the blinds are halfway down",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'open') {\n  (#Clock).clock_delay(1,30,0)\n  (#Curtain).curtain_close()\n  (#Clock).clock_delay(2,0,0)\n  (#Blind).blindLevel_setBlindLevel(50)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the window happens to be open, hold off for an hour and thirty minutes, go ahead and pull the curtain closed. Following a two-hour hiatus, regulate the blind's level to the halfway mark",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'open') {\n  (#Clock).clock_delay(1,30,0)\n  (#Curtain).curtain_close()\n  (#Clock).clock_delay(2,0,0)\n  (#Blind).blindLevel_setBlindLevel(50)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the window state is unknown, delay for 15 minutes, open the curtain, delay for 25 minutes, and then set the blind level to 0%.",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'unknown') {\n  (#Clock).clock_delay(0,15,0)\n  (#Curtain).curtain_open()\n  (#Clock).clock_delay(0,25,0)\n  (#Blind).blindLevel_setBlindLevel(0)\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the state of the window be unclear, wait for a period of 15 minutes, proceed to draw the curtain, pause for an additional 25 minutes, and finally, adjust the blind level to zero percent",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'unknown') {\n  (#Clock).clock_delay(0,15,0)\n  (#Curtain).curtain_open()\n  (#Clock).clock_delay(0,25,0)\n  (#Blind).blindLevel_setBlindLevel(0)\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the window's status is undetermined, hold off for 15 minutes, unveil the curtain, hold on for another 25 minutes, and bring the level of the blind down to zero percent",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'unknown') {\n  (#Clock).clock_delay(0,15,0)\n  (#Curtain).curtain_open()\n  (#Clock).clock_delay(0,25,0)\n  (#Blind).blindLevel_setBlindLevel(0)\n}"
+      }
+    ]
+  },
+  {
+    "command": "When the condition of the window is unknown, take a 15-minute break, pull back the curtain, wait for 25 more minutes, and after that, set the level of the blind to no light penetration",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'unknown') {\n  (#Clock).clock_delay(0,15,0)\n  (#Curtain).curtain_open()\n  (#Clock).clock_delay(0,25,0)\n  (#Blind).blindLevel_setBlindLevel(0)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the window is closed, delay for 5 seconds, pause the curtain, delay for 10 seconds, and then set the blind level to 100%.",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'closed') {\n  (#Clock).clock_delay(0,0,5)\n  (#Curtain).curtain_pause()\n  (#Clock).clock_delay(0,0,10)\n  (#Blind).blindLevel_setBlindLevel(100)\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the window be shut, hold off for a brief period of five seconds, momentarily halt the curtains, wait for another ten seconds, then adjust the blind's openness to its maximum capacity",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'closed') {\n  (#Clock).clock_delay(0,0,5)\n  (#Curtain).curtain_pause()\n  (#Clock).clock_delay(0,0,10)\n  (#Blind).blindLevel_setBlindLevel(100)\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the window is closed, take a five-second pause, put a temporary stop to the curtain movement, after waiting an additional ten seconds, proceed to fully open the blinds",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'closed') {\n  (#Clock).clock_delay(0,0,5)\n  (#Curtain).curtain_pause()\n  (#Clock).clock_delay(0,0,10)\n  (#Blind).blindLevel_setBlindLevel(100)\n}"
+      }
+    ]
+  },
+  {
+    "command": "When you notice the window is closed, please wait for about five seconds, pause any movement of the curtain, allow a further delay of ten seconds, and then ensure the blinds are drawn to their fullest extent",
+    "code": [
+      {
+        "name": "Scenario6",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Window).windowControl_window == 'closed') {\n  (#Clock).clock_delay(0,0,5)\n  (#Curtain).curtain_pause()\n  (#Clock).clock_delay(0,0,10)\n  (#Blind).blindLevel_setBlindLevel(100)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the light is off, then delay the clock by 2 hours, 30 minutes, and 15 seconds, toggle the light switch, delay the clock again by the same amount of time, and then set the light color to red.",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'off') {\n  (#Clock).clock_delay(2, 30, 15)\n  (#Light).switch_toggle()\n  (#Clock).clock_delay(2, 30, 15)\n  (#Light).colorControl_setColor({\"hue\": 0, \"saturation\": 100})\n}"
+      }
+    ]
+  },
+  {
+    "command": "\"In case the light is not turned on, postpone the time on the clock by two hours, thirty minutes, and fifteen seconds, adjust the position of the light switch, hold off the clock for the same duration once more, then change the light's hue to red.\"",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'off') {\n  (#Clock).clock_delay(2, 30, 15)\n  (#Light).switch_toggle()\n  (#Clock).clock_delay(2, 30, 15)\n  (#Light).colorControl_setColor({\"hue\": 0, \"saturation\": 100})\n}"
+      }
+    ]
+  },
+  {
+    "command": "\"Should the light be extinguished, hold off the clock for two and a half hours and fifteen seconds, flip the light switch, then delay the clock for an additional two hours, thirty minutes, and fifteen seconds, and finally adjust the light's colour to a vibrant red.\"",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'off') {\n  (#Clock).clock_delay(2, 30, 15)\n  (#Light).switch_toggle()\n  (#Clock).clock_delay(2, 30, 15)\n  (#Light).colorControl_setColor({\"hue\": 0, \"saturation\": 100})\n}"
+      }
+    ]
+  },
+  {
+    "command": "\"Provided that the light is switched off, push the clock back by two hours, thirty minutes and fifteen seconds, alter the status of the light switch, wait for the same interval of time before adjusting the clock, and then modify the tone of the light to red.\"",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'off') {\n  (#Clock).clock_delay(2, 30, 15)\n  (#Light).switch_toggle()\n  (#Clock).clock_delay(2, 30, 15)\n  (#Light).colorControl_setColor({\"hue\": 0, \"saturation\": 100})\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the light switch is on, then delay the clock by 1 hour, 45 minutes, and 30 seconds, set the color saturation of the light to 50%, delay the clock again by the same amount of time, and then set the hue of the light to 25%.",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'on') {\n  (#Clock).clock_delay(1, 45, 30)\n  (#Light).colorControl_setSaturation(50)\n  (#Clock).clock_delay(1, 45, 30)\n  (#Light).colorControl_setHue(25)\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you notice the light switch powered on, please proceed to push back the clock by an hour, forty-five minutes, and thirty seconds. Then, adjust the light's color saturation to half of its full scale. Following that, delay the clock once again by the exact same duration. To conclude, modify the light's hue to be a quarter of its full range",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'on') {\n  (#Clock).clock_delay(1, 45, 30)\n  (#Light).colorControl_setSaturation(50)\n  (#Clock).clock_delay(1, 45, 30)\n  (#Light).colorControl_setHue(25)\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the light switch is activated, I'd like you to postpone the timing of the clock by one hour, forty-five minutes, and half a minute. Subsequently, reduce the light's color saturation to half its capacity. After doing so, delay the clock by the same time span once again. Finally, tweak the hue of the light to a quarter of its maximum",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'on') {\n  (#Clock).clock_delay(1, 45, 30)\n  (#Light).colorControl_setSaturation(50)\n  (#Clock).clock_delay(1, 45, 30)\n  (#Light).colorControl_setHue(25)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you observe that the light switch is turned on, go ahead and set back the clock by one hour, forty-five minutes, and thirty seconds. Next, bring down the light's color saturation to 50%. After this, put off the clock by the previously mentioned duration one more time. Lastly, alter the light's hue to settle at 25% of its full potential",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'on') {\n  (#Clock).clock_delay(1, 45, 30)\n  (#Light).colorControl_setSaturation(50)\n  (#Clock).clock_delay(1, 45, 30)\n  (#Light).colorControl_setHue(25)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the light switch is off, then delay the clock by 3 hours, 15 minutes, and 45 seconds, turn on the light, delay the clock again by the same amount of time, and then set the level of the light to 75% at a rate of 10.",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'off') {\n  (#Clock).clock_delay(3, 15, 45)\n  (#Light).switch_on()\n  (#Clock).clock_delay(3, 15, 45)\n  (#Light).switchLevel_setLevel(75, 10)\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the light switch is currently not activated, I want you to postpone the clock for a duration of three hours, fifteen minutes and forty-five seconds, then proceed to light up the room. Following that, I'd like you to delay the clock once more for the same duration. Finally, adjust the brightness of the light to 75% gradually at a pace of",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'off') {\n  (#Clock).clock_delay(3, 15, 45)\n  (#Light).switch_on()\n  (#Clock).clock_delay(3, 15, 45)\n  (#Light).switchLevel_setLevel(75, 10)\n}"
+      }
+    ]
+  },
+  {
+    "command": "Provided that the light switch is in a deactivated state, I'd appreciate if you could put the clock on hold for three hours, fifteen minutes and forty-five seconds. Subsequently, illuminate the room and once again, delay the clock for an identical time span. In the end, please regulate the light intensity to reach 75% progressively at the speed of",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'off') {\n  (#Clock).clock_delay(3, 15, 45)\n  (#Light).switch_on()\n  (#Clock).clock_delay(3, 15, 45)\n  (#Light).switchLevel_setLevel(75, 10)\n}"
+      }
+    ]
+  },
+  {
+    "command": "Assuming the light switch is not turned on, I'd ask you to pause the clock for three hours, fifteen minutes, and forty-five seconds, then switch the light on. After this, please delay the clock for the same period of time again. To conclude, I want you to gradually increase the light intensity to 75% at a rate of",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'off') {\n  (#Clock).clock_delay(3, 15, 45)\n  (#Light).switch_on()\n  (#Clock).clock_delay(3, 15, 45)\n  (#Light).switchLevel_setLevel(75, 10)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the light is on, then delay the clock by 4 hours, 20 minutes, and 30 seconds, toggle the light switch, delay the clock again by the same amount of time, and then set the color of the light to blue.",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'on') {\n  (#Clock).clock_delay(4, 20, 30)\n  (#Light).switch_toggle()\n  (#Clock).clock_delay(4, 20, 30)\n  (#Light).colorControl_setColor({\"hue\": 66.7, \"saturation\": 100})\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the light is illuminated, I'd like you to postpone the clock by four hours, twenty minutes, and thirty seconds. Following this, flip the light switch, delay the clock by the identical duration once more, and afterward adjust the light's color to blue",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'on') {\n  (#Clock).clock_delay(4, 20, 30)\n  (#Light).switch_toggle()\n  (#Clock).clock_delay(4, 20, 30)\n  (#Light).colorControl_setColor({\"hue\": 66.7, \"saturation\": 100})\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the light be on, proceed by setting back the clock four hours, twenty minutes, and thirty seconds. Then, alter the light switch's state, cause another delay to the clock of an equivalent duration, and lastly, change the light's hue to blue",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'on') {\n  (#Clock).clock_delay(4, 20, 30)\n  (#Light).switch_toggle()\n  (#Clock).clock_delay(4, 20, 30)\n  (#Light).colorControl_setColor({\"hue\": 66.7, \"saturation\": 100})\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the light is activated, please push back the clock by a duration of four hours, twenty minutes, and thirty seconds. Subsequently, modify the status of the light switch, wait the same amount of time once more with the clock, and finally, make the light emit a blue color",
+    "code": [
+      {
+        "name": "Scenario7",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Light).switch_switch == 'on') {\n  (#Clock).clock_delay(4, 20, 30)\n  (#Light).switch_toggle()\n  (#Clock).clock_delay(4, 20, 30)\n  (#Light).colorControl_setColor({\"hue\": 66.7, \"saturation\": 100})\n}"
+      }
+    ]
+  },
+  {
+    "command": "Wait 8 seconds, then delays by 4 seconds and then toggles the light.",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(8000)\n(#Light).switch_on()\n(#Clock).clock_delay(4000)\n(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "pause for a duration of 8 seconds before activating the light. Following this, pauses again for 4 seconds before finally switching the light",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(8000)\n(#Light).switch_on()\n(#Clock).clock_delay(4000)\n(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Initially, holds for a period of 8 seconds, then illuminates the light. Subsequently, waits for 4 seconds before toggling the light",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(8000)\n(#Light).switch_on()\n(#Clock).clock_delay(4000)\n(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "first takes an 8 second pause, proceeds to light up the room, then holds off for 4 seconds before adjusting the light once more",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(8000)\n(#Light).switch_on()\n(#Clock).clock_delay(4000)\n(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "delays for 6 seconds, sets the light color, then delays for 3 seconds and finally sets the hue of the light.",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(6000)\n(#Light).colorControl_setColor({\"hue\":\"50\", \"saturation\":\"70\"})\n(#Clock).clock_delay(3000)\n(#Light).colorControl_setHue(80)"
+      }
+    ]
+  },
+  {
+    "command": "pause for a period of 6 seconds adjust the color of the light, then wait for another period of 3 seconds before it modifies the light's hue",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(6000)\n(#Light).colorControl_setColor({\"hue\":\"50\", \"saturation\":\"70\"})\n(#Clock).clock_delay(3000)\n(#Light).colorControl_setHue(80)"
+      }
+    ]
+  },
+  {
+    "command": "takes a break for 6 seconds changes the color of the light, waits again for 3 seconds and lastly alters the hue of the light",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(6000)\n(#Light).colorControl_setColor({\"hue\":\"50\", \"saturation\":\"70\"})\n(#Clock).clock_delay(3000)\n(#Light).colorControl_setHue(80)"
+      }
+    ]
+  },
+  {
+    "command": "holds off for 6 seconds modifies the light color, then suspends operation for 3 seconds before it makes final adjustments to the hue of the light",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(6000)\n(#Light).colorControl_setColor({\"hue\":\"50\", \"saturation\":\"70\"})\n(#Clock).clock_delay(3000)\n(#Light).colorControl_setHue(80)"
+      }
+    ]
+  },
+  {
+    "command": "delays for 9 seconds sets the light saturation, then delays for 2 seconds and finally sets the light to a specific level.",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(9000)\n(#Light).colorControl_setSaturation(60)\n(#Clock).clock_delay(2000)\n(#Light).switchLevel_setLevel(75, 10)"
+      }
+    ]
+  },
+  {
+    "command": "pause for 9 seconds adjust the light saturation accordingly, wait another 2 seconds and then set the light to a predetermined level",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(9000)\n(#Light).colorControl_setSaturation(60)\n(#Clock).clock_delay(2000)\n(#Light).switchLevel_setLevel(75, 10)"
+      }
+    ]
+  },
+  {
+    "command": "After initiating a pause for 9 seconds modify the light saturation, hold off for another 2 seconds and subsequently adjust the light to a defined brightness level",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(9000)\n(#Light).colorControl_setSaturation(60)\n(#Clock).clock_delay(2000)\n(#Light).switchLevel_setLevel(75, 10)"
+      }
+    ]
+  },
+  {
+    "command": "takes a break for 9 seconds tweaks the saturation of the light, delays for 2000 more hours, minutes, or seconds, and then finally sets the luminosity of the light to an exact level",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(9000)\n(#Light).colorControl_setSaturation(60)\n(#Clock).clock_delay(2000)\n(#Light).switchLevel_setLevel(75, 10)"
+      }
+    ]
+  },
+  {
+    "command": "delays for 5 seconds alerts with light dimming, then delays for 7 seconds and finally toggles the light switch.",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(5000)\n(#Light).switchLevel_alert()\n(#Clock).clock_delay(7000)\n(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "initiate a pause for 5 seconds gives an alert through dimming lights, waits again for 7 seconds and then switches the light on or off in the end",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(5000)\n(#Light).switchLevel_alert()\n(#Clock).clock_delay(7000)\n(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "there's a delay of 5 seconds initially, a dim light alert subsequently, following which there's another delay for 7 seconds ending with the light being toggled",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(5000)\n(#Light).switchLevel_alert()\n(#Clock).clock_delay(7000)\n(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "first waits for 5 seconds then sends a signal via light dimming, pauses again for 7 seconds and ultimately flips the light switch",
+    "code": [
+      {
+        "name": "Scenario8",
+        "cron": "",
+        "period": -1,
+        "code": "(#Clock).clock_delay(5000)\n(#Light).switchLevel_alert()\n(#Clock).clock_delay(7000)\n(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "If the door is in the process of closing, delay the clock for an hour, a minute, and a second. If the window is not in an unknown state, close the blinds.",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'closing') {\n  (#Clock).clock_delay(1, 1, 1)\n  if ((#Window).windowControl_window != 'unknown') {\n      (#Blind).blind_close()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "When you notice the door closing, make sure to put off the clock by exactly one hour, one minute and one second. In the event that the window's condition is certain and well-known, proceed to draw the blinds closed",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'closing') {\n  (#Clock).clock_delay(1, 1, 1)\n  if ((#Window).windowControl_window != 'unknown') {\n      (#Blind).blind_close()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you see that the door is being shut, hold back the clock for sixty minutes, sixty seconds, and an additional second. Should the window be in a identifiable state, ensure that the blinds are closed",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'closing') {\n  (#Clock).clock_delay(1, 1, 1)\n  if ((#Window).windowControl_window != 'unknown') {\n      (#Blind).blind_close()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "Once you observe the door slowly closing, pause the clock for one hour, one minute, and a single second. Assuming the window's state isn't unknown, then go ahead and shut the blinds",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'closing') {\n  (#Clock).clock_delay(1, 1, 1)\n  if ((#Window).windowControl_window != 'unknown') {\n      (#Blind).blind_close()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the door is open, delay the clock for two hours, three minutes, and four seconds. If the window is not in a closed state, set the blind level to 50 percent open.",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'open') {\n  (#Clock).clock_delay(2, 3, 4)\n  if ((#Window).windowControl_window != 'closed') {\n      (#Blind).blindLevel_setBlindLevel(50)\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the door be ajar, please postpone the clock's timing by two hours, three minutes, and four seconds. If the window hasn't been fully shut, adjust the blind to be halfway open",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'open') {\n  (#Clock).clock_delay(2, 3, 4)\n  if ((#Window).windowControl_window != 'closed') {\n      (#Blind).blindLevel_setBlindLevel(50)\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you find the door open, I request you to defer the clock by two hours, three minutes, and four seconds. In the event that the window isn't completely closed, please ensure the blind is opened halfway",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'open') {\n  (#Clock).clock_delay(2, 3, 4)\n  if ((#Window).windowControl_window != 'closed') {\n      (#Blind).blindLevel_setBlindLevel(50)\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the door remains open, hold off the clock by a duration of two hours, three minutes, and four seconds. Given the window isn't sealed shut, kindly manipulate the blind until it's 50 percent open",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'open') {\n  (#Clock).clock_delay(2, 3, 4)\n  if ((#Window).windowControl_window != 'closed') {\n      (#Blind).blindLevel_setBlindLevel(50)\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the door status is unknown, delay the clock for three hours, two minutes, and one second. If the window is not open, pause the blinds.",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'unknown') {\n  (#Clock).clock_delay(3, 2, 1)\n  if ((#Window).windowControl_window != 'open') {\n      (#Blind).blind_pause()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the status of the door be uncertain, hold off the clock for three hours, two minutes, and a single second. In case the window is closed, put the operation of the blinds on hold",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'unknown') {\n  (#Clock).clock_delay(3, 2, 1)\n  if ((#Window).windowControl_window != 'open') {\n      (#Blind).blind_pause()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that we're unsure about the door's status, let's postpone the clock's function for exactly three hours, two minutes, and one second. If the window isn't ajar, we should take a pause on adjusting the blinds",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'unknown') {\n  (#Clock).clock_delay(3, 2, 1)\n  if ((#Window).windowControl_window != 'open') {\n      (#Blind).blind_pause()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "If we can't confirm whether the door is open or closed, we should delay the clock by three hours, two minutes, and one second. Should the window be shut, it's best to halt the movement of the blinds",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'unknown') {\n  (#Clock).clock_delay(3, 2, 1)\n  if ((#Window).windowControl_window != 'open') {\n      (#Blind).blind_pause()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the door is opening, delay the clock for six hours, five minutes, and four seconds. If the window is not in an unknown state, open the blinds completely.",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'opening') {\n  (#Clock).clock_delay(6, 5, 4)\n  if ((#Window).windowControl_window != 'unknown') {\n      (#Blind).blind_open()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the door be in the process of opening, please postpone the clock by six hours, five minutes, and four seconds. If the window's state is anything but unknown, ensure the blinds are fully open",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'opening') {\n  (#Clock).clock_delay(6, 5, 4)\n  if ((#Window).windowControl_window != 'unknown') {\n      (#Blind).blind_open()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the door begins to open, hold off the clock's time for a duration of six hours, five minutes, and four seconds. Provided the window isn't in an uncertain condition, pull the blinds all the way up",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'opening') {\n  (#Clock).clock_delay(6, 5, 4)\n  if ((#Window).windowControl_window != 'unknown') {\n      (#Blind).blind_open()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "Whenever the door is found opening, be sure to put the clock on hold for six hours, five minutes, and four seconds. If the state of the window isn't undetermined, make sure the blinds are open to the fullest extent",
+    "code": [
+      {
+        "name": "Scenario9",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#DoorLock).doorControl_door == 'opening') {\n  (#Clock).clock_delay(6, 5, 4)\n  if ((#Window).windowControl_window != 'unknown') {\n      (#Blind).blind_open()\n  }\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain is partially open, then delay the clock by 1000 seconds, set the hue of the light to 70 percent, delay the clock again by 3000 seconds, and finally, turn off the switch of the light.",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'partially') {\n  (#Clock).clock_delay(1000)\n  (#Light).colorControl_setHue(70)\n  (#Clock).clock_delay(3000)\n  (#Light).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you find the curtain not entirely drawn, please hold back the clock for a duration of 1000 seconds, alter the light's hue to 70 percent, pause the clock for another interval of 3000 seconds, and then finish by deactivating the light switch",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'partially') {\n  (#Clock).clock_delay(1000)\n  (#Light).colorControl_setHue(70)\n  (#Clock).clock_delay(3000)\n  (#Light).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the curtain isn't fully closed, I'd like you to put the clock on hold for 1000 seconds, adjust the light to a hue at 70 percent, freeze the clock for an additional 3000 seconds, and lastly, switch off the light",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'partially') {\n  (#Clock).clock_delay(1000)\n  (#Light).colorControl_setHue(70)\n  (#Clock).clock_delay(3000)\n  (#Light).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If it turns out that the curtain is only halfway open, could you please delay the time for 1000 seconds, change the color intensity of the light to 70 percent, put an additional delay of 3000 seconds on the clock, and then top it off by turning the light off",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'partially') {\n  (#Clock).clock_delay(1000)\n  (#Light).colorControl_setHue(70)\n  (#Clock).clock_delay(3000)\n  (#Light).switch_off()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain is completely closed, then delay the clock by 1500 seconds, set the saturation of the light to 80 percent, delay the clock again by 2500 seconds, and finally, toggle the switch of the light.",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'closed') {\n  (#Clock).clock_delay(1500)\n  (#Light).colorControl_setSaturation(80)\n  (#Clock).clock_delay(2500)\n  (#Light).switch_toggle()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you find the curtain entirely shut, please proceed by pausing the clock for a duration of 1500 seconds, adjusting the light's saturation level to 80 percent, pausing the clock once more for 2500 seconds, and lastly, altering the status of the light switch",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'closed') {\n  (#Clock).clock_delay(1500)\n  (#Light).colorControl_setSaturation(80)\n  (#Clock).clock_delay(2500)\n  (#Light).switch_toggle()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the curtain is fully drawn, it would be wise to hold off the clock for 1500 seconds, bring the light saturation to the level of 80 percent, delay the clock a second time for a span of 2500 seconds, and to conclude, flip the switch for the light",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'closed') {\n  (#Clock).clock_delay(1500)\n  (#Light).colorControl_setSaturation(80)\n  (#Clock).clock_delay(2500)\n  (#Light).switch_toggle()\n}"
+      }
+    ]
+  },
+  {
+    "command": "When the curtain is totally closed off, kindly set the clock back by 1500 seconds, adjust the saturation of the illumination to 80 percent, have the clock wait for an additional 2500 seconds, and as a final step, switch the light's state",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'closed') {\n  (#Clock).clock_delay(1500)\n  (#Light).colorControl_setSaturation(80)\n  (#Clock).clock_delay(2500)\n  (#Light).switch_toggle()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain is opening, then delay the clock by 500 seconds, set the light color to a specific value, delay the clock again by 2000 seconds, and finally, alert with dimming.",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'opening') {\n  (#Clock).clock_delay(500)\n  (#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"60\"})\n  (#Clock).clock_delay(2000)\n  (#Light).switchLevel_alert()\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the curtain be unfurling, proceed by postponing the clock for a duration of 500 seconds, adjust the hue of the light to a predetermined value, later postpone the clock once more for 2000 seconds, and ultimately send an alert with dimming",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'opening') {\n  (#Clock).clock_delay(500)\n  (#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"60\"})\n  (#Clock).clock_delay(2000)\n  (#Light).switchLevel_alert()\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event of the curtain parting, you're to initially delay the clock for 500 seconds, then alter the color of the light to a specific shade, thereafter delay the clock again for a period of 2000 seconds, and lastly, issue a dimming alert",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'opening') {\n  (#Clock).clock_delay(500)\n  (#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"60\"})\n  (#Clock).clock_delay(2000)\n  (#Light).switchLevel_alert()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If you notice the curtain drawing back, start by setting the clock back by 500 seconds, next change the light's color to a certain value, after which push the clock back again by 2000 seconds, and ultimately, trigger an alert with a dimming feature",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'opening') {\n  (#Clock).clock_delay(500)\n  (#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"60\"})\n  (#Clock).clock_delay(2000)\n  (#Light).switchLevel_alert()\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain is in the process of closing, then delay the clock by 3000 seconds, turn on the light, delay the clock again by 5000 seconds, and finally, set the light level to 30 percent at a rate of 2.",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'closing') {\n  (#Clock).clock_delay(3000)\n  (#Light).switch_on()\n  (#Clock).clock_delay(5000)\n  (#Light).switchLevel_setLevel(30, 2)\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the curtain is still closing, would you please postpone the time by 3000 seconds, then put the light on, follow it up with another delay of 5000 seconds, and lastly, slowly adjust the light intensity to 30 percent at a pace of two",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'closing') {\n  (#Clock).clock_delay(3000)\n  (#Light).switch_on()\n  (#Clock).clock_delay(5000)\n  (#Light).switchLevel_setLevel(30, 2)\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should you find the curtain closing, I'd appreciate if you could retard the clock for an interval of 3000 seconds, illuminate the room, then induce another delay of 5000 seconds, and subsequently, modulate the light brightness to a level of 30 percent at a speed of two",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'closing') {\n  (#Clock).clock_delay(3000)\n  (#Light).switch_on()\n  (#Clock).clock_delay(5000)\n  (#Light).switchLevel_setLevel(30, 2)\n}"
+      }
+    ]
+  },
+  {
+    "command": "If it turns out that the curtain is currently being closed, you're kindly requested to hold back the clock for a span of 3000 seconds, switch on the light, insert a further time delay of 5000 seconds, and ultimately, calibrate the light's intensity to 30 percent at a rate of two",
+    "code": [
+      {
+        "name": "Scenario10",
+        "cron": "",
+        "period": -1,
+        "code": "if ((#Curtain).curtain_curtain == 'closing') {\n  (#Clock).clock_delay(3000)\n  (#Light).switch_on()\n  (#Clock).clock_delay(5000)\n  (#Light).switchLevel_setLevel(30, 2)\n}"
+      }
+    ]
+  }
+]

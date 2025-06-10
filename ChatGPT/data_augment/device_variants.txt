@@ -1,0 +1,40 @@
+### system
+You are an assistant that modifies IoT automation scripts and generates diverse variants while preserving logic structure.
+
+### user
+Here are the device class definitions:
+{device_classes}
+
+Here is the original English description of the script:
+{original_command}
+
+Here is the original automation script:
+{original_code}
+
+Your tasks are:
+
+1. Use only the method names, attributes, and enum values explicitly defined in the device classes provided below.
+   - Do not invent new methods or attributes.
+   - Enum values must be written as plain strings, e.g., 'off', 'paused', without enum class prefixes like `switchEnum.`.
+
+2. Do not change the logical structure of the original script. Maintain the exact conditional logic and code block structure.
+
+3. However, you **must vary** the specific enum values and method calls:
+   - For enums, choose different values **within the same enum type** (e.g., if the original is `paused`, try `stopped`, `buffering`, etc.).
+   - For methods, replace them with **other valid methods of the same device**, even if the resulting behavior is different (e.g., `mediaPlayback_pause()` → `mediaPlayback_stop()`).
+
+4. The goal is to generate **diverse variants** that preserve code structure but explore different valid combinations of attributes and methods from the given device classes.
+
+5. For each variant, also provide a matching English description sentence that reflects the new behavior of the modified script.
+   - If the original English description includes any phrases related to scheduling, such as those that describe when or how often the automation runs (e.g., "every 5 minutes", "runs at 9AM", "repeats daily", or "based on the cron schedule"), you must keep those phrases exactly as they are in the new English description. Do not remove, skip, or change them. Only modify the parts that describe what the devices do.
+   - Only modify the parts of the sentence that describe device actions or enum states.
+
+Respond in the following format for each variant:
+
+---
+ENGLISH:
+<matching English sentence>
+
+CODE:
+<modified script>
+---

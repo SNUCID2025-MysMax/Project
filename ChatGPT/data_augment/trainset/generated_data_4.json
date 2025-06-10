@@ -1,0 +1,1146 @@
+[
+  {
+    "command": "Wait until the blinds are completely open before the speaker starts to play media.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'open')\n(#Speaker).mediaPlayback_play('Radio')"
+      }
+    ]
+  },
+  {
+    "command": "Ensure the blinds are fully open before prompting the speaker to begin playing media",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'open')\n(#Speaker).mediaPlayback_play('Radio')"
+      }
+    ]
+  },
+  {
+    "command": "The speaker should not start playing any media until the blinds have been fully raised",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'open')\n(#Speaker).mediaPlayback_play('Radio')"
+      }
+    ]
+  },
+  {
+    "command": "Before initiating media playback on the speaker, confirm that the blinds are opened all the way",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'open')\n(#Speaker).mediaPlayback_play('Radio')"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the blinds are paused during opening or closing, then turn off the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'paused')\n(#Speaker).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Keep an eye on the blinds, and the moment they pause while either opening or closing, proceed to switch off the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'paused')\n(#Speaker).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Monitor the blinds and as soon as you notice a pause during their operation, either when they're opening or closing, make sure the speaker is turned off",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'paused')\n(#Speaker).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Please observe the blinds, and the instant they stop midway in the process of opening or closing, take the necessary steps to shut off the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'paused')\n(#Speaker).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the blinds are partially open, then make the speaker say 'Blinds are partially open'.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'partially')\n(#Speaker).mediaPlayback_speak('Blinds are partially open')"
+      }
+    ]
+  },
+  {
+    "command": "Once the blinds are halfway open, instruct the speaker to announce \"Blinds are partially open.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'partially')\n(#Speaker).mediaPlayback_speak('Blinds are partially open')"
+      }
+    ]
+  },
+  {
+    "command": "As soon as the blinds reach a halfway opened state, have the speaker voice out the statement, \"Blinds are partially open.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'partially')\n(#Speaker).mediaPlayback_speak('Blinds are partially open')"
+      }
+    ]
+  },
+  {
+    "command": "Let the speaker sound out the phrase \"Blinds are partially open\" when the blinds are half opened",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'partially')\n(#Speaker).mediaPlayback_speak('Blinds are partially open')"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the blinds are in the process of opening, then make the speaker stop the media playback.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'opening')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "\"When the blinds are opening, instruct the speaker to halt any media that is playing.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'opening')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "\"Once the blinds begin to open, ensure that the speaker ceases all media playback.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'opening')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "\"As soon as you notice the blinds starting to open, command the speaker to stop playing any media.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'opening')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the blinds are in the process of closing, then toggle the switch on the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'closing')\n(#Speaker).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Once you observe the blinds beginning to shut, please proceed to flick the switch on the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'closing')\n(#Speaker).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "As soon as the blinds start closing, you should then flip the switch on your speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'closing')\n(#Speaker).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "When you notice the blinds beginning to close, it's time to turn the switch on your speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Blind).blind_blind == 'closing')\n(#Speaker).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the television switch is on, then turn on the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).switch_switch == 'on')\n(#Speaker).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "\"Once you notice that the television has been switched on, please proceed to activate the speaker.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).switch_switch == 'on')\n(#Speaker).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "\"When the TV is turned on, please make sure to also power up the speaker.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).switch_switch == 'on')\n(#Speaker).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "\"The moment the television has been powered on, kindly ensure the speaker is also turned on.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).switch_switch == 'on')\n(#Speaker).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the television is muted, then stop the media playback on the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).audioMute_muteStatus == 'muted')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "Once the TV volume has been turned off, kindly cease any media playing on the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).audioMute_muteStatus == 'muted')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "As soon as the television goes quiet, please halt any audio streaming from the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).audioMute_muteStatus == 'muted')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "When the sound from the television is silenced, do cease the audio playback on the speaker promptly",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).audioMute_muteStatus == 'muted')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the television's channel is changed, then pause the media playback on the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).tvChannel_tvChannel != 'previous_channel_value')\n(#Speaker).mediaPlayback_pause()"
+      }
+    ]
+  },
+  {
+    "command": "\"As soon as the channel on the television gets switched, pause the playback of any media on the speaker.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).tvChannel_tvChannel != 'previous_channel_value')\n(#Speaker).mediaPlayback_pause()"
+      }
+    ]
+  },
+  {
+    "command": "\"The moment the TV's channel is altered, hold off on the speaker's media playback.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).tvChannel_tvChannel != 'previous_channel_value')\n(#Speaker).mediaPlayback_pause()"
+      }
+    ]
+  },
+  {
+    "command": "\"Once a change in the TV channel occurs, immediately suspend the media playback on the speaker.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).tvChannel_tvChannel != 'previous_channel_value')\n(#Speaker).mediaPlayback_pause()"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the television volume is increased, then fast forward the media playback on the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).audioVolume_volume > 'previous_volume_value')\n(#Speaker).mediaPlayback_fastForward()"
+      }
+    ]
+  },
+  {
+    "command": "\"Once the volume on the TV has been turned up, go ahead and move the speaker's media playback forward at a faster rate.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).audioVolume_volume > 'previous_volume_value')\n(#Speaker).mediaPlayback_fastForward()"
+      }
+    ]
+  },
+  {
+    "command": "\"After you've boosted the TV sound, please hasten the media playback playing on the speaker.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).audioVolume_volume > 'previous_volume_value')\n(#Speaker).mediaPlayback_fastForward()"
+      }
+    ]
+  },
+  {
+    "command": "\"As soon as the volume of the television is raised, speed up the playing media on the speaker.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).audioVolume_volume > 'previous_volume_value')\n(#Speaker).mediaPlayback_fastForward()"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the television channel is set to a specific channel, then play media from a specific source on the speaker.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).tvChannel_tvChannel == 'specific_channel_value')\n(#Speaker).mediaPlayback_play('specific_source')"
+      }
+    ]
+  },
+  {
+    "command": "Please hold off until the television channel is tuned to the chosen one, and then start playing content from the designated source through the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).tvChannel_tvChannel == 'specific_channel_value')\n(#Speaker).mediaPlayback_play('specific_source')"
+      }
+    ]
+  },
+  {
+    "command": "Once the television channel has been adjusted to a specific one, proceed to play the selected media on the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).tvChannel_tvChannel == 'specific_channel_value')\n(#Speaker).mediaPlayback_play('specific_source')"
+      }
+    ]
+  },
+  {
+    "command": "Do not start until the TV channel is switched to the specific channel, then commence playing the preselected media through the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Television).tvChannel_tvChannel == 'specific_channel_value')\n(#Speaker).mediaPlayback_play('specific_source')"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain has been opened and then closed more than 3 times, the light will be turned on.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "close_count := 0\nprev_state := 'open'\nopened := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'closed') and (prev_state == 'open') {\n  opened = true\n}\nif (curr == 'open') and (prev_state == 'closed') and (opened == true) {\n  close_count = close_count + 1\n  opened = false\n}\nprev_state = curr\nif (close_count >= 3) {\n  (#Light).switch_on()\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the curtain be opened and shut in excess of three times, the light will subsequently be activated",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "close_count := 0\nprev_state := 'open'\nopened := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'closed') and (prev_state == 'open') {\n  opened = true\n}\nif (curr == 'open') and (prev_state == 'closed') and (opened == true) {\n  close_count = close_count + 1\n  opened = false\n}\nprev_state = curr\nif (close_count >= 3) {\n  (#Light).switch_on()\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the curtain is drawn and then closed over three times, the light will be switched on",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "close_count := 0\nprev_state := 'open'\nopened := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'closed') and (prev_state == 'open') {\n  opened = true\n}\nif (curr == 'open') and (prev_state == 'closed') and (opened == true) {\n  close_count = close_count + 1\n  opened = false\n}\nprev_state = curr\nif (close_count >= 3) {\n  (#Light).switch_on()\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "When the curtain is opened and closed more than thrice, it will result in the light being turned on",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "close_count := 0\nprev_state := 'open'\nopened := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'closed') and (prev_state == 'open') {\n  opened = true\n}\nif (curr == 'open') and (prev_state == 'closed') and (opened == true) {\n  close_count = close_count + 1\n  opened = false\n}\nprev_state = curr\nif (close_count >= 3) {\n  (#Light).switch_on()\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain has been partially opened and then fully opened more than 3 times, the hue of the light is set to 50 percent.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "open_count := 0\nprev_state := 'partially'\nopened := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'open') and (prev_state == 'partially') {\n  opened = true\n}\nif (curr == 'partially') and (prev_state == 'open') and (opened == true) {\n  open_count = open_count + 1\n  opened = false\n}\nprev_state = curr\nif (open_count >= 3) {\n  (#Light).colorControl_setHue(50)\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the curtain be partly opened before being completely opened more than three times, then set the light's hue at half strength",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "open_count := 0\nprev_state := 'partially'\nopened := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'open') and (prev_state == 'partially') {\n  opened = true\n}\nif (curr == 'partially') and (prev_state == 'open') and (opened == true) {\n  open_count = open_count + 1\n  opened = false\n}\nprev_state = curr\nif (open_count >= 3) {\n  (#Light).colorControl_setHue(50)\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain undergoes a process of being partially and then fully opened over three times, ensure the light is adjusted to a hue level of fifty percent",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "open_count := 0\nprev_state := 'partially'\nopened := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'open') and (prev_state == 'partially') {\n  opened = true\n}\nif (curr == 'partially') and (prev_state == 'open') and (opened == true) {\n  open_count = open_count + 1\n  opened = false\n}\nprev_state = curr\nif (open_count >= 3) {\n  (#Light).colorControl_setHue(50)\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the case that the curtain partially opens before fully opening more than three times, adjust the light to have a fifty percent hue",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "open_count := 0\nprev_state := 'partially'\nopened := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'open') and (prev_state == 'partially') {\n  opened = true\n}\nif (curr == 'partially') and (prev_state == 'open') and (opened == true) {\n  open_count = open_count + 1\n  opened = false\n}\nprev_state = curr\nif (open_count >= 3) {\n  (#Light).colorControl_setHue(50)\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain has been paused and then started opening more than 3 times, the light's saturation is set to 75 percent.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "open_count := 0\nprev_state := 'paused'\nstarted := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'opening') and (prev_state == 'paused') {\n  started = true\n}\nif (curr == 'paused') and (prev_state == 'opening') and (started == true) {\n  open_count = open_count + 1\n  started = false\n}\nprev_state = curr\nif (open_count >= 3) {\n  (#Light).colorControl_setSaturation(75)\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "Suppose the curtain's movement has been interrupted and then resumed opening on more than three occasions, adjust the light's color intensity to seventy-five percent",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "open_count := 0\nprev_state := 'paused'\nstarted := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'opening') and (prev_state == 'paused') {\n  started = true\n}\nif (curr == 'paused') and (prev_state == 'opening') and (started == true) {\n  open_count = open_count + 1\n  started = false\n}\nprev_state = curr\nif (open_count >= 3) {\n  (#Light).colorControl_setSaturation(75)\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain has been intermittently started and paused more than three times, the light should have its saturation adjusted to seventy-five percent",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "open_count := 0\nprev_state := 'paused'\nstarted := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'opening') and (prev_state == 'paused') {\n  started = true\n}\nif (curr == 'paused') and (prev_state == 'opening') and (started == true) {\n  open_count = open_count + 1\n  started = false\n}\nprev_state = curr\nif (open_count >= 3) {\n  (#Light).colorControl_setSaturation(75)\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the curtain has been halted and subsequently started opening more than thrice, make sure to set the saturation level of the light at seventy-five percent",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "open_count := 0\nprev_state := 'paused'\nstarted := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'opening') and (prev_state == 'paused') {\n  started = true\n}\nif (curr == 'paused') and (prev_state == 'opening') and (started == true) {\n  open_count = open_count + 1\n  started = false\n}\nprev_state = curr\nif (open_count >= 3) {\n  (#Light).colorControl_setSaturation(75)\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain has been closing and then becomes unknown more than 3 times, the light will toggle its state.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "close_count := 0\nprev_state := 'closing'\nunknown := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'unknown') and (prev_state == 'closing') {\n  unknown = true\n}\nif (curr == 'closing') and (prev_state == 'unknown') and (unknown == true) {\n  close_count = close_count + 1\n  unknown = false\n}\nprev_state = curr\nif (close_count >= 3) {\n  (#Light).switch_toggle()\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the curtain's state changes to unknown more than thrice after closing, the light will switch its current status",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "close_count := 0\nprev_state := 'closing'\nunknown := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'unknown') and (prev_state == 'closing') {\n  unknown = true\n}\nif (curr == 'closing') and (prev_state == 'unknown') and (unknown == true) {\n  close_count = close_count + 1\n  unknown = false\n}\nprev_state = curr\nif (close_count >= 3) {\n  (#Light).switch_toggle()\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the curtain transition to an unknown state more than three times following its closure, the light will alter its existing condition",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "close_count := 0\nprev_state := 'closing'\nunknown := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'unknown') and (prev_state == 'closing') {\n  unknown = true\n}\nif (curr == 'closing') and (prev_state == 'unknown') and (unknown == true) {\n  close_count = close_count + 1\n  unknown = false\n}\nprev_state = curr\nif (close_count >= 3) {\n  (#Light).switch_toggle()\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the curtain's state becomes indeterminate more than three times post-closure, the light will adjust its state",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 100,
+        "code": "close_count := 0\nprev_state := 'closing'\nunknown := false\ncurr = (#Curtain).curtain_curtain\nif (curr == 'unknown') and (prev_state == 'closing') {\n  unknown = true\n}\nif (curr == 'closing') and (prev_state == 'unknown') and (unknown == true) {\n  close_count = close_count + 1\n  unknown = false\n}\nprev_state = curr\nif (close_count >= 3) {\n  (#Light).switch_toggle()\n  break\n}"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the dehumidifier mode is set to 'cooling', then toggle the switch.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'cooling')\n(#Dehumidifier).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "\"Once the dehumidifier enters its cooling mode, you need to flick the switch.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'cooling')\n(#Dehumidifier).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "\"Upon the dehumidifier transitioning to the cooling mode, proceed to toggle the switch.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'cooling')\n(#Dehumidifier).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "\"As soon as the cooling mode is engaged on the dehumidifier, make sure to flip the switch.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'cooling')\n(#Dehumidifier).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the dehumidifier switch is turned 'on', then set the dehumidifier mode to 'drying'.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).switch_switch == 'on')\n(#Dehumidifier).dehumidifierMode_setDehumidifierMode('drying')"
+      }
+    ]
+  },
+  {
+    "command": "Once the dehumidifier's switch is activated, please adjust the mode to 'drying'",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).switch_switch == 'on')\n(#Dehumidifier).dehumidifierMode_setDehumidifierMode('drying')"
+      }
+    ]
+  },
+  {
+    "command": "As soon as the dehumidifier is switched on, kindly change its mode to 'drying'",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).switch_switch == 'on')\n(#Dehumidifier).dehumidifierMode_setDehumidifierMode('drying')"
+      }
+    ]
+  },
+  {
+    "command": "When the dehumidifier is powered on, it should be set to the 'drying' mode",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).switch_switch == 'on')\n(#Dehumidifier).dehumidifierMode_setDehumidifierMode('drying')"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the dehumidifier mode is set to 'weightSensing', then turn the switch off.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'weightSensing')\n(#Dehumidifier).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "\"Please hold on until the dehumidifier has its mode set to 'weight sensing', and then proceed to switch it off.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'weightSensing')\n(#Dehumidifier).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "\"Once the 'weight sensing' mode is enabled on the dehumidifier, you can go ahead and turn off the switch.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'weightSensing')\n(#Dehumidifier).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "\"Ensure the dehumidifier is in 'weight sensing' mode before you decide to flip the switch off.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'weightSensing')\n(#Dehumidifier).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the dehumidifier switch is turned 'off', then set the dehumidifier mode to 'sanitizing'.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).switch_switch == 'off')\n(#Dehumidifier).dehumidifierMode_setDehumidifierMode('sanitizing')"
+      }
+    ]
+  },
+  {
+    "command": "Once the dehumidifier switch has been turned off, proceed to adjust the dehumidifier mode to sanitizing",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).switch_switch == 'off')\n(#Dehumidifier).dehumidifierMode_setDehumidifierMode('sanitizing')"
+      }
+    ]
+  },
+  {
+    "command": "As soon as the dehumidifier's switch is deactivated, please change the mode of operation to 'sanitizing'",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).switch_switch == 'off')\n(#Dehumidifier).dehumidifierMode_setDehumidifierMode('sanitizing')"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to set the dehumidifier to 'sanitizing' mode, but only after ensuring that its switch has been put in the 'off' position",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).switch_switch == 'off')\n(#Dehumidifier).dehumidifierMode_setDehumidifierMode('sanitizing')"
+      }
+    ]
+  },
+  {
+    "command": "Wait until the dehumidifier mode is set to 'AIDrying', then toggle the switch.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'AIDrying')\n(#Dehumidifier).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "\"Once the dehumidifier mode has been configured to 'AIDrying', please proceed to flip the switch.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'AIDrying')\n(#Dehumidifier).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "\"After the dehumidifier mode has been adjusted to 'AIDrying', I want you to activate the switch.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'AIDrying')\n(#Dehumidifier).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "\"As soon as you've set the dehumidifier mode to 'AIDrying', please go ahead and turn the switch on or off.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'AIDrying')\n(#Dehumidifier).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "The speaker starts playing the media when the device is present.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play(\"Radio\")"
+      }
+    ]
+  },
+  {
+    "command": "Initiate the playback on the speaker as soon as the device becomes available",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play(\"Radio\")"
+      }
+    ]
+  },
+  {
+    "command": "As soon as the device is detected, the speaker should begin playing the media",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play(\"Radio\")"
+      }
+    ]
+  },
+  {
+    "command": "The moment the device is present, get the speaker to start playing the media",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play(\"Radio\")"
+      }
+    ]
+  },
+  {
+    "command": "The speaker will fast forward the media when the device is not present.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).mediaPlayback_fastForward()"
+      }
+    ]
+  },
+  {
+    "command": "If the device isn't around, the speaker should then proceed to fast forward the media",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).mediaPlayback_fastForward()"
+      }
+    ]
+  },
+  {
+    "command": "The media on the speaker should be fast-forwarded in the absence of the device",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).mediaPlayback_fastForward()"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the device is missing, the speaker has to skip through the media",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).mediaPlayback_fastForward()"
+      }
+    ]
+  },
+  {
+    "command": "The speaker switches off when the device is not present.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "When the device isn't around, the speaker turns itself off",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "If the device isn't present, the speaker will automatically shut down",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "The speaker goes into off mode whenever the device isn't nearby",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "The speaker will pause the media playback when the device is present.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_pause()"
+      }
+    ]
+  },
+  {
+    "command": "When the device is at hand, the speaker should halt the playback of the media",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_pause()"
+      }
+    ]
+  },
+  {
+    "command": "The media playback should be interrupted by the speaker once the device is in proximity",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_pause()"
+      }
+    ]
+  },
+  {
+    "command": "Upon the device's presence, the speaker is expected to suspend the media playback",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_pause()"
+      }
+    ]
+  },
+  {
+    "command": "The speaker will rewind the media when the device is not present.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).mediaPlayback_rewind()"
+      }
+    ]
+  },
+  {
+    "command": "When the device isn't present, the speaker should rewind the media",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).mediaPlayback_rewind()"
+      }
+    ]
+  },
+  {
+    "command": "In the absence of the device, the media on the speaker needs to be rewound",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).mediaPlayback_rewind()"
+      }
+    ]
+  },
+  {
+    "command": "If the device isn't around, the speaker is commanded to rewind the media",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).mediaPlayback_rewind()"
+      }
+    ]
+  },
+  {
+    "command": "The speaker will stop the media playback when the device is present.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "When the device is around, the speaker is programmed to halt any media playback",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "If the device is present, the media playback will be interrupted by the speaker",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "The speaker is set to cease media playback anytime the device is detected",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_stop()"
+      }
+    ]
+  },
+  {
+    "command": "The speaker switches on when the device is not present.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "The speaker begins to operate in the absence of the device",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "When the device is missing, the speaker turns on",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "If the device isn't there, the speaker starts working",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": -1,
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'not present')\n(#Speaker).switch_on()"
+      }
+    ]
+  }
+]
