@@ -129,7 +129,7 @@
       minute = (#Clock).clock_minute
       if (minute <= 30) {
         current_state = (#Dehumidifier).switch_switch
-        humidity = (#AirQualityDetector).relativeHumidityMeasurement_humidity
+        humidity = (#HumiditySensor).relativeHumidityMeasurement_humidity
         if ((prev_state == "off") and (current_state == "on")) {
             toggle_count = toggle_count + 1
         }
@@ -152,7 +152,7 @@
   devices:
   - Curtain
   - Alarm
-  - AirQualityDetector
+  - HumiditySensor
   - Clock
   - Dehumidifier
 - command: "10분마다 확인하여 온도가 5도 이상 연속으로 세 번 상승하고 에어컨이 꺼져 있으면 에어컨을 키고 냉방 모드로 설정해줘"

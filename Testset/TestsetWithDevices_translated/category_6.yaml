@@ -6,7 +6,7 @@
     period: 5000
     code: |
       soil = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
-      temp = (#AirQualityDetector).temperatureMeasurement_temperature
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
       if (soil <= 30.0) {
         (#Irrigator).switch_on()
         if (temp >= 35.0) {
@@ -16,7 +16,7 @@
       }
   devices:
   - Irrigator
-  - AirQualityDetector
+  - TemperatureSensor
   - SoilMoistureSensor
 - command: "3초 간격으로 조명을 10번 깜빡여 줘. 깜빡일 때마다 확인해서 비 감지 센서가 비를 감지하는 순간 반복을 중단해 줘."
   command_translated: "Blink the light 10 times in 3-second intervals. Check after each blink and stop the loop the moment the rain sensor detects rain."

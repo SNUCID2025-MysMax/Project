@@ -1,0 +1,314 @@
+{
+  "keys": [
+    "AirConditioner",
+    "AirPurifier",
+    "AirQualityDetector",
+    "Alarm",
+    "Blind",
+    "Button",
+    "Buttonx4",
+    "Calculator",
+    "Camera",
+    "Charger",
+    "Clock",
+    "ContactSensor",
+    "Curtain",
+    "Dehumidifier",
+    "Dishwasher",
+    "DoorLock",
+    "EmailProvider",
+    "Fan",
+    "Feeder",
+    "GasMeter",
+    "GasValve",
+    "Humidifier",
+    "HumiditySensor",
+    "Irrigator",
+    "LeakSensor",
+    "Light",
+    "LightSensor",
+    "MenuProvider",
+    "MotionSensor",
+    "PresenceSensor",
+    "Pump",
+    "Refrigerator",
+    "RobotCleaner",
+    "Shade",
+    "Siren",
+    "SmartPlug",
+    "SmokeDetector",
+    "SoilMoistureSensor",
+    "SoundSensor",
+    "Speaker",
+    "Recorder",
+    "Switch",
+    "Television",
+    "TemperatureSensor",
+    "Valve",
+    "WeatherProvider",
+    "Window",
+    "FallDetector",
+    "OccupancySensor",
+    "Relay",
+    "Timer"
+  ],
+  "texts": [
+    "air conditioner. air conditioner. air conditioner. AC. AC. AC. a/c. a/c. a/c. air conditioning. air conditioning. air conditioning. air conditioning. cooling unit. heating unit. thermostat. air conditioner. air conditioner. AC. AC. a/c. a/c. air conditioning. air conditioning",
+    "air purifier. air purifier. air purifier. air cleaner. air cleaner. air cleaner. purifier. purifier. purifier. air purification. filter air. purify air. clean air. air purifier. air purifier. air cleaner. air cleaner. purifier. purifier",
+    "air quality detector. air quality detector. air quality detector. air quality monitor. air quality monitor. air quality monitor. carbon dioxide level. PM2.5 level. particulate matter. dust level. fine dust level. PM1.0 level. pollution levels. total VOC level. chemical pollutants. relative humidity. air quality. TVOC. CO2 concentration. CO2. volatile organic compounds. PM10 level. air quality detector. air quality detector. air quality monitor. air quality monitor",
+    "alarm. alarm. alarm. alarm system. alarm system. alarm system. sound only alarm. light only alarm. sound and light alarm. strobe light. strobe only. alarm both. alarm strobe. sound siren. audible alarm. alarm siren. flashing light. both siren and strobe. silent alarm. siren only. mute alarm. no sound alarm. alarm. alarm. alarm system. alarm system",
+    "blind. blind. blind. blinds. blinds. blinds. blind open. blind position. blind level. blind close. blind. blind. blinds. blinds",
+    "button. button. button. buttons. buttons. buttons. wireless button. wireless button. wireless button. remote button. remote button. remote button. control button. control button. control button. long press. down three times. triple click. down six times. up twice. swipe rightward. double tap. double push. gesture left. double press. gesture down. switch button. click five times. press six times. triple press. button held. swipe downward. number of buttons. swipe up. multiple buttons. down five times. click six times. down twice. button up. swipe leftward. click three times. push button. gesture up. up five times. swipe upward. button down. click twice. press five times. up hold. up six times. single click. press three times. button. swipe right. press four times. hold button. swipe left. double click. quadruple click. down hold. up four times. single press. gesture right. swipe down. press button. button hold. hold down button. up three times. press twice. single push. click four times. button configuration. press and hold. down four times. button count. button. button. buttons. buttons. wireless button. wireless button. remote button. remote button. control button. control button",
+    "four buttons. four buttons. four buttons. quad button. quad button. quad button. button panel. button panel. button panel. four button panel. four button panel. four button panel. multi button. multi button. multi button. button array. button array. button array. button cluster. button cluster. button cluster. button group. button group. button group. swipe right on button 4. button 3 three times. button 2 double tap. left button. button 2 pressed. swipe up on button 1. top button. button 4 twice. lower button. button panel. gesture left third button. which button pressed. button 2. third button held. double click button 4. second button. button 4. swipe down on button 2. number of buttons. button three. button 1 down. button 4 up. button 1. center button. gesture down second button. gesture right fourth button. swipe left on button 3. button one. fourth button. second button held. button 4 long press. button 4 down. button 1 twice. button 3 down. button 2 three times. triple click button 1. button 4 three times. triple click button 4. double click button 1. third button. triple click button 2. button 1 three times. four button. button four. button 4 tapped. double click button 3. upper button. right button. button 1 pushed. button 3 clicked. first button. button 2 twice. middle button. button 3 twice. button 2 up. triple click button 3. gesture up first button. button 1 up. button 1 double tap. button 3 up. button 2 down. button configuration. button 4 double tap. button 2 long press. double click button 2. button two. bottom button. button 3. fourth button held. first button held. button 3 long press. button 3 double tap. button 1 long press. four buttons. four buttons. quad button. quad button. button panel. button panel. four button panel. four button panel. multi button. multi button. button array. button array. button cluster. button cluster. button group. button group",
+    "calculator. calculator. calculator. basic math. what is the product of. math. what is the result of dividing. remainder of 19 divided by 4. multiplication operation. subtraction operation. times. divided by. what is the sum of. minus. times operation. modulo. division operation. arithmetic. what is the remainder. add two numbers. modulo operation. subtraction. plus operation. mod. sum of 7 and 8. difference between 30 and 12. product of 5 and 12. multiplication. quotient of 35 and 7. mod operation. what is the difference. remainder. simple calculation. subtract from. mathematical operation. plus. addition operation. mathematics. minus operation. sum. division. difference. addition. quotient. product. calculator. calculator",
+    "camera. camera. camera. cameras. cameras. cameras. security camera. security camera. security camera. webcam. webcam. webcam. video camera. video camera. video camera. CCTV. CCTV. CCTV. show latest image. get camera video. take photo. timelapse video. take timelapse. show latest video. display recorded video. record video. timelapse photography. display captured image. shoot picture. take picture. snap photo. get camera image. video recording. camera recording. view last photo. photograph. capture photo. fast motion video. take a shot. capture image. shoot video. film video. click picture. time lapse recording. view last recording. make video. capture video. camera. camera. cameras. cameras. security camera. security camera. webcam. webcam. video camera. video camera. CCTV. CCTV",
+    "charger. charger. charger. chargers. chargers. chargers. charging station. charging station. charging station. power charger. power charger. power charger. battery charger. battery charger. battery charger. charger. charging. discharge. charging speed. battery full. charging capacity. discharging. battery discharging. charger. charger. chargers. chargers. charging station. charging station. power charger. power charger. battery charger. battery charger",
+    "clock. clock. clock. clocks. clocks. clocks. time. time. time. this month. datetime. current second. thursday. hour. date today. delay. current year. day of week. present date. AM. current minute. PM. unix timestamp. current time. current weekday. sunday. friday. day. current hour. year. weekday. noon. day of month. date. today is. timestamp. second. tuesday. month. wednesday. current day. today's date. current date and time. minute. time now. date and time. day today. morning time. this year. current timestamp. current date. current month. midnight. present time. saturday. evening time. monday. duration. holiday. clock. clock. clocks. clocks. time. time",
+    "contact sensor. contact sensor. contact sensor. contact detector. contact detector. contact detector. no contact. contact switch. in contact. contact. contact sensor. contact sensor. contact detector. contact detector",
+    "curtain. curtain. curtain. curtains. curtains. curtains. curtain position. curtain close. curtain level. curtain open. curtain. curtain. curtains. curtains",
+    "dehumidifier. dehumidifier. dehumidifier. dry the air. reduce air moisture. dehumidifier. dehumidifier",
+    "dishwasher. dishwasher. dishwasher. dish washer. dish washer. dish washer. washing machine for dishes. washing machine for dishes. washing machine for dishes. dish cleaning machine. dish cleaning machine. dish cleaning machine. dishwasher. dishwasher. dish washer. dish washer. washing machine for dishes. washing machine for dishes. dish cleaning machine. dish cleaning machine",
+    "door lock. door lock. door lock. door detector. door detector. door detector. door close. door remained open. door closed. door open. door opened and closed. door remained closed. door is currently open. door was opened. door was closed. door opened. check door status. door. doors. door lock. door lock. door detector. door detector",
+    "email provider. email provider. email provider. email service. email service. email service. mail service. mail service. mail service. email system. email system. email system. message body. email recipient. email attachment. mail text. mail message. file attachment. mail subject. mail with file. send mail. email message. message title. email heading. email content. target email. email body. messaging service. email text. subject field. message content. electronic mail. email subject. subject line. email with attachment. recipient email. mail recipient. email title. send email. email provider. email provider. email service. email service. mail service. mail service. email system. email system",
+    "fan. fan. fan. fans. fans. fans. air circulation fan. air circulation fan. air circulation fan. fan speed. fan speed percentage. fan RPM. fan. fan. fans. fans. air circulation fan. air circulation fan",
+    "feeder. feeder. feeder. feeders. feeders. feeders. food dispenser. food dispenser. food dispenser. feeding. feed portion. feeding amount. feeder. feeder. feeders. feeders. food dispenser. food dispenser",
+    "gas meter. gas meter. gas meter. gas meters. gas meters. gas meters. gas usage meter. gas usage meter. gas usage meter. gas measurement. gas measurement. gas measurement. utility gas meter. utility gas meter. utility gas meter. gas reader. gas reader. gas reader. kWh gas consumption. gas meter reading. gas volume consumption. total gas usage time. gas usage data. gas consumption meter. gas volume reading. gas use time. gas consumption data. gas calorific value. gas energy reading. cubic meters gas. gas usage duration. gas meter. gas meter. gas meters. gas meters. gas usage meter. gas usage meter. gas measurement. gas measurement. utility gas meter. utility gas meter. gas reader. gas reader",
+    "gas valve. gas valve. gas valve. gas valves. gas valves. gas valves. main gas valve. main gas valve. main gas valve. gas cutoff valve. gas cutoff valve. gas cutoff valve. gas shut-off valve. gas valve. gas safety valve. gas supply off. valve position. gas flow enabled. emergency gas shutoff. gas flow disabled. gas valve open. gas valve closed. gas leak prevention. gas supply on. gas valve. gas valve. gas valves. gas valves. main gas valve. main gas valve. gas cutoff valve. gas cutoff valve",
+    "humidifier. humidifier. humidifier. humidifier. humidifier",
+    "humidity sensor. humidity sensor. humidity sensor. relative humidity sensor. relative humidity sensor. relative humidity sensor. humidity detector. humidity detector. humidity detector. humidity monitor. humidity monitor. humidity monitor. humidity gauge. humidity gauge. humidity gauge. humidity meter. humidity meter. humidity meter. optimal humidity. humidity monitor. check humidity. humidity measurement. humidity level. relative humidity. room humidity. humidity reading. ambient humidity. environmental humidity. indoor humidity. humidity index. humidity percentage. humidity range. humidity gauge. humidity sensor. humidity sensor. relative humidity sensor. relative humidity sensor. humidity detector. humidity detector. humidity monitor. humidity monitor. humidity gauge. humidity gauge. humidity meter. humidity meter",
+    "irrigator. irrigator. irrigator. irrigators. irrigators. irrigators. irrigation. irrigation. irrigation. irrigation system. irrigation system. irrigation system. irrigation device. irrigation device. irrigation device. sprinkler. sprinkler. sprinkler. irrigator watering. watering. irrigation. water the plants. irrigator. irrigator. irrigators. irrigators. irrigation. irrigation. irrigation system. irrigation system. irrigation device. irrigation device. sprinkler. sprinkler",
+    "leak sensor. leak sensor. leak sensor. water leak sensor. water leak sensor. water leak sensor. leak detector. leak detector. leak detector. flood sensor. flood sensor. flood sensor. leak. flooding. water leak. water damage. leak sensor. leak sensor. water leak sensor. water leak sensor. leak detector. leak detector. flood sensor. flood sensor",
+    "light. light. light. lights. lights. lights. lamp. lamp. lamp. bulb. bulb. bulb. LED. LED. LED. saturation. RGB light. alert light. brightness. light color. color saturation. flashing light. color hue. light. light. lights. lights. lamp. lamp. bulb. bulb. LED. LED",
+    "light sensor. light sensor. light sensor. brightness sensor. brightness sensor. brightness sensor. lux sensor. lux sensor. lux sensor. light detector. light detector. light detector. how bright is it. luminosity. daylight. lux. light intensity. light level. light sensor. light sensor. brightness sensor. brightness sensor. lux sensor. lux sensor. light detector. light detector",
+    "menu provider. menu provider. menu provider. morning menu. food service. cafeteria menu. menu for today. midday meal. food information. dinner menu. where to eat. dinner. what's for tomorrow. evening meal. dining menu. show menu. menu recommendation. display menu. breakfast menu. lunch. today's meal. meal information. evening menu. food menu. get menu. tomorrow's meal. today's food. today's menu. tomorrow menu. lunch menu. dining recommendation. morning meal. meal menu. afternoon menu. what's for today. restaurant recommendation. tomorrow's food. menu information. what to eat. today menu. tomorrow's menu. breakfast. menu service. dining service. restaurant menu. menu for tomorrow. menu provider. menu provider",
+    "motion sensor. motion sensor. motion sensor. movement sensor. movement sensor. movement sensor. motion detector. motion detector. motion detector. movement in area. motion. movement. motion triggered. motion is detected. room empty. motion in room. motion sensor. motion sensor. movement sensor. movement sensor. motion detector. motion detector",
+    "presence sensor. presence sensor. presence sensor. occupancy sensor. occupancy sensor. occupancy sensor. someone in room. occupancy. presence. room occupied. person present. someone present. area occupied. room empty. area empty. presence sensor. presence sensor. occupancy sensor. occupancy sensor",
+    "pump. pump. pump. water pump. water pump. water pump. pump closed. pump open. pump. pump. water pump. water pump",
+    "refrigerator. refrigerator. refrigerator. fridge. fridge. fridge. smart refrigerator. smart refrigerator. smart refrigerator. quick freeze. rapid cooling. rapid freezing. cooling. food preservation. defrost. ice removal. freezer. refrigerator. refrigerator. fridge. fridge. smart refrigerator. smart refrigerator",
+    "robot cleaner. robot cleaner. robot cleaner. robotic vacuum. robotic vacuum. robotic vacuum. robot vacuum. robot vacuum. robot vacuum. vacuum robot. vacuum robot. vacuum robot. cleaning robot. cleaning robot. cleaning robot. smart cleaning. robotic cleaner. auto clean. robot cleaner. robot cleaner. robotic vacuum. robotic vacuum. robot vacuum. robot vacuum. vacuum robot. vacuum robot. cleaning robot. cleaning robot",
+    "shade. shade. shade. window shade. window shade. window shade. roller shade. roller shade. roller shade. shade level. shade open. shade close. shade position. shade. shade. window shade. window shade. roller shade. roller shade",
+    "siren. siren. siren. alarm siren. alarm siren. alarm siren. warning siren. warning siren. warning siren. emergency siren. emergency siren. emergency siren. security siren. security siren. security siren. alert siren. alert siren. alert siren. siren and strobe. safety siren. strobe light only. sound siren. sound and light. security alert. emergency alert. siren sound only. danger alarm. siren. siren. alarm siren. alarm siren. warning siren. warning siren. emergency siren. emergency siren. security siren. security siren. alert siren. alert siren",
+    "smart plug. smart plug. smart plug. smart power plug. smart power plug. smart power plug. IoT plug. IoT plug. IoT plug. smart plug. plug. smart electrical outlet. smart plug. smart plug. smart power plug. smart power plug. IoT plug. IoT plug",
+    "smoke detector. smoke detector. smoke detector. smoke sensor. smoke sensor. smoke sensor. fire sensor. fire sensor. fire sensor. smoke. fire. smoke detector. smoke detector. smoke sensor. smoke sensor. fire sensor. fire sensor",
+    "soil moisture sensor. soil moisture sensor. soil moisture sensor. soil humidity sensor. soil humidity sensor. soil humidity sensor. soil water sensor. soil water sensor. soil water sensor. soil wetness sensor. soil wetness sensor. soil wetness sensor. soil health. soil conditions. optimal soil moisture. wet soil. dry soil. soil wetness. drought conditions. soil moisture sensor. soil moisture sensor. soil humidity sensor. soil humidity sensor. soil water sensor. soil water sensor. soil wetness sensor. soil wetness sensor",
+    "sound sensor. sound sensor. sound sensor. audio sensor. audio sensor. audio sensor. noise sensor. noise sensor. noise sensor. audio detector. audio detector. audio detector. decibel sensor. decibel sensor. decibel sensor. sound pressure level. sound level. decibel. dB. quiet sound. volume level. loud sound. noise level. sound sensor. sound sensor. audio sensor. audio sensor. noise sensor. noise sensor. audio detector. audio detector. decibel sensor. decibel sensor",
+    "speaker. speaker. speaker. speakers. speakers. speakers. smart speaker. smart speaker. smart speaker. voice assistant. voice assistant. voice assistant. smart home speaker. smart home speaker. smart home speaker. audio playing. spoken message. announce. home speaker. speak. music playing. audio source. text to speech. say. playback paused. buffering. announcement. playback. speaker. speaker. speakers. speakers. smart speaker. smart speaker. voice assistant. voice assistant. smart home speaker. smart home speaker",
+    "recorder. recorder. recorder. recording. recording. recording. audio file. recording. recording file. recorder. recorder. recording. recording",
+    "switch. switch. switch. home switch. remote control switch. power switch. switch position. manual switch. app controlled switch. electrical switch. switch. switch",
+    "television. television. television. TV. TV. TV. smart TV. smart TV. smart TV. digital TV. digital TV. digital TV. smart television. smart television. smart television. unmute TV. mute TV. channel up. change channel. channel selection. switch channel. previous channel. browse channels. TV channel. channel down. next channel. television. television. TV. TV. smart TV. smart TV. digital TV. digital TV. smart television. smart television",
+    "temperature sensor. temperature sensor. temperature sensor. thermometer. thermometer. thermometer. temperature detector. temperature detector. temperature detector. temperature monitor. temperature monitor. temperature monitor. thermal sensor. thermal sensor. thermal sensor. temperature reading. ambient temperature. thermal. measure temperature. degrees celsius. degrees. room temperature. temperature measurement. current temperature. temperature sensor. temperature sensor. thermometer. thermometer. temperature detector. temperature detector. temperature monitor. temperature monitor. thermal sensor. thermal sensor",
+    "valve. valve. valve. valves. valves. valves. close valve. open valve. valve. valve. valves. valves",
+    "weather provider. weather provider. weather provider. weather service. weather service. weather service. weather information. weather information. weather information. weather data. weather data. weather data. weather report. weather report. weather report. weather forecast. weather forecast. weather forecast. weather sensor. weather sensor. weather sensor. moisture level. particulate matter. light rain. ash. fine particles. humidity level. severe thunderstorm. snowfall. degrees. fog. drizzle. light snow. volcanic ash. dust. partly cloudy. cyclone. clouds. tornado. air quality. moderate rain. snow. sunny. heavy rain. fair weather. weather info. PM10 level. barometric pressure. cloudy. heavy snow. smoke. local weather. outdoor humidity. PM2.5 level. dust particles. thunderstorm. haze. rainfall. mist. sandstorm. outdoor temperature. cloudless. rain. atmospheric pressure. blizzard. clear sky. overcast. raining. coordinates weather. squall. degrees celsius. lightning storm. weather provider. weather provider. weather service. weather service. weather information. weather information. weather data. weather data. weather report. weather report. weather forecast. weather forecast. weather sensor. weather sensor",
+    "window. window. window. windows. windows. windows. window close. window opened. ventilate. window remained closed. window opened and closed. window closed. window remained open. window was closed. window was opened. window ventilation. window open. window. window. windows. windows",
+    "fall detector. fall detector. fall detector. fall sensor. fall sensor. fall sensor. elderly fall. slip. fall incident. fall detector. fall detector. fall sensor. fall sensor",
+    "presence sensor. presence sensor. presence sensor. occupancy sensor. occupancy sensor. occupancy sensor. someone in room. occupancy. presence. room occupied. person present. someone present. area occupied. room empty. area empty. presence sensor. presence sensor. occupancy sensor. occupancy sensor",
+    "relay. relay. relay. electrical relay. control relay. power relay. relay. relay",
+    "timer. timer. timer. countdown timer. countdown timer. countdown timer. stopwatch. stopwatch. stopwatch. digital timer. digital timer. digital timer. smart timer. smart timer. smart timer. timer done. count down. time up. timer timeout. countdown. timer. timer. countdown timer. countdown timer. stopwatch. stopwatch. digital timer. digital timer. smart timer. smart timer"
+  ],
+  "colbert_shapes": [
+    [
+      85,
+      1024
+    ],
+    [
+      69,
+      1024
+    ],
+    [
+      111,
+      1024
+    ],
+    [
+      91,
+      1024
+    ],
+    [
+      37,
+      1024
+    ],
+    [
+      296,
+      1024
+    ],
+    [
+      447,
+      1024
+    ],
+    [
+      169,
+      1024
+    ],
+    [
+      178,
+      1024
+    ],
+    [
+      119,
+      1024
+    ],
+    [
+      197,
+      1024
+    ],
+    [
+      46,
+      1024
+    ],
+    [
+      46,
+      1024
+    ],
+    [
+      34,
+      1024
+    ],
+    [
+      105,
+      1024
+    ],
+    [
+      84,
+      1024
+    ],
+    [
+      148,
+      1024
+    ],
+    [
+      51,
+      1024
+    ],
+    [
+      60,
+      1024
+    ],
+    [
+      180,
+      1024
+    ],
+    [
+      154,
+      1024
+    ],
+    [
+      15,
+      1024
+    ],
+    [
+      198,
+      1024
+    ],
+    [
+      148,
+      1024
+    ],
+    [
+      98,
+      1024
+    ],
+    [
+      86,
+      1024
+    ],
+    [
+      90,
+      1024
+    ],
+    [
+      171,
+      1024
+    ],
+    [
+      74,
+      1024
+    ],
+    [
+      66,
+      1024
+    ],
+    [
+      31,
+      1024
+    ],
+    [
+      81,
+      1024
+    ],
+    [
+      96,
+      1024
+    ],
+    [
+      71,
+      1024
+    ],
+    [
+      157,
+      1024
+    ],
+    [
+      65,
+      1024
+    ],
+    [
+      65,
+      1024
+    ],
+    [
+      146,
+      1024
+    ],
+    [
+      117,
+      1024
+    ],
+    [
+      118,
+      1024
+    ],
+    [
+      33,
+      1024
+    ],
+    [
+      35,
+      1024
+    ],
+    [
+      104,
+      1024
+    ],
+    [
+      122,
+      1024
+    ],
+    [
+      38,
+      1024
+    ],
+    [
+      287,
+      1024
+    ],
+    [
+      61,
+      1024
+    ],
+    [
+      45,
+      1024
+    ],
+    [
+      66,
+      1024
+    ],
+    [
+      28,
+      1024
+    ],
+    [
+      91,
+      1024
+    ]
+  ]
+}

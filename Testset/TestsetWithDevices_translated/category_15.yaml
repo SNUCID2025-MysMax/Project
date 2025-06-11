@@ -651,7 +651,7 @@
       elapsed := 0
       motionDetected := false
       if (phase == 0) {
-        if (((#Wall Light).switch_switch == "off") and ((#Curtain #Odd).curtain_curtain == "closed") and ((#ContactSensor).contactSensor_contact == "open")) {
+        if (((#Wall Light).switch_switch == "off") and ((#Curtain #Odd).curtain_curtain == "closed") and ((#DoorLock).doorControl_door == "open")) {
           (#Clock).clock_delay(5000)
           (#Wall Light).switch_on()
           (#Window).windowControl_open()
@@ -686,4 +686,4 @@
   - Window
   - TemperatureSensor
   - Clock
-  - ContactSensor
+  - DoorLock

@@ -261,7 +261,7 @@
       noMotionDuration := 0
 
       if (phase == 0) {
-        wait until((#ContactSensor).contactSensor_contact == "open")
+        wait until((#DoorLock).doorControl_door == "open")
         phase = 1
       } else if (phase == 1) {
         if ((#MotionSensor).motionSensor_motion == "inactive") {
@@ -281,7 +281,7 @@
   - Light
   - MotionSensor
   - Clock
-  - ContactSensor
+  - DoorLock
 - command: "매주 월요일 오전 9시부터 10시까지, 실시간으로 확인하여 창문이 열리고 나서 7초가 지난 시점에도 블라인드가 열려 있으면 블라인드를 닫고, 10초 후 커튼도 닫아 줘. 그리고 그 시간대에 실시간으로 확인하여 조명이 꺼지면 켜 줘."
   command_translated: "Every Monday morning, from 9 to 10 a.m., check in real-time and close the blinds if they're still open seven seconds after the time when the window is opened, and close the curtains 10 seconds later. And during that time, check in real time and turn on the lights if they're off."
   code:

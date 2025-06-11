@@ -65,7 +65,7 @@
     period: 100
     code: |
       triggered := false
-      if ((#ContactSensor).contactSensor_contact == "open") {
+      if ((#DoorLock).doorControl_door == "open") {
         if (triggered == false) {
           (#Siren).sirenMode_setSirenMode("strobe")
           (#Light).switch_on()
@@ -76,7 +76,7 @@
       }
   devices:
   - Light
-  - ContactSensor
+  - DoorLock
   - Siren
 - command: "현재 날씨에서 비가 감지될 때마다 관개 장치를 꺼 주고 '비가 감지되었습니다'라고 스피커로 출력해줘. 감지는 1분에 한번씩만 하자."
   command_translated: "Whenever rain is detected in the current weather, turn off the irrigator and announce \"Rain detected\" via the speaker. Let's detect only once a minutae."
