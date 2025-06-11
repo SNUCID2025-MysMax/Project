@@ -1,0 +1,1190 @@
+[
+  {
+    "command": "If the alarm state is active, the automation script will turn off the alarm and switch the siren mode to 'off'. If the alarm state is not active, the alarm will be set to strobe and the siren mode will be set to 'siren'.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('siren')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the alarm be in an active state, the scripting for automation would deactivate the alarm and set the siren mode to 'off'. However, if the alarm is not active, it will be programmed to strobe and the siren mode will be adjusted to 'siren'",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('siren')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the alarm is currently active, the automated program will switch off the alarm and change the siren setting to 'off'. Alternatively, if the alarm isn't active, it will be programmed to strobe, and the siren setting will be adjusted to 'siren'",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('siren')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the alarm happens to be operational, the automation script is meant to turn it off and put the siren mode to 'off'. Conversely, if the alarm isn't operational, it will be set on strobe and the siren mode will be switched to 'siren'",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('siren')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the alarm state is active, the alarm volume will be set to 'mute' and the siren will be switched off. If the alarm state is not active, the alarm volume will be set to 'high' and the siren will be switched on.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('mute')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_setAlarmVolume('high')\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the alarm is currently activated, please ensure the alarm's volume is muted and the siren is turned off. Conversely, if the alarm is not in an active state, turn the volume up to high and make sure the siren is switched on",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('mute')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_setAlarmVolume('high')\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the alarm is presently on, the sound level of the alarm should be silenced and the siren should be deactivated. However, if the alarm is off, the alarm's volume needs to be amplified to its highest and the siren should be activated",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('mute')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_setAlarmVolume('high')\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the alarm be in the on position, I want you to mute its volume and shut down the siren. On the other hand, if the alarm is in the off position, please increase its volume to the maximum and turn the siren on",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('mute')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_setAlarmVolume('high')\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the alarm state is active, both the alarm's siren and strobe will be activated, and the siren's switch will be turned off. If the alarm state is not active, the alarm will be turned off and the siren's switch will be toggled.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_both()\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_off()\n  (#Siren).switch_toggle()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the alarm system be in an active state, it's mandatory to engage both the siren and strobe of the alarm, while also deactivating the switch on the siren. Contrarily, if the alarm system is not in an active state, the alarm needs to be deactivated and the switch on the siren should be switched",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_both()\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_off()\n  (#Siren).switch_toggle()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the alarm is active, the alarm's siren and strobe need to be turned on, along with the siren's switch being turned off. Conversely, if the alarm is not active, then it is required to turn off the alarm and flip the siren's switch",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_both()\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_off()\n  (#Siren).switch_toggle()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "It is necessary to activate both the siren and strobe of the alarm and turn off the siren's switch when the alarm is in its active state. However, if the alarm is not active, then the alarm should be deactivated and the switch on the siren should be reversed",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_both()\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_off()\n  (#Siren).switch_toggle()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the fan speed is set to 100, the script will decrease the fan speed to 50, otherwise, it will increase the fan speed to 100.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed := 100\nif (fan_speed == 100) {\n  (#Fan).fanControl_setFanSpeed(50)\n  fan_speed = 50\n} else {\n  (#Fan).fanControl_setFanSpeed(100)\n  fan_speed = 100\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the speed of the fan be at 100, the script is designed to reduce it to 50. If not, the speed will be raised to 100 by the script",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed := 100\nif (fan_speed == 100) {\n  (#Fan).fanControl_setFanSpeed(50)\n  fan_speed = 50\n} else {\n  (#Fan).fanControl_setFanSpeed(100)\n  fan_speed = 100\n}"
+      }
+    ]
+  },
+  {
+    "command": "When the fan speed is at its maximum, 100, the script takes action by reducing the speed by half. In any other case, it will boost the speed to the maximum",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed := 100\nif (fan_speed == 100) {\n  (#Fan).fanControl_setFanSpeed(50)\n  fan_speed = 50\n} else {\n  (#Fan).fanControl_setFanSpeed(100)\n  fan_speed = 100\n}"
+      }
+    ]
+  },
+  {
+    "command": "In case the fan is running at its top speed, the script is going to bring it down to 50. On the other hand, any other speed will prompt the script to ramp it up to",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed := 100\nif (fan_speed == 100) {\n  (#Fan).fanControl_setFanSpeed(50)\n  fan_speed = 50\n} else {\n  (#Fan).fanControl_setFanSpeed(100)\n  fan_speed = 100\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the fan speed is set to 100 percent, the script will decrease the fan speed to 50 percent, otherwise, it will increase the fan speed to 100 percent.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed_percent := 100\nif (fan_speed_percent == 100) {\n  (#Fan).fanControl_setPercent(50)\n  fan_speed_percent = 50\n} else {\n  (#Fan).fanControl_setPercent(100)\n  fan_speed_percent = 100\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the fan speed be at a full 100 percent, the script is designed to lower the fan speed to a moderate 50 percent, if not, it will elevate the fan speed to 100 percent",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed_percent := 100\nif (fan_speed_percent == 100) {\n  (#Fan).fanControl_setPercent(50)\n  fan_speed_percent = 50\n} else {\n  (#Fan).fanControl_setPercent(100)\n  fan_speed_percent = 100\n}"
+      }
+    ]
+  },
+  {
+    "command": "In the event that the fan speed has been adjusted to 100 percent, the script will reduce it to 50 percent; on the other hand, if it's not at 100 percent, the script will ramp it up to the maximum",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed_percent := 100\nif (fan_speed_percent == 100) {\n  (#Fan).fanControl_setPercent(50)\n  fan_speed_percent = 50\n} else {\n  (#Fan).fanControl_setPercent(100)\n  fan_speed_percent = 100\n}"
+      }
+    ]
+  },
+  {
+    "command": "When the fan speed reaches the maximum of 100 percent, the script will proceed to cut it down to 50 percent, but if it's anything less, the script will push it up to its peak",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed_percent := 100\nif (fan_speed_percent == 100) {\n  (#Fan).fanControl_setPercent(50)\n  fan_speed_percent = 50\n} else {\n  (#Fan).fanControl_setPercent(100)\n  fan_speed_percent = 100\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the fan is switched off, the script will toggle the switch, otherwise, it will switch off the fan.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_off := 'off'\nif (fan_off == 'off') {\n  (#Fan).switch_toggle()\n  fan_off = 'on'\n} else {\n  (#Fan).switch_off()\n  fan_off = 'off'\n}"
+      }
+    ]
+  },
+  {
+    "command": "\"In the event that the fan is turned off, the script will flip the switch; if not, it will proceed to turn off the fan.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_off := 'off'\nif (fan_off == 'off') {\n  (#Fan).switch_toggle()\n  fan_off = 'on'\n} else {\n  (#Fan).switch_off()\n  fan_off = 'off'\n}"
+      }
+    ]
+  },
+  {
+    "command": "\"Should the fan be in an off state, the script is programmed to toggle the switch. However, if the fan is on, the script will ensure it is switched off.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_off := 'off'\nif (fan_off == 'off') {\n  (#Fan).switch_toggle()\n  fan_off = 'on'\n} else {\n  (#Fan).switch_off()\n  fan_off = 'off'\n}"
+      }
+    ]
+  },
+  {
+    "command": "\"If the fan happens to be off, the script will change the state of the switch, but if it's on, the script will power off the fan instead.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_off := 'off'\nif (fan_off == 'off') {\n  (#Fan).switch_toggle()\n  fan_off = 'on'\n} else {\n  (#Fan).switch_off()\n  fan_off = 'off'\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the fan is switched on, the script will toggle the switch, otherwise, it will switch on the fan.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_on := 'on'\nif (fan_on == 'on') {\n  (#Fan).switch_toggle()\n  fan_on = 'off'\n} else {\n  (#Fan).switch_on()\n  fan_on = 'on'\n}"
+      }
+    ]
+  },
+  {
+    "command": "Should the fan be found in the 'on' state, the script is programmed to flip the switch. However, if it's not, the script will activate the fan",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_on := 'on'\nif (fan_on == 'on') {\n  (#Fan).switch_toggle()\n  fan_on = 'off'\n} else {\n  (#Fan).switch_on()\n  fan_on = 'on'\n}"
+      }
+    ]
+  },
+  {
+    "command": "If the fan is currently operational, the script will proceed to reverse the switch. If this isn't the case, the script will engage the fan",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_on := 'on'\nif (fan_on == 'on') {\n  (#Fan).switch_toggle()\n  fan_on = 'off'\n} else {\n  (#Fan).switch_on()\n  fan_on = 'on'\n}"
+      }
+    ]
+  },
+  {
+    "command": "The script will either flip the switch if the fan is running, or power on the fan if it's not in operation",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_on := 'on'\nif (fan_on == 'on') {\n  (#Fan).switch_toggle()\n  fan_on = 'off'\n} else {\n  (#Fan).switch_on()\n  fan_on = 'on'\n}"
+      }
+    ]
+  },
+  {
+    "command": "Turn on the television.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Can you please switch on the television?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Would you mind powering up the TV?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Please activate the television",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Toggle the switch of the television.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please flick the TV switch?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Please make sure to flip the television's switch on or off",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Would you mind toggling the television's switch for me?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Decrease the TV channel by one.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelDown()"
+      }
+    ]
+  },
+  {
+    "command": "\"Could you please lower the television channel by one number?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelDown()"
+      }
+    ]
+  },
+  {
+    "command": "\"Kindly switch to the television channel just before the current one.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelDown()"
+      }
+    ]
+  },
+  {
+    "command": "\"Please tune into the TV channel directly below the one we're currently on.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelDown()"
+      }
+    ]
+  },
+  {
+    "command": "Increase the TV channel by one.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "\"Could you please move up one channel on the television?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "\"I'd like to watch the next channel on the TV, please.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "\"Would you kindly switch to the following channel on the television?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "Mute the audio of the television.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "Please turn the sound off on the television",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "I'd like you to silence the television, please",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please deactivate the audio on the TV?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "Unmute the audio of the television.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "Please turn the sound back on for the television",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "Could you switch the television's audio back on?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "I'd appreciate if you could restore the audio on the television",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "Lower the audio volume of the television.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeDown()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please decrease the sound level on the TV?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeDown()"
+      }
+    ]
+  },
+  {
+    "command": "I'd appreciate it if the TV's sound was turned down a bit",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeDown()"
+      }
+    ]
+  },
+  {
+    "command": "It would be great if you could reduce the volume of the television",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeDown()"
+      }
+    ]
+  },
+  {
+    "command": "Increase the audio volume of the television.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeUp()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please turn up the television's sound volume?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeUp()"
+      }
+    ]
+  },
+  {
+    "command": "I'd like the volume on the TV to be louder, please",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeUp()"
+      }
+    ]
+  },
+  {
+    "command": "Can we have the audio on the television a bit higher, please?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeUp()"
+      }
+    ]
+  },
+  {
+    "command": "Get the current TV channel of the Television, increase the channel number by 1, and set the Television to the new channel.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "channel = (#Television).tvChannel_tvChannel\nnew_channel = channel + 1\n(#Television).tvChannel_setTvChannel(new_channel)"
+      }
+    ]
+  },
+  {
+    "command": "\"Find out what channel is currently on the Television, then go up one channel and switch the Television to that channel.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "channel = (#Television).tvChannel_tvChannel\nnew_channel = channel + 1\n(#Television).tvChannel_setTvChannel(new_channel)"
+      }
+    ]
+  },
+  {
+    "command": "\"Identify the channel that the Television is currently tuned to, increment the channel by one, and adjust the Television to this new channel.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "channel = (#Television).tvChannel_tvChannel\nnew_channel = channel + 1\n(#Television).tvChannel_setTvChannel(new_channel)"
+      }
+    ]
+  },
+  {
+    "command": "\"Determine the present channel on the Television, add one to the channel number, and change the Television to this updated channel.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "channel = (#Television).tvChannel_tvChannel\nnew_channel = channel + 1\n(#Television).tvChannel_setTvChannel(new_channel)"
+      }
+    ]
+  },
+  {
+    "command": "Get the current audio mute status of the Television, switch it to the opposite status, and then set the Television to this new audio mute status.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "mute_state = (#Television).audioMute_muteStatus\nnew_mute_state = 'muted' if mute_state == 'unmuted' else 'unmuted'\n(#Television).audioMute_setMute(new_mute_state)"
+      }
+    ]
+  },
+  {
+    "command": "Please check the current mute setting on the TV, reverse it, and then apply this new mute setting to the TV",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "mute_state = (#Television).audioMute_muteStatus\nnew_mute_state = 'muted' if mute_state == 'unmuted' else 'unmuted'\n(#Television).audioMute_setMute(new_mute_state)"
+      }
+    ]
+  },
+  {
+    "command": "Could you find out the present sound mute status of the television, change it to its reverse, and then adjust the television to this fresh mute status?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "mute_state = (#Television).audioMute_muteStatus\nnew_mute_state = 'muted' if mute_state == 'unmuted' else 'unmuted'\n(#Television).audioMute_setMute(new_mute_state)"
+      }
+    ]
+  },
+  {
+    "command": "Determine what the existing audio mute condition of the Television is, flip it to its contrary, and then configure the Television according to this altered mute status",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "mute_state = (#Television).audioMute_muteStatus\nnew_mute_state = 'muted' if mute_state == 'unmuted' else 'unmuted'\n(#Television).audioMute_setMute(new_mute_state)"
+      }
+    ]
+  },
+  {
+    "command": "Get the current switch status of the Television, switch it to the opposite status, and then set the Television to this new switch status.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "switch_state = (#Television).switch_switch\nnew_switch_state = 'off' if switch_state == 'on' else 'on'\n(#Television).switch_on() if new_switch_state == 'on' else (#Television).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "\"Please check the present status of the Television's switch, change it to the inverse of its current state, and then apply this new status to the Television.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "switch_state = (#Television).switch_switch\nnew_switch_state = 'off' if switch_state == 'on' else 'on'\n(#Television).switch_on() if new_switch_state == 'on' else (#Television).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "\"Would you kindly ascertain the Television's existing switch status, reverse it, and then apply this updated switch status to the Television?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "switch_state = (#Television).switch_switch\nnew_switch_state = 'off' if switch_state == 'on' else 'on'\n(#Television).switch_on() if new_switch_state == 'on' else (#Television).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "\"Could you determine the current status of the Television's switch, convert it to the contrary state, and then impose this new switch status on the Television?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "switch_state = (#Television).switch_switch\nnew_switch_state = 'off' if switch_state == 'on' else 'on'\n(#Television).switch_on() if new_switch_state == 'on' else (#Television).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Turn the Television off, then turn it on, and then toggle its switch status.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_off()\n(#Television).switch_on()\n(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "\"Please power off the television, then power it on again, and finally flip its switch status.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_off()\n(#Television).switch_on()\n(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "\"Switch off the TV first, then switch it back on, and afterwards alter its toggle status.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_off()\n(#Television).switch_on()\n(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "\"Could you kindly switch the television off, then turn it back on, and subsequently change its switch status?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_off()\n(#Television).switch_on()\n(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Get the current volume level of the Television, decrease the volume by 1, and set the Television to this new volume level.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "vol = (#Television).audioVolume_volume\nnew_vol = vol - 1\n(#Television).audioVolume_setVolume(new_vol)"
+      }
+    ]
+  },
+  {
+    "command": "Could you please find out the current volume of the Television, lower it by one notch, and then adjust the Television to this updated volume level?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "vol = (#Television).audioVolume_volume\nnew_vol = vol - 1\n(#Television).audioVolume_setVolume(new_vol)"
+      }
+    ]
+  },
+  {
+    "command": "I need you to determine the existing volume on the Television, subtract one from it, and then tune the Television to this newly revised volume level",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "vol = (#Television).audioVolume_volume\nnew_vol = vol - 1\n(#Television).audioVolume_setVolume(new_vol)"
+      }
+    ]
+  },
+  {
+    "command": "Can you ascertain the present volume on the Television, reduce it by a single step, and subsequently set the Television to this modified volume level?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "vol = (#Television).audioVolume_volume\nnew_vol = vol - 1\n(#Television).audioVolume_setVolume(new_vol)"
+      }
+    ]
+  },
+  {
+    "command": "Turn off the light.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please switch off the light?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Make sure you extinguish the light",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Please, I want the light to be turned off",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Toggle the switch on the light.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please flip the light switch?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Please activate the switch of the light",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "It would be appreciated if you could change the position of the light switch",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Set the color of the light.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"100\"})"
+      }
+    ]
+  },
+  {
+    "command": "\"Could you please adjust the hue of the light?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"100\"})"
+      }
+    ]
+  },
+  {
+    "command": "\"Change the color of the light, if you could.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"100\"})"
+      }
+    ]
+  },
+  {
+    "command": "\"Would you mind altering the color of the light?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"100\"})"
+      }
+    ]
+  },
+  {
+    "command": "Set the hue of the light color.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setHue(50)"
+      }
+    ]
+  },
+  {
+    "command": "\"Please adjust the light's color hue.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setHue(50)"
+      }
+    ]
+  },
+  {
+    "command": "\"Could you change the hue of the light color?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setHue(50)"
+      }
+    ]
+  },
+  {
+    "command": "\"It would be great if you could modify the hue of the light's color.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setHue(50)"
+      }
+    ]
+  },
+  {
+    "command": "Set the saturation of the light color.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setSaturation(75)"
+      }
+    ]
+  },
+  {
+    "command": "\"Please adjust the light color to have a higher saturation.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setSaturation(75)"
+      }
+    ]
+  },
+  {
+    "command": "\"Could you change the saturation level of the light color?\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setSaturation(75)"
+      }
+    ]
+  },
+  {
+    "command": "\"Kindly intensify the color saturation of the light.\"",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setSaturation(75)"
+      }
+    ]
+  },
+  {
+    "command": "Trigger an alert with dimming on the light.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_alert()"
+      }
+    ]
+  },
+  {
+    "command": "Initiate a warning and simultaneously reduce the intensity of the light",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_alert()"
+      }
+    ]
+  },
+  {
+    "command": "Activate a caution signal while gradually lowering the level of illumination",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_alert()"
+      }
+    ]
+  },
+  {
+    "command": "Start an alarm and concurrently decrease the brightness of the light",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_alert()"
+      }
+    ]
+  },
+  {
+    "command": "Set the level of light with a specific rate.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_setLevel(75, 10)"
+      }
+    ]
+  },
+  {
+    "command": "Please adjust the light intensity at a certain pace",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_setLevel(75, 10)"
+      }
+    ]
+  },
+  {
+    "command": "Kindly regulate the illumination level at a predetermined speed",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_setLevel(75, 10)"
+      }
+    ]
+  },
+  {
+    "command": "Could you modify the lighting level according to a specific rate?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_setLevel(75, 10)"
+      }
+    ]
+  }
+]

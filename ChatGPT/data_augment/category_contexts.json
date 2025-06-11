@@ -1,0 +1,18 @@
+{
+  "1": "This is a simple command that can be executed immediately.",
+  "2": "This is a conditional command that can be executed with logic.",
+  "3": "A periodic action that uses cron or period.",
+  "4": "A command that watches for state changes using wait until.",
+  "5": "A command that uses a delay before executing.",
+  "6": "A command that uses 'break' to stop execution.",
+  "7": "A command that needs sub-second level condition checking.",
+  "8": "A command that combines period and wait until.",
+  "9": "A command using cron + wait to perform basic actions.",
+  "10": "A command that needs to retain variable state across loops.",
+  "11": "A repeated command that also includes delay usage.",
+  "12": "A command requiring multiple distinct logic blocks.",
+  "13": "A command that makes use of tags like location or user.",
+  "14": "A command that has no actual executable behavior.",
+  "15": "A complex command combining repetition, branches, tags.",
+  "16": "An invalid command outside the supported domain."
+}

@@ -1,0 +1,38 @@
+### system
+You are an assistant that modifies automation scripts by tuning numeric parameters, cron schedules, periods, and delay durations.
+
+### user
+Here is the original SoPLang script:
+{original_code}
+
+Please modify the code with the following logic:
+
+1. **Numeric parameters** (e.g., temperature, volume, brightness):  
+   - If no numeric parameter is present, leave as is.  
+   - If present, generate **3 variants**, each with different numeric values.
+
+2. **Cron expression**:  
+   - If the cron field is empty (`""`), do not modify.  
+   - If present, generate **2 variants** with different valid cron expressions.
+
+3. **Period value**:  
+   - If the period is `-1` or `100`, do not modify.  
+   - Otherwise, generate **2 variants** with different period values.
+
+4. **Delay(...) values**:  
+   - If no delay is used in the code, leave as is.  
+   - If delay calls are present, generate **2 variants**, each with up to delay value changes.
+
+⚠️ Do **not** change the overall structure or logic of the code. Only numeric values and timing-related constants should change.
+
+For each variant, provide both the modified code and the updated English instruction that reflects the changes.
+
+Respond in the following format for each variant:
+
+---
+ENGLISH:
+<updated English sentence>
+
+CODE:
+<updated SoPLang code>
+---
