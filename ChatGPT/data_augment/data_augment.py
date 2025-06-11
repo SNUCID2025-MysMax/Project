@@ -120,6 +120,7 @@ def generate_commands(client, skills_dict, n, examples="", category_context=""):
     devices_str = json.dumps(skills_dict, indent=2, ensure_ascii=False)
     if isinstance(examples, list):
         examples = "\n".join(f"{i+1}. {ex}" for i, ex in enumerate(examples))
+
     messages = load_prompt_roles(
         "generate_prompt_english.txt", 
         devices=devices_str, 

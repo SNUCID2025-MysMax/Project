@@ -1,0 +1,235 @@
+- command: Run the irrigator now.
+  devices:
+  - Dehumidifier
+  - Camera
+  - Feeder
+  - Irrigator
+  - Humidifier
+  - Dishwasher
+  - Pump
+  - Recorder
+  - LeakSensor
+  - Clock
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Irrigator).switch_on()
+  model_info:
+    elapsed_time: 3.965
+    bge_elapsed_time: 0.865
+    llm_elapsed_time: 3.1
+- command: Turn on the lights at 8am every morning.
+  devices:
+  - AirPurifier
+  - Relay
+  - Light
+  - Camera
+  - Blind
+  - LightSensor
+  - Feeder
+  - Clock
+  - Curtain
+  - AirConditioner
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8 * * *"
+    period: 0
+    code: |-
+      (#Light).switch_on()
+  model_info:
+    elapsed_time: 2.802
+    bge_elapsed_time: 0.129
+    llm_elapsed_time: 2.673
+- command: I want you to close and open the curtains every 15 seconds between 6pm and 7pm every day.
+  devices:
+  - AirPurifier
+  - ContactSensor
+  - Window
+  - Blind
+  - Camera
+  - DoorLock
+  - GasValve
+  - Clock
+  - Curtain
+  - AirConditioner
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      is_closing := false
+      is_opening := false
+      if ((#Clock).clock_hour == 18 and (#Clock).clock_minute >= 0 and (#Clock).clock_minute < 60) {
+        if (not is_closing and not is_opening) {
+          (#Curtain).curtain_close()
+          is_closing = true
+        }
+        if (is_closing and (#Curtain).curtain_curtain == 'closed') {
+          (#Curtain).curtain_open()
+          is_closing = false
+          is_opening = true
+        }
+        if (is_opening and (#Curtain).curtain_curtain == 'open') {
+          is_opening = false
+        }
+      }
+  model_info:
+    elapsed_time: 9.133
+    bge_elapsed_time: 0.134
+    llm_elapsed_time: 9.0
+- command: Close the blinds every 3 minutes from 10-11pm on weekends.
+  devices:
+  - WeatherProvider
+  - Relay
+  - Blind
+  - Shade
+  - Alarm
+  - DoorLock
+  - Valve
+  - Clock
+  - Curtain
+  - GasValve
+  generated_code: []
+  model_info:
+    elapsed_time: 47.961
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 47.829
+- command: Turn on the dehumidifier every 3 seconds from 10-11pm on weekends.
+  devices:
+  - AirPurifier
+  - Dehumidifier
+  - Irrigator
+  - Humidifier
+  - Fan
+  - Dishwasher
+  - AirQualityDetector
+  - Clock
+  - HumiditySensor
+  - AirConditioner
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      wait until(((#Clock).clock_hour == 22) and ((#Clock).clock_minute >= 0) and ((#Clock).clock_minute <= 59) and ((#Clock).clock_weekday == 'saturday') or ((#Clock).clock_weekday == 'sunday')))
+      (#Dehumidifier).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: 3000
+    code: |-
+      (#Dehumidifier).switch_on()
+  model_info:
+    elapsed_time: 6.828
+    bge_elapsed_time: 0.133
+    llm_elapsed_time: 6.695
+- command: Turn the alarm and siren off and on every 10 seconds.
+  devices:
+  - Relay
+  - Buttonx4
+  - Button
+  - Light
+  - Camera
+  - Alarm
+  - Siren
+  - Timer
+  - Clock
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      (#Alarm).alarm_off()
+      (#Alarm).alarm_off()
+  model_info:
+    elapsed_time: 3.164
+    bge_elapsed_time: 0.135
+    llm_elapsed_time: 3.029
+- command: Turn the fan off and on every 30 seconds every day.
+  devices:
+  - AirPurifier
+  - Dehumidifier
+  - Irrigator
+  - Humidifier
+  - Fan
+  - Dishwasher
+  - AirQualityDetector
+  - Clock
+  - WeatherProvider
+  - AirConditioner
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 30000
+    code: |-
+      (#Fan).switch_off()
+      (#Fan).switch_on()
+  model_info:
+    elapsed_time: 3.126
+    bge_elapsed_time: 0.138
+    llm_elapsed_time: 2.988
+- command: Turn off the TV at midnight every night.
+  devices:
+  - AirPurifier
+  - Light
+  - Camera
+  - Blind
+  - Dehumidifier
+  - Dishwasher
+  - Television
+  - Clock
+  - Curtain
+  - AirConditioner
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 0
+    code: |-
+      (#Television).switch_off()
+  model_info:
+    elapsed_time: 3.072
+    bge_elapsed_time: 0.127
+    llm_elapsed_time: 2.945
+- command: Increase the volume of your television by 1 every 5 seconds.
+  devices:
+  - Button
+  - Buttonx4
+  - Light
+  - Camera
+  - Alarm
+  - Irrigator
+  - Fan
+  - LightSensor
+  - Television
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      (#Television).audioVolume_volumeUp()
+  model_info:
+    elapsed_time: 3.046
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 2.915
+- command: Turn on the lights every hour on the hour from 8am to midnight on weekdays.
+  devices:
+  - AirPurifier
+  - WeatherProvider
+  - Relay
+  - Light
+  - Camera
+  - Blind
+  - LightSensor
+  - Irrigator
+  - Clock
+  - Curtain
+  generated_code: []
+  model_info:
+    elapsed_time: 49.163
+    bge_elapsed_time: 0.131
+    llm_elapsed_time: 49.032

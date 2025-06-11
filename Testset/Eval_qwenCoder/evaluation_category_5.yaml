@@ -1,263 +1,302 @@
-- command: If the soil humidity is below 30%, wait 5 seconds before activating the waterer.
+- command: 토양 습도가 30% 미만이면 5초 후 급수기를 작동해 줘.
+  command_translated: If the soil humidity is below 30%, wait 5 seconds before activating the waterer.
   devices:
-  - Irrigator
-  - HumiditySensor
-  - Dehumidifier
+  - LeakSensor
   - Feeder
+  - Humidifier
+  - HumiditySensor
+  - Dishwasher
+  - Fan
+  - Clock
+  - Irrigator
   - SoilMoistureSensor
   - WeatherProvider
-  - Clock
-  - LeakSensor
-  - Fan
-  - Humidifier
-  - Dishwasher
+  - Dehumidifier
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0)
-      (#Irrigator).switch_on()
+      (#Humidifier).switch_on()
+      wait until((#Humidifier).switch_switch == "off")
+      wait until((#Clock).clock_delay(5000))
+      (#Humidifier).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Humidifier).switch_switch == "off")
+      wait until((#Clock).clock_delay(5000))
+      (#Humidifier).switch_on()
   model_info:
-    elapsed_time: 3.756
-    bge_elapsed_time: 0.133
-    llm_elapsed_time: 3.623
-- command: If a window is open and the temperature is above 35 degrees, wait 10 seconds before lowering the blinds.
+    elapsed_time: 7.68
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 7.533
+- command: 창문이 열려 있고 온도가 35도 이상이면 10초 대기 후 블라인드를 내려 줘.
+  command_translated: If a window is open and the temperature is above 35 degrees, wait 10 seconds before lowering the blinds.
   devices:
+  - AirConditioner
+  - Curtain
+  - Window
+  - Shade
   - Blind
   - ContactSensor
+  - Camera
+  - Clock
+  - DoorLock
+  - WeatherProvider
   - TemperatureSensor
-  - Shade
-  - WeatherProvider
-  - Clock
-  - Curtain
-  - DoorLock
-  - Camera
-  - Window
-  - AirConditioner
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Window).windowControl_window == 'open') {
-        if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
-          (#Clock).clock_delay(10000)
-          (#Blind).blind_close()
-        }
-      }
-  model_info:
-    elapsed_time: 4.577
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.442
-- command: If the humidity is above 80%, turn on the dehumidifier after 3 seconds and close the window after another 7 seconds.
-  devices:
-  - Window
-  - HumiditySensor
-  - Dehumidifier
-  - WeatherProvider
-  - Clock
-  - Curtain
-  - DoorLock
-  - Humidifier
-  - SoilMoistureSensor
-  - AirQualityDetector
-  - AirConditioner
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0)
-      (#Dehumidifier).switch_on()
-      (#Clock).clock_delay(3000)
-      (#Window).windowControl_close()
-      (#Clock).clock_delay(7000)
-  model_info:
-    elapsed_time: 4.801
-    bge_elapsed_time: 0.136
-    llm_elapsed_time: 4.665
-- command: If the light intensity is below 100 lux, wait 5 seconds before turning on the LED light.
-  devices:
-  - Blind
-  - LightSensor
-  - Irrigator
-  - TemperatureSensor
-  - Light
-  - WeatherProvider
-  - SmokeDetector
-  - Relay
-  - Clock
-  - Camera
-  - PresenceSensor
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#LightSensor).lightLevel_light < 100.0) {
-        (#Clock).clock_delay(5000)
-        (#Light).switch_on()
-      }
-  model_info:
-    elapsed_time: 3.86
-    bge_elapsed_time: 0.132
-    llm_elapsed_time: 3.728
-- command: After running the waterer, wait 10 seconds before turning on the fan.
-  devices:
-  - Irrigator
-  - Dehumidifier
-  - Refrigerator
-  - WeatherProvider
-  - Clock
-  - AirPurifier
-  - Fan
-  - Humidifier
-  - Dishwasher
-  - AirConditioner
-  - Pump
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Irrigator).switch_on()
-      wait until((#Irrigator).switch_switch == 'on')
-      (#Clock).clock_delay(10000)
-      (#Fan).switch_on()
-  model_info:
-    elapsed_time: 4.241
-    bge_elapsed_time: 0.13
-    llm_elapsed_time: 4.111
-- command: If the window is open, close the curtains after 5 seconds, and close the blinds after another 10 seconds.
-  devices:
-  - Blind
-  - Valve
-  - ContactSensor
-  - Shade
-  - WeatherProvider
-  - Clock
-  - Curtain
-  - DoorLock
-  - Camera
-  - GasValve
-  - Window
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 1000
     code: |-
-      if ((#Window).windowControl_window == 'open') {
-        (#Curtain).curtain_close()
+      if ((#Window).windowControl_window == "open") and ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        wait until((#TemperatureSensor).temperatureMeasurement_temperature <= 35.0)
+        wait until((#Window).windowControl_window == "closed")
+        (#Blind).blindLevel_setBlindLevel(0)
+      }
+  model_info:
+    elapsed_time: 5.872
+    bge_elapsed_time: 0.148
+    llm_elapsed_time: 5.724
+- command: 습도가 80% 이상이면 3초 뒤 제습기를 켜고, 7초 더 지난 후 창문을 닫아 줘.
+  command_translated: If the humidity is above 80%, turn on the dehumidifier after 3 seconds and close the window after another 7 seconds.
+  devices:
+  - Curtain
+  - DoorLock
+  - Window
+  - Humidifier
+  - HumiditySensor
+  - Clock
+  - WeatherProvider
+  - AirQualityDetector
+  - SoilMoistureSensor
+  - AirConditioner
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0)
+      wait until(#Clock).clock_delay(3000)
+      (#Dehumidifier).switch_on()
+      wait until(#Clock).clock_delay(7000)
+      (#Window).windowControl_close()
+  model_info:
+    elapsed_time: 5.209
+    bge_elapsed_time: 0.15
+    llm_elapsed_time: 5.06
+- command: 빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘.
+  command_translated: If the light intensity is below 100 lux, wait 5 seconds before turning on the LED light.
+  devices:
+  - SmokeDetector
+  - Blind
+  - Camera
+  - Light
+  - PresenceSensor
+  - Clock
+  - Relay
+  - Irrigator
+  - LightSensor
+  - WeatherProvider
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      light_intensity := (#LightSensor).lightLevel_light
+      if (light_intensity < 100) {
+        wait until(light_intensity >= 100)
+        (#Light).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.372
+    bge_elapsed_time: 0.146
+    llm_elapsed_time: 4.226
+- command: 급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘.
+  command_translated: After running the irrigator, wait 10 seconds before turning on the fan.
+  devices:
+  - Refrigerator
+  - Humidifier
+  - WeatherProvider
+  - Dishwasher
+  - AirPurifier
+  - Fan
+  - Clock
+  - Irrigator
+  - Pump
+  - AirConditioner
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == "watering")
+      (#Fan).switch_on()
+      (#Fan).fanControl_setPercent(100)
+      (#Fan).fanControl_setFanSpeed(1000)
+      (#Clock).clock_delay(10000)
+      (#Fan).switch_off()
+      (#Fan).fanControl_setPercent(0)
+      (#Fan).fanControl_setFanSpeed(0)
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == "idle")
+      (#Fan).switch_on()
+      (#Fan).fanControl_setPercent(100)
+      (#Fan).fanControl_setFanSpeed(1000)
+      (#Clock).clock_delay(10000)
+      (#Fan).switch_off()
+      (#Fan).fanControl_setPercent(0)
+      (#Fan).fanControl_setFanSpeed(0)
+  model_info:
+    elapsed_time: 12.11
+    bge_elapsed_time: 0.144
+    llm_elapsed_time: 11.966
+- command: 창문이 열려 있으면 5초 후 커튼을 닫고, 10초 더 지난 뒤 블라인드를 닫아 줘.
+  command_translated: If the window is open, close the curtains after 5 seconds, and close the blinds after another 10 seconds.
+  devices:
+  - Curtain
+  - Window
+  - Shade
+  - Blind
+  - ContactSensor
+  - Valve
+  - Camera
+  - Clock
+  - DoorLock
+  - WeatherProvider
+  - GasValve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      window_open := false
+      if ((#Window).windowControl_window == "open") {
+        window_open = true
+        wait until(window_open)
         wait until((#Clock).clock_second == 5)
+        (#Curtain).curtain_close()
+        wait until((#Clock).clock_second == 15)
         (#Blind).blind_close()
       }
   model_info:
-    elapsed_time: 4.608
-    bge_elapsed_time: 0.153
-    llm_elapsed_time: 4.455
-- command: If the light is on, wait 3 seconds, turn off the light, and then turn it back on after 3 seconds.
+    elapsed_time: 5.821
+    bge_elapsed_time: 0.15
+    llm_elapsed_time: 5.672
+- command: 조명이 켜져 있으면 3초 대기 후 조명을 껐다가 3초 뒤 다시 켜 줘.
+  command_translated: If the light is on, wait 3 seconds, turn off the light, and then turn it back on after 3 seconds.
   devices:
-  - Timer
-  - LightSensor
-  - Light
-  - WeatherProvider
   - SmokeDetector
-  - Relay
-  - Clock
-  - Switch
-  - Camera
   - Curtain
+  - Switch
+  - Timer
+  - Camera
+  - Light
+  - Clock
+  - WeatherProvider
+  - LightSensor
+  - Relay
   generated_code:
   - name: "Scenario1"
     cron: ""
-    period: -1
+    period: 1000
     code: |-
-      if ((#Light).switch_switch == 'on') {
-        (#Clock).clock_delay(3000)
-        (#Light).switch_off()
-        (#Clock).clock_delay(3000)
-        (#Light).switch_on()
+      if ((#Light).switch_switch == "on") {
+        wait until(#Light).switch_switch == "off"
+        wait until(#Light).switch_switch == "on"
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 1000
+    code: |-
+      if ((#Light).switch_switch == "off") {
+        wait until(#Light).switch_switch == "on"
+        wait until(#Light).switch_switch == "off"
       }
   model_info:
-    elapsed_time: 4.782
-    bge_elapsed_time: 0.497
-    llm_elapsed_time: 4.285
-- command: Turn off the light after 7 seconds and turn it back on after 5 seconds.
+    elapsed_time: 6.541
+    bge_elapsed_time: 0.147
+    llm_elapsed_time: 6.394
+- command: 7초 후에 조명을 끄고 5초 뒤 다시 켜 줘.
+  command_translated: Turn off the light after 7 seconds and turn it back on after 5 seconds.
   devices:
-  - LightSensor
-  - Light
-  - Clock
-  - Relay
+  - Siren
+  - Curtain
+  - Switch
   - Alarm
   - Camera
-  - Curtain
+  - Light
   - Buttonx4
-  - Switch
-  - Siren
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 1000
-    code: |-
-      wait until((#Clock).clock_delay(7000))
-      (#Light).switch_off()
-      wait until((#Clock).clock_delay(5000))
-      (#Light).switch_on()
-  model_info:
-    elapsed_time: 4.148
-    bge_elapsed_time: 0.128
-    llm_elapsed_time: 4.02
-- command: If the door is closed and the window is not open after 5 seconds, open the blinds.
-  devices:
-  - Blind
-  - Valve
-  - ContactSensor
-  - Shade
-  - Relay
   - Clock
-  - Curtain
-  - DoorLock
+  - Relay
+  - LightSensor
+  generated_code: []
+  model_info:
+    elapsed_time: 49.481
+    bge_elapsed_time: 0.143
+    llm_elapsed_time: 49.338
+- command: 문이 닫혀 있는데 5초가 지나도 창문이 열려 있지 않으면 블라인드를 열어 줘.
+  command_translated: If the door is closed and the window is not open after 5 seconds, open the blinds.
+  devices:
   - Siren
-  - Camera
+  - Curtain
   - Window
+  - Shade
+  - Blind
+  - ContactSensor
+  - Valve
+  - Camera
+  - Clock
+  - Relay
+  - DoorLock
   generated_code:
   - name: "Scenario1"
     cron: ""
-    period: 1000
+    period: 5000
     code: |-
-      if ((#DoorLock).doorControl_door == 'closed') {
-        wait until((#Window).windowControl_window == 'open')
+      if ((#DoorLock).doorControl_door == "closed") and ((#Window).windowControl_window == "closed") {
+        wait until((#Window).windowControl_window == "open")
         (#Blind).blind_open()
       }
   model_info:
-    elapsed_time: 3.874
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 3.74
-- command: If the curtains are open, turn the lights down to 50 after 2 seconds, then wait another 4 seconds to turn them off.
+    elapsed_time: 4.553
+    bge_elapsed_time: 0.151
+    llm_elapsed_time: 4.403
+- command: 커튼이 열린 상태라면 2초 뒤 조명을 50으로 낮추고, 다시 4초 기다려서 꺼 줘.
+  command_translated: If the curtains are open, turn the lights down to 50 after 2 seconds, then wait another 4 seconds to turn them off.
   devices:
-  - Blind
-  - LightSensor
-  - ContactSensor
-  - Light
-  - Shade
-  - WeatherProvider
-  - Clock
   - Curtain
-  - DoorLock
-  - Camera
   - Window
+  - Shade
+  - Blind
+  - ContactSensor
+  - Camera
+  - Light
+  - Clock
+  - DoorLock
+  - LightSensor
+  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 1000
     code: |-
-      if ((#Curtain).curtain_curtain == 'open') {
-        (#Light).switchLevel_setLevel(50, 0)
-        wait until((#Clock).clock_delay(2000))
-        (#Light).switch_off()
+      if ((#Curtain).curtain_curtain == "open") {
+        wait until ((#Clock).clock_second == 2)
+        all(#Light).switchLevel_setLevel(50, 1000)
+        wait until ((#Clock).clock_second == 6)
+        all(#Light).switch_off()
       }
   model_info:
-    elapsed_time: 4.823
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 4.689
+    elapsed_time: 5.762
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 5.614

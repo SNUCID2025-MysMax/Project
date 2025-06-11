@@ -127,7 +127,7 @@ adjusted = temp - 5
 ## Input
 
 ```
-Current Time: "<Weekday>, <Day> <Month> <Year> <Hour>:<Minute>:<Second>"  # datetime format: "%a, %d %b %Y %H:%M:%S"
+Current Time: "<Year>-<Month>-<Day> <Hour>:<Minute>:<Second>"  # datetime format: "%Y-%m-%d %H:%M:%S"
 
 Generate JOI Lang code for <user command>"
 ```
@@ -190,7 +190,7 @@ Let’s Think Step by Step.
 
 
 # Example
-**Input**: Current Time: Thu, 29 May 2025 06:00:00\n\nGenerate JOI Lang code for "When the pump turns off, turn on the speaker, and when soil moisture sensor drops to 20% or below, turn on the irrigation system."
+**Input**: Current Time: 2025-06-05 18:00:00\n\nGenerate JOI Lang code for "When the pump turns off, turn on the speaker, and when soil moisture sensor drops to 20% or below, turn on the irrigation system."
 
 ```
 name = "Scenario1"
@@ -205,5 +205,4 @@ period = -1
 wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
 (#Irrigator).switch_on()
 ```
-
 """
