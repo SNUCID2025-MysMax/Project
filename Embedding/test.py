@@ -3,8 +3,8 @@ import time
 from tqdm import tqdm
 from FlagEmbedding import BGEM3FlagModel
 from embedding_v1 import hybrid_recommend_v1
-from embedding_v2 import hybrid_recommend_v2
-from embedding_v3 import hybrid_recommend_v3
+# from embedding_v2 import hybrid_recommend_v2
+# from embedding_v3 import hybrid_recommend_v3
 from embedding_v4 import hybrid_recommend_v4
 
 result = []
@@ -14,7 +14,7 @@ model = BGEM3FlagModel('BAAI/bge-m3', use_fp16=True)
 version = "v4"
 
 if version == "test":
-    command = "Sound the alarm's siren if the barometric pressure is above 1020 hPa."
+    command = "If the air conditioner is off, the temperature is above 29 degrees, and the humidity is above 70%, set the dehumidifier to dehumidify mode and turn it on. If the curtains are open and the lights are off, close the curtains and turn on the lights."
     recommended_items = hybrid_recommend_v4(
         model=model,
         query=command,
@@ -56,39 +56,39 @@ elif version == "v1":
     with open("./embedding_result_v1.json", "w") as f:
         json.dump(result, f, indent=4, ensure_ascii=False)
 
-elif version == "v2":
+# elif version == "v2":
 
-    # V2 - ENGLISH
+#     # V2 - ENGLISH
 
-    for i in range(2,3):
-        file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
-        print(f"Processing file: {file_name}")
+#     for i in range(2,3):
+#         file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
+#         print(f"Processing file: {file_name}")
 
-        with open(file_name, "r") as f:
-            data = yaml.load(f, Loader=yaml.FullLoader)
+#         with open(file_name, "r") as f:
+#             data = yaml.load(f, Loader=yaml.FullLoader)
         
-        for item in tqdm(data):
-            command = item["command_translated"]
-            devices = item["devices"]
+#         for item in tqdm(data):
+#             command = item["command_translated"]
+#             devices = item["devices"]
             
-            # 하이브리드 추천 모델 호출
-            start_time = time.time()
-            recommended_items = hybrid_recommend_v2(
-                model=model,
-                query=command,
-            )
-            end_time = time.time()
-            extracted_devices = [rec['key'] for rec in recommended_items]
+#             # 하이브리드 추천 모델 호출
+#             start_time = time.time()
+#             recommended_items = hybrid_recommend_v2(
+#                 model=model,
+#                 query=command,
+#             )
+#             end_time = time.time()
+#             extracted_devices = [rec['key'] for rec in recommended_items]
             
-            ret = []
-            for device in devices:
-                if device not in extracted_devices:
-                    ret.append(device)
-            if ret:
-                print(f"Missing devices for command '{command}': {ret}")
-                result.append((f"category_{i}", command, ret,))
+#             ret = []
+#             for device in devices:
+#                 if device not in extracted_devices:
+#                     ret.append(device)
+#             if ret:
+#                 print(f"Missing devices for command '{command}': {ret}")
+#                 result.append((f"category_{i}", command, ret,))
 
-elif version == "v3":
+# elif version == "v3":
 
     # V3 - Device
     def debug_device_scores(model, query, target_device):
@@ -150,7 +150,7 @@ elif version == "v4":
         with open(file_name, "r") as f:
             data = yaml.load(f, Loader=yaml.FullLoader)
         
-        for item in data:
+        for item in tqdm(data):
             command = item["command_translated"]
             devices = item["devices"]
             

@@ -1,17 +1,1 @@
-[
-    [
-        "category_15",
-        "Wait until the humidity reaches or exceeds 70%. If the window is open at that moment, turn on the dehumidifier after 5 seconds. After the dehumidifier is turned on, when the temperature reaches or exceeds 30°C, turn on the air conditioner. check in real-time. Once the blinds turns opened while the air conditioner is on, start opening and closing the curtains every 10 seconds from that moment. While doing so, if motion is detected, immediately turn off the alarm. If no motion is detected for following 5 seconds, sound the alarm again.",
-        [
-            "MotionSensor"
-        ]
-    ],
-    [
-        "category_15",
-        "When the lights are on and the windows are closed, and then the door turns opened, wait 3 seconds before sounding the siren. Check in real-time. If the window remains closed for 10 seconds after the siren sounds, close the curtains, turn off the lights, and turn on the fan at 50% speed. Then, if the temperature is above 27 degrees, switch the air conditioner to cooling mode. If motion is being detected, repeat the action of opening and closing the blinds every second, three times. At any point, if the speaker turns on, immediately stop all actions and turn off the speaker.",
-        [
-            "DoorLock",
-            "MotionSensor"
-        ]
-    ]
-]
+[]
