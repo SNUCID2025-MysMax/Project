@@ -1349,7 +1349,7 @@
       }
       if (enable_color_change) {
         if ((prev_light_state == 'off') and (light_state == 'on')) {
-            (#Light).colorControl_setColor({"hue": 0, "saturation": 100})
+            (#Light).colorControl_setColor("255|255|255")
         }
       }
       prev_light_state = light_state
@@ -1380,7 +1380,7 @@
       }
       if (enable_color_change) {
         if ((prev_light_state == 'off') and (light_state == 'on')) {
-            (#Light).colorControl_setColor({"hue": 0, "saturation": 100})
+            (#Light).colorControl_setColor("255|255|255")
         }
       }
       prev_light_state = light_state
@@ -1411,7 +1411,7 @@
       }
       if (enable_color_change) {
         if ((prev_light_state == 'off') and (light_state == 'on')) {
-            (#Light).colorControl_setColor({"hue": 0, "saturation": 100})
+            (#Light).colorControl_setColor("255|255|255")
         }
       }
       prev_light_state = light_state
@@ -1442,7 +1442,7 @@
       }
       if (enable_color_change) {
         if ((prev_light_state == 'off') and (light_state == 'on')) {
-            (#Light).colorControl_setColor({"hue": 0, "saturation": 100})
+            (#Light).colorControl_setColor("255|255|255")
         }
       }
       prev_light_state = light_state

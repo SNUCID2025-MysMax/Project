@@ -94,7 +94,7 @@
     code: |-
       motion = (#MotionSensor).motionSensor_motion
       if (motion == 'active') {
-        (#Light).colorControl_setColor({"hue": 50, "saturation": 100})
+        (#Light).colorControl_setColor("255|255|255")
         current_speed = (#Fan).fanControl_fanSpeed
         new_speed = current_speed - 10
         (#Fan).fanControl_setFanSpeed(new_speed)
@@ -107,7 +107,7 @@
     code: |-
       motion = (#MotionSensor).motionSensor_motion
       if (motion == 'active') {
-        (#Light).colorControl_setColor({"hue": 50, "saturation": 100})
+        (#Light).colorControl_setColor("255|255|255")
         current_speed = (#Fan).fanControl_fanSpeed
         new_speed = current_speed - 10
         (#Fan).fanControl_setFanSpeed(new_speed)
@@ -120,7 +120,7 @@
     code: |-
       motion = (#MotionSensor).motionSensor_motion
       if (motion == 'active') {
-        (#Light).colorControl_setColor({"hue": 50, "saturation": 100})
+        (#Light).colorControl_setColor("255|255|255")
         current_speed = (#Fan).fanControl_fanSpeed
         new_speed = current_speed - 10
         (#Fan).fanControl_setFanSpeed(new_speed)
@@ -133,7 +133,7 @@
     code: |-
       motion = (#MotionSensor).motionSensor_motion
       if (motion == 'active') {
-        (#Light).colorControl_setColor({"hue": 50, "saturation": 100})
+        (#Light).colorControl_setColor("255|255|255")
         current_speed = (#Fan).fanControl_fanSpeed
         new_speed = current_speed - 10
         (#Fan).fanControl_setFanSpeed(new_speed)
@@ -485,7 +485,7 @@
     period: 0
     code: |-
       if ((#Light).switch_switch == 'on') {
-        (#Light).colorControl_setColor({"hue": 0, "saturation": 100})
+        (#Light).colorControl_setColor("255|0|0")({"hue": 0, "saturation": 100})
       }
       if ((#Television).switch_switch == 'off') {
         (#Television).tvChannel_channelUp()
@@ -500,7 +500,7 @@
     period: 0
     code: |-
       if ((#Light).switch_switch == 'on') {
-        (#Light).colorControl_setColor({"hue": 0, "saturation": 100})
+        (#Light).colorControl_setColor("255|0|0")({"hue": 0, "saturation": 100})
       }
       if ((#Television).switch_switch == 'off') {
         (#Television).tvChannel_channelUp()
@@ -515,7 +515,7 @@
     period: 0
     code: |-
       if ((#Light).switch_switch == 'on') {
-        (#Light).colorControl_setColor({"hue": 0, "saturation": 100})
+        (#Light).colorControl_setColor("255|0|0")({"hue": 0, "saturation": 100})
       }
       if ((#Television).switch_switch == 'off') {
         (#Television).tvChannel_channelUp()
@@ -530,7 +530,7 @@
     period: 0
     code: |-
       if ((#Light).switch_switch == 'on') {
-        (#Light).colorControl_setColor({"hue": 0, "saturation": 100})
+        (#Light).colorControl_setColor("255|0|0")({"hue": 0, "saturation": 100})
       }
       if ((#Television).switch_switch == 'off') {
         (#Television).tvChannel_channelUp()

@@ -1,5 +1,4 @@
-- command: If the window is closed, pause the opening of the curtain after 5 seconds,
-    and set the blind level to 50 after another 10 seconds.
+- command: If the window is closed, pause the opening of the curtain after 5 seconds, and set the blind level to 50 after another 10 seconds.
   code:
   - name: Scenario6
     cron: ''
@@ -11,9 +10,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blindLevel_setBlindLevel(50)
       }
-- command: In the event that the window is shut, hold off on opening the curtain for
-    a duration of 5 seconds, then subsequently adjust the blind level to 50 after
-    an additional 10 seconds have passed
+- command: In the event that the window is shut, hold off on opening the curtain for a duration of 5 seconds, then subsequently adjust the blind level to 50 after an additional 10 seconds have passed
   code:
   - name: Scenario6
     cron: ''
@@ -25,9 +22,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blindLevel_setBlindLevel(50)
       }
-- command: Should the window be in a closed position, please delay the curtain unveiling
-    by five seconds and following that, alter the level of the blinds to fifty after
-    another ten seconds
+- command: Should the window be in a closed position, please delay the curtain unveiling by five seconds and following that, alter the level of the blinds to fifty after another ten seconds
   code:
   - name: Scenario6
     cron: ''
@@ -39,9 +34,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blindLevel_setBlindLevel(50)
       }
-- command: If you find the window closed, please make sure to postpone the curtain's
-    opening for about five seconds, followed by setting the blinds to the level of
-    fifty after a further ten seconds
+- command: If you find the window closed, please make sure to postpone the curtain's opening for about five seconds, followed by setting the blinds to the level of fifty after a further ten seconds
   code:
   - name: Scenario6
     cron: ''
@@ -53,8 +46,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blindLevel_setBlindLevel(50)
       }
-- command: If the window is open, open the curtains after 5 seconds, and pause the
-    opening of the blinds after another 10 seconds.
+- command: If the window is open, open the curtains after 5 seconds, and pause the opening of the blinds after another 10 seconds.
   code:
   - name: Scenario6
     cron: ''
@@ -66,9 +58,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blind_pause()
       }
-- command: Should you find the window open, please wait for five seconds and then
-    unveil the curtains, followed by a ten-second pause before starting to pull up
-    the blinds.
+- command: Should you find the window open, please wait for five seconds and then unveil the curtains, followed by a ten-second pause before starting to pull up the blinds.
   code:
   - name: Scenario6
     cron: ''
@@ -80,9 +70,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blind_pause()
       }
-- command: In the event that the window is open, allow a five-second delay before
-    drawing the curtains, then suspend the lifting of the blinds for an additional
-    ten seconds.
+- command: In the event that the window is open, allow a five-second delay before drawing the curtains, then suspend the lifting of the blinds for an additional ten seconds.
   code:
   - name: Scenario6
     cron: ''
@@ -94,9 +82,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blind_pause()
       }
-- command: When you notice that the window is open, hold off for five seconds before
-    parting the curtains, then give a ten-second break prior to commencing the raising
-    of the blinds.
+- command: When you notice that the window is open, hold off for five seconds before parting the curtains, then give a ten-second break prior to commencing the raising of the blinds.
   code:
   - name: Scenario6
     cron: ''
@@ -108,8 +94,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blind_pause()
       }
-- command: If the window is closed, close the curtains after 5 seconds, and open the
-    blinds after another 10 seconds.
+- command: If the window is closed, close the curtains after 5 seconds, and open the blinds after another 10 seconds.
   code:
   - name: Scenario6
     cron: ''
@@ -121,8 +106,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blind_open()
       }
-- command: Should the window be shut, please draw the curtains five seconds later,
-    and following another ten seconds, lift the blinds
+- command: Should the window be shut, please draw the curtains five seconds later, and following another ten seconds, lift the blinds
   code:
   - name: Scenario6
     cron: ''
@@ -134,8 +118,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blind_open()
       }
-- command: In the event the window is closed, kindly pull the curtain across five
-    seconds afterward, and then, after an additional ten seconds, raise the blinds
+- command: In the event the window is closed, kindly pull the curtain across five seconds afterward, and then, after an additional ten seconds, raise the blinds
   code:
   - name: Scenario6
     cron: ''
@@ -147,8 +130,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blind_open()
       }
-- command: If you find the window closed, I'd like you to close the curtains five
-    seconds subsequently and then open the blinds ten seconds later
+- command: If you find the window closed, I'd like you to close the curtains five seconds subsequently and then open the blinds ten seconds later
   code:
   - name: Scenario6
     cron: ''
@@ -160,8 +142,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blind_open()
       }
-- command: If the window is unknown, open the curtains after 5 seconds, and set the
-    blind level to 100 after another 10 seconds.
+- command: If the window is unknown, open the curtains after 5 seconds, and set the blind level to 100 after another 10 seconds.
   code:
   - name: Scenario6
     cron: ''
@@ -173,9 +154,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blindLevel_setBlindLevel(100)
       }
-- command: Should the window's status be unclear, wait for five seconds before drawing
-    the curtains, and then wait an additional ten seconds before fully raising the
-    blinds
+- command: Should the window's status be unclear, wait for five seconds before drawing the curtains, and then wait an additional ten seconds before fully raising the blinds
   code:
   - name: Scenario6
     cron: ''
@@ -187,9 +166,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blindLevel_setBlindLevel(100)
       }
-- command: In the event that the window's state cannot be determined, please wait
-    five seconds before opening the curtains, and after a further ten seconds, ensure
-    the blinds are fully lifted
+- command: In the event that the window's state cannot be determined, please wait five seconds before opening the curtains, and after a further ten seconds, ensure the blinds are fully lifted
   code:
   - name: Scenario6
     cron: ''
@@ -201,9 +178,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blindLevel_setBlindLevel(100)
       }
-- command: If you can't ascertain the condition of the window, please make sure to
-    pull open the curtains after a pause of five seconds, and following that, adjust
-    the blinds to their maximum height after an additional ten-second wait
+- command: If you can't ascertain the condition of the window, please make sure to pull open the curtains after a pause of five seconds, and following that, adjust the blinds to their maximum height after an additional ten-second wait
   code:
   - name: Scenario6
     cron: ''
@@ -215,8 +190,7 @@
         (#Clock).clock_delay(10000)
         (#Blind).blindLevel_setBlindLevel(100)
       }
-- command: If the light is off, pause for 3 seconds, trigger an alert on the light,
-    and then set the light's color to "255|255|255" after 3 seconds.
+- command: If the light is off, pause for 3 seconds, trigger an alert on the light, and then set the light's color to "255|255|255" after 3 seconds.
   code:
   - name: Scenario7
     cron: ''
@@ -230,9 +204,7 @@
         (#Light).colorControl_setColor("255|255|255")
       }
       ```
-- command: Should the light be turned off, wait for a trio of seconds, initiate an
-    alert on the light, and then after a wait of another three seconds, adjust the
-    color of the light to the equivalent of "255|255|255
+- command: Should the light be turned off, wait for a trio of seconds, initiate an alert on the light, and then after a wait of another three seconds, adjust the color of the light to the equivalent of "255|255|255
   code:
   - name: Scenario7
     cron: ''
@@ -246,9 +218,7 @@
         (#Light).colorControl_setColor("255|255|255")
       }
       ```
-- command: In the event that the light is not on, take a brief pause of three seconds,
-    activate a light-based alert, and following another pause of three seconds, change
-    the light's hue to match "255|255|255
+- command: In the event that the light is not on, take a brief pause of three seconds, activate a light-based alert, and following another pause of three seconds, change the light's hue to match "255|255|255
   code:
   - name: Scenario7
     cron: ''
@@ -262,9 +232,7 @@
         (#Light).colorControl_setColor("255|255|255")
       }
       ```
-- command: If you find the light in the off state, allot a pause of three seconds,
-    raise a warning on the light, and subsequently after waiting for another three
-    seconds, modify the coloration of the light to reflect "255|255|255
+- command: If you find the light in the off state, allot a pause of three seconds, raise a warning on the light, and subsequently after waiting for another three seconds, modify the coloration of the light to reflect "255|255|255
   code:
   - name: Scenario7
     cron: ''
@@ -278,8 +246,7 @@
         (#Light).colorControl_setColor("255|255|255")
       }
       ```
-- command: If the light is off, wait for 3 seconds, adjust the hue to 50, and then
-    set the saturation to 70 after 3 seconds.
+- command: If the light is off, wait for 3 seconds, adjust the hue to 50, and then set the saturation to 70 after 3 seconds.
   code:
   - name: Scenario7
     cron: ''
@@ -293,8 +260,7 @@
         (#Light).colorControl_setSaturation(70)
       }
       ```
-- command: Should the light be off, kindly pause for three seconds, modify the hue
-    to half strength, and then three seconds later, increase the saturation to
+- command: Should the light be off, kindly pause for three seconds, modify the hue to half strength, and then three seconds later, increase the saturation to
   code:
   - name: Scenario7
     cron: ''
@@ -308,9 +274,7 @@
         (#Light).colorControl_setSaturation(70)
       }
       ```
-- command: In the event that the light is switched off, please hold on for a duration
-    of three seconds, then tweak the hue to 50, and after a further three seconds,
-    adjust the saturation level up to
+- command: In the event that the light is switched off, please hold on for a duration of three seconds, then tweak the hue to 50, and after a further three seconds, adjust the saturation level up to
   code:
   - name: Scenario7
     cron: ''
@@ -324,9 +288,7 @@
         (#Light).colorControl_setSaturation(70)
       }
       ```
-- command: If you notice that the light is not on, take a short break of three seconds,
-    then change the hue setting to 50, and after another three seconds, make sure
-    the saturation is set at
+- command: If you notice that the light is not on, take a short break of three seconds, then change the hue setting to 50, and after another three seconds, make sure the saturation is set at
   code:
   - name: Scenario7
     cron: ''
@@ -340,8 +302,7 @@
         (#Light).colorControl_setSaturation(70)
       }
       ```
-- command: If the light is on, pause for 3 seconds, adjust the light's brightness
-    level to 80 at a rate of 10, and then trigger an alert on the light after 3 seconds.
+- command: If the light is on, pause for 3 seconds, adjust the light's brightness level to 80 at a rate of 10, and then trigger an alert on the light after 3 seconds.
   code:
   - name: Scenario7
     cron: ''
@@ -355,9 +316,7 @@
         (#Light).switchLevel_alert()
       }
       ```
-- command: Should the light be switched on, take a brief pause of three seconds, gradually
-    modify the light's intensity to 80 at a pace of 10, and then initiate a light
-    alert after waiting for another three seconds
+- command: Should the light be switched on, take a brief pause of three seconds, gradually modify the light's intensity to 80 at a pace of 10, and then initiate a light alert after waiting for another three seconds
   code:
   - name: Scenario7
     cron: ''
@@ -371,9 +330,7 @@
         (#Light).switchLevel_alert()
       }
       ```
-- command: In the event the light is illuminated, hold on for a span of three seconds,
-    then proceed to increase the brightness of the light to 80 at a speed of 10, followed
-    by launching a warning signal on the light once another three seconds have passed
+- command: In the event the light is illuminated, hold on for a span of three seconds, then proceed to increase the brightness of the light to 80 at a speed of 10, followed by launching a warning signal on the light once another three seconds have passed
   code:
   - name: Scenario7
     cron: ''
@@ -387,9 +344,7 @@
         (#Light).switchLevel_alert()
       }
       ```
-- command: If you find the light turned on, pause momentarily for three seconds, transition
-    the brightness of the light to 80 at a progression rate of 10, and subsequently
-    set off an alert related to the light after a further three seconds
+- command: If you find the light turned on, pause momentarily for three seconds, transition the brightness of the light to 80 at a progression rate of 10, and subsequently set off an alert related to the light after a further three seconds
   code:
   - name: Scenario7
     cron: ''
@@ -403,8 +358,7 @@
         (#Light).switchLevel_alert()
       }
       ```
-- command: If the light is on, wait for 3 seconds, toggle the light's status, and
-    then change the color to "255|0|0" after 3 seconds.
+- command: If the light is on, wait for 3 seconds, toggle the light's status, and then change the color to "255|0|0" after 3 seconds.
   code:
   - name: Scenario7
     cron: ''
@@ -418,9 +372,7 @@
         (#Light).colorControl_setColor("255|0|0")
       }
       ```
-- command: In the event that the light is switched on, please hold on for three seconds,
-    alter the state of the light, and afterward adjust the color to red after another
-    three seconds
+- command: In the event that the light is switched on, please hold on for three seconds, alter the state of the light, and afterward adjust the color to red after another three seconds
   code:
   - name: Scenario7
     cron: ''
@@ -434,9 +386,7 @@
         (#Light).colorControl_setColor("255|0|0")
       }
       ```
-- command: Should you find the light on, I would ask you to patiently wait for three
-    seconds, switch the light's current mode, then modify its color to red once three
-    seconds have passed
+- command: Should you find the light on, I would ask you to patiently wait for three seconds, switch the light's current mode, then modify its color to red once three seconds have passed
   code:
   - name: Scenario7
     cron: ''
@@ -450,9 +400,7 @@
         (#Light).colorControl_setColor("255|0|0")
       }
       ```
-- command: If you notice that the light is on, pause for a brief period of three seconds,
-    change the light's condition, and subsequently, turn its color to red following
-    an additional three seconds
+- command: If you notice that the light is on, pause for a brief period of three seconds, change the light's condition, and subsequently, turn its color to red following an additional three seconds
   code:
   - name: Scenario7
     cron: ''
@@ -466,8 +414,7 @@
         (#Light).colorControl_setColor("255|0|0")
       }
       ```
-- command: Change the light color to red after 7 seconds and then change it to blue
-    after 5 seconds.
+- command: Change the light color to red after 7 seconds and then change it to blue after 5 seconds.
   code:
   - name: Scenario8
     cron: ''
@@ -477,8 +424,7 @@
       (#Light).colorControl_setColor("RED")
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setColor("BLUE")
-- command: After waiting for seven seconds, please switch the light color to red,
-    then wait another five seconds before turning it to blue
+- command: After waiting for seven seconds, please switch the light color to red, then wait another five seconds before turning it to blue
   code:
   - name: Scenario8
     cron: ''
@@ -488,8 +434,7 @@
       (#Light).colorControl_setColor("RED")
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setColor("BLUE")
-- command: In seven seconds, I would like you to alter the light's color to red. Following
-    that, please adjust it to blue five seconds later
+- command: In seven seconds, I would like you to alter the light's color to red. Following that, please adjust it to blue five seconds later
   code:
   - name: Scenario8
     cron: ''
@@ -499,8 +444,7 @@
       (#Light).colorControl_setColor("RED")
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setColor("BLUE")
-- command: Could you please transition the light to red after a delay of seven seconds,
-    and then change it to blue after another five-second pause?
+- command: Could you please transition the light to red after a delay of seven seconds, and then change it to blue after another five-second pause?
   code:
   - name: Scenario8
     cron: ''
@@ -510,8 +454,7 @@
       (#Light).colorControl_setColor("RED")
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setColor("BLUE")
-- command: Turn the light to maximum brightness after 7 seconds and then set it to
-    minimum brightness after 5 seconds.
+- command: Turn the light to maximum brightness after 7 seconds and then set it to minimum brightness after 5 seconds.
   code:
   - name: Scenario8
     cron: ''
@@ -521,8 +464,7 @@
       (#Light).switchLevel_setLevel(100, 1)
       (#Clock).clock_delay(5000)
       (#Light).switchLevel_setLevel(0, 1)
-- command: In seven seconds, please increase the light to its highest brightness,
-    then reduce it to its lowest level after five more seconds.
+- command: In seven seconds, please increase the light to its highest brightness, then reduce it to its lowest level after five more seconds.
   code:
   - name: Scenario8
     cron: ''
@@ -532,8 +474,7 @@
       (#Light).switchLevel_setLevel(100, 1)
       (#Clock).clock_delay(5000)
       (#Light).switchLevel_setLevel(0, 1)
-- command: After waiting for seven seconds, could you brighten the light to its fullest
-    and then dim it to the minimum level five seconds later?
+- command: After waiting for seven seconds, could you brighten the light to its fullest and then dim it to the minimum level five seconds later?
   code:
   - name: Scenario8
     cron: ''
@@ -543,9 +484,7 @@
       (#Light).switchLevel_setLevel(100, 1)
       (#Clock).clock_delay(5000)
       (#Light).switchLevel_setLevel(0, 1)
-- command: Please, after a brief pause of seven seconds, set the light to its maximum
-    intensity. Following that, wait for another five seconds and decrease the light
-    to its lowest possible setting.
+- command: Please, after a brief pause of seven seconds, set the light to its maximum intensity. Following that, wait for another five seconds and decrease the light to its lowest possible setting.
   code:
   - name: Scenario8
     cron: ''
@@ -555,8 +494,7 @@
       (#Light).switchLevel_setLevel(100, 1)
       (#Clock).clock_delay(5000)
       (#Light).switchLevel_setLevel(0, 1)
-- command: Set the light hue to 50% after 7 seconds and then set it to 100% after
-    5 seconds.
+- command: Set the light hue to 50% after 7 seconds and then set it to 100% after 5 seconds.
   code:
   - name: Scenario8
     cron: ''
@@ -566,8 +504,7 @@
       (#Light).colorControl_setHue(50)
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setHue(100)
-- command: After waiting for seven seconds, please adjust the light's hue to fifty
-    percent, and then, after another five seconds, increase it to its maximum level
+- command: After waiting for seven seconds, please adjust the light's hue to fifty percent, and then, after another five seconds, increase it to its maximum level
   code:
   - name: Scenario8
     cron: ''
@@ -577,9 +514,7 @@
       (#Light).colorControl_setHue(50)
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setHue(100)
-- command: Please wait for seven seconds before setting the hue of the light to fifty
-    percent, following which you should wait for another five seconds and then raise
-    it to a hundred percent
+- command: Please wait for seven seconds before setting the hue of the light to fifty percent, following which you should wait for another five seconds and then raise it to a hundred percent
   code:
   - name: Scenario8
     cron: ''
@@ -589,8 +524,7 @@
       (#Light).colorControl_setHue(50)
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setHue(100)
-- command: Wait seven seconds, then change the hue of the light to half intensity.
-    After waiting an additional five seconds, make sure to boost the hue to full intensity
+- command: Wait seven seconds, then change the hue of the light to half intensity. After waiting an additional five seconds, make sure to boost the hue to full intensity
   code:
   - name: Scenario8
     cron: ''
@@ -600,8 +534,7 @@
       (#Light).colorControl_setHue(50)
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setHue(100)
-- command: Set the light saturation to 30% after 7 seconds and then set it to 80%
-    after 5 seconds.
+- command: Set the light saturation to 30% after 7 seconds and then set it to 80% after 5 seconds.
   code:
   - name: Scenario8
     cron: ''
@@ -611,8 +544,7 @@
       (#Light).colorControl_setSaturation(30)
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setSaturation(80)
-- command: After waiting for seven seconds, adjust the light saturation to thirty
-    percent and then, after an additional five seconds, increase it to eighty percent
+- command: After waiting for seven seconds, adjust the light saturation to thirty percent and then, after an additional five seconds, increase it to eighty percent
   code:
   - name: Scenario8
     cron: ''
@@ -622,9 +554,7 @@
       (#Light).colorControl_setSaturation(30)
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setSaturation(80)
-- command: Wait for a period of seven seconds before setting the saturation of the
-    light to thirty percent, then wait another five seconds before raising it to eighty
-    percent
+- command: Wait for a period of seven seconds before setting the saturation of the light to thirty percent, then wait another five seconds before raising it to eighty percent
   code:
   - name: Scenario8
     cron: ''
@@ -634,9 +564,7 @@
       (#Light).colorControl_setSaturation(30)
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setSaturation(80)
-- command: Allow seven seconds to pass, then reduce the saturation of the light to
-    thirty percent. After another five seconds have passed, boost the saturation to
-    eighty percent
+- command: Allow seven seconds to pass, then reduce the saturation of the light to thirty percent. After another five seconds have passed, boost the saturation to eighty percent
   code:
   - name: Scenario8
     cron: ''
@@ -646,8 +574,7 @@
       (#Light).colorControl_setSaturation(30)
       (#Clock).clock_delay(5000)
       (#Light).colorControl_setSaturation(80)
-- command: Toggle the light switch after 7 seconds and then toggle it again after
-    5 seconds.
+- command: Toggle the light switch after 7 seconds and then toggle it again after 5 seconds.
   code:
   - name: Scenario8
     cron: ''
@@ -657,8 +584,7 @@
       (#Light).switch_toggle()
       (#Clock).clock_delay(5000)
       (#Light).switch_toggle()
-- command: After a pause of seven seconds, please flip the light switch, and then
-    wait for another five seconds before flipping it once more
+- command: After a pause of seven seconds, please flip the light switch, and then wait for another five seconds before flipping it once more
   code:
   - name: Scenario8
     cron: ''
@@ -668,8 +594,7 @@
       (#Light).switch_toggle()
       (#Clock).clock_delay(5000)
       (#Light).switch_toggle()
-- command: Wait for seven seconds, then turn the light switch on or off. Do the same
-    again after an additional five-second wait
+- command: Wait for seven seconds, then turn the light switch on or off. Do the same again after an additional five-second wait
   code:
   - name: Scenario8
     cron: ''
@@ -679,8 +604,7 @@
       (#Light).switch_toggle()
       (#Clock).clock_delay(5000)
       (#Light).switch_toggle()
-- command: Please change the position of the light switch seven seconds from now,
-    and then once again five seconds after the first switch
+- command: Please change the position of the light switch seven seconds from now, and then once again five seconds after the first switch
   code:
   - name: Scenario8
     cron: ''
@@ -690,8 +614,7 @@
       (#Light).switch_toggle()
       (#Clock).clock_delay(5000)
       (#Light).switch_toggle()
-- command: If the door is opening and the window is not closed after 5 seconds, set
-    the blinds to level 50.
+- command: If the door is opening and the window is not closed after 5 seconds, set the blinds to level 50.
   code:
   - name: Scenario9
     cron: ''
@@ -703,8 +626,7 @@
             (#Blind).blindLevel_setBlindLevel(50)
         }
       }
-- command: Should the door start to open and the window remains open after five seconds,
-    please adjust the blinds to half their full range
+- command: Should the door start to open and the window remains open after five seconds, please adjust the blinds to half their full range
   code:
   - name: Scenario9
     cron: ''
@@ -716,8 +638,7 @@
             (#Blind).blindLevel_setBlindLevel(50)
         }
       }
-- command: In the event that the door begins to open and the window isn't shut after
-    a five-second duration, please lower the blinds to a medium level
+- command: In the event that the door begins to open and the window isn't shut after a five-second duration, please lower the blinds to a medium level
   code:
   - name: Scenario9
     cron: ''
@@ -729,8 +650,7 @@
             (#Blind).blindLevel_setBlindLevel(50)
         }
       }
-- command: If the door starts opening and if the window still hasn't closed after
-    five seconds, kindly set the blinds to an intermediate position
+- command: If the door starts opening and if the window still hasn't closed after five seconds, kindly set the blinds to an intermediate position
   code:
   - name: Scenario9
     cron: ''
@@ -742,8 +662,7 @@
             (#Blind).blindLevel_setBlindLevel(50)
         }
       }
-- command: If the door is not in an unknown state and the window is not open after
-    5 seconds, pause the blind.
+- command: If the door is not in an unknown state and the window is not open after 5 seconds, pause the blind.
   code:
   - name: Scenario9
     cron: ''
@@ -755,8 +674,7 @@
             (#Blind).blind_pause()
         }
       }
-- command: In case the door's status isn't uncertain and the window remains shut five
-    seconds afterward, interrupt the operation of the blind
+- command: In case the door's status isn't uncertain and the window remains shut five seconds afterward, interrupt the operation of the blind
   code:
   - name: Scenario9
     cron: ''
@@ -768,8 +686,7 @@
             (#Blind).blind_pause()
         }
       }
-- command: If the door's condition isn't ambiguous and the window hasn't been opened
-    post five seconds, stop the blind movement
+- command: If the door's condition isn't ambiguous and the window hasn't been opened post five seconds, stop the blind movement
   code:
   - name: Scenario9
     cron: ''
@@ -781,8 +698,7 @@
             (#Blind).blind_pause()
         }
       }
-- command: Should the door not be in an indeterminate state and the window doesn't
-    open within a span of five seconds, halt the blind's progression
+- command: Should the door not be in an indeterminate state and the window doesn't open within a span of five seconds, halt the blind's progression
   code:
   - name: Scenario9
     cron: ''
@@ -794,8 +710,7 @@
             (#Blind).blind_pause()
         }
       }
-- command: If the door is closing and the window is not in an unknown state after
-    5 seconds, close the blinds.
+- command: If the door is closing and the window is not in an unknown state after 5 seconds, close the blinds.
   code:
   - name: Scenario9
     cron: ''
@@ -807,8 +722,7 @@
             (#Blind).blind_close()
         }
       }
-- command: Should the door be in the process of closing, and the window not in any
-    undetermined state after a span of 5 seconds, ensure the blinds are shut
+- command: Should the door be in the process of closing, and the window not in any undetermined state after a span of 5 seconds, ensure the blinds are shut
   code:
   - name: Scenario9
     cron: ''
@@ -820,8 +734,7 @@
             (#Blind).blind_close()
         }
       }
-- command: In the event the door starts to close and the window maintains a known
-    condition after five seconds, please draw the blinds
+- command: In the event the door starts to close and the window maintains a known condition after five seconds, please draw the blinds
   code:
   - name: Scenario9
     cron: ''
@@ -833,8 +746,7 @@
             (#Blind).blind_close()
         }
       }
-- command: If you notice the door closing and the window's status being clear after
-    a five-second interval, proceed to shut the blinds
+- command: If you notice the door closing and the window's status being clear after a five-second interval, proceed to shut the blinds
   code:
   - name: Scenario9
     cron: ''
@@ -846,8 +758,7 @@
             (#Blind).blind_close()
         }
       }
-- command: If the door is in an unknown state and the window is not closed after 5
-    seconds, open the blinds.
+- command: If the door is in an unknown state and the window is not closed after 5 seconds, open the blinds.
   code:
   - name: Scenario9
     cron: ''
@@ -859,8 +770,7 @@
             (#Blind).blind_open()
         }
       }
-- command: Should you find the door in an uncertain condition and the window remains
-    open beyond five seconds, please proceed to open the blinds
+- command: Should you find the door in an uncertain condition and the window remains open beyond five seconds, please proceed to open the blinds
   code:
   - name: Scenario9
     cron: ''
@@ -872,8 +782,7 @@
             (#Blind).blind_open()
         }
       }
-- command: In the event that the door's status is unclear and the window hasn't been
-    shut after a span of 5 seconds, make sure to open the blinds
+- command: In the event that the door's status is unclear and the window hasn't been shut after a span of 5 seconds, make sure to open the blinds
   code:
   - name: Scenario9
     cron: ''
@@ -885,8 +794,7 @@
             (#Blind).blind_open()
         }
       }
-- command: If you can't determine the state of the door and the window hasn't been
-    closed after waiting 5 seconds, it's time to open the blinds
+- command: If you can't determine the state of the door and the window hasn't been closed after waiting 5 seconds, it's time to open the blinds
   code:
   - name: Scenario9
     cron: ''
@@ -898,8 +806,7 @@
             (#Blind).blind_open()
         }
       }
-- command: If the door is not closed and the window is not in an unknown state after
-    5 seconds, set the blinds to level 100.
+- command: If the door is not closed and the window is not in an unknown state after 5 seconds, set the blinds to level 100.
   code:
   - name: Scenario9
     cron: ''
@@ -911,8 +818,7 @@
             (#Blind).blindLevel_setBlindLevel(100)
         }
       }
-- command: Should the door remain ajar and the window's state isn't unknown after
-    a five-second interval, please adjust the blinds to the maximum level
+- command: Should the door remain ajar and the window's state isn't unknown after a five-second interval, please adjust the blinds to the maximum level
   code:
   - name: Scenario9
     cron: ''
@@ -924,8 +830,7 @@
             (#Blind).blindLevel_setBlindLevel(100)
         }
       }
-- command: In case the door isn't shut and the window isn't in an indeterminate state
-    post five seconds, make sure to elevate the blinds to their fullest extent
+- command: In case the door isn't shut and the window isn't in an indeterminate state post five seconds, make sure to elevate the blinds to their fullest extent
   code:
   - name: Scenario9
     cron: ''
@@ -937,8 +842,7 @@
             (#Blind).blindLevel_setBlindLevel(100)
         }
       }
-- command: If, after five seconds, the door continues to be open and the window's
-    condition isn't unspecified, kindly set the blinds to their highest position
+- command: If, after five seconds, the door continues to be open and the window's condition isn't unspecified, kindly set the blinds to their highest position
   code:
   - name: Scenario9
     cron: ''
@@ -950,8 +854,7 @@
             (#Blind).blindLevel_setBlindLevel(100)
         }
       }
-- command: If the curtains are in a partially open state, set the light hue to 30
-    after 2 seconds, then wait another 4 seconds to toggle the light switch.
+- command: If the curtains are in a partially open state, set the light hue to 30 after 2 seconds, then wait another 4 seconds to toggle the light switch.
   code:
   - name: Scenario10
     cron: ''
@@ -963,9 +866,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_toggle()
       }
-- command: In the event of the curtains being semi-open, change the color of the light
-    to a hue of 30 promptly after a couple of seconds. Then, allow for another four
-    seconds to pass before you alter the status of the light switch
+- command: In the event of the curtains being semi-open, change the color of the light to a hue of 30 promptly after a couple of seconds. Then, allow for another four seconds to pass before you alter the status of the light switch
   code:
   - name: Scenario10
     cron: ''
@@ -977,9 +878,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_toggle()
       }
-- command: Should you find the curtains halfway open, promptly adjust the light's
-    hue to 30 in the span of two seconds. Following this, make a point of waiting
-    for an additional four seconds before flipping the light switch
+- command: Should you find the curtains halfway open, promptly adjust the light's hue to 30 in the span of two seconds. Following this, make a point of waiting for an additional four seconds before flipping the light switch
   code:
   - name: Scenario10
     cron: ''
@@ -991,9 +890,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_toggle()
       }
-- command: If you notice the curtains are not fully open, quickly modify the light's
-    hue to 30 after waiting for two seconds. Then, hold off for another four seconds
-    before you proceed to switch the light's state
+- command: If you notice the curtains are not fully open, quickly modify the light's hue to 30 after waiting for two seconds. Then, hold off for another four seconds before you proceed to switch the light's state
   code:
   - name: Scenario10
     cron: ''
@@ -1005,8 +902,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_toggle()
       }
-- command: If the curtains are closing, set the light saturation to 35 after 2 seconds,
-    then wait another 4 seconds to turn them on.
+- command: If the curtains are closing, set the light saturation to 35 after 2 seconds, then wait another 4 seconds to turn them on.
   code:
   - name: Scenario10
     cron: ''
@@ -1018,9 +914,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_on()
       }
-- command: Should the curtains begin to close, modify the light saturation to 35 after
-    a brief pause of 2 seconds, then allow an additional 4 seconds before you switch
-    them on.
+- command: Should the curtains begin to close, modify the light saturation to 35 after a brief pause of 2 seconds, then allow an additional 4 seconds before you switch them on.
   code:
   - name: Scenario10
     cron: ''
@@ -1032,9 +926,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_on()
       }
-- command: In the event the curtains start closing, adjust the light saturation to
-    35 after waiting for 2 seconds, then hold on for another 4 seconds prior to turning
-    them on.
+- command: In the event the curtains start closing, adjust the light saturation to 35 after waiting for 2 seconds, then hold on for another 4 seconds prior to turning them on.
   code:
   - name: Scenario10
     cron: ''
@@ -1046,9 +938,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_on()
       }
-- command: When you notice the curtains are closing, change the light saturation to
-    35 following a 2-second delay, then let another 4 seconds pass before you activate
-    them.
+- command: When you notice the curtains are closing, change the light saturation to 35 following a 2-second delay, then let another 4 seconds pass before you activate them.
   code:
   - name: Scenario10
     cron: ''
@@ -1060,8 +950,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_on()
       }
-- command: If the curtains are paused, alert with dimming light after 2 seconds, then
-    wait another 4 seconds to set the light color to green.
+- command: If the curtains are paused, alert with dimming light after 2 seconds, then wait another 4 seconds to set the light color to green.
   code:
   - name: Scenario10
     cron: ''
@@ -1073,9 +962,7 @@
         (#Clock).clock_delay(4000)
         (#Light).colorControl_setColor("GREEN")
       }
-- command: Should the curtains find themselves paused, please emit a faint light as
-    a signal after a brief two-second pause. Following this, hold off for an additional
-    four seconds before adjusting the light color to a lovely shade of green.
+- command: Should the curtains find themselves paused, please emit a faint light as a signal after a brief two-second pause. Following this, hold off for an additional four seconds before adjusting the light color to a lovely shade of green.
   code:
   - name: Scenario10
     cron: ''
@@ -1087,9 +974,7 @@
         (#Clock).clock_delay(4000)
         (#Light).colorControl_setColor("GREEN")
       }
-- command: In the event that the curtains have been paused, I'd like you to give a
-    soft light alert after a 2-second interval. Then, please take a pause of 4 seconds
-    before changing the light color to green.
+- command: In the event that the curtains have been paused, I'd like you to give a soft light alert after a 2-second interval. Then, please take a pause of 4 seconds before changing the light color to green.
   code:
   - name: Scenario10
     cron: ''
@@ -1101,9 +986,7 @@
         (#Clock).clock_delay(4000)
         (#Light).colorControl_setColor("GREEN")
       }
-- command: Upon noticing the curtains are at a standstill, could you kindly produce
-    a dimming light as a warning after waiting for 2 seconds? Subsequently, leave
-    a gap of 4 seconds before transitioning the light color to green.
+- command: Upon noticing the curtains are at a standstill, could you kindly produce a dimming light as a warning after waiting for 2 seconds? Subsequently, leave a gap of 4 seconds before transitioning the light color to green.
   code:
   - name: Scenario10
     cron: ''
@@ -1115,8 +998,7 @@
         (#Clock).clock_delay(4000)
         (#Light).colorControl_setColor("GREEN")
       }
-- command: If the curtains are fully closed, set the light brightness level to 70
-    after 2 seconds, then wait another 4 seconds to turn them off.
+- command: If the curtains are fully closed, set the light brightness level to 70 after 2 seconds, then wait another 4 seconds to turn them off.
   code:
   - name: Scenario10
     cron: ''
@@ -1128,9 +1010,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_off()
       }
-- command: Should you find the curtains completely shut, kindly adjust the light's
-    brightness to 70, hold off for two seconds, then wait an additional four seconds
-    before switching them off.
+- command: Should you find the curtains completely shut, kindly adjust the light's brightness to 70, hold off for two seconds, then wait an additional four seconds before switching them off.
   code:
   - name: Scenario10
     cron: ''
@@ -1142,9 +1022,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_off()
       }
-- command: In the event that the drapes are entirely drawn, please proceed to elevate
-    the brightness of the light to 70, pause for a couple of seconds, and after a
-    further wait of four seconds, proceed to turn them off.
+- command: In the event that the drapes are entirely drawn, please proceed to elevate the brightness of the light to 70, pause for a couple of seconds, and after a further wait of four seconds, proceed to turn them off.
   code:
   - name: Scenario10
     cron: ''
@@ -1156,9 +1034,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_off()
       }
-- command: If it appears that the curtains have been fully closed, I would appreciate
-    if you could increase the light's brightness to 70, allow for a two-second break,
-    then after a further four-second delay, please switch them off.
+- command: If it appears that the curtains have been fully closed, I would appreciate if you could increase the light's brightness to 70, allow for a two-second break, then after a further four-second delay, please switch them off.
   code:
   - name: Scenario10
     cron: ''
@@ -1170,8 +1046,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_off()
       }
-- command: If the curtains are opening, pause the curtain movement after 2 seconds,
-    then wait another 4 seconds to turn off the lights.
+- command: If the curtains are opening, pause the curtain movement after 2 seconds, then wait another 4 seconds to turn off the lights.
   code:
   - name: Scenario10
     cron: ''
@@ -1183,9 +1058,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_off()
       }
-- command: Should the curtains begin to open, please momentarily stop the curtain's
-    motion after two seconds, then after a lapse of four more seconds, proceed to
-    switch off the lights
+- command: Should the curtains begin to open, please momentarily stop the curtain's motion after two seconds, then after a lapse of four more seconds, proceed to switch off the lights
   code:
   - name: Scenario10
     cron: ''
@@ -1197,9 +1070,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_off()
       }
-- command: In the event that the curtains start to move, halt the curtains exactly
-    after a couple of seconds, and then following an additional wait of four seconds,
-    ensure to extinguish the lights
+- command: In the event that the curtains start to move, halt the curtains exactly after a couple of seconds, and then following an additional wait of four seconds, ensure to extinguish the lights
   code:
   - name: Scenario10
     cron: ''
@@ -1211,9 +1082,7 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_off()
       }
-- command: When you notice the curtains start to draw, suspend their movement after
-    two seconds, and then, once another four seconds have transpired, turn off all
-    the lights
+- command: When you notice the curtains start to draw, suspend their movement after two seconds, and then, once another four seconds have transpired, turn off all the lights
   code:
   - name: Scenario10
     cron: ''
@@ -1225,3 +1094,5 @@
         (#Clock).clock_delay(4000)
         (#Light).switch_off()
       }
+# original_count: 92
+# augmented_count: 0
