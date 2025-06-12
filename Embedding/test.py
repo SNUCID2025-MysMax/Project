@@ -143,7 +143,7 @@ elif version == "v1":
                 # result.append((f"category_{i}", command, ret,))
 
 elif version == "v4":
-    for i in range(0, 17):
+    for i in range(1, 2):
         file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
         print(f"Processing file: {file_name}")
 

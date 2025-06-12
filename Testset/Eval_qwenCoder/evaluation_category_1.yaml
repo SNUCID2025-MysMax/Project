@@ -1,44 +1,43 @@
 - command: 토양 수분이 30% 이하이고 조명이 꺼져 있으면 관개 장치를 작동시키고 조명을 켜 줘.
   command_translated: If the soil moisture is below 30% and the lights are off, turn on the irrigator and the light.
   devices:
-  - Blind
-  - Shade
-  - Light
-  - Clock
-  - Irrigator
-  - LightSensor
-  - Humidifier
-  - HumiditySensor
-  - Relay
   - WeatherProvider
+  - Clock
+  - Speaker
+  - Siren
+  - LightSensor
+  - Alarm
+  - Irrigator
+  - Light
+  - Dehumidifier
   - SoilMoistureSensor
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) and ((#Light).switch_switch == "off")) {
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) and ((#Light).switch_switch == "off") {
         (#Irrigator).switch_on()
         (#Light).switch_on()
       }
   model_info:
-    elapsed_time: 9.367
-    bge_elapsed_time: 2.205
-    llm_elapsed_time: 7.162
+    elapsed_time: 4.961
+    bge_elapsed_time: 0.09
+    llm_elapsed_time: 4.851
+    validation_elapsed_time: 0.021
 - command: 온도가 33도 이상이면 제습기를 켜고 커튼을 닫아 줘.
   command_translated: If the temperature is above 33 degrees, turn on the dehumidifier and close the curtains.
   devices:
-  - Blind
-  - AirQualityDetector
-  - TemperatureSensor
-  - Dehumidifier
-  - AirConditioner
-  - Clock
-  - HumiditySensor
   - Humidifier
-  - DoorLock
-  - ContactSensor
+  - TemperatureSensor
+  - WeatherProvider
+  - Speaker
+  - Window
+  - AirPurifier
+  - Shade
   - Curtain
+  - Dehumidifier
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -49,185 +48,190 @@
         (#Curtain).curtain_close()
       }
   model_info:
-    elapsed_time: 4.009
-    bge_elapsed_time: 0.202
-    llm_elapsed_time: 3.807
+    elapsed_time: 4.087
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 3.979
+    validation_elapsed_time: 0.02
 - command: 이산화탄소가 1000ppm 이상이고 블라인드가 열려 있으면 환풍기를 켜고 블라인드를 닫아 줘.
   command_translated: If the carbon dioxide is above 1000 ppm and the blinds are open, turn on the fan and close the blinds.
   devices:
-  - Blind
-  - Valve
   - Fan
-  - Shade
+  - Speaker
+  - DoorLock
+  - Blind
   - AirQualityDetector
-  - AirPurifier
+  - Window
+  - Shade
+  - Valve
+  - Curtain
   - Clock
-  - AirConditioner
-  - Humidifier
-  - GasValve
-  - Pump
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide > 1000) and ((#Blind).blind_blind == "open")) {
-        (#Fan).switch_on()
+      if ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide > 1000.0) and ((#Blind).blind_blind == "open") {
+        (#Fan).fanControl_setFanSpeed(100)
         (#Blind).blind_close()
       }
   model_info:
-    elapsed_time: 5.076
-    bge_elapsed_time: 0.24
-    llm_elapsed_time: 4.836
+    elapsed_time: 4.985
+    bge_elapsed_time: 0.09
+    llm_elapsed_time: 4.876
+    validation_elapsed_time: 0.02
 - command: 온도가 29도 이상이고 습도가 80% 이상이며 조명이 꺼져 있으면 에어컨을 켜고 조명을 켜 줘.
   command_translated: If the temperature is above 29 degrees, the humidity is above 80%, and the lights are off, turn on the air conditioner and turn on the lights.
   devices:
-  - AirQualityDetector
-  - Light
-  - TemperatureSensor
-  - AirConditioner
-  - Dehumidifier
-  - Clock
-  - HumiditySensor
   - Humidifier
-  - LightSensor
   - WeatherProvider
-  - Curtain
+  - TemperatureSensor
+  - Speaker
+  - AirConditioner
+  - AirQualityDetector
+  - HumiditySensor
+  - LightSensor
+  - Light
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#TemperatureSensor).temperatureMeasurement_temperature > 29.0) and ((#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0) and ((#Light).switch_switch == 'off')) {
-        (#AirConditioner).switch_on()
+      if (
+        (#TemperatureSensor).temperatureMeasurement_temperature > 29.0 and
+        (#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0 and
+        (#Light).lightLevel_light == 0
+      ) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode("cool")
+        (#AirConditioner).airConditionerMode_setTemperature(25.0)
         (#Light).switch_on()
       }
   model_info:
-    elapsed_time: 6.014
-    bge_elapsed_time: 0.302
-    llm_elapsed_time: 5.711
+    elapsed_time: 6.601
+    bge_elapsed_time: 0.093
+    llm_elapsed_time: 6.488
+    validation_elapsed_time: 0.021
 - command: 조명이 켜져 있고 창문이 닫혀 있으면 커튼을 열고 환풍기를 꺼 줘.
   command_translated: If the lights are on and the windows are closed, open the curtains and turn off the fan.
   devices:
-  - Blind
   - Fan
-  - AirPurifier
-  - Dehumidifier
-  - AirConditioner
-  - Clock
-  - Humidifier
-  - Window
+  - Pump
+  - Speaker
   - DoorLock
-  - ContactSensor
+  - GasValve
+  - Blind
+  - Window
+  - Shade
   - Curtain
+  - Light
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Blind).switch_switch == "on") and ((#Window).windowControl_window == "closed") {
+      if ((#Light).switch_switch == "on") and ((#Window).windowControl_window == "closed") {
         (#Curtain).curtain_open()
         (#Fan).switch_off()
       }
   model_info:
-    elapsed_time: 4.537
-    bge_elapsed_time: 0.3
-    llm_elapsed_time: 4.237
+    elapsed_time: 4.483
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 4.371
+    validation_elapsed_time: 0.024
 - command: TV가 꺼져 있고 스피커가 재생 중이면 TV를 켜고 스피커를 꺼 줘.
   command_translated: If the TV is off and the speaker is playing, turn on the TV and turn off the speaker.
   devices:
-  - Refrigerator
   - Speaker
-  - Fan
-  - Light
-  - Clock
-  - Camera
-  - Switch
-  - SmartPlug
-  - Relay
+  - GasValve
+  - Blind
+  - Window
+  - Irrigator
+  - Timer
   - Television
-  - Curtain
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Television).switch_switch == "off") and ((#Speaker).mediaPlayback_playbackStatus == "playing") {
+      if ((#Television).switch_switch == "off") and ((#Speaker).mediaPlayback_supportedPlaybackCommands == "playing") {
         (#Television).switch_on()
-        (#Speaker).switch_off()
+        (#Speaker).mediaPlayback_stop()
       }
   model_info:
-    elapsed_time: 4.368
-    bge_elapsed_time: 0.156
-    llm_elapsed_time: 4.213
+    elapsed_time: 4.359
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 4.246
+    validation_elapsed_time: 0.025
 - command: 조명이 켜져 있고 블라인드가 열려 있으며 움직임이 감지되면 조명을 끄고 블라인드를 닫아 줘.
   command_translated: If the lights are on, the blinds are open, and motion is detected, turn off the lights and close the blinds.
   devices:
+  - Speaker
+  - DoorLock
   - Blind
-  - Valve
+  - Window
+  - LightSensor
+  - Shade
+  - MotionSensor
+  - Curtain
   - Light
   - Clock
-  - DoorLock
-  - Window
-  - SmokeDetector
-  - Switch
-  - Relay
-  - ContactSensor
-  - Curtain
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Light).switch_switch == "on") and ((#Blind).blind_blind == "open") and ((#ContactSensor).contactSensor_contact == "detected") {
-        (#Light).switch_switch = "off"
+      if ((#Light).switch_switch == "on") and ((#Blind).blind_blind == "open") and ((#MotionSensor).motionSensor_motion == "active") {
+        (#Light).switch_off()
         (#Blind).blind_close()
       }
   model_info:
-    elapsed_time: 4.7
-    bge_elapsed_time: 0.156
-    llm_elapsed_time: 4.544
+    elapsed_time: 5.079
+    bge_elapsed_time: 0.09
+    llm_elapsed_time: 4.959
+    validation_elapsed_time: 0.03
 - command: 알람이 꺼져 있고 조명이 꺼져 있으며 커튼이 열려 있으면 사이렌을 울리고 조명을 켜 줘.
   command_translated: If the alarm is off, the lights are off, and the curtains are open, sound the siren and turn on the lights.
   devices:
+  - SoundSensor
+  - Speaker
+  - DoorLock
+  - Siren
   - Blind
+  - Window
+  - Alarm
+  - Shade
+  - Curtain
   - Light
   - Clock
-  - DoorLock
-  - Window
-  - Relay
-  - Siren
-  - ContactSensor
-  - Pump
-  - Alarm
-  - Curtain
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Alarm).alarm_alarm == "off") and ((#Light).switch_switch == "off") and ((#Curtain).curtain_curtain == "open") {
+      if ((#Alarm).alarm_alarm == 'off' and (#Light).switch_switch == 'off' and (#Curtain).curtain_curtain == 'open') {
         (#Alarm).alarm_siren()
         (#Light).switch_on()
       }
   model_info:
-    elapsed_time: 4.736
-    bge_elapsed_time: 0.151
-    llm_elapsed_time: 4.585
+    elapsed_time: 5.04
+    bge_elapsed_time: 0.193
+    llm_elapsed_time: 4.823
+    validation_elapsed_time: 0.024
 - command: 에어컨이 꺼져 있고 커튼이 닫혀 있으면 에어컨을 켜고 커튼을 열어 줘.
   command_translated: If the air conditioner is off and the curtains are closed, turn on the air conditioner and open the curtains.
   devices:
-  - Blind
-  - Valve
-  - Fan
-  - Clock
+  - Pump
+  - Speaker
   - AirConditioner
   - DoorLock
+  - GasValve
+  - Blind
   - Window
-  - Humidifier
-  - ContactSensor
-  - Pump
+  - Shade
   - Curtain
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
@@ -238,35 +242,33 @@
         (#Curtain).curtain_open()
       }
   model_info:
-    elapsed_time: 4.428
-    bge_elapsed_time: 0.15
-    llm_elapsed_time: 4.278
+    elapsed_time: 4.598
+    bge_elapsed_time: 0.09
+    llm_elapsed_time: 4.484
+    validation_elapsed_time: 0.024
 - command: TV가 켜져 있고 소리가 꺼져 있으면 TV를 끄고 음소거를 해제해 줘.
   command_translated: If the TV is on and the sound is off, turn it off and unmute it.
   devices:
-  - Speaker
-  - Light
-  - AirPurifier
-  - Recorder
-  - Clock
-  - Camera
-  - Dishwasher
-  - Relay
   - SoundSensor
-  - RobotCleaner
+  - Speaker
+  - Siren
+  - GasValve
+  - Window
+  - Alarm
+  - Dehumidifier
   - Television
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if ((#Television).switch_switch == "on") {
-        if ((#Television).audioMute_muteStatus == "muted") {
-          (#Television).switch_off()
-          (#Television).audioMute_unmute()
-        }
+      if ((#Television).switch_switch == "on") and ((#Television).audioMute_muteStatus == "muted") {
+        (#Television).switch_off()
+        (#Television).audioMute_unmute()
       }
   model_info:
-    elapsed_time: 4.92
-    bge_elapsed_time: 0.15
-    llm_elapsed_time: 4.771
+    elapsed_time: 4.576
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 4.469
+    validation_elapsed_time: 0.019

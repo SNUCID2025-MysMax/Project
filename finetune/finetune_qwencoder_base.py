@@ -1,5 +1,5 @@
 import multiprocessing
-import os, sys, random, copy
+import os, sys, random, copy, json
 from tqdm import tqdm
 from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -87,10 +87,36 @@ classes = extract_classes_by_name(service_doc)
 
 classes_copy = copy.deepcopy(classes)
 
+exclude = {"Wall", "SectorA", "SectorB", "Upper", "Lower", "Even", "Odd"}
 def read_yaml(data):
     dic = {}
     dic['command'] = data['command_translated']
     dic['devices'] = data['devices']
+    s = ""
+    sub = []
+    for i in data['code']:
+      k = ""
+      k += f"name = \"{i['name']}\"\n"
+      k += f"cron = \"{i['cron']}\"\n"
+      k += f"period = {i['period']}\n"
+      k += i['code'].strip() + "\n"
+      sub.append(k)
+    s += "---\n".join(sub)
+    dic["code"] = s
+    return dic
+
+def read_json(data):
+    dic = {}
+    dic['command'] = data['command_translated']
+
+    result = set()
+    for code in data["code"]:
+        text = code["code"]
+        matches = re.findall(r"#([A-Za-z0-9]+)(?=[^A-Za-z0-9])", text)
+        matches = {m for m in matches if m not in exclude}
+        result.update(matches)
+    dic['devices'] = list(result)
+
     s = ""
     sub = []
     for i in data['code']:
@@ -110,20 +136,58 @@ def load_dataset():
     ret = []
     current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
 
+    extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even",]
+
     for i in range(0, 17):  # 범위를 필요에 따라 조정
-        file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
+        
         if (i == 13):
-            extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even",]
             for key in classes.keys():
                 doc = classes[key]
                 lines = doc.splitlines()
                 new_lines = lines[:4] + [f"    #{tag}" for tag in sorted(set(extra_tags))] + lines[4:]
                 classes[key] = "\n".join(new_lines)
+
+        # file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
+        # try:
+        #     with open(file_name, "r", encoding="utf-8") as file:
+        #         data = yaml.safe_load(file)
+        #     for item in data:
+        #         result = read_yaml(item)
+        #         devices = result['devices']
+        #         service_doc = "\n---\n".join([classes[device] for device in devices if device in classes])
+        #         ret.append({
+        #             "conversations": [
+        #                 {
+        #                     "role": "system",
+        #                     "content": grammar,
+        #                 },
+        #                 {
+        #                     "role": "system", 
+        #                     # "content": grammar + "\n\n" + service_doc,
+        #                     "content": service_doc,
+        #                 },
+        #                 {
+        #                     "role": "user",
+        #                     "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
+        #                     # "content": f"Generate JOI Lang code for \"{result['command']}\"",
+        #                 },
+        #                 {
+        #                     "role": "assistant",
+        #                     "content": "```\n"+result['code']+"\n```",
+        #                 }
+        #             ]
+        #         })
+        # except FileNotFoundError:
+        #     print(f"파일을 찾을 수 없습니다: {file_name}")
+        # except Exception as e:
+        #     print(f"데이터 처리 중 오류: {e}") 
+        
+        file_name = f"../ChatGPT/data_augmenta/trainset/generated_data_{i}.json"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
-                data = yaml.safe_load(file)
+                data = json.load(file)
             for item in data:
-                result = read_yaml(item)
+                result = read_json(item)
                 devices = result['devices']
                 service_doc = "\n---\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
@@ -152,8 +216,10 @@ def load_dataset():
             print(f"파일을 찾을 수 없습니다: {file_name}")
         except Exception as e:
             print(f"데이터 처리 중 오류: {e}")
+
+
         if (i == 13):
-            classes = classes_copy     
+            classes = classes_copy 
     
     return ret
 
@@ -194,47 +260,47 @@ print(f"Min length: {min(lengths)}")
 print(f"Average length: {sum(lengths) / len(lengths):.2f}")
 ######################################################################################
 
-trainer = SFTTrainer(
-    model = model,
-    tokenizer = tokenizer,
-    train_dataset = MY_DATASET,
-    packing = False,  # Can make training 5x faster for short sequences.
-    args = SFTConfig(
-        use_liger_kernel = True,
-        per_device_train_batch_size = 4,
-        gradient_accumulation_steps = 4,
-        warmup_steps = 10,
-        num_train_epochs = 3,
-        learning_rate = 2e-5, #1e-6
-        optim = "adamw_8bit",
-        weight_decay = 0.01,
-        lr_scheduler_type = "cosine",
-        seed = 3407,
-        dataset_text_field = "text",
-        report_to = "none",
-        max_grad_norm = 0.3,
-        dataset_num_proc = min(8, multiprocessing.cpu_count()),
-        dataloader_num_workers = min(4, multiprocessing.cpu_count()),
-        logging_steps= 5,
-        auto_find_batch_size = True,
-        fp16 = False,
-        bf16 = True, 
-        remove_unused_columns = False,
-        dataloader_pin_memory = False,
-    ),
-)
+# trainer = SFTTrainer(
+#     model = model,
+#     tokenizer = tokenizer,
+#     train_dataset = MY_DATASET,
+#     packing = False,  # Can make training 5x faster for short sequences.
+#     args = SFTConfig(
+#         use_liger_kernel = True,
+#         per_device_train_batch_size = 4,
+#         gradient_accumulation_steps = 4,
+#         warmup_steps = 10,
+#         num_train_epochs = 3,
+#         learning_rate = 2e-5, #1e-6
+#         optim = "adamw_8bit",
+#         weight_decay = 0.01,
+#         lr_scheduler_type = "cosine",
+#         seed = 3407,
+#         dataset_text_field = "text",
+#         report_to = "none",
+#         max_grad_norm = 0.3,
+#         dataset_num_proc = min(8, multiprocessing.cpu_count()),
+#         dataloader_num_workers = min(4, multiprocessing.cpu_count()),
+#         logging_steps= 5,
+#         auto_find_batch_size = True,
+#         fp16 = False,
+#         bf16 = True, 
+#         remove_unused_columns = False,
+#         dataloader_pin_memory = False,
+#     ),
+# )
 
-with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
-    trainer_stats = trainer.train()
+# with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
+#     trainer_stats = trainer.train()
 
-# trainer_stats = trainer.train()
+# # trainer_stats = trainer.train()
 
-# # import gc
-# # torch.cuda.empty_cache()
-# # gc.collect()
+# # # import gc
+# # # torch.cuda.empty_cache()
+# # # gc.collect()
 
-model.save_pretrained("../models/qwenCoder-adapter")
-tokenizer.save_pretrained("../models/qwenCoder-adapter")
+# model.save_pretrained("../models/qwenCoder-adapter")
+# tokenizer.save_pretrained("../models/qwenCoder-adapter")
 
-# # model.save_pretrained_merged("model", tokenizer, save_method="merged_16bit")
-# # model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")
+# # # model.save_pretrained_merged("model", tokenizer, save_method="merged_16bit")
+# # # model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")
