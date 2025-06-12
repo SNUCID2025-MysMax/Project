@@ -1,0 +1,1236 @@
+- command: Change the hue of the living room light and then set it to full saturation every two seconds. Check each time the saturation is set to full and stop the loop immediately if it detects that a window is open.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Light).colorControl_setHue(50)
+      light_state = (#Light).colorControl_hue
+      if (light_state == 50) {
+        (#Light).colorControl_setSaturation(100)
+        saturation_state = (#Light).colorControl_saturation
+        if (saturation_state == 100) {
+          window_state = (#Window).windowControl_window
+          if (window_state == 'open') {
+              break
+          }
+        }
+      }
+- command: Every two seconds, shift the color of the living room light and intensify it to maximum saturation, but ensure to halt this process right away if you sense an open window during each saturation check
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Light).colorControl_setHue(50)
+      light_state = (#Light).colorControl_hue
+      if (light_state == 50) {
+        (#Light).colorControl_setSaturation(100)
+        saturation_state = (#Light).colorControl_saturation
+        if (saturation_state == 100) {
+          window_state = (#Window).windowControl_window
+          if (window_state == 'open') {
+              break
+          }
+        }
+      }
+- command: Continually alter the color tone of the living room light and boost it to its fullest saturation every two seconds. However, if you notice a window opening during any of these saturation cycles, terminate the loop at once
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Light).colorControl_setHue(50)
+      light_state = (#Light).colorControl_hue
+      if (light_state == 50) {
+        (#Light).colorControl_setSaturation(100)
+        saturation_state = (#Light).colorControl_saturation
+        if (saturation_state == 100) {
+          window_state = (#Window).windowControl_window
+          if (window_state == 'open') {
+              break
+          }
+        }
+      }
+- command: In every two-second interval, modify the color of the living room light and crank up its saturation to maximum, but make sure to abort the operation immediately if you observe an open window during each saturation confirmation
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Light).colorControl_setHue(50)
+      light_state = (#Light).colorControl_hue
+      if (light_state == 50) {
+        (#Light).colorControl_setSaturation(100)
+        saturation_state = (#Light).colorControl_saturation
+        if (saturation_state == 100) {
+          window_state = (#Window).windowControl_window
+          if (window_state == 'open') {
+              break
+          }
+        }
+      }
+- command: Dim the living room light to a level of 50 and then to 0 every two seconds. Check each time it dims the light to 0 and stop the loop immediately if it detects that a window is open.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Light).switchLevel_setLevel(50, 2)
+      light_state = (#Light).switchLevel_level
+      if (light_state == 50) {
+        (#Light).switchLevel_setLevel(0, 2)
+        level_state = (#Light).switchLevel_level
+        if (level_state == 0) {
+          window_state = (#Window).windowControl_window
+          if (window_state == 'open') {
+              break
+          }
+        }
+      }
+- command: Gradually reduce the illumination in the living room to half intensity, then to complete darkness every couple of seconds. Each time the room goes dark, verify whether a window has been left open. If an open window is detected, cease this procedure immediately
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Light).switchLevel_setLevel(50, 2)
+      light_state = (#Light).switchLevel_level
+      if (light_state == 50) {
+        (#Light).switchLevel_setLevel(0, 2)
+        level_state = (#Light).switchLevel_level
+        if (level_state == 0) {
+          window_state = (#Window).windowControl_window
+          if (window_state == 'open') {
+              break
+          }
+        }
+      }
+- command: Lower the brightness of the living room light to half its power and then completely extinguish it every two seconds. Always check for any open windows each time the light is completely dimmed, and discontinue this sequence right away if a window is found to be open
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Light).switchLevel_setLevel(50, 2)
+      light_state = (#Light).switchLevel_level
+      if (light_state == 50) {
+        (#Light).switchLevel_setLevel(0, 2)
+        level_state = (#Light).switchLevel_level
+        if (level_state == 0) {
+          window_state = (#Window).windowControl_window
+          if (window_state == 'open') {
+              break
+          }
+        }
+      }
+- command: Decrease the living room light's brightness to 50%, then completely dim it every two seconds. Be sure to check if any window is open each time the light dims to 0 and halt this cycle instantly upon finding an open window
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Light).switchLevel_setLevel(50, 2)
+      light_state = (#Light).switchLevel_level
+      if (light_state == 50) {
+        (#Light).switchLevel_setLevel(0, 2)
+        level_state = (#Light).switchLevel_level
+        if (level_state == 0) {
+          window_state = (#Window).windowControl_window
+          if (window_state == 'open') {
+              break
+          }
+        }
+      }
+- command: Close the living room window and then open it every two seconds. Check each time it opens the window and stop the loop immediately if it detects that the light is off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Window).windowControl_close()
+      window_state = (#Window).windowControl_window
+      if (window_state == 'closed') {
+        (#Window).windowControl_open()
+        window_state = (#Window).windowControl_window
+        if (window_state == 'open') {
+          light_state = (#Light).switch_switch
+          if (light_state == 'off') {
+              break
+          }
+        }
+      }
+- command: Secure the window in the living room, then proceed to open it at two-second intervals. Inspect if the window opens each instance and cease the cycle immediately if you observe the light being switched off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Window).windowControl_close()
+      window_state = (#Window).windowControl_window
+      if (window_state == 'closed') {
+        (#Window).windowControl_open()
+        window_state = (#Window).windowControl_window
+        if (window_state == 'open') {
+          light_state = (#Light).switch_switch
+          if (light_state == 'off') {
+              break
+          }
+        }
+      }
+- command: Ensure to shut the window in the living area first, and then intermittently open it every couple of seconds. Each time it's opened, verify if the light is out and if so, discontinue the process instantly
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Window).windowControl_close()
+      window_state = (#Window).windowControl_window
+      if (window_state == 'closed') {
+        (#Window).windowControl_open()
+        window_state = (#Window).windowControl_window
+        if (window_state == 'open') {
+          light_state = (#Light).switch_switch
+          if (light_state == 'off') {
+              break
+          }
+        }
+      }
+- command: Initially, seal the window in the lounge, subsequently let it open every two seconds. Always examine the status of the light when the window opens, and if found to be off, bring the repetitive process to a halt without delay
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Window).windowControl_close()
+      window_state = (#Window).windowControl_window
+      if (window_state == 'closed') {
+        (#Window).windowControl_open()
+        window_state = (#Window).windowControl_window
+        if (window_state == 'open') {
+          light_state = (#Light).switch_switch
+          if (light_state == 'off') {
+              break
+          }
+        }
+      }
+- command: Every 3 seconds, decrease the television volume by 1 level. When it reaches level 0, reset it to the initial value. Repeat this cycle. If motion is detected at the moment of reset, stop the repetition.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      volume := 5
+
+      if (volume <= 0) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        volume = 5
+      } else {
+        volume = volume - 1
+      }
+      (#Television).audioVolume_setVolume(volume)
+- command: Continually lower the TV's volume every three seconds by a single level until it gets to zero. At this point, revert it back to its original volume. Maintain this pattern, but make sure to discontinue if there's any detectable movement when the volume resets
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      volume := 5
+
+      if (volume <= 0) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        volume = 5
+      } else {
+        volume = volume - 1
+      }
+      (#Television).audioVolume_setVolume(volume)
+- command: Consistently drop the volume of the television down one notch every three seconds. When it hits zero, bring it back up to the starting volume. Keep this rhythm going, but halt it if any movement is perceived at the time of the volume reset
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      volume := 5
+
+      if (volume <= 0) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        volume = 5
+      } else {
+        volume = volume - 1
+      }
+      (#Television).audioVolume_setVolume(volume)
+- command: On a regular three-second interval, reduce the TV's sound level by one. If it falls to zero, bump it back up to its initial value. Keep this cycle up, but make sure to interrupt the sequence if there's any noticeable movement during the reset moment
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      volume := 5
+
+      if (volume <= 0) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        volume = 5
+      } else {
+        volume = volume - 1
+      }
+      (#Television).audioVolume_setVolume(volume)
+- command: Every 3 seconds, switch the television channel down by 1 channel. When it reaches channel 1, reset it to the initial channel. Repeat this cycle. If motion is detected at the moment of reset, stop the repetition.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      channel := 5
+
+      if (channel <= 1) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        channel = 5
+      } else {
+        channel = channel - 1
+      }
+      (#Television).tvChannel_setTvChannel(channel)
+- command: Continually change the television channel down one notch every three seconds. If channel one is reached, return to the starting channel. Continue this cycle unless movement is detected during the resetting, at which point, halt the cycle
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      channel := 5
+
+      if (channel <= 1) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        channel = 5
+      } else {
+        channel = channel - 1
+      }
+      (#Television).tvChannel_setTvChannel(channel)
+- command: Set a cycle to decrease the TV channel by one every three seconds. Once you hit channel one, revert back to the first channel. Should any motion be detected at the moment of resetting, proceed to cease this cycle
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      channel := 5
+
+      if (channel <= 1) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        channel = 5
+      } else {
+        channel = channel - 1
+      }
+      (#Television).tvChannel_setTvChannel(channel)
+- command: Keep decreasing the television channel by one every three seconds. When you get to channel one, go back to the initial channel and keep doing this. If there's any movement detected when you're resetting, you should terminate this cycle
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      channel := 5
+
+      if (channel <= 1) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        channel = 5
+      } else {
+        channel = channel - 1
+      }
+      (#Television).tvChannel_setTvChannel(channel)
+- command: Every 3 seconds, switch the television on. If the television is already on, switch it off. Repeat this cycle. If motion is detected at the moment of switching, stop the repetition.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      toggles := 0
+
+      if (toggles >= 5) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        toggles = 0
+      } else {
+        toggles = toggles + 1
+      }
+      if ((#Television).switch_switch == 'on') {
+        (#Television).switch_off()
+      } else {
+        (#Television).switch_on()
+      }
+- command: Continually alternate between turning the television on and off every three seconds. However, stop this loop if any movement is detected at the time of the switching action
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      toggles := 0
+
+      if (toggles >= 5) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        toggles = 0
+      } else {
+        toggles = toggles + 1
+      }
+      if ((#Television).switch_switch == 'on') {
+        (#Television).switch_off()
+      } else {
+        (#Television).switch_on()
+      }
+- command: Make sure to keep turning the television on and off in an interval of three seconds. This cycle needs to be interrupted if during the switch, any motion is perceived
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      toggles := 0
+
+      if (toggles >= 5) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        toggles = 0
+      } else {
+        toggles = toggles + 1
+      }
+      if ((#Television).switch_switch == 'on') {
+        (#Television).switch_off()
+      } else {
+        (#Television).switch_on()
+      }
+- command: Please go on with the process of switching the TV on and off every three seconds. But remember to halt this recurring action if there's a detection of motion when the switch is happening
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      toggles := 0
+
+      if (toggles >= 5) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        toggles = 0
+      } else {
+        toggles = toggles + 1
+      }
+      if ((#Television).switch_switch == 'on') {
+        (#Television).switch_off()
+      } else {
+        (#Television).switch_on()
+      }
+- command: Every 3 seconds, mute the television audio. If the audio is already muted, unmute it. Repeat this cycle. If motion is detected at the moment of unmuting, stop the repetition.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      mutes := 0
+
+      if (mutes >= 5) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        mutes = 0
+      } else {
+        mutes = mutes + 1
+      }
+      if ((#Television).audioMute_muteStatus == 'muted') {
+        (#Television).audioMute_unmute()
+      } else {
+        (#Television).audioMute_mute()
+      }
+- command: Continually switch off the TV's sound every three seconds, and if it's already off, turn it back on. Keep repeating this process. However, if movement is noticed when the sound is turned back on, put an end to this cycle
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      mutes := 0
+
+      if (mutes >= 5) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        mutes = 0
+      } else {
+        mutes = mutes + 1
+      }
+      if ((#Television).audioMute_muteStatus == 'muted') {
+        (#Television).audioMute_unmute()
+      } else {
+        (#Television).audioMute_mute()
+      }
+- command: Keep alternating between muting and unmuting the TV sound every three seconds. If any motion is perceived at the point the sound is restored, stop this recurring procedure
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      mutes := 0
+
+      if (mutes >= 5) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        mutes = 0
+      } else {
+        mutes = mutes + 1
+      }
+      if ((#Television).audioMute_muteStatus == 'muted') {
+        (#Television).audioMute_unmute()
+      } else {
+        (#Television).audioMute_mute()
+      }
+- command: Consistently silence and unsilence the television audio at three-second intervals. However, if there's any detected movement during the sound reactivation, cease this routine
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      mutes := 0
+
+      if (mutes >= 5) {
+        motion = (#MotionSensor).motionSensor_motion
+        if (motion == 'active') {
+            break
+        }
+        mutes = 0
+      } else {
+        mutes = mutes + 1
+      }
+      if ((#Television).audioMute_muteStatus == 'muted') {
+        (#Television).audioMute_unmute()
+      } else {
+        (#Television).audioMute_mute()
+      }
+- command: Every 10 seconds, set the blinds to 50% open. Check each time and end the loop immediately if the TV is muted.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blindLevel_setBlindLevel(50)
+      tv_mute = (#Television).audioMute_muteStatus
+      if (tv_mute == 'muted') {
+        break
+      }
+- command: Every 10 seconds, adjust the blinds to a half-open position. However, in every cycle, ensure to check if the television is on mute. If it is, discontinue the cycle right away
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blindLevel_setBlindLevel(50)
+      tv_mute = (#Television).audioMute_muteStatus
+      if (tv_mute == 'muted') {
+        break
+      }
+- command: On an interval of every 10 seconds, make sure the blinds are opened halfway. During each cycle, verify if the TV is muted and if so, cease the pattern instantly
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blindLevel_setBlindLevel(50)
+      tv_mute = (#Television).audioMute_muteStatus
+      if (tv_mute == 'muted') {
+        break
+      }
+- command: Every 10 seconds, position the blinds to be 50% open. Each time, check if the TV's sound is off, and if it is, promptly stop the repeating action
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blindLevel_setBlindLevel(50)
+      tv_mute = (#Television).audioMute_muteStatus
+      if (tv_mute == 'muted') {
+        break
+      }
+- command: Every 10 seconds, pause the action of opening or closing the blinds. Check each time and end the loop immediately if the TV volume is set to 0.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_pause()
+      tv_volume = (#Television).audioVolume_volume
+      if (tv_volume == 0) {
+        break
+      }
+- command: Every ten seconds, stop the process of opening or closing the blinds, and always verify. If you observe that the television volume is at zero, promptly terminate the loop
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_pause()
+      tv_volume = (#Television).audioVolume_volume
+      if (tv_volume == 0) {
+        break
+      }
+- command: Make a pause in the movement of opening or shutting the blinds every tenth second. Each time, conduct a check and if the volume of the TV is muted, immediately put an end to the loop
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_pause()
+      tv_volume = (#Television).audioVolume_volume
+      if (tv_volume == 0) {
+        break
+      }
+- command: Every ten seconds, halt the activity of either opening or closing the blinds. Each time, evaluate the situation and if you find that the TV's volume is turned down to zero, abruptly finish the cycle
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_pause()
+      tv_volume = (#Television).audioVolume_volume
+      if (tv_volume == 0) {
+        break
+      }
+- command: Every 10 seconds, open the blinds completely. Check each time and end the loop immediately if the TV channel is set to 1.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_open()
+      tv_channel = (#Television).tvChannel_tvChannel
+      if (tv_channel == 1) {
+        break
+      }
+- command: Please make sure to fully open the blinds every ten seconds. However, stop this action immediately if you notice that the TV channel has been switched to 1, and check this each time you try to open the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_open()
+      tv_channel = (#Television).tvChannel_tvChannel
+      if (tv_channel == 1) {
+        break
+      }
+- command: Every ten seconds, ensure to fully draw the blinds. Be certain to cease this process instantly if you find the TV has been tuned to channel 1, and always double-check this aspect
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_open()
+      tv_channel = (#Television).tvChannel_tvChannel
+      if (tv_channel == 1) {
+        break
+      }
+- command: Continuously open the blinds all the way every ten seconds. If at any point you find out that the TV is on channel 1, cease this action at once, and make sure to verify this each time
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_open()
+      tv_channel = (#Television).tvChannel_tvChannel
+      if (tv_channel == 1) {
+        break
+      }
+- command: Every 10 seconds, set the blinds to a level of 25. Check each time and end the loop immediately if the TV is off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blindLevel_setBlindLevel(25)
+      tv = (#Television).switch_switch
+      if (tv == 'off') {
+        break
+      }
+- command: Every ten seconds, adjust the blinds to a quarter of their full height. If the television is turned off, however, terminate the cycle immediately
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blindLevel_setBlindLevel(25)
+      tv = (#Television).switch_switch
+      if (tv == 'off') {
+        break
+      }
+- command: Every tenth of a minute, lower the blinds to a 25% openness. Break the repetitive cycle right away if the television is found to be switched off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blindLevel_setBlindLevel(25)
+      tv = (#Television).switch_switch
+      if (tv == 'off') {
+        break
+      }
+- command: Periodically, in ten-second intervals, modify the blinds to 25% of their total extension. Should the TV be powered off, bring the process to an immediate halt
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blindLevel_setBlindLevel(25)
+      tv = (#Television).switch_switch
+      if (tv == 'off') {
+        break
+      }
+- command: Every 10 seconds, close the blinds completely. Check each time and end the loop immediately if the TV audio is unmuted.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_close()
+      tv_audio_mute = (#Television).audioMute_muteStatus
+      if (tv_audio_mute == 'unmuted') {
+        break
+      }
+- command: Every ten seconds, ensure the blinds are entirely shut. Each time you do this, verify whether the television sound is on. If it is, promptly terminate the sequence
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_close()
+      tv_audio_mute = (#Television).audioMute_muteStatus
+      if (tv_audio_mute == 'unmuted') {
+        break
+      }
+- command: Make sure to shut the blinds fully every ten seconds. If at any point the television's sound is not muted, immediately stop the ongoing cycle
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_close()
+      tv_audio_mute = (#Television).audioMute_muteStatus
+      if (tv_audio_mute == 'unmuted') {
+        break
+      }
+- command: Continually ensure the blinds are completely closed at ten-second intervals. During each check, if the television audio is found to be switched on, instantly bring an end to the loop
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 10000
+    code: |-
+      (#Blind).blind_close()
+      tv_audio_mute = (#Television).audioMute_muteStatus
+      if (tv_audio_mute == 'unmuted') {
+        break
+      }
+- command: Every two seconds, turn on both the alarm siren and strobe for 1 second, then turn it off, and every time it turns on the alarm, ensure the window is open and stop the loop if it is.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_both()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'open') {
+        break
+      }
+- command: Could you please initialize both the alarm siren and the strobe every two seconds for a duration of one second, then deactivate them both? Also, make sure that the window is open whenever the alarm is activated, and if it isn't, terminate the whole sequence.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_both()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'open') {
+        break
+      }
+- command: Would you kindly set both the alarm siren and the strobe to go off every couple of seconds for a quick second, then switch them off? Also, do verify that the window is not closed whenever the alarm is set off, and if it is indeed closed, halt the entire cycle.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_both()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'open') {
+        break
+      }
+- command: Please arrange for both the alarm siren and the strobe to come on every two seconds and last for about one second, then turn them back off. Also, make it a point to confirm that the window is opened each time the alarm is triggered, and break the cycle if it's not.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_both()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'open') {
+        break
+      }
+- command: Every two seconds, strobe the alarm for 1 second, then turn it off, and every time it strobes the alarm, confirm the window is closed and stop the loop if it is.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_strobe()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'closed') {
+        break
+      }
+- command: Make sure to pulse the alarm for a second every two seconds, and cease the operation if the window is verified to be closed each time the alarm is activated
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_strobe()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'closed') {
+        break
+      }
+- command: Every two seconds, set off the alarm for a one-second duration, but ensure to terminate the loop if the window is confirmed to be shut each instance the alarm is triggered
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_strobe()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'closed') {
+        break
+      }
+- command: Flash the alarm every couple of seconds for one second. For every instance the alarm is set off, verify that the window is shut and halt the process if it is
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_strobe()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'closed') {
+        break
+      }
+- command: Every two seconds, turn the alarm siren on for 1 second, and then turn it off. Every time it turns on the siren, make sure the window is in an unknown state and stop the loop if it is.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_siren()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'unknown') {
+        break
+      }
+- command: Every couple of seconds, activate the alarm siren for a brief span of a second, then promptly deactivate it. Simultaneously, confirm that the window status remains uncertain each time the siren is triggered and halt the repetitive process if that's the case
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_siren()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'unknown') {
+        break
+      }
+- command: Every two seconds, initiate the alarm siren for a single second, immediately followed by its deactivation. Always ensure that the window's condition is undetermined each time the siren is set off and terminate the cycle if this is accurate
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_siren()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'unknown') {
+        break
+      }
+- command: On a bi-second basis, switch on the alarm siren for the duration of one second and then swiftly switch it off. Concurrently, verify that the window's state is ambiguous every instance the siren fires up, and if it turns out to be true, bring the continuous loop to an end
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_siren()
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_off()
+      if (state == 'unknown') {
+        break
+      }
+- command: Every two seconds, set the alarm volume to 'low' for 1 second, then mute it, and every time it sets the volume, check if the window is open and stop the loop if it is.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_setAlarmVolume('low')
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_setAlarmVolume('mute')
+      if (state == 'open') {
+        break
+      }
+- command: Every couple of seconds, adjust the alarm volume to a 'low' level for a single second, subsequently silence it, and each time you modify the volume, examine whether the window is ajar and if it is, terminate the repeating sequence
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_setAlarmVolume('low')
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_setAlarmVolume('mute')
+      if (state == 'open') {
+        break
+      }
+- command: Make sure to lower the alarm volume to 'low' every two seconds for a duration of one second, then switch it off, and be sure to inspect if the window is open every time the volume is adjusted. If the window is indeed open, end the loop
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_setAlarmVolume('low')
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_setAlarmVolume('mute')
+      if (state == 'open') {
+        break
+      }
+- command: Every two-second interval, drop the alarm's volume to 'low' for a second, mute it immediately afterwards, and remember to verify if the window is unlocked every time the volume is changed - halt the loop if you find it open
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_setAlarmVolume('low')
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_setAlarmVolume('mute')
+      if (state == 'open') {
+        break
+      }
+- command: Every two seconds, set the alarm volume to 'medium' for 1 second, then mute it, and every time it sets the volume, make sure the window is in an unknown state and stop the loop if it is.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_setAlarmVolume('medium')
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_setAlarmVolume('mute')
+      if (state == 'unknown') {
+        break
+      }
+- command: Every couple of seconds, adjust the alarm's volume to 'medium' for a brief second, then silence it. Each time the volume is adjusted, verify whether the window's condition is undefined and if so, cease the cycle immediately
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_setAlarmVolume('medium')
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_setAlarmVolume('mute')
+      if (state == 'unknown') {
+        break
+      }
+- command: Make sure to change the alarm's volume to a 'medium' level every two seconds for just one second before muting it. Yet, each time you adjust the volume, ensure that the window's status is unidentifiable and if it turns out to be so, terminate the loop at that moment
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_setAlarmVolume('medium')
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_setAlarmVolume('mute')
+      if (state == 'unknown') {
+        break
+      }
+- command: Consistently, every two seconds, modulate the alarm sound to a 'medium' level for a mere second, then promptly mute it. Concurrently, every time you modify the volume, check the window's state to identify if it is unknown and if that's the case, abruptly end the loop
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      (#Alarm).alarm_setAlarmVolume('medium')
+      state = (#Window).windowControl_window
+      (#Clock).clock_delay(1000)
+      (#Alarm).alarm_setAlarmVolume('mute')
+      if (state == 'unknown') {
+        break
+      }
+- command: Every 5 seconds, set the room air purifier fan mode to 'quiet'. Check each time and stop the loop if a window is closed.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('quiet')
+      state = (#Window).windowControl_window
+      if (state == 'closed') {
+        break
+      }
+- command: Every five seconds, please ensure that the room's air purifier is set to operate in 'quiet' fan mode. Regularly verify whether a window has been shut, and if it has, terminate the repetitive process
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('quiet')
+      state = (#Window).windowControl_window
+      if (state == 'closed') {
+        break
+      }
+- command: Consistently adjust the fan mode of the room air purifier to 'quiet' every five seconds. In each iteration, examine if any window is closed and, if one is, immediately cease the recurring action
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('quiet')
+      state = (#Window).windowControl_window
+      if (state == 'closed') {
+        break
+      }
+- command: Make sure every five seconds, the room air purifier is switched to the 'quiet' setting. Continually assess whether a window has been closed - if you find it has been, bring the looping activity to an end
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('quiet')
+      state = (#Window).windowControl_window
+      if (state == 'closed') {
+        break
+      }
+- command: Every 5 seconds, turn off the air purifier. Check each time and stop the loop if a window is in an unknown state.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).switch_off()
+      state = (#Window).windowControl_window
+      if (state == 'unknown') {
+        break
+      }
+- command: Every five seconds, please deactivate the air purifier. Remember to verify the status of all windows during each cycle, and halt the process if you encounter any window in an unrecognizable condition
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).switch_off()
+      state = (#Window).windowControl_window
+      if (state == 'unknown') {
+        break
+      }
+- command: On a five-second interval, it's required to switch off the air purifier. Each time, make sure to inspect the condition of every window, and immediately put a stop to the sequence if any window's status is unidentified
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).switch_off()
+      state = (#Window).windowControl_window
+      if (state == 'unknown') {
+        break
+      }
+- command: Every five seconds, I want the air purifier turned off. Simultaneously, monitor the status of all windows and cease operations if a window's condition is undetermined
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).switch_off()
+      state = (#Window).windowControl_window
+      if (state == 'unknown') {
+        break
+      }
+- command: Every 5 seconds, set the room air purifier fan mode to 'high'. Check each time and stop the loop if a window is open.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('high')
+      state = (#Window).windowControl_window
+      if (state == 'open') {
+        break
+      }
+- command: Every five seconds, adjust the fan mode of the room air purifier to 'high'. Continually verify and halt the cycle if a window is found open
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('high')
+      state = (#Window).windowControl_window
+      if (state == 'open') {
+        break
+      }
+- command: Make sure to switch the room air purifier's fan mode to 'high' every five seconds. However, if you notice an open window, immediately cease the repetition
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('high')
+      state = (#Window).windowControl_window
+      if (state == 'open') {
+        break
+      }
+- command: Consistently, with a gap of five seconds, change the fan mode of the air purifier in the room to 'high'. Should a window be open, ensure to put a stop to the loop promptly
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('high')
+      state = (#Window).windowControl_window
+      if (state == 'open') {
+        break
+      }
+- command: Every 5 seconds, turn on the air purifier. Check each time and stop the loop if a window is closed.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).switch_on()
+      state = (#Window).windowControl_window
+      if (state == 'closed') {
+        break
+      }
+- command: Every five seconds, activate the air purifier. Inspect with each activation and cease the cycle if you find a window is shut
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).switch_on()
+      state = (#Window).windowControl_window
+      if (state == 'closed') {
+        break
+      }
+- command: Every five seconds, you should switch on the air purifier. Keep monitoring and if you observe a window to be closed, immediately stop the recurring action
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).switch_on()
+      state = (#Window).windowControl_window
+      if (state == 'closed') {
+        break
+      }
+- command: At intervals of five seconds, commence the operation of the air purifier. Consistently verify and halt the recurring process if a closed window is detected
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).switch_on()
+      state = (#Window).windowControl_window
+      if (state == 'closed') {
+        break
+      }
+- command: Every 5 seconds, set the room air purifier fan mode to 'sleep'. Check each time and stop the loop if a window is in an unknown state.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('sleep')
+      state = (#Window).windowControl_window
+      if (state == 'unknown') {
+        break
+      }
+- command: Every five seconds, please switch the fan mode of the room's air purifier to 'sleep'. Each time, make sure to verify and halt the process if you detect a window in an undetermined state
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('sleep')
+      state = (#Window).windowControl_window
+      if (state == 'unknown') {
+        break
+      }
+- command: Please consistently adjust the fan mode setting of the room air purifier to 'sleep' at five-second intervals. However, if you find a window in an uncertain state at any point, immediately cease this action
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('sleep')
+      state = (#Window).windowControl_window
+      if (state == 'unknown') {
+        break
+      }
+- command: It's necessary to put the air purifier's fan in the room to 'sleep' mode every five seconds. Don't forget to check the windows each time, and if you ever find one in a state that can't be determined, stop the entire process
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('sleep')
+      state = (#Window).windowControl_window
+      if (state == 'unknown') {
+        break
+      }

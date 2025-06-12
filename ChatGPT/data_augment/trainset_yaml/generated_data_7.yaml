@@ -1,0 +1,1276 @@
+- command: Check in real-time and set the blinds to 50% whenever the living room window closes.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'closed') {
+        if (triggered == false) {
+          (#Blind).blindLevel_setBlindLevel(50)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Whenever the living room window is shut, immediately adjust the blinds to a half-closed position
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'closed') {
+        if (triggered == false) {
+          (#Blind).blindLevel_setBlindLevel(50)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: As soon as the living room window closes, make sure to set the blinds at 50% transparency in a real-time manner
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'closed') {
+        if (triggered == false) {
+          (#Blind).blindLevel_setBlindLevel(50)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: The moment the living room window is closed, promptly alter the blinds to a semi-open state
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'closed') {
+        if (triggered == false) {
+          (#Blind).blindLevel_setBlindLevel(50)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check in real-time and pause the blinds whenever the living room window opens.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'open') {
+        if (triggered == false) {
+          (#Blind).blind_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Whenever the window in the living room opens, ensure to monitor in real-time and temporarily halt the movement of the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'open') {
+        if (triggered == false) {
+          (#Blind).blind_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: As soon as you notice the living room window opening, immediately stop the blinds and maintain a real-time check
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'open') {
+        if (triggered == false) {
+          (#Blind).blind_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Keep a constant watch and interrupt the operation of the blinds the instant the window in the living room gets opened
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'open') {
+        if (triggered == false) {
+          (#Blind).blind_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check in real-time and open the blinds whenever the living room window closes.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'closed') {
+        if (triggered == false) {
+          (#Blind).blind_open()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Whenever the living room window closes, make sure to immediately inspect and open the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'closed') {
+        if (triggered == false) {
+          (#Blind).blind_open()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Continuously monitor the living room and open the blinds each time the window is closed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'closed') {
+        if (triggered == false) {
+          (#Blind).blind_open()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Always open the blinds as soon as you notice the living room window has been closed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'closed') {
+        if (triggered == false) {
+          (#Blind).blind_open()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check in real-time and set the blinds to 0% whenever the living room window is open.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'open') {
+        if (triggered == false) {
+          (#Blind).blindLevel_setBlindLevel(0)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Whenever the living room window opens, ensure the blinds are instantly set to 0%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'open') {
+        if (triggered == false) {
+          (#Blind).blindLevel_setBlindLevel(0)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: In the event that the living room window is opened, immediately adjust the blinds to a 0% setting.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'open') {
+        if (triggered == false) {
+          (#Blind).blindLevel_setBlindLevel(0)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Monitor the status of the living room window and promptly set the blinds to 0% if it's open.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Window).windowControl_window == 'open') {
+        if (triggered == false) {
+          (#Blind).blindLevel_setBlindLevel(0)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Close the curtains every time the lights are switched off. Monitor the lights in real time.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Light).switch_switch == 'off') {
+        if (triggered == false) {
+          (#Curtain).curtain_close()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Each time the lights are turned off, ensure the curtains are drawn. Keep a continuous check on the light status
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Light).switch_switch == 'off') {
+        if (triggered == false) {
+          (#Curtain).curtain_close()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Whenever the lights get turned off, make sure to close the curtains. Keep an ongoing surveillance over the state of the lights
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Light).switch_switch == 'off') {
+        if (triggered == false) {
+          (#Curtain).curtain_close()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Always draw the curtains whenever the lighting is switched off. Maintain a real-time observation of the light's condition
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Light).switch_switch == 'off') {
+        if (triggered == false) {
+          (#Curtain).curtain_close()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Pause the operation of the curtains whenever the lights are switched on. Continuously check the status of the lights.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Light).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Curtain).curtain_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Make sure to halt the movement of the drapes anytime the lighting is activated, and remember to frequently monitor the lighting's condition
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Light).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Curtain).curtain_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: If the lights turn on, ensure that the curtain's function is immediately suspended. Also, it's important to persistently keep an eye on the light's status
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Light).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Curtain).curtain_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: When the illumination is turned on, it's crucial to interrupt the curtain's actions straight away, and consistently verify the state of the lights
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Light).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Curtain).curtain_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Turn off the lights whenever the curtains are fully open. Keep a real-time check on the curtains.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Curtain).curtain_curtain == 'open') {
+        if (triggered == false) {
+          (#Light).switch_off()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Whenever the curtains are completely open, please ensure the lights are switched off. Also, maintain an ongoing vigilance on the curtain status
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Curtain).curtain_curtain == 'open') {
+        if (triggered == false) {
+          (#Light).switch_off()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: If the curtains are entirely open, the lights should be switched off, and remember to continuously monitor the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Curtain).curtain_curtain == 'open') {
+        if (triggered == false) {
+          (#Light).switch_off()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Make sure to extinguish the lights if the curtains are fully drawn, and always keep an eye on the status of the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Curtain).curtain_curtain == 'open') {
+        if (triggered == false) {
+          (#Light).switch_off()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Toggle the lights every time the curtains are closing. Keep tracking the curtains in real time.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Curtain).curtain_curtain == 'closing…') {
+        if (triggered == false) {
+          (#Light).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Every time the curtains start to close, make sure to switch the lights on or off. Continually monitor the curtains' movements
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Curtain).curtain_curtain == 'closing…') {
+        if (triggered == false) {
+          (#Light).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Please switch the lights on and off as the curtains are being shut. Don't forget to keep a real-time check on the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Curtain).curtain_curtain == 'closing…') {
+        if (triggered == false) {
+          (#Light).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: When you notice the curtains closing, adjust the lights accordingly. Also, persistently track the movements of the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#Curtain).curtain_curtain == 'closing…') {
+        if (triggered == false) {
+          (#Light).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check status every 2 seconds and pause the media playback whenever the TV turns on.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Monitor the situation every two seconds and halt the media playback as soon as the television is switched on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Keep an eye on the status every couple of seconds, and stop the media from playing anytime the TV is powered up
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Continually observe the status every two seconds and interrupt the media playback the moment the television comes on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_pause()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check status every 2 seconds and fast forward the media playback whenever the TV turns on.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_fastForward()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Please ensure that the media playback is fast-forwarded whenever the television is switched on, and also remember to check the status every two seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_fastForward()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Every two seconds, please monitor the status and as soon as the TV is turned on, make sure you rapidly advance the media playback
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_fastForward()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Could you kindly examine the status every couple of seconds and should the television power on, accelerate the media playback instantly?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_fastForward()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check status every 2 seconds and stop the media playback whenever the TV turns on.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_stop()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Every two seconds, monitor the status and halt the media playback as soon as the television is powered on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_stop()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Continuously verify the status every two seconds, and if the TV is switched on, cease the playback of the media immediately
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_stop()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Keep a constant eye on the status every couple of seconds, and discontinue any media playback the instant the television starts operating
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_stop()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check status every 2 seconds and rewind the media playback whenever the TV turns on.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_rewind()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Every two seconds, please inspect the status and if the television is powered on, reset the media playback
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_rewind()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Constantly monitor the status at two-second intervals, and each time the television is switched on, make sure to start the media playback from the beginning
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_rewind()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Please perform a status check every two seconds and each time you detect the TV being turned on, ensure the media playback is rewound
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_rewind()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check status every 2 seconds and toggle the switch of the speaker whenever the TV turns on.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Every two seconds, examine the status and alter the speaker's switch anytime the television powers up
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Regularly monitor the status at two-second intervals and change the speaker's setting each time the television is switched on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Consistently scrutinize the status every two seconds, and when the television comes on, flip the switch on the speaker
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      triggered := false
+      if ((#Television).switch_switch == 'on') {
+        if (triggered == false) {
+          (#Speaker).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Instantly sound the alarm whenever the front door is closing. Check in real time.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Alarm).alarm_siren()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Anytime the front door begins to close, promptly trigger the alarm. Continuously monitor this in real time
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Alarm).alarm_siren()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Immediately activate the alarm every time the front door starts shutting. Keep a real-time check on it
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Alarm).alarm_siren()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: As soon as the front door starts to close, ensure the alarm goes off. Keep an eye on this in real time
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Alarm).alarm_siren()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Immediately turn off the alarm whenever the front door is closed. Check in real time.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closed') {
+        if (triggered == false) {
+          (#Alarm).alarm_off()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Keep an eye out in real-time, and as soon as the front door shuts, ensure the alarm is switched off promptly
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closed') {
+        if (triggered == false) {
+          (#Alarm).alarm_off()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Constantly monitor the status, and the moment the front door closes, be sure to deactivate the alarm without delay
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closed') {
+        if (triggered == false) {
+          (#Alarm).alarm_off()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Regularly check the status and make sure to cut off the alarm instantly every time the front door is closed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closed') {
+        if (triggered == false) {
+          (#Alarm).alarm_off()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Instantly activate both the alarm's strobe and siren whenever the front door is opening. Check in real time.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Alarm).alarm_both()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Whenever the front door is in the process of opening, make sure the alarm's strobe and siren are activated immediately. Monitor the situation in real time
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Alarm).alarm_both()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: As soon as the front door starts to open, ensure the immediate activation of both the strobe and siren on the alarm. Keep a real-time check on it
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Alarm).alarm_both()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: The moment the front door begins to open, I need both the alarm's siren and strobe to be activated without delay. Maintain a real-time monitoring of the situation
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Alarm).alarm_both()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Immediately set the alarm volume to high whenever the front door is unknown. Check in real time.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'unknown') {
+        if (triggered == false) {
+          (#Alarm).alarm_setAlarmVolume('high')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Make sure to promptly increase the alarm volume to maximum whenever the status of the front door is ambiguous, and do this in real time
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'unknown') {
+        if (triggered == false) {
+          (#Alarm).alarm_setAlarmVolume('high')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: As soon as the front door's status becomes uncertain, ensure that the alarm volume is boosted to its highest level, and persistently monitor this in real time
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'unknown') {
+        if (triggered == false) {
+          (#Alarm).alarm_setAlarmVolume('high')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Should the front door's condition become indeterminable at any point, swiftly raise the alarm's volume to its peak and keep a real-time check on this
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'unknown') {
+        if (triggered == false) {
+          (#Alarm).alarm_setAlarmVolume('high')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check the status of the air purifier every 1 second and turn it back on and set to sleep mode if it turns off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('sleep')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Regularly verify the air purifier's status every single second, and in case it shuts down, ensure to reactivate it and switch it to sleep mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('sleep')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Every second, please make sure to confirm whether the air purifier is running or not, and if it isn't, immediately switch it back on and put it on sleep mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('sleep')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Consistently monitor the air purifier's operation each second, and should it stop working, promptly restart it and adjust it to sleep mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('sleep')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check the status of the air purifier every 1 second and if it turns off, switch it back on and set to medium mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('medium')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Frequently inspect the air purifier's state every second, and upon noticing it has switched off, reactivate it and adjust to medium mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('medium')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Continuously monitor the air purifier, and if you observe it shutting down, promptly turn it back on and set it to operate in medium mode, all in the span of every single second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('medium')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Every one-second interval, assess whether the air purifier is still running. In the event that it isn't, reactivate it and ensure it's operating in medium mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('medium')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check the status of the air purifier every 1 second and if it turns off, switch it back on and set to quiet mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('quiet')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Please keep an eye on the air purifier's status every single second and if in any case it turns off, make sure to reactivate it and adjust it to operate in quiet mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('quiet')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Every second, I need you to monitor the condition of the air purifier, and should it cease working, turn it back on and set it to function in silent mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('quiet')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Could you please continuously examine the air purifier's status every second, and if you notice it has shut down, don't hesitate to re-enable it and switch it to a noiseless mode?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('quiet')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Check the status of the air purifier every 1 second and if it turns off, switch it back on and set to high mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('high')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Monitor the air purifier's condition every single second. If it happens to power down, please ensure you turn it back on and adjust the setting to high mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('high')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: I need you to constantly review the working condition of the air purifier every second. Should it go off, kindly reactivate it and fix the setting to high mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('high')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+- command: Be vigilant about the air purifier's status each and every second. In case it shuts down, your task is to power it back up and place it on high mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      triggered := false
+      if ((#AirPurifier).switch_switch == 'off') {
+        if (triggered == false) {
+          (#AirPurifier).switch_on()
+          (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode('high')
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }

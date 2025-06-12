@@ -1,0 +1,1388 @@
+- command: Pause the opening or closing of the blinds when the lights are turned off, then set the hue of the light and delay by two seconds, and finally set the saturation of the light.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switch_switch == 'off')
+        (#Blind).blind_pause()
+        active = True
+      }
+      if (active == True) {
+        (#Light).colorControl_setHue(50)
+        (#Clock).clock_delay(0, 0, 2)
+        (#Light).colorControl_setSaturation(70)
+      }
+- command: When the lights are switched off, halt the process of opening or closing the blinds. Then, modify the hue of the light, wait for a couple of seconds, and lastly, adjust the light's saturation level
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switch_switch == 'off')
+        (#Blind).blind_pause()
+        active = True
+      }
+      if (active == True) {
+        (#Light).colorControl_setHue(50)
+        (#Clock).clock_delay(0, 0, 2)
+        (#Light).colorControl_setSaturation(70)
+      }
+- command: If the lights get turned off, immediately stop the blinds from opening or closing. Following that, change the hue of the light, pause for two seconds, and then manage the saturation of the light as the final step
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switch_switch == 'off')
+        (#Blind).blind_pause()
+        active = True
+      }
+      if (active == True) {
+        (#Light).colorControl_setHue(50)
+        (#Clock).clock_delay(0, 0, 2)
+        (#Light).colorControl_setSaturation(70)
+      }
+- command: Should the lights be turned off, interrupt the blinds' movement, whether they are opening or closing. Next, alter the light's hue, hold off for two seconds, and ultimately, control the light's saturation
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switch_switch == 'off')
+        (#Blind).blind_pause()
+        active = True
+      }
+      if (active == True) {
+        (#Light).colorControl_setHue(50)
+        (#Clock).clock_delay(0, 0, 2)
+        (#Light).colorControl_setSaturation(70)
+      }
+- command: Toggle the light switch when the curtain is partially open, then open and close the blinds every two seconds thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Curtain).curtain_curtain == 'partially')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_open()
+        (#Clock).clock_delay(0, 0, 2)
+        (#Blind).blind_close()
+      }
+- command: When the curtain is half-open, flip the light switch, then after that, make sure to open and shut the blinds in two-second intervals
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Curtain).curtain_curtain == 'partially')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_open()
+        (#Clock).clock_delay(0, 0, 2)
+        (#Blind).blind_close()
+      }
+- command: If the curtain is only partially open, please switch on the light, and afterwards, continue to open and close the blinds every two seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Curtain).curtain_curtain == 'partially')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_open()
+        (#Clock).clock_delay(0, 0, 2)
+        (#Blind).blind_close()
+      }
+- command: Once the curtain is semi-open, I want you to change the state of the light switch, and following this action, commence to alternately open and close the blinds every couple of seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Curtain).curtain_curtain == 'partially')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_open()
+        (#Clock).clock_delay(0, 0, 2)
+        (#Blind).blind_close()
+      }
+- command: Open the blinds when the light level is set to 50, then delay for two seconds and close the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switchLevel_level == 50)
+        (#Blind).blind_open()
+        active = True
+      }
+      if (active == True) {
+        (#Clock).clock_delay(0, 0, 2)
+        (#Blind).blind_close()
+      }
+- command: When the light level reaches 50, please raise the blinds, wait for a couple of seconds and then lower them
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switchLevel_level == 50)
+        (#Blind).blind_open()
+        active = True
+      }
+      if (active == True) {
+        (#Clock).clock_delay(0, 0, 2)
+        (#Blind).blind_close()
+      }
+- command: As soon as the ambient light hits the 50 mark, pull up the blinds, pause briefly for two seconds, and then proceed to draw them down
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switchLevel_level == 50)
+        (#Blind).blind_open()
+        active = True
+      }
+      if (active == True) {
+        (#Clock).clock_delay(0, 0, 2)
+        (#Blind).blind_close()
+      }
+- command: Once the illumination level is adjusted to 50, lift the blinds, hold on for a two-second interval, and afterwards, shut the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switchLevel_level == 50)
+        (#Blind).blind_open()
+        active = True
+      }
+      if (active == True) {
+        (#Clock).clock_delay(0, 0, 2)
+        (#Blind).blind_close()
+      }
+- command: Close the curtains when the light switch is turned off, then change the light color and put a two seconds delay, and finally set the light hue to 60.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switch_switch == 'off')
+        (#Curtain).curtain_close()
+        active = True
+      }
+      if (active == True) {
+        (#Light).colorControl_setColor({'hue': '50', 'saturation': '70'})
+        (#Clock).clock_delay(0, 0, 2)
+        (#Light).colorControl_setHue(60)
+      }
+- command: When the light switch is flicked off, ensure the curtains are drawn. Wait for a couple of seconds after altering the lights' color, then adjust the light hue to sixty
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switch_switch == 'off')
+        (#Curtain).curtain_close()
+        active = True
+      }
+      if (active == True) {
+        (#Light).colorControl_setColor({'hue': '50', 'saturation': '70'})
+        (#Clock).clock_delay(0, 0, 2)
+        (#Light).colorControl_setHue(60)
+      }
+- command: As soon as the light switch is deactivated, please draw the curtains. Following this, modify the color of the light, pause for two seconds, and ultimately adjust the hue of the light to sixty
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switch_switch == 'off')
+        (#Curtain).curtain_close()
+        active = True
+      }
+      if (active == True) {
+        (#Light).colorControl_setColor({'hue': '50', 'saturation': '70'})
+        (#Clock).clock_delay(0, 0, 2)
+        (#Light).colorControl_setHue(60)
+      }
+- command: Make sure to close the drapes as soon as the light switch is turned off. Then, change the color of the lights, pause for two seconds, and lastly, set the hue of the lights to sixty
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Light).switch_switch == 'off')
+        (#Curtain).curtain_close()
+        active = True
+      }
+      if (active == True) {
+        (#Light).colorControl_setColor({'hue': '50', 'saturation': '70'})
+        (#Clock).clock_delay(0, 0, 2)
+        (#Light).colorControl_setHue(60)
+      }
+- command: When the TV first turns on, mute the speakers for 3 seconds and then unmute them.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).audioMute_mute()
+        (#Clock).clock_delay(3000)
+        (#Speaker).audioMute_unmute()
+      }
+- command: As soon as the television is powered on, silence the sound system momentarily for three seconds before turning the audio back on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).audioMute_mute()
+        (#Clock).clock_delay(3000)
+        (#Speaker).audioMute_unmute()
+      }
+- command: The moment the TV is switched on, quieten the speakers for a brief period of three seconds, then restore their sound
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).audioMute_mute()
+        (#Clock).clock_delay(3000)
+        (#Speaker).audioMute_unmute()
+      }
+- command: Right after the television starts, ensure the speakers are muted for a short span of three seconds, then proceed to un-mute them
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).audioMute_mute()
+        (#Clock).clock_delay(3000)
+        (#Speaker).audioMute_unmute()
+      }
+- command: When the TV first turns on, change the TV channel down and after 3 seconds change it up.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Television).tvChannel_channelDown()
+        (#Clock).clock_delay(3000)
+        (#Television).tvChannel_channelUp()
+      }
+- command: As soon as the television is powered on, initially decrease the channel number, then after waiting for three seconds, increase it again
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Television).tvChannel_channelDown()
+        (#Clock).clock_delay(3000)
+        (#Television).tvChannel_channelUp()
+      }
+- command: The moment the TV is switched on, drop the channel down initially and then after a brief pause of three seconds, shift it up
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Television).tvChannel_channelDown()
+        (#Clock).clock_delay(3000)
+        (#Television).tvChannel_channelUp()
+      }
+- command: Upon the initial activation of the TV, lower the channel and then, after a three-second interval, raise it back up
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Television).tvChannel_channelDown()
+        (#Clock).clock_delay(3000)
+        (#Television).tvChannel_channelUp()
+      }
+- command: When the TV first turns on, pause the media playback on the speakers for 3 seconds and then play it.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_pause()
+        (#Clock).clock_delay(3000)
+        (#Speaker).mediaPlayback_play()
+      }
+- command: As soon as the television is activated, halt the audio playback on the sound system for a brief period of three seconds before resuming it
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_pause()
+        (#Clock).clock_delay(3000)
+        (#Speaker).mediaPlayback_play()
+      }
+- command: Immediately after the television powers up, bring the speaker's media playback to a temporary standstill for three seconds, and then let it continue
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_pause()
+        (#Clock).clock_delay(3000)
+        (#Speaker).mediaPlayback_play()
+      }
+- command: The moment the TV starts, interrupt the speaker's media playback for a short span of three seconds, and then proceed to play it
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_pause()
+        (#Clock).clock_delay(3000)
+        (#Speaker).mediaPlayback_play()
+      }
+- command: When the TV first turns on, decrease the audio volume on the TV for 3 seconds and then increase it.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Television).audioVolume_volumeDown()
+        (#Clock).clock_delay(3000)
+        (#Television).audioVolume_volumeUp()
+      }
+- command: As soon as the television is initially turned on, lower the sound for a brief three-second period before ramping it up again
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Television).audioVolume_volumeDown()
+        (#Clock).clock_delay(3000)
+        (#Television).audioVolume_volumeUp()
+      }
+- command: Upon the television's initial activation, diminish the audio for a short span of three seconds, then enhance it afterwards
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Television).audioVolume_volumeDown()
+        (#Clock).clock_delay(3000)
+        (#Television).audioVolume_volumeUp()
+      }
+- command: The moment the TV starts, reduce its volume briefly for three seconds, thereafter, up the volume
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Television).audioVolume_volumeDown()
+        (#Clock).clock_delay(3000)
+        (#Television).audioVolume_volumeUp()
+      }
+- command: When the TV first turns on, rewind the media playback on the speakers for 3 seconds and then fast forward it.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_rewind()
+        (#Clock).clock_delay(3000)
+        (#Speaker).mediaPlayback_fastForward()
+      }
+- command: As soon as the television is initially switched on, take the playback on the speakers back by three seconds and then proceed to quickly move it ahead
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_rewind()
+        (#Clock).clock_delay(3000)
+        (#Speaker).mediaPlayback_fastForward()
+      }
+- command: The moment the TV is powered up for the first time, roll back the speaker's media playback for a duration of three seconds, then swiftly push it forward
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_rewind()
+        (#Clock).clock_delay(3000)
+        (#Speaker).mediaPlayback_fastForward()
+      }
+- command: Right at the onset when the TV gets turned on, retract the media playback on the speakers for a brief span of three seconds and subsequently hasten its progress forward
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Television).switch_switch == 'on')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_rewind()
+        (#Clock).clock_delay(3000)
+        (#Speaker).mediaPlayback_fastForward()
+      }
+- command: When the air purifier is in sleep mode, the speaker repeatedly prompts to set the air purifier to high mode twice every 2 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'sleep')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please set the air purifier to high mode')
+        (#Speaker).mediaPlayback_speak('Please set the air purifier to high mode')
+      }
+- command: Whenever the air purifier switches to sleep mode, the speaker persistently suggests changing the purifier setting to high mode, repeating this message twice every couple of seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'sleep')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please set the air purifier to high mode')
+        (#Speaker).mediaPlayback_speak('Please set the air purifier to high mode')
+      }
+- command: As soon as the air purifier enters sleep mode, the speaker routinely reminds to adjust the air purifier to high mode, echoing this reminder two times per every two-second interval.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'sleep')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please set the air purifier to high mode')
+        (#Speaker).mediaPlayback_speak('Please set the air purifier to high mode')
+      }
+- command: Once the air purifier is in sleep mode, the speaker continuously advises to reconfigure the purifier to high mode, repeating the advice twice in every two seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'sleep')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please set the air purifier to high mode')
+        (#Speaker).mediaPlayback_speak('Please set the air purifier to high mode')
+      }
+- command: When the media playback is buffering, the speaker repeatedly announces 'Please stop buffering' twice every 2 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Speaker).mediaPlayback_playbackStatus == 'buffering')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please stop buffering')
+        (#Speaker).mediaPlayback_speak('Please stop buffering')
+      }
+- command: When the media playback is in a buffering state, have the speaker consistently say 'Please stop buffering' two times every couple of seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Speaker).mediaPlayback_playbackStatus == 'buffering')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please stop buffering')
+        (#Speaker).mediaPlayback_speak('Please stop buffering')
+      }
+- command: During instances of media playback buffering, ensure the speaker communicates the phrase 'Please stop buffering' twice every two seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Speaker).mediaPlayback_playbackStatus == 'buffering')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please stop buffering')
+        (#Speaker).mediaPlayback_speak('Please stop buffering')
+      }
+- command: Should the media playback buffer, instruct the speaker to recurrently voice out 'Please stop buffering' on a two-second interval, repeating twice each time.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Speaker).mediaPlayback_playbackStatus == 'buffering')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please stop buffering')
+        (#Speaker).mediaPlayback_speak('Please stop buffering')
+      }
+- command: When the air purifier fan is on wind free mode, the speaker repeatedly requests to switch the fan to medium mode twice every 2 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'windFree')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please switch the fan to medium mode')
+        (#Speaker).mediaPlayback_speak('Please switch the fan to medium mode')
+      }
+- command: When the air purifier's fan is functioning in wind free mode, please ensure the speaker makes a continuous request to change the fan setting to medium mode, twice in every two-second interval
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'windFree')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please switch the fan to medium mode')
+        (#Speaker).mediaPlayback_speak('Please switch the fan to medium mode')
+      }
+- command: If the fan of the air purifier is operating in wind free mode, the speaker should keep asking for the fan to be adjusted to the medium setting, doing so twice every couple of seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'windFree')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please switch the fan to medium mode')
+        (#Speaker).mediaPlayback_speak('Please switch the fan to medium mode')
+      }
+- command: Should the fan of the air purifier be in wind free mode, it's necessary for the speaker to persistently propose switching the fan to medium mode, two times every two seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#AirPurifier).airPurifierFanMode_airPurifierFanMode == 'windFree')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please switch the fan to medium mode')
+        (#Speaker).mediaPlayback_speak('Please switch the fan to medium mode')
+      }
+- command: When the media playback is stopped, the speaker repeatedly requests to play the media twice every 2 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Speaker).mediaPlayback_playbackStatus == 'stopped')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please play the media')
+        (#Speaker).mediaPlayback_speak('Please play the media')
+      }
+- command: Whenever the media playback comes to a halt, the speaker should consistently plea to play the media again, doing so twice every couple of seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Speaker).mediaPlayback_playbackStatus == 'stopped')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please play the media')
+        (#Speaker).mediaPlayback_speak('Please play the media')
+      }
+- command: Each time the media playback ceases, the speaker should incessantly ask for the media to be replayed, twice every two seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Speaker).mediaPlayback_playbackStatus == 'stopped')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please play the media')
+        (#Speaker).mediaPlayback_speak('Please play the media')
+      }
+- command: Should the media playback cease, it is imperative that the speaker persistently seeks to play the media again, doing this twice in every two-second interval
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 2000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#Speaker).mediaPlayback_playbackStatus == 'stopped')
+        active = True
+      }
+      if (active == True) {
+        (#Speaker).mediaPlayback_speak('Please play the media')
+        (#Speaker).mediaPlayback_speak('Please play the media')
+      }
+- command: Toggle the light switch when the window opens, and set the blinds level to 20% every second thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blindLevel_blindLevel
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'open')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blindLevel_setBlindLevel(20)
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: When the window is opened, flip the light switch on and off, and then adjust the blinds to let in 20% light every second that follows
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blindLevel_blindLevel
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'open')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blindLevel_setBlindLevel(20)
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: As soon as the window gets opened, flick the light switch and then continuously modulate the blinds to a 20% openness level each following second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blindLevel_blindLevel
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'open')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blindLevel_setBlindLevel(20)
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: Upon the window's opening, change the state of the light switch and subsequently set the openness of the blinds to one-fifth of their full extent every passing second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blindLevel_blindLevel
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'open')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blindLevel_setBlindLevel(20)
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: Turn on the lights when the window closes, and alert with dimming on the blinds every second thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).switchLevel_alert()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        (#Light).switch_on()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).switchLevel_alert()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: When the window is shut, activate the lights and then proceed to send an alert by progressively dimming the blinds every second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).switchLevel_alert()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        (#Light).switch_on()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).switchLevel_alert()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: Once the window gets closed, illuminate the lights and subsequently, every second, send a notification by gradually dimming the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).switchLevel_alert()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        (#Light).switch_on()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).switchLevel_alert()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: Trigger the light system when the window closes, following this, send a signal through the blinds by steadily reducing their brightness every second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).switchLevel_alert()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        (#Light).switch_on()
+        active = True
+      }
+      if (active == True) {
+        (#Blind).switchLevel_alert()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: Set the light color to red when the window is unknown, and pause the blinds every second thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blind_pause()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'unknown')
+        (#Light).colorControl_setColor({'hue': '0', 'saturation': '100'})
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_pause()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: If the window status is uncertain, change the color of the light to red and then cause the blinds to stop momentarily every second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blind_pause()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'unknown')
+        (#Light).colorControl_setColor({'hue': '0', 'saturation': '100'})
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_pause()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: When you're unsure about the window, please make the light red and subsequently put the blinds on hold every second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blind_pause()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'unknown')
+        (#Light).colorControl_setColor({'hue': '0', 'saturation': '100'})
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_pause()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: If the state of the window is indeterminate, adjust the light to a red hue and intermittently pause the activity of the blinds each second thereafter
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blind_pause()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'unknown')
+        (#Light).colorControl_setColor({'hue': '0', 'saturation': '100'})
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_pause()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: Set the light saturation to 50% when the window is closed, and open the blinds every second thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blind_open()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        (#Light).colorControl_setSaturation(50)
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_open()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: Whenever the window is shut, adjust the light saturation to half its full capacity, and progressively open the blinds each second that follows
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blind_open()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        (#Light).colorControl_setSaturation(50)
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_open()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: Should the window be closed, you must modify the light's saturation to half, then proceed to incrementally open up the blinds every subsequent second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blind_open()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        (#Light).colorControl_setSaturation(50)
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_open()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: In case the window gets closed, I want you to regulate the light saturation to 50% and then consistently open the blinds every second that passes
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      active := False
+      level := (#Blind).blind_open()
+      if (active == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        (#Light).colorControl_setSaturation(50)
+        active = True
+      }
+      if (active == True) {
+        (#Blind).blind_open()
+        level = level - 10
+        if (level < 0) {
+            break
+        }
+      }
+- command: Turn on the lights as soon as the front door opens, and then every three seconds thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Light).switch_on()
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('both')
+      }
+- command: As soon as the front door swings open, switch on the lights and ensure they toggle on and off every three seconds thereafter
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Light).switch_on()
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('both')
+      }
+- command: The moment the front door is opened, activate the lights and keep them flashing every three seconds from that point onwards
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Light).switch_on()
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('both')
+      }
+- command: Immediately after the front door is unlatched, prompt the lights to come on and continue to flicker at three-second intervals from then on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Light).switch_on()
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('both')
+      }
+- command: Set the light color to red as soon as the front door closes, and then every three seconds thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'closed')
+        (#Light).colorControl_setColor({'hue': 0, 'saturation': 100})
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('siren')
+      }
+- command: As soon as the front door is shut, make the light color red and continue to do so every three seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'closed')
+        (#Light).colorControl_setColor({'hue': 0, 'saturation': 100})
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('siren')
+      }
+- command: Instantly turn the light color to red once the front door is closed, and keep repeating this action every three seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'closed')
+        (#Light).colorControl_setColor({'hue': 0, 'saturation': 100})
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('siren')
+      }
+- command: Immediately after the front door has been closed, change the light to red and maintain this change every three seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'closed')
+        (#Light).colorControl_setColor({'hue': 0, 'saturation': 100})
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('siren')
+      }
+- command: Set the light to 50% brightness as soon as the front door opens, and then every three seconds thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Light).switchLevel_setLevel(50, 1)
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('off')
+      }
+- command: As soon as the front door swings open, adjust the light brightness to 50%, and continue to do so every three seconds subsequently
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Light).switchLevel_setLevel(50, 1)
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('off')
+      }
+- command: The moment the front door is opened, make sure the light's brightness is set to 50%, and keep readjusting it every three seconds thereafter
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Light).switchLevel_setLevel(50, 1)
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('off')
+      }
+- command: Once the front door opens, immediately dim the light to half its brightness, and repeat this adjustment every three seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'open')
+        (#Light).switchLevel_setLevel(50, 1)
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('off')
+      }
+- command: Toggle the lights as soon as the front door closes, and then every three seconds thereafter.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'closed')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('siren')
+      }
+- command: As soon as the front door shuts, switch the lights on and off, continuing to do so every three seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'closed')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('siren')
+      }
+- command: The moment the front door gets closed, start alternating the lights on and off every three seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'closed')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('siren')
+      }
+- command: Immediately following the closing of the front door, initiate an alternating light pattern every three seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      active := False
+      if (active == False) {
+        wait until((#DoorLock).doorControl_door == 'closed')
+        (#Light).switch_toggle()
+        active = True
+      }
+      if (active == True) {
+        (#Siren).sirenMode_setSirenMode('siren')
+      }

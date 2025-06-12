@@ -1,0 +1,1204 @@
+- command: Automatically fast forward the media playback if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: In case the media playback starts buffering beyond the limits, please ensure it is fast forwarded automatically
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Should the media playback buffer beyond the designated area, it should be set to automatically skip ahead
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: If the media playback begins buffering outside, it needs to be programmed to fast forward itself autonomously
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Automatically stop the media playback if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: If the media starts buffering outside, ensure it ceases playing automatically
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: Should the media begin to buffer externally, make sure the playback comes to a halt automatically
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: If the media buffering occurs outside, I want the playback to stop on its own
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: Automatically pause the media playback if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: If the media playback starts buffering outside, ensure it automatically pauses
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Make sure the media playback pauses automatically anytime it begins buffering outside
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Should the media playback start buffering outside, it needs to pause on its own
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Automatically rewind the media playback if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: If the media playback is buffering externally, please ensure it rewinds automatically
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Should the media playback buffer outside, make sure you set it to rewind on its own
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Please configure the system to automatically rewind the media playback in case it starts buffering externally
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Automatically set the media playback status to 'playing' if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+- command: If the media is buffering externally, please ensure that the playback status is automatically switched to 'playing'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+- command: Automatically change the media playback status to 'playing' should it be buffering externally
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+- command: In the event of the media buffering outside, make sure to automatically adjust the playback status to 'playing'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+- command: Automatically play the media from a source if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play('source')
+- command: If the media from a source is buffering externally, ensure it starts playing automatically
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play('source')
+- command: Enable automatic play if the media from a certain source is buffering outside
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play('source')
+- command: Should the media from a source be buffering externally, it's necessary to start it playing automatically
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play('source')
+- command: Automatically set the media playback status to 'paused' if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('paused')
+- command: If the media is buffering externally, please ensure the playback status is automatically changed to 'paused'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('paused')
+- command: Should the media commence buffering externally, please configure the system to pause the playback automatically
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('paused')
+- command: In case of external buffering of the media, the playback status should be automatically switched to 'paused'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('paused')
+- command: Automatically set the media playback status to 'stopped' if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+- command: If the media is buffering externally, please configure it to switch to 'stopped' mode automatically
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+- command: In case the media is stuck buffering outside, make sure to automatically change its status to 'stopped'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+- command: Please ensure that the media playback status is auto-set to 'stopped' whenever it buffers externally
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+- command: Automatically set the media playback status to 'fast forwarding' if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('fast forwarding')
+- command: '"If the media is buffering from an external source, please configure the playback status to fast forward automatically."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('fast forwarding')
+- command: '"Should the media be buffering externally, the system needs to default to a ''fast forwarding'' playback status automatically."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('fast forwarding')
+- command: '"When the media starts buffering from the outside, I want you to automatically adjust the playback status to ''fast forward''."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('fast forwarding')
+- command: Automatically set the media playback status to 'rewinding' if it's buffering outside.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('rewinding')
+- command: If the media is buffering externally, please ensure that the playback status is automatically set to rewind
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('rewinding')
+- command: Should there be external buffering occurring, automatically adjust the media playback status to rewinding
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('rewinding')
+- command: In the event that buffering is taking place outside, make sure to automatically switch the media playback status to 'rewinding'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('rewinding')
+- command: Play the media from a specific source when your smartphone's battery drops below 20%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("There is no way to know the battery status of your smartphone.")
+- command: Once your smartphone's battery level falls below 20%, start playing the media from a chosen source
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("There is no way to know the battery status of your smartphone.")
+- command: If your phone's battery dips below the 20% mark, begin playing the designated media
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("There is no way to know the battery status of your smartphone.")
+- command: Start the playback of the preferred media when your mobile's battery gets lower than 20%
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("There is no way to know the battery status of your smartphone.")
+- command: Fast forward the media playback when your smartphone's battery drops below 20%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: '"When the battery on your smartphone falls below 20%, make sure to speed up the media playback."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: '"Should your smartphone''s battery level dip under 20%, be sure to hasten the media playback."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: '"In the event that your smartphone''s battery depletes to less than 20%, it would be appropriate to accelerate the media playback."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Switch off the speaker when your smartphone's battery drops below 20%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: Should your smartphone's battery fall below 20%, please ensure the speaker is turned off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: In the event your smartphone's battery level diminishes below 20%, make sure to power off the speaker
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: When you notice your smartphone's battery is running lower than 20%, it's essential that you turn the speaker off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: Pause the media playback when your smartphone's battery drops below 20%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: If your smartphone's battery level falls under 20%, please halt the media you are playing
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Once your mobile phone's battery level goes below 20%, ensure to stop any media playback
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Should the battery of your smartphone dip below 20%, it would be advisable to pause all media playbacks
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Toggle the speaker switch when your smartphone's battery drops below 20%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: If the battery level of your smartphone falls under 20%, please switch the speaker on or off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Whenever your smartphone's battery dips below the 20% mark, you should flip the switch of the speaker
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Should your smartphone's battery decrease to below 20%, it's time to alter the speaker's state
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Change the playback status to 'buffering' when your smartphone's battery drops below 20%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: When the battery level of your smartphone falls under 20%, please adjust the playback status to 'buffering'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: If the battery of your smartphone goes below 20%, you should switch the playback status to 'buffering'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: As soon as your smartphone's battery depletes to less than 20%, kindly alter the playback situation to 'buffering'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: Rewind the media playback when your smartphone's battery drops below 20%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: When the battery level of your smartphone falls under 20%, make sure to rewind the media that's playing
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: If the battery on your smartphone dips below 20%, you should rewind whatever media is currently playing
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Should your smartphone's battery decrease to less than 20%, please rewind the media playback
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Stop the media playback when your smartphone's battery drops below 20%.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: '"Cease playing media once your mobile phone''s battery dips under 20%."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: '"When your cell phone''s power falls beneath 20%, halt all media playback."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: '"If your phone''s battery levels go below 20%, promptly terminate any media playing."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: If there is a big announcement today, silence the speaker.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: Should there be a major announcement today, please ensure the speaker is muted
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: In the event of a significant announcement today, make sure the speaker is silenced
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: Please turn off the speaker if a big announcement is made today
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: If there is a big announcement today, let's play a song.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("I don't know if there's an important announcement today, there's no good luck feature.")
+- command: Should there be a major announcement today, let's celebrate it by playing a music track
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("I don't know if there's an important announcement today, there's no good luck feature.")
+- command: If today brings some substantial news, we should commemorate it with a song
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("I don't know if there's an important announcement today, there's no good luck feature.")
+- command: Let's mark any significant declarations today by playing a melody
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("I don't know if there's an important announcement today, there's no good luck feature.")
+- command: If there is a big announcement today, pause the ongoing music.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Should there be a significant announcement today, please put the currently playing music on hold
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: In the event of a major announcement today, ensure to interrupt any music that is playing
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Assuming a substantial announcement is made today, please halt the music that is in progress
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: If there is a big announcement today, fast forward the media.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Should a significant announcement come out today, please proceed to advance the media promptly
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: In the event of a major announcement today, make sure to speed up the media
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Upon the occurrence of a large announcement today, I'd like you to quickly skip ahead in the media
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: If there is a big announcement today, rewind the media.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Should there be a major announcement today, please take the media back to the start
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: In the event of a significant announcement today, could you please replay the media from the beginning?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: If any important news breaks out today, ensure the media is rewound
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Tell your home security system that it is not possible to instruct a robot vacuum cleaner to prepare a cup of coffee.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak("I can't instruct a home security system to make a cup of coffee.")
+- command: Let your home security system understand that it's impossible for a robotic vacuum cleaner to make a cup of coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak("I can't instruct a home security system to make a cup of coffee.")
+- command: Pass on to your home security system that a robot vacuum cleaner can't be taught to prepare coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak("I can't instruct a home security system to make a cup of coffee.")
+- command: Make it clear to your home security system that a robot vacuum cleaner isn't capable of brewing coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak("I can't instruct a home security system to make a cup of coffee.")
+- command: Request your smart speaker to pause the idea of a robot vacuum cleaner brewing a cup of coffee.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Ask your intelligent speaker to halt the concept of a robotic vacuum cleaner making a cup of coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Could you have your smart speaker put a stop to the notion of a robotic vacuum cleaner preparing a coffee?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Instruct your smart speaker to interrupt the idea of a robot vacuum cleaner brewing coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Ask your smart speaker to stop the process of assigning a coffee brewing task to a robot vacuum cleaner.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: '"Request your smart speaker to cancel the allocation of a coffee-making job to the robot vacuum cleaner."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: '"Instruct your smart speaker to halt the distribution of a coffee brewing chore to the robotic vacuum cleaner."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: '"Tell your smart speaker to abandon the command of setting a coffee preparation task for the robot vacuum cleaner."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: Request your smart speaker to rewind the statement of a robot vacuum cleaner making a cup of coffee.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Could you please ask your intelligent speaker to play back the statement made by the robotic vacuum cleaner about making a cup of coffee?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Would you mind directing your smart speaker to replay the remark of the robot vacuum cleaner preparing a cup of coffee?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: I would like you to instruct your smart speaker to repeat the declaration made by the robot vacuum cleaner about brewing a cup of coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Instruct your smart speaker to fast forward the request of a robot vacuum cleaner brewing a cup of coffee.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: '"Give the command to your intelligent speaker to move forward the demand for a robot vacuum cleaner to make a pot of coffee."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: '"Tell your smart speaker to hurry up the robot vacuum cleaner''s request for brewing coffee."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: '"Request your smart speaker to expedite the order of a robotic vacuum cleaner making a cup of coffee."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Ask your smart speaker to switch off the idea of a robot vacuum cleaner making a cup of coffee.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: Could you kindly request your smart speaker to dismiss the concept of a robot vacuum cleaner brewing coffee?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: I would like you to tell your smart speaker to let go of the notion that a robot vacuum cleaner can prepare a cup of coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: Please instruct your smart speaker to abandon the thought of a robot vacuum cleaner concocting coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: Ask your smart speaker to switch on the statement of a robot vacuum cleaner brewing a cup of coffee.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_on()
+- command: Please request your intelligent speaker to activate the announcement from the robotic vacuum cleaner that it's preparing a cup of coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_on()
+- command: Could you kindly have your intelligent speaker instruct the robot vacuum cleaner to announce that it's brewing a cup of coffee?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_on()
+- command: Would you mind directing your smart speaker to enable the robot vacuum cleaner's signal for making a cup of coffee?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_on()
+- command: Request your smart speaker to toggle the instruction of a robot vacuum cleaner making a cup of coffee.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Could you ask your intelligent speaker to switch the directive of the robotic vacuum so that it prepares a cup of coffee?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Instruct your smart speaker to adjust the command for a robot vacuum cleaner to make a cup of coffee
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Can you get your smart speaker to change the robot vacuum cleaner's task to coffee brewing?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Ask your smart speaker to set the playback status to 'buffering' when a robot vacuum cleaner is asked to make a cup of coffee.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: '"Instruct your intelligent speaker to switch the playback status to ''buffering'' whenever the robotic vacuum cleaner receives a command to brew a cup of coffee."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: '"Whenever you tell your robot vacuum cleaner to make a cup of coffee, make sure to command your smart speaker to change the playback status to ''buffering''."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: '"When you ask your robotic vacuum cleaner to prepare coffee, don''t forget to also direct your smart speaker to adjust the playback status to ''buffering''."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: Instruct your smart speaker to play the source 'robot vacuum cleaner brewing coffee'.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play('robot vacuum cleaner brewing coffee')
+- command: Tell your intelligent speaker to play the content titled 'robot vacuum cleaner brewing coffee'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play('robot vacuum cleaner brewing coffee')
+- command: Ask your digital assistant to stream the 'robot vacuum cleaner brewing coffee' source
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play('robot vacuum cleaner brewing coffee')
+- command: Command your smart speaker to play the audio from 'robot vacuum cleaner brewing coffee'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play('robot vacuum cleaner brewing coffee')
+- command: Start the party vibes.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("There's no device to turn down for a party.")
+- command: '"Kick off the party atmosphere."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("There's no device to turn down for a party.")
+- command: '"Initiate the festive mood."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("There's no device to turn down for a party.")
+- command: '"Begin the celebration vibes."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_play("There's no device to turn down for a party.")
+- command: Rewind the playback.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Could you please take the playback back to the beginning?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: I'd like you to reverse the playback, please
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Can you please bring the playback back to the start?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_rewind()
+- command: Put the media playback on hold.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: '"Can you please pause the media playback for now?"'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: '"I''d like you to hold off on the media playback."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: '"Could you momentarily suspend the playback of the media?"'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_pause()
+- command: Get the media playback running at full speed.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Activate the media playback to perform at its maximum speed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Ensure the media playback is operating at the highest possible speed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Initiate the media playback to run at top speed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_fastForward()
+- command: Turn off the speaker.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: '"Could you please switch off the speaker?"'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: '"Please power down the speaker."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: '"I''d appreciate it if you could deactivate the speaker."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_off()
+- command: Switch on the speaker.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_on()
+- command: Could you please turn on the speaker?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_on()
+- command: I'd appreciate it if you could power up the speaker
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_on()
+- command: Please activate the speaker system
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_on()
+- command: Toggle the speaker's state.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Could you please switch the state of the speaker?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Kindly change the speaker's status
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Would you mind alternating the condition of the speaker?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).switch_toggle()
+- command: Stop the media playback.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: '"Could you please put an end to the media that''s currently playing?"'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: '"I''d like you to halt the ongoing media playback, please."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: '"Would you mind ceasing the current media playback?"'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_stop()
+- command: Set the playback status to paused state.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('paused')
+- command: Please pause the current playback
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('paused')
+- command: Could you put the playback status on pause?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('paused')
+- command: I'd like to request that the playback be set to a paused state
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('paused')
+- command: Set the playback status to buffering state.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: '"Please switch the playback status over to the buffering state."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: '"Could you adjust the playback status to reflect that it''s in the buffering state?"'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')
+- command: '"I need the playback status to be changed to the buffering state, please."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_setPlaybackStatus('buffering')

@@ -539,7 +539,7 @@
     ]
   },
   {
-    "command": "\"Could you please initialize both the alarm siren and the strobe every two seconds for a duration of one second, then deactivate them both? Also, make sure that the window is open whenever the alarm is activated, and if it isn't, terminate the whole sequence.\"",
+    "command": "Could you please initialize both the alarm siren and the strobe every two seconds for a duration of one second, then deactivate them both? Also, make sure that the window is open whenever the alarm is activated, and if it isn't, terminate the whole sequence.",
     "code": [
       {
         "name": "Scenario1",
@@ -550,7 +550,7 @@
     ]
   },
   {
-    "command": "\"Would you kindly set both the alarm siren and the strobe to go off every couple of seconds for a quick second, then switch them off? Also, do verify that the window is not closed whenever the alarm is set off, and if it is indeed closed, halt the entire cycle.\"",
+    "command": "Would you kindly set both the alarm siren and the strobe to go off every couple of seconds for a quick second, then switch them off? Also, do verify that the window is not closed whenever the alarm is set off, and if it is indeed closed, halt the entire cycle.",
     "code": [
       {
         "name": "Scenario1",
@@ -561,7 +561,7 @@
     ]
   },
   {
-    "command": "\"Please arrange for both the alarm siren and the strobe to come on every two seconds and last for about one second, then turn them back off. Also, make it a point to confirm that the window is opened each time the alarm is triggered, and break the cycle if it's not.\"",
+    "command": "Please arrange for both the alarm siren and the strobe to come on every two seconds and last for about one second, then turn them back off. Also, make it a point to confirm that the window is opened each time the alarm is triggered, and break the cycle if it's not.",
     "code": [
       {
         "name": "Scenario1",

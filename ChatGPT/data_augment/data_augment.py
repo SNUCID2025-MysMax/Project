@@ -12,6 +12,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from grammar import grammar
 from conversion import transform_code
 import yaml
+from yaml.representer import SafeRepresenter
 
 load_dotenv()
 apikey = os.getenv("OPENAI_API_KEY")
@@ -472,7 +473,7 @@ def save_augmented_examples_to_trainset(augmented_examples, file_num=1):
 if __name__ == "__main__":
     device_docs = parse_class_docstrings("../0.1.3_docstring_v3.txt")
     file_num = 6
-    for i in range(7,17):
+    for i in range(3,4):
         file_num = i
         examples = load_command_examples(file_num, start=5, end=10)
         generated_examples = generate_variants(examples, device_docs)
