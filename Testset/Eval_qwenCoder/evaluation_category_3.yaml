@@ -1,38 +1,37 @@
-- command: Run the irrigator now.
+- command: 지금 바로 관수기를 작동해 줘.
+  command_translated: Run the irrigator now.
   devices:
-  - Dehumidifier
-  - Camera
-  - Feeder
-  - Irrigator
   - Humidifier
-  - Dishwasher
   - Pump
-  - Recorder
-  - LeakSensor
+  - Speaker
+  - Irrigator
+  - Relay
+  - Feeder
+  - Refrigerator
+  - Dehumidifier
   - Clock
-  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      (#Irrigator).switch_on()
+      (#Irrigator).irrigatorOperatingState_startWatering()
   model_info:
-    elapsed_time: 3.965
-    bge_elapsed_time: 0.865
-    llm_elapsed_time: 3.1
-- command: Turn on the lights at 8am every morning.
+    elapsed_time: 3.08
+    bge_elapsed_time: 0.13
+    llm_elapsed_time: 2.921
+    validation_elapsed_time: 0.029
+- command: 매일 아침 8시에 조명을 켜 줘.
+  command_translated: Turn on the lights at 8am every morning.
   devices:
-  - AirPurifier
-  - Relay
-  - Light
-  - Camera
+  - Speaker
+  - Siren
+  - MenuProvider
   - Blind
+  - Alarm
   - LightSensor
-  - Feeder
+  - Light
   - Clock
-  - Curtain
-  - AirConditioner
   generated_code:
   - name: "Scenario1"
     cron: "0 8 * * *"
@@ -40,196 +39,205 @@
     code: |-
       (#Light).switch_on()
   model_info:
-    elapsed_time: 2.802
-    bge_elapsed_time: 0.129
-    llm_elapsed_time: 2.673
-- command: I want you to close and open the curtains every 15 seconds between 6pm and 7pm every day.
+    elapsed_time: 3.016
+    bge_elapsed_time: 0.202
+    llm_elapsed_time: 2.797
+    validation_elapsed_time: 0.017
+- command: 매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘.
+  command_translated: Close and open the curtains every 15 seconds between 6pm and 7pm every day.
   devices:
-  - AirPurifier
-  - ContactSensor
-  - Window
-  - Blind
-  - Camera
+  - Pump
+  - Speaker
   - DoorLock
-  - GasValve
-  - Clock
+  - Blind
+  - Window
+  - Shade
+  - Valve
   - Curtain
-  - AirConditioner
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: ""
-    period: 1000
+    period: 15000
     code: |-
-      is_closing := false
-      is_opening := false
-      if ((#Clock).clock_hour == 18 and (#Clock).clock_minute >= 0 and (#Clock).clock_minute < 60) {
-        if (not is_closing and not is_opening) {
-          (#Curtain).curtain_close()
-          is_closing = true
-        }
-        if (is_closing and (#Curtain).curtain_curtain == 'closed') {
-          (#Curtain).curtain_open()
-          is_closing = false
-          is_opening = true
-        }
-        if (is_opening and (#Curtain).curtain_curtain == 'open') {
-          is_opening = false
-        }
+      if (((#Clock).clock_hour == 18) and ((#Clock).clock_minute >= 0) and ((#Clock).clock_minute < 60)) or
+         (((#Clock).clock_hour == 19) and ((#Clock).clock_minute >= 0) and ((#Clock).clock_minute < 60))) {
+        (#Curtain).curtain_close()
+        wait until(((#Clock).clock_hour == 18) and ((#Clock).clock_minute >= 0) and ((#Clock).clock_minute < 60)) or
+                   (((#Clock).clock_hour == 19) and ((#Clock).clock_minute >= 0) and ((#Clock).clock_minute < 60)))
+        (#Curtain).curtain_open()
       }
   model_info:
-    elapsed_time: 9.133
-    bge_elapsed_time: 0.134
-    llm_elapsed_time: 9.0
-- command: Close the blinds every 3 minutes from 10-11pm on weekends.
+    elapsed_time: 9.593
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 9.489
+    validation_elapsed_time: 0.017
+- command: 주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘.
+  command_translated: Close the blinds every 3 minutes from 10-11pm on weekends.
   devices:
-  - WeatherProvider
-  - Relay
-  - Blind
-  - Shade
-  - Alarm
-  - DoorLock
-  - Valve
-  - Clock
-  - Curtain
-  - GasValve
-  generated_code: []
-  model_info:
-    elapsed_time: 47.961
-    bge_elapsed_time: 0.133
-    llm_elapsed_time: 47.829
-- command: Turn on the dehumidifier every 3 seconds from 10-11pm on weekends.
-  devices:
-  - AirPurifier
-  - Dehumidifier
-  - Irrigator
-  - Humidifier
-  - Fan
-  - Dishwasher
-  - AirQualityDetector
-  - Clock
-  - HumiditySensor
-  - AirConditioner
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 1000
-    code: |-
-      wait until(((#Clock).clock_hour == 22) and ((#Clock).clock_minute >= 0) and ((#Clock).clock_minute <= 59) and ((#Clock).clock_weekday == 'saturday') or ((#Clock).clock_weekday == 'sunday')))
-      (#Dehumidifier).switch_on()
-  - name: "Scenario2"
-    cron: ""
-    period: 3000
-    code: |-
-      (#Dehumidifier).switch_on()
-  model_info:
-    elapsed_time: 6.828
-    bge_elapsed_time: 0.133
-    llm_elapsed_time: 6.695
-- command: Turn the alarm and siren off and on every 10 seconds.
-  devices:
-  - Relay
+  - Speaker
   - Buttonx4
-  - Button
-  - Light
-  - Camera
-  - Alarm
+  - Blind
+  - Window
+  - Shade
+  - Timer
+  - Curtain
+  - Clock
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 8.108
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 8.006
+    validation_elapsed_time: 0.017
+- command: 주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘.
+  command_translated: Turn on the dehumidifier every 3 seconds from 10-11pm on weekends.
+  devices:
+  - Humidifier
+  - Speaker
+  - HumiditySensor
+  - Window
+  - AirPurifier
+  - Refrigerator
+  - Dehumidifier
+  - Clock
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 9.672
+    bge_elapsed_time: 0.086
+    llm_elapsed_time: 9.569
+    validation_elapsed_time: 0.017
+- command: 10초마다 알람과 사이렌을 껐다 켰다 반복해 줘.
+  command_translated: Turn the alarm and siren off and on every 10 seconds.
+  devices:
+  - SoundSensor
+  - Speaker
   - Siren
+  - GasValve
+  - Blind
+  - Alarm
+  - Relay
   - Timer
   - Clock
-  - WeatherProvider
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 10000
     code: |-
-      (#Alarm).alarm_off()
-      (#Alarm).alarm_off()
+      if (true) {
+        (#Alarm).alarm_off()
+        (#Siren).sirenMode_setSirenMode('off')
+        wait until(true)
+        (#Alarm).alarm_off()
+        (#Siren).sirenMode_setSirenMode('siren')
+        wait until(true)
+      }
   model_info:
-    elapsed_time: 3.164
-    bge_elapsed_time: 0.135
-    llm_elapsed_time: 3.029
-- command: Turn the fan off and on every 30 seconds every day.
+    elapsed_time: 5.26
+    bge_elapsed_time: 0.086
+    llm_elapsed_time: 5.151
+    validation_elapsed_time: 0.023
+- command: 매일 30초마다 선풍기를 껐다 켰다 반복해 줘.
+  command_translated: Turn the fan off and on every 30 seconds every day.
   devices:
-  - AirPurifier
-  - Dehumidifier
-  - Irrigator
-  - Humidifier
   - Fan
-  - Dishwasher
-  - AirQualityDetector
-  - Clock
-  - WeatherProvider
-  - AirConditioner
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: 30000
-    code: |-
-      (#Fan).switch_off()
-      (#Fan).switch_on()
-  model_info:
-    elapsed_time: 3.126
-    bge_elapsed_time: 0.138
-    llm_elapsed_time: 2.988
-- command: Turn off the TV at midnight every night.
-  devices:
-  - AirPurifier
-  - Light
-  - Camera
-  - Blind
+  - Calculator
+  - Speaker
+  - GasValve
+  - Window
+  - Timer
   - Dehumidifier
-  - Dishwasher
-  - Television
   - Clock
-  - Curtain
-  - AirConditioner
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 9.162
+    bge_elapsed_time: 0.086
+    llm_elapsed_time: 9.058
+    validation_elapsed_time: 0.017
+- command: 매일 자정에 TV를 꺼 줘.
+  command_translated: Turn off the TV at midnight every night.
+  devices:
+  - Speaker
+  - GasValve
+  - Blind
+  - AirQualityDetector
+  - Television
+  - Timer
+  - Dehumidifier
+  - Clock
   generated_code:
   - name: "Scenario1"
     cron: "0 0 * * *"
-    period: 0
+    period: -1
     code: |-
       (#Television).switch_off()
   model_info:
-    elapsed_time: 3.072
-    bge_elapsed_time: 0.127
-    llm_elapsed_time: 2.945
-- command: Increase the volume of your television by 1 every 5 seconds.
+    elapsed_time: 3.018
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 2.891
+    validation_elapsed_time: 0.041
+- command: 5초마다 텔레비전 볼륨을 1씩 높여 줘.
+  command_translated: Increase the volume of the television by 1 every 5 seconds.
   devices:
-  - Button
-  - Buttonx4
-  - Light
-  - Camera
-  - Alarm
-  - Irrigator
   - Fan
-  - LightSensor
+  - Calculator
+  - SoundSensor
+  - Speaker
+  - Blind
+  - GasMeter
+  - Recorder
   - Television
   - Clock
-  - Speaker
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: 5000
     code: |-
-      (#Television).audioVolume_volumeUp()
+      current_volume := (#Television).audioVolume_volume
+      if (current_volume < 100) {
+        (#Television).audioVolume_setVolume(current_volume + 1)
+      }
   model_info:
-    elapsed_time: 3.046
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 2.915
-- command: Turn on the lights every hour on the hour from 8am to midnight on weekdays.
+    elapsed_time: 4.446
+    bge_elapsed_time: 0.135
+    llm_elapsed_time: 4.284
+    validation_elapsed_time: 0.028
+- command: 평일 오전 8시부터 자정까지 한 시간마다 조명을 켜 줘.
+  command_translated: Turn on the lights every hour on the hour from 8am to midnight on weekdays.
   devices:
-  - AirPurifier
-  - WeatherProvider
-  - Relay
-  - Light
-  - Camera
+  - Speaker
+  - Siren
   - Blind
+  - Alarm
   - LightSensor
-  - Irrigator
+  - Timer
+  - Light
   - Clock
-  - Curtain
-  generated_code: []
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8-23 * * 1-5"
+    period: 3600000
+    code: |-
+      if ((#Clock).clock_hour == 8) and ((#Clock).clock_minute == 0)) {
+        (#Light).switch_on()
+      } else if ((#Clock).clock_hour == 23) and ((#Clock).clock_minute == 0)) {
+        (#Light).switch_on()
+      } else {
+        (#Light).switch_on()
+      }
   model_info:
-    elapsed_time: 49.163
-    bge_elapsed_time: 0.131
-    llm_elapsed_time: 49.032
+    elapsed_time: 10.661
+    bge_elapsed_time: 0.214
+    llm_elapsed_time: 10.429
+    validation_elapsed_time: 0.018

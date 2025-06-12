@@ -1,247 +1,257 @@
-- command: Turn off the fan in sector A.
+- command: 섹터 에이에 있는 선풍기를 꺼 줘.
+  command_translated: Turn off the fan in sector A.
   devices:
-  - Blind
-  - Fan
-  - Humidifier
-  - AirConditioner
-  - WeatherProvider
-  - Dehumidifier
-  - Dishwasher
-  - Clock
-  - Pump
-  - Curtain
-  - AirPurifier
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      (#Fan #Upper).switch_off()
-  model_info:
-    elapsed_time: 4.387
-    bge_elapsed_time: 0.948
-    llm_elapsed_time: 3.439
-- command: If the fans in Sector B and Sector A are both on, close one of the odd-tagged blinds.
-  devices:
-  - Valve
-  - Blind
-  - DoorLock
-  - Fan
-  - Humidifier
-  - AirConditioner
-  - Shade
-  - Dehumidifier
-  - Siren
-  - Clock
-  - Curtain
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if ((#Fan #AirConditioner).fanControl_fanSpeed > 0 and (#Fan #Valve).fanControl_fanSpeed > 0) {
-        (#Blind #Blind).blind_close()
-      }
-  model_info:
-    elapsed_time: 4.378
-    bge_elapsed_time: 0.152
-    llm_elapsed_time: 4.226
-- command: If any of the odd-tagged fans are on, turn off all the irrigation at the bottom.
-  devices:
-  - Fan
-  - Humidifier
-  - AirConditioner
-  - WeatherProvider
-  - Dehumidifier
-  - Dishwasher
-  - Irrigator
-  - Clock
-  - Pump
-  - Curtain
-  - AirPurifier
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if (any(#Upper).switch_switch == 'on') {
-        all(#Upper).irrigatorOperatingState_startWatering()
-      }
-  model_info:
-    elapsed_time: 3.782
-    bge_elapsed_time: 0.139
-    llm_elapsed_time: 3.644
-- command: Turn off the fan in Sector A if an even-tagged window is open.
-  devices:
-  - DoorLock
-  - Blind
-  - Fan
-  - Humidifier
-  - AirConditioner
-  - Shade
-  - Dehumidifier
+  - Relay
   - ContactSensor
-  - Window
+  - Dehumidifier
   - Clock
+  - Speaker
+  - Window
+  - GasValve
+  - Humidifier
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Fan #Speaker).switch_off()
+  model_info:
+    elapsed_time: 2.775
+    bge_elapsed_time: 0.083
+    llm_elapsed_time: 2.671
+    validation_elapsed_time: 0.021
+- command: 섹터 비와 섹터 에이에 있는 선풍기가 모두 켜져 있으면 홀수 태그가 붙은 블라인드 중 하나를 닫아 줘.
+  command_translated: If the fans in Sector B and Sector A are both on, close one of the odd-tagged blinds.
+  devices:
+  - Shade
+  - Blind
+  - Clock
+  - Speaker
+  - Buttonx4
+  - Window
+  - Valve
+  - DoorLock
+  - Fan
   - Curtain
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if (any(#Window #Window).windowControl_window == 'open') {
-        (#Fan #Window).switch_off()
+      if ((#Fan #Speaker).fanControl_fanSpeed > 0) and ((#Fan #Buttonx4).fanControl_fanSpeed > 0) {
+        if ((#Blind #Blind #Speaker).blind_blind == 'open') {
+          (#Blind #Blind #Speaker).blind_close()
+        } else if ((#Blind #Blind #Buttonx4).blind_blind == 'open') {
+          (#Blind #Blind #Buttonx4).blind_close()
+        }
       }
   model_info:
-    elapsed_time: 3.598
-    bge_elapsed_time: 0.136
-    llm_elapsed_time: 3.463
-- command: Turn off all odd-tagged irrigation devices in the sector rain.
+    elapsed_time: 7.379
+    bge_elapsed_time: 0.089
+    llm_elapsed_time: 7.226
+    validation_elapsed_time: 0.065
+- command: 홀수 태그가 붙은 선풍기 중 하나라도 켜져 있으면, 하단부에 있는 모든 관개 장치를 꺼 줘.
+  command_translated: If any of the odd-tagged fans are on, turn off all the irrigator at the bottom.
   devices:
-  - Alarm
-  - Fan
-  - Humidifier
-  - WeatherProvider
   - LeakSensor
-  - Relay
-  - Charger
-  - Dishwasher
+  - Dehumidifier
+  - FallDetector
+  - Clock
+  - Speaker
+  - GasValve
+  - Pump
   - Irrigator
-  - Clock
-  - GasValve
+  - Refrigerator
+  - Fan
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      all1 = all(#Alarm #Irrigator).irrigator_switch_switch
-      (#Alarm #Irrigator).switch_off()
-  model_info:
-    elapsed_time: 3.732
-    bge_elapsed_time: 0.157
-    llm_elapsed_time: 3.575
-- command: If the even-tagged windows at the top are open, close the curtains.
-  devices:
-  - DoorLock
-  - Blind
-  - Valve
-  - Alarm
-  - Shade
-  - ContactSensor
-  - Siren
-  - Window
-  - Clock
-  - Curtain
-  - GasValve
-  generated_code:
-  - name: "Scenario1"
-    cron: ""
-    period: -1
-    code: |-
-      if (all(#Window #Window #Window).windowControl_window == 'open') {
-        all(#Curtain).curtain_close()
+      if (any(#Speaker).fanControl_fanSpeed > 0) {
+        all(#Speaker).irrigatorOperatingState_startWatering()
       }
   model_info:
-    elapsed_time: 4.001
-    bge_elapsed_time: 0.475
-    llm_elapsed_time: 3.526
-- command: If all the lights at the top are off, open all the windows tagged with odd numbers.
+    elapsed_time: 4.125
+    bge_elapsed_time: 0.087
+    llm_elapsed_time: 4.003
+    validation_elapsed_time: 0.034
+- command: 짝수 태그가 붙은 창문이 열려 있으면 섹터 에이에 있는 선풍기를 꺼 줘.
+  command_translated: Turn off the fan in Sector A if an even-tagged window is open.
   devices:
-  - DoorLock
-  - Blind
-  - Alarm
   - Shade
-  - Light
-  - Relay
-  - ContactSensor
-  - Siren
-  - Window
+  - Blind
   - Clock
+  - Speaker
+  - Window
+  - GasValve
+  - Pump
+  - Valve
+  - DoorLock
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Window #Speaker #Speaker).windowControl_window == "open") {
+        (#Fan #Speaker).switch_off()
+      }
+  model_info:
+    elapsed_time: 3.839
+    bge_elapsed_time: 0.086
+    llm_elapsed_time: 3.718
+    validation_elapsed_time: 0.034
+- command: 섹터 비에 있는 홀수 태그가 붙은 관개 장치를 모두 꺼 줘.
+  command_translated: Turn off all odd-tagged irrigator in the sector B.
+  devices:
+  - Clock
+  - Speaker
+  - GasValve
+  - Valve
+  - Pump
+  - Irrigator
+  - Humidifier
+  - Refrigerator
+  - Siren
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      all(#Irrigator #Siren #Speaker).switch_off()
+  model_info:
+    elapsed_time: 3.13
+    bge_elapsed_time: 0.086
+    llm_elapsed_time: 3.018
+    validation_elapsed_time: 0.026
+- command: 상단부에 있는 짝수 태그가 붙은 창문이 열려 있으면 커튼을 닫아 줘.
+  command_translated: If the even-tagged windows at the top are open, close the curtains.
+  devices:
+  - Shade
+  - Blind
+  - Clock
+  - Speaker
+  - Window
+  - Valve
+  - DoorLock
+  - Pump
+  - GasValve
   - Curtain
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if (all(#Light #Window).switch_switch == 'off' ) {
+      if ((#Window #Speaker #Window).windowControl_window == "open") {
+        (#Curtain #Speaker #Window).curtain_close()
+      }
+  model_info:
+    elapsed_time: 3.915
+    bge_elapsed_time: 0.087
+    llm_elapsed_time: 3.789
+    validation_elapsed_time: 0.039
+- command: 상단부에 있는 조명이 모두 꺼져 있으면, 홀수 태그가 붙은 모든 창문을 열어 줘.
+  command_translated: If all the lights at the top are off, open all the windows tagged with odd numbers.
+  devices:
+  - Shade
+  - Blind
+  - Clock
+  - Speaker
+  - Window
+  - Valve
+  - DoorLock
+  - Light
+  - Siren
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if (all(#Light #Window).switch_switch == 'off') {
         all(#Window #Blind).windowControl_open()
       }
   model_info:
-    elapsed_time: 3.813
-    bge_elapsed_time: 0.294
-    llm_elapsed_time: 3.518
-- command: If any of the even-tagged speakers are on, turn off all lights in the sector b.
+    elapsed_time: 3.761
+    bge_elapsed_time: 0.089
+    llm_elapsed_time: 3.642
+    validation_elapsed_time: 0.03
+- command: 짝수 태그가 붙은 스피커 중 하나라도 켜져 있으면 섹터 비에 있는 조명을 모두 꺼 줘.
+  command_translated: If any of the even-tagged speakers are on, turn off all lights in the sector B.
   devices:
-  - Blind
   - Alarm
-  - Speaker
-  - Television
   - LightSensor
-  - Relay
-  - Light
-  - Buttonx4
-  - Siren
+  - Blind
+  - Speaker
   - Clock
-  - Curtain
+  - GasValve
+  - Irrigator
+  - Light
+  - Siren
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
       if (any(#Speaker).switch_switch == 'on') {
-        all(#Speaker).switch_off()
+        all(#Speaker).switch_switch = 'off'
       }
   model_info:
-    elapsed_time: 3.787
-    bge_elapsed_time: 0.136
-    llm_elapsed_time: 3.651
-- command: If all odd-tagged blinds on the wall are open, turn off the lights.
+    elapsed_time: 3.809
+    bge_elapsed_time: 0.089
+    llm_elapsed_time: 3.691
+    validation_elapsed_time: 0.03
+- command: 벽에 있는 홀수 태그가 붙은 모든 블라인드가 열려 있으면 조명을 꺼 줘.
+  command_translated: If all odd-tagged blinds on the wall are open, turn off the lights.
   devices:
-  - DoorLock
-  - Blind
-  - Alarm
-  - LightSensor
   - Shade
-  - Relay
+  - Alarm
+  - Blind
+  - Clock
+  - Speaker
+  - Window
+  - Valve
   - Light
   - Siren
-  - Window
-  - Clock
   - Curtain
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if (all((#Blind).blind_blind == 'open') ) {
-        (#Light).switch_off()
+      if (all(#Blind #Curtain).blind_blind == 'open') {
+        all(#Blind #Curtain).switch_switch = 'off'
       }
   model_info:
-    elapsed_time: 3.645
-    bge_elapsed_time: 0.281
-    llm_elapsed_time: 3.364
-- command: If any of the lights at the top or in sector A are on, turn on all the fans.
+    elapsed_time: 4.047
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 3.913
+    validation_elapsed_time: 0.046
+- command: 상단부에 있거나 섹터 에이에 있는 조명 중 하나가 켜져 있으면 선풍기를 모두 켜 줘.
+  command_translated: If any of the lights at the top or in sector A are on, turn on all the fans.
   devices:
-  - Fan
-  - Humidifier
-  - AirConditioner
-  - Refrigerator
-  - Light
-  - Dehumidifier
-  - Dishwasher
+  - Alarm
+  - LightSensor
+  - Blind
   - Clock
-  - Pump
-  - Curtain
-  - AirPurifier
+  - Speaker
+  - Buttonx4
+  - Irrigator
+  - Light
+  - Fan
+  - Siren
   generated_code:
   - name: "Scenario1"
     cron: ""
     period: -1
     code: |-
-      if (any(#Upper #Upper).switch_switch == 'on') {
+      if ((any(#Light #Speaker).switch_switch == 'on') or (any(#Light #Buttonx4).switch_switch == 'on')) {
         all(#Fan).switch_on()
       }
   model_info:
-    elapsed_time: 3.71
-    bge_elapsed_time: 0.136
-    llm_elapsed_time: 3.573
+    elapsed_time: 4.431
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 4.314
+    validation_elapsed_time: 0.03

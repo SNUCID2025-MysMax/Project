@@ -1,0 +1,323 @@
+- command: 토양 습도가 25% 이하가 되면 급수기를 켜고 이후 3초마다 상태를 확인해서 습도가 30% 이상이 될 때까지 급수기를 껐다 켰다 반복해 줘.
+  command_translated: Turn on the irrigator when the soil humidity is below 25% and check the status every 3 seconds thereafter, cycling the irrigator off and on until the humidity is above 30%.
+  devices:
+  - AirConditioner
+  - Pump
+  - Humidifier
+  - HumiditySensor
+  - Dishwasher
+  - Clock
+  - Irrigator
+  - AirQualityDetector
+  - SoilMoistureSensor
+  - WeatherProvider
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+      (#Irrigator).switch_on()
+      wait until((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == "watering")
+      (#Irrigator).switch_off()
+      wait until((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == "idle")
+      (#Irrigator).switch_on()
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 30.0)
+      (#Irrigator).switch_off()
+  - name: "Scenario2"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity >= 30.0)
+      (#Irrigator).switch_off()
+  model_info:
+    elapsed_time: 11.32
+    bge_elapsed_time: 0.164
+    llm_elapsed_time: 11.156
+- command: 온도가 30도를 초과하면 블라인드를 닫고, 이후 5초마다 알람의 사이렌을 울려 줘.
+  command_translated: Close the blinds when the temperature exceeds 30 degrees, and sound the alarm's siren every 5 seconds thereafter.
+  devices:
+  - Siren
+  - AirConditioner
+  - Curtain
+  - Window
+  - Shade
+  - Blind
+  - Alarm
+  - Clock
+  - DoorLock
+  - WeatherProvider
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      temperature_threshold := 30.0
+      alarm_triggered := false
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > temperature_threshold) {
+        all(#Blind).blind_close()
+        alarm_triggered := true
+      }
+      if (alarm_triggered) {
+        wait until((#Clock).clock_second % 5 == 0)
+        (#Alarm).alarm_siren()
+      }
+  model_info:
+    elapsed_time: 5.976
+    bge_elapsed_time: 0.15
+    llm_elapsed_time: 5.827
+- command: 날씨 감지 센서에서 비가 감지되면 관개 장치를 바로 끄고, 이후 2초마다 알람을 꺼 줘.
+  command_translated: Turn off the irrigator immediately when the weather sensor detects rain, and then turn off the alarm every two seconds thereafter.
+  devices:
+  - LeakSensor
+  - SmokeDetector
+  - SoundSensor
+  - Humidifier
+  - Alarm
+  - HumiditySensor
+  - FallDetector
+  - Clock
+  - Irrigator
+  - WeatherProvider
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#WeatherProvider).weatherProvider_weather == "rain")
+      (#Irrigator).switch_off()
+      (#Alarm).alarm_off()
+  - name: "Scenario2"
+    cron: ""
+    period: 2000
+    code: |-
+      wait until((#WeatherProvider).weatherProvider_weather == "rain")
+      (#Alarm).alarm_off()
+  model_info:
+    elapsed_time: 5.234
+    bge_elapsed_time: 0.151
+    llm_elapsed_time: 5.083
+- command: 일조량이 200룩스 이하가 되면 4초마다 조명을 켜고, 2초 후에 꺼 주는 동작을 반복해 줘.
+  command_translated: When the sunlight is below 200 lux, turn on the light every 4 seconds and turn it off after 2 seconds.
+  devices:
+  - Blind
+  - Camera
+  - Light
+  - Buttonx4
+  - Clock
+  - Relay
+  - Irrigator
+  - LightSensor
+  - WeatherProvider
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 4000
+    code: |-
+      wait until((#LightSensor).lightLevel_light < 200.0)
+      (#Light).switch_on()
+      wait until((#Clock).clock_second == 2)
+      (#Light).switch_off()
+  model_info:
+    elapsed_time: 4.523
+    bge_elapsed_time: 0.15
+    llm_elapsed_time: 4.374
+- command: 문이 처음 열릴 때 환풍기를 켜고, 이후 3초마다 습도를 확인해서 70% 이하가 될 때까지 환풍기를 켜고 끄는 동작을 반복해 줘.
+  command_translated: Turn on the fan when the door first opens, then check the humidity every 3 seconds and cycle the fan on and off until it's below 70%.
+  devices:
+  - Curtain
+  - Humidifier
+  - HumiditySensor
+  - Fan
+  - AirPurifier
+  - Clock
+  - DoorLock
+  - AirQualityDetector
+  - Pump
+  - AirConditioner
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until(#DoorLock).doorControl_door == "open"
+      (#Fan).switch_on()
+      wait until(#HumiditySensor).relativeHumidityMeasurement_humidity < 70.0
+      (#Fan).switch_off()
+  - name: "Scenario2"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until(#DoorLock).doorControl_door == "closed"
+      (#Fan).switch_off()
+  model_info:
+    elapsed_time: 6.368
+    bge_elapsed_time: 0.16
+    llm_elapsed_time: 6.208
+- command: 조명이 켜지면 블라인드를 닫고, 이후 2초마다 커튼을 열었다 닫았다 반복해 줘.
+  command_translated: Close the blinds when the lights come on, then open and close the curtains every two seconds thereafter.
+  devices:
+  - Siren
+  - Curtain
+  - Window
+  - Shade
+  - Blind
+  - Camera
+  - Light
+  - Buttonx4
+  - Clock
+  - Relay
+  - DoorLock
+  generated_code: []
+  model_info:
+    elapsed_time: 51.457
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 51.308
+- command: TV가 처음 켜지면 5초마다 스피커를 켜고 3초 후에 끄는 동작을 반복해 줘.
+  command_translated: When the TV first turns on, turn on the speakers every 5 seconds and turn them off after 3 seconds.
+  devices:
+  - Calculator
+  - Button
+  - Television
+  - Speaker
+  - Camera
+  - Buttonx4
+  - Fan
+  - Clock
+  - Irrigator
+  - Relay
+  generated_code: []
+  model_info:
+    elapsed_time: 51.059
+    bge_elapsed_time: 0.151
+    llm_elapsed_time: 50.907
+- command: 공기청정기가 꺼지면 2초마다 ‘공기청정기를 켜 주세요’라고 두 번 반복해서 스피커로 출력해줘.
+  command_translated: When the air purifier is turned off, repeat "Please turn on the air purifier" twice every 2 seconds to the speaker.
+  devices:
+  - RobotCleaner
+  - Button
+  - Humidifier
+  - AirPurifier
+  - Fan
+  - Clock
+  - Speaker
+  - Irrigator
+  - AirQualityDetector
+  - AirConditioner
+  - Dehumidifier
+  generated_code: []
+  model_info:
+    elapsed_time: 52.541
+    bge_elapsed_time: 0.153
+    llm_elapsed_time: 52.388
+- command: 창문이 열리면 조명을 꺼 주고, 이후 1초마다 블라인드를 10퍼센트 씩 내려 줘.
+  command_translated: Turn off the lights when the window opens, and lower the blinds by 10% every second thereafter.
+  devices:
+  - Curtain
+  - Window
+  - Shade
+  - Blind
+  - ContactSensor
+  - Camera
+  - Light
+  - Clock
+  - DoorLock
+  - LightSensor
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      if ((#Window).windowControl_window == "open") {
+        (#Light).switch_switch = "off"
+        (#Blind).blindLevel_setBlindLevel(#Blind).blindLevel_blindLevel - 10
+      }
+  model_info:
+    elapsed_time: 4.735
+    bge_elapsed_time: 0.152
+    llm_elapsed_time: 4.583
+- command: 현관 문이 닫히면 즉시 조명을 끄고, 이후 3초마다 경광등을 켜 줘.
+  command_translated: Turn off the lights as soon as the front door closes, and then every three seconds thereafter.
+  devices:
+  - Siren
+  - SmokeDetector
+  - Curtain
+  - Window
+  - Blind
+  - Alarm
+  - Camera
+  - Light
+  - Clock
+  - Relay
+  - DoorLock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  - name: "Scenario2"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  - name: "Scenario3"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  - name: "Scenario4"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  - name: "Scenario5"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  - name: "Scenario6"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  - name: "Scenario7"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  - name: "Scenario8"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  - name: "Scenario9"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  - name: "Scenario10"
+    cron: ""
+    period: 3000
+    code: |-
+      wait until((#DoorLock).doorControl_door == "closed")
+      (#Light).switch_off()
+  model_info:
+    elapsed_time: 19.169
+    bge_elapsed_time: 0.149
+    llm_elapsed_time: 19.02

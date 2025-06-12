@@ -1,0 +1,1226 @@
+{
+  "AirConditioner": {
+    "names": [
+      "air conditioner",
+      "AC",
+      "a/c",
+      "air conditioning"
+    ],
+    "expressions": [
+      "air conditioning",
+      "cooling unit",
+      "heating unit",
+      "thermostat"
+    ],
+    "explanation": "A temperature control device with cooling, heating, and auto modes."
+  },
+  "AirPurifier": {
+    "names": [
+      "air purifier",
+      "air cleaner",
+      "purifier"
+    ],
+    "expressions": [
+      "air purification",
+      "clean air",
+      "purify air",
+      "filter air"
+    ],
+    "explanation": "An air purification device with adjustable fan speed and multiple modes."
+  },
+  "AirQualityDetector": {
+    "names": [
+      "air quality detector",
+      "air quality monitor"
+    ],
+    "expressions": [
+      "air quality",
+      "pollution levels",
+      "carbon dioxide level",
+      "CO2 concentration",
+      "CO2",
+      "dust level",
+      "PM10 level",
+      "PM2.5 level",
+      "PM1.0 level",
+      "fine dust level",
+      "particulate matter",
+      "TVOC",
+      "total VOC level",
+      "chemical pollutants",
+      "relative humidity",
+      "volatile organic compounds"
+    ],
+    "explanation": "A compound sensor that measures indoor CO\u2082, dust, temperature, and humidity levels."
+  },
+  "Alarm": {
+    "names": [
+      "alarm",
+      "alarm system"
+    ],
+    "expressions": [
+      "alarm both",
+      "both siren and strobe",
+      "sound and light alarm",
+      "alarm siren",
+      "sound siren",
+      "siren only",
+      "sound only alarm",
+      "audible alarm",
+      "alarm strobe",
+      "strobe light",
+      "flashing light",
+      "light only alarm",
+      "strobe only",
+      "silent alarm",
+      "no sound alarm",
+      "mute alarm"
+    ],
+    "explanation": "An alert device that uses both siren and strobe for warnings."
+  },
+  "Blind": {
+    "names": [
+    "blind",
+    "blinds"
+  ],
+  "expressions": [
+    "open the blinds",
+    "close the blinds",
+    "blinds are open",
+    "blinds are closed",
+    "adjust blind level",
+    "blind position"
+  ],
+    "explanation": "A motorized blind that can be adjusted between 0% to 100%."
+  },
+  "Button": {
+    "names": [
+      "button",
+      "buttons",
+      "wireless button",
+      "remote button",
+      "control button"
+    ],
+    "expressions": [
+      "push button",
+      "press button",
+      "switch button",
+      "single press",
+      "single push",
+      "single click",
+      "long press",
+      "button held",
+      "hold button",
+      "press and hold",
+      "hold down button",
+      "button hold",
+      "double click",
+      "double press",
+      "double tap",
+      "press twice",
+      "click twice",
+      "double push",
+      "triple click",
+      "triple press",
+      "press three times",
+      "click three times",
+      "quadruple click",
+      "press four times",
+      "click four times",
+      "press five times",
+      "click five times",
+      "press six times",
+      "click six times",
+      "button down",
+      "button up",
+      "down twice",
+      "down three times",
+      "down four times",
+      "down five times",
+      "down six times",
+      "down hold",
+      "up twice",
+      "up three times",
+      "up four times",
+      "up five times",
+      "up six times",
+      "up hold",
+      "swipe up",
+      "swipe down",
+      "swipe left",
+      "swipe right",
+      "swipe upward",
+      "swipe downward",
+      "swipe leftward",
+      "swipe rightward",
+      "gesture up",
+      "gesture down",
+      "gesture left",
+      "gesture right",
+      "button",
+      "number of buttons",
+      "button count",
+      "multiple buttons",
+      "button configuration"
+    ],
+    "explanation": "A single-button controller that detects clicks, holds, and swipe gestures."
+  },
+  "Buttonx4": {
+    "names": [
+      "four buttons",
+      "quad button",
+      "button panel",
+      "four button panel",
+      "multi button",
+      "button array",
+      "button cluster",
+      "button group"
+    ],
+    "expressions": [
+      "first button",
+      "button one",
+      "button 1",
+      "top button",
+      "upper button",
+      "second button",
+      "button two",
+      "button 2",
+      "third button",
+      "button three",
+      "button 3",
+      "fourth button",
+      "button four",
+      "button 4",
+      "bottom button",
+      "lower button",
+      "left button",
+      "right button",
+      "middle button",
+      "center button",
+      "button 1 pushed",
+      "button 2 pressed",
+      "button 3 clicked",
+      "button 4 tapped",
+      "button 1 long press",
+      "button 2 long press",
+      "button 3 long press",
+      "button 4 long press",
+      "first button held",
+      "second button held",
+      "third button held",
+      "fourth button held",
+      "double click button 1",
+      "double click button 2",
+      "double click button 3",
+      "double click button 4",
+      "button 1 double tap",
+      "button 2 double tap",
+      "button 3 double tap",
+      "button 4 double tap",
+      "button 1 twice",
+      "button 2 twice",
+      "button 3 twice",
+      "button 4 twice",
+      "triple click button 1",
+      "triple click button 2",
+      "triple click button 3",
+      "triple click button 4",
+      "button 1 three times",
+      "button 2 three times",
+      "button 3 three times",
+      "button 4 three times",
+      "button 1 down",
+      "button 2 down",
+      "button 3 down",
+      "button 4 down",
+      "button 1 up",
+      "button 2 up",
+      "button 3 up",
+      "button 4 up",
+      "swipe up on button 1",
+      "swipe down on button 2",
+      "swipe left on button 3",
+      "swipe right on button 4",
+      "gesture up first button",
+      "gesture down second button",
+      "gesture left third button",
+      "gesture right fourth button",
+      "button panel",
+      "four button",
+      "which button pressed",
+      "button configuration",
+      "number of buttons"
+    ],
+    "explanation": "A four-button controller that tracks each button's state including advanced gestures."
+  },
+  "Calculator": {
+    "names": [
+      "calculator"
+    ],
+    "expressions": [
+      "math",
+      "mathematics",
+      "arithmetic",
+      "mathematical operation",
+      "basic math",
+      "simple calculation",
+      "addition",
+      "plus",
+      "sum",
+      "plus operation",
+      "addition operation",
+      "what is the sum of",
+      "add two numbers",
+      "subtraction",
+      "minus",
+      "difference",
+      "subtraction operation",
+      "minus operation",
+      "what is the difference",
+      "subtract from",
+      "multiplication",
+      "times",
+      "product",
+      "multiplication operation",
+      "times operation",
+      "what is the product of",
+      "division",
+      "divided by",
+      "quotient",
+      "division operation",
+      "what is the result of dividing",
+      "modulo",
+      "mod",
+      "remainder",
+      "modulo operation",
+      "mod operation",
+      "what is the remainder",
+      "sum of 7 and 8",
+      "difference between 30 and 12",
+      "product of 5 and 12",
+      "quotient of 35 and 7",
+      "remainder of 19 divided by 4"
+    ],
+    "explanation": "A unit that performs basic arithmetic and modulus operations on two numbers."
+  },
+  "Camera": {
+    "names": [
+      "camera",
+      "cameras",
+      "security camera",
+      "webcam",
+      "video camera",
+      "CCTV"
+    ],
+    "expressions": [
+      "take picture",
+      "take photo",
+      "capture image",
+      "snap photo",
+      "shoot picture",
+      "photograph",
+      "take a shot",
+      "capture photo",
+      "click picture",
+      "record video",
+      "capture video",
+      "video recording",
+      "film video",
+      "shoot video",
+      "make video",
+      "take timelapse",
+      "timelapse video",
+      "time lapse recording",
+      "fast motion video",
+      "timelapse photography",
+      "show latest image",
+      "display captured image",
+      "view last photo",
+      "get camera image",
+      "show latest video",
+      "display recorded video",
+      "view last recording",
+      "get camera video",
+      "camera recording"
+    ],
+    "explanation": "A device capable of capturing images or time-lapse videos."
+  },
+  "Charger": {
+    "names": [
+      "charger",
+      "chargers",
+      "charging station",
+      "power charger",
+      "battery charger"
+    ],
+    "expressions": [
+      "charging",
+      "battery full",
+      "discharging",
+      "battery discharging",
+      "discharge",
+      "charger",
+      "charging",
+      "charging capacity",
+      "charging speed"
+    ],
+    "explanation": "A charging unit that monitors voltage, current, and charging state."
+  },
+  "Clock": {
+    "names": [
+      "clock",
+      "clocks",
+      "time"
+    ],
+    "expressions": [
+      "current time",
+      "time now",
+      "present time",
+      "hour",
+      "minute",
+      "second",
+      "delay",
+      "duration",
+      "current hour",
+      "current minute",
+      "current second",
+      "timestamp",
+      "unix timestamp",
+      "current timestamp",
+      "date",
+      "current date",
+      "today's date",
+      "date today",
+      "present date",
+      "datetime",
+      "date and time",
+      "current date and time",
+      "day",
+      "current day",
+      "day today",
+      "today is",
+      "day of month",
+      "month",
+      "current month",
+      "this month",
+      "year",
+      "current year",
+      "this year",
+      "weekday",
+      "day of week",
+      "current weekday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+      "sunday",
+      "holiday",
+      "morning time",
+      "evening time",
+      "noon",
+      "midnight",
+      "AM",
+      "PM"
+    ],
+    "explanation": "A clock module that provides accurate time, date, and weekday information."
+  },
+  "ContactSensor": {
+    "names": [
+      "contact sensor",
+      "contact detector"
+    ],
+    "expressions": [
+      "contact switch",
+      "no contact",
+      "contact",
+      "in contact"
+    ],
+    "explanation": "A sensor that detects whether a door or window is in contact or open."
+  },
+  "Curtain": {
+    "names": [
+      "curtain",
+      "curtains"
+    ],
+    "expressions": [
+    "open the curtains",
+    "close the curtains",
+    "curtains are open",
+    "curtains are closed",
+    "draw the curtains",
+    "adjust curtain position",
+    "curtain movement",
+    "curtain control"
+  ],
+    "explanation": "A motorized curtain system supporting open, close, and pause commands."
+  },
+  "Dehumidifier": {
+    "names": [
+      "dehumidifier"
+    ],
+    "expressions": [
+      "dry the air",
+      "reduce air moisture"
+    ],
+    "explanation": "A humidity control device with multiple dehumidifying operation modes."
+  },
+  "Dishwasher": {
+    "names": [
+      "dishwasher",
+      "dish washer",
+      "washing machine for dishes",
+      "dish cleaning machine"
+    ],
+    "expressions": [],
+    "explanation": "A kitchen appliance with modes for washing, rinsing, and drying dishes."
+  },
+  "DoorLock": {
+  "names": [
+    "door lock",
+    "smart door",
+    "smart door lock"
+  ],
+  "expressions": [
+    "open the door",
+    "close the door",
+    "door is open",
+    "door is closed",
+    "door opened",
+    "door closed",
+    "door has been opened",
+    "door has been closed",
+    "open door remotely",
+    "close door remotely",
+    "check if door is open",
+    "check if door is closed"
+  ],
+  "explanation": "An electronic lock that allows remote open and close of doors."
+},
+  "EmailProvider": {
+    "names": [
+      "email provider",
+      "email service",
+      "mail service",
+      "email system"
+    ],
+    "expressions": [
+      "send email",
+      "send mail",
+      "messaging service",
+      "electronic mail",
+      "email message",
+      "mail message",
+      "email recipient",
+      "mail recipient",
+      "recipient email",
+      "target email",
+      "email subject",
+      "email title",
+      "subject line",
+      "mail subject",
+      "subject field",
+      "email heading",
+      "message title",
+      "email body",
+      "email text",
+      "email content",
+      "message content",
+      "message body",
+      "mail text",
+      "email with attachment",
+      "mail with file",
+      "file attachment",
+      "email attachment"
+    ],
+    "explanation": "A virtual system for sending emails with or without attachments."
+  },
+  "Fan": {
+    "names": [
+      "fan",
+      "fans",
+      "air circulation fan"
+    ],
+    "expressions": [
+      "fan speed",
+      "fan RPM",
+      "fan speed percentage"
+    ],
+    "explanation": "A fan device that supports speed control via percentage or RPM."
+  },
+  "Feeder": {
+    "names": [
+      "feeder",
+      "feeders",
+      "food dispenser"
+    ],
+    "expressions": [
+      "feeding",
+      "feed portion",
+      "feeding amount",
+      "feeding"
+    ],
+    "explanation": "An automatic feeder that dispenses food in configurable portions and units."
+  },
+  "GasMeter": {
+    "names": [
+      "gas meter",
+      "gas meters",
+      "gas usage meter",
+      "gas measurement",
+      "utility gas meter",
+      "gas reader"
+    ],
+    "expressions": [
+      "gas consumption meter",
+      "gas meter reading",
+      "gas usage data",
+      "gas consumption data",
+      "gas volume reading",
+      "cubic meters gas",
+      "gas volume consumption",
+      "gas energy reading",
+      "kWh gas consumption",
+      "gas calorific value",
+      "gas use time",
+      "gas usage duration",
+      "total gas usage time"
+    ],
+    "explanation": "A meter that records gas energy, volume, and usage time cumulatively."
+  },
+  "GasValve": {
+    "names": [
+      "gas valve",
+      "gas valves",
+      "main gas valve",
+      "gas cutoff valve"
+    ],
+    "expressions": [
+      "gas shut-off valve",
+      "gas valve",
+      "gas safety valve",
+      "gas valve open",
+      "gas valve closed",
+      "valve position",
+      "gas supply on",
+      "gas supply off",
+      "gas flow enabled",
+      "gas flow disabled",
+      "emergency gas shutoff",
+      "gas leak prevention"
+    ],
+    "explanation": "A valve device that controls the flow of gas in open or closed state."
+  },
+  "Humidifier": {
+    "names": [
+      "humidifier"
+    ],
+    "expressions": [],
+    "explanation": "A humidifying device with multiple intensity modes."
+  },
+  "HumiditySensor": {
+    "names": [
+      "humidity sensor",
+      "relative humidity sensor",
+      "humidity detector",
+      "humidity monitor",
+      "humidity gauge",
+      "humidity meter"
+    ],
+    "expressions": [
+      "check humidity",
+      "relative humidity",
+      "humidity monitor",
+      "humidity gauge",
+      "humidity reading",
+      "humidity measurement",
+      "relative humidity",
+      "humidity percentage",
+      "humidity level",
+      "room humidity",
+      "indoor humidity",
+      "ambient humidity",
+      "environmental humidity",
+      "humidity index",
+      "humidity range",
+      "optimal humidity"
+    ],
+    "explanation": "A dedicated sensor for measuring indoor relative humidity."
+  },
+  "Irrigator": {
+    "names": [
+      "irrigator",
+      "irrigators",
+      "irrigation",
+      "irrigation system",
+      "irrigation device",
+      "sprinkler"
+    ],
+    "expressions": [
+  "start watering",
+  "water the plants",
+  "activate irrigation",
+  "begin irrigation process",
+  "turn on irrigation",
+  "sprinkler on",
+  "watering system",
+  "automatic watering",
+  "plant watering process",
+  "trigger irrigation system",
+  "run irrigation"
+],
+    "explanation": "A watering system that dispenses a set volume of water automatically."
+  },
+  "LeakSensor": {
+    "names": [
+      "leak sensor",
+      "water leak sensor",
+      "leak detector",
+      "flood sensor"
+    ],
+    "expressions": [
+      "water damage",
+      "leak",
+      "water leak",
+      "flooding"
+    ],
+    "explanation": "A sensor that detects the presence of water leaks."
+  },
+  "Light": {
+    "names": [
+      "light",
+      "lights",
+      "lamp",
+      "bulb",
+      "LED"
+    ],
+    "expressions": [
+      "brightness",
+      "light color",
+      "RGB light",
+      "color hue",
+      "color saturation",
+      "saturation",
+      "alert light",
+      "flashing light"
+    ],
+    "explanation": "A lighting device with configurable brightness and color properties."
+  },
+  "LightSensor": {
+    "names": [
+      "light sensor",
+      "brightness sensor",
+      "lux sensor",
+      "light detector"
+    ],
+    "expressions": [
+      "daylight",
+      "light level",
+      "light intensity",
+      "luminosity",
+      "lux",
+      "how bright is it"
+    ],
+    "explanation": "A sensor that measures ambient brightness in lux units."
+  },
+  "MenuProvider": {
+    "names": [
+      "menu provider"
+    ],
+    "expressions": [
+      "menu service",
+      "food menu",
+      "restaurant menu",
+      "dining menu",
+      "cafeteria menu",
+      "meal menu",
+      "food service",
+      "dining service",
+      "get menu",
+      "show menu",
+      "display menu",
+      "menu information",
+      "food information",
+      "meal information",
+      "today menu",
+      "today's menu",
+      "menu for today",
+      "what's for today",
+      "today's food",
+      "today's meal",
+      "tomorrow menu",
+      "tomorrow's menu",
+      "menu for tomorrow",
+      "what's for tomorrow",
+      "tomorrow's food",
+      "tomorrow's meal",
+      "breakfast menu",
+      "morning menu",
+      "breakfast",
+      "morning meal",
+      "lunch menu",
+      "afternoon menu",
+      "lunch",
+      "midday meal",
+      "dinner menu",
+      "evening menu",
+      "dinner",
+      "evening meal",
+      "menu recommendation",
+      "restaurant recommendation",
+      "dining recommendation",
+      "where to eat",
+      "what to eat"
+    ],
+    "explanation": "A virtual information source for providing daily restaurant menus."
+  },
+  "MotionSensor": {
+    "names": [
+      "motion sensor",
+      "movement sensor",
+      "motion detector"
+    ],
+    "expressions": [
+  "motion",
+  "movement",
+  "motion in room",
+  "movement in area",
+  "motion triggered",
+  "motion is detected",
+  "no motion detected",
+  "motion not detected",
+  "absence of motion",
+  "motion sensor triggered",
+  "detect motion",
+  "detect movement",
+  "motion stopped",
+  "no activity"
+],
+    "explanation": "A sensor that detects motion or physical activity in the surroundings."
+  },
+  "PresenceSensor": {
+    "names": [
+      "presence sensor",
+      "occupancy sensor"
+    ],
+    "expressions": [
+      "someone present",
+      "person present",
+      "presence",
+      "occupancy",
+      "room occupied",
+      "area occupied",
+      "someone in room",
+      "room empty",
+      "area empty"
+    ],
+    "explanation": "A sensor that identifies whether a person is present or absent."
+  },
+  "Pump": {
+    "names": [
+      "pump",
+      "water pump"
+    ],
+    "expressions": [
+      "pump open",
+      "pump closed"
+    ],
+    "explanation": "A fluid control device with selectable operation modes and valve control."
+  },
+  "Refrigerator": {
+    "names": [
+      "refrigerator",
+      "fridge",
+      "smart refrigerator"
+    ],
+    "expressions": [
+      "defrost",
+      "ice removal",
+      "rapid cooling",
+      "rapid freezing",
+      "quick freeze",
+      "freezer",
+      "cooling",
+      "food preservation"
+    ],
+    "explanation": "A cooling appliance with rapid cooling, freezing, and defrost features."
+  },
+  "RobotCleaner": {
+    "names": [
+      "robot cleaner",
+      "robotic vacuum",
+      "robot vacuum",
+      "vacuum robot",
+      "cleaning robot"
+    ],
+    "expressions": [
+      "robotic cleaner",
+      "auto clean",
+      "smart cleaning"
+    ],
+    "explanation": "A cleaning robot with auto, spot, and manual cleaning modes."
+  },
+  "Shade": {
+    "names": [
+    "shade",
+    "window shade",
+    "roller shade"
+  ],
+  "expressions": [
+    "adjust shade",
+    "shade is open",
+    "shade is closed",
+    "open the shade",
+    "close the shade",
+    "shade level",
+    "shade position",
+    "shade openness"
+  ],
+    "explanation": "A window shade device controllable by specific open-close percentages."
+  },
+  "Siren": {
+    "names": [
+      "siren",
+      "alarm siren",
+      "warning siren",
+      "emergency siren",
+      "security siren",
+      "alert siren"
+    ],
+    "expressions": [
+      "sound siren",
+      "siren and strobe",
+      "sound and light",
+      "siren sound only",
+      "strobe light only",
+      "emergency alert",
+      "security alert",
+      "danger alarm",
+      "safety siren"
+    ],
+    "explanation": "An alarm device emitting sound or light, or both, as warnings."
+  },
+  "SmartPlug": {
+    "names": [
+      "smart plug",
+      "smart power plug",
+      "IoT plug"
+    ],
+    "expressions": [
+      "smart electrical outlet",
+      "smart plug",
+      "plug"
+    ],
+    "explanation": "A smart outlet that measures power, voltage, and current usage."
+  },
+  "SmokeDetector": {
+    "names": [
+      "smoke detector",
+      "smoke sensor",
+      "fire sensor"
+    ],
+    "expressions": [
+      "smoke",
+      "fire"
+    ],
+    "explanation": "A detector that senses the presence of smoke or fire."
+  },
+  "SoilMoistureSensor": {
+    "names": [
+      "soil moisture sensor",
+      "soil humidity sensor",
+      "soil water sensor",
+      "soil wetness sensor"
+    ],
+    "expressions": [
+      "wet soil",
+      "dry soil",
+      "drought conditions",
+      "soil health",
+      "optimal soil moisture",
+      "soil wetness",
+      "soil conditions"
+    ],
+    "explanation": "A sensor that measures the moisture content of soil in percent."
+  },
+  "SoundSensor": {
+    "names": [
+      "sound sensor",
+      "audio sensor",
+      "noise sensor",
+      "audio detector",
+      "decibel sensor"
+    ],
+    "expressions": [
+      "sound level",
+      "noise level",
+      "decibel",
+      "dB",
+      "decibel",
+      "sound pressure level",
+      "volume level",
+      "loud sound",
+      "quiet sound"
+    ],
+    "explanation": "A sensor that detects sounds and measures sound pressure level in dB."
+  },
+  "Speaker": {
+    "names": [
+      "speaker",
+      "speakers",
+      "smart speaker",
+      "voice assistant",
+      "smart home speaker"
+    ],
+    "expressions": [
+      "say",
+      "speak",
+      "announce",
+      "home speaker",
+      "music playing",
+      "audio playing",
+      "playback paused",
+      "buffering",
+      "audio source",
+      "text to speech",
+      "spoken message",
+      "announcement",
+      "playback"
+    ],
+    "explanation": "A multimedia device that plays audio, speaks text, and controls playback."
+  },
+  "Recorder": {
+    "names": [
+      "recorder",
+      "recording"
+    ],
+    "expressions": [
+      "recording",
+      "audio file",
+      "recording file"
+    ],
+    "explanation": "A recording unit that captures and stores audio for a given duration."
+  },
+  "Switch": {
+    "names": [
+      "switch"
+    ],
+    "expressions": [
+      "power switch",
+      "electrical switch",
+      "manual switch",
+      "app controlled switch",
+      "home switch",
+      "switch position",
+      "remote control switch"
+    ],
+    "explanation": "A simple device to turn power on or off."
+  },
+  "Television": {
+    "names": [
+      "television",
+      "TV",
+      "smart TV",
+      "digital TV",
+      "smart television"
+    ],
+    "expressions": [
+      "mute TV",
+      "unmute TV",
+      "change channel",
+      "switch channel",
+      "channel up",
+      "channel down",
+      "next channel",
+      "previous channel",
+      "TV channel",
+      "channel selection",
+      "browse channels"
+    ],
+    "explanation": "A television set with volume, mute, and channel control features."
+  },
+  "TemperatureSensor": {
+    "names": [
+      "temperature sensor",
+      "thermometer",
+      "temperature detector",
+      "temperature monitor",
+      "thermal sensor"
+    ],
+    "expressions": [
+      "measure temperature",
+      "temperature reading",
+      "temperature measurement",
+      "current temperature",
+      "room temperature",
+      "ambient temperature",
+      "degrees celsius",
+      "degrees",
+      "thermal",
+      "if temperature exceeds",
+      "if temperature is above",
+      "when temperature is over",
+      "temperature rises above",
+      "temperature drops below",
+      "temperature is lower than",
+      "temperature is higher than",
+      "condition based on temperature",
+      "threshold temperature"
+    ],
+    "explanation": "A sensor that measures the ambient temperature in Celsius."
+  },
+  "Valve": {
+    "names": [
+      "valve",
+      "valves"
+    ],
+    "expressions": [
+      "open valve",
+      "close valve"
+    ],
+    "explanation": "A basic valve for toggling open or closed state."
+  },
+  "WeatherProvider": {
+    "names": [
+      "weather provider",
+      "weather service",
+      "weather information",
+      "weather data",
+      "weather report",
+      "weather forecast",
+      "weather sensor"
+    ],
+    "expressions": [
+      "degrees outside",
+      "degrees outdoor",
+      "local weather",
+      "weather info",
+      "outdoor temperature",
+      "outdoor humidity",
+      "humidity level",
+      "barometric pressure",
+      "atmospheric pressure",
+      "PM10 level",
+      "PM2.5 level",
+      "particulate matter",
+      "air quality",
+      "fine particles",
+      "dust particles",
+      "thunderstorm",
+      "lightning storm",
+      "severe thunderstorm",
+      "drizzle",
+      "light rain",
+      "moderate rain",
+      "heavy rain",
+      "rain",
+      "rainfall",
+      "raining",
+      "snow",
+      "snowfall",
+      "light snow",
+      "heavy snow",
+      "blizzard",
+      "mist",
+      "fog",
+      "haze",
+      "smoke",
+      "dust",
+      "sandstorm",
+      "ash",
+      "volcanic ash",
+      "squall",
+      "tornado",
+      "cyclone",
+      "clear sky",
+      "sunny",
+      "cloudless",
+      "fair weather",
+      "clouds",
+      "cloudy",
+      "overcast",
+      "partly cloudy",
+      "coordinates weather",
+      "degrees celsius",
+      "degrees"
+    ],
+    "explanation": "A virtual device that provides weather, temperature, and air quality data."
+  },
+  "Window": {
+    "names": [
+      "window",
+      "windows"
+    ],
+    "expressions": [
+      "window is open",
+      "window is closed",
+      "open the window",
+      "close the window",
+      "window has been opened",
+      "window has been closed",
+      "ventilate the room",
+      "window ventilation",
+      "check window status"
+    ],
+    "explanation": "A motorized window device allowing remote open and close actions."
+  },
+  "FallDetector": {
+    "names": [
+      "fall detector",
+      "fall sensor"
+    ],
+    "expressions": [
+      "elderly fall",
+      "fall incident",
+      "slip"
+    ],
+    "explanation": "A sensor that detects whether a fall has occurred."
+  },
+  "OccupancySensor": {
+    "names": [
+      "presence sensor",
+      "occupancy sensor"
+    ],
+    "expressions": [
+      "someone present",
+      "person present",
+      "presence",
+      "occupancy",
+      "room occupied",
+      "area occupied",
+      "someone in room",
+      "room empty",
+      "area empty"
+    ],
+    "explanation": "A sensor that determines if a space is currently occupied."
+  },
+  "Relay": {
+    "names": [
+      "relay"
+    ],
+    "expressions": [
+      "electrical relay",
+      "power relay",
+      "control relay"
+    ],
+    "explanation": "A relay unit for toggling electrical connection on or off."
+  },
+  "Timer": {
+    "names": [
+      "timer",
+      "countdown timer",
+      "stopwatch",
+      "digital timer",
+      "smart timer"
+    ],
+    "expressions": [
+      "timer timeout",
+      "countdown",
+      "count down",
+      "timer done",
+      "time up"
+    ],
+    "explanation": "A controller for scheduling actions based on elapsed time."
+  }
+}
