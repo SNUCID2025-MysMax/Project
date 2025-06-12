@@ -73,8 +73,8 @@ def t_INTEGER(t):
     return t
 
 def t_STRING_LITERAL(t):
-    r'(\"([^\\\"]|\\.)*\"|\'([^\\\']|\\.)*\')'
-    t.value = t.value[1:-1]
+    r'(\"([^\\\n\"]|\\.)*\"|\'([^\\\n\']|\\.)*\')'
+    t.value = t.value[1:-1]  # 따옴표 제거
     return t
 
 def t_IDENTIFIER(t):
@@ -267,8 +267,10 @@ def p_empty(p):
 
 def p_error(p):
     if p:
-        print(f"Syntax error at token {p.type} ({p.value}) line {p.lineno} col {p.lexpos}")
+        #print(f"Syntax error at token {p.type} ({p.value}) line {p.lineno} col {p.lexpos}")
+        pass
     else:
-        print("Syntax error at EOF")
+        #print("Syntax error at EOF")
+        pass
 
 parser = yacc.yacc()
