@@ -18,7 +18,7 @@ from sentence_transformers import SentenceTransformer
 
 from yaml.representer import SafeRepresenter
 
-# from Evaluation.compare_soplang_ir import  compare_codes
+from Evaluation.compare_soplang_ir import  compare_codes
 
 TIME_OUT = 20
 
@@ -122,6 +122,7 @@ def compare_all(model_name: str):
             pred_data = yaml.safe_load(f2)
         
         for ex_idx, (gold_item, pred_item) in enumerate(zip(gold_data, pred_data)):
+            print(file, ex_idx)
             ex_id = f"ex{file_idx}-{ex_idx + 1}"
             gold = gold_item["code"][0] if gold_item["code"] else {
                 "name": "Scenario1", "cron": "", "period": -1, "code": ""
@@ -194,7 +195,6 @@ def compare_all(model_name: str):
     
     with open(f"./Testset/Eval_{model_name}/comparison_summary.yaml", "w", encoding="utf-8") as out_f:
         yaml.dump(results_summary, out_f, allow_unicode=True, sort_keys=False)
-            
 
 
 def main():
@@ -225,7 +225,15 @@ def main():
         service_doc = f.read()
     classes = extract_classes_by_name(service_doc)
 
-    for i in range(9, 17):
+    for i in range(13, 14):
+        if (i == 13):
+            classes_copy = copy.deepcopy(classes)
+            extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even",]
+            for key in classes.keys():
+                doc = classes[key]
+                lines = doc.splitlines()
+                new_lines = lines[:4] + [f"    #{tag}" for tag in sorted(set(extra_tags))] + lines[4:]
+                classes[key] = "\n".join(new_lines)
         print(f"Processing category {i}...")
         with open(f"./Testset/TestsetWithDevices_translated/category_{i}.yaml", "r") as f:
             results = []
@@ -240,14 +248,7 @@ def main():
                 bge_elapsed = time.time() - start_bge
                 service_selected.add("Clock")
 
-                if (i == 13):
-                    classes_copy = copy.deepcopy(classes)
-                    extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even",]
-                    for key in classes.keys():
-                        doc = classes[key]
-                        lines = doc.splitlines()
-                        new_lines = lines[:4] + [f"    #{tag}" for tag in sorted(set(extra_tags))] + lines[4:]
-                        classes[key] = "\n".join(new_lines)
+                
 
                 service_doc = "\n---\n".join([classes[i] for i in service_selected])
 
@@ -263,10 +264,7 @@ def main():
                 
                 resp, llm_elapsed = run_test_case_unsloth(
                     model, tokenizer, stop_token_ids, model_name, user_command_origin, user_command, service_doc
-                )
-
-                if (i == 13):
-                    classes = classes_copy 
+                )      
 
                 # print(f"Command: {user_command_origin}")
                 # print(f"code: {resp}")
@@ -301,6 +299,9 @@ def main():
                 }
                 results.append(entry)
 
+        if (i == 13):
+            classes = classes_copy 
+
         os.makedirs(f"./Testset/Eval_{model_name}/", exist_ok=True)
         with open(f"./Testset/Eval_{model_name}/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
             yaml.dump(results, out_file, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
@@ -311,5 +312,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-    # compare_all("codegemma")
+    # main()
+    compare_all("qwenCoder")
