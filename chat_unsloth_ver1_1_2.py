@@ -95,6 +95,108 @@ def load_yaml(path):
     with open(path, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
+
+def compare_all(model_name: str):
+    gold_path = f"./Testset/Testset"
+    pred_path = f"./Testset/Eval_{model_name}"
+    
+    results_summary = []
+    all_scores = []
+    
+    def extract_number(filename):
+        match = re.search(r'(\d+)', filename)
+        return int(match.group(1)) if match else float('inf')
+    files = sorted(
+        [f for f in os.listdir(gold_path) if f.endswith(".yaml")],
+        key=extract_number
+    )                                   
+    
+    for file_idx, file in enumerate(files):
+        file_results = []
+        file_scores = []
+        
+        with open(os.path.join(gold_path, file), 'r', encoding='utf-8') as f1:
+            gold_data = yaml.safe_load(f1)
+        
+        with open(os.path.join(pred_path, f"evaluation_{file}"), 'r', encoding='utf-8') as f2:
+            pred_data = yaml.safe_load(f2)
+        
+        for ex_idx, (gold_item, pred_item) in enumerate(zip(gold_data, pred_data)):
+            ex_id = f"ex{file_idx}-{ex_idx + 1}"
+            gold = gold_item["code"][0] if gold_item["code"] else {
+                "name": "Scenario1", "cron": "", "period": -1, "code": ""
+            }
+            pred_list = pred_item.get("generated_code", [])
+            if isinstance(pred_list, dict):
+                pred_list = [pred_list]
+            elif not isinstance(pred_list, list):
+                pred_list = []
+
+            pred = pred_list[0] if pred_list else {
+                "name": "Scenario1", "cron": "", "period": -1, "code": ""
+            }
+                
+            label = {
+                "name": gold["name"],
+                "cron": gold["cron"],
+                "period": gold["period"],
+                "script": gold["code"]
+            }
+            model  = {
+                "name": pred["name"],
+                "cron": pred["cron"],
+                "period": pred["period"],
+                "script": pred["code"]
+            }
+            
+            result = compare_codes(label, model)
+            
+            score = 0
+            
+            cron_status = "equal" if result["cron_equal"] else "different"
+            period_status = "equal" if result["period_equal"] else "different"
+            code_score = round(result["ast_similarity"], 3)
+            
+            if result["cron_equal"]:
+                score += 25
+            if result["period_equal"]:
+                score += 25
+            score += int(code_score * 50)
+            status = f"(cron: {cron_status},  period: {period_status}, code: {code_score:.2f})"
+            
+            diff_block = {}
+            if not result["cron_equal"]:
+                diff_block["cron"] = f"model = {model['cron']}, label = {label['cron']}"
+            if not result["period_equal"]:
+                diff_block["period"] = f"model = {model['period']}, label = {label['period']}"
+            if result["ast_similarity"] < 1.0:
+                diff_block["code"] = f"ast_similarity = {code_score}"
+
+            file_scores.append(score)
+            file_results.append({
+                "id": ex_id,
+                "score": f"{score} {status}",
+                "diff": diff_block
+            })
+        avg_file_score = sum(file_scores) / len(file_scores)
+        results_summary.extend(file_results)
+        results_summary.append({
+            "id": f"{file.replace('.yaml', '')}-avg",
+            "score": f"{avg_file_score:.1f} (average of {len(file_scores)} examples)"
+        })
+        all_scores.extend(file_scores)
+        
+    overall_avg = sum(all_scores) / len(all_scores)
+    results_summary.append({
+        "id": "overall-avg",
+        "score": f"{overall_avg:.1f} (average of {len(all_scores)} total examples)",
+    })
+    
+    with open(f"./Testset/Eval_{model_name}/comparison_summary.yaml", "w", encoding="utf-8") as out_f:
+        yaml.dump(results_summary, out_f, allow_unicode=True, sort_keys=False)
+            
+
+
 def main():
     model_name = "qwenCoder"
 
