@@ -7,7 +7,7 @@ from unsloth import FastLanguageModel, is_bfloat16_supported
 from unsloth.chat_templates import get_chat_template
 from trl import SFTTrainer, SFTConfig
 from datasets import Dataset
-from Grammar.grammar_ver1_1_6 import grammar
+from Grammar.grammar_ver1_1_7 import grammar
 import torch, yaml, re
 from torch.nn.attention import SDPBackend, sdpa_kernel
 
@@ -267,13 +267,13 @@ trainer = SFTTrainer(
     packing = False,  # Can make training 5x faster for short sequences.
     args = SFTConfig(
         use_liger_kernel = True,
-        per_device_train_batch_size = 6,
-        gradient_accumulation_steps = 2,
+        per_device_train_batch_size = 4,
+        gradient_accumulation_steps = 4,
         max_seq_length = max_seq_length,
         # warmup_steps = 20,
         warmup_ratio = 0.05,
-        num_train_epochs = 1,
-        learning_rate = 3e-5, #1e-6
+        num_train_epochs = 2,
+        learning_rate = 2e-5, #1e-6
         optim = "adamw_8bit",
         weight_decay = 0.01,
         lr_scheduler_type = "cosine",

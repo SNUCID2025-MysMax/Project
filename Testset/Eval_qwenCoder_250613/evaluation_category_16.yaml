@@ -1,0 +1,244 @@
+- command: 내 생일이 되면 "생일 축하합니다" 노래를 불러 줘.
+  command_translated: Sing "Happy Birthday" on my birthday.
+  devices:
+  - Humidifier
+  - Clock
+  - Fan
+  - Irrigator
+  - Speaker
+  - Timer
+  - Recorder
+  generated_code:
+  - name: "BirthdayGreeting"
+    cron: "0 0 13 6 *\"  # Runs on June 13th at midnight"
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak("Happy Birthday!")
+  model_info:
+    elapsed_time: 3.189
+    bge_elapsed_time: 0.083
+    llm_elapsed_time: 3.09
+    validation_elapsed_time: 0.016
+- command: 날 우울하게 만드는 뉴스를 감지하면 위로의 말을 해 줘.
+  command_translated: If you detects news that makes me depressed, say something uplifting.
+  devices:
+  - FallDetector
+  - MotionSensor
+  - Clock
+  - SmokeDetector
+  - Speaker
+  - Dehumidifier
+  - Buttonx4
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Speaker).mediaPlayback_playbackStatus == "depressed") {
+        (#Speaker).mediaPlayback_speak("Let's focus on the good things! You're beautiful, strong, and capable.")
+      }
+  model_info:
+    elapsed_time: 3.582
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 3.472
+    validation_elapsed_time: 0.025
+- command: 고양이가 기분이 좋을 때마다 박수를 쳐 줘.
+  command_translated: Clap whenever your cat is in a good mood.
+  devices:
+  - LightSensor
+  - Clock
+  - Camera
+  - Window
+  - Speaker
+  - Timer
+  - Shade
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#ContactSensor).windowShade_supportedWindowShadeCommands == "good") {
+        (#Speaker).mediaPlayback_speak("Meow~")
+      }
+  model_info:
+    elapsed_time: 3.062
+    bge_elapsed_time: 0.084
+    llm_elapsed_time: 2.952
+    validation_elapsed_time: 0.026
+- command: 지금 내 기분에 맞춰 조명을 감성적으로 조절해 줘.
+  command_translated: Emotionally adjust the light to match my mood right now.
+  devices:
+  - LightSensor
+  - Clock
+  - Light
+  - Siren
+  - Curtain
+  - Alarm
+  - Blind
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#LightSensor).colorControl_saturation == "happy") {
+        (#Light).colorControl_setColor("WHITE")
+      } else if ((#LightSensor).colorControl_saturation == "sad") {
+        (#Light).colorControl_setColor("BLUE")
+      } else if ((#LightSensor).colorControl_saturation == "angry") {
+        (#Light).colorControl_setColor("RED")
+      } else if ((#LightSensor).colorControl_saturation == "calm") {
+        (#Light).colorControl_setColor("GREEN")
+      } else {
+        (#Light).colorControl_setColor("YELLOW")
+      }
+  model_info:
+    elapsed_time: 7.551
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 7.411
+    validation_elapsed_time: 0.055
+- command: 집이 외로워 보이면 음악을 틀어 줘.
+  command_translated: If the house seems lonely, play some music.
+  devices:
+  - FallDetector
+  - Clock
+  - Window
+  - PresenceSensor
+  - Blind
+  - Speaker
+  - Dehumidifier
+  - OccupancySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#OccupancySensor).presenceSensor_presence == "not_present") {
+        (#Speaker).mediaPlayback_play("path/to/music/file.mediaPlayback_playbackStatus")
+      }
+  model_info:
+    elapsed_time: 3.072
+    bge_elapsed_time: 0.084
+    llm_elapsed_time: 2.967
+    validation_elapsed_time: 0.021
+- command: 밖이 위험해 보이면 자동으로 경찰에 전화해 줘.
+  command_translated: Automatically call the police if it looks dangerous outside.
+  devices:
+  - FallDetector
+  - Clock
+  - LeakSensor
+  - Siren
+  - Blind
+  - DoorLock
+  - Speaker
+  - WeatherProvider
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#FallDetector).mediaPlayback_playbackStatus == "true") {
+        (#FallDetector).switch_toggle()
+        (#Speaker).mediaPlayback_speak("Calling the police due to a dangerous situation.")
+      }
+  model_info:
+    elapsed_time: 3.603
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 3.484
+    validation_elapsed_time: 0.035
+- command: 스마트폰 배터리가 20% 이하가 되면 커튼을 닫아 줘.
+  command_translated: Close the curtains when your smartphone's battery drops below 20%.
+  devices:
+  - Clock
+  - Window
+  - Curtain
+  - Blind
+  - Charger
+  - Speaker
+  - Pump
+  - Shade
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Speaker).chargingState_chargingState <= 20.0) {
+        (#Curtain).curtain_close()
+      }
+  model_info:
+    elapsed_time: 3.132
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 3.017
+    validation_elapsed_time: 0.029
+- command: 오늘 중요한 발표가 있으면 행운을 빌어 줘.
+  command_translated: If there is a big announcement today, wish me luck.
+  devices:
+  - Clock
+  - MenuProvider
+  - Valve
+  - Relay
+  - Window
+  - Speaker
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Speaker).clock_weekday != "") {
+        (#Speaker).mediaPlayback_speak("Good luck!")
+      }
+  model_info:
+    elapsed_time: 2.862
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 2.752
+    validation_elapsed_time: 0.025
+- command: 로봇청소기에게 커피 한 잔 타 달라고 부탁해 줘.
+  command_translated: Ask your robot vacuum cleaner to make you a cup of coffee.
+  devices:
+  - RobotCleaner
+  - Clock
+  - Valve
+  - Feeder
+  - Refrigerator
+  - Dishwasher
+  - Speaker
+  - AirPurifier
+  - Recorder
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak("Sorry, I can't assist with that request.")
+  model_info:
+    elapsed_time: 2.655
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 2.554
+    validation_elapsed_time: 0.017
+- command: 기분 좋게 춤춰 줘.
+  command_translated: Do a happy dance.
+  devices:
+  - Humidifier
+  - Camera
+  - Clock
+  - Relay
+  - Speaker
+  - Timer
+  - Buttonx4
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak("Do a happy dance.")
+  model_info:
+    elapsed_time: 2.42
+    bge_elapsed_time: 0.082
+    llm_elapsed_time: 2.322
+    validation_elapsed_time: 0.017

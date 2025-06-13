@@ -11,7 +11,7 @@ from tqdm import tqdm
 
 from FlagEmbedding import BGEM3FlagModel
 from Embedding.embedding_v4 import hybrid_recommend_v4
-from Grammar.grammar_ver1_1_5 import grammar
+from Grammar.grammar_ver1_1_7 import grammar
 from Testset.joi_extraction_tool import parse_scenarios, extract_last_code_block
 from Validation.validate import validate_tmp
 from sentence_transformers import SentenceTransformer
@@ -209,10 +209,10 @@ def main():
         dtype=None,
         load_in_4bit=True,
     )
-    model.load_adapter(f"./models/{model_name}-adapter-250612")
+    model.load_adapter(f"./models/{model_name}-adapter-250613")
     FastLanguageModel.for_inference(model)
 
-    tokenizer = get_chat_template(tokenizer, chat_template="chatml" if model_name != "gemma3" else "gemma-3", map_eos_token=True)
+    tokenizer = get_chat_template(tokenizer, chat_template="chatml", map_eos_token=True)
     tokenizer.add_bos_token = False
     stop_token_ids = get_stop_token_ids(model_name, tokenizer)
 
@@ -220,12 +220,13 @@ def main():
     # model_sentence = SentenceTransformer('./models/paraphrase-MiniLM-L6-v2')
     model_bge = BGEM3FlagModel('BAAI/bge-m3', use_fp16=True)
     model_sentence = SentenceTransformer("paraphrase-MiniLM-L6-v2")
+    # model_sentence = SentenceTransformer("BAAI/bge-m3")
 
     with open("./ServiceExtraction/integration/service_list_ver1.1.8.txt", "r") as f:
         service_doc = f.read()
     classes = extract_classes_by_name(service_doc)
 
-    for i in range(13, 14):
+    for i in range(0, 17):
         if (i == 13):
             classes_copy = copy.deepcopy(classes)
             extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even",]
@@ -247,8 +248,6 @@ def main():
                 service_selected = set(r["key"] for r in hybrid_recommend_v4(model_bge, user_command))
                 bge_elapsed = time.time() - start_bge
                 service_selected.add("Clock")
-
-                
 
                 service_doc = "\n---\n".join([classes[i] for i in service_selected])
 
@@ -302,8 +301,8 @@ def main():
         if (i == 13):
             classes = classes_copy 
 
-        os.makedirs(f"./Testset/Eval_{model_name}/", exist_ok=True)
-        with open(f"./Testset/Eval_{model_name}/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
+        os.makedirs(f"./Testset/Eval_{model_name}_250613/", exist_ok=True)
+        with open(f"./Testset/Eval_{model_name}_250613/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
             yaml.dump(results, out_file, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
 
     del model
@@ -312,5 +311,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-    compare_all("qwenCoder")
+    main()
+    # compare_all("qwenCoder")

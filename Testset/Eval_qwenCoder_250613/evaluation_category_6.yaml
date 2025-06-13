@@ -1,0 +1,340 @@
+- command: 5초마다 토양 습도를 측정해서 30% 이하이면 급수기를 켜 줘. 만약 그 때 온도가 35도 이상이면 급수기를 끄고 반복도 종료해 줘.
+  command_translated: Measure soil moisture every 5 seconds, and if it is below 30%, turn on the irrigator. If the temperature is above 35 degrees at that time, turn off the irrigator and stop the loop.
+  devices:
+  - Clock
+  - Irrigator
+  - HumiditySensor
+  - SoilMoistureSensor
+  - Speaker
+  - Calculator
+  - Dehumidifier
+  - WeatherProvider
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      soil_moisture := 100.0
+      temperature := 0.0
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+        soil_moisture = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+        (#Irrigator).switch_on()
+        wait until((#TemperatureSensor).temperatureMeasurement_temperature > 35.0)
+        (#Irrigator).switch_off()
+        break
+      }
+  model_info:
+    elapsed_time: 6.477
+    bge_elapsed_time: 0.098
+    llm_elapsed_time: 6.362
+    validation_elapsed_time: 0.017
+- command: 3초 간격으로 조명을 10번 깜빡여 줘. 깜빡일 때마다 확인해서 비 감지 센서가 비를 감지하는 순간 반복을 중단해 줘.
+  command_translated: Blink the light 10 times in 3-second intervals. Check after each blink and stop the loop the moment the rain sensor detects rain.
+  devices:
+  - LightSensor
+  - MotionSensor
+  - LeakSensor
+  - Clock
+  - Light
+  - HumiditySensor
+  - Speaker
+  - WeatherProvider
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      repeat_count := 0
+      max_repeats := 10
+      interval := 3000
+      repeat_until(repeat_count >= max_repeats) {
+        (#Light).switch_toggle()
+        repeat_count = repeat_count + 1
+        wait until(#LightSensor).weatherProvider_weather == "no_rain"
+        wait until(#Clock).clock_delay(interval)
+      }
+      (#Light).switch_off()
+  model_info:
+    elapsed_time: 5.603
+    bge_elapsed_time: 0.09
+    llm_elapsed_time: 5.478
+    validation_elapsed_time: 0.035
+- command: 1초마다 선풍기의 전원을 켜고 끄는 토글 동작을 반복해 줘. 매번 동작 직전에 습도를 확인해서 80% 이상이면 반복을 즉시 중단해 줘.
+  command_translated: Repeat the toggle action of powering the fan on and off every second. Check the humidity just before each action and stop the loop immediately if it's above 80%.
+  devices:
+  - Humidifier
+  - Clock
+  - Fan
+  - Relay
+  - AirQualityDetector
+  - HumiditySensor
+  - SoilMoistureSensor
+  - Speaker
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      fan_toggle_count := 0
+      humidity_threshold := 80.0
+      high_humidity_detected := false
+      repeat_toggle_loop:
+      if (high_humidity_detected) {
+        goto end_loop
+      }
+      (#HumiditySensor).relativeHumidityMeasurement_humidity := (#HumiditySensor).relativeHumidityMeasurement_humidity
+      if (#HumiditySensor).relativeHumidityMeasurement_humidity > humidity_threshold {
+        high_humidity_detected := true
+        goto end_loop
+      }
+      (#Fan).switch_toggle()
+      fan_toggle_count := fan_toggle_count + 1
+      goto repeat_toggle_loop
+      end_loop:
+      if (fan_toggle_count > 0) {
+        (#Speaker).mediaPlayback_speak("High humidity detected. Loop stopped.")
+      } else {
+        (#Speaker).mediaPlayback_speak("Loop completed without high humidity.")
+      }
+  model_info:
+    elapsed_time: 12.085
+    bge_elapsed_time: 0.093
+    llm_elapsed_time: 11.972
+    validation_elapsed_time: 0.02
+- command: 5초마다 블라인드를 10퍼센트씩 닫아줘. 더 이상 못 내릴 때까지.
+  command_translated: Close the blinds by 10 percent every 5 seconds. Until you can't lower them anymore.
+  devices:
+  - Clock
+  - Valve
+  - Curtain
+  - Window
+  - Buttonx4
+  - Blind
+  - Speaker
+  - Shade
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      blinds_level := 100
+      repeat_until: false
+      repeat_until = repeat_until or (blinds_level <= 10)
+      if (not repeat_until) {
+        blinds_level = blinds_level - 10
+        (#Blind).blindLevel_setBlindLevel(blinds_level)
+      }
+      if (blinds_level <= 10) {
+        repeat_until = true
+      }
+      if (repeat_until) {
+        (#Speaker).mediaPlayback_speak("Cannot lower blinds anymore.")
+        break
+      }
+  model_info:
+    elapsed_time: 6.239
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 6.134
+    validation_elapsed_time: 0.017
+- command: 10초마다 관개기를 켰다가 5초 뒤에 꺼 줘. 관개기를 끌 때, 켤 때 모두 확인해서 일조량이 500룩스 이상이면 관개기를 끄고 반복을 종료해 줘.
+  command_translated: Turn on the irrigator every 10 seconds and turn it off after 5 seconds. Check the irrigator both on and off, and if the sunlight is above 500 lux, turn off the irrigator and stop the loop.
+  devices:
+  - LightSensor
+  - Clock
+  - Irrigator
+  - Window
+  - Refrigerator
+  - Speaker
+  - Timer
+  - Dehumidifier
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      irrigator_on_duration := 0
+      sunlight_level := (#LightSensor).lightLevel_light
+      if (sunlight_level > 500.0) {
+        (#Irrigator).switch_off()
+        break
+      } else {
+        (#Irrigator).switch_on()
+        irrigator_on_duration = irrigator_on_duration + 1000
+        if (irrigator_on_duration >= 5000) {
+          (#Irrigator).switch_off()
+          break
+        }
+      }
+  model_info:
+    elapsed_time: 6.439
+    bge_elapsed_time: 0.097
+    llm_elapsed_time: 6.325
+    validation_elapsed_time: 0.017
+- command: 2초마다 거실 조명을 켰다 껐다 반복해 줘. 조명을 끌 때마다 확인해서 창문이 열려 있는 게 감지되면 반복을 즉시 중단해 줘.
+  command_translated: Turn the living room light on and off every two seconds. Check each time it turns off the light and stop the loop immediately if it detects that a window is open.
+  devices:
+  - LightSensor
+  - MotionSensor
+  - Clock
+  - Light
+  - Window
+  - HumiditySensor
+  - Blind
+  - DoorLock
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |-
+      lightDuration := 0
+      if ((#Light).switch_switch == "off") {
+        lightDuration = lightDuration + 2000
+        if ((#Window).windowControl_window == "open") {
+          break
+        }
+        (#Light).switch_on()
+      } else {
+        (#Light).switch_off()
+      }
+  model_info:
+    elapsed_time: 5.024
+    bge_elapsed_time: 0.093
+    llm_elapsed_time: 4.901
+    validation_elapsed_time: 0.03
+- command: 3초마다 텔레비전의 볼륨을 1씩 증가시켜서 5단계가 되면 초기값으로 되돌리는 동작을 반복해 줘. 초기값으로 되돌릴 때 확인해서 움직임이 감지되면 반복을 중단해 줘.
+  command_translated: Every 3 seconds, increase the television volume by 1 level. When it reaches level 5, reset it to the initial value. Repeat this cycle. If motion is detected at the moment of reset, stop the repetition.
+  devices:
+  - LightSensor
+  - MotionSensor
+  - Clock
+  - AirQualityDetector
+  - Television
+  - Blind
+  - Speaker
+  - Shade
+  - SoundSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      volume_level := 0
+      max_volume := 5
+      reset_flag := false
+      if (reset_flag) {
+        break
+      }
+      (#Television).audioVolume_setVolume(volume_level)
+      volume_level = volume_level + 1
+      if (volume_level >= max_volume) {
+        volume_level = 0
+        reset_flag = true
+        wait until((#MotionSensor).motionSensor_motion != "active")
+        reset_flag = false
+      }
+  model_info:
+    elapsed_time: 5.7
+    bge_elapsed_time: 0.098
+    llm_elapsed_time: 5.582
+    validation_elapsed_time: 0.02
+- command: 10초마다 블라인드를 완전히 닫아 줘. 그 때마다 확인해서 TV가 켜져 있으면 즉시 반복을 종료해.
+  command_translated: Every 10 seconds, close the blinds completely. Check each time and end the loop immediately if the TV is on.
+  devices:
+  - Clock
+  - Valve
+  - Curtain
+  - Window
+  - Television
+  - Blind
+  - DoorLock
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      blindsClosed := false
+      if (blindsClosed == false) {
+        all(#Blind).blind_close()
+        wait until(#Television).switch_switch != "on"
+        blindsClosed := true
+      }
+  model_info:
+    elapsed_time: 3.858
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 3.75
+    validation_elapsed_time: 0.02
+- command: 2초마다 알람의 사이렌을 1초간 울렸다 꺼지게 하고, 알람의 사이렌을 울릴 때마다 창문이 닫혀 있는지 확인해서 닫혀 있으면 반복을 중단해 줘.
+  command_translated: Every two seconds, turn the alarm siren on for 1 second, then turn it off, and every time it turn on the siren, make sure the window is closed and stop the loop if it is.
+  devices:
+  - Clock
+  - Siren
+  - Curtain
+  - Window
+  - Alarm
+  - Blind
+  - DoorLock
+  - Speaker
+  - Timer
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |-
+      windowClosed := false
+      repeat := true
+      if (repeat) {
+        (#Alarm).alarm_siren()
+        wait until((#Window).windowControl_window == "closed")
+        windowClosed = true
+        repeat = false
+      } else {
+        (#Alarm).alarm_off()
+        if (windowClosed) {
+          break
+        }
+      }
+  model_info:
+    elapsed_time: 4.972
+    bge_elapsed_time: 0.095
+    llm_elapsed_time: 4.857
+    validation_elapsed_time: 0.02
+- command: 5초마다 실내 공기청정기를 ‘자동’ 모드로 전환해 줘. 그 때마다 확인해서 창문이 열려 있으면 모든 반복을 종료해 줘.
+  command_translated: Every 5 seconds, switch the room air purifier to 'auto' mode. Check each time and stop the loop if a window is open.
+  devices:
+  - Humidifier
+  - Clock
+  - Button
+  - Switch
+  - Window
+  - AirQualityDetector
+  - Speaker
+  - AirPurifier
+  - Shade
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      roomAirPurifierMode := "auto"
+      windowStatus := "unknown"
+      if (windowStatus == "open") {
+        break
+      } else {
+        all(#AirPurifier).airPurifierFanMode_setAirPurifierFanMode(roomAirPurifierMode)
+      }
+  model_info:
+    elapsed_time: 4.774
+    bge_elapsed_time: 0.09
+    llm_elapsed_time: 4.659
+    validation_elapsed_time: 0.025
