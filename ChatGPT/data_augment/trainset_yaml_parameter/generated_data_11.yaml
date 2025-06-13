@@ -1,0 +1,2446 @@
+- command: Monitor in real-time to pause the curtains if they've been opening for 5 consecutive seconds, and toggle the lights if motion remains inactive for the next 10 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      openingDuration := 0
+      noMotionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'opening') {
+          openingDuration = openingDuration + 100
+          if (openingDuration >= 5000) {
+            (#Curtain).curtain_pause()
+            phase = 1
+          }
+        } else {
+          openingDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Light).switch_toggle()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Should the curtains remain open for a continuous five-second duration, promptly put them on hold in real-time. Likewise, if there's no motion detected for the subsequent ten seconds, go ahead and switch the lights
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      openingDuration := 0
+      noMotionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'opening') {
+          openingDuration = openingDuration + 100
+          if (openingDuration >= 5000) {
+            (#Curtain).curtain_pause()
+            phase = 1
+          }
+        } else {
+          openingDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Light).switch_toggle()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: In an event where the curtains have been in the process of opening for five unbroken seconds, make sure you pause them instantly. Similarly, if there's no movement for the next ten seconds, please alter the lighting status
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      openingDuration := 0
+      noMotionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'opening') {
+          openingDuration = openingDuration + 100
+          if (openingDuration >= 5000) {
+            (#Curtain).curtain_pause()
+            phase = 1
+          }
+        } else {
+          openingDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Light).switch_toggle()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Be on the alert and immediately halt the curtains if they've been continually opening for five seconds. Also, if there is no sign of any activity for the following ten seconds, change the state of the lights
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      openingDuration := 0
+      noMotionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'opening') {
+          openingDuration = openingDuration + 100
+          if (openingDuration >= 5000) {
+            (#Curtain).curtain_pause()
+            phase = 1
+          }
+        } else {
+          openingDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Light).switch_toggle()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: In real-time, close the curtains if they've been partially opened for 5 consecutive seconds, and set the light to 50% level if motion remains active for the next 10 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      partialDuration := 0
+      motionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'partially') {
+          partialDuration = partialDuration + 100
+          if (partialDuration >= 5000) {
+            (#Curtain).curtain_close()
+            phase = 1
+          }
+        } else {
+          partialDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'active') {
+          motionDuration = motionDuration + 100
+          if (motionDuration >= 10000) {
+            (#Light).switchLevel_setLevel(50, 5)
+            break
+          }
+        } else {
+          motionDuration = 0
+        }
+      }
+- command: If the curtains have been slightly open for a steady five seconds, please close them immediately, and also, if there's constant movement for the following ten seconds, adjust the brightness level to fifty percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      partialDuration := 0
+      motionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'partially') {
+          partialDuration = partialDuration + 100
+          if (partialDuration >= 5000) {
+            (#Curtain).curtain_close()
+            phase = 1
+          }
+        } else {
+          partialDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'active') {
+          motionDuration = motionDuration + 100
+          if (motionDuration >= 10000) {
+            (#Light).switchLevel_setLevel(50, 5)
+            break
+          }
+        } else {
+          motionDuration = 0
+        }
+      }
+- command: Should the curtains remain partly opened for an unbroken period of five seconds, proceed to shut them without delay. Also, provided that there is ongoing activity for a span of ten seconds afterward, set the light intensity to half its maximum
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      partialDuration := 0
+      motionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'partially') {
+          partialDuration = partialDuration + 100
+          if (partialDuration >= 5000) {
+            (#Curtain).curtain_close()
+            phase = 1
+          }
+        } else {
+          partialDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'active') {
+          motionDuration = motionDuration + 100
+          if (motionDuration >= 10000) {
+            (#Light).switchLevel_setLevel(50, 5)
+            break
+          }
+        } else {
+          motionDuration = 0
+        }
+      }
+- command: If the curtains persist in a semi-opened state for five seconds straight, ensure they are closed promptly. Furthermore, if there is sustained motion for the next ten seconds, please dim the light to half its full brightness
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      partialDuration := 0
+      motionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'partially') {
+          partialDuration = partialDuration + 100
+          if (partialDuration >= 5000) {
+            (#Curtain).curtain_close()
+            phase = 1
+          }
+        } else {
+          partialDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'active') {
+          motionDuration = motionDuration + 100
+          if (motionDuration >= 10000) {
+            (#Light).switchLevel_setLevel(50, 5)
+            break
+          }
+        } else {
+          motionDuration = 0
+        }
+      }
+- command: Check in real-time to close the curtains if they've been opening for 5 consecutive seconds, and turn the lights on if motion remains inactive for the next 10 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      openingDuration := 0
+      noMotionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'opening') {
+          openingDuration = openingDuration + 100
+          if (openingDuration >= 5000) {
+            (#Curtain).curtain_close()
+            phase = 1
+          }
+        } else {
+          openingDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Light).switch_on()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Please ensure that if the curtains have been opened for a continuous five seconds, they are closed promptly. Also, if no motion is detected for the upcoming ten seconds, the lights should be turned on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      openingDuration := 0
+      noMotionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'opening') {
+          openingDuration = openingDuration + 100
+          if (openingDuration >= 5000) {
+            (#Curtain).curtain_close()
+            phase = 1
+          }
+        } else {
+          openingDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Light).switch_on()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: If the curtains remain open for five seconds straight, make sure they are closed immediately. Moreover, should there be no activity detected for the succeeding ten seconds, switch the lights on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      openingDuration := 0
+      noMotionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'opening') {
+          openingDuration = openingDuration + 100
+          if (openingDuration >= 5000) {
+            (#Curtain).curtain_close()
+            phase = 1
+          }
+        } else {
+          openingDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Light).switch_on()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Be certain to close the curtains if they've been open non-stop for five seconds, and if there's no movement detected for the following ten seconds, then it's time to illuminate the room by turning on the lights
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      openingDuration := 0
+      noMotionDuration := 0
+      phase := 0
+
+      if (phase == 0) {
+        if ((#Curtain).curtain_curtain == 'opening') {
+          openingDuration = openingDuration + 100
+          if (openingDuration >= 5000) {
+            (#Curtain).curtain_close()
+            phase = 1
+          }
+        } else {
+          openingDuration = 0
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Light).switch_on()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: When the lights are turned off, alter the color of the lights 3 times at 1 second intervals, pause for 5 seconds before stopping the speakers, and from then on, check in real-time to set the air conditioner temperature to 25 degrees 10 seconds after it turns off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'off')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).colorControl_setColor("127|191|127")
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_stop()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'off')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).airConditionerMode_setTemperature(25)
+        break
+      }
+      ```
+- command: After the lights are switched off, change the hue of the illumination three times, each change occuring a second apart. Wait for a pause of five seconds before halting the speakers. Subsequently, keep a continuous check to adjust the air conditioning temperature to 25 degrees ten seconds post its deactivation
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'off')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).colorControl_setColor("127|191|127")
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_stop()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'off')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).airConditionerMode_setTemperature(25)
+        break
+      }
+      ```
+- command: Once the lights have been turned off, vary the color of the lights in three successive instances at one-second intervals, then hold off for a five-second interval before putting a stop to the sound system. Thereafter, monitor continuously to set the air conditioner at 25 degrees exactly 10 seconds after it has powered down
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'off')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).colorControl_setColor("127|191|127")
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_stop()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'off')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).airConditionerMode_setTemperature(25)
+        break
+      }
+      ```
+- command: As soon as the lights go off, modify the light spectrum thrice at a pace of one change per second. Allow a brief five-second pause before you cease the audio equipment. Following this, make sure to adjust the air-conditioning to a 25-degree setting, ten seconds subsequent to its switch-off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'off')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).colorControl_setColor("127|191|127")
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_stop()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'off')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).airConditionerMode_setTemperature(25)
+        break
+      }
+      ```
+- command: When the lights are switched off, toggle the light switch 3 times at 1 second intervals, wait 5 seconds before pausing the media playback on the speakers, and from then on, check in real-time to set the air conditioner mode to 'heat' 10 seconds after it turns off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'off')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).switch_toggle()
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_pause()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'off')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        break
+      }
+      ```
+- command: If the lights get turned off, flip the light switch every second for three times, then pause for five seconds, before halting the audio playback on the speakers, and as soon as that is done, monitor continuously to change the air conditioner to the 'heat' setting 10 seconds after it powers down
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'off')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).switch_toggle()
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_pause()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'off')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        break
+      }
+      ```
+- command: Whenever the lights go off, make sure to flick the light switch three times, each a second apart, then allow a five-second break before stopping the music from the speakers, and subsequently, in real-time observation, switch the air conditioner to 'heat' mode a mere 10 seconds post its shutdown
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'off')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).switch_toggle()
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_pause()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'off')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        break
+      }
+      ```
+- command: In case the lights are turned off, it's necessary to operate the light switch in one-second intervals for three times, take a five-second breather before suspending the audio output on the speakers, and from then onward, ensure to set the air conditioner to 'heat' mode precisely 10 seconds post its deactivation, dynamically
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'off')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).switch_toggle()
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_pause()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'off')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        break
+      }
+      ```
+- command: When the lights are turned on, set the saturation of the lights 3 times at 1 second intervals, wait 5 seconds before fast forwarding the media playback on the speakers, and from then on, check in real-time to turn off the air conditioner 10 seconds after it turns on.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'on')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).colorControl_setSaturation(50)
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_fastForward()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'on')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).switch_off()
+        break
+      }
+      ```
+- command: In the event that the lights are switched on, please adjust the saturation of the lights three times with a gap of one second between each adjustment. After waiting for a pause of five seconds, proceed to quickly advance the media being played back on the speakers. From that point forward, make sure to monitor in real-time and switch off the air conditioning unit ten seconds after it has been powered on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'on')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).colorControl_setSaturation(50)
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_fastForward()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'on')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).switch_off()
+        break
+      }
+      ```
+- command: If the lights get lit up, it's required to alter the lighting saturation thrice at intervals of one second. Following that, let a 5-second period pass before speeding up the media that's playing through the speakers. Afterwards, continuously track the status of the air conditioner and ensure it's turned off ten seconds post activation
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'on')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).colorControl_setSaturation(50)
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_fastForward()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'on')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).switch_off()
+        break
+      }
+      ```
+- command: Should the lights be illuminated, please promptly tweak the saturation level of those lights three times at one-second intervals. Subsequently, hold off for about five seconds prior to accelerating the speaker's media playback. In the aftermath, it is essential to constantly inspect and switch off the air conditioner mere ten seconds after it begins operating
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      phase := 0
+      count := 0
+      if (phase == 0) {
+        wait until((#Light).switch_switch == 'on')
+        phase = 1
+      } else if (phase == 1) {
+        if (count < 3) {
+          (#Light).colorControl_setSaturation(50)
+          (#Clock).clock_delay(1000)
+          count = count + 1
+        } else {
+          (#Clock).clock_delay(5000)
+          (#Speaker).mediaPlayback_fastForward()
+          phase = 2
+        }
+      } else if (phase == 2) {
+        wait until((#AirConditioner).switch_switch == 'on')
+        (#Clock).clock_delay(10000)
+        (#AirConditioner).switch_off()
+        break
+      }
+      ```
+- command: When the air conditioner turns on, set the blinds to 50 percent open after five seconds, wait another five seconds and pause the operation of the curtains if they're opening, and then set the light color to blue after 10 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'on')
+      (#Clock).clock_delay(5000)
+      (#Blind).blindLevel_setBlindLevel(50)
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'opening') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setColor({"hue": 60, "saturation": 100})
+- command: When the air conditioner starts, wait for five seconds and then adjust the blinds to a halfway open position. Give it another five seconds and if the curtains are in the process of opening, halt their movement. After waiting for an additional 10 seconds, change the light hue to blue
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'on')
+      (#Clock).clock_delay(5000)
+      (#Blind).blindLevel_setBlindLevel(50)
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'opening') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setColor({"hue": 60, "saturation": 100})
+- command: If you notice the air conditioner kicking in, allow five seconds to pass before setting the blinds to half their full extension. Wait for another five-second interval, and if the curtains are opening, stop them. Then, once ten seconds have passed, make sure to switch the light to a blue color
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'on')
+      (#Clock).clock_delay(5000)
+      (#Blind).blindLevel_setBlindLevel(50)
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'opening') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setColor({"hue": 60, "saturation": 100})
+- command: Once the air conditioner springs into action, leave a five-second gap and then open the blinds halfway. After another five seconds, if the curtains are being drawn, cease their operation. Following a ten-second gap, ensure the light is turned blue
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'on')
+      (#Clock).clock_delay(5000)
+      (#Blind).blindLevel_setBlindLevel(50)
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'opening') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setColor({"hue": 60, "saturation": 100})
+- command: When the air conditioner turns off, open the blinds after five seconds, wait another five seconds and pause the operation of the curtains if they're closing, and then toggle the light switch after 10 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'off')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_open()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'closing') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).switch_toggle()
+- command: '"Once the air conditioner stops running, wait for five seconds and then raise the blinds. After another five seconds, if the curtains are in the process of closing, halt their operation. Then, after an additional ten seconds, flick the light switch."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'off')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_open()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'closing') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).switch_toggle()
+- command: '"As soon as the air conditioning unit ceases operation, delay for five seconds before lifting up the blinds. If the curtains are in the middle of being shut, put a hold on their motion after another five-second pause. Lastly, after a ten-second interval, change the state of the light switch."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'off')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_open()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'closing') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).switch_toggle()
+- command: '"Upon the air conditioner''s shutdown, take a pause of five seconds prior to opening the blinds. If by chance, the curtains are descending, stop their activity after waiting for another five seconds. Then, following a pause of ten more seconds, alter the position of the light switch."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).switch_switch == 'off')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_open()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'closing') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).switch_toggle()
+- command: When the air conditioner is set to cool, close the blinds after five seconds, wait another five seconds and open the curtains if they're closed, and then set the light hue to 30 percent after 10 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).airConditionerMode_airConditionerMode == 'cool')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_close()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'closed') {
+        (#Curtain).curtain_open()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setHue(30)
+- command: If the air conditioning is on cooling mode, ensure the blinds are shut five seconds later. Wait for another five seconds and, provided the curtains are shut, open them. After a further ten seconds, adjust the light's hue to thirty percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).airConditionerMode_airConditionerMode == 'cool')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_close()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'closed') {
+        (#Curtain).curtain_open()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setHue(30)
+- command: If the air conditioner is cooling, pull down the blinds after a short pause of five seconds. Hesitate for five more seconds and, if the curtains are drawn, unveil them. After waiting another ten seconds, dim the light's hue to a level of thirty percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).airConditionerMode_airConditionerMode == 'cool')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_close()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'closed') {
+        (#Curtain).curtain_open()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setHue(30)
+- command: When you've got the air conditioner cranked up to cool, make sure to shut the blinds after a brief delay of five seconds. Pause for an additional five seconds and open the curtains, but only if they're closed. Then, after a ten second wait, tone down the light hue to just thirty percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).airConditionerMode_airConditionerMode == 'cool')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_close()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'closed') {
+        (#Curtain).curtain_open()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setHue(30)
+- command: When the air conditioner is set to auto, open the blinds after five seconds, wait another five seconds and pause the operation of the curtains if they're partially open, and then set the light saturation to 70 percent after 10 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).airConditionerMode_airConditionerMode == 'auto')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_open()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'partially') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setSaturation(70)
+- command: After the air conditioner has been switched to auto mode, allow a five-second pause before opening the blinds. Following another five-second gap, halt the movement of the curtains if they are halfway open, and after a further ten seconds, adjust the light saturation to 70 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).airConditionerMode_airConditionerMode == 'auto')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_open()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'partially') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setSaturation(70)
+- command: Once the air conditioner is on auto, please open the blinds after waiting for five seconds. After a subsequent pause of five seconds, stop any movement of the curtains if they are not completely open. Finally, after an additional ten seconds, set the light saturation level to 70 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).airConditionerMode_airConditionerMode == 'auto')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_open()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'partially') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setSaturation(70)
+- command: If the air conditioner is set to auto, wait for five seconds before opening the blinds. After another five-second wait, if the curtains are only partially open, put their operation on hold. Then, after waiting for ten more seconds, change the light saturation to 70 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#AirConditioner).airConditionerMode_airConditionerMode == 'auto')
+      (#Clock).clock_delay(5000)
+      (#Blind).blind_open()
+      (#Clock).clock_delay(5000)
+      if ((#Curtain).curtain_curtain == 'partially') {
+        (#Curtain).curtain_pause()
+      }
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setSaturation(70)
+- command: Check in real-time to mute the alarm if no motion is detected for 10 seconds after the door is closed, and turn off the lights after 5 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'closed')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_setAlarmVolume('mute')
+            (#Clock).clock_delay(5000)
+            (#Light).switch_off()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Please ensure that the alarm is muted in real time if there's no detected movement for 10 seconds after the closure of the door, and also make sure the lights are turned off 5 seconds afterward
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'closed')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_setAlarmVolume('mute')
+            (#Clock).clock_delay(5000)
+            (#Light).switch_off()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Keep an eye out in real-time to silence the alarm if there's a lack of motion detection for a ten-second span post door closure, and switch off the lights five seconds later
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'closed')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_setAlarmVolume('mute')
+            (#Clock).clock_delay(5000)
+            (#Light).switch_off()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: In real-time, confirm that the alarm is set to silent if no movement is observed for a ten-second duration after shutting the door, and then extinguish the lights five seconds later
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'closed')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_setAlarmVolume('mute')
+            (#Clock).clock_delay(5000)
+            (#Light).switch_off()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Check in real-time to sound the alarm's siren if no motion is detected for 10 seconds after the door is opened, and toggle the light switch after 5 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'open')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_siren()
+            (#Clock).clock_delay(5000)
+            (#Light).switch_toggle()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Please ensure that the alarm's siren is set to go off in real-time if no movement is detected for a duration of 10 seconds after the door has been opened, and also make sure to flip the light switch five seconds later
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'open')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_siren()
+            (#Clock).clock_delay(5000)
+            (#Light).switch_toggle()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Ensure to trigger the siren of the alarm immediately if there hasn't been any motion detected within 10 seconds of the door being opened, and remember to flip the light switch after a delay of 5 seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'open')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_siren()
+            (#Clock).clock_delay(5000)
+            (#Light).switch_toggle()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: I'd like you to activate the alarm's siren on a real-time basis if there's no activity sensed for a span of 10 seconds post the door opening, and also switch the light on or off after a wait of 5 seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'open')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_siren()
+            (#Clock).clock_delay(5000)
+            (#Light).switch_toggle()
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Check in real-time to turn off the alarm if no motion is detected for 10 seconds after the door is closed, and set the light level to 50% after 5 seconds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'closed')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_off()
+            (#Clock).clock_delay(5000)
+            (#Light).switchLevel_setLevel(50, 0)
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: '"If the door has been closed and no activity is detected for ten seconds, can you make sure to deactivate the alarm immediately? Also, five seconds later, kindly adjust the light intensity to half its full capacity."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'closed')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_off()
+            (#Clock).clock_delay(5000)
+            (#Light).switchLevel_setLevel(50, 0)
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: '"Once the door shuts, please monitor for any movement for a span of ten seconds, and if you perceive none, promptly switch off the alarm. Additionally, after a pause of five seconds, I''d like the brightness to be set to fifty percent."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'closed')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_off()
+            (#Clock).clock_delay(5000)
+            (#Light).switchLevel_setLevel(50, 0)
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: '"In the event that there''s no motion sensed for a duration of ten seconds following the door closure, I want the alarm to be immediately disarmed. Then, after waiting for five more seconds, please reduce the illumination to half its usual level."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      noMotionDuration := 0
+
+      if (phase == 0) {
+        wait until((#ContactSensor).contactSensor_contact == 'closed')
+        phase = 1
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == 'inactive') {
+          noMotionDuration = noMotionDuration + 100
+          if (noMotionDuration >= 10000) {
+            (#Alarm).alarm_off()
+            (#Clock).clock_delay(5000)
+            (#Light).switchLevel_setLevel(50, 0)
+            break
+          }
+        } else {
+          noMotionDuration = 0
+        }
+      }
+- command: Every Monday morning, from 10 to 10 a.m., check in real-time and set the blinds to 50% level if they're still open seven seconds after the time when the window is opened, and pause the curtains 10 seconds later. And during that time, check in real time and toggle the lights if they're off.
+  code:
+  - name: Scenario1
+    cron: 0 10 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: Every tuesday morning, from 9 to 10 a.m., check in real-time and set the blinds to 50% level if they're still open seven seconds after the time when the window is opened, and pause the curtains 10 seconds later. And during that time, check in real time and toggle the lights if they're off.
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: Every tuesday morning, from 8 to 10 a.m., check in real-time and set the blinds to 50% level if they're still open seven seconds after the time when the window is opened, and pause the curtains 10 seconds later. And during that time, check in real time and toggle the lights if they're off.
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: Every Monday morning, from 9 to 10 a.m., check in real-time and set the blinds to 50% level if they're still open seven seconds after the time when the window is opened, and pause the curtains 10 seconds later. And during that time, check in real time and toggle the lights if they're off.
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: On each Monday morning, between 10 to 10 a.m., keep an eye out and adjust the blinds to half their full extension if they remain open seven seconds after the window has been opened, and hold the curtains in place ten seconds afterward. Also, during this period, continuously monitor and switch on the lights if they are not already on
+  code:
+  - name: Scenario1
+    cron: 0 10 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: On eachtuesday morning, between 9 to 10 a.m., keep an eye out and adjust the blinds to half their full extension if they remain open seven seconds after the window has been opened, and hold the curtains in place ten seconds afterward. Also, during this period, continuously monitor and switch on the lights if they are not already on
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: On eachtuesday morning, between 10 to 10 a.m., keep an eye out and adjust the blinds to half their full extension if they remain open seven seconds after the window has been opened, and hold the curtains in place ten seconds afterward. Also, during this period, continuously monitor and switch on the lights if they are not already on
+  code:
+  - name: Scenario1
+    cron: 0 10 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: On each Monday morning, between 9 to 10 a.m., keep an eye out and adjust the blinds to half their full extension if they remain open seven seconds after the window has been opened, and hold the curtains in place ten seconds afterward. Also, during this period, continuously monitor and switch on the lights if they are not already on
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: Every Monday, specifically from 8 to 10 a.m., be sure to set the blinds at a halfway point if they're still open seven seconds beyond the moment when the window is opened, and freeze the movement of the curtains after an additional ten seconds. Concurrently, keep a close watch and activate the lights if they are turned off
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: Every tuesday, specifically from 9 to 10 a.m., be sure to set the blinds at a halfway point if they're still open seven seconds beyond the moment when the window is opened, and freeze the movement of the curtains after an additional ten seconds. Concurrently, keep a close watch and activate the lights if they are turned off
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: Every tuesday, specifically from 10 to 10 a.m., be sure to set the blinds at a halfway point if they're still open seven seconds beyond the moment when the window is opened, and freeze the movement of the curtains after an additional ten seconds. Concurrently, keep a close watch and activate the lights if they are turned off
+  code:
+  - name: Scenario1
+    cron: 0 10 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: Every Monday, specifically from 9 to 10 a.m., be sure to set the blinds at a halfway point if they're still open seven seconds beyond the moment when the window is opened, and freeze the movement of the curtains after an additional ten seconds. Concurrently, keep a close watch and activate the lights if they are turned off
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: On Mondays, in the hour from 8 to 10 a.m., ensure to position the blinds at 50% if they persist in being open for seven seconds after the window has been opened, then stop the curtains from moving ten seconds later. At the same time, monitor vigilantly and turn on the lights if they're off
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: On Mondays, in the hour from 9 to 10 a.m., ensure to position the blinds at 50% if they persist in being open for seven seconds after the window has been opened, then stop the curtains from moving ten seconds later. At the same time, monitor vigilantly and turn on the lights if they're off
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: On Mondays, in the hour from 8 to 10 a.m., ensure to position the blinds at 50% if they persist in being open for seven seconds after the window has been opened, then stop the curtains from moving ten seconds later. At the same time, monitor vigilantly and turn on the lights if they're off
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: On Mondays, in the hour from 9 to 10 a.m., ensure to position the blinds at 50% if they persist in being open for seven seconds after the window has been opened, then stop the curtains from moving ten seconds later. At the same time, monitor vigilantly and turn on the lights if they're off
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blindLevel_setBlindLevel(50)
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_pause()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switch_toggle()
+      }
+- command: Every Monday morning, from 10 to 10 a.m., check in real-time and pause the blinds' operation if they're still open seven seconds after the time when the window is opened, and open the curtains 10 seconds later. And during that time, check in real time and set the lights to 75% level if they're off.
+  code:
+  - name: Scenario1
+    cron: 0 10 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: Every tuesday morning, from 9 to 10 a.m., check in real-time and pause the blinds' operation if they're still open seven seconds after the time when the window is opened, and open the curtains 10 seconds later. And during that time, check in real time and set the lights to 75% level if they're off.
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: Every tuesday morning, from 8 to 10 a.m., check in real-time and pause the blinds' operation if they're still open seven seconds after the time when the window is opened, and open the curtains 10 seconds later. And during that time, check in real time and set the lights to 75% level if they're off.
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: Every Monday morning, from 9 to 10 a.m., check in real-time and pause the blinds' operation if they're still open seven seconds after the time when the window is opened, and open the curtains 10 seconds later. And during that time, check in real time and set the lights to 75% level if they're off.
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: Every Monday morning, between 8 and 10 a.m., monitor the blinds continuously. If they remain open seven seconds after the window has been opened, halt their operation. Then, wait another 10 seconds before drawing the curtains. Also, during this period, keep an eye on the lights and if they are not on, adjust their brightness to 75%
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: Every tuesday morning, between 9 and 10 a.m., monitor the blinds continuously. If they remain open seven seconds after the window has been opened, halt their operation. Then, wait another 10 seconds before drawing the curtains. Also, during this period, keep an eye on the lights and if they are not on, adjust their brightness to 75%
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: Every tuesday morning, between 8 and 10 a.m., monitor the blinds continuously. If they remain open seven seconds after the window has been opened, halt their operation. Then, wait another 10 seconds before drawing the curtains. Also, during this period, keep an eye on the lights and if they are not on, adjust their brightness to 75%
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: Every Monday morning, between 9 and 10 a.m., monitor the blinds continuously. If they remain open seven seconds after the window has been opened, halt their operation. Then, wait another 10 seconds before drawing the curtains. Also, during this period, keep an eye on the lights and if they are not on, adjust their brightness to 75%
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: On Monday mornings, from 8:00 to 10:00 a.m., ensure to observe the blinds' status. If they don't close within seven seconds after opening the window, stop them from operating. After a 10-second delay, unveil the curtains. Simultaneously, pay attention to the lights and set them at 75% brightness if they happen to be switched off
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: On tuesday mornings, from 9:00 to 10:00 a.m., ensure to observe the blinds' status. If they don't close within seven seconds after opening the window, stop them from operating. After a 10-second delay, unveil the curtains. Simultaneously, pay attention to the lights and set them at 75% brightness if they happen to be switched off
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: On tuesday mornings, from 8:00 to 10:00 a.m., ensure to observe the blinds' status. If they don't close within seven seconds after opening the window, stop them from operating. After a 10-second delay, unveil the curtains. Simultaneously, pay attention to the lights and set them at 75% brightness if they happen to be switched off
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: On Monday mornings, from 9:00 to 10:00 a.m., ensure to observe the blinds' status. If they don't close within seven seconds after opening the window, stop them from operating. After a 10-second delay, unveil the curtains. Simultaneously, pay attention to the lights and set them at 75% brightness if they happen to be switched off
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: From 10 to 10 a.m. on every Monday morning, keep the blinds under constant surveillance. If they persist in being open seven seconds post the window being opened, discontinue their functioning. Follow this by opening the curtains after a pause of 10 seconds. Meanwhile, during this interval, ascertain if the lights are off, and if so, regulate their intensity to 75%
+  code:
+  - name: Scenario1
+    cron: 0 10 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: From 9 to 10 a.m. on every tuesday morning, keep the blinds under constant surveillance. If they persist in being open seven seconds post the window being opened, discontinue their functioning. Follow this by opening the curtains after a pause of 10 seconds. Meanwhile, during this interval, ascertain if the lights are off, and if so, regulate their intensity to 75%
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: From 8 to 10 a.m. on every tuesday morning, keep the blinds under constant surveillance. If they persist in being open seven seconds post the window being opened, discontinue their functioning. Follow this by opening the curtains after a pause of 10 seconds. Meanwhile, during this interval, ascertain if the lights are off, and if so, regulate their intensity to 75%
+  code:
+  - name: Scenario1
+    cron: 0 8 * * 2
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+- command: From 9 to 10 a.m. on every Monday morning, keep the blinds under constant surveillance. If they persist in being open seven seconds post the window being opened, discontinue their functioning. Follow this by opening the curtains after a pause of 10 seconds. Meanwhile, during this interval, ascertain if the lights are off, and if so, regulate their intensity to 75%
+  code:
+  - name: Scenario1
+    cron: 0 9 * * 1
+    period: 100
+    code: |-
+      prev_window_state := "closed"
+      window_open_time := 0
+      has_checked := false
+
+      if ((#Clock).clock_hour == 10) {
+        break
+      }
+
+      current_state = (#Window).windowControl_window
+
+      if ((prev_window_state == "closed") and (current_state == "open")) {
+        window_open_time = (#Clock).clock_timestamp
+        has_checked = false
+      }
+
+      prev_window_state = current_state
+
+      if ((current_state == "open") and (has_checked == false)) {
+        elapsed = (#Clock).clock_timestamp - window_open_time
+        if (elapsed >= 7) {
+          if ((#Blind).blind_blind == "open") {
+            (#Blind).blind_pause()
+            (#Clock).clock_delay(10000)
+            (#Curtain).curtain_open()
+          }
+          break
+        }
+      }
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(75, 10)
+      }
+# original_count: 60
+# augmented_count: 24

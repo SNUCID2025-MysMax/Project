@@ -1,0 +1,1652 @@
+- command: If a person is detected with the lights off and the window closed, wait 3 seconds before turning on the lights and 5 seconds before opening the blinds. Pause the alarm once every 10 seconds for one second, but after two alarms, switch the air conditioner to "heat" mode. However, if the door is closing after a person is detected, stop all motion and open the curtains.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      state := 0
+      motion_time := 0.0
+      blind_time := 0.0
+      alarm_timer := 0.0
+      alarm_count := 0
+
+      if (state == 0 and (#Light).switch_switch == 'off' and (#Window).windowControl_window == 'closed' and (#MotionSensor).motionSensor_motion == 'active') {
+        motion_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state >= 1 and (#DoorLock).doorControl_door == 'closing') {
+        (#Curtain).curtain_open()
+        break
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - motion_time) >= 3) {
+          (#Light).switch_on()
+          blind_time = now
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_time) >= 5) {
+          (#Blind).blind_open()
+          alarm_timer = now
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 10) {
+          (#Alarm).alarm_pause()
+          alarm_timer = now
+          alarm_count = alarm_count + 1
+          state = 4
+        }
+      }
+
+      if (state == 4) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 1) {
+          (#Alarm).alarm_off()
+          if (alarm_count == 2) {
+            (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+          }
+          state = 3
+        }
+      }
+- command: In the event that someone is identified when the lights are out and the window is shut, ensure a delay of three seconds prior to illuminating the area and a pause of five seconds before you lift the blinds. Every ten seconds, halt the alarm for a duration of one second, but after a couple of alarms, adjust the air conditioner to emit heat. However, should the door commence closing following the detection of an individual, cease all movement and draw back the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      state := 0
+      motion_time := 0.0
+      blind_time := 0.0
+      alarm_timer := 0.0
+      alarm_count := 0
+
+      if (state == 0 and (#Light).switch_switch == 'off' and (#Window).windowControl_window == 'closed' and (#MotionSensor).motionSensor_motion == 'active') {
+        motion_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state >= 1 and (#DoorLock).doorControl_door == 'closing') {
+        (#Curtain).curtain_open()
+        break
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - motion_time) >= 3) {
+          (#Light).switch_on()
+          blind_time = now
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_time) >= 5) {
+          (#Blind).blind_open()
+          alarm_timer = now
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 10) {
+          (#Alarm).alarm_pause()
+          alarm_timer = now
+          alarm_count = alarm_count + 1
+          state = 4
+        }
+      }
+
+      if (state == 4) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 1) {
+          (#Alarm).alarm_off()
+          if (alarm_count == 2) {
+            (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+          }
+          state = 3
+        }
+      }
+- command: If you spot a person while the lights are switched off and all windows are sealed, you'll need to wait for three seconds before you light up the room and wait for five more seconds before you unseal the blinds. Remember to silence the alarm for a single second every tenth second, but on sounding the alarm twice, it's time to switch the air conditioner to heating mode. If the door starts to close post detecting a person, do put a stop to all activity and open the curtains wide
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      state := 0
+      motion_time := 0.0
+      blind_time := 0.0
+      alarm_timer := 0.0
+      alarm_count := 0
+
+      if (state == 0 and (#Light).switch_switch == 'off' and (#Window).windowControl_window == 'closed' and (#MotionSensor).motionSensor_motion == 'active') {
+        motion_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state >= 1 and (#DoorLock).doorControl_door == 'closing') {
+        (#Curtain).curtain_open()
+        break
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - motion_time) >= 3) {
+          (#Light).switch_on()
+          blind_time = now
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_time) >= 5) {
+          (#Blind).blind_open()
+          alarm_timer = now
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 10) {
+          (#Alarm).alarm_pause()
+          alarm_timer = now
+          alarm_count = alarm_count + 1
+          state = 4
+        }
+      }
+
+      if (state == 4) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 1) {
+          (#Alarm).alarm_off()
+          if (alarm_count == 2) {
+            (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+          }
+          state = 3
+        }
+      }
+- command: Should you discern a presence with the illumination absent and the window sealed, it's crucial to pause for three seconds prior to igniting the lights, and wait five seconds before pulling up the blinds. Make it a point to switch off the alarm for a brief second at each ten-second interval, but following the sounding of two alarms, switch the air conditioning unit to warm. In contrast, in the event that the door begins to close subsequent to detecting an individual, halt all motion and part the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      state := 0
+      motion_time := 0.0
+      blind_time := 0.0
+      alarm_timer := 0.0
+      alarm_count := 0
+
+      if (state == 0 and (#Light).switch_switch == 'off' and (#Window).windowControl_window == 'closed' and (#MotionSensor).motionSensor_motion == 'active') {
+        motion_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state >= 1 and (#DoorLock).doorControl_door == 'closing') {
+        (#Curtain).curtain_open()
+        break
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - motion_time) >= 3) {
+          (#Light).switch_on()
+          blind_time = now
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_time) >= 5) {
+          (#Blind).blind_open()
+          alarm_timer = now
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 10) {
+          (#Alarm).alarm_pause()
+          alarm_timer = now
+          alarm_count = alarm_count + 1
+          state = 4
+        }
+      }
+
+      if (state == 4) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 1) {
+          (#Alarm).alarm_off()
+          if (alarm_count == 2) {
+            (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+          }
+          state = 3
+        }
+      }
+- command: If a person is detected with the lights on and the window open, wait 3 seconds before turning off the lights and 5 seconds before pausing the blinds. Strobe the alarm once every 10 seconds for one second, but after two alarms, switch the air conditioner to "auto" mode. However, if the door is closing after a person is detected, stop all motion and pause the curtains.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      state := 0
+      motion_time := 0.0
+      blind_time := 0.0
+      alarm_timer := 0.0
+      alarm_count := 0
+
+      if (state == 0 and (#Light).switch_switch == 'on' and (#Window).windowControl_window == 'open' and (#MotionSensor).motionSensor_motion == 'active') {
+        motion_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state >= 1 and (#DoorLock).doorControl_door == 'closing') {
+        (#Curtain).curtain_pause()
+        break
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - motion_time) >= 3) {
+          (#Light).switch_off()
+          blind_time = now
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_time) >= 5) {
+          (#Blind).blind_pause()
+          alarm_timer = now
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 10) {
+          (#Alarm).alarm_strobe()
+          alarm_timer = now
+          alarm_count = alarm_count + 1
+          state = 4
+        }
+      }
+
+      if (state == 4) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 1) {
+          (#Alarm).alarm_off()
+          if (alarm_count == 2) {
+            (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+          }
+          state = 3
+        }
+      }
+- command: In the event that an individual is recognized while the lights are lit and the window is not closed, refrain from turning off the lights for three seconds and from pausing the blinds for five seconds. Activate the alarm in a flashing pattern every ten seconds for a duration of one second. After two such alarm activations, adjust the air conditioner to function on automatic mode. However, if the door starts to close following the detection of a person, halt all movement and suspend the movement of the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      state := 0
+      motion_time := 0.0
+      blind_time := 0.0
+      alarm_timer := 0.0
+      alarm_count := 0
+
+      if (state == 0 and (#Light).switch_switch == 'on' and (#Window).windowControl_window == 'open' and (#MotionSensor).motionSensor_motion == 'active') {
+        motion_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state >= 1 and (#DoorLock).doorControl_door == 'closing') {
+        (#Curtain).curtain_pause()
+        break
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - motion_time) >= 3) {
+          (#Light).switch_off()
+          blind_time = now
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_time) >= 5) {
+          (#Blind).blind_pause()
+          alarm_timer = now
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 10) {
+          (#Alarm).alarm_strobe()
+          alarm_timer = now
+          alarm_count = alarm_count + 1
+          state = 4
+        }
+      }
+
+      if (state == 4) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 1) {
+          (#Alarm).alarm_off()
+          if (alarm_count == 2) {
+            (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+          }
+          state = 3
+        }
+      }
+- command: If circumstances arise where a person is spotted with the lights on and the window unclosed, maintain a delay of three seconds before switching off the lights and of five seconds before holding up the blind operations. Set the alarm to flash every tenth second for one second, but upon the alarm's second flashing, change the setting of the air conditioner to automatic. However, should the door begin to shut post the detection of a person, cease all movements and put a pause on the curtains' operations
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      state := 0
+      motion_time := 0.0
+      blind_time := 0.0
+      alarm_timer := 0.0
+      alarm_count := 0
+
+      if (state == 0 and (#Light).switch_switch == 'on' and (#Window).windowControl_window == 'open' and (#MotionSensor).motionSensor_motion == 'active') {
+        motion_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state >= 1 and (#DoorLock).doorControl_door == 'closing') {
+        (#Curtain).curtain_pause()
+        break
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - motion_time) >= 3) {
+          (#Light).switch_off()
+          blind_time = now
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_time) >= 5) {
+          (#Blind).blind_pause()
+          alarm_timer = now
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 10) {
+          (#Alarm).alarm_strobe()
+          alarm_timer = now
+          alarm_count = alarm_count + 1
+          state = 4
+        }
+      }
+
+      if (state == 4) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 1) {
+          (#Alarm).alarm_off()
+          if (alarm_count == 2) {
+            (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+          }
+          state = 3
+        }
+      }
+- command: Should you identify a person while the lights are illuminated and the window is ajar, hold off on extinguishing the lights for a duration of three seconds and on interrupting the blinds for five seconds. Make the alarm blink once in every ten-second interval for a one-second period, but once the alarm has blinked twice, alter the air conditioner setting to automatic mode. If the door commences to close after person detection, bring all motion to a standstill and put a hold on the curtain movements
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      state := 0
+      motion_time := 0.0
+      blind_time := 0.0
+      alarm_timer := 0.0
+      alarm_count := 0
+
+      if (state == 0 and (#Light).switch_switch == 'on' and (#Window).windowControl_window == 'open' and (#MotionSensor).motionSensor_motion == 'active') {
+        motion_time = (#Clock).clock_timestamp
+        state = 1
+      }
+
+      if (state >= 1 and (#DoorLock).doorControl_door == 'closing') {
+        (#Curtain).curtain_pause()
+        break
+      }
+
+      if (state == 1) {
+        now = (#Clock).clock_timestamp
+        if ((now - motion_time) >= 3) {
+          (#Light).switch_off()
+          blind_time = now
+          state = 2
+        }
+      }
+
+      if (state == 2) {
+        now = (#Clock).clock_timestamp
+        if ((now - blind_time) >= 5) {
+          (#Blind).blind_pause()
+          alarm_timer = now
+          state = 3
+        }
+      }
+
+      if (state == 3) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 10) {
+          (#Alarm).alarm_strobe()
+          alarm_timer = now
+          alarm_count = alarm_count + 1
+          state = 4
+        }
+      }
+
+      if (state == 4) {
+        now = (#Clock).clock_timestamp
+        if ((now - alarm_timer) >= 1) {
+          (#Alarm).alarm_off()
+          if (alarm_count == 2) {
+            (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+          }
+          state = 3
+        }
+      }
+- command: Every Monday morning at 7am, toggle the lights. Then check in real-time and close the blinds whenever it detects motion until midnight, and open and pause the curtains twice, three seconds apart. Each time you adjust the curtains, turn off the fan if the windows are open and turn on the air conditioner if they're closed.
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).switch_toggle()
+
+      (#Blind).blind_close()
+
+      (#Curtain).curtain_open()
+      (#Curtain).curtain_pause()
+
+      (#Fan).switch_off()
+
+      (#AirConditioner).switch_on()
+- command: '"On every Monday morning at 7, switch the lights on or off. Constantly monitor for any movement and shut the blinds if any is detected until the stroke of midnight, then open the curtains partially, pausing for three seconds before repeating the action. Whenever you manipulate the curtains, verify if the windows are open; if they are, power off the fan, if not, activate the air conditioner."'
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).switch_toggle()
+
+      (#Blind).blind_close()
+
+      (#Curtain).curtain_open()
+      (#Curtain).curtain_pause()
+
+      (#Fan).switch_off()
+
+      (#AirConditioner).switch_on()
+- command: '"At 7 a.m. each Monday morning, adjust the lighting. Continually observe and pull the blinds down if movement is sensed until it''s midnight. Twice, with a three-second interval, partially unroll and then halt the movement of the curtains. If you make any changes to the curtains, make sure to turn off the fan should the windows be open, otherwise switch on the air conditioning."'
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).switch_toggle()
+
+      (#Blind).blind_close()
+
+      (#Curtain).curtain_open()
+      (#Curtain).curtain_pause()
+
+      (#Fan).switch_off()
+
+      (#AirConditioner).switch_on()
+- command: '"Every Monday, as the clock strikes 7 in the morning, alter the condition of the lights. Keep an eye out for any motion, and if any is detected, close the blinds right away and continue to do so until the day ends at midnight. Open the curtains a bit, wait for three seconds, and do it once more. In the event of adjusting the curtains, if the windows are open, put the fan to rest; if they''re shut, kick-start the air conditioning."'
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).switch_toggle()
+
+      (#Blind).blind_close()
+
+      (#Curtain).curtain_open()
+      (#Curtain).curtain_pause()
+
+      (#Fan).switch_off()
+
+      (#AirConditioner).switch_on()
+- command: Every Monday morning at 7am, set the hue of the lights to 50. Then check in real-time and pause the blinds whenever it detects motion until midnight, and close the curtains twice, three seconds apart. Each time you adjust the curtains, toggle the fan if the windows are open and set the air conditioner to cool mode if they're closed.
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).colorControl_setHue(50)
+
+      (#Blind).blind_pause()
+
+      (#Curtain).curtain_close()
+
+      (#Fan).switch_toggle()
+
+      (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+- command: '"At dawn every Monday, precisely at 7am, adjust the light hues to an intensity of 50. Regularly monitor the blinds and pause their operation if movement is noticed. Continue this until the stroke of midnight. Within this period, close the curtains on two occasions, with each closure being three seconds apart. Whenever curtain adjustments occur, switch the fan on or off based on whether the windows are open or not. If the windows are closed, activate the air conditioner''s cooling feature."'
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).colorControl_setHue(50)
+
+      (#Blind).blind_pause()
+
+      (#Curtain).curtain_close()
+
+      (#Fan).switch_toggle()
+
+      (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+- command: '"On each Monday morning, right when the clock hits 7am, tune the lights to a hue level of 50. Continuously monitor for any activity, and when detected, cease the movement of the blinds until midnight. During this time, make sure to close the curtains twice, taking a three-second break between each closure. When the curtains are being managed, turn the fan on if the windows are open, or activate the air conditioning system''s cool setting if they aren''t."'
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).colorControl_setHue(50)
+
+      (#Blind).blind_pause()
+
+      (#Curtain).curtain_close()
+
+      (#Fan).switch_toggle()
+
+      (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+- command: '"Every Monday at the break of dawn, fine-tune the lighting to a hue intensity of 50. Keep an eye on the blinds in real-time and halt their activity when motion is detected, maintaining this until midnight rolls around. Remember to shut the curtains twice in succession, with a pause of three seconds between each closure. In each instance you adjust the curtains, switch the fan on if the windows are open, or revert the air conditioning to a cooler setting if they''re shut."'
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).colorControl_setHue(50)
+
+      (#Blind).blind_pause()
+
+      (#Curtain).curtain_close()
+
+      (#Fan).switch_toggle()
+
+      (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+- command: Every Monday morning at 7am, set the saturation of the lights to 80. Then check in real-time and set the blind level to 100 when it detects motion until midnight, and pause the curtains twice, three seconds apart. Each time you adjust the curtains, set the fan speed to 2000 if the windows are open and set the air conditioner temperature to 25 if they're closed.
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).colorControl_setSaturation(80)
+
+      (#Blind).blindLevel_setBlindLevel(100)
+
+      (#Curtain).curtain_pause()
+
+      (#Fan).fanControl_setFanSpeed(2000)
+
+      (#AirConditioner).airConditionerMode_setTemperature(25)
+- command: At 7 o'clock every Monday morning, adjust the light saturation to eighty percent. Subsequently, monitor for any movements and raise the blinds completely when such activity is detected until midnight. You should also intermittently halt the curtains twice with a gap of three seconds between each pause. Furthermore, every time there's an adjustment in the curtains, increase the fan speed to 2000 if the windows are open, or alternatively, set the air conditioning to 25 degrees when the windows are shut
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).colorControl_setSaturation(80)
+
+      (#Blind).blindLevel_setBlindLevel(100)
+
+      (#Curtain).curtain_pause()
+
+      (#Fan).fanControl_setFanSpeed(2000)
+
+      (#AirConditioner).airConditionerMode_setTemperature(25)
+- command: On Monday mornings, promptly at seven, tune the lights to an 80 percent saturation level. Follow this by actively checking and, upon noticing any movement, amplify the blind level to the maximum until midnight. Also, make sure to pause the movement of curtains twice with a three-second interval. In the event of any curtain adjustments, if the windows are open, the fan speed should be increased to 2000; otherwise, the air conditioner's temperature should be adjusted to 25 degrees if the windows are closed
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).colorControl_setSaturation(80)
+
+      (#Blind).blindLevel_setBlindLevel(100)
+
+      (#Curtain).curtain_pause()
+
+      (#Fan).fanControl_setFanSpeed(2000)
+
+      (#AirConditioner).airConditionerMode_setTemperature(25)
+- command: At the break of dawn every Monday, specifically at 7 am, please ensure the lights' saturation is adjusted to 80 percent. After that, be on the lookout for any motion and respond by setting the blinds to full coverage till the stroke of midnight. The curtains should also be halted twice, each time maintaining a three-second gap. Whenever the curtains are adjusted, remember to set the fan speed at 2000 if the windows are ajar, but if they're shut, the air conditioner should be set to a comfortable 25 degrees
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).colorControl_setSaturation(80)
+
+      (#Blind).blindLevel_setBlindLevel(100)
+
+      (#Curtain).curtain_pause()
+
+      (#Fan).fanControl_setFanSpeed(2000)
+
+      (#AirConditioner).airConditionerMode_setTemperature(25)
+- command: Every Monday morning at 7am, set the light level to 50. Then check in real-time and open the blinds whenever it detects motion until midnight, and pause the closing of the curtains twice, three seconds apart. Each time you adjust the curtains, set the fan speed percent to 75 if the windows are open and toggle the air conditioner switch if they're closed.
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).switchLevel_setLevel(50)
+
+      (#Blind).blind_open()
+
+      (#Curtain).curtain_pause()
+
+      (#Fan).fanControl_setPercent(75)
+
+      (#AirConditioner).switch_toggle()
+- command: '''Each Monday as the clock strikes 7 in the morning, adjust the brightness of the lights to a moderate setting. Simultaneously, keep a vigilant eye for any movement and open the blinds upon detection until the day ends. Briefly halt the closing process of the curtains two times, maintaining a gap of three seconds between each pause. When adjusting the curtains, increase the fan''s speed to 75% if the windows are ajar. In the case of closed windows, simply flip the air conditioner''s switch.'''
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).switchLevel_setLevel(50)
+
+      (#Blind).blind_open()
+
+      (#Curtain).curtain_pause()
+
+      (#Fan).fanControl_setPercent(75)
+
+      (#AirConditioner).switch_toggle()
+- command: '''On every Monday, when the dawn breaks at 7am, customize the brightness level to a semi-dim setting. Concurrently, maintain a real-time check for any activity and raise the blinds in response until the stroke of midnight. Instruct the curtain mechanism to pause twice while closing, each pause lasting for three seconds. Whenever there''s a need to manipulate the curtains, if the windows are open, set the fan''s speed to three-quarters of its maximum. However, if the windows are shut, just toggle the air conditioner on or off.'''
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).switchLevel_setLevel(50)
+
+      (#Blind).blind_open()
+
+      (#Curtain).curtain_pause()
+
+      (#Fan).fanControl_setPercent(75)
+
+      (#AirConditioner).switch_toggle()
+- command: '''Every Monday, as the day begins at 7 am, change the light intensity to a mid-level setting. At the same time, keep an instant check for any motion and, upon detection, let sunlight in until midnight. During the curtain closing operation, take two short breaks of three seconds each. In the instances when you''re adjusting the curtains, turn the fan setting to 75% of its full speed if the windows are letting in the breeze; if not, switch the air conditioner on or off.'''
+  code:
+  - name: Scenario1
+    cron: 0 7 * * 1
+    period: 0
+    code: |-
+      (#Light).switchLevel_setLevel(50)
+
+      (#Blind).blind_open()
+
+      (#Curtain).curtain_pause()
+
+      (#Fan).fanControl_setPercent(75)
+
+      (#AirConditioner).switch_toggle()
+- command: Strobe the alarm at 10pm every night if the bottom window is closed and the even-tagged light is off. If you strobe the alarm, set the blind level to 50 after 5 seconds. After 5 seconds, regardless of whether you strobed the alarm or not, check in real-time and open the curtains when the odd-tagged door opens and closes twice. After opening the curtains, turn the alarm's light on and off for the total time the door was opened twice.
+  code:
+  - name: Scenario1
+    cron: 0 22 * * *
+    period: 100
+    code: |-
+      state := 0
+      alarm_triggered := false
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+
+      if (state == 0) {
+        if ((#Window #Lower).windowControl_window == 'closed' and (#Light #Even).switch_switch == 'off') {
+          (#Alarm).alarm_strobe()
+          alarm_triggered = true
+        }
+        (#Clock).clock_delay(5000)
+        state = 1
+      }
+
+      if (state == 1) {
+        if (alarm_triggered == true) {
+          (#Blind).blindLevel_setBlindLevel(50)
+        }
+        state = 2
+      }
+
+      if (state == 2 and door_open_count >= 2) {
+        (#Curtain).curtain_open()
+        total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(total_time)
+        (#Alarm).alarm_off()
+        break
+      }
+
+      if ((#DoorLock #Odd).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock #Odd).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+- command: If the lower window remains shut and the light with an even tag is not lit, have the alarm go into strobe mode every day at 10 p.m. Following the activation of the strobe, adjust the blind level to halfway five seconds later. Regardless of whether the alarm strobe was set off or not, keep a real-time track and open the drapes the moment the door with an odd tag is opened and closed twice. Upon drawing back the curtains, cause the alarm's light to blink on and off for the total duration of time the door was opened and closed twice
+  code:
+  - name: Scenario1
+    cron: 0 22 * * *
+    period: 100
+    code: |-
+      state := 0
+      alarm_triggered := false
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+
+      if (state == 0) {
+        if ((#Window #Lower).windowControl_window == 'closed' and (#Light #Even).switch_switch == 'off') {
+          (#Alarm).alarm_strobe()
+          alarm_triggered = true
+        }
+        (#Clock).clock_delay(5000)
+        state = 1
+      }
+
+      if (state == 1) {
+        if (alarm_triggered == true) {
+          (#Blind).blindLevel_setBlindLevel(50)
+        }
+        state = 2
+      }
+
+      if (state == 2 and door_open_count >= 2) {
+        (#Curtain).curtain_open()
+        total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(total_time)
+        (#Alarm).alarm_off()
+        break
+      }
+
+      if ((#DoorLock #Odd).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock #Odd).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+- command: When it's 10 p.m. daily and the lower window is not open, and the light tagged with an even number is switched off, please activate the alarm strobe. If the alarm's strobe gets activated, ensure to set the blinds at half-open position five seconds later. Regardless of whether the strobing of the alarm occurred or not, make sure to monitor in real-time to pull back the curtains as soon as the door with an odd-numbered tag opens and shuts twice. After the curtains have been drawn open, flicker the alarm light for the same amount of time it took for the odd tagged door to open and close twice
+  code:
+  - name: Scenario1
+    cron: 0 22 * * *
+    period: 100
+    code: |-
+      state := 0
+      alarm_triggered := false
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+
+      if (state == 0) {
+        if ((#Window #Lower).windowControl_window == 'closed' and (#Light #Even).switch_switch == 'off') {
+          (#Alarm).alarm_strobe()
+          alarm_triggered = true
+        }
+        (#Clock).clock_delay(5000)
+        state = 1
+      }
+
+      if (state == 1) {
+        if (alarm_triggered == true) {
+          (#Blind).blindLevel_setBlindLevel(50)
+        }
+        state = 2
+      }
+
+      if (state == 2 and door_open_count >= 2) {
+        (#Curtain).curtain_open()
+        total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(total_time)
+        (#Alarm).alarm_off()
+        break
+      }
+
+      if ((#DoorLock #Odd).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock #Odd).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+- command: If the window at the bottom is closed and the light bearing an even tag is off, initiate the alarm's strobe mode every night at ten. After you initiate the strobe, make sure to bring the blind level to 50, five seconds post-strobe. Whether or not the alarm's strobe was initiated, keep a real-time check and ensure that the curtains are pulled open when the door with an odd tag has been opened and closed twice. Once the curtains are drawn, let the alarm's light flash for the equivalent duration the door took to open and close twice
+  code:
+  - name: Scenario1
+    cron: 0 22 * * *
+    period: 100
+    code: |-
+      state := 0
+      alarm_triggered := false
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+
+      if (state == 0) {
+        if ((#Window #Lower).windowControl_window == 'closed' and (#Light #Even).switch_switch == 'off') {
+          (#Alarm).alarm_strobe()
+          alarm_triggered = true
+        }
+        (#Clock).clock_delay(5000)
+        state = 1
+      }
+
+      if (state == 1) {
+        if (alarm_triggered == true) {
+          (#Blind).blindLevel_setBlindLevel(50)
+        }
+        state = 2
+      }
+
+      if (state == 2 and door_open_count >= 2) {
+        (#Curtain).curtain_open()
+        total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(total_time)
+        (#Alarm).alarm_off()
+        break
+      }
+
+      if ((#DoorLock #Odd).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock #Odd).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+- command: Turn the alarm both siren and strobe on at 10pm every night if the bottom window is unknown and the even-tagged light is off. If you turn on the alarm, open the blinds after 5 seconds. After 5 seconds, regardless of whether you turned on the alarm or not, check in real-time and pause the curtains when the odd-tagged door opens and closes twice. After pausing the curtains, turn the alarm's light on and off for the total time the door was opened twice.
+  code:
+  - name: Scenario1
+    cron: 0 22 * * *
+    period: 100
+    code: |-
+      state := 0
+      alarm_triggered := false
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+
+      if (state == 0) {
+        if ((#Window #Lower).windowControl_window == 'unknown' and (#Light #Even).switch_switch == 'off') {
+          (#Alarm).alarm_both()
+          alarm_triggered = true
+        }
+        (#Clock).clock_delay(5000)
+        state = 1
+      }
+
+      if (state == 1) {
+        if (alarm_triggered == true) {
+          (#Blind).blind_open()
+        }
+        state = 2
+      }
+
+      if (state == 2 and door_open_count >= 2) {
+        (#Curtain).curtain_pause()
+        total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(total_time)
+        (#Alarm).alarm_off()
+        break
+      }
+
+      if ((#DoorLock #Odd).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock #Odd).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+- command: '"Should the status of the bottom window be unclear and the light with an even tag is switched off, please set both the siren and the strobe alarm to activate every night at 10pm. If the alarm is activated, proceed to raise the blinds five seconds later. After this five second interval, regardless of whether the alarm was triggered or not, monitor in real-time. If the door with an odd tag is opened and closed twice, temporarily halt the movement of the curtains. Then, the alarm light should be turned on and off in accordance to the duration during which the door was opened twice."'
+  code:
+  - name: Scenario1
+    cron: 0 22 * * *
+    period: 100
+    code: |-
+      state := 0
+      alarm_triggered := false
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+
+      if (state == 0) {
+        if ((#Window #Lower).windowControl_window == 'unknown' and (#Light #Even).switch_switch == 'off') {
+          (#Alarm).alarm_both()
+          alarm_triggered = true
+        }
+        (#Clock).clock_delay(5000)
+        state = 1
+      }
+
+      if (state == 1) {
+        if (alarm_triggered == true) {
+          (#Blind).blind_open()
+        }
+        state = 2
+      }
+
+      if (state == 2 and door_open_count >= 2) {
+        (#Curtain).curtain_pause()
+        total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(total_time)
+        (#Alarm).alarm_off()
+        break
+      }
+
+      if ((#DoorLock #Odd).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock #Odd).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+- command: '"In case the bottom window status is undetermined and the light with an even tag is not lit, I would like you to set the alarm, both siren and strobe, to go off every evening at 10pm. If the alarm does go off, make sure to lift the blinds after waiting five seconds. Five seconds later, whether the alarm has been set off or not, keep a real-time check. Pause the curtains the moment the door with an odd tag is opened and closed twice. Following the pause of the curtains, the alarm''s light should blink on and off for the exact duration the door was opened twice."'
+  code:
+  - name: Scenario1
+    cron: 0 22 * * *
+    period: 100
+    code: |-
+      state := 0
+      alarm_triggered := false
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+
+      if (state == 0) {
+        if ((#Window #Lower).windowControl_window == 'unknown' and (#Light #Even).switch_switch == 'off') {
+          (#Alarm).alarm_both()
+          alarm_triggered = true
+        }
+        (#Clock).clock_delay(5000)
+        state = 1
+      }
+
+      if (state == 1) {
+        if (alarm_triggered == true) {
+          (#Blind).blind_open()
+        }
+        state = 2
+      }
+
+      if (state == 2 and door_open_count >= 2) {
+        (#Curtain).curtain_pause()
+        total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(total_time)
+        (#Alarm).alarm_off()
+        break
+      }
+
+      if ((#DoorLock #Odd).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock #Odd).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+- command: '"If you find that the status of the bottom window is not known and the light tagged even is off, you should arrange for both the siren and strobe alarm to trigger every night at 10pm. Should the alarm be activated, the blinds need to be opened after a delay of five seconds. After these five seconds, regardless of the alarm''s status, maintain a real-time surveillance. If the door with an odd tag is opened and closed twice, stop the curtains momentarily. Subsequent to the curtains being stopped, flicker the alarm''s light commensurate with the total time the door was unlatched twice."'
+  code:
+  - name: Scenario1
+    cron: 0 22 * * *
+    period: 100
+    code: |-
+      state := 0
+      alarm_triggered := false
+      door_open_flag := false
+      door_open_count := 0
+      first_open_start := 0
+      first_open_end := 0
+      second_open_start := 0
+      second_open_end := 0
+
+      if (state == 0) {
+        if ((#Window #Lower).windowControl_window == 'unknown' and (#Light #Even).switch_switch == 'off') {
+          (#Alarm).alarm_both()
+          alarm_triggered = true
+        }
+        (#Clock).clock_delay(5000)
+        state = 1
+      }
+
+      if (state == 1) {
+        if (alarm_triggered == true) {
+          (#Blind).blind_open()
+        }
+        state = 2
+      }
+
+      if (state == 2 and door_open_count >= 2) {
+        (#Curtain).curtain_pause()
+        total_time = (first_open_end - first_open_start) + (second_open_end - second_open_start)
+        total_time = total_time * 1000
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(total_time)
+        (#Alarm).alarm_off()
+        break
+      }
+
+      if ((#DoorLock #Odd).doorControl_door == 'open' and door_open_flag == false) {
+        door_open_flag = true
+        now = (#Clock).clock_timestamp
+        door_open_count = door_open_count + 1
+        if (door_open_count == 1) {
+          first_open_start = now
+        } else if (door_open_count == 2) {
+          second_open_start = now
+        }
+      }
+      if ((#DoorLock #Odd).doorControl_door == 'closed' and door_open_flag == true) {
+        door_open_flag = false
+        now = (#Clock).clock_timestamp
+        if (door_open_count == 1) {
+          first_open_end = now
+        } else if (door_open_count == 2) {
+          second_open_end = now
+        }
+      }
+- command: Check in real-time every day to make sure the robot vacuum is in "part" mode and playing a "cleaning" voice over the speaker after 10 seconds whenever you move. It also turns on odd-tagged air purifiers when the humidity is above 60%. While the air purifier is on, use your smart remote to switch off and on your TV every 3 seconds. Close the window whenever it's open for five consecutive minutes.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode == 'part' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+- command: '"Please verify on a daily basis, in real-time, if the robotic vacuum is functioning in ''part'' mode and broadcasting a ''cleaning'' voice message via its speaker after being moved. If it detects a humidity level exceeding 60%, it should activate the air purifiers tagged as odd. While the air purifier is operational, utilize your intelligent remote to periodically turn the television off and on every few seconds. Additionally, if the window remains open for a continuous five-minute duration, ensure it is closed."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode == 'part' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+- command: '"Could you please make sure every day, without delay, that the robot vacuum is operating on ''part'' mode and initiating a ''cleaning'' voice prompt over the speaker once it''s moved? Also see to it that it springs the air purifiers with odd tags into action when humidity surpasses 60%. During the time the air purifier is running, it would be great if you could use your high-tech remote to toggle your TV on and off every three seconds. If you observe the window staying open for five minutes straight, please make sure to shut it."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode == 'part' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+- command: '"Do keep a real-time daily check to ensure the robo vacuum is set to ''part'' mode and commences a ''cleaning'' voice announcement through its speaker as soon as it is moved. It should also trigger the odd-numbered air purifiers when the humidity peaks at above 60%. While the purifier is in operation, remember to use your smart remote to flick your TV off and on every three seconds. Don''t forget to pull the window shut if it''s been left open for five minutes continuously."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode == 'part' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+- command: Check in real-time every day to make sure the robot vacuum is running and playing a "cleaning" voice over the speaker after 10 seconds whenever you move. It also switches off odd-tagged air purifiers when the humidity is above 60%. While the air purifier is off, use your smart remote to toggle your TV every 3 seconds. Close the window whenever it's open for five consecutive minutes.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#AirPurifier).switch_off()
+      (#Television).switch_toggle()
+- command: '"Everyday, ensure that the robotic vacuum cleaner is actively working by monitoring it in real time, and after ten seconds of motion, verify that it initiates a ''cleaning'' verbal message over its speaker. Also, ensure that the air purifiers labelled with odd numbers automatically turn off when the humidity exceeds 60%. With the air purifiers off, remember to use your intelligent remote to change the television channels every three seconds. Lastly, make sure the window is shut if it remains open for a continual five-minute period."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#AirPurifier).switch_off()
+      (#Television).switch_toggle()
+- command: '"Monitor the robot vacuum continuously each day to confirm its operation and make sure it promptly plays a ''cleaning'' announcement over the speaker after you start moving. Furthermore, when the humidity rises above 60%, ensure that the air purifiers with odd tags are automatically turned off. When these purifiers are off, utilize your smart remote to switch channels on your television every three seconds. Lastly, if you find the window open for five minutes or more in a row, ensure to close it immediately."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#AirPurifier).switch_off()
+      (#Television).switch_toggle()
+- command: '"On a daily basis, keep an eye on the robotic vacuum to confirm that it''s functioning in real-time and starts broadcasting a ''cleaning'' voiceover through the speaker ten seconds after you initiate movement. In addition, oversee that the odd-numbered air purifiers turn off automatically when the humidity level surpasses 60%. During the times these purifiers are not running, use your intelligent remote to flip between TV channels every 3 seconds. Also, remember to shut the window if it''s stayed open for a continuous span of five minutes."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#AirPurifier).switch_off()
+      (#Television).switch_toggle()
+- command: Check in real-time every day to make sure the robot vacuum is running and playing a "cleaning" voice over the speaker after 10 seconds whenever you move. It also turns on odd-tagged air purifiers when the humidity is above 60%. While the air purifier is on, use your smart remote to power off and on your TV every 3 seconds. Open the window whenever it's open for five consecutive minutes.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#Window).windowControl_open()
+- command: Ensure that each day, in real-time, the robotic vacuum cleaner is operational and is broadcasting a "cleaning" audio message from the speaker ten seconds after movement is detected. Also, activate the uniquely tagged air purifiers when the humidity levels exceed 60%. Using your intelligent remote, turn your television off and on every three seconds while the air purifier is running. If a window remains open for a straight five minutes, make sure to close it
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#Window).windowControl_open()
+- command: See to it that the robot vacuum cleaner is working daily in real-time and starts to play a "cleaning" sound on the speaker about ten seconds after it starts moving. Also, remember to switch on the air purifiers that have odd tags when the humidity goes over 60%. While the air purifier is working, use your smart remote to switch your TV on and off every three seconds. Make sure to shut the window if it stays open for five minutes in a row
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#Window).windowControl_open()
+- command: Every day, check in real-time to confirm that the robot vacuum cleaner is in operation and starts to emit a "cleaning" voice message from the speaker ten seconds after it starts moving. If the humidity rises above 60%, be sure to activate the air purifiers labeled with odd numbers. Also, while the air purifier is functioning, use the smart remote to repeatedly turn the TV off and on every three seconds. And once a window has been open for five continuous minutes, make sure it's closed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#Window).windowControl_open()
+- command: Check in real-time every day to make sure the robot vacuum is running and playing a "cleaning" voice over the speaker after 10 seconds whenever you move. It also turns on odd-tagged air purifiers when the humidity is above 60%. While the air purifier is on, use your smart remote to power off and on your TV every 3 seconds. Close the window whenever it's closed for five consecutive minutes.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#Window).windowControl_close()
+- command: '"Ensure that you are monitoring the robot vacuum daily in real-time, making certain it starts its "cleaning" voiceover through the speaker after a ten-second delay each time it shifts locations. Also, when the humidity surpasses 60%, activate the air purifiers labeled as odd. While the air purifier is in operation, use your intelligent remote to switch your television off and on every three seconds. If the window remains shut for a continuous five minutes, make sure to open it."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#Window).windowControl_close()
+- command: '"Daily, in real-time, verify that the robotic vacuum is functioning and starts a "cleaning" audio message over its speaker ten seconds after each movement. Furthermore, when the humidity reaches above 60%, activate those air purifiers with an odd tag. While these purifiers are active, manipulate your smart remote to turn your television off and on at three-second intervals. If the window has been closed for five consecutive minutes, ensure it gets opened."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#Window).windowControl_close()
+- command: '"Every day, in real time, confirm that the robot vacuum is operating and that it initiates a "cleaning" voice announcement on the speaker ten seconds subsequent to any movement. In addition, switch on the odd-numbered air purifiers whenever the humidity increases beyond 60%. While the air purifier is functioning, utilize your smart remote to intermittently power your television off and on every three seconds. If the window has been shut for a straight five minutes, see to it that it is opened."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#RobotCleaner).switch_switch == 'on' and (#MotionSensor).motionSensor_motion == 'active')
+      (#Clock).clock_delay(10000)
+      (#Speaker).mediaPlayback_speak("cleaning")
+      (#Window).windowControl_close()
+- command: If a door is opened while the wall lights are on and the even-tagged curtains are partially open, then turn off those lights and close the window after 5 seconds. If motion is detected within the next 30 seconds, trigger the alarm's strobe. After the 30 seconds are up, if the air conditioner is in heat mode and the room temperature is above 28 degrees, set the air conditioner to auto mode. Also, toggle the smart fans tagged with an odd number if they're off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      elapsed := 0
+      motionDetected := false
+      if (phase == 0) {
+        if (((#Wall Light).switch_switch == "on") and ((#Curtain #Even).curtain_curtain == "partially") and ((#ContactSensor).contactSensor_contact == "open")) {
+          (#Clock).clock_delay(5000)
+          (#Wall Light).switch_off()
+          (#Window).windowControl_close()
+          phase = 1
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == "inactive") {
+          motionDetected = true
+        }
+        elapsed = elapsed + 100
+        if (elapsed >= 30000) {
+          if (motionDetected == true) {
+            (#Alarm).alarm_strobe()
+          }
+          phase = 2
+        }
+      } else if (phase == 2) {
+        if (((#AirConditioner).airConditionerMode_airConditionerMode == "heat") and ((#TemperatureSensor).temperatureMeasurement_temperature > 28.0)) {
+          (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+        }
+        if ((#Fan #Odd).switch_switch == "off") {
+          (#Fan #Odd).switch_toggle()
+        }
+        break
+      }
+- command: In the event that a door is unlatched while the wall lights are operational and the curtains with even tags are somewhat opened, proceed to deactivate those lights and secure the window after a brief delay of 5 seconds. Should there be any movement observed in the ensuing half minute, activate the alarm's flashing lights. Once this half minute has elapsed, should the air conditioning system be running in heat mode and the room's ambient temperature exceeds 28 degrees, adjust the air conditioner to function automatically. Additionally, if the intelligent fans labeled with an odd number are not operating, switch them on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      elapsed := 0
+      motionDetected := false
+      if (phase == 0) {
+        if (((#Wall Light).switch_switch == "on") and ((#Curtain #Even).curtain_curtain == "partially") and ((#ContactSensor).contactSensor_contact == "open")) {
+          (#Clock).clock_delay(5000)
+          (#Wall Light).switch_off()
+          (#Window).windowControl_close()
+          phase = 1
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == "inactive") {
+          motionDetected = true
+        }
+        elapsed = elapsed + 100
+        if (elapsed >= 30000) {
+          if (motionDetected == true) {
+            (#Alarm).alarm_strobe()
+          }
+          phase = 2
+        }
+      } else if (phase == 2) {
+        if (((#AirConditioner).airConditionerMode_airConditionerMode == "heat") and ((#TemperatureSensor).temperatureMeasurement_temperature > 28.0)) {
+          (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+        }
+        if ((#Fan #Odd).switch_switch == "off") {
+          (#Fan #Odd).switch_toggle()
+        }
+        break
+      }
+- command: Should a door be ajar and the wall lights are active, with the even-numbered curtains not fully shut, extinguish those lights and make sure the window is shut after a short period of 5 seconds. If any movement is noticed in the following thirty seconds, set off the strobe feature of the alarm. After this period, if the air conditioning is set to heat and the room's temperature is over 28 degrees, change the air conditioner to an automatic setting. Also, if the smart fans bearing an odd number are currently off, flip their switch to on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      elapsed := 0
+      motionDetected := false
+      if (phase == 0) {
+        if (((#Wall Light).switch_switch == "on") and ((#Curtain #Even).curtain_curtain == "partially") and ((#ContactSensor).contactSensor_contact == "open")) {
+          (#Clock).clock_delay(5000)
+          (#Wall Light).switch_off()
+          (#Window).windowControl_close()
+          phase = 1
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == "inactive") {
+          motionDetected = true
+        }
+        elapsed = elapsed + 100
+        if (elapsed >= 30000) {
+          if (motionDetected == true) {
+            (#Alarm).alarm_strobe()
+          }
+          phase = 2
+        }
+      } else if (phase == 2) {
+        if (((#AirConditioner).airConditionerMode_airConditionerMode == "heat") and ((#TemperatureSensor).temperatureMeasurement_temperature > 28.0)) {
+          (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+        }
+        if ((#Fan #Odd).switch_switch == "off") {
+          (#Fan #Odd).switch_toggle()
+        }
+        break
+      }
+- command: If the situation arises where a door becomes unlocked while the wall lights are still switched on and the curtains labelled with even numbers are not completely closed, take action to turn off said lights and seal the window promptly after 5 seconds. If there's any sign of motion within the upcoming 30 seconds, set the alarm's strobe to active. Following this interval, if the air conditioning unit is operating in heating mode and the room's temperature is registering above 28 degrees, shift the air conditioning unit to its automatic setting. In addition, activate the odd-numbered smart fans if they are not currently running
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      elapsed := 0
+      motionDetected := false
+      if (phase == 0) {
+        if (((#Wall Light).switch_switch == "on") and ((#Curtain #Even).curtain_curtain == "partially") and ((#ContactSensor).contactSensor_contact == "open")) {
+          (#Clock).clock_delay(5000)
+          (#Wall Light).switch_off()
+          (#Window).windowControl_close()
+          phase = 1
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == "inactive") {
+          motionDetected = true
+        }
+        elapsed = elapsed + 100
+        if (elapsed >= 30000) {
+          if (motionDetected == true) {
+            (#Alarm).alarm_strobe()
+          }
+          phase = 2
+        }
+      } else if (phase == 2) {
+        if (((#AirConditioner).airConditionerMode_airConditionerMode == "heat") and ((#TemperatureSensor).temperatureMeasurement_temperature > 28.0)) {
+          (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+        }
+        if ((#Fan #Odd).switch_switch == "off") {
+          (#Fan #Odd).switch_toggle()
+        }
+        break
+      }
+- command: If a door is closed with wall lights on and odd-tagged curtains opening, turn off those lights and close the window after 5 seconds. If motion is detected for the next 30 seconds, trigger both the alarm's siren and strobe. After the 30 seconds are up, if the air conditioner is in cool mode and the room temperature is above 28 degrees, set the air conditioner to auto mode. Also, turn off the smart fans tagged with an even number if they're on, and leave them on if they're not.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      elapsed := 0
+      motionDetected := false
+      if (phase == 0) {
+        if (((#Wall Light).switch_switch == "on") and ((#Curtain #Odd).curtain_curtain == "opening") and ((#ContactSensor).contactSensor_contact == "closed")) {
+          (#Clock).clock_delay(5000)
+          (#Wall Light).switch_off()
+          (#Window).windowControl_close()
+          phase = 1
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == "active") {
+          motionDetected = true
+        }
+        elapsed = elapsed + 100
+        if (elapsed >= 30000) {
+          if (motionDetected == true) {
+            (#Alarm).alarm_both()
+          }
+          phase = 2
+        }
+      } else if (phase == 2) {
+        if (((#AirConditioner).airConditionerMode_airConditionerMode == "cool") and ((#TemperatureSensor).temperatureMeasurement_temperature > 28.0)) {
+          (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+        }
+        if ((#Fan #Even).switch_switch == "on") {
+          (#Fan #Even).switch_off()
+        }
+        break
+      }
+- command: Should you notice a door being shut while the wall lights are still lit and curtains with an odd tag are being drawn, promptly extinguish the lights and shut the window after a brief pause of 5 seconds. If any movement is sensed within the subsequent half-minute, proceed to activate both the alarm's siren and its strobe light. Following this 30-second interval, if the air conditioning is operating in cool mode and the room's temperature exceeds 28 degrees Celsius, adjust the air conditioner's setting to an automatic mode. Additionally, if the smart fans marked with an even number are in operation, switch them off, but if they are already off, let them remain so
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      elapsed := 0
+      motionDetected := false
+      if (phase == 0) {
+        if (((#Wall Light).switch_switch == "on") and ((#Curtain #Odd).curtain_curtain == "opening") and ((#ContactSensor).contactSensor_contact == "closed")) {
+          (#Clock).clock_delay(5000)
+          (#Wall Light).switch_off()
+          (#Window).windowControl_close()
+          phase = 1
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == "active") {
+          motionDetected = true
+        }
+        elapsed = elapsed + 100
+        if (elapsed >= 30000) {
+          if (motionDetected == true) {
+            (#Alarm).alarm_both()
+          }
+          phase = 2
+        }
+      } else if (phase == 2) {
+        if (((#AirConditioner).airConditionerMode_airConditionerMode == "cool") and ((#TemperatureSensor).temperatureMeasurement_temperature > 28.0)) {
+          (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+        }
+        if ((#Fan #Even).switch_switch == "on") {
+          (#Fan #Even).switch_off()
+        }
+        break
+      }
+- command: In a scenario where a door is being locked with wall lights illuminating and curtains carrying an odd tag are unveiling, it's necessary to put out the lights and secure the window after a delay of 5 seconds. In the event that there's a detection of motion over the coming 30 seconds, it's advised to set off both the wailing siren and pulsating strobe of the alarm. Once the 30-second period has lapsed, and the air conditioner is found to be in a cool mode with the room temperature spiking above 28 degrees, switch the air conditioner to a self-adjusting mode. In addition, power down the even-numbered smart fans if they're active, or maintain their status if they're off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      elapsed := 0
+      motionDetected := false
+      if (phase == 0) {
+        if (((#Wall Light).switch_switch == "on") and ((#Curtain #Odd).curtain_curtain == "opening") and ((#ContactSensor).contactSensor_contact == "closed")) {
+          (#Clock).clock_delay(5000)
+          (#Wall Light).switch_off()
+          (#Window).windowControl_close()
+          phase = 1
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == "active") {
+          motionDetected = true
+        }
+        elapsed = elapsed + 100
+        if (elapsed >= 30000) {
+          if (motionDetected == true) {
+            (#Alarm).alarm_both()
+          }
+          phase = 2
+        }
+      } else if (phase == 2) {
+        if (((#AirConditioner).airConditionerMode_airConditionerMode == "cool") and ((#TemperatureSensor).temperatureMeasurement_temperature > 28.0)) {
+          (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+        }
+        if ((#Fan #Even).switch_switch == "on") {
+          (#Fan #Even).switch_off()
+        }
+        break
+      }
+- command: If you find a door being sealed with wall lights shining and the odd-numbered curtains unfurling, make sure to douse the lights and close the window after a 5-second interval. Should there be any motion perceived for the next 30 seconds, you need to activate the alarm's loud siren and flashing strobe. After the passage of 30 seconds, should the air conditioner be cooling and the room temperature be hotter than 28 degrees, it's necessary to change the air conditioner to its automatic mode. Furthermore, if the smart fans with even tags are running, you should kill their power, but if they aren't, allow them to stay as they are
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      phase := 0
+      elapsed := 0
+      motionDetected := false
+      if (phase == 0) {
+        if (((#Wall Light).switch_switch == "on") and ((#Curtain #Odd).curtain_curtain == "opening") and ((#ContactSensor).contactSensor_contact == "closed")) {
+          (#Clock).clock_delay(5000)
+          (#Wall Light).switch_off()
+          (#Window).windowControl_close()
+          phase = 1
+        }
+      } else if (phase == 1) {
+        if ((#MotionSensor).motionSensor_motion == "active") {
+          motionDetected = true
+        }
+        elapsed = elapsed + 100
+        if (elapsed >= 30000) {
+          if (motionDetected == true) {
+            (#Alarm).alarm_both()
+          }
+          phase = 2
+        }
+      } else if (phase == 2) {
+        if (((#AirConditioner).airConditionerMode_airConditionerMode == "cool") and ((#TemperatureSensor).temperatureMeasurement_temperature > 28.0)) {
+          (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+        }
+        if ((#Fan #Even).switch_switch == "on") {
+          (#Fan #Even).switch_off()
+        }
+        break
+      }

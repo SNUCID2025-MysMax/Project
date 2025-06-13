@@ -138,7 +138,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 2000,
-        "code": "active := False\nif (active == False) {\n  wait until((#Light).switch_switch == 'off')\n  (#Curtain).curtain_close()\n  active = True\n}\nif (active == True) {\n  (#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"70\"})\n  (#Clock).clock_delay(0, 0, 2)\n  (#Light).colorControl_setHue(60)\n}"
+        "code": "active := False\nif (active == False) {\n  wait until((#Light).switch_switch == 'off')\n  (#Curtain).curtain_close()\n  active = True\n}\nif (active == True) {\n  (#Light).colorControl_setColor({'hue': '50', 'saturation': '70'})\n  (#Clock).clock_delay(0, 0, 2)\n  (#Light).colorControl_setHue(60)\n}"
       }
     ]
   },
@@ -149,7 +149,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 2000,
-        "code": "active := False\nif (active == False) {\n  wait until((#Light).switch_switch == 'off')\n  (#Curtain).curtain_close()\n  active = True\n}\nif (active == True) {\n  (#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"70\"})\n  (#Clock).clock_delay(0, 0, 2)\n  (#Light).colorControl_setHue(60)\n}"
+        "code": "active := False\nif (active == False) {\n  wait until((#Light).switch_switch == 'off')\n  (#Curtain).curtain_close()\n  active = True\n}\nif (active == True) {\n  (#Light).colorControl_setColor({'hue': '50', 'saturation': '70'})\n  (#Clock).clock_delay(0, 0, 2)\n  (#Light).colorControl_setHue(60)\n}"
       }
     ]
   },
@@ -160,7 +160,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 2000,
-        "code": "active := False\nif (active == False) {\n  wait until((#Light).switch_switch == 'off')\n  (#Curtain).curtain_close()\n  active = True\n}\nif (active == True) {\n  (#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"70\"})\n  (#Clock).clock_delay(0, 0, 2)\n  (#Light).colorControl_setHue(60)\n}"
+        "code": "active := False\nif (active == False) {\n  wait until((#Light).switch_switch == 'off')\n  (#Curtain).curtain_close()\n  active = True\n}\nif (active == True) {\n  (#Light).colorControl_setColor({'hue': '50', 'saturation': '70'})\n  (#Clock).clock_delay(0, 0, 2)\n  (#Light).colorControl_setHue(60)\n}"
       }
     ]
   },
@@ -171,7 +171,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 2000,
-        "code": "active := False\nif (active == False) {\n  wait until((#Light).switch_switch == 'off')\n  (#Curtain).curtain_close()\n  active = True\n}\nif (active == True) {\n  (#Light).colorControl_setColor({\"hue\": \"50\", \"saturation\": \"70\"})\n  (#Clock).clock_delay(0, 0, 2)\n  (#Light).colorControl_setHue(60)\n}"
+        "code": "active := False\nif (active == False) {\n  wait until((#Light).switch_switch == 'off')\n  (#Curtain).curtain_close()\n  active = True\n}\nif (active == True) {\n  (#Light).colorControl_setColor({'hue': '50', 'saturation': '70'})\n  (#Clock).clock_delay(0, 0, 2)\n  (#Light).colorControl_setHue(60)\n}"
       }
     ]
   },
@@ -407,7 +407,7 @@
     ]
   },
   {
-    "command": "\"Whenever the air purifier switches to sleep mode, the speaker persistently suggests changing the purifier setting to high mode, repeating this message twice every couple of seconds.\"",
+    "command": "Whenever the air purifier switches to sleep mode, the speaker persistently suggests changing the purifier setting to high mode, repeating this message twice every couple of seconds.",
     "code": [
       {
         "name": "Scenario1",
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "command": "\"As soon as the air purifier enters sleep mode, the speaker routinely reminds to adjust the air purifier to high mode, echoing this reminder two times per every two-second interval.\"",
+    "command": "As soon as the air purifier enters sleep mode, the speaker routinely reminds to adjust the air purifier to high mode, echoing this reminder two times per every two-second interval.",
     "code": [
       {
         "name": "Scenario1",
@@ -429,7 +429,7 @@
     ]
   },
   {
-    "command": "\"Once the air purifier is in sleep mode, the speaker continuously advises to reconfigure the purifier to high mode, repeating the advice twice in every two seconds.\"",
+    "command": "Once the air purifier is in sleep mode, the speaker continuously advises to reconfigure the purifier to high mode, repeating the advice twice in every two seconds.",
     "code": [
       {
         "name": "Scenario1",
@@ -440,7 +440,7 @@
     ]
   },
   {
-    "command": "When the media playback is buffering, the speaker repeatedly announces \"Please stop buffering\" twice every 2 seconds.",
+    "command": "When the media playback is buffering, the speaker repeatedly announces 'Please stop buffering' twice every 2 seconds.",
     "code": [
       {
         "name": "Scenario1",
@@ -451,7 +451,7 @@
     ]
   },
   {
-    "command": "\"When the media playback is in a buffering state, have the speaker consistently say \"Please stop buffering\" two times every couple of seconds.\"",
+    "command": "When the media playback is in a buffering state, have the speaker consistently say 'Please stop buffering' two times every couple of seconds.",
     "code": [
       {
         "name": "Scenario1",
@@ -462,7 +462,7 @@
     ]
   },
   {
-    "command": "\"During instances of media playback buffering, ensure the speaker communicates the phrase \"Please stop buffering\" twice every two seconds.\"",
+    "command": "During instances of media playback buffering, ensure the speaker communicates the phrase 'Please stop buffering' twice every two seconds.",
     "code": [
       {
         "name": "Scenario1",
@@ -473,7 +473,7 @@
     ]
   },
   {
-    "command": "\"Should the media playback buffer, instruct the speaker to recurrently voice out \"Please stop buffering\" on a two-second interval, repeating twice each time.\"",
+    "command": "Should the media playback buffer, instruct the speaker to recurrently voice out 'Please stop buffering' on a two-second interval, repeating twice each time.",
     "code": [
       {
         "name": "Scenario1",
@@ -666,7 +666,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 1000,
-        "code": "active := False\nlevel := (#Blind).blind_pause()\nif (active == False) {\n  wait until((#Window).windowControl_window == 'unknown')\n  (#Light).colorControl_setColor({\"hue\": \"0\", \"saturation\": \"100\"})\n  active = True\n}\nif (active == True) {\n  (#Blind).blind_pause()\n  level = level - 10\n  if (level < 0) {\n      break\n  }\n}"
+        "code": "active := False\nlevel := (#Blind).blind_pause()\nif (active == False) {\n  wait until((#Window).windowControl_window == 'unknown')\n  (#Light).colorControl_setColor({'hue': '0', 'saturation': '100'})\n  active = True\n}\nif (active == True) {\n  (#Blind).blind_pause()\n  level = level - 10\n  if (level < 0) {\n      break\n  }\n}"
       }
     ]
   },
@@ -677,7 +677,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 1000,
-        "code": "active := False\nlevel := (#Blind).blind_pause()\nif (active == False) {\n  wait until((#Window).windowControl_window == 'unknown')\n  (#Light).colorControl_setColor({\"hue\": \"0\", \"saturation\": \"100\"})\n  active = True\n}\nif (active == True) {\n  (#Blind).blind_pause()\n  level = level - 10\n  if (level < 0) {\n      break\n  }\n}"
+        "code": "active := False\nlevel := (#Blind).blind_pause()\nif (active == False) {\n  wait until((#Window).windowControl_window == 'unknown')\n  (#Light).colorControl_setColor({'hue': '0', 'saturation': '100'})\n  active = True\n}\nif (active == True) {\n  (#Blind).blind_pause()\n  level = level - 10\n  if (level < 0) {\n      break\n  }\n}"
       }
     ]
   },
@@ -688,7 +688,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 1000,
-        "code": "active := False\nlevel := (#Blind).blind_pause()\nif (active == False) {\n  wait until((#Window).windowControl_window == 'unknown')\n  (#Light).colorControl_setColor({\"hue\": \"0\", \"saturation\": \"100\"})\n  active = True\n}\nif (active == True) {\n  (#Blind).blind_pause()\n  level = level - 10\n  if (level < 0) {\n      break\n  }\n}"
+        "code": "active := False\nlevel := (#Blind).blind_pause()\nif (active == False) {\n  wait until((#Window).windowControl_window == 'unknown')\n  (#Light).colorControl_setColor({'hue': '0', 'saturation': '100'})\n  active = True\n}\nif (active == True) {\n  (#Blind).blind_pause()\n  level = level - 10\n  if (level < 0) {\n      break\n  }\n}"
       }
     ]
   },
@@ -699,7 +699,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 1000,
-        "code": "active := False\nlevel := (#Blind).blind_pause()\nif (active == False) {\n  wait until((#Window).windowControl_window == 'unknown')\n  (#Light).colorControl_setColor({\"hue\": \"0\", \"saturation\": \"100\"})\n  active = True\n}\nif (active == True) {\n  (#Blind).blind_pause()\n  level = level - 10\n  if (level < 0) {\n      break\n  }\n}"
+        "code": "active := False\nlevel := (#Blind).blind_pause()\nif (active == False) {\n  wait until((#Window).windowControl_window == 'unknown')\n  (#Light).colorControl_setColor({'hue': '0', 'saturation': '100'})\n  active = True\n}\nif (active == True) {\n  (#Blind).blind_pause()\n  level = level - 10\n  if (level < 0) {\n      break\n  }\n}"
       }
     ]
   },
@@ -798,7 +798,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 3000,
-        "code": "active := False\nif (active == False) {\n  wait until((#DoorLock).doorControl_door == 'closed')\n  (#Light).colorControl_setColor({\"hue\": 0, \"saturation\": 100})\n  active = True\n}\nif (active == True) {\n  (#Siren).sirenMode_setSirenMode('siren')\n}"
+        "code": "active := False\nif (active == False) {\n  wait until((#DoorLock).doorControl_door == 'closed')\n  (#Light).colorControl_setColor({'hue': 0, 'saturation': 100})\n  active = True\n}\nif (active == True) {\n  (#Siren).sirenMode_setSirenMode('siren')\n}"
       }
     ]
   },
@@ -809,7 +809,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 3000,
-        "code": "active := False\nif (active == False) {\n  wait until((#DoorLock).doorControl_door == 'closed')\n  (#Light).colorControl_setColor({\"hue\": 0, \"saturation\": 100})\n  active = True\n}\nif (active == True) {\n  (#Siren).sirenMode_setSirenMode('siren')\n}"
+        "code": "active := False\nif (active == False) {\n  wait until((#DoorLock).doorControl_door == 'closed')\n  (#Light).colorControl_setColor({'hue': 0, 'saturation': 100})\n  active = True\n}\nif (active == True) {\n  (#Siren).sirenMode_setSirenMode('siren')\n}"
       }
     ]
   },
@@ -820,7 +820,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 3000,
-        "code": "active := False\nif (active == False) {\n  wait until((#DoorLock).doorControl_door == 'closed')\n  (#Light).colorControl_setColor({\"hue\": 0, \"saturation\": 100})\n  active = True\n}\nif (active == True) {\n  (#Siren).sirenMode_setSirenMode('siren')\n}"
+        "code": "active := False\nif (active == False) {\n  wait until((#DoorLock).doorControl_door == 'closed')\n  (#Light).colorControl_setColor({'hue': 0, 'saturation': 100})\n  active = True\n}\nif (active == True) {\n  (#Siren).sirenMode_setSirenMode('siren')\n}"
       }
     ]
   },
@@ -831,7 +831,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": 3000,
-        "code": "active := False\nif (active == False) {\n  wait until((#DoorLock).doorControl_door == 'closed')\n  (#Light).colorControl_setColor({\"hue\": 0, \"saturation\": 100})\n  active = True\n}\nif (active == True) {\n  (#Siren).sirenMode_setSirenMode('siren')\n}"
+        "code": "active := False\nif (active == False) {\n  wait until((#DoorLock).doorControl_door == 'closed')\n  (#Light).colorControl_setColor({'hue': 0, 'saturation': 100})\n  active = True\n}\nif (active == True) {\n  (#Siren).sirenMode_setSirenMode('siren')\n}"
       }
     ]
   },

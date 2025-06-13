@@ -231,7 +231,7 @@
     ]
   },
   {
-    "command": "\"In case the light is not turned on, postpone the time on the clock by two hours, thirty minutes, and fifteen seconds, adjust the position of the light switch, hold off the clock for the same duration once more, then change the light's hue to red.\"",
+    "command": "In case the light is not turned on, postpone the time on the clock by two hours, thirty minutes, and fifteen seconds, adjust the position of the light switch, hold off the clock for the same duration once more, then change the light's hue to red.",
     "code": [
       {
         "name": "Scenario7",
@@ -242,7 +242,7 @@
     ]
   },
   {
-    "command": "\"Should the light be extinguished, hold off the clock for two and a half hours and fifteen seconds, flip the light switch, then delay the clock for an additional two hours, thirty minutes, and fifteen seconds, and finally adjust the light's colour to a vibrant red.\"",
+    "command": "Should the light be extinguished, hold off the clock for two and a half hours and fifteen seconds, flip the light switch, then delay the clock for an additional two hours, thirty minutes, and fifteen seconds, and finally adjust the light's colour to a vibrant red.",
     "code": [
       {
         "name": "Scenario7",
@@ -253,7 +253,7 @@
     ]
   },
   {
-    "command": "\"Provided that the light is switched off, push the clock back by two hours, thirty minutes and fifteen seconds, alter the status of the light switch, wait for the same interval of time before adjusting the clock, and then modify the tone of the light to red.\"",
+    "command": "Provided that the light is switched off, push the clock back by two hours, thirty minutes and fifteen seconds, alter the status of the light switch, wait for the same interval of time before adjusting the clock, and then modify the tone of the light to red.",
     "code": [
       {
         "name": "Scenario7",

@@ -1,0 +1,1212 @@
+- command: Check in real-time to toggle lights and set fan speed to a specific value when motion is detected.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).switch_toggle()
+        (#Fan).fanControl_setFanSpeed(50)
+      }
+- command: Please make sure that you're monitoring in real-time to switch the lights on or off and adjust the fan speed to a certain level whenever movement is observed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).switch_toggle()
+        (#Fan).fanControl_setFanSpeed(50)
+      }
+- command: Continuously monitor and ensure you adjust the lights and set a particular speed for the fan as soon as any motion is detected
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).switch_toggle()
+        (#Fan).fanControl_setFanSpeed(50)
+      }
+- command: Could you please keep a real-time track to flip the lighting and establish a specified fan speed whenever there's a detection of any movement?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).switch_toggle()
+        (#Fan).fanControl_setFanSpeed(50)
+      }
+- command: Check in real-time to turn off lights and set fan speed percent to 70 when motion is detected.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).switch_off()
+        (#Fan).fanControl_setPercent(70)
+      }
+- command: When movement is noticed, promptly ensure that the lights are switched off and the fan speed is adjusted to 70 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).switch_off()
+        (#Fan).fanControl_setPercent(70)
+      }
+- command: Upon detecting any motion, immediately ensure the lights are turned off and the fan's speed is set to 70 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).switch_off()
+        (#Fan).fanControl_setPercent(70)
+      }
+- command: Instantly verify that the lights go out and the fan runs at 70 percent speed as soon as any motion is observed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).switch_off()
+        (#Fan).fanControl_setPercent(70)
+      }
+- command: Check in real-time to set the light color and reduce fan speed by 10 when motion is detected.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setColor("255|255|255")
+        current_speed = (#Fan).fanControl_fanSpeed
+        new_speed = current_speed - 10
+        (#Fan).fanControl_setFanSpeed(new_speed)
+      }
+- command: When movement is recognized, please adjust the color of the light instantly and decrease the speed of the fan by
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setColor("255|255|255")
+        current_speed = (#Fan).fanControl_fanSpeed
+        new_speed = current_speed - 10
+        (#Fan).fanControl_setFanSpeed(new_speed)
+      }
+- command: As soon as motion is detected, immediately modify the light color and lower the fan's speed by a tenth
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setColor("255|255|255")
+        current_speed = (#Fan).fanControl_fanSpeed
+        new_speed = current_speed - 10
+        (#Fan).fanControl_setFanSpeed(new_speed)
+      }
+- command: Upon sensing any movement, instantly alter the color of the light and diminish the rotation speed of the fan by
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setColor("255|255|255")
+        current_speed = (#Fan).fanControl_fanSpeed
+        new_speed = current_speed - 10
+        (#Fan).fanControl_setFanSpeed(new_speed)
+      }
+- command: Check in real-time to set light hue and fan speed to a specific value when motion is detected.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setHue(80)
+        (#Fan).fanControl_setFanSpeed(100)
+      }
+- command: Monitor in real time and adjust the hue of the light and the speed of the fan to a predetermined value when any movement is sensed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setHue(80)
+        (#Fan).fanControl_setFanSpeed(100)
+      }
+- command: Continuously observe and, upon detecting any motion, promptly modify the tint of the light and the velocity of the fan to a particular level
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setHue(80)
+        (#Fan).fanControl_setFanSpeed(100)
+      }
+- command: Keep a real-time watch, and if movement is perceived, change both the color of the light and the rotation speed of the fan to a set figure
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setHue(80)
+        (#Fan).fanControl_setFanSpeed(100)
+      }
+- command: Check in real-time to set light saturation and fan speed percent to 90 when motion is detected.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setSaturation(100)
+        (#Fan).fanControl_setPercent(90)
+      }
+- command: Monitor continuously and adjust the light saturation along with the fan speed to 90 percent as soon as any movement is noticed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setSaturation(100)
+        (#Fan).fanControl_setPercent(90)
+      }
+- command: Keep an eye out for any detected motion and in response, set the saturation of the light and the fan's speed to 90 percent in real-time
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setSaturation(100)
+        (#Fan).fanControl_setPercent(90)
+      }
+- command: In real-time, upon detecting any motion, please adjust both the light's saturation and the speed of the fan to a level of 90 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion = (#MotionSensor).motionSensor_motion
+      if (motion == 'active') {
+        (#Light).colorControl_setSaturation(100)
+        (#Fan).fanControl_setPercent(90)
+      }
+- command: Monitor in real time. If the window is open, pause the blinds. If it is closed, pause the curtains. Also, if the alarm's strobe is not on, activate it immediately.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blind_pause()
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_pause()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'strobe') and (alarm_status != 'both')) {
+        (#Alarm).alarm_strobe()
+      }
+- command: Please keep an eye on things as they happen. Should you find the window ajar, stop the blinds from moving. Conversely, if it's shut, halt the curtains. Furthermore, if the alarm's flashing light is not functioning, switch it on without delay
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blind_pause()
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_pause()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'strobe') and (alarm_status != 'both')) {
+        (#Alarm).alarm_strobe()
+      }
+- command: You need to vigilantly observe everything in real time. If you notice the window to be open, freeze the movement of the blinds. But if it's closed, then halt the curtains. Also, in case the strobe of the alarm isn't active, turn it on immediately
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blind_pause()
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_pause()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'strobe') and (alarm_status != 'both')) {
+        (#Alarm).alarm_strobe()
+      }
+- command: You are required to track everything as it happens. If you discern the window is not closed, then pause the blinds. If it's the other way round, put the curtains on hold. And if the alarm's strobe isn't functioning, activate it at once
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blind_pause()
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_pause()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'strobe') and (alarm_status != 'both')) {
+        (#Alarm).alarm_strobe()
+      }
+- command: Check continuously. If the window is open, set the blind level to 50. If it is shut, close the curtains. Also, if the alarm's siren and strobe are not both active, deactivate the alarm immediately.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blindLevel_setBlindLevel(50)
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_close()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'both')) {
+        (#Alarm).alarm_off()
+      }
+- command: Make sure you are constantly monitoring the situation. In case the window is left open, ensure that the blind level is adjusted to 50. Should the window be closed, the curtains must be drawn. Furthermore, in the event that either the alarm's siren or strobe isn't active, take the necessary steps to turn the alarm off without delay
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blindLevel_setBlindLevel(50)
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_close()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'both')) {
+        (#Alarm).alarm_off()
+      }
+- command: Keep a continuous watch on the situation. If you find the window to be open, set the level of the blinds to 50. If the window is closed, make sure the curtains are closed as well. Also, if both components of the alarm - the siren and the strobe - are not functioning at the same time, ensure that the alarm is deactivated at the earliest
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blindLevel_setBlindLevel(50)
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_close()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'both')) {
+        (#Alarm).alarm_off()
+      }
+- command: Don't stop monitoring. If you notice that the window is ajar, adjust the blind level to 50. On the other hand, if it's shut, proceed to close the curtains. In addition, should the alarm's siren and strobe not be simultaneously active, promptly deactivate the alarm
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blindLevel_setBlindLevel(50)
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_close()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'both')) {
+        (#Alarm).alarm_off()
+      }
+- command: Continually monitor. If the window is open, open the blinds. If it is closed, close the curtains. Also, if the alarm's siren is not sounding, set the alarm volume to high immediately.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blind_open()
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_close()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'siren') and (alarm_status != 'both')) {
+        (#Alarm).alarm_setAlarmVolume('high')
+      }
+- command: Keep a constant watch. Should you notice the window being open, ensure you open up the blinds. Conversely, if it's shut, ensure the curtains are drawn. In addition, if the alarm is silent, promptly adjust the alarm volume to its highest setting
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blind_open()
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_close()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'siren') and (alarm_status != 'both')) {
+        (#Alarm).alarm_setAlarmVolume('high')
+      }
+- command: Maintain non-stop surveillance. If you find the window open, make sure to open the blinds. However, if it's closed, pull the curtains together. Further, if there's no sound from the alarm, it's crucial to swiftly increase the alarm's volume to maximum
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blind_open()
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_close()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'siren') and (alarm_status != 'both')) {
+        (#Alarm).alarm_setAlarmVolume('high')
+      }
+- command: Keep observing continuously. If you see the window is open, don't forget to raise the blinds. But if it is shut, make sure to close the curtains. Also, if the alarm isn't making any noise, it's important to immediately crank up the alarm volume to its peak
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      window_status = (#Window).windowControl_window
+      if (window_status == 'open') {
+        (#Blind).blind_open()
+      } else if (window_status == 'closed') {
+        (#Curtain).curtain_close()
+      }
+      alarm_status = (#Alarm).alarm_alarm
+      if ((alarm_status != 'siren') and (alarm_status != 'both')) {
+        (#Alarm).alarm_setAlarmVolume('high')
+      }
+- command: Every Friday at 6pm, if the lights are on, toggle them off, and if the TV is off, toggle it on. If the fan is off, toggle it on.
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).switch_toggle()
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).switch_toggle()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).switch_toggle()
+      }
+- command: If it's 6pm on a Friday and the lights are still on, please switch them off. In the event that the TV is not on, kindly turn it on. Also, if the fan is not running, ensure to switch it on
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).switch_toggle()
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).switch_toggle()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).switch_toggle()
+      }
+- command: Should it be 6pm on any given Friday, and you notice the lights are on, make sure to turn them off. If the TV isn't currently operating, please power it on. Additionally, turn on the fan if it's not already doing so
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).switch_toggle()
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).switch_toggle()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).switch_toggle()
+      }
+- command: Every Friday when the clock hits 6pm, it's necessary to switch off the lights if they're on. At the same time, if the TV is off, it's required that you turn it on. Also, if the fan isn't spinning, please power it on
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).switch_toggle()
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).switch_toggle()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).switch_toggle()
+      }
+- command: Every Friday at 6pm, if the lights are on, set them to red color, and if the TV is off, move the channel up. If the fan is off, set its speed to 80.
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setColor("255|0|0")({"hue": 0, "saturation": 100})
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_channelUp()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setFanSpeed(80)
+      }
+- command: Should it be 6pm on any given Friday and the lights happen to be on, please change their color to red. Furthermore, if you notice the TV is not running, kindly switch the channel to the next one. In case the fan isn't operating, adjust its speed to
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setColor("255|0|0")({"hue": 0, "saturation": 100})
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_channelUp()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setFanSpeed(80)
+      }
+- command: At 6 in the evening every Friday, if you find the lights are switched on, please alter their color to red. Additionally, if the television is not active, go ahead and increase the channel number. If the fan is not in use, please raise its speed to
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setColor("255|0|0")({"hue": 0, "saturation": 100})
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_channelUp()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setFanSpeed(80)
+      }
+- command: If it's 6pm on a Friday and the lights are illuminating, kindly transition their color to red. Also, if the television is powered down, please proceed to advance the channel. In the event the fan is stationary, set its speed value to
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setColor("255|0|0")({"hue": 0, "saturation": 100})
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_channelUp()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setFanSpeed(80)
+      }
+- command: Every Friday at 6pm, if the lights are on, set their hue to 50, and if the TV is off, set the channel to 10. If the fan is off, set its speed percent to 70.
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setHue(50)
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_setTvChannel(10)
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setPercent(70)
+      }
+- command: '"Should you notice that the lights are switched on every Friday at 6pm, kindly adjust their hue to 50. Similarly, if the television is not in use, please set the channel to number 10. If you find the fan is turned off, kindly increase its speed to 70 percent."'
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setHue(50)
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_setTvChannel(10)
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setPercent(70)
+      }
+- command: '"Every Friday at 6pm, if you happen to find the lights turned on, we need to change the hue to 50. Furthermore, if the TV is inactive, we should switch the channel to 10. Also, in the case the fan is off, let''s ramp up its speed to 70 percent."'
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setHue(50)
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_setTvChannel(10)
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setPercent(70)
+      }
+- command: '"Upon every Friday evening at 6pm, if the illumination is on, please modify its hue setting to 50. Additionally, should the television be powered off, make it a point to change the channel setting to 10. And, if the fan is not spinning, adjust the speed setting to 70 percent."'
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setHue(50)
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_setTvChannel(10)
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setPercent(70)
+      }
+- command: Every Friday at 6pm, if the lights are on, set their saturation to 50, and if the TV is off, set the channel name to "News". If the fan is off, set its speed to 60.
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setSaturation(50)
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_setTvChannelName("News")
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setFanSpeed(60)
+      }
+- command: '"In the event that it''s 6pm on a Friday and the lights are illuminated, adjust their saturation to half intensity. Additionally, if the television is not currently running, switch the station to ''News''. Moreover, if the fan isn''t spinning, increase its pace to 60."'
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setSaturation(50)
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_setTvChannelName("News")
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setFanSpeed(60)
+      }
+- command: '"Should it be a Friday evening at 6pm and you notice the lights are switched on, kindly reduce their saturation to 50%. If the TV is switched off, please change the channel to ''News''. Also, if the fan isn''t working, I''d like you to set its rotation speed to 60."'
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setSaturation(50)
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_setTvChannelName("News")
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setFanSpeed(60)
+      }
+- command: '"If it happens to be 6 o''clock on a Friday evening with the lights on, could you please lower their saturation to 50%? In case the TV isn''t running, ensure the channel is tuned to ''News''. And, if the fan isn''t on, would you mind increasing its speed to 60?"'
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).colorControl_setSaturation(50)
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_setTvChannelName("News")
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setFanSpeed(60)
+      }
+- command: Every Friday at 6pm, if the lights are on, alert with dimming, and if the TV is off, move the channel down. If the fan is off, set its speed percent to 50.
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).switchLevel_alert()
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_channelDown()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setPercent(50)
+      }
+- command: When the clock strikes six every Friday evening, and if the lights are illuminated, please give an alert by dimming the lights. Moreover, if the television isn't switched on, kindly shift the television channel to a lower one. If the fan isn't spinning, please adjust its speed to fifty percent
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).switchLevel_alert()
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_channelDown()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setPercent(50)
+      }
+- command: If it's 6 o'clock on a Friday evening, and the lights happen to be on, please send a signal by lowering the light intensity. Also, if the television isn't operating, please choose a lower channel. If the fan is not in use, regulate its speed to a moderate fifty percent
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).switchLevel_alert()
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_channelDown()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setPercent(50)
+      }
+- command: At 6 in the evening each Friday, if you notice the lights are switched on, alert by reducing the brightness. Furthermore, if the TV set is off, please transition to a lower channel. If the fan is not working, adjust its velocity to half its capacity
+  code:
+  - name: Scenario1
+    cron: 0 18 * * 5
+    period: 0
+    code: |-
+      if ((#Light).switch_switch == 'on') {
+        (#Light).switchLevel_alert()
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Television).tvChannel_channelDown()
+      }
+      if ((#Fan).switch_switch == 'off') {
+        (#Fan).fanControl_setPercent(50)
+      }
+- command: Pause and open the blinds every 5 seconds from the time when the window is open.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'open')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blind_pause()
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blind_open()
+            state = 0
+        }
+      }
+- command: Every five seconds after the window has been opened, could you please pause and then open the blinds?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'open')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blind_pause()
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blind_open()
+            state = 0
+        }
+      }
+- command: Once the window is open, I'd like for you to pause and then raise the blinds every five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'open')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blind_pause()
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blind_open()
+            state = 0
+        }
+      }
+- command: When the window is open, please take a pause, and every five seconds, lift the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'open')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blind_pause()
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blind_open()
+            state = 0
+        }
+      }
+- command: Close and pause the blinds every 5 seconds from the time when the window is closed.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blind_close()
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blind_pause()
+            state = 0
+        }
+      }
+- command: Every five seconds after the window has been shut, ensure that the blinds are also closed and put on pause
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blind_close()
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blind_pause()
+            state = 0
+        }
+      }
+- command: Once the window is closed, make sure to pause and shut the blinds every five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blind_close()
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blind_pause()
+            state = 0
+        }
+      }
+- command: After the window gets closed, consistently pause and shut the blinds at five-second intervals
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'closed')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blind_close()
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blind_pause()
+            state = 0
+        }
+      }
+- command: Set blind level to 50 and 100 every 5 seconds from the time when the window is open.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'open')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blindLevel_setBlindLevel(50)
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blindLevel_setBlindLevel(100)
+            state = 0
+        }
+      }
+- command: Every five seconds when the window is open, adjust the blind level to 50 and then to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'open')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blindLevel_setBlindLevel(50)
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blindLevel_setBlindLevel(100)
+            state = 0
+        }
+      }
+- command: Upon opening the window, consistently change the level of the blinds between 50 and 100 every five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'open')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blindLevel_setBlindLevel(50)
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blindLevel_setBlindLevel(100)
+            state = 0
+        }
+      }
+- command: Once the window is open, I want you to alternate the level of the blinds between 50 and 100 every five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      triggered := False
+      state := 0
+      if (triggered == False) {
+        wait until((#Window).windowControl_window == 'open')
+        triggered = True
+      }
+      if (triggered == True) {
+        if (state == 0) {
+            (#Blind).blindLevel_setBlindLevel(50)
+            state = 1
+        } else if (state == 1) {
+            (#Blind).blindLevel_setBlindLevel(100)
+            state = 0
+        }
+      }
+- command: Every morning at 8am, if the speaker is playing, stop it and fast forward the media playback. Then, if the lights are on, toggle them and close the blinds.
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).mediaPlayback_playbackStatus == 'playing') {
+        (#Speaker).mediaPlayback_stop()
+        (#Speaker).mediaPlayback_fastForward()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blind_close()
+        }
+      }
+      ```
+- command: Each day when the clock strikes 8 in the morning, if the speaker is producing sound, halt it and quickly skip ahead in the media that's being played. Afterwards, if the lights are illuminated, flick them off and draw the blinds closed
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).mediaPlayback_playbackStatus == 'playing') {
+        (#Speaker).mediaPlayback_stop()
+        (#Speaker).mediaPlayback_fastForward()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blind_close()
+        }
+      }
+      ```
+- command: Daily, as soon as it's 8 am, if there's any noise coming from the speaker, silence it and speed through the ongoing media playback. Next, if any lights are still lit, switch them off and shut the blinds
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).mediaPlayback_playbackStatus == 'playing') {
+        (#Speaker).mediaPlayback_stop()
+        (#Speaker).mediaPlayback_fastForward()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blind_close()
+        }
+      }
+      ```
+- command: If it's 8 o'clock in the morning and the speaker is operating, immediately discontinue its operation and advance the media playback at a rapid pace. Following that, if any lights are switched on, turn them off and lower the blinds
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).mediaPlayback_playbackStatus == 'playing') {
+        (#Speaker).mediaPlayback_stop()
+        (#Speaker).mediaPlayback_fastForward()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blind_close()
+        }
+      }
+      ```
+- command: Every morning at 8am, if the speaker is buffering, pause it and rewind the media playback. Then, if the lights are on, toggle them and pause the blinds.
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).mediaPlayback_playbackStatus == 'buffering') {
+        (#Speaker).mediaPlayback_pause()
+        (#Speaker).mediaPlayback_rewind()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blind_pause()
+        }
+      }
+      ```
+- command: If you observe that the speaker is buffering at 8 in the morning, make sure to pause it and take the media playback back to the start. Additionally, if the lights appear to be on, switch them off and halt the motion of the blinds
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).mediaPlayback_playbackStatus == 'buffering') {
+        (#Speaker).mediaPlayback_pause()
+        (#Speaker).mediaPlayback_rewind()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blind_pause()
+        }
+      }
+      ```
+- command: In the event of the speaker experiencing buffering at 8am each day, take a moment to halt it and rewind the media that's playing back. Subsequently, if the lights happen to be switched on, flick them off and stop adjusting the blinds
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).mediaPlayback_playbackStatus == 'buffering') {
+        (#Speaker).mediaPlayback_pause()
+        (#Speaker).mediaPlayback_rewind()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blind_pause()
+        }
+      }
+      ```
+- command: Should you notice the speaker buffering at the crack of 8am, it's essential that you pause it and rewind whatever media is currently playing. Then, provided the lights are in their on state, please toggle them off and bring the movement of the blinds to a standstill
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).mediaPlayback_playbackStatus == 'buffering') {
+        (#Speaker).mediaPlayback_pause()
+        (#Speaker).mediaPlayback_rewind()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blind_pause()
+        }
+      }
+      ```
+- command: Every morning at 8am, if the speaker is on, toggle it and play 'This is the weather today' via the speaker. Then, if the lights are off, toggle them and set the blind level to 50.
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).switch_switch == 'on') {
+        (#Speaker).switch_toggle()
+        (#Speaker).mediaPlayback_play('This is the weather today')
+        if ((#Light).switch_switch == 'off') {
+          (#Light).switch_toggle()
+          (#Blind).blindLevel_setBlindLevel(50)
+        }
+      }
+      ```
+- command: If it is 8 am in the morning and the speaker is operational, switch its status and use it to play 'This is the weather today'. Afterwards, if the lights are not turned on, flip their switch and adjust the blind levels to half
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).switch_switch == 'on') {
+        (#Speaker).switch_toggle()
+        (#Speaker).mediaPlayback_play('This is the weather today')
+        if ((#Light).switch_switch == 'off') {
+          (#Light).switch_toggle()
+          (#Blind).blindLevel_setBlindLevel(50)
+        }
+      }
+      ```
+- command: When it's 8 o'clock in the morning and the speaker is functioning, change its status and let it play 'This is the weather today'. If the lights are switched off, change their status and moderate the blinds to a level of
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).switch_switch == 'on') {
+        (#Speaker).switch_toggle()
+        (#Speaker).mediaPlayback_play('This is the weather today')
+        if ((#Light).switch_switch == 'off') {
+          (#Light).switch_toggle()
+          (#Blind).blindLevel_setBlindLevel(50)
+        }
+      }
+      ```
+- command: If the speaker is working and it's 8 in the morning, alter its status and make it play 'This is the weather today'. Following this, if the lights are not on, flick their switch and control the blinds to be halfway open
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).switch_switch == 'on') {
+        (#Speaker).switch_toggle()
+        (#Speaker).mediaPlayback_play('This is the weather today')
+        if ((#Light).switch_switch == 'off') {
+          (#Light).switch_toggle()
+          (#Blind).blindLevel_setBlindLevel(50)
+        }
+      }
+      ```
+- command: Every morning at 8am, if the speaker is off, toggle it and stop the media playback. Then, if the lights are on, toggle them and set the blind level to 0.
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).switch_switch == 'off') {
+        (#Speaker).switch_toggle()
+        (#Speaker).mediaPlayback_stop()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blindLevel_setBlindLevel(0)
+        }
+      }
+      ```
+- command: If the speaker is not on at 8 o'clock in the morning, turn it on and pause any media that's playing. Then, if the lights are indeed on, switch them off and lower the blinds completely
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).switch_switch == 'off') {
+        (#Speaker).switch_toggle()
+        (#Speaker).mediaPlayback_stop()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blindLevel_setBlindLevel(0)
+        }
+      }
+      ```
+- command: Should you find the speaker powered off at 8am every day, please switch it on and halt any ongoing media playback. If the lights are switched on, please turn them off and adjust the blinds to the lowest level
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).switch_switch == 'off') {
+        (#Speaker).switch_toggle()
+        (#Speaker).mediaPlayback_stop()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blindLevel_setBlindLevel(0)
+        }
+      }
+      ```
+- command: At 8am each morning, if the speaker is off, I'd like you to turn it on and stop any media that's currently being played. Furthermore, if the lights happen to be on, could you switch them off and completely lower the blinds?
+  code:
+  - name: Scenario1
+    cron: 0 8 * * *
+    period: 0
+    code: |-
+      if ((#Speaker).switch_switch == 'off') {
+        (#Speaker).switch_toggle()
+        (#Speaker).mediaPlayback_stop()
+        if ((#Light).switch_switch == 'on') {
+          (#Light).switch_toggle()
+          (#Blind).blindLevel_setBlindLevel(0)
+        }
+      }
+      ```

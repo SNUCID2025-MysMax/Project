@@ -1,0 +1,1066 @@
+- command: Monitor in real-time to set the light color whenever the door is closing. Also, pause the speakers when the TV is switched off, and open the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Light).colorControl_setColor("255|255|0")
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).mediaPlayback_pause()
+      }
+      (#Blind).blind_open()
+      ```
+- command: Keep an eye on things constantly and adjust the light color as the door starts to close. Furthermore, halt the sound system whenever the television is turned off, and make sure to draw up the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Light).colorControl_setColor("255|255|0")
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).mediaPlayback_pause()
+      }
+      (#Blind).blind_open()
+      ```
+- command: Whenever the door begins to shut, ensure that the light color is being actively changed. In addition, stop the audio when the TV is powered down, and also lift the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Light).colorControl_setColor("255|255|0")
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).mediaPlayback_pause()
+      }
+      (#Blind).blind_open()
+      ```
+- command: Continuously supervise and change the hue of the lights every time the door is in the process of closing. Also, suspend the sound from the speakers the moment the television gets switched off, and raise the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Light).colorControl_setColor("255|255|0")
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).mediaPlayback_pause()
+      }
+      (#Blind).blind_open()
+      ```
+- command: Keep an eye in real-time to set the light hue whenever the door is opening. And turn off the speakers when the TV is off, and pause the operation of the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Light).colorControl_setHue(80)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).switch_off()
+      }
+      (#Blind).blind_pause()
+      ```
+- command: Please ensure that you adjust the light hue instantly whenever the door opens. Also, make sure to shut down the speakers when the television is not in use, and halt the functioning of the blinds momentarily
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Light).colorControl_setHue(80)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).switch_off()
+      }
+      (#Blind).blind_pause()
+      ```
+- command: I want you to dynamically adjust the hue of the light each time the door opens. Remember to switch off the speakers as soon as the television is turned off, also put the operation of the blinds on hold
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Light).colorControl_setHue(80)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).switch_off()
+      }
+      (#Blind).blind_pause()
+      ```
+- command: Could you please monitor and change the shade of the light every time the door opens? Don't forget to power off the speakers when the TV is not on, and suspend the activity of the blinds too
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Light).colorControl_setHue(80)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).switch_off()
+      }
+      (#Blind).blind_pause()
+      ```
+- command: Monitor in real-time to set the light saturation whenever the door is closing. Also, stop the media playback on the speakers when the TV is turned off, and set the blinds to a particular level.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Light).colorControl_setSaturation(50)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).mediaPlayback_stop()
+      }
+      (#Blind).blindLevel_setBlindLevel(50)
+      ```
+- command: Keep track in real time and adjust the light's saturation as the door is being shut. Additionally, cease the audio playback through the speakers when the television is switched off and adjust the blinds to a specific height
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Light).colorControl_setSaturation(50)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).mediaPlayback_stop()
+      }
+      (#Blind).blindLevel_setBlindLevel(50)
+      ```
+- command: In real time, observe and manage the saturation of light each time the door starts to close. Also, when the TV is powered down, halt any ongoing media output from the speakers and set the blinds to a predetermined level
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Light).colorControl_setSaturation(50)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).mediaPlayback_stop()
+      }
+      (#Blind).blindLevel_setBlindLevel(50)
+      ```
+- command: As the door begins to close, dynamically track and modify the intensity of the light. Furthermore, when the television is no longer on, stop all media being played through the speakers and position the blinds at a chosen level
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'closing') {
+        if (triggered == false) {
+          (#Light).colorControl_setSaturation(50)
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'off') {
+        (#Speaker).mediaPlayback_stop()
+      }
+      (#Blind).blindLevel_setBlindLevel(50)
+      ```
+- command: Check in real-time to toggle the light switch whenever the door is opening. And fast forward the media playback on the speakers when the TV is turned on, and open the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Light).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'on') {
+        (#Speaker).mediaPlayback_fastForward()
+      }
+      (#Blind).blind_open()
+      ```
+- command: '"Keep an eye on the light switch, and as the door opens, make sure to flip it. Concurrently, if the television is switched on, advance the media playing on the speakers at a rapid pace and draw open the blinds."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Light).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'on') {
+        (#Speaker).mediaPlayback_fastForward()
+      }
+      (#Blind).blind_open()
+      ```
+- command: '"Ensure that the light switch is turned on and off whenever the door opens. Also, when the TV is powered on, speed up the audio playing from the speakers and lift the blinds."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Light).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'on') {
+        (#Speaker).mediaPlayback_fastForward()
+      }
+      (#Blind).blind_open()
+      ```
+- command: '"Monitor the light switch to be toggled as the door opens. Simultaneously, fast-track the speaker''s media playback as soon as the TV starts, and unveil the blinds."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      ```
+      triggered := false
+      if ((#DoorLock).doorControl_door == 'opening') {
+        if (triggered == false) {
+          (#Light).switch_toggle()
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      if ((#Television).switch_switch == 'on') {
+        (#Speaker).mediaPlayback_fastForward()
+      }
+      (#Blind).blind_open()
+      ```
+- command: When the dehumidifier switches on, toggle its switch. If the lights are on, set the hue to 75 percent.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).switch_switch == 'on')
+      (#Dehumidifier).switch_toggle()
+
+      if ((#Light).switch_switch == 'on'):
+          (#Light).colorControl_setHue(75)
+- command: As soon as the dehumidifier starts working, flip its switch. If the lights happen to be on, adjust the hue to 75 percent intensity
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).switch_switch == 'on')
+      (#Dehumidifier).switch_toggle()
+
+      if ((#Light).switch_switch == 'on'):
+          (#Light).colorControl_setHue(75)
+- command: Immediately when the dehumidifier turns on, change its switch's position. And, should the lights be illuminated, modify the hue to three-quarters intensity
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).switch_switch == 'on')
+      (#Dehumidifier).switch_toggle()
+
+      if ((#Light).switch_switch == 'on'):
+          (#Light).colorControl_setHue(75)
+- command: Once the dehumidifier kicks in, flick the switch. If the lights are lit up, dial the hue setting to 75 percent of its maximum
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).switch_switch == 'on')
+      (#Dehumidifier).switch_toggle()
+
+      if ((#Light).switch_switch == 'on'):
+          (#Light).colorControl_setHue(75)
+- command: When the dehumidifier is in the 'drying' mode, change it to 'AIDrying' mode. If the light's brightness is at 100 percent, set it to 50 percent.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'drying')
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode('AIDrying')
+
+      if ((#Light).switchLevel_level == 100):
+          (#Light).switchLevel_setLevel(50, 1)
+- command: If the dehumidifier is currently operating in the 'drying' mode, please switch it to the 'AIDrying' mode. Also, if the light's brightness level is at its maximum, reduce it by half
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'drying')
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode('AIDrying')
+
+      if ((#Light).switchLevel_level == 100):
+          (#Light).switchLevel_setLevel(50, 1)
+- command: Should you find the dehumidifier working in the 'drying' setting, make sure to alter it to the 'AIDrying' setting. And, if the illumination level of the light is at full capacity, please dim it to 50 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'drying')
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode('AIDrying')
+
+      if ((#Light).switchLevel_level == 100):
+          (#Light).switchLevel_setLevel(50, 1)
+- command: In case the dehumidifier is functioning in the 'drying' mode, it needs to be adjusted to 'AIDrying' mode. Concurrently, if the light's intensity is at 100 percent, reduce it down to 50 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'drying')
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode('AIDrying')
+
+      if ((#Light).switchLevel_level == 100):
+          (#Light).switchLevel_setLevel(50, 1)
+- command: When the dehumidifier is in the 'finished' mode, change it to 'refreshing' mode. If the light's saturation is at 100 percent, set it to 50 percent.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'finished')
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode('refreshing')
+
+      if ((#Light).colorControl_saturation == 100):
+          (#Light).colorControl_setSaturation(50)
+- command: In the event that the dehumidifier is displaying the 'finished' mode, please switch it to the 'refreshing' mode. Additionally, if you find the light's saturation to be full, kindly reduce it to half of its capacity
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'finished')
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode('refreshing')
+
+      if ((#Light).colorControl_saturation == 100):
+          (#Light).colorControl_setSaturation(50)
+- command: Should you find the dehumidifier in the 'finished' setting, please ensure you change it to the 'refreshing' mode. Also, if the light saturation is at the maximum level, do cut it down to half
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'finished')
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode('refreshing')
+
+      if ((#Light).colorControl_saturation == 100):
+          (#Light).colorControl_setSaturation(50)
+- command: If you notice that the dehumidifier is in the 'finished' stage, it would be appreciated if you could adjust it to the 'refreshing' mode. Moreover, in the instance where the light's saturation hits 100 percent, please dial it back to 50 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == 'finished')
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode('refreshing')
+
+      if ((#Light).colorControl_saturation == 100):
+          (#Light).colorControl_setSaturation(50)
+- command: Pause the blinds when the window is closed, toggle the fan switch when the light color is set.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Blind).blind_pause()
+
+      wait until((#Light).colorControl_setColor == 'set')
+      (#Fan).switch_toggle()
+- command: If the window is closed, could you please halt the motion of the blinds? Also, when the color of the light changes, please switch the fan on or off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Blind).blind_pause()
+
+      wait until((#Light).colorControl_setColor == 'set')
+      (#Fan).switch_toggle()
+- command: Please make sure to stop the blinds when the window gets shut, and whenever the light's color is adjusted, flip the status of the fan
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Blind).blind_pause()
+
+      wait until((#Light).colorControl_setColor == 'set')
+      (#Fan).switch_toggle()
+- command: Once the window is sealed, ensure to freeze the blinds' activity, and remember to alternate the fan's state whenever there's a change in the light's color
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Blind).blind_pause()
+
+      wait until((#Light).colorControl_setColor == 'set')
+      (#Fan).switch_toggle()
+- command: Set the blind level to 50 when the window is unknown, set the fan speed to 1000 RPM when the light level is set to 0.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'unknown')
+      (#Blind).blindLevel_setBlindLevel(50)
+
+      wait until((#Light).switchLevel_setLevel == 0)
+      (#Fan).fanControl_setFanSpeed(1000)
+- command: When the status of the window is unclear, adjust the blind level to half, and when there is no light, ensure the fan spins at a speed of 1000 RPM
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'unknown')
+      (#Blind).blindLevel_setBlindLevel(50)
+
+      wait until((#Light).switchLevel_setLevel == 0)
+      (#Fan).fanControl_setFanSpeed(1000)
+- command: If the window's position is uncertain, set the blinds at a 50 level, and if there is complete darkness, regulate the fan to operate at 1000 RPM
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'unknown')
+      (#Blind).blindLevel_setBlindLevel(50)
+
+      wait until((#Light).switchLevel_setLevel == 0)
+      (#Fan).fanControl_setFanSpeed(1000)
+- command: Should the window's state be unknown, put the blind's setting at 50 and if the light level is completely dark, make sure the fan's speed is at 1000 rotations per minute
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'unknown')
+      (#Blind).blindLevel_setBlindLevel(50)
+
+      wait until((#Light).switchLevel_setLevel == 0)
+      (#Fan).fanControl_setFanSpeed(1000)
+- command: Open the blinds when the window is closed, turn off the fan when the light hue is set.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Blind).blind_open()
+
+      wait until((#Light).colorControl_setHue != null)
+      (#Fan).switch_off()
+- command: When the window is shut, could you please draw open the blinds, and also make sure to switch off the fan when the hue of the light has been adjusted
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Blind).blind_open()
+
+      wait until((#Light).colorControl_setHue != null)
+      (#Fan).switch_off()
+- command: Should the window be closed, kindly lift the blinds and in case the light's hue is set, remember to power off the fan
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Blind).blind_open()
+
+      wait until((#Light).colorControl_setHue != null)
+      (#Fan).switch_off()
+- command: If you notice that the window isn't open, please pull up the blinds and also don't forget to shut down the fan once the light hue has been modified
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Blind).blind_open()
+
+      wait until((#Light).colorControl_setHue != null)
+      (#Fan).switch_off()
+- command: Set the blind level to 100 when the window is open, set the fan speed percent to 70 when the light saturation is set.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Blind).blindLevel_setBlindLevel(100)
+
+      wait until((#Light).colorControl_setSaturation != null)
+      (#Fan).fanControl_setPercent(70)
+- command: When the window is open, please adjust the blinds to full coverage, and when the light is particularly saturated, ensure the fan is running at 70% of its maximum speed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Blind).blindLevel_setBlindLevel(100)
+
+      wait until((#Light).colorControl_setSaturation != null)
+      (#Fan).fanControl_setPercent(70)
+- command: If the window happens to be open, I'd like the blind level to be at its peak, and when the light saturation is set, the fan should be operating at 70% of its capability
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Blind).blindLevel_setBlindLevel(100)
+
+      wait until((#Light).colorControl_setSaturation != null)
+      (#Fan).fanControl_setPercent(70)
+- command: Should the window be ajar, please make sure the blinds are completely drawn. Also, when the light saturation is fixed, set the fan to run at 70% of its full speed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Blind).blindLevel_setBlindLevel(100)
+
+      wait until((#Light).colorControl_setSaturation != null)
+      (#Fan).fanControl_setPercent(70)
+- command: Pause the opening or closing of the blinds when the window is open, turn on the fan when the light switch is off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Blind).blind_pause()
+
+      wait until((#Light).switch_switch == 'off')
+      (#Fan).switch_on()
+- command: '''If the window is open, stop the blinds from opening or closing, and if the light switch is off, activate the fan.'''
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Blind).blind_pause()
+
+      wait until((#Light).switch_switch == 'off')
+      (#Fan).switch_on()
+- command: '''Halt the process of the blinds opening or closing when the window is open, and initiate the fan if the light switch is not on.'''
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Blind).blind_pause()
+
+      wait until((#Light).switch_switch == 'off')
+      (#Fan).switch_on()
+- command: '''Prevent the blinds from opening or closing when the window is ajar, and when the light switch is not in use, get the fan running.'''
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Blind).blind_pause()
+
+      wait until((#Light).switch_switch == 'off')
+      (#Fan).switch_on()
+- command: Check in real-time, pause the curtains when motion is detected, and turn off the alarm immediately.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_pause()
+      (#Alarm).alarm_off()
+- command: '"In real-time, please monitor and halt the movement of the curtains if any motion is sensed, also ensure the alarm is deactivated promptly."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_pause()
+      (#Alarm).alarm_off()
+- command: '"Could you keep an eye on things in real time, pausing the curtains if there''s any movement, and make sure to shut the alarm off right away?"'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_pause()
+      (#Alarm).alarm_off()
+- command: '"Would you be able to continually monitor, stop the curtains if you notice any movement, and quickly switch off the alarm?"'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_pause()
+      (#Alarm).alarm_off()
+- command: Check in real-time, open the curtains when motion is detected, and sound the siren of alarm immediately.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_open()
+      (#Alarm).alarm_siren()
+- command: Ensure to monitor in real-time, promptly draw back the curtains when any movement is perceived, and trigger the alarm siren without delay
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_open()
+      (#Alarm).alarm_siren()
+- command: Keep an eye on things as they happen, pull open the curtains at the first sign of motion, and instantly let the alarm siren blare
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_open()
+      (#Alarm).alarm_siren()
+- command: Continuously track in real-time, immediately unveil the curtains upon detecting any motion, and set off the alarm's siren right away
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_open()
+      (#Alarm).alarm_siren()
+- command: Check in real-time, close the curtains when motion is detected, and strobe the alarm immediately.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_close()
+      (#Alarm).alarm_strobe()
+- command: Please ensure that the curtains are closed promptly whenever any motion is detected and set off the alarm right away, all while staying updated in real-time
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_close()
+      (#Alarm).alarm_strobe()
+- command: While keeping a real-time track of events, I'd like you to close the curtains immediately if you detect any movement and trigger the alarm instantly
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_close()
+      (#Alarm).alarm_strobe()
+- command: Please monitor the situation in real time, draw the curtains at once if there's any movement, and activate the alarm without delay
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_close()
+      (#Alarm).alarm_strobe()
+- command: Check in real-time, pause the curtains when motion is detected, and set the volume of the alarm to high immediately.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_pause()
+      (#Alarm).alarm_setAlarmVolume('high')
+- command: Whenever you detect any movement, immediately halt the curtains and crank up the alarm volume to its maximum
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_pause()
+      (#Alarm).alarm_setAlarmVolume('high')
+- command: As soon as any motion is noticed, you should instantly stop the curtains and raise the alarm sound to its highest level
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_pause()
+      (#Alarm).alarm_setAlarmVolume('high')
+- command: On sensing any movement, promptly put a pause on the curtains and immediately increase the alarm's volume to the topmost level
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_pause()
+      (#Alarm).alarm_setAlarmVolume('high')
+- command: Check in real-time, open the curtains when motion is detected, and set the volume of the alarm to mute immediately.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_open()
+      (#Alarm).alarm_setAlarmVolume('mute')
+- command: Please keep an eye out for any movement, promptly open the curtains when such activity is noticed, and ensure the alarm is silenced without delay
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_open()
+      (#Alarm).alarm_setAlarmVolume('mute')
+- command: Continuously monitor for any motion, immediately lift the curtains upon its detection, and straightaway mute the alarm's volume
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_open()
+      (#Alarm).alarm_setAlarmVolume('mute')
+- command: Be vigilant for any signs of movement, swiftly draw back the curtains upon its occurrence, and directly mute the sound of the alarm
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#MotionSensor).motionSensor_motion == 'active')
+      (#Curtain).curtain_open()
+      (#Alarm).alarm_setAlarmVolume('mute')
+- command: When the window is closed, pause the curtains for 10 seconds. Toggle the lights every 5 seconds, regardless of the window.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_pause()
+- command: As soon as the window gets shut, hold off on the curtains for a period of ten seconds. Regardless of the state of the window, ensure that the lights are being switched on and off every five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_pause()
+- command: If the window is closed, pause any movement of the curtains for about ten seconds. Whether the window is open or closed, continually flip the lights on and off, every five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_pause()
+- command: On the instance of the window being closed, put the curtain movement on hold for a span of ten seconds. Irrespective of the window's condition, keep alternating the lights every five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_pause()
+- command: When the window is open, close the curtains after 10 seconds. Alert the light level every 5 seconds, regardless of the window.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_close()
+      (#Light).switchLevel_alert()
+- command: If the window is open, kindly draw the curtains shut 10 seconds later. Regardless of the window's position, provide updates on the light level every 5 seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_close()
+      (#Light).switchLevel_alert()
+- command: Should the window be open, please ensure the curtains are closed after a delay of 10 seconds. Continually monitor the light level and give updates every 5 seconds, irrespective of whether the window is open or not
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_close()
+      (#Light).switchLevel_alert()
+- command: In the event that the window is open, wait for ten seconds and then close the curtains. Make it a point to notify me of the light intensity every five seconds, regardless of the window's state
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_close()
+      (#Light).switchLevel_alert()
+- command: When the window is in an unknown state, open the curtains after 10 seconds. Turn the lights off every 5 seconds, regardless of the window.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'unknown')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_open()
+      (#Light).switch_off()
+- command: If you can't determine the state of the window, wait for ten seconds before drawing back the curtains. Regardless of the window's state, remember to switch off the lights every five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'unknown')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_open()
+      (#Light).switch_off()
+- command: In case the window state is ambiguous, the curtains should be opened after a pause of ten seconds. Irrespective of what's happening with the window, ensure the lights are turned off at intervals of five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'unknown')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_open()
+      (#Light).switch_off()
+- command: When you're unsure about the window's condition, allow a ten-second delay before you open the curtains. Even if the window's condition doesn't matter, make it a point to switch off the lights every five seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'unknown')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_open()
+      (#Light).switch_off()
+- command: When the window is closed, close the curtains after 10 seconds. Turn the lights on every 5 seconds, regardless of the window.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_close()
+      (#Light).switch_on()
+- command: Should the window be shut, please draw the curtains a mere ten seconds later. As for the lights, please make sure they are turned on every five seconds, regardless of the window's state
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_close()
+      (#Light).switch_on()
+- command: If you notice the window has been closed, I'd appreciate it if you could shut the curtains ten seconds after. Also, remember to switch on the lights every five seconds, no matter what's happening with the window
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_close()
+      (#Light).switch_on()
+- command: Whenever the window gets closed, ensure to close the curtains after a ten-second delay. Also, switch on the lights every five seconds, irrespective of the window's condition
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'closed')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_close()
+      (#Light).switch_on()
+- command: When the window opens, pause the curtains after 10 seconds. Toggle the lights every 5 seconds, regardless of the window.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_pause()
+      (#Light).switch_toggle()
+- command: Once the window is open, ensure to delay the movement of the curtains by 10 seconds. Also ensure to switch the lights on and off every 5 seconds, irrespective of the status of the window
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_pause()
+      (#Light).switch_toggle()
+- command: Upon opening the window, hold the curtains still for a period of 10 seconds. Independently of what's happening with the window, continue to flip the lights on and off every 5 seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_pause()
+      (#Light).switch_toggle()
+- command: As soon as the window has opened, refrain from moving the curtains for the next 10 seconds. Whatever the situation with the window, make sure to alternate the lights every 5 seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      wait until((#Window).windowControl_window == 'open')
+      (#Clock).clock_delay(10000)
+      (#Curtain).curtain_pause()
+      (#Light).switch_toggle()
+# original_count: 88
+# augmented_count: 0

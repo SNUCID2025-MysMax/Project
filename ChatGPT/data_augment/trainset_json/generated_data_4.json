@@ -99,7 +99,7 @@
     ]
   },
   {
-    "command": "Once the blinds are halfway open, instruct the speaker to announce \"Blinds are partially open.\"",
+    "command": "Once the blinds are halfway open, instruct the speaker to announce 'Blinds are partially open.",
     "code": [
       {
         "name": "Scenario1",
@@ -110,7 +110,7 @@
     ]
   },
   {
-    "command": "As soon as the blinds reach a halfway opened state, have the speaker voice out the statement, \"Blinds are partially open.\"",
+    "command": "As soon as the blinds reach a halfway opened state, have the speaker voice out the statement, 'Blinds are partially open.'",
     "code": [
       {
         "name": "Scenario1",
@@ -121,7 +121,7 @@
     ]
   },
   {
-    "command": "Let the speaker sound out the phrase \"Blinds are partially open\" when the blinds are half opened",
+    "command": "Let the speaker sound out the phrase 'Blinds are partially open' when the blinds are half opened",
     "code": [
       {
         "name": "Scenario1",
@@ -143,7 +143,7 @@
     ]
   },
   {
-    "command": "\"When the blinds are opening, instruct the speaker to halt any media that is playing.\"",
+    "command": "When the blinds are opening, instruct the speaker to halt any media that is playing.",
     "code": [
       {
         "name": "Scenario1",
@@ -154,7 +154,7 @@
     ]
   },
   {
-    "command": "\"Once the blinds begin to open, ensure that the speaker ceases all media playback.\"",
+    "command": "Once the blinds begin to open, ensure that the speaker ceases all media playback.",
     "code": [
       {
         "name": "Scenario1",
@@ -165,7 +165,7 @@
     ]
   },
   {
-    "command": "\"As soon as you notice the blinds starting to open, command the speaker to stop playing any media.\"",
+    "command": "As soon as you notice the blinds starting to open, command the speaker to stop playing any media.",
     "code": [
       {
         "name": "Scenario1",
@@ -231,7 +231,7 @@
     ]
   },
   {
-    "command": "\"Once you notice that the television has been switched on, please proceed to activate the speaker.\"",
+    "command": "Once you notice that the television has been switched on, please proceed to activate the speaker.",
     "code": [
       {
         "name": "Scenario1",
@@ -242,7 +242,7 @@
     ]
   },
   {
-    "command": "\"When the TV is turned on, please make sure to also power up the speaker.\"",
+    "command": "When the TV is turned on, please make sure to also power up the speaker.",
     "code": [
       {
         "name": "Scenario1",
@@ -253,7 +253,7 @@
     ]
   },
   {
-    "command": "\"The moment the television has been powered on, kindly ensure the speaker is also turned on.\"",
+    "command": "The moment the television has been powered on, kindly ensure the speaker is also turned on.",
     "code": [
       {
         "name": "Scenario1",
@@ -319,7 +319,7 @@
     ]
   },
   {
-    "command": "\"As soon as the channel on the television gets switched, pause the playback of any media on the speaker.\"",
+    "command": "As soon as the channel on the television gets switched, pause the playback of any media on the speaker.",
     "code": [
       {
         "name": "Scenario1",
@@ -330,7 +330,7 @@
     ]
   },
   {
-    "command": "\"The moment the TV's channel is altered, hold off on the speaker's media playback.\"",
+    "command": "The moment the TV's channel is altered, hold off on the speaker's media playback.",
     "code": [
       {
         "name": "Scenario1",
@@ -341,7 +341,7 @@
     ]
   },
   {
-    "command": "\"Once a change in the TV channel occurs, immediately suspend the media playback on the speaker.\"",
+    "command": "Once a change in the TV channel occurs, immediately suspend the media playback on the speaker.",
     "code": [
       {
         "name": "Scenario1",
@@ -363,7 +363,7 @@
     ]
   },
   {
-    "command": "\"Once the volume on the TV has been turned up, go ahead and move the speaker's media playback forward at a faster rate.\"",
+    "command": "Once the volume on the TV has been turned up, go ahead and move the speaker's media playback forward at a faster rate.",
     "code": [
       {
         "name": "Scenario1",
@@ -374,7 +374,7 @@
     ]
   },
   {
-    "command": "\"After you've boosted the TV sound, please hasten the media playback playing on the speaker.\"",
+    "command": "After you've boosted the TV sound, please hasten the media playback playing on the speaker.",
     "code": [
       {
         "name": "Scenario1",
@@ -385,7 +385,7 @@
     ]
   },
   {
-    "command": "\"As soon as the volume of the television is raised, speed up the playing media on the speaker.\"",
+    "command": "As soon as the volume of the television is raised, speed up the playing media on the speaker.",
     "code": [
       {
         "name": "Scenario1",
@@ -627,7 +627,7 @@
     ]
   },
   {
-    "command": "\"Once the dehumidifier enters its cooling mode, you need to flick the switch.\"",
+    "command": "Once the dehumidifier enters its cooling mode, you need to flick the switch.",
     "code": [
       {
         "name": "Scenario1",
@@ -638,7 +638,7 @@
     ]
   },
   {
-    "command": "\"Upon the dehumidifier transitioning to the cooling mode, proceed to toggle the switch.\"",
+    "command": "Upon the dehumidifier transitioning to the cooling mode, proceed to toggle the switch.",
     "code": [
       {
         "name": "Scenario1",
@@ -649,7 +649,7 @@
     ]
   },
   {
-    "command": "\"As soon as the cooling mode is engaged on the dehumidifier, make sure to flip the switch.\"",
+    "command": "As soon as the cooling mode is engaged on the dehumidifier, make sure to flip the switch.",
     "code": [
       {
         "name": "Scenario1",
@@ -715,7 +715,7 @@
     ]
   },
   {
-    "command": "\"Please hold on until the dehumidifier has its mode set to 'weight sensing', and then proceed to switch it off.\"",
+    "command": "Please hold on until the dehumidifier has its mode set to 'weight sensing', and then proceed to switch it off.",
     "code": [
       {
         "name": "Scenario1",
@@ -726,7 +726,7 @@
     ]
   },
   {
-    "command": "\"Once the 'weight sensing' mode is enabled on the dehumidifier, you can go ahead and turn off the switch.\"",
+    "command": "Once the 'weight sensing' mode is enabled on the dehumidifier, you can go ahead and turn off the switch.",
     "code": [
       {
         "name": "Scenario1",
@@ -737,7 +737,7 @@
     ]
   },
   {
-    "command": "\"Ensure the dehumidifier is in 'weight sensing' mode before you decide to flip the switch off.\"",
+    "command": "Ensure the dehumidifier is in 'weight sensing' mode before you decide to flip the switch off.",
     "code": [
       {
         "name": "Scenario1",
@@ -803,7 +803,7 @@
     ]
   },
   {
-    "command": "\"Once the dehumidifier mode has been configured to 'AIDrying', please proceed to flip the switch.\"",
+    "command": "Once the dehumidifier mode has been configured to 'AIDrying', please proceed to flip the switch.",
     "code": [
       {
         "name": "Scenario1",
@@ -814,7 +814,7 @@
     ]
   },
   {
-    "command": "\"After the dehumidifier mode has been adjusted to 'AIDrying', I want you to activate the switch.\"",
+    "command": "After the dehumidifier mode has been adjusted to 'AIDrying', I want you to activate the switch.",
     "code": [
       {
         "name": "Scenario1",
@@ -825,7 +825,7 @@
     ]
   },
   {
-    "command": "\"As soon as you've set the dehumidifier mode to 'AIDrying', please go ahead and turn the switch on or off.\"",
+    "command": "As soon as you've set the dehumidifier mode to 'AIDrying', please go ahead and turn the switch on or off.",
     "code": [
       {
         "name": "Scenario1",
@@ -842,7 +842,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": -1,
-        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play(\"Radio\")"
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play('Radio')"
       }
     ]
   },
@@ -853,7 +853,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": -1,
-        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play(\"Radio\")"
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play('Radio')"
       }
     ]
   },
@@ -864,7 +864,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": -1,
-        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play(\"Radio\")"
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play('Radio')"
       }
     ]
   },
@@ -875,7 +875,7 @@
         "name": "Scenario1",
         "cron": "",
         "period": -1,
-        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play(\"Radio\")"
+        "code": "wait until((#PresenceSensor).presenceSensor_presence == 'present')\n(#Speaker).mediaPlayback_play('Radio')"
       }
     ]
   },

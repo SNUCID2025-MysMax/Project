@@ -1,0 +1,1148 @@
+- command: Check every second to toggle the state of the air conditioner whenever the temperature is below 30 degrees but above 25 degrees.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).switch_toggle()
+      }
+- command: Could you please monitor the temperature and if it falls between 25 and 30 degrees, switch the air conditioner's mode every second?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).switch_toggle()
+      }
+- command: Please ensure to keep an eye on the temperature and whenever it's above 25 degrees but below 30, change the air conditioner's status every second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).switch_toggle()
+      }
+- command: Keep monitoring the temperature and if it ranges between 25 and 30 degrees, please alternate the air conditioner's mode every second
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).switch_toggle()
+      }
+- command: Check every second to set the air conditioner to 'cool' mode whenever the temperature is below 30 degrees but above 25 degrees.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+      }
+- command: Regularly monitor the temperature, and if it falls between 25 and 30 degrees, ensure the air conditioning is set to 'cool' mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+      }
+- command: On a second-by-second basis, if the temperature dips below 30 degrees but remains above 25 degrees, adjust the air conditioner to the 'cool' setting
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+      }
+- command: Continuously check the temperature and if it's anywhere from 25 to 30 degrees, make sure to switch the air conditioner to 'cool' mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+      }
+- command: Check every second to set the temperature of the air conditioner to 26 whenever the temperature is below 30 degrees but above 25 degrees.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setTemperature(26)
+      }
+- command: Ensure to monitor and adjust the air conditioner's temperature to 26 degrees every second when the temperature fluctuates between 25 and 30 degrees
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setTemperature(26)
+      }
+- command: Keep an eye out every moment and make sure to regulate the air conditioner to 26 degrees when the temperature is lower than 30 degrees but higher than 25 degrees
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setTemperature(26)
+      }
+- command: Continually, every second, verify and modify the air conditioner's temperature to 26 degrees if the temperature drops below 30 degrees but remains above 25 degrees
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setTemperature(26)
+      }
+- command: Check every second to turn off the air conditioner whenever the temperature is below 30 degrees but above 25 degrees.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).switch_off()
+      }
+- command: Make sure to monitor the temperature every second and if it falls below 30 degrees but stays above 25 degrees, switch off the air conditioner
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).switch_off()
+      }
+- command: Could you keep an eye on the temperature every second and turn off the air conditioner if it's below 30 degrees, yet still above 25 degrees?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).switch_off()
+      }
+- command: Every second, if you notice the temperature slipping under 30 degrees but still being above 25 degrees, ensure the air conditioner is turned off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).switch_off()
+      }
+- command: Check every second to set the air conditioner to 'heat' mode whenever the temperature is below 30 degrees but above 25 degrees.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+      }
+- command: Monitor the temperature regularly and switch the air conditioner to 'heat' mode if the temperature falls below 30 degrees but remains above 25 degrees
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+      }
+- command: Keep an eye on the temperature and adjust the air conditioner to the 'heat' setting if it drops below 30 degrees but is still higher than 25 degrees
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+      }
+- command: Continually assess the temperature and whenever it's lower than 30 degrees but higher than 25 degrees, alter the settings of the air conditioner to 'heat' mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 1000
+    code: |-
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((temp < 30.0) and (temp >= 25.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+      }
+- command: On a weekend morning, if the door is opened and there's no detected movement for 10 seconds, the lights will toggle their state after 10 seconds.
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).switch_toggle()
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: If it's a weekend morning and the door is opened, but no movement is detected for a span of 10 seconds, the lights will automatically change their status after an additional 10 seconds
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).switch_toggle()
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: On a weekend morning, should the door be opened without any subsequent movement detected for 10 seconds, the lights will alter their state after another 10 seconds
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).switch_toggle()
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: In the event that the door is opened on a weekend morning and there is no sign of movement for 10 seconds, the lights are to switch their status after an extra 10 seconds
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).switch_toggle()
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: On a weekend morning, if the door is opened and there is no detected movement for 10 seconds, the lights will be set to a specified color after 10 seconds.
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).colorControl_setColor({"hue": "50", "saturation": "50"})
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: If the door is opened on a weekend morning and no movement is detected for a span of 10 seconds, adjust the lights to a predetermined color after an additional 10 seconds
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).colorControl_setColor({"hue": "50", "saturation": "50"})
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: On a leisurely weekend morning, should the door open and no movement be sensed for a period of 10 seconds, proceed to change the lights to a set color after another 10 seconds have passed
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).colorControl_setColor({"hue": "50", "saturation": "50"})
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: In the event that the door is opened and there is a lack of detected movement for 10 seconds during a weekend morning, the lights should be transitioned to a certain color following an extra 10 seconds
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).colorControl_setColor({"hue": "50", "saturation": "50"})
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: On a weekend morning, if the door is opened and there is no detected movement for 10 seconds, the lights will be set to a specified level after 10 seconds.
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).switchLevel_setLevel(50, 5)
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: '"If no motion is detected for a period of ten seconds after the door opens on a weekend morning, the lights should then be adjusted to a predetermined intensity after an additional ten seconds."'
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).switchLevel_setLevel(50, 5)
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: '"On a weekend morning, should the door be opened and no activity is sensed for a span of ten seconds, then after an extra ten seconds, please adjust the lights to the set level."'
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).switchLevel_setLevel(50, 5)
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: '"After the door has been opened on a weekend morning, if ten seconds pass without any movement being detected, then set the lights to a predetermined brightness level after another ten seconds."'
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 6,0
+    period: 100
+    code: |-
+      check_motion := false
+      no_motion_tick := 0
+
+      if ((#Clock).clock_hour < 12) {
+        if ((#ContactSensor).contactSensor_contact == "open" and check_motion == false) {
+          check_motion = true
+          no_motion_tick = 0
+        }
+
+        if (check_motion == true) {
+          if ((#MotionSensor).motionSensor_motion == "inactive") {
+            no_motion_tick = no_motion_tick + 1
+            if (no_motion_tick == 100) {
+              if ((#Light).switch_switch == "off") {
+                (#Light).switchLevel_setLevel(50, 5)
+              }
+              break
+            }
+          } else {
+            break
+          }
+        }
+      }
+- command: Pause for 10 seconds when an occupancy sensor is detected, then toggle the light switch.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_toggle()
+- command: If an occupancy sensor is detected, take a brief pause of 10 seconds and then switch the light on or off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_toggle()
+- command: When you sense an occupancy sensor, wait for a 10-second interval before flipping the light switch
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_toggle()
+- command: Upon detecting the presence of an occupancy sensor, hold off for ten seconds before altering the state of the light switch
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_toggle()
+- command: When an occupancy sensor is detected, wait for 10 seconds and then turn off the light.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_off()
+- command: Should an occupancy sensor be triggered, kindly hold off for a span of ten seconds prior to extinguishing the light
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_off()
+- command: If there's a detection from the occupancy sensor, please pause for a brief moment of ten seconds before proceeding to switch off the light
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_off()
+- command: In the event that the occupancy sensor picks up on something, allow a ten second interval before you decide to shut down the light
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_off()
+- command: Upon detecting occupancy, pause for 10 seconds and then set the light color saturation to 50 percent.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setSaturation(50)
+- command: If you notice that the room is occupied, wait for a brief moment of 10 seconds before adjusting the light color saturation to a level of 50 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setSaturation(50)
+- command: Once you've detected someone in the room, hold off for about 10 seconds and then moderate the color saturation of the light to half its full capacity
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setSaturation(50)
+- command: Should you sense the presence of someone, take a short pause of 10 seconds and subsequently change the light's color saturation to fifty percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setSaturation(50)
+- command: Check in real-time and after a 10-second delay, when an occupancy sensor is detected, turn on the light.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_on()
+- command: Please ensure that the light is turned on instantly and also after a delay of ten seconds as soon as the occupancy sensor detects something
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_on()
+- command: As soon as the occupancy sensor picks anything up, could you please switch on the light immediately and again after a brief pause of ten seconds?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_on()
+- command: Monitor the occupancy sensor, and the moment it detects something, kindly illuminate the light straight away, and once again after a small delay of 10 seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).switch_on()
+- command: Once the occupancy sensor is activated, wait for 10 seconds before setting the light hue to 75 percent.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setHue(75)
+- command: After the motion detector has been triggered, let ten seconds pass before adjusting the light's color to seventy-five percent intensity
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setHue(75)
+- command: When the occupancy detector comes into action, hold off for a short span of ten seconds prior to modifying the hue of the light to three-quarters intensity
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setHue(75)
+- command: Upon the activation of the movement sensor, pause for a brief period of ten seconds before modifying the color saturation of the light to 75 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      wait until((#OccupancySensor).presenceSensor_presence == 'present')
+      (#Clock).clock_delay(10000)
+      (#Light).colorControl_setHue(75)
+- command: If the TV is on, wait for 1 hour, 10 minutes and 10 seconds, then check the TV again and switch the channel up if it's off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Clock).clock_delay(1, 10, 10)
+        if ((#Television).switch_switch == "off") {
+          (#Television).tvChannel_channelUp()
+        }
+      }
+- command: Should the television be powered on, spend an hour, ten minutes, and ten seconds patiently waiting before rechecking the television. If you find it's been turned off, proceed with changing the channel upwards
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Clock).clock_delay(1, 10, 10)
+        if ((#Television).switch_switch == "off") {
+          (#Television).tvChannel_channelUp()
+        }
+      }
+- command: If you notice that the TV is turned on, kindly take your time for one hour, ten minutes, and ten seconds. Afterward, verify the status of the TV and if it's off by then, it would be appropriate to switch the channel up
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Clock).clock_delay(1, 10, 10)
+        if ((#Television).switch_switch == "off") {
+          (#Television).tvChannel_channelUp()
+        }
+      }
+- command: In the event that the television is on, patiently wait for an interval of one hour, ten minutes, and ten seconds. Then, re-inspect the television and if it has been powered off, be sure to switch to the next higher channel
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Clock).clock_delay(1, 10, 10)
+        if ((#Television).switch_switch == "off") {
+          (#Television).tvChannel_channelUp()
+        }
+      }
+- command: If the TV volume is muted, delay for 2 hours, then check the TV again and set volume to 20 if it's unmuted.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).audioMute_muteStatus == "muted") {
+        (#Clock).clock_delay(2, 0, 0)
+        if ((#Television).audioMute_muteStatus == "unmuted") {
+          (#Television).audioVolume_setVolume(20)
+        }
+      }
+- command: In the event that the television has its volume silenced, wait a couple of hours before checking it once more. If you find that the volume is no longer muted, adjust it to level
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).audioMute_muteStatus == "muted") {
+        (#Clock).clock_delay(2, 0, 0)
+        if ((#Television).audioMute_muteStatus == "unmuted") {
+          (#Television).audioVolume_setVolume(20)
+        }
+      }
+- command: Should you find the TV's volume set to mute, make sure to wait for two hours prior to rechecking it. If during the recheck you notice it's no longer on mute, please set the volume to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).audioMute_muteStatus == "muted") {
+        (#Clock).clock_delay(2, 0, 0)
+        if ((#Television).audioMute_muteStatus == "unmuted") {
+          (#Television).audioVolume_setVolume(20)
+        }
+      }
+- command: If you notice that the volume on the television is muted, put off any action for the next two hours. Afterwards, re-inspect the TV and, if it's unmuted by then, raise the volume to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).audioMute_muteStatus == "muted") {
+        (#Clock).clock_delay(2, 0, 0)
+        if ((#Television).audioMute_muteStatus == "unmuted") {
+          (#Television).audioVolume_setVolume(20)
+        }
+      }
+- command: If the TV is muted, wait for 1 hour, then check the TV again and unmute it if it's muted.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).audioMute_muteStatus == "muted") {
+        (#Clock).clock_delay(1, 0, 0)
+        if ((#Television).audioMute_muteStatus == "muted") {
+          (#Television).audioMute_unmute()
+        }
+      }
+- command: Should the television be on mute, please hold off for sixty minutes before revisiting the television and turning the mute off if it remains on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).audioMute_muteStatus == "muted") {
+        (#Clock).clock_delay(1, 0, 0)
+        if ((#Television).audioMute_muteStatus == "muted") {
+          (#Television).audioMute_unmute()
+        }
+      }
+- command: In case the TV is silenced, pause for a duration of one hour. Then, revisit the TV and if it's still muted, do ensure to unmute it
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).audioMute_muteStatus == "muted") {
+        (#Clock).clock_delay(1, 0, 0)
+        if ((#Television).audioMute_muteStatus == "muted") {
+          (#Television).audioMute_unmute()
+        }
+      }
+- command: If you find that the television is muted, wait for an hour, then return to the television to check its status and unmute it if necessary
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).audioMute_muteStatus == "muted") {
+        (#Clock).clock_delay(1, 0, 0)
+        if ((#Television).audioMute_muteStatus == "muted") {
+          (#Television).audioMute_unmute()
+        }
+      }
+- command: If the TV is on, delay for 1 hour, 30 minutes, and 10 seconds, then check the TV again and turn it off if it's on.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Clock).clock_delay(1, 30, 10)
+        if ((#Television).switch_switch == "on") {
+          (#Television).switch_off()
+        }
+      }
+- command: Should you find the television switched on, please give it an hour, thirty minutes, and ten seconds, take a look once more and turn it off if it's still running
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Clock).clock_delay(1, 30, 10)
+        if ((#Television).switch_switch == "on") {
+          (#Television).switch_off()
+        }
+      }
+- command: In the event that the TV is powered on, wait for an hour and a half plus ten seconds, revisit the TV and shut it down if it remains on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Clock).clock_delay(1, 30, 10)
+        if ((#Television).switch_switch == "on") {
+          (#Television).switch_off()
+        }
+      }
+- command: If you notice the TV is on, hold off for one hour, thirty minutes, and ten additional seconds, then assess the TV once more, turning it off if necessary
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "on") {
+        (#Clock).clock_delay(1, 30, 10)
+        if ((#Television).switch_switch == "on") {
+          (#Television).switch_off()
+        }
+      }
+- command: If the TV channel is down, wait 30 minutes, then check the TV again and set the TV channel to 5 if it's up.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).tvChannel_tvChannel < 1) {
+        (#Clock).clock_delay(0, 30, 0)
+        if ((#Television).tvChannel_tvChannel > 1) {
+          (#Television).tvChannel_setTvChannel(5)
+        }
+      }
+- command: Should the television channel experience any issues, please allow half an hour to pass before rechecking it. If everything seems to be in order, proceed by changing the channel to number
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).tvChannel_tvChannel < 1) {
+        (#Clock).clock_delay(0, 30, 0)
+        if ((#Television).tvChannel_tvChannel > 1) {
+          (#Television).tvChannel_setTvChannel(5)
+        }
+      }
+- command: In case the TV channel experiences a downtime, give it a 30-minute grace period. After waiting, inspect the television once more, and if it's operating correctly, switch the channel to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).tvChannel_tvChannel < 1) {
+        (#Clock).clock_delay(0, 30, 0)
+        if ((#Television).tvChannel_tvChannel > 1) {
+          (#Television).tvChannel_setTvChannel(5)
+        }
+      }
+- command: If you find that the television channel is not working, please pause for about 30 minutes before examining the television again. If it's functioning properly at this point, adjust the channel to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Television).tvChannel_tvChannel < 1) {
+        (#Clock).clock_delay(0, 30, 0)
+        if ((#Television).tvChannel_tvChannel > 1) {
+          (#Television).tvChannel_setTvChannel(5)
+        }
+      }
+- command: Check in real-time on Mon, Wed, Fri and open the window if it's not closed.
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "closed") {
+        (#Window).windowControl_open()
+      }
+- command: Keep an eye on the situation in real-time every Monday, Wednesday, and Friday, and ensure the window is opened if it isn't already
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "closed") {
+        (#Window).windowControl_open()
+      }
+- command: Please monitor in real-time on Mondays, Wednesdays, and Fridays, and open the window if you find it closed
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "closed") {
+        (#Window).windowControl_open()
+      }
+- command: Continually observe every Monday, Wednesday, and Friday, and if you notice the window is not open, please open it
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "closed") {
+        (#Window).windowControl_open()
+      }
+- command: Check in real-time on Mon, Wed, Fri and open the window if it's in an unknown state.
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window == "unknown") {
+        (#Window).windowControl_open()
+      }
+- command: Monitor the window's status continuously on Mondays, Wednesdays, and Fridays and open it if its state is not known
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window == "unknown") {
+        (#Window).windowControl_open()
+      }
+- command: Please keep an eye on the window's condition in real-time every Monday, Wednesday, and Friday, and open it should its state be unfamiliar
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window == "unknown") {
+        (#Window).windowControl_open()
+      }
+- command: On Mondays, Wednesdays, and Fridays, could you please check the window's status in real-time and open it if you find it in an unidentified state?
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window == "unknown") {
+        (#Window).windowControl_open()
+      }
+- command: Check in real-time on Mon, Wed, Fri and close the window if it's in an unknown state.
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window == "unknown") {
+        (#Window).windowControl_close()
+      }
+- command: Keep a real-time monitor on Monday, Wednesday, and Friday, and be sure to shut the window if it appears to be in an unfamiliar condition
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window == "unknown") {
+        (#Window).windowControl_close()
+      }
+- command: Continuously observe on Mondays, Wednesdays, and Fridays, and if the window is found in an unrecognized state, make sure to close it
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window == "unknown") {
+        (#Window).windowControl_close()
+      }
+- command: Please, on Mondays, Wednesdays, and Fridays, keep a direct eye out and if you notice the window in an unfamiliar status, ensure it is shut
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window == "unknown") {
+        (#Window).windowControl_close()
+      }
+- command: Check in real-time on Mon, Wed, Fri and open the window if it's not already open.
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "open") {
+        (#Window).windowControl_open()
+      }
+- command: '"Please ensure that on every Monday, Wednesday, and Friday, you continuously monitor the state of the window and open it if it''s closed."'
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "open") {
+        (#Window).windowControl_open()
+      }
+- command: '"On Mondays, Wednesdays, and Fridays, could you please make sure to regularly verify the window''s status and open it if it isn''t already?"'
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "open") {
+        (#Window).windowControl_open()
+      }
+- command: '"Would you mind keeping an eye on the window''s state on every Monday, Wednesday, and Friday and opening it should it be found closed?"'
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "open") {
+        (#Window).windowControl_open()
+      }
+- command: Check in real-time on Mon, Wed, Fri and close the window if it's not already closed.
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "closed") {
+        (#Window).windowControl_close()
+      }
+- command: Keep an eye on the situation in real time every Monday, Wednesday, and Friday, and make sure to close the window if it remains open
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "closed") {
+        (#Window).windowControl_close()
+      }
+- command: Continuously monitor every Monday, Wednesday, and Friday, and ensure that the window is shut if it's still open
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "closed") {
+        (#Window).windowControl_close()
+      }
+- command: On Mondays, Wednesdays, and Fridays, keep a real-time check and ensure the window is closed if it hasn't been already
+  code:
+  - name: Scenario1
+    cron: 0 0 * * 1,3,5
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window != "closed") {
+        (#Window).windowControl_close()
+      }

@@ -1,0 +1,1072 @@
+- command: If the television is on and the blinds are open while the curtain is partially open, then turn off the television and close the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Blind).blind_blind == 'open') and ((#Curtain).curtain_curtain == 'partially')) {
+        (#Television).switch_off()
+        (#Blind).blind_close()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'heat') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: In the event that the television is playing, the blinds are not shut, and the curtain is half-drawn, ensure that both the television is switched off and the blinds are fully closed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Blind).blind_blind == 'open') and ((#Curtain).curtain_curtain == 'partially')) {
+        (#Television).switch_off()
+        (#Blind).blind_close()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'heat') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: Should you find the TV powered on, the blinds ajar, and the curtain slightly open, your next steps would be to switch off the TV and pull the blinds completely shut
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Blind).blind_blind == 'open') and ((#Curtain).curtain_curtain == 'partially')) {
+        (#Television).switch_off()
+        (#Blind).blind_close()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'heat') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: In case the TV is operating and the blinds along with the curtain are open to some extent, make sure to turn the TV off and draw the blinds close
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Blind).blind_blind == 'open') and ((#Curtain).curtain_curtain == 'partially')) {
+        (#Television).switch_off()
+        (#Blind).blind_close()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'heat') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: If the television is off and the blinds are partially open, and the curtains are closing, then turn on the television and set the blind level to 50.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Blind).blind_blind == 'partially') and ((#Curtain).curtain_curtain == 'closing')) {
+        (#Television).switch_on()
+        (#Blind).blindLevel_setBlindLevel(50)
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'cool') and ((#AirConditioner).switch_switch == 'off')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+        (#AirConditioner).switch_on()
+      }
+- command: Should the television be switched off, the blinds halfway open, and the curtains drawing to a close, kindly power up the television and adjust the blind level to a midway point
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Blind).blind_blind == 'partially') and ((#Curtain).curtain_curtain == 'closing')) {
+        (#Television).switch_on()
+        (#Blind).blindLevel_setBlindLevel(50)
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'cool') and ((#AirConditioner).switch_switch == 'off')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+        (#AirConditioner).switch_on()
+      }
+- command: In the event that the television isn't on, the blinds are somewhat opened, and the curtains are being drawn, please activate the television and change the blind level to halfway
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Blind).blind_blind == 'partially') and ((#Curtain).curtain_curtain == 'closing')) {
+        (#Television).switch_on()
+        (#Blind).blindLevel_setBlindLevel(50)
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'cool') and ((#AirConditioner).switch_switch == 'off')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+        (#AirConditioner).switch_on()
+      }
+- command: If you find that the television is off, the blinds are not fully opened and the curtains are in the process of closing, do turn on the television and put the blinds up to a 50 percent level
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Blind).blind_blind == 'partially') and ((#Curtain).curtain_curtain == 'closing')) {
+        (#Television).switch_on()
+        (#Blind).blindLevel_setBlindLevel(50)
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'cool') and ((#AirConditioner).switch_switch == 'off')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+        (#AirConditioner).switch_on()
+      }
+- command: If the television is on, the blinds are closing, and the curtains are closed, then turn off the television and open the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Blind).blind_blind == 'closing') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Television).switch_off()
+        (#Blind).blind_open()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'heat') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: Should the television be powered on while the blinds are shutting and the curtains are already drawn, kindly switch off the television and raise the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Blind).blind_blind == 'closing') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Television).switch_off()
+        (#Blind).blind_open()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'heat') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: In case the television is switched on, the blinds are in the process of closing, and the curtains have been shut, please proceed to turn off the television and open up the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Blind).blind_blind == 'closing') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Television).switch_off()
+        (#Blind).blind_open()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'heat') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: If you find the television running with the blinds coming down and the curtains all closed, your next task is to power down the television and lift the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Blind).blind_blind == 'closing') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Television).switch_off()
+        (#Blind).blind_open()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'heat') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: If the television is off, the blinds are open, and the curtains are opening, then turn on the television and close the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Blind).blind_blind == 'open') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Television).switch_on()
+        (#Blind).blind_close()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'cool') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+        (#AirConditioner).switch_off()
+      }
+- command: Should you find the TV switched off, the blinds wide open, and the curtains in the process of opening, please ensure to power on the television and draw the blinds closed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Blind).blind_blind == 'open') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Television).switch_on()
+        (#Blind).blind_close()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'cool') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+        (#AirConditioner).switch_off()
+      }
+- command: In the event that the television is not on, the blinds are not closed, and the curtains are opening, please take it upon yourself to switch on the television and shut the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Blind).blind_blind == 'open') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Television).switch_on()
+        (#Blind).blind_close()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'cool') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+        (#AirConditioner).switch_off()
+      }
+- command: If it so happens that the television is idle, the blinds are unclosed, and the curtains are parting, do make sure to start the television and close up the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Blind).blind_blind == 'open') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Television).switch_on()
+        (#Blind).blind_close()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode != 'cool') and ((#AirConditioner).switch_switch == 'on')) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+        (#AirConditioner).switch_off()
+      }
+- command: If the speaker is paused, the light is off and the curtain is opening, then the speaker will be set to play and the curtain will be paused. If the television is off and the light level is 70, the light level will be set to 30.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'paused') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+        (#Curtain).curtain_pause()
+      }
+      if (((#Television).switch_switch == 'off') and ((#Light).switchLevel_level == 70)) {
+        (#Light).switchLevel_setLevel(30, 0)
+      }
+- command: Should the speaker be on pause, the light switched off, and the curtain in the process of opening, then proceed to put the speaker on play mode and halt the curtain's movement. If the TV is not turned on and the light intensity is at 70, then adjust the light intensity to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'paused') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+        (#Curtain).curtain_pause()
+      }
+      if (((#Television).switch_switch == 'off') and ((#Light).switchLevel_level == 70)) {
+        (#Light).switchLevel_setLevel(30, 0)
+      }
+- command: In the event that the speaker is paused, the light is turned off and the curtain is being drawn open, it would be necessary to switch the speaker to play mode and stop the curtain from opening further. If the TV is off and the illumination is set to 70, modify the illumination to a lower level of
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'paused') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+        (#Curtain).curtain_pause()
+      }
+      if (((#Television).switch_switch == 'off') and ((#Light).switchLevel_level == 70)) {
+        (#Light).switchLevel_setLevel(30, 0)
+      }
+- command: When you find that the speaker is on pause, the light has been turned off, and the curtain is opening, then please transition the speaker to play and halt the curtain's opening. If the situation is such that the television is not in use and the room's brightness level is at 70, then please lower it to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'paused') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+        (#Curtain).curtain_pause()
+      }
+      if (((#Television).switch_switch == 'off') and ((#Light).switchLevel_level == 70)) {
+        (#Light).switchLevel_setLevel(30, 0)
+      }
+- command: If the speaker is playing, the light is on and the curtain is partially open, then the speaker will be set to stop and the curtain will be closed. If the television is on and the light level is 60, the light level will be set to 40.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'playing') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'partially')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+        (#Curtain).curtain_close()
+      }
+      if (((#Television).switch_switch == 'on') and ((#Light).switchLevel_level == 60)) {
+        (#Light).switchLevel_setLevel(40, 0)
+      }
+- command: Should the speaker be in use, the light switched on and the curtain halfway open, then immediately halt the speaker and fully close the curtain. Moreover, in case the TV is functioning and the illumination level is at 60, adjust the light intensity down to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'playing') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'partially')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+        (#Curtain).curtain_close()
+      }
+      if (((#Television).switch_switch == 'on') and ((#Light).switchLevel_level == 60)) {
+        (#Light).switchLevel_setLevel(40, 0)
+      }
+- command: In the event that the speaker is in operation, the light is glowing and the curtain is not fully shut, the commands are to cease the speaker and completely shut the curtain. Subsequently, if the TV is running and there's 60% light, reduce the brightness down to 40%
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'playing') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'partially')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+        (#Curtain).curtain_close()
+      }
+      if (((#Television).switch_switch == 'on') and ((#Light).switchLevel_level == 60)) {
+        (#Light).switchLevel_setLevel(40, 0)
+      }
+- command: If the situation arises where the speaker is blaring, the light is lit and the curtain is somewhat drawn, the first action should be to silence the speaker and close the curtain entirely. Further, if the television is activated and the room's luminosity is at 60, dial down the brightness to 40%
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'playing') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'partially')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+        (#Curtain).curtain_close()
+      }
+      if (((#Television).switch_switch == 'on') and ((#Light).switchLevel_level == 60)) {
+        (#Light).switchLevel_setLevel(40, 0)
+      }
+- command: If the speaker is buffering, the light is off and the curtain is opening, then the speaker will be set to play and the curtain will be paused. If the television is off and the light level is 90, the light level will be set to 10.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'buffering') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+        (#Curtain).curtain_pause()
+      }
+      if (((#Television).switch_switch == 'off') and ((#Light).switchLevel_level == 90)) {
+        (#Light).switchLevel_setLevel(10, 0)
+      }
+- command: Should the speaker be buffering while the light is switched off and the curtains are opening, the speaker will be prompted to begin playing and the curtains' movement will be halted. However, if the television is turned off and the light intensity is at 90, then the light intensity should be reduced to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'buffering') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+        (#Curtain).curtain_pause()
+      }
+      if (((#Television).switch_switch == 'off') and ((#Light).switchLevel_level == 90)) {
+        (#Light).switchLevel_setLevel(10, 0)
+      }
+- command: In the event that the speaker is in its buffering state, when both the light is dimmed and the curtain is in the process of opening, then we'll initiate the speaker to play and pause the curtain. Conversely, if the television is off and the luminosity is at 90, we'll adjust the intensity of the light to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'buffering') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+        (#Curtain).curtain_pause()
+      }
+      if (((#Television).switch_switch == 'off') and ((#Light).switchLevel_level == 90)) {
+        (#Light).switchLevel_setLevel(10, 0)
+      }
+- command: If the speaker happens to be buffering at the same time as the light being out and the curtain opening up, the speaker will be directed to start playing and the curtain's movement will be suspended. Meanwhile, if the TV is powered off with the light level being 90, we'll need to dial down the light level to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'buffering') and ((#Light).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'opening')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('playing')
+        (#Curtain).curtain_pause()
+      }
+      if (((#Television).switch_switch == 'off') and ((#Light).switchLevel_level == 90)) {
+        (#Light).switchLevel_setLevel(10, 0)
+      }
+- command: If the speaker is rewinding, the light is on and the curtain is closed, then the speaker will be set to stop and the curtain will be opened. If the television is on and the light level is 100, the light level will be set to 50.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'rewinding') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+        (#Curtain).curtain_open()
+      }
+      if (((#Television).switch_switch == 'on') and ((#Light).switchLevel_level == 100)) {
+        (#Light).switchLevel_setLevel(50, 0)
+      }
+- command: In the event that the speaker is currently rewinding, the light is turned on, and the curtain is drawn shut, the appropriate adjustments will be to stop the speaker and to draw back the curtain. Similarly, if the TV is switched on and the brightness level is at its maximum, it will be reduced by half
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'rewinding') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+        (#Curtain).curtain_open()
+      }
+      if (((#Television).switch_switch == 'on') and ((#Light).switchLevel_level == 100)) {
+        (#Light).switchLevel_setLevel(50, 0)
+      }
+- command: Should the speaker be rewinding with the light on and the curtain closed, the speaker should be halted and the curtain should be pulled back. Likewise, if the television is running with the light at full intensity, the light should be dimmed down to half its initial brightness
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'rewinding') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+        (#Curtain).curtain_open()
+      }
+      if (((#Television).switch_switch == 'on') and ((#Light).switchLevel_level == 100)) {
+        (#Light).switchLevel_setLevel(50, 0)
+      }
+- command: If you notice that the speaker is in rewind mode, the light is illuminated and the curtain is down, the next step would be to command the speaker to cease its activity and to unveil the curtain. Furthermore, if the television is powered up and the room's light is at its peak brightness, it's preferable to lower the light's intensity to half
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Speaker).mediaPlayback_playbackStatus == 'rewinding') and ((#Light).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closed')) {
+        (#Speaker).mediaPlayback_setPlaybackStatus('stopped')
+        (#Curtain).curtain_open()
+      }
+      if (((#Television).switch_switch == 'on') and ((#Light).switchLevel_level == 100)) {
+        (#Light).switchLevel_setLevel(50, 0)
+      }
+- command: If the door is closing and the alarm is muted, the siren is set to strobe mode and if the blind is partially open, it is paused. If the air conditioner is on and the temperature is at least 30.0, the air conditioner mode is set to heat and then switched off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'closing') and ((#Alarm).alarm_alarmVolume == 'mute')) {
+        (#Siren).sirenMode_setSirenMode('strobe')
+        if ((#Blind).blind_blind == 'partially') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: Should the door be in the process of closing while the alarm is in silent mode, the siren should be switched to a strobe setting. Also, if the blinds are partially up, they need to be put on hold. In case the air conditioning system is functioning and the room temperature reaches a minimum of 30.0, the system should be transitioned to heating mode before being turned off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'closing') and ((#Alarm).alarm_alarmVolume == 'mute')) {
+        (#Siren).sirenMode_setSirenMode('strobe')
+        if ((#Blind).blind_blind == 'partially') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: In the event that the door is closing and the alarm is suppressed, set the siren to flash intermittently. If there's any indication that the blind is halfway open, pause it. Meanwhile, if the air conditioning is running and the room temperature is at or above 30.0, adjust the air conditioning system to the heating mode, then power it down
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'closing') and ((#Alarm).alarm_alarmVolume == 'mute')) {
+        (#Siren).sirenMode_setSirenMode('strobe')
+        if ((#Blind).blind_blind == 'partially') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: If you notice that the door is closing and the alarm is set to mute, it's necessary to switch the siren to a strobe setting. Simultaneously, if the blinds are not fully opened, they should be paused. If the air conditioning is operating and the temperature is no less than 30.0, change the setting of the air conditioner to a heating mode and subsequently turn it off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'closing') and ((#Alarm).alarm_alarmVolume == 'mute')) {
+        (#Siren).sirenMode_setSirenMode('strobe')
+        if ((#Blind).blind_blind == 'partially') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+        (#AirConditioner).switch_off()
+      }
+- command: If the door is opening and the alarm is on high volume, the siren is set to both mode. If the blind is opening, it is paused. If the air conditioner is on and the temperature is at least 30.0, the air conditioner mode is set to auto and then switched off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'opening') and ((#Alarm).alarm_alarmVolume == 'high')) {
+        (#Siren).sirenMode_setSirenMode('both')
+        if ((#Blind).blind_blind == 'opening') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+        (#AirConditioner).switch_off()
+      }
+- command: Should the door show signs of opening while the alarm operates at a high decibel level, ensure the siren operates in dual mode. Pause the operation if the blinds are parting. In the event that the air conditioner is active with the temperature reaching or exceeding 30.0, adjust the air conditioner's setting to automatic before turning it off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'opening') and ((#Alarm).alarm_alarmVolume == 'high')) {
+        (#Siren).sirenMode_setSirenMode('both')
+        if ((#Blind).blind_blind == 'opening') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+        (#AirConditioner).switch_off()
+      }
+- command: In the event that the door is in the process of opening and the alarm is sounding at a high volume, switch the siren to a dual mode. If the blinds are in the process of opening, halt them immediately. If the air conditioning system is running and the temperature reads 30.0 or higher, adjust the mode of the air conditioner to automatic, then proceed to switch it off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'opening') and ((#Alarm).alarm_alarmVolume == 'high')) {
+        (#Siren).sirenMode_setSirenMode('both')
+        if ((#Blind).blind_blind == 'opening') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+        (#AirConditioner).switch_off()
+      }
+- command: If you see the door opening and the alarm blaring loudly, make sure to put the siren in both mode. Should the blinds start to open, immediately pause them. And if the air conditioner is running and the temperature hits at least 30.0, set the air conditioner's mode to automatic and shut it off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'opening') and ((#Alarm).alarm_alarmVolume == 'high')) {
+        (#Siren).sirenMode_setSirenMode('both')
+        if ((#Blind).blind_blind == 'opening') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+        (#AirConditioner).switch_off()
+      }
+- command: If the door is closed and the alarm is on low volume, the siren is set to off mode. If the blind is closing, it is paused. If the air conditioner is on and the temperature is at least 30.0, the air conditioner mode is set to auto and then switched off.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'closed') and ((#Alarm).alarm_alarmVolume == 'low')) {
+        (#Siren).sirenMode_setSirenMode('off')
+        if ((#Blind).blind_blind == 'closing') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+        (#AirConditioner).switch_off()
+      }
+- command: In the event that the door is shut and the alarm system is not loud, ensure that the siren is deactivated. If the blinds are in the process of closing, make sure to pause them. If the air conditioning system is running and the room temperature is at least 30.0 degrees, please adjust the setting to automatic and then turn it off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'closed') and ((#Alarm).alarm_alarmVolume == 'low')) {
+        (#Siren).sirenMode_setSirenMode('off')
+        if ((#Blind).blind_blind == 'closing') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+        (#AirConditioner).switch_off()
+      }
+- command: Should you find the door closed and the alarm sounding softly, please turn off the siren. If the blind is halfway through closing, pause it. If the air conditioning is on and the temperature is 30.0 degrees or higher, change the air conditioner to automatic mode and then shut it off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'closed') and ((#Alarm).alarm_alarmVolume == 'low')) {
+        (#Siren).sirenMode_setSirenMode('off')
+        if ((#Blind).blind_blind == 'closing') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+        (#AirConditioner).switch_off()
+      }
+- command: When the door is not open and the alarm volume is low, make sure the siren mode is off. If the blind is in the middle of closing, it needs to be paused. If the air conditioner is active and the temperature is 30.0 degrees or more, switch the air conditioner to auto mode and then power it down
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#DoorLock).doorControl_door == 'closed') and ((#Alarm).alarm_alarmVolume == 'low')) {
+        (#Siren).sirenMode_setSirenMode('off')
+        if ((#Blind).blind_blind == 'closing') {
+          (#Blind).blind_pause()
+        }
+      }
+      if (((#AirConditioner).switch_switch == 'on') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 30.0)) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+        (#AirConditioner).switch_off()
+      }
+- command: If the television is on, the curtain is opening, and the fan is on, then turn off the television and close the curtain. If the speaker is paused and the light is on, then turn off the light and open the blind.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'opening') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_off()
+        (#Curtain).curtain_close()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'paused') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_off()
+        (#Blind).blind_open()
+      }
+- command: Should you find the television switched on, the curtain being drawn back, and the fan running, please proceed to switch off the television and draw the curtain close. Meanwhile, if the speaker is on pause and the light is illuminated, make sure to extinguish the light and lift up the blind
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'opening') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_off()
+        (#Curtain).curtain_close()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'paused') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_off()
+        (#Blind).blind_open()
+      }
+- command: If you notice that the TV is on, the curtain is being pulled back, and the fan is whirring, please make sure to turn off the TV and close the curtain. Similarly, if the speaker is on standby and the light is burning, go ahead and switch off the light and roll up the blind
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'opening') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_off()
+        (#Curtain).curtain_close()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'paused') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_off()
+        (#Blind).blind_open()
+      }
+- command: In the event that the television is playing, the curtain is unfolding, and the fan is spinning, do take the time to switch the TV off and pull the curtain shut. Concurrently, if the speaker is on hold and the light is shining, kindly turn the light off and pull up the blind
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'opening') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_off()
+        (#Curtain).curtain_close()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'paused') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_off()
+        (#Blind).blind_open()
+      }
+- command: If the television is off, the curtain is partially open, and the fan is on, then turn on the television and pause the curtain movement. If the speaker is stopped and the light is on, then toggle the light and set the blind level to 50% open.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'partially') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_on()
+        (#Curtain).curtain_pause()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'stopped') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_toggle()
+        (#Blind).blindLevel_setBlindLevel(50)
+      }
+- command: In the event that the TV is switched off, the drapes are half-open and the fan is whirring away, go ahead and power up the TV while simultaneously halting the drapes in their tracks. Moreover, if the speakers are not playing any sound and the illumination is provided by a lit light, then take action to switch off the light and adjust the blinds to a half-open setting
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'partially') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_on()
+        (#Curtain).curtain_pause()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'stopped') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_toggle()
+        (#Blind).blindLevel_setBlindLevel(50)
+      }
+- command: Should you find the television deactivated, the curtains not fully drawn and the fan spinning, kindly activate the television and freeze the curtain's movement. Furthermore, if you notice the sound system in a halted state and the overhead light shining, please change the light status and tweak the blinds to be halfway open
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'partially') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_on()
+        (#Curtain).curtain_pause()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'stopped') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_toggle()
+        (#Blind).blindLevel_setBlindLevel(50)
+      }
+- command: If you notice that the TV is not on, the curtains are slightly ajar, and the fan is blowing, then please switch on the television and stop adjusting the curtains. Also, if you find that the audio system is silent and the lamp is illuminated, then flip the lamp's switch and modify the blinds to be 50% unveiled
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'partially') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_on()
+        (#Curtain).curtain_pause()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'stopped') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_toggle()
+        (#Blind).blindLevel_setBlindLevel(50)
+      }
+- command: If the television is on, the curtain is closing, and the fan is off, then turn off the television and pause the curtain. If the speaker is buffering and the light is off, then toggle the light and close the blind.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closing') and ((#Fan).switch_switch == 'off')) {
+        (#Television).switch_off()
+        (#Curtain).curtain_pause()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'buffering') and ((#Light).switch_switch == 'off')) {
+        (#Light).switch_toggle()
+        (#Blind).blind_close()
+      }
+- command: Should you notice that the television is switched on, the curtain is in the process of closing, and the fan is not functioning, please switch off the television while halting the curtain's movement. In the case that the sound system is stuck buffering and the room lighting is turned off, the appropriate response would be to turn the room light back on and proceed to close the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closing') and ((#Fan).switch_switch == 'off')) {
+        (#Television).switch_off()
+        (#Curtain).curtain_pause()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'buffering') and ((#Light).switch_switch == 'off')) {
+        (#Light).switch_toggle()
+        (#Blind).blind_close()
+      }
+- command: In the scenario where the TV is powered on, the curtain is descending, and there is no air circulating from the fan, you need to power down the TV and stop the curtain. Furthermore, if the auditory device is experiencing buffering issues and the light is not on, you should change the light status and make sure the blind is shut
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closing') and ((#Fan).switch_switch == 'off')) {
+        (#Television).switch_off()
+        (#Curtain).curtain_pause()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'buffering') and ((#Light).switch_switch == 'off')) {
+        (#Light).switch_toggle()
+        (#Blind).blind_close()
+      }
+- command: If you find the TV running, the curtain moving to close, and the fan inactive, the first step is to turn off the TV and put the curtain on hold. Moreover, if the speaker is trying to buffer and the light is unlit, it's time to switch the light on and close up the blind
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Curtain).curtain_curtain == 'closing') and ((#Fan).switch_switch == 'off')) {
+        (#Television).switch_off()
+        (#Curtain).curtain_pause()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'buffering') and ((#Light).switch_switch == 'off')) {
+        (#Light).switch_toggle()
+        (#Blind).blind_close()
+      }
+- command: If the television is off, the curtain is open, and the fan is on, then toggle the television switch and close the curtain. If the speaker is playing and the light is on, then switch off the light and open the blind.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'open') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_toggle()
+        (#Curtain).curtain_close()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'playing') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_off()
+        (#Blind).blind_open()
+      }
+- command: Should you find the TV turned off, the curtains drawn back, and the fan spinning, kindly flick the TV switch and draw the curtains closed. Provided that the speaker is active and the light is burning, please extinguish the light and hoist up the blind
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'open') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_toggle()
+        (#Curtain).curtain_close()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'playing') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_off()
+        (#Blind).blind_open()
+      }
+- command: In case the TV isn't on, the drapes are not closed, and the fan is working, your next step should be to change the TV's state and shut the drapes. If the speaker is broadcasting and the lamp is lit, you're required to douse the lamp and lift the blind
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'open') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_toggle()
+        (#Curtain).curtain_close()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'playing') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_off()
+        (#Blind).blind_open()
+      }
+- command: If you notice the television isn't powered, the curtains are peeled back, and the fan is whirring, you must then flip the TV's switch and pull the curtain together. In the event that the sound system is operating and the light is shining, you need to turn out the light and raise the blind
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Curtain).curtain_curtain == 'open') and ((#Fan).switch_switch == 'on')) {
+        (#Television).switch_toggle()
+        (#Curtain).curtain_close()
+      }
+      if (((#Speaker).mediaPlayback_playbackStatus == 'playing') and ((#Light).switch_switch == 'on')) {
+        (#Light).switch_off()
+        (#Blind).blind_open()
+      }
+- command: When the TV is off, the speaker is on, and the light is on, turn off the speaker and the light. If the air conditioner is in auto mode and the temperature is less than or equal to 18.0, turn the air conditioner on and open the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Speaker).switch_switch == 'on') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_off()
+        (#Light).switch_off()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 18.0)) {
+        (#AirConditioner).switch_on()
+        (#Blind).blind_open()
+      }
+- command: If the television is not operational, but the speaker and light are, please switch off the speaker and the light. Also, when the air conditioner is set to automatic and the room temperature falls at or below 18.0 degrees, start the air conditioner and raise the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Speaker).switch_switch == 'on') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_off()
+        (#Light).switch_off()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 18.0)) {
+        (#AirConditioner).switch_on()
+        (#Blind).blind_open()
+      }
+- command: Should you find the TV turned off and both the speaker and the light activated, kindly deactivate both the speaker and the light. Concurrently, if the air conditioning is set on auto and the temperature reads 18.0 degrees or less, go ahead and power up the air conditioner while opening the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Speaker).switch_switch == 'on') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_off()
+        (#Light).switch_off()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 18.0)) {
+        (#AirConditioner).switch_on()
+        (#Blind).blind_open()
+      }
+- command: In the event of the television being off with the speaker and the light on, please proceed to shut off both the speaker and the light. If the air conditioning is running on auto mode and the room's temperature is 18.0 or lower, please switch on the air conditioner and lift the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Speaker).switch_switch == 'on') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_off()
+        (#Light).switch_off()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 18.0)) {
+        (#AirConditioner).switch_on()
+        (#Blind).blind_open()
+      }
+- command: When the TV is on, the speaker is off, and the light is on, turn on the speaker and toggle the light. If the air conditioner is in cool mode and the temperature is greater than or equal to 25.0, toggle the air conditioner and pause the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_on()
+        (#Light).switch_toggle()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'cool') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 25.0)) {
+        (#AirConditioner).switch_toggle()
+        (#Blind).blind_pause()
+      }
+- command: If the television is switched on, the speakers are powered down, and the lamp is illuminated, please activate the speakers and adjust the light. Should the air conditioning be set to cooling and the temperature is at least 25.0 degrees, please switch the air conditioning mode and stop adjusting the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_on()
+        (#Light).switch_toggle()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'cool') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 25.0)) {
+        (#AirConditioner).switch_toggle()
+        (#Blind).blind_pause()
+      }
+- command: In the event that the TV is active, the sound system is deactivated, and the room light is on, kindly power up the sound system and change the lighting. Given that the air conditioning mode is cooling and the room's temperature is 25.0 degrees or more, kindly alternate the air conditioning and halt the blinds' movement
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_on()
+        (#Light).switch_toggle()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'cool') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 25.0)) {
+        (#AirConditioner).switch_toggle()
+        (#Blind).blind_pause()
+      }
+- command: When you see the television operating, the sound speaker not working, and the light turned on, I'd like you to turn the sound speaker on and alter the light's status. If the air conditioner is cooling and the temperature reads 25.0 or above, switch the air conditioner's function and pause the adjustment of the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_on()
+        (#Light).switch_toggle()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'cool') and ((#TemperatureSensor).temperatureMeasurement_temperature >= 25.0)) {
+        (#AirConditioner).switch_toggle()
+        (#Blind).blind_pause()
+      }
+- command: When the TV is off, the speaker is on, and the light is off, toggle the speaker and turn on the light. If the air conditioner is in heat mode and the temperature is less than or equal to 20.0, turn on the air conditioner and open the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Speaker).switch_switch == 'on') and ((#Light).switch_switch == 'off')) {
+        (#Speaker).switch_toggle()
+        (#Light).switch_on()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 20.0)) {
+        (#AirConditioner).switch_on()
+        (#Blind).blind_open()
+      }
+- command: In the instance where the television is switched off, the sound system is activated, and the illumination is turned off, switch the state of the sound system and ignite the light. Should the climate control system be set to warming and the ambient temperature falls at or below 20.0, activate the climate control system and lift the window shades
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Speaker).switch_switch == 'on') and ((#Light).switch_switch == 'off')) {
+        (#Speaker).switch_toggle()
+        (#Light).switch_on()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 20.0)) {
+        (#AirConditioner).switch_on()
+        (#Blind).blind_open()
+      }
+- command: If the situation arises where the TV is not in use, the audio system is operating, and the bulb isn't glowing, alter the audio system's status and illuminate the area. Also, if the air conditioning unit is functioning in heating mode and the room's temperature is 20.0 or less, power up the air conditioning and raise the window coverings
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Speaker).switch_switch == 'on') and ((#Light).switch_switch == 'off')) {
+        (#Speaker).switch_toggle()
+        (#Light).switch_on()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 20.0)) {
+        (#AirConditioner).switch_on()
+        (#Blind).blind_open()
+      }
+- command: In the event that the television set is not on, the loudspeaker is functioning, and the light source is off, change the state of the loudspeaker and light up the room. Additionally, if the AC unit is set to heat mode and the internal temperature is no more than 20.0, activate the AC unit and unveil the window blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'off') and ((#Speaker).switch_switch == 'on') and ((#Light).switch_switch == 'off')) {
+        (#Speaker).switch_toggle()
+        (#Light).switch_on()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'heat') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 20.0)) {
+        (#AirConditioner).switch_on()
+        (#Blind).blind_open()
+      }
+- command: When the TV is on, the speaker is off, and the light is on, turn on the speaker and turn off the light. If the air conditioner is in auto mode and the temperature is less than or equal to 22.0, toggle the air conditioner and close the blinds.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_on()
+        (#Light).switch_off()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 22.0)) {
+        (#AirConditioner).switch_toggle()
+        (#Blind).blind_close()
+      }
+- command: If the television is operating, the sound system is not activated, and the illumination is bright, then please activate the sound system and dim the illumination. Moreover, if the AC unit is set to automatic and the room temperature is 22 degrees or below, you should switch the AC mode and lower the window shades
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_on()
+        (#Light).switch_off()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 22.0)) {
+        (#AirConditioner).switch_toggle()
+        (#Blind).blind_close()
+      }
+- command: When you notice the TV switched on, the audio system off, and the light is on, could you please switch on the audio system and switch off the light? Also, if the climate control is on automatic mode, and the thermometer reads 22 degrees or less, can you change the mode of the climate control and draw the window blinds, please?
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_on()
+        (#Light).switch_off()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 22.0)) {
+        (#AirConditioner).switch_toggle()
+        (#Blind).blind_close()
+      }
+- command: If the conditions are such that the television is playing, the speakers are silent, and the room is lit, then kindly make the speakers play and switch off the room light. Furthermore, if the cooling system is set to self-regulating mode and the air temperature falls at or below 22 degrees, please adjust the cooling system and shut the window blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (((#Television).switch_switch == 'on') and ((#Speaker).switch_switch == 'off') and ((#Light).switch_switch == 'on')) {
+        (#Speaker).switch_on()
+        (#Light).switch_off()
+      }
+      if (((#AirConditioner).airConditionerMode_airConditionerMode == 'auto') and ((#TemperatureSensor).temperatureMeasurement_temperature <= 22.0)) {
+        (#AirConditioner).switch_toggle()
+        (#Blind).blind_close()
+      }

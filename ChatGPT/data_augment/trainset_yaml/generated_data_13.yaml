@@ -1,0 +1,900 @@
+- command: If the even-tagged windows at the top are closed, open the curtains.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Window).windowControl_window == 'closed') {
+        (#Curtain).curtain_open()
+      }
+- command: Should the windows with even tags at the top be shut, make sure to draw back the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Window).windowControl_window == 'closed') {
+        (#Curtain).curtain_open()
+      }
+- command: In case the upper windows tagged with even numbers are closed, please pull the curtains open
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Window).windowControl_window == 'closed') {
+        (#Curtain).curtain_open()
+      }
+- command: If the top windows labelled evenly are not open, then unfurl the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Window).windowControl_window == 'closed') {
+        (#Curtain).curtain_open()
+      }
+- command: If the even-tagged windows at the top are in an unknown state, pause the curtain operation.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Window).windowControl_window == 'unknown') {
+        (#Curtain).curtain_pause()
+      }
+- command: In the event that the windows with even tags at the top are showing an undetermined status, halt the operation of the curtains
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Window).windowControl_window == 'unknown') {
+        (#Curtain).curtain_pause()
+      }
+- command: Should you find the top windows tagged as even in an unidentified condition, please put the curtain procedures on hold
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Window).windowControl_window == 'unknown') {
+        (#Curtain).curtain_pause()
+      }
+- command: On finding the state of the even-numbered tagged windows at the top to be unknown, the operation of the curtains needs to be paused
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Window).windowControl_window == 'unknown') {
+        (#Curtain).curtain_pause()
+      }
+- command: If the even-tagged curtains at the top are opening, close the windows.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'opening') {
+        (#Window).windowControl_close()
+      }
+- command: Should you notice the curtains with even tags at the top beginning to open, please ensure the windows are closed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'opening') {
+        (#Window).windowControl_close()
+      }
+- command: In the event that the curtains tagged even at the top start to open, you should shut the windows
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'opening') {
+        (#Window).windowControl_close()
+      }
+- command: In case the curtains at the top, marked with even tags, are opening, make it a point to close the windows
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'opening') {
+        (#Window).windowControl_close()
+      }
+- command: If the even-tagged curtains at the top are closing, open the windows.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'closing') {
+        (#Window).windowControl_open()
+      }
+- command: Should you notice that the curtains with even tags at the top are being drawn, please ensure the windows are opened
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'closing') {
+        (#Window).windowControl_open()
+      }
+- command: In the event that the curtains tagged as 'even' at the top end are closing, it would be necessary to open the windows
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'closing') {
+        (#Window).windowControl_open()
+      }
+- command: Please open the windows if you see the top curtains labeled as 'even' starting to close
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'closing') {
+        (#Window).windowControl_open()
+      }
+- command: If the even-tagged curtains at the top are in an unknown state, close the windows.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'unknown') {
+        (#Window).windowControl_close()
+      }
+- command: Should you discover the curtains with even tags at the top are in an indeterminate state, proceed to shut the windows
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'unknown') {
+        (#Window).windowControl_close()
+      }
+- command: Were the top curtains tagged as even found to be in an unidentified state, please ensure the windows are closed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'unknown') {
+        (#Window).windowControl_close()
+      }
+- command: In case the curtains tagged evenly at the top display an uncertain status, make certain to seal off the windows
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((#Upper #Even #Curtain).curtain_curtain == 'unknown') {
+        (#Window).windowControl_close()
+      }
+- command: If all the lights at the top are on, close all the windows tagged with odd numbers.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'on') {
+        all(#Odd #Window).windowControl_close()
+      }
+- command: In the event that all the top lights are illuminated, please ensure that all windows labeled with odd numbers are shut
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'on') {
+        all(#Odd #Window).windowControl_close()
+      }
+- command: Should all the lights at the peak be lit up, proceed to close any windows that bear an odd number tag
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'on') {
+        all(#Odd #Window).windowControl_close()
+      }
+- command: Should you observe that all the upper lights are switched on, make sure to close all the windows that are marked with odd numbers
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'on') {
+        all(#Odd #Window).windowControl_close()
+      }
+- command: If all the lights at the top have their color hue set to 100 percent, set the level of all the lights at the top to 50 percent.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).colorControl_hue == 100) {
+        all(#Upper #Light).switchLevel_setLevel(50, 0)
+      }
+- command: Should all the top lights exhibit a color hue of 100 percent, please adjust their brightness level to 50 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).colorControl_hue == 100) {
+        all(#Upper #Light).switchLevel_setLevel(50, 0)
+      }
+- command: In the event that every light at the top is displaying a color hue at full capacity, kindly dial their intensity down to 50 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).colorControl_hue == 100) {
+        all(#Upper #Light).switchLevel_setLevel(50, 0)
+      }
+- command: If it's the case that all the upper lights are at a hundred percent color hue, I'd like their luminosity to be reduced to fifty percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).colorControl_hue == 100) {
+        all(#Upper #Light).switchLevel_setLevel(50, 0)
+      }
+- command: If the level of all the lights at the top is 0 percent, close all the windows tagged with odd numbers.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switchLevel_level == 0) {
+        all(#Odd #Window).windowControl_close()
+      }
+- command: In the event that the brightness of every light at the top reaches zero percent, please ensure all the windows that carry odd-numbered tags are shut
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switchLevel_level == 0) {
+        all(#Odd #Window).windowControl_close()
+      }
+- command: Should the intensity of the top lights fall to nothing, go ahead and secure all the odd-numbered windows
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switchLevel_level == 0) {
+        all(#Odd #Window).windowControl_close()
+      }
+- command: In case the illumination level at the highest point is completely out, proceed with closing all windows labeled with odd numerals
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switchLevel_level == 0) {
+        all(#Odd #Window).windowControl_close()
+      }
+- command: If all the lights at the top are off, set the color of all the lights at the top to a hue of 50 percent and a saturation of 70 percent.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'off') {
+        all(#Upper #Light).colorControl_setColor({"hue": 50, "saturation": 70})
+      }
+- command: In the event that all the top lights are not activated, adjust them to exhibit a hue of 50 percent and a saturation level of 70 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'off') {
+        all(#Upper #Light).colorControl_setColor({"hue": 50, "saturation": 70})
+      }
+- command: Should the lights at the top be deactivated, kindly alter their color to have a 50 percent hue and 70 percent saturation
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'off') {
+        all(#Upper #Light).colorControl_setColor({"hue": 50, "saturation": 70})
+      }
+- command: If none of the top lights are on, please change their color to feature a hue at the halfway point and saturation at 70 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'off') {
+        all(#Upper #Light).colorControl_setColor({"hue": 50, "saturation": 70})
+      }
+- command: If all the lights at the top are on, set the saturation of all the lights at the top to 100 percent.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'on') {
+        all(#Upper #Light).colorControl_setSaturation(100)
+      }
+- command: Should all the top lights be switched on, please adjust their saturation levels to a full 100 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'on') {
+        all(#Upper #Light).colorControl_setSaturation(100)
+      }
+- command: In the event that all the top lights are illuminated, make sure to increase their saturation to the maximum of 100 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'on') {
+        all(#Upper #Light).colorControl_setSaturation(100)
+      }
+- command: If every light at the top is turned on, kindly bring their saturation to the highest, which is 100 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Upper #Light).switch_switch == 'on') {
+        all(#Upper #Light).colorControl_setSaturation(100)
+      }
+- command: If any of the even-tagged speakers are fast forwarding, pause all media playback on the speakers in sector B.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'fast forwarding') {
+        all(#SectorB #Speaker).mediaPlayback_pause()
+      }
+- command: Should you notice any speakers with even tags fast-forwarding, immediately halt all ongoing media playback in sector B's speakers
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'fast forwarding') {
+        all(#SectorB #Speaker).mediaPlayback_pause()
+      }
+- command: In the event that speakers bearing even tags are found to be fast-forwarding, please bring all media streaming on sector B's speakers to a stop
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'fast forwarding') {
+        all(#SectorB #Speaker).mediaPlayback_pause()
+      }
+- command: If it happens that any even-numbered tagged speakers are found fast-forwarding, I'll need you to suspend all media playback on the speakers located in sector B
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'fast forwarding') {
+        all(#SectorB #Speaker).mediaPlayback_pause()
+      }
+- command: If any of the even-tagged speakers are playing, rewind all media playback on the speakers in sector B.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'playing') {
+        all(#SectorB #Speaker).mediaPlayback_rewind()
+      }
+- command: Should you find any speakers with even tags actively playing, ensure to roll back all the media playback on the speakers located in sector B
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'playing') {
+        all(#SectorB #Speaker).mediaPlayback_rewind()
+      }
+- command: In the event that any speakers tagged with an even number are in use, be sure to rewind all media being played on the sector B speakers
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'playing') {
+        all(#SectorB #Speaker).mediaPlayback_rewind()
+      }
+- command: If there are any even-tagged speakers currently playing, make sure to reset all media playback on the speakers within sector B
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'playing') {
+        all(#SectorB #Speaker).mediaPlayback_rewind()
+      }
+- command: If any of the even-tagged speakers are buffering, stop all media playback on the speakers in sector B.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'buffering') {
+        all(#SectorB #Speaker).mediaPlayback_stop()
+      }
+- command: Should there be any buffering observed in speakers with even tags, please halt all media being played in sector B's speakers
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'buffering') {
+        all(#SectorB #Speaker).mediaPlayback_stop()
+      }
+- command: In case speakers tagged even are experiencing buffering, all media playback on sector B's speakers must be stopped
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'buffering') {
+        all(#SectorB #Speaker).mediaPlayback_stop()
+      }
+- command: If buffering is detected in any of the speakers with even-numbered tags, please ensure to cease all media playback on the speakers located in sector B
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'buffering') {
+        all(#SectorB #Speaker).mediaPlayback_stop()
+      }
+- command: If any of the even-tagged speakers are rewinding, fast forward all media playback on the speakers in sector B.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'rewinding') {
+        all(#SectorB #Speaker).mediaPlayback_fastForward()
+      }
+- command: Should you find any speakers with even tags in the process of rewinding, please ensure that all sector B speakers are set to fast forward during media playback
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'rewinding') {
+        all(#SectorB #Speaker).mediaPlayback_fastForward()
+      }
+- command: In case there are even-tagged speakers rewinding, make sure all media playback on the speakers located in sector B is being fast-forwarded
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'rewinding') {
+        all(#SectorB #Speaker).mediaPlayback_fastForward()
+      }
+- command: If it happens that any speakers labelled with even numbers are rewinding, I need you to fast-forward all of the media that's playing back on the speakers in sector B
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'rewinding') {
+        all(#SectorB #Speaker).mediaPlayback_fastForward()
+      }
+- command: If any of the even-tagged speakers are stopped, switch on all lights in the sector B.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'stopped') {
+        all(#SectorB #Light).switch_on()
+      }
+- command: Should any speakers bearing even labels be halted, please ensure all lights within sector B are turned on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'stopped') {
+        all(#SectorB #Light).switch_on()
+      }
+- command: In the event of any even-numbered speakers ceasing, activate all illumination devices in sector B
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'stopped') {
+        all(#SectorB #Light).switch_on()
+      }
+- command: Make sure to illuminate all of sector B with lights if any even-tagged speakers come to a stop
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (any(#Even #Speaker).mediaPlayback_playbackStatus == 'stopped') {
+        all(#SectorB #Light).switch_on()
+      }
+- command: If all odd-tagged blinds on the wall are partially open, toggle the light switch.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'partially') {
+        (#Light).switch_toggle()
+      }
+- command: Should you find that all the blinds with odd tags on the wall are half opened, please change the position of the light switch
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'partially') {
+        (#Light).switch_toggle()
+      }
+- command: In case the blinds tagged with odd numbers on the wall are not completely opened or closed, please flick the light switch
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'partially') {
+        (#Light).switch_toggle()
+      }
+- command: If you observe that all the blinds on the wall with odd-numbered tags are semi-open, do adjust the state of the light switch
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'partially') {
+        (#Light).switch_toggle()
+      }
+- command: If all odd-tagged blinds on the wall are completely closed, turn on the lights.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'closed') {
+        (#Light).switch_on()
+      }
+- command: '"Should you find that all the blinds labeled with odd numbers are fully shut, proceed to switch on the lights."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'closed') {
+        (#Light).switch_on()
+      }
+- command: '"In the event that every blind carrying an odd tag is entirely closed, go ahead and illuminate the room."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'closed') {
+        (#Light).switch_on()
+      }
+- command: '"Upon confirming that all the blinds with odd tags are totally drawn, it''s time to light up the room."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'closed') {
+        (#Light).switch_on()
+      }
+- command: If all odd-tagged blinds on the wall are in an unknown state, set the light color.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'unknown') {
+        (#Light).colorControl_setColor({'hue': 50, 'saturation': 50})
+      }
+- command: Should you find that all blinds with an odd tag on the wall are in an unidentifiable state, proceed to adjust the color of the lights
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'unknown') {
+        (#Light).colorControl_setColor({'hue': 50, 'saturation': 50})
+      }
+- command: In case all the odd-numbered blinds on the wall have an indeterminate status, kindly change the hue of the lighting
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'unknown') {
+        (#Light).colorControl_setColor({'hue': 50, 'saturation': 50})
+      }
+- command: If it turns out that all the blinds on the wall bearing an odd tag are in a state that can't be determined, make sure to alter the light's color
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'unknown') {
+        (#Light).colorControl_setColor({'hue': 50, 'saturation': 50})
+      }
+- command: If all odd-tagged blinds on the wall are paused while opening or closing, alert with light dimming.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'paused') {
+        (#Light).switchLevel_alert()
+      }
+- command: If any blinds with odd tags on the wall are interrupted while being opened or closed, provide a warning through a reduction in light intensity
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'paused') {
+        (#Light).switchLevel_alert()
+      }
+- command: Should there be any interruption while opening or closing the blinds tagged with odd numbers on the wall, signal this by dimming the lights
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'paused') {
+        (#Light).switchLevel_alert()
+      }
+- command: In the event that the opening or closing of any odd-numbered tagged blinds on the wall is paused, indicate this by lowering the light's brightness
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'paused') {
+        (#Light).switchLevel_alert()
+      }
+- command: If all odd-tagged blinds on the wall are closing, set the light level to 50 at a rate of 10.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'closing…') {
+        (#Light).switchLevel_setLevel(50, 10)
+      }
+- command: Should you notice that all the blinds labeled as odd are being shut, please adjust the brightness to a level of 50, increasing at a pace of
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'closing…') {
+        (#Light).switchLevel_setLevel(50, 10)
+      }
+- command: In the event that every odd-numbered blind on the wall starts to close, promptly change the light intensity to the halfway point, at a speed of
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'closing…') {
+        (#Light).switchLevel_setLevel(50, 10)
+      }
+- command: If you see all the blinds with odd tags beginning to close, make sure to regulate the light to a semi-bright setting, progressing at a rate of
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if (all(#Wall #Odd #Blind).blind_blind == 'closing…') {
+        (#Light).switchLevel_setLevel(50, 10)
+      }
+- command: If any of the lights at the top or in sector A are switched off, toggle all the fans.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).switch_switch == 'off') or (any(#SectorA #Light).switch_switch == 'off')) {
+        all(#Fan).switch_toggle()
+      }
+- command: Should any of the top lights or those in sector A be turned off, please switch all the fans on and off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).switch_switch == 'off') or (any(#SectorA #Light).switch_switch == 'off')) {
+        all(#Fan).switch_toggle()
+      }
+- command: In the event that any lights, either at the peak or within sector A, are not on, we need to flip all the fans to their opposite state
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).switch_switch == 'off') or (any(#SectorA #Light).switch_switch == 'off')) {
+        all(#Fan).switch_toggle()
+      }
+- command: Please alternate the status of all fans if you notice that any of the lights, whether at the highest point or in sector A, are deactivated
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).switch_switch == 'off') or (any(#SectorA #Light).switch_switch == 'off')) {
+        all(#Fan).switch_toggle()
+      }
+- command: If the hue of any of the lights at the top or in sector A is set to 50, toggle all the fans.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_hue == 50) or (any(#SectorA #Light).colorControl_hue == 50)) {
+        all(#Fan).switch_toggle()
+      }
+- command: Should any of the lights at the top or in sector A have their hue set at 50, please ensure all the fans are toggled
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_hue == 50) or (any(#SectorA #Light).colorControl_hue == 50)) {
+        all(#Fan).switch_toggle()
+      }
+- command: In the event that the hue of lights positioned at the top or located within sector A is configured to 50, I want all the fans to be alternated
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_hue == 50) or (any(#SectorA #Light).colorControl_hue == 50)) {
+        all(#Fan).switch_toggle()
+      }
+- command: If the color intensity of either the top lights or those in sector A is adjusted to 50, make sure to switch all the fans on and off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_hue == 50) or (any(#SectorA #Light).colorControl_hue == 50)) {
+        all(#Fan).switch_toggle()
+      }
+- command: If the saturation of any of the lights at the top or in sector A is set to 100, turn off all the fans.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_saturation == 100) or (any(#SectorA #Light).colorControl_saturation == 100)) {
+        all(#Fan).switch_off()
+      }
+- command: Should the saturation level of any of the top lights or those in sector A reach 100, make sure to switch off all the fans
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_saturation == 100) or (any(#SectorA #Light).colorControl_saturation == 100)) {
+        all(#Fan).switch_off()
+      }
+- command: In case the saturation of any upper lights or lights in sector A is at maximum, all fans must be turned off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_saturation == 100) or (any(#SectorA #Light).colorControl_saturation == 100)) {
+        all(#Fan).switch_off()
+      }
+- command: If any of the lights either at the top or within sector A have their saturation at full capacity, ensure all the fans are turned off
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_saturation == 100) or (any(#SectorA #Light).colorControl_saturation == 100)) {
+        all(#Fan).switch_off()
+      }
+- command: If any of the lights at the top or in sector A are dimmed, set all the fans to a speed of 1000 RPM.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).switchLevel_level < 100) or (any(#SectorA #Light).switchLevel_level < 100)) {
+        all(#Fan).fanControl_setFanSpeed(1000)
+      }
+- command: Should you notice any dimming of the lights at the top or within sector A, please ensure all the fans are operating at a speed of 1000 RPM
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).switchLevel_level < 100) or (any(#SectorA #Light).switchLevel_level < 100)) {
+        all(#Fan).fanControl_setFanSpeed(1000)
+      }
+- command: In the event that the lights at the top or in sector A appear to be dimmed, it is necessary to adjust all the fans to run at 1000 revolutions per minute
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).switchLevel_level < 100) or (any(#SectorA #Light).switchLevel_level < 100)) {
+        all(#Fan).fanControl_setFanSpeed(1000)
+      }
+- command: If you detect that any of the top lights or those in sector A are less bright than usual, make sure to set the speed of every fan to 1000 RPM
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).switchLevel_level < 100) or (any(#SectorA #Light).switchLevel_level < 100)) {
+        all(#Fan).fanControl_setFanSpeed(1000)
+      }
+- command: If any of the lights at the top or in sector A are set to blue, set all the fans to 80 percent speed.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_color == '{"hue":"66.7", "saturation":"100"}') or (any(#SectorA #Light).colorControl_color == '{"hue":"66.7", "saturation":"100"}')) {
+        all(#Fan).fanControl_setPercent(80)
+      }
+- command: Should any of the upper lights or those in sector A be illuminated in blue, please adjust all the fans to run at 80 percent of their total speed
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_color == '{"hue":"66.7", "saturation":"100"}') or (any(#SectorA #Light).colorControl_color == '{"hue":"66.7", "saturation":"100"}')) {
+        all(#Fan).fanControl_setPercent(80)
+      }
+- command: In case any lights at the top or in sector A are turned to blue, make sure to increase the speed of all fans to 80 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_color == '{"hue":"66.7", "saturation":"100"}') or (any(#SectorA #Light).colorControl_color == '{"hue":"66.7", "saturation":"100"}')) {
+        all(#Fan).fanControl_setPercent(80)
+      }
+- command: When you notice that any of the overhead or sector A lights are displaying a blue color, proceed to set the speed of every fan to 80 percent
+  code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: |-
+      if ((any(#Upper #Light).colorControl_color == '{"hue":"66.7", "saturation":"100"}') or (any(#SectorA #Light).colorControl_color == '{"hue":"66.7", "saturation":"100"}')) {
+        all(#Fan).fanControl_setPercent(80)
+      }

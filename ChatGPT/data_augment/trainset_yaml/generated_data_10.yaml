@@ -1,0 +1,1572 @@
+- command: Check every 10 minutes and if the temperature rises by more than 5 degrees three times in a row and the air conditioner is off, toggle the air conditioner switch and set it to auto mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 600000
+    code: |-
+      temp_1 := -999.0
+      temp_2 := -999.0
+      temp_3 := -999.0
+      current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_1 = temp_2
+      temp_2 = temp_3
+      temp_3 = current_temp
+      if ((temp_1 != -999.0) and (temp_2 != -999.0) and (temp_3 != -999.0)) {
+        rise_1 = temp_2 - temp_1
+        rise_2 = temp_3 - temp_2
+        if ((rise_1 > 5.0) and (rise_2 > 5.0)) {
+            if ((#AirConditioner).switch_switch == 'off') {
+                (#AirConditioner).switch_toggle()
+                (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+                break
+            }
+        }
+      }
+- command: Every ten minutes, examine the temperature. If you notice that it has increased by over 5 degrees continuously for three times and the air conditioning system is turned off, switch on the air conditioning and adjust it to the automatic setting
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 600000
+    code: |-
+      temp_1 := -999.0
+      temp_2 := -999.0
+      temp_3 := -999.0
+      current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_1 = temp_2
+      temp_2 = temp_3
+      temp_3 = current_temp
+      if ((temp_1 != -999.0) and (temp_2 != -999.0) and (temp_3 != -999.0)) {
+        rise_1 = temp_2 - temp_1
+        rise_2 = temp_3 - temp_2
+        if ((rise_1 > 5.0) and (rise_2 > 5.0)) {
+            if ((#AirConditioner).switch_switch == 'off') {
+                (#AirConditioner).switch_toggle()
+                (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+                break
+            }
+        }
+      }
+- command: Please monitor the temperature every tenth minute. If it ascends by more than 5 degrees successively three times and the air conditioning is deactivated, please activate the air conditioning and put it on autopilot mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 600000
+    code: |-
+      temp_1 := -999.0
+      temp_2 := -999.0
+      temp_3 := -999.0
+      current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_1 = temp_2
+      temp_2 = temp_3
+      temp_3 = current_temp
+      if ((temp_1 != -999.0) and (temp_2 != -999.0) and (temp_3 != -999.0)) {
+        rise_1 = temp_2 - temp_1
+        rise_2 = temp_3 - temp_2
+        if ((rise_1 > 5.0) and (rise_2 > 5.0)) {
+            if ((#AirConditioner).switch_switch == 'off') {
+                (#AirConditioner).switch_toggle()
+                (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+                break
+            }
+        }
+      }
+- command: Make a habit of tracking the temperature changes every 10 minutes. In case it surges upward more than 5 degrees thrice consecutively and the air conditioner is not running, you should flip the switch of the air conditioner and ensure it's on automatic mode
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 600000
+    code: |-
+      temp_1 := -999.0
+      temp_2 := -999.0
+      temp_3 := -999.0
+      current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_1 = temp_2
+      temp_2 = temp_3
+      temp_3 = current_temp
+      if ((temp_1 != -999.0) and (temp_2 != -999.0) and (temp_3 != -999.0)) {
+        rise_1 = temp_2 - temp_1
+        rise_2 = temp_3 - temp_2
+        if ((rise_1 > 5.0) and (rise_2 > 5.0)) {
+            if ((#AirConditioner).switch_switch == 'off') {
+                (#AirConditioner).switch_toggle()
+                (#AirConditioner).airConditionerMode_setAirConditionerMode('auto')
+                break
+            }
+        }
+      }
+- command: Check every 10 minutes and if the temperature rises by more than 5 degrees three times in a row and the air conditioner is on, turn off the air conditioner and set it to heating mode.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 600000
+    code: |-
+      temp_1 := -999.0
+      temp_2 := -999.0
+      temp_3 := -999.0
+      current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_1 = temp_2
+      temp_2 = temp_3
+      temp_3 = current_temp
+      if ((temp_1 != -999.0) and (temp_2 != -999.0) and (temp_3 != -999.0)) {
+        rise_1 = temp_2 - temp_1
+        rise_2 = temp_3 - temp_2
+        if ((rise_1 > 5.0) and (rise_2 > 5.0)) {
+            if ((#AirConditioner).switch_switch == 'on') {
+                (#AirConditioner).switch_off()
+                (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+                break
+            }
+        }
+      }
+- command: '"Keep an eye out every 10 minutes, and if you notice the temperature increasing by over 5 degrees consecutively three times while the air conditioner is running, please switch off the air conditioner and transition it into heat mode."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 600000
+    code: |-
+      temp_1 := -999.0
+      temp_2 := -999.0
+      temp_3 := -999.0
+      current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_1 = temp_2
+      temp_2 = temp_3
+      temp_3 = current_temp
+      if ((temp_1 != -999.0) and (temp_2 != -999.0) and (temp_3 != -999.0)) {
+        rise_1 = temp_2 - temp_1
+        rise_2 = temp_3 - temp_2
+        if ((rise_1 > 5.0) and (rise_2 > 5.0)) {
+            if ((#AirConditioner).switch_switch == 'on') {
+                (#AirConditioner).switch_off()
+                (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+                break
+            }
+        }
+      }
+- command: '"Monitor the scenario every 10 minutes, and in case there''s a consistent rise in temperature by more than 5 degrees for three consecutive intervals with the air conditioner functioning, ensure to power off the air conditioning system and set it to the heating operation."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 600000
+    code: |-
+      temp_1 := -999.0
+      temp_2 := -999.0
+      temp_3 := -999.0
+      current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_1 = temp_2
+      temp_2 = temp_3
+      temp_3 = current_temp
+      if ((temp_1 != -999.0) and (temp_2 != -999.0) and (temp_3 != -999.0)) {
+        rise_1 = temp_2 - temp_1
+        rise_2 = temp_3 - temp_2
+        if ((rise_1 > 5.0) and (rise_2 > 5.0)) {
+            if ((#AirConditioner).switch_switch == 'on') {
+                (#AirConditioner).switch_off()
+                (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+                break
+            }
+        }
+      }
+- command: '"With an interval of every 10 minutes, if you detect a sequence of three consecutive temperature hikes exceeding 5 degrees while the air conditioner is active, please proceed to turn the air conditioner off and switch it to the heating setting."'
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 600000
+    code: |-
+      temp_1 := -999.0
+      temp_2 := -999.0
+      temp_3 := -999.0
+      current_temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      temp_1 = temp_2
+      temp_2 = temp_3
+      temp_3 = current_temp
+      if ((temp_1 != -999.0) and (temp_2 != -999.0) and (temp_3 != -999.0)) {
+        rise_1 = temp_2 - temp_1
+        rise_2 = temp_3 - temp_2
+        if ((rise_1 > 5.0) and (rise_2 > 5.0)) {
+            if ((#AirConditioner).switch_switch == 'on') {
+                (#AirConditioner).switch_off()
+                (#AirConditioner).airConditionerMode_setAirConditionerMode('heat')
+                break
+            }
+        }
+      }
+- command: Always, regardless of the time of day, check every 5 seconds and if there are two or more events where the TV has been off for 10 minutes and then turned on, mute the speakers and set the lights to 30. Except on Sundays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).switch_switch
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'sunday') {
+        current_state = (#Television).switch_switch
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'off') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'off') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).audioMute_mute()
+            (#Light).switchLevel_setLevel(30, 0)
+            break
+        }
+      }
+- command: Without exception, unless it's a Sunday, make a routine check every five seconds. If you notice at least two occurrences where the television has been off for a full ten minutes and is then switched back on, please mute the sound system and dim the lights to a 30% intensity level
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).switch_switch
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'sunday') {
+        current_state = (#Television).switch_switch
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'off') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'off') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).audioMute_mute()
+            (#Light).switchLevel_setLevel(30, 0)
+            break
+        }
+      }
+- command: Keep a continuous vigil, every five seconds, for instances where the television has been inactive for ten minutes or more, then switched back on. If you encounter two or more such incidents, respond by silencing the speakers and adjusting the lighting to a level of 30. However, this rule should not apply on Sundays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).switch_switch
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'sunday') {
+        current_state = (#Television).switch_switch
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'off') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'off') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).audioMute_mute()
+            (#Light).switchLevel_setLevel(30, 0)
+            break
+        }
+      }
+- command: Make sure to inspect every five seconds, except on Sundays, for any two or more incidents where the television has been turned off for a duration of ten minutes and then powered back on. Once you've spotted these, respond by lowering the volume of the speakers and reducing the lights to
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).switch_switch
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'sunday') {
+        current_state = (#Television).switch_switch
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'off') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'off') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).audioMute_mute()
+            (#Light).switchLevel_setLevel(30, 0)
+            break
+        }
+      }
+- command: Always, regardless of the time of day, check every 5 seconds and if there are two or more events where the TV has been off for 10 minutes and then turned on, turn off the speakers and set the lights to 90. Except on Fridays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).switch_switch
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'friday') {
+        current_state = (#Television).switch_switch
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'off') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'off') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).switch_off()
+            (#Light).switchLevel_setLevel(90, 0)
+            break
+        }
+      }
+- command: Keep an eye out at all times, irrespective of the hour, and verify every 5 seconds. If you notice two or more instances where the TV has been inactive for a duration of 10 minutes and then switched on, please switch off the speakers and dim the lights to 90. However, don't implement this on Fridays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).switch_switch
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'friday') {
+        current_state = (#Television).switch_switch
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'off') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'off') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).switch_off()
+            (#Light).switchLevel_setLevel(90, 0)
+            break
+        }
+      }
+- command: At all hours of the day, consistently perform a check every 5 seconds. If you detect two or more occasions when the TV remained off for 10 minutes before being turned on, I want you to power off the speakers and adjust the brightness of the lights to 90. Nonetheless, this command should not be executed on Fridays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).switch_switch
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'friday') {
+        current_state = (#Television).switch_switch
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'off') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'off') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).switch_off()
+            (#Light).switchLevel_setLevel(90, 0)
+            break
+        }
+      }
+- command: Without considering the time, make sure to check every 5 seconds. In case there are two or more incidents when the TV has been off for a span of 10 minutes and then powered on, ensure to turn off the speakers and regulate the intensity of the lights to 90. But remember, do not apply this command on Fridays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).switch_switch
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'friday') {
+        current_state = (#Television).switch_switch
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'off') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'off') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).switch_off()
+            (#Light).switchLevel_setLevel(90, 0)
+            break
+        }
+      }
+- command: Always, regardless of the time of day, check every 5 seconds and if there are two or more events where the TV has been muted for 10 minutes and then unmuted, play media on the speakers and set the lights to 100. Except on Mondays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).audioMute_muteStatus
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'monday') {
+        current_state = (#Television).audioMute_muteStatus
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'muted') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'muted') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).mediaPlayback_play('source')
+            (#Light).switchLevel_setLevel(100, 0)
+            break
+        }
+      }
+- command: At any given time of day, make sure to inspect every 5 seconds. If you come across two or more instances where the TV has been silenced for a period of 10 minutes and then the sound restored, play some media on the speakers and adjust the lighting to full brightness, but remember not to do this on Mondays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).audioMute_muteStatus
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'monday') {
+        current_state = (#Television).audioMute_muteStatus
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'muted') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'muted') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).mediaPlayback_play('source')
+            (#Light).switchLevel_setLevel(100, 0)
+            break
+        }
+      }
+- command: Please keep an eye out at every moment, no matter what time it is, and check every five seconds. If you find that there have been at least two occurrences where the TV's sound was turned off for 10 minutes and then turned back on, go ahead and start playing something on the speakers and brighten up the room to full illumination. However, this rule doesn't apply to Mondays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).audioMute_muteStatus
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'monday') {
+        current_state = (#Television).audioMute_muteStatus
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'muted') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'muted') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).mediaPlayback_play('source')
+            (#Light).switchLevel_setLevel(100, 0)
+            break
+        }
+      }
+- command: Make sure you are continually alert, irrespective of what time it is, and perform a check every five seconds. Should you discover that there are two or more instances where the television has been muted for a span of 10 minutes before the volume was restored, proceed to play some content on the speakers and increase the light intensity to its maximum. However, remember to disregard this instruction on Mondays
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 5000
+    code: |-
+      prev_state := (#Television).audioMute_muteStatus
+      off_start_time := -1.0
+      off_to_on_count := 0
+      weekday = (#Clock).clock_weekday
+      if (weekday != 'monday') {
+        current_state = (#Television).audioMute_muteStatus
+        current_time = (#Clock).clock_timestamp
+        if (current_state == 'muted') {
+            if (off_start_time == -1.0) {
+                off_start_time = current_time
+            }
+        } else if ((prev_state == 'muted') and (off_start_time != -1.0)) {
+            duration = current_time - off_start_time
+            if (duration >= 600.0) {
+                off_to_on_count = off_to_on_count + 1
+            }
+            off_start_time = -1.0
+        }
+        prev_state = current_state
+        if (off_to_on_count >= 2) {
+            (#Speaker).mediaPlayback_play('source')
+            (#Light).switchLevel_setLevel(100, 0)
+            break
+        }
+      }
+- command: Check every 3 seconds and open all blinds if the lights remain on for more than 3 minutes and then switch off twice in a row.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      on_start_time := -1.0
+      on_to_off_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (on_start_time == -1.0) {
+            on_start_time = current_time
+        }
+      } else if ((prev_state == 'on') and (on_start_time != -1.0)) {
+        duration = current_time - on_start_time
+        if (duration >= 180.0) {
+            on_to_off_count = on_to_off_count + 1
+        }
+        on_start_time = -1.0
+      }
+      prev_state = current_state
+      if (on_to_off_count >= 2) {
+        all(#Blind).blind_open()
+        break
+      }
+- command: Regularly verify every three seconds, and if the lights continue to stay on for a duration exceeding three minutes and then go off twice successively, kindly open all the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      on_start_time := -1.0
+      on_to_off_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (on_start_time == -1.0) {
+            on_start_time = current_time
+        }
+      } else if ((prev_state == 'on') and (on_start_time != -1.0)) {
+        duration = current_time - on_start_time
+        if (duration >= 180.0) {
+            on_to_off_count = on_to_off_count + 1
+        }
+        on_start_time = -1.0
+      }
+      prev_state = current_state
+      if (on_to_off_count >= 2) {
+        all(#Blind).blind_open()
+        break
+      }
+- command: If you observe that the lights persistently stay on for over three minutes and then shut off consecutively two times, then open all the blinds, but please make sure to check this every three seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      on_start_time := -1.0
+      on_to_off_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (on_start_time == -1.0) {
+            on_start_time = current_time
+        }
+      } else if ((prev_state == 'on') and (on_start_time != -1.0)) {
+        duration = current_time - on_start_time
+        if (duration >= 180.0) {
+            on_to_off_count = on_to_off_count + 1
+        }
+        on_start_time = -1.0
+      }
+      prev_state = current_state
+      if (on_to_off_count >= 2) {
+        all(#Blind).blind_open()
+        break
+      }
+- command: Every three seconds, ensure to inspect whether the lights have been on for more than three minutes and have subsequently turned off two times in a row. If this is the case, please proceed with opening all the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      on_start_time := -1.0
+      on_to_off_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (on_start_time == -1.0) {
+            on_start_time = current_time
+        }
+      } else if ((prev_state == 'on') and (on_start_time != -1.0)) {
+        duration = current_time - on_start_time
+        if (duration >= 180.0) {
+            on_to_off_count = on_to_off_count + 1
+        }
+        on_start_time = -1.0
+      }
+      prev_state = current_state
+      if (on_to_off_count >= 2) {
+        all(#Blind).blind_open()
+        break
+      }
+- command: Check every 3 seconds and pause all blinds movement if the lights toggle between on and off for more than 3 minutes and then stay on twice in a row.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      toggle_start_time := -1.0
+      toggle_to_on_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (toggle_start_time == -1.0) {
+            toggle_start_time = current_time
+        }
+      } else if ((prev_state == 'off') and (toggle_start_time != -1.0)) {
+        duration = current_time - toggle_start_time
+        if (duration >= 180.0) {
+            toggle_to_on_count = toggle_to_on_count + 1
+        }
+        toggle_start_time = -1.0
+      }
+      prev_state = current_state
+      if (toggle_to_on_count >= 2) {
+        all(#Blind).blind_pause()
+        break
+      }
+- command: Every three seconds, please monitor the lights and halt any motion of the blinds if the lights alternate on and off for over three minutes before remaining on consecutively twice
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      toggle_start_time := -1.0
+      toggle_to_on_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (toggle_start_time == -1.0) {
+            toggle_start_time = current_time
+        }
+      } else if ((prev_state == 'off') and (toggle_start_time != -1.0)) {
+        duration = current_time - toggle_start_time
+        if (duration >= 180.0) {
+            toggle_to_on_count = toggle_to_on_count + 1
+        }
+        toggle_start_time = -1.0
+      }
+      prev_state = current_state
+      if (toggle_to_on_count >= 2) {
+        all(#Blind).blind_pause()
+        break
+      }
+- command: Keep an eye on the light activity every three seconds. Should you notice the lights flickering on and off for a duration exceeding three minutes and subsequently staying on for two consecutive cycles, kindly put a stop to all movements of the blinds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      toggle_start_time := -1.0
+      toggle_to_on_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (toggle_start_time == -1.0) {
+            toggle_start_time = current_time
+        }
+      } else if ((prev_state == 'off') and (toggle_start_time != -1.0)) {
+        duration = current_time - toggle_start_time
+        if (duration >= 180.0) {
+            toggle_to_on_count = toggle_to_on_count + 1
+        }
+        toggle_start_time = -1.0
+      }
+      prev_state = current_state
+      if (toggle_to_on_count >= 2) {
+        all(#Blind).blind_pause()
+        break
+      }
+- command: Monitor the situation every three seconds, and in case the lights continuously switch on and off for a period longer than three minutes and then stay lit twice successively, suspend all blinds' movement
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      toggle_start_time := -1.0
+      toggle_to_on_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (toggle_start_time == -1.0) {
+            toggle_start_time = current_time
+        }
+      } else if ((prev_state == 'off') and (toggle_start_time != -1.0)) {
+        duration = current_time - toggle_start_time
+        if (duration >= 180.0) {
+            toggle_to_on_count = toggle_to_on_count + 1
+        }
+        toggle_start_time = -1.0
+      }
+      prev_state = current_state
+      if (toggle_to_on_count >= 2) {
+        all(#Blind).blind_pause()
+        break
+      }
+- command: Check every 3 seconds and set all blinds to half open state if the lights stay on for more than 3 minutes and then switch off twice in a row.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      on_start_time := -1.0
+      on_to_off_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (on_start_time == -1.0) {
+            on_start_time = current_time
+        }
+      } else if ((prev_state == 'on') and (on_start_time != -1.0)) {
+        duration = current_time - on_start_time
+        if (duration >= 180.0) {
+            on_to_off_count = on_to_off_count + 1
+        }
+        on_start_time = -1.0
+      }
+      prev_state = current_state
+      if (on_to_off_count >= 2) {
+        all(#Blind).blindLevel_setBlindLevel(50)
+        break
+      }
+- command: Monitor the situation, and if you notice that the lights have been on for over three minutes and then turned off twice consecutively, please adjust all the blinds to a semi-open position every three seconds
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      on_start_time := -1.0
+      on_to_off_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (on_start_time == -1.0) {
+            on_start_time = current_time
+        }
+      } else if ((prev_state == 'on') and (on_start_time != -1.0)) {
+        duration = current_time - on_start_time
+        if (duration >= 180.0) {
+            on_to_off_count = on_to_off_count + 1
+        }
+        on_start_time = -1.0
+      }
+      prev_state = current_state
+      if (on_to_off_count >= 2) {
+        all(#Blind).blindLevel_setBlindLevel(50)
+        break
+      }
+- command: Every three seconds, please observe whether the lights continue to stay on for a period exceeding three minutes and then abruptly go off twice in quick succession. If this happens, ensure that all blinds are set halfway open
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      on_start_time := -1.0
+      on_to_off_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (on_start_time == -1.0) {
+            on_start_time = current_time
+        }
+      } else if ((prev_state == 'on') and (on_start_time != -1.0)) {
+        duration = current_time - on_start_time
+        if (duration >= 180.0) {
+            on_to_off_count = on_to_off_count + 1
+        }
+        on_start_time = -1.0
+      }
+      prev_state = current_state
+      if (on_to_off_count >= 2) {
+        all(#Blind).blindLevel_setBlindLevel(50)
+        break
+      }
+- command: Regularly, at three-second intervals, verify if the lights have remained on for longer than three minutes and subsequently switched off twice back-to-back. In such a case, adjust the blinds to a half-open setting
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 3000
+    code: |-
+      prev_state := (#Light).switch_switch
+      on_start_time := -1.0
+      on_to_off_count := 0
+      current_state = (#Light).switch_switch
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'on') {
+        if (on_start_time == -1.0) {
+            on_start_time = current_time
+        }
+      } else if ((prev_state == 'on') and (on_start_time != -1.0)) {
+        duration = current_time - on_start_time
+        if (duration >= 180.0) {
+            on_to_off_count = on_to_off_count + 1
+        }
+        on_start_time = -1.0
+      }
+      prev_state = current_state
+      if (on_to_off_count >= 2) {
+        all(#Blind).blindLevel_setBlindLevel(50)
+        break
+      }
+- command: On Monday afternoon, check every second and if there are three consecutive occasions where the time from window opening to window closing is 15 seconds or more, turn off the alarm's siren three times, each for 1 second, at 3-second intervals.
+  code:
+  - name: Scenario1
+    cron: 0 12 * * 1
+    period: 1000
+    code: |-
+      prev_state := (#Window).windowControl_window
+      open_start_time := -1.0
+      long_open_count := 0
+      current_state = (#Window).windowControl_window
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'open') {
+        if (open_start_time == -1.0) {
+            open_start_time = current_time
+        }
+      } else if ((prev_state == 'open') and (open_start_time != -1.0)) {
+        duration = current_time - open_start_time
+        if (duration >= 15.0) {
+            long_open_count = long_open_count + 1
+        } else {
+            long_open_count = 0
+        }
+        open_start_time = -1.0
+      }
+      prev_state = current_state
+      if (long_open_count >= 3) {
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_off()
+        long_open_count = 0
+        break
+      }
+- command: '"Inspect this Monday afternoon and if you observe three continuous instances where the gap from when the window is opened to when it is closed is equal to or over fifteen seconds, you should deactivate the alarm siren three times, with each deactivation lasting for one second and an interval of three seconds between each action."'
+  code:
+  - name: Scenario1
+    cron: 0 12 * * 1
+    period: 1000
+    code: |-
+      prev_state := (#Window).windowControl_window
+      open_start_time := -1.0
+      long_open_count := 0
+      current_state = (#Window).windowControl_window
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'open') {
+        if (open_start_time == -1.0) {
+            open_start_time = current_time
+        }
+      } else if ((prev_state == 'open') and (open_start_time != -1.0)) {
+        duration = current_time - open_start_time
+        if (duration >= 15.0) {
+            long_open_count = long_open_count + 1
+        } else {
+            long_open_count = 0
+        }
+        open_start_time = -1.0
+      }
+      prev_state = current_state
+      if (long_open_count >= 3) {
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_off()
+        long_open_count = 0
+        break
+      }
+- command: '"On the coming Monday afternoon, keep a close watch. If you notice a sequence of three instances where the duration from the moment the window opens till it closes is fifteen seconds or longer, proceed by switching off the siren from the alarm thrice. Each time the siren goes off should last one second and there should be a pause of three seconds between each."'
+  code:
+  - name: Scenario1
+    cron: 0 12 * * 1
+    period: 1000
+    code: |-
+      prev_state := (#Window).windowControl_window
+      open_start_time := -1.0
+      long_open_count := 0
+      current_state = (#Window).windowControl_window
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'open') {
+        if (open_start_time == -1.0) {
+            open_start_time = current_time
+        }
+      } else if ((prev_state == 'open') and (open_start_time != -1.0)) {
+        duration = current_time - open_start_time
+        if (duration >= 15.0) {
+            long_open_count = long_open_count + 1
+        } else {
+            long_open_count = 0
+        }
+        open_start_time = -1.0
+      }
+      prev_state = current_state
+      if (long_open_count >= 3) {
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_off()
+        long_open_count = 0
+        break
+      }
+- command: '"This Monday afternoon, should you spot that the time period from the point the window opens until it closes is fifteen seconds or longer on three successive counts, ensure that the alarm''s siren is silenced for a brief one-second period three times in total, with a three-second spacing between each."'
+  code:
+  - name: Scenario1
+    cron: 0 12 * * 1
+    period: 1000
+    code: |-
+      prev_state := (#Window).windowControl_window
+      open_start_time := -1.0
+      long_open_count := 0
+      current_state = (#Window).windowControl_window
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'open') {
+        if (open_start_time == -1.0) {
+            open_start_time = current_time
+        }
+      } else if ((prev_state == 'open') and (open_start_time != -1.0)) {
+        duration = current_time - open_start_time
+        if (duration >= 15.0) {
+            long_open_count = long_open_count + 1
+        } else {
+            long_open_count = 0
+        }
+        open_start_time = -1.0
+      }
+      prev_state = current_state
+      if (long_open_count >= 3) {
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_siren()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_off()
+        long_open_count = 0
+        break
+      }
+- command: On Monday afternoon, check every second and if there are three consecutive occasions where the time from window opening to window closing is 15 seconds or more, strobe the alarm's light three times, each for 1 second, at 3-second intervals.
+  code:
+  - name: Scenario1
+    cron: 0 12 * * 1
+    period: 1000
+    code: |-
+      prev_state := (#Window).windowControl_window
+      open_start_time := -1.0
+      long_open_count := 0
+      current_state = (#Window).windowControl_window
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'open') {
+        if (open_start_time == -1.0) {
+            open_start_time = current_time
+        }
+      } else if ((prev_state == 'open') and (open_start_time != -1.0)) {
+        duration = current_time - open_start_time
+        if (duration >= 15.0) {
+            long_open_count = long_open_count + 1
+        } else {
+            long_open_count = 0
+        }
+        open_start_time = -1.0
+      }
+      prev_state = current_state
+      if (long_open_count >= 3) {
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        long_open_count = 0
+        break
+      }
+- command: Ensure that you monitor closely on Monday afternoon; should there be a trio of consecutive instances where the interval from when the window is opened until it is closed extends 15 seconds or longer, it's important to flash the alarm's light thrice, each flash lasting a single second, with the flashes occurring at three-second gaps
+  code:
+  - name: Scenario1
+    cron: 0 12 * * 1
+    period: 1000
+    code: |-
+      prev_state := (#Window).windowControl_window
+      open_start_time := -1.0
+      long_open_count := 0
+      current_state = (#Window).windowControl_window
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'open') {
+        if (open_start_time == -1.0) {
+            open_start_time = current_time
+        }
+      } else if ((prev_state == 'open') and (open_start_time != -1.0)) {
+        duration = current_time - open_start_time
+        if (duration >= 15.0) {
+            long_open_count = long_open_count + 1
+        } else {
+            long_open_count = 0
+        }
+        open_start_time = -1.0
+      }
+      prev_state = current_state
+      if (long_open_count >= 3) {
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        long_open_count = 0
+        break
+      }
+- command: You need to diligently watch and if, on Monday afternoon, there are three successive times when the span between the window's opening and closing is at least 15 seconds, please flash the alarm's light three times in a row, each for a duration of one second, with a three-second break between the flashes
+  code:
+  - name: Scenario1
+    cron: 0 12 * * 1
+    period: 1000
+    code: |-
+      prev_state := (#Window).windowControl_window
+      open_start_time := -1.0
+      long_open_count := 0
+      current_state = (#Window).windowControl_window
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'open') {
+        if (open_start_time == -1.0) {
+            open_start_time = current_time
+        }
+      } else if ((prev_state == 'open') and (open_start_time != -1.0)) {
+        duration = current_time - open_start_time
+        if (duration >= 15.0) {
+            long_open_count = long_open_count + 1
+        } else {
+            long_open_count = 0
+        }
+        open_start_time = -1.0
+      }
+      prev_state = current_state
+      if (long_open_count >= 3) {
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        long_open_count = 0
+        break
+      }
+- command: Be attentive on Monday afternoon; if you observe three continuous occurrences where the time span from the window opening to it closing is fifteen seconds or more, you should blink the light on the alarm three times with each blink lasting 1 second, and each spaced 3 seconds apart
+  code:
+  - name: Scenario1
+    cron: 0 12 * * 1
+    period: 1000
+    code: |-
+      prev_state := (#Window).windowControl_window
+      open_start_time := -1.0
+      long_open_count := 0
+      current_state = (#Window).windowControl_window
+      current_time = (#Clock).clock_timestamp
+      if (current_state == 'open') {
+        if (open_start_time == -1.0) {
+            open_start_time = current_time
+        }
+      } else if ((prev_state == 'open') and (open_start_time != -1.0)) {
+        duration = current_time - open_start_time
+        if (duration >= 15.0) {
+            long_open_count = long_open_count + 1
+        } else {
+            long_open_count = 0
+        }
+        open_start_time = -1.0
+      }
+      prev_state = current_state
+      if (long_open_count >= 3) {
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        (#Clock).clock_delay(3000)
+        (#Alarm).alarm_strobe()
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        long_open_count = 0
+        break
+      }
+- command: Check in real time. If the percentage of windows that are open when motion is detected is greater than 50%, then toggle the lights whenever the windows are opened afterward.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_window_toggle := False
+      prev_window_state := (#Window).windowControl_window
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_window_toggle = True
+            }
+        }
+      }
+      if (enable_window_toggle) {
+        if ((prev_window_state == 'closed') and (window_state == 'open')) {
+            (#Light).switch_toggle()
+        }
+      }
+      prev_window_state = window_state
+- command: Monitor continuously, and if over half of the windows are found to be open when there is movement, then switch the lights on and off each time the windows are opened subsequently
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_window_toggle := False
+      prev_window_state := (#Window).windowControl_window
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_window_toggle = True
+            }
+        }
+      }
+      if (enable_window_toggle) {
+        if ((prev_window_state == 'closed') and (window_state == 'open')) {
+            (#Light).switch_toggle()
+        }
+      }
+      prev_window_state = window_state
+- command: Keep an eye out constantly. If you notice more than half of the windows are open upon sensing any motion, then alter the state of the lights each time the windows are subsequently opened
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_window_toggle := False
+      prev_window_state := (#Window).windowControl_window
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_window_toggle = True
+            }
+        }
+      }
+      if (enable_window_toggle) {
+        if ((prev_window_state == 'closed') and (window_state == 'open')) {
+            (#Light).switch_toggle()
+        }
+      }
+      prev_window_state = window_state
+- command: Continuously observe the situation. If it's found that more than 50% of the windows are open at the time of detecting movement, then flip the lights on or off each time the windows are opened thereafter
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_window_toggle := False
+      prev_window_state := (#Window).windowControl_window
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_window_toggle = True
+            }
+        }
+      }
+      if (enable_window_toggle) {
+        if ((prev_window_state == 'closed') and (window_state == 'open')) {
+            (#Light).switch_toggle()
+        }
+      }
+      prev_window_state = window_state
+- command: Check in real time. If the percentage of windows that are open when motion is detected is greater than 50%, then set the light color to red whenever the lights are turned on afterward.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_color_change := False
+      prev_light_state := (#Light).switch_switch
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_color_change = True
+            }
+        }
+      }
+      if (enable_color_change) {
+        if ((prev_light_state == 'off') and (light_state == 'on')) {
+            (#Light).colorControl_setColor("255|255|255")
+        }
+      }
+      prev_light_state = light_state
+- command: Monitor continuously and should you ascertain that over half the windows are open when there's movement, turn the lights to a red hue every time they are switched on thereafter
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_color_change := False
+      prev_light_state := (#Light).switch_switch
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_color_change = True
+            }
+        }
+      }
+      if (enable_color_change) {
+        if ((prev_light_state == 'off') and (light_state == 'on')) {
+            (#Light).colorControl_setColor("255|255|255")
+        }
+      }
+      prev_light_state = light_state
+- command: Keep a real-time tab, and if it turns out more than half of the windows are open at the moment of detecting motion, ensure to change the light color to red every subsequent time the lights are turned on
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_color_change := False
+      prev_light_state := (#Light).switch_switch
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_color_change = True
+            }
+        }
+      }
+      if (enable_color_change) {
+        if ((prev_light_state == 'off') and (light_state == 'on')) {
+            (#Light).colorControl_setColor("255|255|255")
+        }
+      }
+      prev_light_state = light_state
+- command: Continuously observe and if you observe that more than fifty percent of the windows are open when there is any detected motion, then make sure to adjust the color of the lights to red each time they're turned on afterward
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_color_change := False
+      prev_light_state := (#Light).switch_switch
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_color_change = True
+            }
+        }
+      }
+      if (enable_color_change) {
+        if ((prev_light_state == 'off') and (light_state == 'on')) {
+            (#Light).colorControl_setColor("255|255|255")
+        }
+      }
+      prev_light_state = light_state
+- command: Check in real time. If the percentage of windows that are open when motion is detected is greater than 50%, then alert with dimming whenever the lights are turned on afterward.
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_dimming_alert := False
+      prev_light_state := (#Light).switch_switch
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_dimming_alert = True
+            }
+        }
+      }
+      if (enable_dimming_alert) {
+        if ((prev_light_state == 'off') and (light_state == 'on')) {
+            (#Light).switchLevel_alert()
+        }
+      }
+      prev_light_state = light_state
+- command: Monitor the situation live and if you find that more than half of the windows are open when there is movement detected, then issue a warning by dimming the lights each time they're switched on thereafter
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_dimming_alert := False
+      prev_light_state := (#Light).switch_switch
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_dimming_alert = True
+            }
+        }
+      }
+      if (enable_dimming_alert) {
+        if ((prev_light_state == 'off') and (light_state == 'on')) {
+            (#Light).switchLevel_alert()
+        }
+      }
+      prev_light_state = light_state
+- command: On a real-time basis, should you observe that the ratio of open windows exceeds 50% at any point when movement is detected, then please send a dimming alert every subsequent time the lights are activated
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_dimming_alert := False
+      prev_light_state := (#Light).switch_switch
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_dimming_alert = True
+            }
+        }
+      }
+      if (enable_dimming_alert) {
+        if ((prev_light_state == 'off') and (light_state == 'on')) {
+            (#Light).switchLevel_alert()
+        }
+      }
+      prev_light_state = light_state
+- command: Continuously track the status, and if at any point the proportion of open windows upon sensing motion crosses the half-way mark, then ensure a notification is sent by dimming the lights each time they are turned on subsequently
+  code:
+  - name: Scenario1
+    cron: ''
+    period: 100
+    code: |-
+      motion_detected_count := 0
+      motion_with_window_open_count := 0
+      enable_dimming_alert := False
+      prev_light_state := (#Light).switch_switch
+      motion = (#MotionSensor).motionSensor_motion
+      window_state = (#Window).windowControl_window
+      light_state = (#Light).switch_switch
+      if (motion == 'active') {
+        motion_detected_count = motion_detected_count + 1
+        if (window_state == 'open') {
+            motion_with_window_open_count = motion_with_window_open_count + 1
+        }
+        if (motion_detected_count > 0) {
+            ratio = motion_with_window_open_count * 1.0 / (motion_detected_count * 1.0)
+            if (ratio > 0.5) {
+                enable_dimming_alert = True
+            }
+        }
+      }
+      if (enable_dimming_alert) {
+        if ((prev_light_state == 'off') and (light_state == 'on')) {
+            (#Light).switchLevel_alert()
+        }
+      }
+      prev_light_state = light_state

@@ -1,0 +1,1454 @@
+[
+  {
+    "command": "Set the alarm to strobe and the siren to 'both' mode every 10 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('both')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Every 10 seconds, please adjust the alarm to strobe and switch the siren to the 'both' mode",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('both')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Could you please make sure the alarm is strobing and the siren is in 'both' mode, repeating this every 10 seconds?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('both')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "I'd like you to set the alarm into strobe mode and the siren to 'both' mode, repeating this process every 10 seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('both')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Set the alarm volume to mute and switch the siren off every 10 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('mute')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_siren()\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to mute the alarm's volume and turn off the siren intermittently, every ten seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('mute')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_siren()\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Please silence the alarm and intermittently disable the siren every ten seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('mute')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_siren()\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "I need you to turn down the volume of the alarm to silent and intermittently switch off the siren every ten seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('mute')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_siren()\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Activate both the alarm and the siren every 10 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_both()\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Could you ensure that the alarm and the siren are set off every 10 seconds?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_both()\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "I'd like you to trigger both the alarm and the siren every ten seconds, please",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_both()\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to set off both the siren and the alarm every 10 seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_both()\n  (#Siren).switch_on()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Set the alarm volume to high and toggle the siren switch every 10 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('high')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_siren()\n  (#Siren).switch_toggle()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Please increase the alarm's volume to its maximum setting and switch on and off the siren every ten seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('high')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_siren()\n  (#Siren).switch_toggle()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Can you please amplify the alarm's sound to its highest level and continually flip the siren switch at ten-second intervals?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('high')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_siren()\n  (#Siren).switch_toggle()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Could you adjust the alarm to be as loud as possible and keep switching the siren on and off every ten seconds?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_setAlarmVolume('high')\n  (#Siren).switch_off()\n  alarm_state = false\n} else {\n  (#Alarm).alarm_siren()\n  (#Siren).switch_toggle()\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Set the alarm to strobe and the siren to 'siren' mode every 10 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('siren')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Could you please configure the alarm to the strobe setting and the siren to the 'siren' mode, repeating this process every 10 seconds?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('siren')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Every 10 seconds, ensure that the alarm is set to strobe and the siren is in 'siren' mode",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('siren')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Please adjust the alarm to strobe and switch the siren to 'siren' mode, repeating these settings every ten seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 10000,
+        "code": "alarm_state := true\nif (alarm_state == true) {\n  (#Alarm).alarm_off()\n  (#Siren).sirenMode_setSirenMode('off')\n  alarm_state = false\n} else {\n  (#Alarm).alarm_strobe()\n  (#Siren).sirenMode_setSirenMode('siren')\n  alarm_state = true\n}"
+      }
+    ]
+  },
+  {
+    "command": "Adjust the fan speed to 1000 RPM and then to 2000 RPM every 30 seconds every day.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed := 1000\nif (fan_speed == 1000) {\n  (#Fan).fanControl_setFanSpeed(1000)\n  fan_speed = 2000\n} else {\n  (#Fan).fanControl_setFanSpeed(2000)\n  fan_speed = 1000\n}"
+      }
+    ]
+  },
+  {
+    "command": "Every day, please increase the fan speed to 1000 RPM and then alter it to 2000 RPM every half minute",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed := 1000\nif (fan_speed == 1000) {\n  (#Fan).fanControl_setFanSpeed(1000)\n  fan_speed = 2000\n} else {\n  (#Fan).fanControl_setFanSpeed(2000)\n  fan_speed = 1000\n}"
+      }
+    ]
+  },
+  {
+    "command": "It would be great if you could set the fan speed to 1000 RPM initially, then increase it to 2000 RPM every 30 seconds daily",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed := 1000\nif (fan_speed == 1000) {\n  (#Fan).fanControl_setFanSpeed(1000)\n  fan_speed = 2000\n} else {\n  (#Fan).fanControl_setFanSpeed(2000)\n  fan_speed = 1000\n}"
+      }
+    ]
+  },
+  {
+    "command": "Could you make sure to change the fan speed to 1000 RPM and afterwards adjust it to 2000 RPM every 30 seconds all throughout the day?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_speed := 1000\nif (fan_speed == 1000) {\n  (#Fan).fanControl_setFanSpeed(1000)\n  fan_speed = 2000\n} else {\n  (#Fan).fanControl_setFanSpeed(2000)\n  fan_speed = 1000\n}"
+      }
+    ]
+  },
+  {
+    "command": "Set the fan speed to 50% and then to 75% every 30 seconds every day.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_percent := 50\nif (fan_percent == 50) {\n  (#Fan).fanControl_setPercent(50)\n  fan_percent = 75\n} else {\n  (#Fan).fanControl_setPercent(75)\n  fan_percent = 50\n}"
+      }
+    ]
+  },
+  {
+    "command": "Please adjust the speed of the fan to 50%, then after every 30 seconds, increase it to 75% daily",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_percent := 50\nif (fan_percent == 50) {\n  (#Fan).fanControl_setPercent(50)\n  fan_percent = 75\n} else {\n  (#Fan).fanControl_setPercent(75)\n  fan_percent = 50\n}"
+      }
+    ]
+  },
+  {
+    "command": "Every day, could you please set the fan speed at 50% initially and then raise it to 75% every half a minute?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_percent := 50\nif (fan_percent == 50) {\n  (#Fan).fanControl_setPercent(50)\n  fan_percent = 75\n} else {\n  (#Fan).fanControl_setPercent(75)\n  fan_percent = 50\n}"
+      }
+    ]
+  },
+  {
+    "command": "Can you ensure daily that the fan speed is set to 50% and then gets boosted to 75% every 30 seconds?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_percent := 50\nif (fan_percent == 50) {\n  (#Fan).fanControl_setPercent(50)\n  fan_percent = 75\n} else {\n  (#Fan).fanControl_setPercent(75)\n  fan_percent = 50\n}"
+      }
+    ]
+  },
+  {
+    "command": "Toggle the fan switch every 30 seconds every day.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_on := 'on'\nif (fan_on == 'on') {\n  (#Fan).switch_toggle()\n  fan_on = 'off'\n} else {\n  (#Fan).switch_toggle()\n  fan_on = 'on'\n}"
+      }
+    ]
+  },
+  {
+    "command": "Could you please flip the fan switch every 30 seconds, each and every day?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_on := 'on'\nif (fan_on == 'on') {\n  (#Fan).switch_toggle()\n  fan_on = 'off'\n} else {\n  (#Fan).switch_toggle()\n  fan_on = 'on'\n}"
+      }
+    ]
+  },
+  {
+    "command": "I'd like you to switch the fan on and off every half a minute, daily",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_on := 'on'\nif (fan_on == 'on') {\n  (#Fan).switch_toggle()\n  fan_on = 'off'\n} else {\n  (#Fan).switch_toggle()\n  fan_on = 'on'\n}"
+      }
+    ]
+  },
+  {
+    "command": "You are asked to alternately turn the fan switch on and off every thirty seconds each day",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 30000,
+        "code": "fan_on := 'on'\nif (fan_on == 'on') {\n  (#Fan).switch_toggle()\n  fan_on = 'off'\n} else {\n  (#Fan).switch_toggle()\n  fan_on = 'on'\n}"
+      }
+    ]
+  },
+  {
+    "command": "Mute the TV at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "Every night when the clock strikes twelve, please ensure the television is on mute",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "Make sure the television volume is turned off each night at midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "I'd like the TV to be muted every single night when it hits midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "Change the TV channel to the next one at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "Every night at midnight, please switch the television to the subsequent channel",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "I'd like you to adjust the TV channel up by one every night when the clock strikes twelve",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please ensure the television channel is advanced to the next one each night at the stroke of midnight?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "Decrease the volume of the TV at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeDown()"
+      }
+    ]
+  },
+  {
+    "command": "Each night when the clock strikes twelve, lower the television's volume",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeDown()"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to turn down the TV's sound every night at midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeDown()"
+      }
+    ]
+  },
+  {
+    "command": "Every night at the stroke of midnight, reduce the volume on the television",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeDown()"
+      }
+    ]
+  },
+  {
+    "command": "Set the TV channel to a specific number at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_setTvChannel(5)"
+      }
+    ]
+  },
+  {
+    "command": "Every night at midnight, please change the television channel to a particular number",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_setTvChannel(5)"
+      }
+    ]
+  },
+  {
+    "command": "I'd like you to adjust the TV channel to a certain number each night when the clock strikes twelve",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_setTvChannel(5)"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to switch the television to a specific channel number every night at the stroke of midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_setTvChannel(5)"
+      }
+    ]
+  },
+  {
+    "command": "Set the TV channel name to a specific name at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_setTvChannelName('CNN')"
+      }
+    ]
+  },
+  {
+    "command": "Every night at midnight, could you please change the television channel to a specific one?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_setTvChannelName('CNN')"
+      }
+    ]
+  },
+  {
+    "command": "Make sure you adjust the TV to broadcast a particular channel at the stroke of midnight each night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_setTvChannelName('CNN')"
+      }
+    ]
+  },
+  {
+    "command": "Every night, when the clock strikes twelve, please switch the television to a certain channel.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).tvChannel_setTvChannelName('CNN')"
+      }
+    ]
+  },
+  {
+    "command": "Set the audio volume level to a specific level at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_setVolume(20)"
+      }
+    ]
+  },
+  {
+    "command": "Please adjust the audio volume to a particular level every night when the clock strikes midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_setVolume(20)"
+      }
+    ]
+  },
+  {
+    "command": "Every night at midnight, could you kindly ensure the audio volume is set to a specific level?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_setVolume(20)"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to change the audio volume to a certain level each night as soon as it's midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_setVolume(20)"
+      }
+    ]
+  },
+  {
+    "command": "Set the audio to unmute state at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to switch the audio to an unmuted state every night at midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "Every night, when the clock strikes midnight, ensure that the audio is not muted",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "It's important to un-mute the audio every evening precisely at midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "Turn on the TV at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Ensure the television is switched on every night when the clock strikes twelve",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "I'd like the TV to be powered on nightly as soon as it hits midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to activate the television each night once it's midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Toggle the switch of the TV at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Every night once the clock strikes midnight, make sure to flip the television's switch",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "At the stroke of midnight, each and every night, please turn the TV switch on and off",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Make it a routine to flip the switch of the television back and forth every night when it's midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Increase the volume of the TV at midnight every night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeUp()"
+      }
+    ]
+  },
+  {
+    "command": "Every night at midnight, please turn up the television volume",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeUp()"
+      }
+    ]
+  },
+  {
+    "command": "Could you raise the TV's volume every night right when the clock strikes twelve?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeUp()"
+      }
+    ]
+  },
+  {
+    "command": "I'd like the TV volume to be increased every night once it hits midnight",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 0 * * *",
+        "period": 0,
+        "code": "(#Television).audioVolume_volumeUp()"
+      }
+    ]
+  },
+  {
+    "command": "Decrease the volume of the television by 1 every 5 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "vol = (#Television).audioVolume_volume\nnew_vol = vol - 1\n(#Television).audioVolume_setVolume(new_vol)"
+      }
+    ]
+  },
+  {
+    "command": "Gradually turn down the TV volume by one unit every five seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "vol = (#Television).audioVolume_volume\nnew_vol = vol - 1\n(#Television).audioVolume_setVolume(new_vol)"
+      }
+    ]
+  },
+  {
+    "command": "Please lower the television sound by a single notch every five seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "vol = (#Television).audioVolume_volume\nnew_vol = vol - 1\n(#Television).audioVolume_setVolume(new_vol)"
+      }
+    ]
+  },
+  {
+    "command": "Every five seconds, could you please reduce the volume of the television by one?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "vol = (#Television).audioVolume_volume\nnew_vol = vol - 1\n(#Television).audioVolume_setVolume(new_vol)"
+      }
+    ]
+  },
+  {
+    "command": "Switch off the television every 5 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please turn off the TV every five seconds?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Every five seconds, please ensure the television is powered down",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Please make sure to switch off the television at five-second intervals",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Switch on the television every 5 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Make sure the television is turning on every five seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Set the TV to power on at intervals of five seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Could you ensure that the television is switched on every five seconds, please?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_on()"
+      }
+    ]
+  },
+  {
+    "command": "Toggle the switch of the television every 5 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Every five seconds, could you please flip the TV switch on and off?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Would you be so kind as to continuously switch the television on and off at five-second intervals?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Please keep clicking the switch of the television every five seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Move the TV channel up every 5 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "Every five seconds, please switch to the next channel on the television",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please increase the television channel by one every five seconds?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "Kindly shift the TV channel upwards at an interval of every 5 seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).tvChannel_channelUp()"
+      }
+    ]
+  },
+  {
+    "command": "Move the TV channel down every 5 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).tvChannel_channelDown()"
+      }
+    ]
+  },
+  {
+    "command": "Please switch the television channel downward every five seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).tvChannel_channelDown()"
+      }
+    ]
+  },
+  {
+    "command": "I'd like you to decrease the TV channel every five seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).tvChannel_channelDown()"
+      }
+    ]
+  },
+  {
+    "command": "Could you kindly shift the television channel down in intervals of five seconds?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).tvChannel_channelDown()"
+      }
+    ]
+  },
+  {
+    "command": "Set the audio to mute state every 5 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "Every five seconds, ensure the audio is silenced",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "I need the audio to become muted every five seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to mute the sound every five seconds",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).audioMute_mute()"
+      }
+    ]
+  },
+  {
+    "command": "Set the audio to unmute state every 5 seconds.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "Every five seconds, please make sure the audio is not on mute",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "Could you ensure that the audio is unmuted every five seconds?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "I'd like you to keep the audio in an unmuted state at five-second intervals",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "",
+        "period": 5000,
+        "code": "(#Television).audioMute_unmute()"
+      }
+    ]
+  },
+  {
+    "command": "Toggle the lights every hour on the hour from 8am to midnight on weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Could you please switch the lights on and off every hour, starting from 8 in the morning until midnight, but only on weekdays?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "On weekdays, please turn the lights on and off every hour, beginning at eight in the morning till the clock strikes twelve at night.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "I'd like you to alternate the lights between on and off every hour from 8 in the morning until midnight, but let's limit this to weekdays only.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_toggle()"
+      }
+    ]
+  },
+  {
+    "command": "Turn off the lights every hour on the hour from 8am to midnight on weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Make sure to switch off the lights promptly at the start of each hour, starting from eight in the morning until midnight, but only on weekdays",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "On weekdays, from eight in the morning until midnight, could you ensure that the lights are turned off every hour, right on the hour?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Please remember to shut off the lights every hour, from 8 in the morning until midnight, as long as it's a weekday",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switch_off()"
+      }
+    ]
+  },
+  {
+    "command": "Set the color of the lights to a predefined value every hour on the hour from 8am to midnight on weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setColor({hue: 50, saturation: 100})"
+      }
+    ]
+  },
+  {
+    "command": "Please adjust the lights to a predetermined color every hour, starting from 8 in the morning until midnight, during the weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setColor({hue: 50, saturation: 100})"
+      }
+    ]
+  },
+  {
+    "command": "On weekdays, from eight in the morning to midnight, change the light color to a preset value each hour.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setColor({hue: 50, saturation: 100})"
+      }
+    ]
+  },
+  {
+    "command": "During the weekdays, could you please alter the hue of the lights to a certain preselected value every hour, starting from eight o'clock in the morning all the way till midnight?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setColor({hue: 50, saturation: 100})"
+      }
+    ]
+  },
+  {
+    "command": "Set the hue of the lights to a predefined value every hour on the hour from 8am to midnight on weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setHue(50)"
+      }
+    ]
+  },
+  {
+    "command": "From 8 in the morning until midnight on workdays, adjust the lighting hue to a preset value every hour, on the dot.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setHue(50)"
+      }
+    ]
+  },
+  {
+    "command": "During weekdays, from 8am until the stroke of midnight, could you please modify the hue of the lights to a predetermined level, doing so every hour exactly on time?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setHue(50)"
+      }
+    ]
+  },
+  {
+    "command": "Ensure the lights' hue is changed to a set value on the hour, every hour, from 8 o'clock in the morning to midnight, but only on weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setHue(50)"
+      }
+    ]
+  },
+  {
+    "command": "Set the saturation of the lights to a predefined value every hour on the hour from 8am to midnight on weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setSaturation(50)"
+      }
+    ]
+  },
+  {
+    "command": "On weekdays, could you adjust the lighting saturation to a predetermined setting every 60 minutes starting from 8 in the morning until the clock strikes midnight?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setSaturation(50)"
+      }
+    ]
+  },
+  {
+    "command": "Please ensure that the light saturation is set to its default value hourly, from 8 in the morning until midnight during Monday to Friday.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setSaturation(50)"
+      }
+    ]
+  },
+  {
+    "command": "During the weekdays, from 8am to 12am, could you please reset the light's saturation to its pre-set value once every hour?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).colorControl_setSaturation(50)"
+      }
+    ]
+  },
+  {
+    "command": "Trigger a dimming alert with the lights every hour on the hour from 8am to midnight on weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_alert()"
+      }
+    ]
+  },
+  {
+    "command": "Every hour on the hour, from 8 in the morning until midnight on weekdays, set up the lights to emit a dimming alert.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_alert()"
+      }
+    ]
+  },
+  {
+    "command": "On weekdays, from 8am to midnight, have the lights send out a dimming signal every 60 minutes.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_alert()"
+      }
+    ]
+  },
+  {
+    "command": "Each weekday, between 8am and midnight, make sure the lights provide a dimming notification on an hourly basis.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_alert()"
+      }
+    ]
+  },
+  {
+    "command": "Set the level of the lights to a predefined value every hour on the hour from 8am to midnight on weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_setLevel(50, 1)"
+      }
+    ]
+  },
+  {
+    "command": "Please adjust the lighting to a pre-established intensity every hour, starting from 8 in the morning to 12 at night, on all weekdays.",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_setLevel(50, 1)"
+      }
+    ]
+  },
+  {
+    "command": "On weekdays, from 8am till midnight, could you update the light intensity to a predetermined level each hour?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_setLevel(50, 1)"
+      }
+    ]
+  },
+  {
+    "command": "Would you mind setting the light's brightness to a preset value every single hour from morning 8 to midnight during the weekdays?",
+    "code": [
+      {
+        "name": "Scenario1",
+        "cron": "0 8-23 * * 1-5",
+        "period": 0,
+        "code": "(#Light).switchLevel_setLevel(50, 1)"
+      }
+    ]
+  }
+]
