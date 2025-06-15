@@ -42,11 +42,22 @@
         (#Clock).clock_delay(7000)
         (#Window).windowControl_close()
       }
+  # - name: "Scenario2"
+  #   cron: ""
+  #   period: -1
+  #   code: |
+  #     wait until ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0)
+  #     (#Clock).clock_delay(3000)
+  #     (#Dehumidifier).switch_on()
+  #     (#Clock).clock_delay(7000)
+  #     (#Window).windowControl_close()
+  #   score: 70
   devices:
   - Clock
   - Dehumidifier
   - HumiditySensor
   - Window
+  
 - command: "빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘."
   command_translated: "If the light intensity is below 100 lux, wait 5 seconds before turning on the LED light."
   code:
