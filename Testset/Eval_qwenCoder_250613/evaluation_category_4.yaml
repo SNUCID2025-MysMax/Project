@@ -1,0 +1,269 @@
+- command: 창문이 열리면 알람의 사이렌을 울려 줘.
+  command_translated: Sound the alarm's siren when the window opens.
+  devices:
+  - Clock
+  - Valve
+  - Siren
+  - Window
+  - Alarm
+  - Blind
+  - DoorLock
+  - Speaker
+  - Pump
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Window).windowControl_window == "open") {
+        (#Alarm).alarm_siren()
+      }
+  model_info:
+    elapsed_time: 2.928
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 2.822
+    validation_elapsed_time: 0.02
+- command: 토양 수분이 20% 이상이었다가 이하가 되면 관개 장치를 작동시켜 줘.
+  command_translated: Turn on irrigation when soil moisture is above and below 20%.
+  devices:
+  - Humidifier
+  - Clock
+  - Irrigator
+  - SoilMoistureSensor
+  - Speaker
+  - Pump
+  - Dehumidifier
+  - WeatherProvider
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 20.0) {
+        (#Irrigator).switch_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0) {
+        (#Irrigator).switch_on()
+      }
+  model_info:
+    elapsed_time: 5.521
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 5.403
+    validation_elapsed_time: 0.033
+- command: 움직임이 감지되면 최대 3번까지 조명을 켜 줘.
+  command_translated: Turn on the light up to 3 times when motion is detected.
+  devices:
+  - FallDetector
+  - LightSensor
+  - MotionSensor
+  - Clock
+  - Button
+  - Light
+  - Siren
+  - Speaker
+  - Buttonx4
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      counter := 0
+      if ((#MotionSensor).motionSensor_motion == "active") {
+        counter = counter + 1
+        if (counter <= 3) {
+          (#Light).switchLevel_setLevel(100, 100)
+        }
+        wait until((#MotionSensor).motionSensor_motion == "inactive")
+        counter := 0
+      }
+  model_info:
+    elapsed_time: 5.197
+    bge_elapsed_time: 0.086
+    llm_elapsed_time: 5.092
+    validation_elapsed_time: 0.02
+- command: 온도가 35도 이상이 되면 에어컨을 켜 줘.
+  command_translated: Turn on the air conditioner when the temperature is above 35 degrees.
+  devices:
+  - Clock
+  - AirConditioner
+  - Fan
+  - TemperatureSensor
+  - Speaker
+  - Calculator
+  - AirPurifier
+  - WeatherProvider
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode('cool')
+        (#AirConditioner).airConditionerMode_setTemperature(25.0)
+        (#AirConditioner).switch_on()
+      }
+  model_info:
+    elapsed_time: 4.568
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 4.466
+    validation_elapsed_time: 0.017
+- command: 습도가 80% 이상이 되면 블라인드를 내려 줘.
+  command_translated: Lower the blinds when the humidity is above 80%.
+  devices:
+  - Humidifier
+  - Clock
+  - AirQualityDetector
+  - HumiditySensor
+  - Blind
+  - SoilMoistureSensor
+  - Speaker
+  - Dehumidifier
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0) {
+        (#Blind).blindLevel_setBlindLevel(0)
+      }
+  model_info:
+    elapsed_time: 3.389
+    bge_elapsed_time: 0.084
+    llm_elapsed_time: 3.284
+    validation_elapsed_time: 0.02
+- command: 블라인드가 닫히면 ‘블라인드가 닫혔습니다’라고 말해 줘.
+  command_translated: When the blinds are closed, say 'Blinds are closed'.
+  devices:
+  - Clock
+  - Window
+  - Curtain
+  - GasValve
+  - Blind
+  - DoorLock
+  - Speaker
+  - Pump
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Blind).blind_blind == "closed")
+      (#Speaker).mediaPlayback_speak("Blinds are closed")
+  model_info:
+    elapsed_time: 3.033
+    bge_elapsed_time: 0.094
+    llm_elapsed_time: 2.918
+    validation_elapsed_time: 0.02
+- command: TV가 꺼지면 스피커를 꺼 줘.
+  command_translated: Turn off the speakers when the TV is turned off.
+  devices:
+  - Clock
+  - Television
+  - GasValve
+  - AirQualityDetector
+  - Blind
+  - Speaker
+  - Timer
+  - SoundSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Television).switch_switch == "off") {
+        (#Speaker).switch_off()
+      }
+  model_info:
+    elapsed_time: 2.909
+    bge_elapsed_time: 0.086
+    llm_elapsed_time: 2.799
+    validation_elapsed_time: 0.024
+- command: 커튼이 3번 열렸다 닫히면 조명을 꺼 줘.
+  command_translated: Turn off the light when the curtain opens and closes 3 times.
+  devices:
+  - Clock
+  - Valve
+  - Light
+  - Siren
+  - Window
+  - Curtain
+  - Blind
+  - DoorLock
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      open_count := 0
+      if ((#Curtain).curtain_curtain == "open") {
+        open_count = open_count + 1
+        if (open_count == 3) {
+          (#Light).switch_off()
+          open_count := 0
+        }
+      }
+  model_info:
+    elapsed_time: 4.455
+    bge_elapsed_time: 0.087
+    llm_elapsed_time: 4.348
+    validation_elapsed_time: 0.02
+- command: 제습기가 꺼지면 다시 켜 줘.
+  command_translated: Turn the dehumidifier back on when it turns off.
+  devices:
+  - Humidifier
+  - Clock
+  - Valve
+  - AirPurifier
+  - Irrigator
+  - Refrigerator
+  - Speaker
+  - Pump
+  - Dehumidifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Dehumidifier).dehumidifierMode_dehumidifierMode == "finished") {
+        (#Dehumidifier).switch_on()
+      }
+  model_info:
+    elapsed_time: 3.431
+    bge_elapsed_time: 0.086
+    llm_elapsed_time: 3.329
+    validation_elapsed_time: 0.016
+- command: 재실 센서에서 더 이상 감지가 안 되면 ‘문이 열렸습니다’라고 말해 줘.
+  command_translated: When the occupancy sensor no longer detects it, say 'Door is open'.
+  devices:
+  - MotionSensor
+  - Clock
+  - LeakSensor
+  - PresenceSensor
+  - Speaker
+  - SoundSensor
+  - OccupancySensor
+  - TemperatureSensor
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until(#OccupancySensor).presenceSensor_presence == "not_present"
+      (#Speaker).mediaPlayback_speak("Door is open")
+  model_info:
+    elapsed_time: 2.746
+    bge_elapsed_time: 0.087
+    llm_elapsed_time: 2.643
+    validation_elapsed_time: 0.016

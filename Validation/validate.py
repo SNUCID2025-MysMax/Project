@@ -108,6 +108,8 @@ def validate(code:str, classes: dict, selected_devices: list, devices_available:
 
 # 코드 교정만 수행
 def validate_tmp(code:str, classes: dict, selected_devices: list, model) -> str:
+    code = '\n'.join([re.sub(r'#\s.*', '', line).rstrip() for line in code.splitlines()])
+
     classes = {device:extract_accessors(classes[device]) for device in selected_devices}
 
     tags = set()
