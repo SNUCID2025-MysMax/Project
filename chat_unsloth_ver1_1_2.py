@@ -108,7 +108,7 @@ def main():
         dtype=None,
         load_in_4bit=True,
     )
-    model.load_adapter(f"./models/{model_name}-adapter-250613")
+    model.load_adapter(f"./models/{model_name}-adapter-250616")
     FastLanguageModel.for_inference(model)
 
     tokenizer = get_chat_template(tokenizer, chat_template="chatml", map_eos_token=True)
@@ -118,14 +118,14 @@ def main():
     # model_bge = BGEM3FlagModel("./models/bge-m3", use_fp16=False, local_files_only=True)
     # model_sentence = SentenceTransformer('./models/paraphrase-MiniLM-L6-v2')
     model_bge = BGEM3FlagModel('BAAI/bge-m3', use_fp16=True)
-    model_sentence = SentenceTransformer("paraphrase-MiniLM-L6-v2")
-    # model_sentence = SentenceTransformer("BAAI/bge-m3")
+    # model_sentence = SentenceTransformer("paraphrase-MiniLM-L6-v2")
+    model_sentence = SentenceTransformer("BAAI/bge-m3")
 
     with open("./ServiceExtraction/integration/service_list_ver1.1.8.txt", "r") as f:
         service_doc = f.read()
     classes = extract_classes_by_name(service_doc)
 
-    for i in range(0, 17):
+    for i in range(8,17):
         if (i == 13):
             classes_copy = copy.deepcopy(classes)
             extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even",]
@@ -164,8 +164,8 @@ def main():
                     model, tokenizer, stop_token_ids, model_name, user_command_origin, user_command, service_doc
                 )      
 
-                # print(f"Command: {user_command_origin}")
-                # print(f"code: {resp}")
+                print(f"Command: {user_command_origin}")
+                print(f"code: {resp}")
 
                 start = time.time()
                 try:
@@ -200,8 +200,8 @@ def main():
         if (i == 13):
             classes = classes_copy 
 
-        os.makedirs(f"./Testset/Eval_{model_name}_250613/", exist_ok=True)
-        with open(f"./Testset/Eval_{model_name}_250613/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
+        os.makedirs(f"./Testset/Eval_{model_name}_250616/", exist_ok=True)
+        with open(f"./Testset/Eval_{model_name}_250616/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
             yaml.dump(results, out_file, indent=2, allow_unicode=True, sort_keys=False, width=float('inf'))
 
     del model

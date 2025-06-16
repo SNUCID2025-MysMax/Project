@@ -1,0 +1,359 @@
+{
+    "AirConditioner": {
+        "id": "AirConditioner",
+        "category": "AirConditioner",
+        "tags": [
+            "AirConditioner"
+        ]
+    },
+    "AirPurifier": {
+        "id": "AirPurifier",
+        "category": "AirPurifier",
+        "tags": [
+            "AirPurifier"
+        ]
+    },
+    "AirQualityDetector": {
+        "id": "AirQualityDetector",
+        "category": "AirQualityDetector",
+        "tags": [
+            "AirQualityDetector"
+        ]
+    },
+    "Alarm": {
+        "id": "Alarm",
+        "category": "Alarm",
+        "tags": [
+            "Alarm"
+        ]
+    },
+    "Blind": {
+        "id": "Blind",
+        "category": "Blind",
+        "tags": [
+            "Blind"
+        ]
+    },
+    "Button": {
+        "id": "Button",
+        "category": "Button",
+        "tags": [
+            "Button"
+        ]
+    },
+    "Buttonx4": {
+        "id": "Buttonx4",
+        "category": "Buttonx4",
+        "tags": [
+            "Buttonx4"
+        ]
+    },
+    "Calculator": {
+        "id": "Calculator",
+        "category": "Calculator",
+        "tags": [
+            "Calculator"
+        ]
+    },
+    "Camera": {
+        "id": "Camera",
+        "category": "Camera",
+        "tags": [
+            "Camera"
+        ]
+    },
+    "Charger": {
+        "id": "Charger",
+        "category": "Charger",
+        "tags": [
+            "Charger"
+        ]
+    },
+    "Clock": {
+        "id": "Clock",
+        "category": "Clock",
+        "tags": [
+            "Clock"
+        ]
+    },
+    "ContactSensor": {
+        "id": "ContactSensor",
+        "category": "ContactSensor",
+        "tags": [
+            "ContactSensor"
+        ]
+    },
+    "Curtain": {
+        "id": "Curtain",
+        "category": "Curtain",
+        "tags": [
+            "Curtain"
+        ]
+    },
+    "Dehumidifier": {
+        "id": "Dehumidifier",
+        "category": "Dehumidifier",
+        "tags": [
+            "Dehumidifier"
+        ]
+    },
+    "Dishwasher": {
+        "id": "Dishwasher",
+        "category": "Dishwasher",
+        "tags": [
+            "Dishwasher"
+        ]
+    },
+    "DoorLock": {
+        "id": "DoorLock",
+        "category": "DoorLock",
+        "tags": [
+            "DoorLock"
+        ]
+    },
+    "EmailProvider": {
+        "id": "EmailProvider",
+        "category": "EmailProvider",
+        "tags": [
+            "EmailProvider"
+        ]
+    },
+    "Fan": {
+        "id": "Fan",
+        "category": "Fan",
+        "tags": [
+            "Fan"
+        ]
+    },
+    "Feeder": {
+        "id": "Feeder",
+        "category": "Feeder",
+        "tags": [
+            "Feeder"
+        ]
+    },
+    "GasMeter": {
+        "id": "GasMeter",
+        "category": "GasMeter",
+        "tags": [
+            "GasMeter"
+        ]
+    },
+    "GasValve": {
+        "id": "GasValve",
+        "category": "GasValve",
+        "tags": [
+            "GasValve"
+        ]
+    },
+    "Humidifier": {
+        "id": "Humidifier",
+        "category": "Humidifier",
+        "tags": [
+            "Humidifier"
+        ]
+    },
+    "HumiditySensor": {
+        "id": "HumiditySensor",
+        "category": "HumiditySensor",
+        "tags": [
+            "HumiditySensor"
+        ]
+    },
+    "Irrigator": {
+        "id": "Irrigator",
+        "category": "Irrigator",
+        "tags": [
+            "Irrigator"
+        ]
+    },
+    "LeakSensor": {
+        "id": "LeakSensor",
+        "category": "LeakSensor",
+        "tags": [
+            "LeakSensor"
+        ]
+    },
+    "Light": {
+        "id": "Light",
+        "category": "Light",
+        "tags": [
+            "Light"
+        ]
+    },
+    "LightSensor": {
+        "id": "LightSensor",
+        "category": "LightSensor",
+        "tags": [
+            "LightSensor"
+        ]
+    },
+    "MenuProvider": {
+        "id": "MenuProvider",
+        "category": "MenuProvider",
+        "tags": [
+            "MenuProvider"
+        ]
+    },
+    "MotionSensor": {
+        "id": "MotionSensor",
+        "category": "MotionSensor",
+        "tags": [
+            "MotionSensor"
+        ]
+    },
+    "PresenceSensor": {
+        "id": "PresenceSensor",
+        "category": "PresenceSensor",
+        "tags": [
+            "PresenceSensor"
+        ]
+    },
+    "Pump": {
+        "id": "Pump",
+        "category": "Pump",
+        "tags": [
+            "Pump"
+        ]
+    },
+    "Refrigerator": {
+        "id": "Refrigerator",
+        "category": "Refrigerator",
+        "tags": [
+            "Refrigerator"
+        ]
+    },
+    "RobotCleaner": {
+        "id": "RobotCleaner",
+        "category": "RobotCleaner",
+        "tags": [
+            "RobotCleaner"
+        ]
+    },
+    "Shade": {
+        "id": "Shade",
+        "category": "Shade",
+        "tags": [
+            "Shade"
+        ]
+    },
+    "Siren": {
+        "id": "Siren",
+        "category": "Siren",
+        "tags": [
+            "Siren"
+        ]
+    },
+    "SmartPlug": {
+        "id": "SmartPlug",
+        "category": "SmartPlug",
+        "tags": [
+            "SmartPlug"
+        ]
+    },
+    "SmokeDetector": {
+        "id": "SmokeDetector",
+        "category": "SmokeDetector",
+        "tags": [
+            "SmokeDetector"
+        ]
+    },
+    "SoilMoistureSensor": {
+        "id": "SoilMoistureSensor",
+        "category": "SoilMoistureSensor",
+        "tags": [
+            "SoilMoistureSensor"
+        ]
+    },
+    "SoundSensor": {
+        "id": "SoundSensor",
+        "category": "SoundSensor",
+        "tags": [
+            "SoundSensor"
+        ]
+    },
+    "Speaker": {
+        "id": "Speaker",
+        "category": "Speaker",
+        "tags": [
+            "Speaker"
+        ]
+    },
+    "Recorder": {
+        "id": "Recorder",
+        "category": "Recorder",
+        "tags": [
+            "Recorder"
+        ]
+    },
+    "Switch": {
+        "id": "Switch",
+        "category": "Switch",
+        "tags": [
+            "Switch"
+        ]
+    },
+    "Television": {
+        "id": "Television",
+        "category": "Television",
+        "tags": [
+            "Television"
+        ]
+    },
+    "TemperatureSensor": {
+        "id": "TemperatureSensor",
+        "category": "TemperatureSensor",
+        "tags": [
+            "TemperatureSensor"
+        ]
+    },
+    "Valve": {
+        "id": "Valve",
+        "category": "Valve",
+        "tags": [
+            "Valve"
+        ]
+    },
+    "WeatherProvider": {
+        "id": "WeatherProvider",
+        "category": "WeatherProvider",
+        "tags": [
+            "WeatherProvider"
+        ]
+    },
+    "Window": {
+        "id": "Window",
+        "category": "Window",
+        "tags": [
+            "Window"
+        ]
+    },
+    "FallDetector": {
+        "id": "FallDetector",
+        "category": "FallDetector",
+        "tags": [
+            "FallDetector"
+        ]
+    },
+    "OccupancySensor": {
+        "id": "OccupancySensor",
+        "category": "OccupancySensor",
+        "tags": [
+            "OccupancySensor"
+        ]
+    },
+    "Relay": {
+        "id": "Relay",
+        "category": "Relay",
+        "tags": [
+            "Relay"
+        ]
+    },
+    "Timer": {
+        "id": "Timer",
+        "category": "Timer",
+        "tags": [
+            "Timer"
+        ]
+    }
+}

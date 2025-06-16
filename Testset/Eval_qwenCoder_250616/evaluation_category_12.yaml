@@ -1,0 +1,333 @@
+- command: 실시간으로 확인하여 토양 습도 센서의 값이 30% 이하가 되면 관개 장치를 켜 줘, 또한 1초마다 체크해서 온도가 25도를 넘으면 펌프를 꺼 줘.
+  command_translated: Check in real-time to turn on the irrigation when the soil moisture sensor reads 30% or less. Also, check every second to turn off the pump when the temperature exceeds 25 degrees.
+  devices:
+  - Pump
+  - Dehumidifier
+  - Clock
+  - HumiditySensor
+  - Irrigator
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - LeakSensor
+  - Speaker
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      if (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0 {
+        (#Irrigator).switch_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 1000
+    code: |-
+      if (#TemperatureSensor).temperatureMeasurement_temperature > 25.0 {
+        (#Pump).switch_off()
+      }
+  model_info:
+    elapsed_time: 5.488
+    bge_elapsed_time: 0.096
+    llm_elapsed_time: 5.198
+    validation_elapsed_time: 0.195
+- command: 펌프가 꺼지면 스피커를 켜고, 토양 습도 센서의 값이 20% 이하가 되면 관개 장치를 켜 줘.
+  command_translated: Turn on the speaker when the pump turns off, and turn on the irrigation when the soil moisture sensor reads 20% or less.
+  devices:
+  - Pump
+  - Clock
+  - SoundSensor
+  - HumiditySensor
+  - Irrigator
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - LeakSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Pump).switch_switch == "off") {
+        (#Speaker).switch_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+      (#Irrigator).switch_on()
+  model_info:
+    elapsed_time: 4.913
+    bge_elapsed_time: 0.09
+    llm_elapsed_time: 4.7
+    validation_elapsed_time: 0.123
+- command: 토양 습도 센서의 값이 25% 이하로 떨어진 후 10초 동안 값이 변하지 않으면 알람의 사이렌을 울려 줘. 그리고 조명은 그냥 꺼 줘.
+  command_translated: When the soil moisture sensor's reading drops below 25% and doesn't change for 10 seconds, sound the alarm's siren. And just turn off the lights.
+  devices:
+  - Siren
+  - Light
+  - Clock
+  - Alarm
+  - SoundSensor
+  - HumiditySensor
+  - TemperatureSensor
+  - MotionSensor
+  - SoilMoistureSensor
+  - LightSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+      wait until(not wait until(#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity == (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity, timeout: 10000)
+      (#Alarm).alarm_siren()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      (#Speaker).mediaPlayback_speak("Please check your plants. The soil moisture is too low.")
+      (#Light).switch_off()
+  model_info:
+    elapsed_time: 7.204
+    bge_elapsed_time: 0.115
+    llm_elapsed_time: 6.948
+    validation_elapsed_time: 0.14
+- command: 실시간으로 확인하여 조명이 켜지면 펌프를 켜 줘, 토양 습도 센서의 값이 30% 이하로 떨어지면 블라인드를 닫아 줘.
+  command_translated: Check in real-time to turn on the pump when the lights come on, and close the blinds when the soil moisture sensor drops below 30%.
+  devices:
+  - Pump
+  - Light
+  - LeakSensor
+  - Clock
+  - HumiditySensor
+  - ContactSensor
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - LightSensor
+  - Speaker
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#Light).switch_switch == "on") {
+        (#Pump).switch_on()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+        (#Blind).blind_close()
+      }
+  model_info:
+    elapsed_time: 5.315
+    bge_elapsed_time: 0.118
+    llm_elapsed_time: 5.003
+    validation_elapsed_time: 0.195
+- command: 관개 장치가 꺼지고 나서 토양 습도 센서의 값이 20% 이하로 떨어지면 사이렌과 경광등을 켜 줘. 커튼이 닫혀 있으면 열어 줘.
+  command_translated: Turn on the siren and strobes if the soil moisture sensor drops below 20% after the irrigation is turned off. Open the curtains if they are closed.
+  devices:
+  - Siren
+  - Clock
+  - Alarm
+  - Curtain
+  - HumiditySensor
+  - Irrigator
+  - TemperatureSensor
+  - SoilMoistureSensor
+  - LeakSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until((#Irrigator).switch_switch == "off")
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
+      (#Siren).sirenMode_setSirenMode("both")
+      (#Siren).sirenMode_setSirenMode("both")
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Curtain).curtain_curtain == "closed") {
+        (#Curtain).curtain_open()
+      }
+  model_info:
+    elapsed_time: 6.461
+    bge_elapsed_time: 0.094
+    llm_elapsed_time: 6.233
+    validation_elapsed_time: 0.134
+- command: 실시간으로 확인하여 문이 열릴 때마다 조명을 켜 줘, TV가 꺼지면 스피커를 끄고 블라인드를 닫아 줘.
+  command_translated: Check in real-time to turn on the lights whenever the door opens. And turn off the speakers when the TV is turned off, and close the blinds.
+  devices:
+  - DoorLock
+  - Light
+  - Shade
+  - Clock
+  - Window
+  - Curtain
+  - Television
+  - Speaker
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      doorOpened := false
+      if ((#DoorLock).doorControl_door == "open") {
+        if (doorOpened == false) {
+          (#Light).switch_on()
+          doorOpened = true
+        }
+      } else {
+        doorOpened = false
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      tvTurnedOff := false
+      if ((#Television).switch_switch == "off") {
+        if (tvTurnedOff == false) {
+          (#Speaker).switch_off()
+          (#Blind).blind_close()
+          tvTurnedOff = true
+        }
+      } else {
+        tvTurnedOff = false
+      }
+  model_info:
+    elapsed_time: 8.434
+    bge_elapsed_time: 0.114
+    llm_elapsed_time: 8.096
+    validation_elapsed_time: 0.224
+- command: 제습기가 꺼지면 켜 줘, 조명이 꺼져 있으면 밝기를 50퍼센트로 설정해 줘.
+  command_translated: When the dehumidifier turns off, turn it on. If the lights are off, set the brightness to 50 percent.
+  devices:
+  - Light
+  - LightSensor
+  - Dehumidifier
+  - Alarm
+  - Clock
+  - HumiditySensor
+  - Irrigator
+  - Humidifier
+  - Speaker
+  - AirPurifier
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until(#Dehumidifier).switch_switch == "off"
+      (#Dehumidifier).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#Light).switch_switch == "off") {
+        (#Light).switchLevel_setLevel(50, 100)
+      }
+  model_info:
+    elapsed_time: 5.165
+    bge_elapsed_time: 0.09
+    llm_elapsed_time: 4.904
+    validation_elapsed_time: 0.171
+- command: 창문이 열리면 블라인드를 닫고, 조명이 꺼지면 선풍기를 켜 줘.
+  command_translated: Close the blinds when the window opens, turn on the fan when the lights turns off.
+  devices:
+  - Fan
+  - Light
+  - Shade
+  - DoorLock
+  - Clock
+  - Window
+  - Curtain
+  - GasValve
+  - Valve
+  - Speaker
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until(#Window).windowControl_window == "open"
+      (#Blind).blind_close()
+  - name: "Scenario2"
+    cron: ""
+    period: -1
+    code: |-
+      wait until(#Light).switch_switch == "off"
+      (#Fan).switch_on()
+  model_info:
+    elapsed_time: 4.511
+    bge_elapsed_time: 0.121
+    llm_elapsed_time: 4.164
+    validation_elapsed_time: 0.226
+- command: 실시간으로 확인하여 움직임이 감지되면 커튼을 닫고, 지금 알람의 사이렌을 울려 줘.
+  command_translated: Check in real-time, close the curtains when motion is detected, and sound the siren of alarm immediately.
+  devices:
+  - Siren
+  - DoorLock
+  - Clock
+  - Alarm
+  - SoundSensor
+  - Window
+  - Curtain
+  - MotionSensor
+  - FallDetector
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#MotionSensor).motionSensor_motion == "active") {
+        (#Curtain).curtain_close()
+        (#Alarm).alarm_siren()
+      }
+  model_info:
+    elapsed_time: 3.291
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 3.149
+    validation_elapsed_time: 0.054
+- command: 창문이 열리면 10초 후 커튼을 열어 줘. 창문과 상관없이, 5초마다 조명을 켰다 꺼 줘.
+  command_translated: when the window opens, open the curtains after 10 seconds. Turn the lights on and off every 5 seconds, regardless of the window.
+  devices:
+  - Siren
+  - Shade
+  - Light
+  - DoorLock
+  - Clock
+  - Window
+  - Curtain
+  - GasValve
+  - Speaker
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      wait until(#Window).windowControl_window == "open"
+      (#Curtain).curtain_open()
+      wait until(#Window).windowControl_window == "closed"
+      (#Curtain).curtain_close()
+  - name: "Scenario2"
+    cron: ""
+    period: 5000
+    code: |-
+      (#Light).switch_toggle()
+  model_info:
+    elapsed_time: 5.08
+    bge_elapsed_time: 0.1
+    llm_elapsed_time: 4.755
+    validation_elapsed_time: 0.225

@@ -1,7 +1,13 @@
 import re
 from sentence_transformers import SentenceTransformer, util
 
+THRESHOLD = 0.7 
+
 def extract_classes_by_name(text: str):
+    """
+    문자열로 저장된 디바이스 문서에서 각 디바이스의 설명을 추출해
+    디바이스 이름을 키로, 디바이스 설명을 값으로 하는 딕셔너리를 반환합니다.
+    """
     # pattern = r'class\s+(\w+)\s*:\s*\n\s+"""(.*?)"""'
     pattern = r'Device\s+(\w+)\s*:\s*\n\s+"""(.*?)"""'
     matches = re.finditer(pattern, text, re.DOTALL)
@@ -16,6 +22,10 @@ def extract_classes_by_name(text: str):
 
 
 def extract_accessors(dsl_text: str):
+    """
+    디바이스 설명에서 태그, 속성, 메서드 접근자를 추출합니다.
+    각 접근자는 해당하는 키로 묶인 딕셔너리 형태로 반환됩니다.
+    """
     block_patterns = {
         "Tags": re.compile(r"Tags:\n((?:\s+#[^\n]*\n)+)"),
         # "Enums": re.compile(r"Enums:\n((?:\s+\w+: \[[^\]]+\]\n*)+)"),
@@ -29,7 +39,9 @@ def extract_accessors(dsl_text: str):
         for name, pattern in block_patterns.items()
         if pattern.search(dsl_text)
     }
-
+    
+    if blocks.get("Tags"):
+        blocks["Tags"] = [line.strip() for line in blocks.get("Tags", [])]
     if blocks.get("Attributes"):
         blocks["Attributes"] = [line.split(":")[0].strip() for line in blocks.get("Attributes", [])]
     if blocks.get("Methods"):
@@ -37,6 +49,44 @@ def extract_accessors(dsl_text: str):
     return blocks
 
 def validate_accessors(code: str, tag_list, method_list, attribute_list, model) -> str:
+
+    def protect_strings(code):
+        """
+        문자열 리터럴을 플레이스홀더로 치환하여
+        코드 내에서 문자열을 보호합니다.
+        """
+        strings = []
+        
+        # 삼중 따옴표 문자열 (먼저 처리)
+        def replace_triple_quotes(match):
+            strings.append(match.group(0))
+            return f"__STRING_PLACEHOLDER_{len(strings)-1}__"
+        
+        # 단일/이중 따옴표 문자열
+        def replace_quotes(match):
+            strings.append(match.group(0))
+            return f"__STRING_PLACEHOLDER_{len(strings)-1}__"
+        
+        # 삼중 따옴표 문자열 처리 (""" 또는 ''')
+        code = re.sub(r'""".*?"""', replace_triple_quotes, code, flags=re.DOTALL)
+        code = re.sub(r"'''.*?'''", replace_triple_quotes, code, flags=re.DOTALL)
+        
+        # 일반 문자열 처리 (이스케이프 문자 고려)
+        code = re.sub(r'"(?:[^"\\]|\\.)*"', replace_quotes, code)
+        code = re.sub(r"'(?:[^'\\]|\\.)*'", replace_quotes, code)
+        
+        return code, strings
+    
+    def restore_strings(code, strings):
+        """
+        플레이스홀더를 원래 문자열로 복원합니다.
+        """
+        for i, string in enumerate(strings):
+            code = code.replace(f"__STRING_PLACEHOLDER_{i}__", string)
+        return code
+
+    # 문자열 보호
+    protected_code, string_literals = protect_strings(code)
 
     tag_embeddings = model.encode(tag_list, convert_to_tensor=True)
     method_embeddings = model.encode(method_list, convert_to_tensor=True)
@@ -52,6 +102,9 @@ def validate_accessors(code: str, tag_list, method_list, attribute_list, model) 
             return tag
         query = model.encode(tag, convert_to_tensor=True)
         scores = util.cos_sim(query, tag_embeddings)[0]
+        best_score = scores.max().item()
+        if best_score < THRESHOLD:
+            return tag
         best_match = tag_list[scores.argmax().item()]
         return best_match
     
@@ -61,6 +114,9 @@ def validate_accessors(code: str, tag_list, method_list, attribute_list, model) 
             return f".{method}("
         query = model.encode(method, convert_to_tensor=True)
         scores = util.cos_sim(query, method_embeddings)[0]
+        best_score = scores.max().item()
+        if best_score < THRESHOLD:
+            return f".{method}("
         best_match = method_list[scores.argmax().item()]
         return f".{best_match}("
 
@@ -70,13 +126,22 @@ def validate_accessors(code: str, tag_list, method_list, attribute_list, model) 
             return f".{attr}"
         query = model.encode(attr, convert_to_tensor=True)
         scores = util.cos_sim(query, attribute_embeddings)[0]
+        best_score = scores.max().item()
+        if best_score < THRESHOLD:
+            return f".{attr}"
         best_match = attribute_list[scores.argmax().item()]
         return f".{best_match}"
         
-    code = re.sub(tag_pattern, validate_tag, code)
-    code = re.sub(method_pattern, validate_method, code)
-    code = re.sub(attribute_pattern, validate_attribute, code)
-
+    # code = re.sub(tag_pattern, validate_tag, code)
+    # code = re.sub(method_pattern, validate_method, code)
+    # code = re.sub(attribute_pattern, validate_attribute, code)
+    # 보호된 코드에서 패턴 매칭 수행
+    protected_code = re.sub(tag_pattern, validate_tag, protected_code)
+    protected_code = re.sub(method_pattern, validate_method, protected_code)
+    protected_code = re.sub(attribute_pattern, validate_attribute, protected_code)
+    
+    # 문자열 복원
+    code = restore_strings(protected_code, string_literals)
     return code
 
 def validate_tag_group(code: str, devices: list = []) -> bool:
@@ -90,6 +155,7 @@ def validate_tag_group(code: str, devices: list = []) -> bool:
             return False  # 하나라도 안 맞으면 실패
 
     return True  # 모두 만족
+
 
 def validate(code:str, classes: dict, selected_devices: list, devices_available: list, model) -> str:
     classes = {device:extract_accessors(classes[device]) for device in selected_devices}

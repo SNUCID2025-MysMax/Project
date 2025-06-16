@@ -1,0 +1,301 @@
+- command: 실시간으로 확인해서 토양 습도가 25% 이하로 떨어질 때마다 급수기를 켜고 '급수 시작'이라고 스피커로 출력해줘.
+  command_translated: Check in real-time and turn on the irrigator whenever the soil humidity drops below 25% and announce "Start watering" via the speaker.
+  devices:
+  - Clock
+  - Pump
+  - HumiditySensor
+  - LeakSensor
+  - SoilMoistureSensor
+  - Speaker
+  - Humidifier
+  - Irrigator
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      if (any(#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 25.0) {
+        (#Irrigator).switch_on()
+        (#Speaker).mediaPlayback_speak("Start watering")
+      }
+  model_info:
+    elapsed_time: 4.337
+    bge_elapsed_time: 0.092
+    llm_elapsed_time: 4.193
+    validation_elapsed_time: 0.052
+- command: 1초마다 상태를 확인해서 온도가 35도를 초과할 때마다 환풍기를 켜 줘.
+  command_translated: Check the status every 1 second and turn on the fan whenever the temperature exceeds 35 degrees.
+  devices:
+  - Clock
+  - Speaker
+  - Window
+  - Fan
+  - Calculator
+  - TemperatureSensor
+  - Irrigator
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      fanOn := false
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        if (fanOn == false) {
+          (#Fan).switch_on()
+          fanOn = true
+        }
+      } else {
+        fanOn = false
+      }
+  model_info:
+    elapsed_time: 4.288
+    bge_elapsed_time: 0.109
+    llm_elapsed_time: 4.125
+    validation_elapsed_time: 0.054
+- command: 3초마다 일조량을 확인해서 200룩스 이하로 떨어지면 조명을 켜 줘.
+  command_translated: Check the sunlight every 3 seconds and turn on the lights if it drops below 200 lux.
+  devices:
+  - Light
+  - Clock
+  - Speaker
+  - Siren
+  - LightSensor
+  - Blind
+  - TemperatureSensor
+  - Alarm
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |-
+      lightLevel := (#LightSensor).lightLevel_light
+      if (lightLevel < 200.0) {
+        (#Light).switch_on()
+      }
+  model_info:
+    elapsed_time: 3.61
+    bge_elapsed_time: 0.107
+    llm_elapsed_time: 3.415
+    validation_elapsed_time: 0.088
+- command: 문이 열릴 때마다 경광등과 조명을 켜 줘. 실시간으로 확인해서 상태를 계속 검사해서 반응해 줘.
+  command_translated: Turn on sirens and lights whenever a door is opened. Check in real time and react by constantly checking the status.
+  devices:
+  - Light
+  - Clock
+  - Window
+  - Siren
+  - Timer
+  - LightSensor
+  - DoorLock
+  - Speaker
+  - Alarm
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      doorOpened := false
+      if ((#DoorLock).doorControl_door == "open") {
+        if (doorOpened == false) {
+          (#Siren).switch_on()
+          (#Light).switch_on()
+          doorOpened = true
+        }
+      } else {
+        doorOpened = false
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#DoorLock).doorControl_door == "open") {
+        (#Siren).switch_on()
+        (#Light).switch_on()
+      } else {
+        (#Siren).switch_off()
+        (#Light).switch_off()
+      }
+  model_info:
+    elapsed_time: 7.289
+    bge_elapsed_time: 0.089
+    llm_elapsed_time: 7.025
+    validation_elapsed_time: 0.175
+- command: 현재 날씨에서 비가 감지될 때마다 관개 장치를 꺼 주고 '비가 감지되었습니다'라고 스피커로 출력해줘. 감지는 1분에 한번씩만 하자.
+  command_translated: Whenever rain is detected in the current weather, turn off the irrigator and announce "Rain detected" via the speaker. Let's detect only once a minutae.
+  devices:
+  - Clock
+  - MotionSensor
+  - LeakSensor
+  - HumiditySensor
+  - FallDetector
+  - Speaker
+  - TemperatureSensor
+  - Irrigator
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 60000
+    code: |-
+      if (any(#WeatherProvider).weatherProvider_weather == "rain") {
+        (#Irrigator).switch_off()
+        (#Speaker).mediaPlayback_speak("Rain detected")
+      }
+  model_info:
+    elapsed_time: 3.602
+    bge_elapsed_time: 0.094
+    llm_elapsed_time: 3.459
+    validation_elapsed_time: 0.049
+- command: 실시간으로 확인해서 거실 창문이 열릴 때마다 블라인드를 닫아 줘.
+  command_translated: Check in real-time and close the blinds whenever the living room window opens.
+  devices:
+  - Shade
+  - Clock
+  - Window
+  - OccupancySensor
+  - Blind
+  - Valve
+  - Curtain
+  - DoorLock
+  - Speaker
+  - PresenceSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#Window).windowControl_window == "open") {
+        (#Blind).blind_close()
+      }
+  model_info:
+    elapsed_time: 2.993
+    bge_elapsed_time: 0.102
+    llm_elapsed_time: 2.801
+    validation_elapsed_time: 0.09
+- command: 조명이 켜질 때마다 커튼을 동시에 열어 줘. 실시간으로 조명을 체크해야 해.
+  command_translated: Open the curtains at the same time whenever the lights come on. Check the lights in real time.
+  devices:
+  - Light
+  - Clock
+  - Siren
+  - Timer
+  - LightSensor
+  - Blind
+  - Curtain
+  - Speaker
+  - Alarm
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |-
+      windowOpened := false
+      if ((#Clock).curtain_curtain == "open") {
+        windowOpened = true
+      }
+      if (windowOpened == false) {
+        (#Curtain).curtain_open()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      windowClosed := false
+      if ((#Clock).curtain_curtain == "closed") {
+        windowClosed = true
+      }
+      if (windowClosed == false) {
+        (#Curtain).curtain_close()
+      }
+  model_info:
+    elapsed_time: 6.557
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 6.242
+    validation_elapsed_time: 0.227
+- command: 2초마다 상태를 확인해서 TV가 켜질 때마다 스피커도 켜 줘.
+  command_translated: Check status every 2 seconds and turn on the speakers whenever the TV turns on.
+  devices:
+  - Buttonx4
+  - Clock
+  - Window
+  - Blind
+  - AirQualityDetector
+  - Television
+  - Speaker
+  - Irrigator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |2-
+
+      if ((#Television).switch_switch == "on") {
+        (#Speaker).switch_on()
+      }
+  model_info:
+    elapsed_time: 3.775
+    bge_elapsed_time: 0.086
+    llm_elapsed_time: 3.59
+    validation_elapsed_time: 0.099
+- command: 현관 문이 열릴 때마다 즉시 알람의 경광등을 켜 줘. 확인은 실시간으로 하구.
+  command_translated: Instantly turn on the alarm's light whenever the front door is opened. Check in real time.
+  devices:
+  - Light
+  - Clock
+  - Window
+  - Siren
+  - Timer
+  - LightSensor
+  - DoorLock
+  - Speaker
+  - Alarm
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      if ((#DoorLock).doorControl_door == "open") {
+        (#Alarm).alarm_strobe()
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |-
+      if ((#DoorLock).doorControl_door == "open") {
+        (#Alarm).alarm_strobe()
+      }
+  model_info:
+    elapsed_time: 4.607
+    bge_elapsed_time: 0.088
+    llm_elapsed_time: 4.385
+    validation_elapsed_time: 0.134
+- command: 1초마다 공기청정기 상태를 확인해서 꺼지면 자동 모드로 다시 켜 줘.
+  command_translated: Check the status of the air purifier every 1 second and turn it back on and set to auto mode if it turns off.
+  devices:
+  - AirPurifier
+  - Clock
+  - Window
+  - Dehumidifier
+  - Fan
+  - AirQualityDetector
+  - Speaker
+  - Humidifier
+  - Irrigator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |-
+      airpurifierStatus := (#AirPurifier).switch_switch
+      if (airpurifierStatus == "off") {
+        (#AirPurifier).switch_on()
+        (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode("auto")
+      }
+  model_info:
+    elapsed_time: 4.649
+    bge_elapsed_time: 0.102
+    llm_elapsed_time: 4.489
+    validation_elapsed_time: 0.058

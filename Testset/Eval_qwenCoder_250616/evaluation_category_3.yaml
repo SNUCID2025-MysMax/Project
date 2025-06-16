@@ -1,0 +1,279 @@
+- command: 지금 바로 관수기를 작동해 줘.
+  command_translated: Run the irrigator now.
+  devices:
+  - Speaker
+  - Feeder
+  - Clock
+  - Pump
+  - Refrigerator
+  - Relay
+  - Dehumidifier
+  - Humidifier
+  - Irrigator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |-
+      (#Irrigator).switch_on()
+      (#Irrigator).irrigatorOperatingState_startWatering()
+  model_info:
+    elapsed_time: 3.089
+    bge_elapsed_time: 0.083
+    llm_elapsed_time: 2.948
+    validation_elapsed_time: 0.057
+- command: 매일 아침 8시에 조명을 켜 줘.
+  command_translated: Turn on the lights at 8am every morning.
+  devices:
+  - Speaker
+  - LightSensor
+  - Siren
+  - Clock
+  - Blind
+  - Alarm
+  - Light
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8 * * *"
+    period: 0
+    code: |-
+      (#Light).switch_on()
+  - name: "Scenario2"
+    cron: "0 8 * * *"
+    period: 0
+    code: |-
+      (#Light).switch_on()
+  model_info:
+    elapsed_time: 3.811
+    bge_elapsed_time: 0.107
+    llm_elapsed_time: 3.569
+    validation_elapsed_time: 0.135
+- command: 매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘.
+  command_translated: Close and open the curtains every 15 seconds between 6pm and 7pm every day.
+  devices:
+  - Window
+  - DoorLock
+  - Speaker
+  - Pump
+  - Curtain
+  - Blind
+  - Valve
+  - Clock
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 15000
+    code: |-
+      if (clock_hour >= 18 and clock_hour < 19) {
+        (#Curtain).curtain_close()
+        wait until(clock_hour >= 18 and clock_minute >= 15)
+        (#Curtain).curtain_open()
+      }
+  model_info:
+    elapsed_time: 4.328
+    bge_elapsed_time: 0.1
+    llm_elapsed_time: 4.168
+    validation_elapsed_time: 0.06
+- command: 주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘.
+  command_translated: Close the blinds every 3 minutes from 10-11pm on weekends.
+  devices:
+  - Window
+  - Speaker
+  - Buttonx4
+  - Curtain
+  - Blind
+  - Timer
+  - Clock
+  - Shade
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 3.871
+    bge_elapsed_time: 0.099
+    llm_elapsed_time: 3.713
+    validation_elapsed_time: 0.059
+- command: 주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘.
+  command_translated: Turn on the dehumidifier every 3 seconds from 10-11pm on weekends.
+  devices:
+  - Window
+  - Speaker
+  - AirPurifier
+  - Clock
+  - HumiditySensor
+  - Refrigerator
+  - Dehumidifier
+  - Humidifier
+  generated_code:
+  - name: Scenario1
+    cron: ''
+    period: -1
+    code: ""
+  model_info:
+    elapsed_time: 5.588
+    bge_elapsed_time: 0.1
+    llm_elapsed_time: 5.431
+    validation_elapsed_time: 0.057
+- command: 10초마다 알람과 사이렌을 껐다 켰다 반복해 줘.
+  command_translated: Turn the alarm and siren off and on every 10 seconds.
+  devices:
+  - SoundSensor
+  - Speaker
+  - GasValve
+  - Siren
+  - Blind
+  - Alarm
+  - Timer
+  - Clock
+  - Relay
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |-
+      (#Alarm).alarm_off()
+      (#Siren).switch_off()
+      (#Alarm).alarm_siren()
+      (#Siren).switch_on()
+  model_info:
+    elapsed_time: 3.367
+    bge_elapsed_time: 0.103
+    llm_elapsed_time: 3.206
+    validation_elapsed_time: 0.058
+- command: 매일 30초마다 선풍기를 껐다 켰다 반복해 줘.
+  command_translated: Turn the fan off and on every 30 seconds every day.
+  devices:
+  - Window
+  - Speaker
+  - GasValve
+  - Clock
+  - Timer
+  - Fan
+  - Dehumidifier
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 30000
+    code: |-
+      (#Fan).switch_off()
+      (#Fan).switch_on()
+  model_info:
+    elapsed_time: 2.599
+    bge_elapsed_time: 0.098
+    llm_elapsed_time: 2.437
+    validation_elapsed_time: 0.064
+- command: 매일 자정에 TV를 꺼 줘.
+  command_translated: Turn off the TV at midnight every night.
+  devices:
+  - Speaker
+  - AirQualityDetector
+  - GasValve
+  - Clock
+  - Blind
+  - Timer
+  - Dehumidifier
+  - Television
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: -1
+    code: |-
+      (#Television).switch_off()
+  - name: "Scenario2"
+    cron: "0 0 * * *"
+    period: -1
+    code: |-
+      (#Television).switch_off()
+  model_info:
+    elapsed_time: 4.017
+    bge_elapsed_time: 0.097
+    llm_elapsed_time: 3.682
+    validation_elapsed_time: 0.238
+- command: 5초마다 텔레비전 볼륨을 1씩 높여 줘.
+  command_translated: Increase the volume of the television by 1 every 5 seconds.
+  devices:
+  - SoundSensor
+  - Speaker
+  - Recorder
+  - Clock
+  - Fan
+  - Blind
+  - Calculator
+  - GasMeter
+  - Television
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |-
+      currentVolume := (#Television).audioVolume_volume
+      newVolume := currentVolume + 1
+      (#Television).audioVolume_setVolume(newVolume)
+  model_info:
+    elapsed_time: 3.406
+    bge_elapsed_time: 0.085
+    llm_elapsed_time: 3.249
+    validation_elapsed_time: 0.073
+- command: 평일 오전 8시부터 자정까지 한 시간마다 조명을 켜 줘.
+  command_translated: Turn on the lights every hour on the hour from 8am to midnight on weekdays.
+  devices:
+  - Speaker
+  - LightSensor
+  - Siren
+  - Clock
+  - Blind
+  - Alarm
+  - Timer
+  - Light
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8-23 * * 1-5"
+    period: 0
+    code: |-
+      (#Light).switch_on()
+      name = "Scenario2"
+      cron = "0 8-23 * * 1-5"
+      period = 0
+      (#Light).switch_on()
+      name = "Scenario3"
+      cron = "0 8-23 * * 1-5"
+      period = 0
+      (#Light).switch_on()
+      name = "Scenario4"
+      cron = "0 8-23 * * 1-5"
+      period = 0
+      (#Light).switch_on()
+      name = "Scenario5"
+      cron = "0 8-23 * * 1-5"
+      period = 0
+      (#Light).switch_on()
+      name = "Scenario6"
+      cron = "0 8-23 * * 1-5"
+      period = 0
+      (#Light).switch_on()
+      name = "Scenario7"
+      cron = "0 8-23 * * 1-5"
+      period = 0
+      (#Light).switch_on()
+      name = "Scenario8"
+      cron = "0 8-23 * * 1-5"
+      period = 0
+      (#Light).switch_on()
+      name = "Scenario9"
+      cron = "0 8-23 * * 1-5"
+      period = 0
+      (#Light).switch_on()
+      name = "Scenario10"
+      cron = "0 8-23 * * 1-5"
+      period = 0
+      (#Light).switch_on()
+  model_info:
+    elapsed_time: 15.001
+    bge_elapsed_time: 0.1
+    llm_elapsed_time: 14.842
+    validation_elapsed_time: 0.058

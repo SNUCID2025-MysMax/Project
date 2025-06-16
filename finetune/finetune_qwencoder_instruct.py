@@ -38,11 +38,11 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 
 model = FastLanguageModel.get_peft_model(
     model,
-    r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+    r = 32, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
                       "gate_proj", "up_proj", "down_proj",],
-    lora_alpha = 32,
-    lora_dropout = 0, # Supports any, but = 0 is optimized
+    lora_alpha = 64,
+    lora_dropout = 0.05, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
     random_state = 3407,
@@ -132,7 +132,7 @@ def load_dataset():
     global classes
     extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even"]
     ret = []
-    current_time = datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
+    current_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
     for i in range(0, 17):  # 범위를 필요에 따라 조정
         
@@ -175,10 +175,7 @@ def load_dataset():
         except Exception as e:
             print(f"데이터 처리 중 오류: {e}")
 
-        if i == 0:
-            continue
-
-        file_name = f"../ChatGPT/data_augment/trainset/generated_data_{i}.json"
+        file_name = f"../ChatGPT/data_augment/trainset_json/generated_data_{i}.json"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
                 data = json.load(file)
@@ -261,8 +258,6 @@ print(f"Average length: {sum(lengths) / len(lengths):.2f}")
 trainer = SFTTrainer(
     model = model,
     tokenizer = tokenizer,
-    # train_dataset = train_dataset,
-    # eval_dataset= eval_dataset,
     train_dataset = MY_DATASET,
     packing = False,  # Can make training 5x faster for short sequences.
     args = SFTConfig(
@@ -271,20 +266,19 @@ trainer = SFTTrainer(
         gradient_accumulation_steps = 4,
         max_seq_length = max_seq_length,
         # warmup_steps = 20,
-        warmup_ratio = 0.05,
-        num_train_epochs = 2,
-        learning_rate = 2e-5, #1e-6
+        warmup_ratio = 0.1,
+        num_train_epochs = 3,
+        learning_rate = 3e-5, #1e-6
         optim = "adamw_8bit",
-        weight_decay = 0.01,
-        lr_scheduler_type = "cosine",
+        weight_decay = 1.0,
+        lr_scheduler_type = "linear",
         seed = 3407,
         dataset_text_field = "text",
         report_to = "none",
-        max_grad_norm = 1.0,
+        max_grad_norm = 0.3,
         dataset_num_proc = min(8, multiprocessing.cpu_count()),
         dataloader_num_workers = min(8, multiprocessing.cpu_count()),
-        logging_steps= 10,
-        logging_dir = "./logs",
+        logging_steps= 25,
         # auto_find_batch_size = True,
         fp16 = False,
         bf16 = True, 
