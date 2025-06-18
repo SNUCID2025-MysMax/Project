@@ -249,7 +249,7 @@ def compare_all_print(model_name: str):
         match = re.search(r'(\d+)', filename)
         return int(match.group(1)) if match else float('inf')
     
-    files = [f"category_{i}.yaml" for i in range(1, 17)]
+    files = [f"category_{i}.yaml" for i in range(1, 10)]
     
     for file_idx, file in enumerate(files):
         file_results = []
@@ -263,7 +263,7 @@ def compare_all_print(model_name: str):
         
         cnt = 0
         for ex_idx, (gold_item, pred_item) in enumerate(zip(gold_data, pred_data)):
-            if file_idx != 0 and ex_idx < 5:
+            if len(gold_data) > 5 and ex_idx >= 5:
                 continue
             cnt += 1
 

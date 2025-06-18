@@ -38,15 +38,14 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 
 model = FastLanguageModel.get_peft_model(
     model,
-    r = 32, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
-    target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
-                      "gate_proj", "up_proj", "down_proj",],
-    lora_alpha = 32,
+    r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+    target_modules = ["q_proj", "k_proj", "v_proj", "o_proj"],
+    lora_alpha = 16,
     lora_dropout = 0, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
     random_state = 3407,
-    use_rslora = True,  # We support rank stabilized LoRA
+    use_rslora = False,  # We support rank stabilized LoRA
     loftq_config = None, # And LoftQ
 )
 
@@ -101,7 +100,7 @@ def read_yaml(data):
     dic["code"] = s
     return dic
 
-def read_json(data):
+def read_yaml2(data):
     dic = {}
     dic['command'] = data['command']
 
@@ -174,12 +173,13 @@ def load_dataset():
         except Exception as e:
             print(f"데이터 처리 중 오류: {e}")
 
-        file_name = f"../ChatGPT/data_augment/trainset_json/generated_data_{i}.json"
+        file_name = f"../ChatGPT/data_augment/trainset_yaml_parameter/generated_data_{i}.yaml"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
-                data = json.load(file)
+                # data = json.load(file)
+                data = yaml.safe_load(file)
             for item in data:
-                result = read_json(item)
+                result = read_yaml2(item)
                 devices = result['devices']
                 service_doc = "\n---\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
@@ -245,96 +245,96 @@ print(f"Min length: {min(lengths)}")
 print(f"Average length: {sum(lengths) / len(lengths):.2f}")
 ######################################################################################
 
-# trainer = SFTTrainer(
-#     model = model,
-#     tokenizer = tokenizer,
-#     train_dataset = MY_DATASET,
-#     packing = False,  # Can make training 5x faster for short sequences.
-#     args = SFTConfig(
-#         use_liger_kernel = True,
-#         per_device_train_batch_size = 4,
-#         gradient_accumulation_steps = 4,
-#         max_seq_length = max_seq_length,
-#         warmup_steps = 20,
-#         # warmup_ratio = 0.1,
-#         num_train_epochs = 2,
-#         learning_rate = 2e-5, #1e-6
-#         optim = "adamw_8bit",
-#         weight_decay = 0.1,
-#         lr_scheduler_type = "linear",
-#         seed = 3407,
-#         dataset_text_field = "text",
-#         report_to = "none",
-#         max_grad_norm = 0.3,
-#         dataset_num_proc = min(8, multiprocessing.cpu_count()),
-#         dataloader_num_workers = min(8, multiprocessing.cpu_count()),
-#         logging_steps= 15,
-#         # auto_find_batch_size = True,
-#         fp16 = False,
-#         bf16 = True, 
-#         remove_unused_columns = True,
-#         dataloader_pin_memory = False,
-#     ),
-# )
+trainer = SFTTrainer(
+    model = model,
+    tokenizer = tokenizer,
+    train_dataset = MY_DATASET,
+    packing = False, 
+    args = SFTConfig(
+        use_liger_kernel = True,
+        per_device_train_batch_size = 4,
+        gradient_accumulation_steps = 4,
+        max_seq_length = max_seq_length,
+        # warmup_steps = 10,
+        warmup_ratio = 0.05,
+        num_train_epochs = 1.5,
+        learning_rate = 2e-5, #1e-6
+        optim = "adamw_8bit",
+        weight_decay = 0.01,
+        max_grad_norm = 0.3,
+        lr_scheduler_type = "cosine",
+        seed = 3407,
+        dataset_text_field = "text",
+        report_to = "none",
+        dataset_num_proc = min(8, multiprocessing.cpu_count()),
+        dataloader_num_workers = min(8, multiprocessing.cpu_count()),
+        logging_steps= 15,
+        # auto_find_batch_size = True,
+        fp16 = False,
+        bf16 = True, 
+        remove_unused_columns = True,
+        dataloader_pin_memory = False,
+    ),
+)
 
-# with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
-#     trainer_stats = trainer.train()
+with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
+    trainer_stats = trainer.train()
 
 
-# model.save_pretrained("../models/qwenCoder-adapter")
-# tokenizer.save_pretrained("../models/qwenCoder-adapter")
+model.save_pretrained("../models/qwenCoder-adapter")
+tokenizer.save_pretrained("../models/qwenCoder-adapter")
 
-# # 파인튜닝 정보 저장
-# import os
-# import json
+# 파인튜닝 정보 저장
+import os
+import json
 
-# # 저장 경로 생성
-# save_dir = "../models/qwenCoder-adapter"
-# os.makedirs(save_dir, exist_ok=True)
-# json_path = os.path.join(save_dir, "training_info.json")
+# 저장 경로 생성
+save_dir = "../models/qwenCoder-adapter"
+os.makedirs(save_dir, exist_ok=True)
+json_path = os.path.join(save_dir, "training_info.json")
 
-# # LoRA 설정 추출
-# peft_filter = ["base_model_name_or_path", "r", "lora_alpha", "lora_dropout", "target_modules"]
-# peft_info = {}
+# LoRA 설정 추출
+peft_filter = ["base_model_name_or_path", "r", "lora_alpha", "lora_dropout", "target_modules"]
+peft_info = {}
 
-# for adapter_name, config in model.peft_config.items():
-#     peft_info[adapter_name] = {
-#         k: list(getattr(config, k)) if isinstance(getattr(config, k), (set, tuple)) else getattr(config, k)
-#         for k in peft_filter if hasattr(config, k)
-#     }
+for adapter_name, config in model.peft_config.items():
+    peft_info[adapter_name] = {
+        k: list(getattr(config, k)) if isinstance(getattr(config, k), (set, tuple)) else getattr(config, k)
+        for k in peft_filter if hasattr(config, k)
+    }
 
-# # Tokenizer 설정 추출
-# tokenizer_info = {
-#     "add_bos_token": tokenizer.add_bos_token,
-#     "chat_template": getattr(tokenizer, "chat_template", "chatml (set manually)"),
-#     "vocab_size": tokenizer.vocab_size,
-#     "special_tokens_map": tokenizer.special_tokens_map,
-# }
+# Tokenizer 설정 추출
+tokenizer_info = {
+    "add_bos_token": tokenizer.add_bos_token,
+    "chat_template": getattr(tokenizer, "chat_template", "chatml (set manually)"),
+    "vocab_size": tokenizer.vocab_size,
+    "special_tokens_map": tokenizer.special_tokens_map,
+}
 
-# # Trainer 설정 추출
-# trainer_filter = [
-#     "per_device_train_batch_size", "gradient_accumulation_steps",
-#     "warmup_steps", "num_train_epochs", "learning_rate", "weight_decay",
-#     "max_grad_norm", "lr_scheduler_type", "bf16", "fp16",
-#     "dataloader_num_workers", "dataset_num_proc", "remove_unused_columns", "optim"
-# ]
+# Trainer 설정 추출
+trainer_filter = [
+    "per_device_train_batch_size", "gradient_accumulation_steps",
+    "warmup_steps", "num_train_epochs", "learning_rate", "weight_decay",
+    "max_grad_norm", "lr_scheduler_type", "bf16", "fp16",
+    "dataloader_num_workers", "dataset_num_proc", "remove_unused_columns", "optim"
+]
 
-# # 필터링 + max_seq_length 직접 포함
-# trainer_info = {
-#     k: trainer.args.to_dict()[k] for k in trainer_filter if k in trainer.args.to_dict()
-# }
+# 필터링 + max_seq_length 직접 포함
+trainer_info = {
+    k: trainer.args.to_dict()[k] for k in trainer_filter if k in trainer.args.to_dict()
+}
 
-# # 전체 정보 구조화
-# training_info = {
-#     "model_name": model_name,
-#     "max_seq_length": max_seq_length,
-#     "lora_config": peft_info,
-#     "tokenizer_config": tokenizer_info,
-#     "trainer_config": trainer_info,
-# }
+# 전체 정보 구조화
+training_info = {
+    "model_name": model_name,
+    "max_seq_length": max_seq_length,
+    "lora_config": peft_info,
+    "tokenizer_config": tokenizer_info,
+    "trainer_config": trainer_info,
+}
 
-# # JSON 저장
-# with open(json_path, "w", encoding="utf-8") as f:
-#     json.dump(training_info, f, indent=2, ensure_ascii=False)
+# JSON 저장
+with open(json_path, "w", encoding="utf-8") as f:
+    json.dump(training_info, f, indent=2, ensure_ascii=False)
 
-# print(f"🔧 Training info saved to {json_path}")
+print(f"🔧 Training info saved to {json_path}")

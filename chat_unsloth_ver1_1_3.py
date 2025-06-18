@@ -23,10 +23,10 @@ with open("./Demo/things_extra_tags.json", "r") as f:
     things_tags = json.load(f)
 
 def main():
-    model_name = "GPT"
-    # model_name = "qwenCoder"
+    # model_name = "GPT"
+    model_name = "qwenCoder"
     connected_devices = things
-    for i in range(0, 17):
+    for i in range(1,17):
         if (i == 13 or i == 15):
             connected_devices = things_tags
         print(f"Processing category {i}...")
@@ -34,14 +34,16 @@ def main():
             results = []
             data = yaml.load(f)
 
-            for item in tqdm(data):
+            for idx, item in tqdm(enumerate(data)):
+                if idx >= 5:
+                    continue
                 user_command = item["command_translated"]
                 user_command_origin = item["command"]
 
                 current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
                 payload = {
-                    "sentence": user_command_origin,
+                    "sentence": user_command,
                     "model": model_name,
                     "connected_devices": connected_devices,
                     "current_time": current_time,
@@ -76,17 +78,17 @@ def main():
         if (i == 13 or i == 15):
             connected_devices = things
 
-        os.makedirs(f"./Testset/Eval_{model_name}_250618_korean/", exist_ok=True)
-        with open(f"./Testset/Eval_{model_name}_250618_korean/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
+        os.makedirs(f"./Testset/Eval_{model_name}_250619_english/", exist_ok=True)
+        with open(f"./Testset/Eval_{model_name}_250619_english/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
             yaml.dump(results, out_file)
 
     gc.collect()
 
 if __name__ == "__main__":
-    # main()
+    main()
     # compare_all("qwenCoder_250616")
     # compare_all("GPT_250618")
-    # compare_all_print("qwenCoder_250618")
+    # compare_all_print("qwenCoder_250619_english")
     # compare_all_print("qwenCoder_250618_korean")
     # compare_all_print("GPT_250618")
-    compare_all_print("GPT_250618_korean")
+    # compare_all_print("GPT_250618_korean")
