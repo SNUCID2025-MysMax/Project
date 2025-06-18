@@ -1,0 +1,299 @@
+- command: "5초마다 토양 습도를 측정해서 30% 이하이면 급수기를 켜 줘. 만약 그 때 온도가 35도 이상이면 급수기를 끄고 반복도 종료해 줘."
+  command_translated: "5초마다 토양 습도를 측정해서 30% 이하이면 급수기를 켜 줘. 만약 그 때 온도가 35도 이상이면 급수기를 끄고 반복도 종료해 줘."
+  devices:
+  - Dehumidifier
+  - Clock
+  - Irrigator
+  - HumiditySensor
+  - Speaker
+  - LeakSensor
+  - TemperatureSensor
+  - Calculator
+  - SoilMoistureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |
+      triggered := false
+      temp = 0.0
+      soil = 0.0
+      temp = (#TemperatureSensor).temperatureMeasurement_temperature
+      soil = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+      if (soil <= 30.0) {
+        if (temp >= 35.0) {
+          all(#Irrigator).switch_off()
+          break
+        } else {
+          all(#Irrigator).switch_on()
+        }
+      } else {
+        all(#Irrigator).switch_off()
+      }
+  elapsed_time: 4.007 seconds
+- command: "3초 간격으로 조명을 10번 깜빡여 줘. 깜빡일 때마다 확인해서 비 감지 센서가 비를 감지하는 순간 반복을 중단해 줘."
+  command_translated: "3초 간격으로 조명을 10번 깜빡여 줘. 깜빡일 때마다 확인해서 비 감지 센서가 비를 감지하는 순간 반복을 중단해 줘."
+  devices:
+  - Blind
+  - HumiditySensor
+  - Speaker
+  - Window
+  - LeakSensor
+  - Buttonx4
+  - Shade
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      count := 0
+      stopFlag := false
+      if (stopFlag == false) {
+        (#Light).switch_on()
+        (#Clock).clock_delay(500)
+        (#Light).switch_off()
+        count = count + 1
+        wait until(count >= 10 or (#LightSensor).fallDetection_fall == true)
+        if ((#LightSensor).fallDetection_fall == true) {
+          stopFlag = true
+        }
+        if (count >= 10 or stopFlag == true) {
+          break
+        }
+        (#Clock).clock_delay(2500)
+      } else {
+        break
+      }
+  elapsed_time: 6.865 seconds
+- command: "1초마다 선풍기의 전원을 켜고 끄는 토글 동작을 반복해 줘. 매번 동작 직전에 습도를 확인해서 80% 이상이면 반복을 즉시 중단해 줘."
+  command_translated: "1초마다 선풍기의 전원을 켜고 끄는 토글 동작을 반복해 줘. 매번 동작 직전에 습도를 확인해서 80% 이상이면 반복을 즉시 중단해 줘."
+  devices:
+  - Dehumidifier
+  - HumiditySensor
+  - Speaker
+  - SmartPlug
+  - LeakSensor
+  - Buttonx4
+  - Refrigerator
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      triggered := false
+      humidity = (#HumiditySensor).relativeHumidityMeasurement_humidity
+      if (humidity >= 80.0) {
+        break
+      }
+      (#Fan).switch_toggle()
+  elapsed_time: 1.881 seconds
+- command: "5초마다 블라인드를 10퍼센트씩 닫아줘. 더 이상 못 내릴 때까지."
+  command_translated: "5초마다 블라인드를 10퍼센트씩 닫아줘. 더 이상 못 내릴 때까지."
+  devices:
+  - Button
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Shade
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |
+      triggered := false
+      if ((#Blind).blindLevel_blindLevel > 0) {
+        level = (#Blind).blindLevel_blindLevel
+        new_level = level - 10
+        if (new_level < 0) {
+          new_level = 0
+        }
+        (#Blind).blindLevel_setBlindLevel(new_level)
+      } else {
+        if (triggered == false) {
+          triggered = true
+        }
+        break
+      }
+  elapsed_time: 3.037 seconds
+- command: "10초마다 관개기를 켰다가 5초 뒤에 꺼 줘. 관개기를 끌 때, 켤 때 모두 확인해서 일조량이 500룩스 이상이면 관개기를 끄고 반복을 종료해 줘."
+  command_translated: "10초마다 관개기를 켰다가 5초 뒤에 꺼 줘. 관개기를 끌 때, 켤 때 모두 확인해서 일조량이 500룩스 이상이면 관개기를 끄고 반복을 종료해 줘."
+  devices:
+  - Irrigator
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Timer
+  - Shade
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |
+      triggered_on := false
+      triggered_off := false
+      if ((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == "idle") and (triggered_on == false) {
+          (#Irrigator).switch_on()
+          triggered_on = true
+          triggered_off = false
+          delay_start := true
+      } else if (((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == "watering") and (delay_start == true)) {
+          (#Clock).clock_delay(5000)
+          triggered_off = true
+          triggered_on = false
+          delay_start = false
+      }
+      if (triggered_off == true) {
+          if ((#Irrigator).irrigatorOperatingState_irrigatorOperatingState == "watering") {
+              (#Irrigator).switch_off()
+          }
+      }
+      if ((#Irrigator).switch_switch == "on") and ((#LightSensor).temperatureMeasurement_temperature >= 500) {
+          (#Irrigator).switch_off()
+          break
+      }
+      if ((#Irrigator).switch_switch == "off") and ((#LightSensor).temperatureMeasurement_temperature >= 500) {
+          break
+      }
+  elapsed_time: 6.286 seconds
+- command: "2초마다 거실 조명을 켰다 껐다 반복해 줘. 조명을 끌 때마다 확인해서 창문이 열려 있는 게 감지되면 반복을 즉시 중단해 줘."
+  command_translated: "2초마다 거실 조명을 켰다 껐다 반복해 줘. 조명을 끌 때마다 확인해서 창문이 열려 있는 게 감지되면 반복을 즉시 중단해 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Curtain
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |
+      stopRepeat := false
+      if (stopRepeat == true) {
+        break
+      }
+      (#Light).switch_toggle()
+      if ((#Window).windowControl_window == open) {
+        stopRepeat = true
+        break
+      }
+  elapsed_time: 2.025 seconds
+- command: "3초마다 텔레비전의 볼륨을 1씩 증가시켜서 5단계가 되면 초기값으로 되돌리는 동작을 반복해 줘. 초기값으로 되돌릴 때 확인해서 움직임이 감지되면 반복을 중단해 줘."
+  command_translated: "3초마다 텔레비전의 볼륨을 1씩 증가시켜서 5단계가 되면 초기값으로 되돌리는 동작을 반복해 줘. 초기값으로 되돌릴 때 확인해서 움직임이 감지되면 반복을 중단해 줘."
+  devices:
+  - Button
+  - Blind
+  - Speaker
+  - Television
+  - Buttonx4
+  - Camera
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |
+      volume := 0
+      if (volume < 5) {
+        volume = volume + 1
+        (#Television).audioVolume_setVolume(volume)
+      } else {
+        volume = 0
+        (#Television).audioVolume_setVolume(volume)
+        if ((any(#Button).button_button == "pushed") == true) {
+          break
+        }
+      }
+  elapsed_time: 2.719 seconds
+- command: "10초마다 블라인드를 완전히 닫아 줘. 그 때마다 확인해서 TV가 켜져 있으면 즉시 반복을 종료해."
+  command_translated: "10초마다 블라인드를 완전히 닫아 줘. 그 때마다 확인해서 TV가 켜져 있으면 즉시 반복을 종료해."
+  devices:
+  - Blind
+  - Speaker
+  - AirQualityDetector
+  - Television
+  - Window
+  - Buttonx4
+  - Curtain
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |
+      triggered := false
+      (#Blind).blind_close()
+      if ((#Television).switch_switch == on) {
+        break
+      }
+  elapsed_time: 1.918 seconds
+- command: "2초마다 알람의 사이렌을 1초간 울렸다 꺼지게 하고, 알람의 사이렌을 울릴 때마다 창문이 닫혀 있는지 확인해서 닫혀 있으면 반복을 중단해 줘."
+  command_translated: "2초마다 알람의 사이렌을 1초간 울렸다 꺼지게 하고, 알람의 사이렌을 울릴 때마다 창문이 닫혀 있는지 확인해서 닫혀 있으면 반복을 중단해 줘."
+  devices:
+  - Speaker
+  - MotionSensor
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Siren
+  - Clock
+  - Alarm
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |
+      triggered := false
+      if (triggered == false) {
+        (#Alarm).alarm_siren()
+        wait until(true)
+        (#Clock).clock_delay(1000)
+        (#Alarm).alarm_off()
+        windowState = (#Window).windowControl_window
+        if (windowState == "closed") {
+          break
+        }
+        triggered = true
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 3.628 seconds
+- command: "5초마다 실내 공기청정기를 ‘자동’ 모드로 전환해 줘. 그 때마다 확인해서 창문이 열려 있으면 모든 반복을 종료해 줘."
+  command_translated: "5초마다 실내 공기청정기를 ‘자동’ 모드로 전환해 줘. 그 때마다 확인해서 창문이 열려 있으면 모든 반복을 종료해 줘."
+  devices:
+  - Dehumidifier
+  - Speaker
+  - AirQualityDetector
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |
+      (#AirQualityDetector).dehumidifierMode_setDehumidifierMode("automatic")
+      if (any(#Window).windowControl_window == "open") {
+        break
+      }
+  elapsed_time: 2.836 seconds

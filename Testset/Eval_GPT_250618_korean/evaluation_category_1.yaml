@@ -1,0 +1,229 @@
+- command: "토양 수분이 30% 이하이고 조명이 꺼져 있으면 관개 장치를 작동시키고 조명을 켜 줘."
+  command_translated: "토양 수분이 30% 이하이고 조명이 꺼져 있으면 관개 장치를 작동시키고 조명을 켜 줘."
+  devices:
+  - Irrigator
+  - Speaker
+  - MotionSensor
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Clock
+  - SoilMoistureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) and ((#Irrigator).switch_switch == off)) {
+        (#Irrigator).switch_on()
+      }
+      if ((#Irrigator).switch_switch == on) {
+        (#Irrigator).switch_on()
+      }
+
+      (#Speaker).mediaPlayback_speak("조명 장치가 없어서 켤 수 없습니다.")
+  elapsed_time: 3.127 seconds
+- command: "온도가 33도 이상이면 제습기를 켜고 커튼을 닫아 줘."
+  command_translated: "온도가 33도 이상이면 제습기를 켜고 커튼을 닫아 줘."
+  devices:
+  - Clock
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Camera
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#TemperatureSensor).temperatureMeasurement_temperature >= 33.0) {
+        (#Dehumidifier).switch_on()
+        (#Curtain).curtain_close()
+      }
+  elapsed_time: 1.789 seconds
+- command: "이산화탄소가 1000ppm 이상이고 블라인드가 열려 있으면 환풍기를 켜고 블라인드를 닫아 줘."
+  command_translated: "이산화탄소가 1000ppm 이상이고 블라인드가 열려 있으면 환풍기를 켜고 블라인드를 닫아 줘."
+  devices:
+  - Dehumidifier
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - AirPurifier
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#TemperatureSensor).carbonDioxideMeasurement_carbonDioxide >= 1000.0) and ((#Blind).windowControl_window == open)) {
+        (#Fan).switch_on()
+        (#Blind).windowControl_close()
+      }
+  elapsed_time: 1.983 seconds
+- command: "온도가 29도 이상이고 습도가 80% 이상이며 조명이 꺼져 있으면 에어컨을 켜고 조명을 켜 줘."
+  command_translated: "온도가 29도 이상이고 습도가 80% 이상이며 조명이 꺼져 있으면 에어컨을 켜고 조명을 켜 줘."
+  devices:
+  - WeatherProvider
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#WeatherProvider).weatherProvider_temperatureWeather >= 29.0) and ((#WeatherProvider).weatherProvider_humidityWeather >= 80.0) and ((#SmartPlug).switch_switch == "off")) {
+        (#SmartPlug).switch_on()
+      }
+  elapsed_time: 2.252 seconds
+- command: "조명이 켜져 있고 창문이 닫혀 있으면 커튼을 열고 환풍기를 꺼 줘."
+  command_translated: "조명이 켜져 있고 창문이 닫혀 있으면 커튼을 열고 환풍기를 꺼 줘."
+  devices:
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Curtain
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Curtain).curtain_curtain == "closed") or ((#Curtain).curtain_curtain == "closing")) {
+        if (((#Window).windowControl_window == "closed") and ((#SmartPlug).switch_switch == "on")) {
+          (#Curtain).curtain_open()
+          (#SmartPlug).switch_off()
+        }
+      } else {
+        if (((#Window).windowControl_window == "closed") and ((#SmartPlug).switch_switch == "on")) {
+          (#Curtain).curtain_open()
+          (#SmartPlug).switch_off()
+        }
+      }
+  elapsed_time: 3.181 seconds
+- command: "TV가 꺼져 있고 스피커가 재생 중이면 TV를 켜고 스피커를 꺼 줘."
+  command_translated: "TV가 꺼져 있고 스피커가 재생 중이면 TV를 켜고 스피커를 꺼 줘."
+  devices:
+  - Blind
+  - Speaker
+  - ContactSensor
+  - AirQualityDetector
+  - Television
+  - Window
+  - SmartPlug
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Television).switch_switch == off) and ((#Speaker).mediaPlayback_playbackStatus == playing)) {
+        (#Television).switch_on()
+        (#Speaker).switch_off()
+      }
+  elapsed_time: 2.135 seconds
+- command: "조명이 켜져 있고 블라인드가 열려 있으며 움직임이 감지되면 조명을 끄고 블라인드를 닫아 줘."
+  command_translated: "조명이 켜져 있고 블라인드가 열려 있으며 움직임이 감지되면 조명을 끄고 블라인드를 닫아 줘."
+  devices:
+  - Blind
+  - Speaker
+  - MotionSensor
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Curtain
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if (((#SmartPlug).switch_switch == on) and ((#Blind).blind_blind == open) and ((#MotionSensor).motionSensor_motion == active)) {
+        if (triggered == false) {
+          all(#SmartPlug).switch_off()
+          all(#Blind).blind_close()
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 3.021 seconds
+- command: "알람이 꺼져 있고 조명이 꺼져 있으며 커튼이 열려 있으면 사이렌을 울리고 조명을 켜 줘."
+  command_translated: "알람이 꺼져 있고 조명이 꺼져 있으며 커튼이 열려 있으면 사이렌을 울리고 조명을 켜 줘."
+  devices:
+  - Speaker
+  - MotionSensor
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Curtain
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Siren).switch_switch == off) and ((#Curtain).curtain_curtain == open) and ((#Light).switch_switch == off)) {
+        (#Siren).sirenMode_setSirenMode("siren")
+        (#Light).switch_on()
+      }
+  elapsed_time: 2.693 seconds
+- command: "에어컨이 꺼져 있고 커튼이 닫혀 있으면 에어컨을 켜고 커튼을 열어 줘."
+  command_translated: "에어컨이 꺼져 있고 커튼이 닫혀 있으면 에어컨을 켜고 커튼을 열어 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Curtain
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Refrigerator).switch_switch == off) and ((#Curtain).curtain_curtain == closed)) {
+        (#Refrigerator).switch_on()
+        (#Curtain).curtain_open()
+      }
+  elapsed_time: 2.375 seconds
+- command: "TV가 켜져 있고 소리가 꺼져 있으면 TV를 끄고 음소거를 해제해 줘."
+  command_translated: "TV가 켜져 있고 소리가 꺼져 있으면 TV를 끄고 음소거를 해제해 줘."
+  devices:
+  - Dehumidifier
+  - Speaker
+  - AirQualityDetector
+  - Television
+  - Window
+  - SmartPlug
+  - Refrigerator
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Television).switch_switch == on) and ((#Television).audioMute_muteStatus == muted)) {
+        (#Television).switch_off()
+        (#Television).audioMute_unmute()
+      }
+  elapsed_time: 2.061 seconds

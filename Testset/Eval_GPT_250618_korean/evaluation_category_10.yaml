@@ -1,0 +1,382 @@
+- command: "1초마다 확인하여 관개 장치가 꺼졌다 켜진 횟수가 4번을 초과하고 펌프가 2번 이상 작동했으면 블라인드를 닫고 커튼을 내려 줘."
+  command_translated: "1초마다 확인하여 관개 장치가 꺼졌다 켜진 횟수가 4번을 초과하고 펌프가 2번 이상 작동했으면 블라인드를 닫고 커튼을 내려 줘."
+  devices:
+  - Blind
+  - Pump
+  - Irrigator
+  - Speaker
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Curtain
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      pumpCount := 0
+      irrigatorToggleCount := 0
+      prevIrrigatorState := ""
+      prevPumpState := ""
+      if (prevIrrigatorState == "") {
+        prevIrrigatorState = (#Irrigator).switch_switch
+      }
+      if (prevPumpState == "") {
+        prevPumpState = (#Pump).switch_switch
+      }
+      currentIrrigatorState = (#Irrigator).switch_switch
+      currentPumpState = (#Pump).switch_switch
+
+      if (currentIrrigatorState != prevIrrigatorState) {
+        irrigatorToggleCount = irrigatorToggleCount + 1
+        prevIrrigatorState = currentIrrigatorState
+      }
+
+      if ((currentPumpState == "on") and (prevPumpState != "on")) {
+        pumpCount = pumpCount + 1
+      }
+      prevPumpState = currentPumpState
+      if ((irrigatorToggleCount > 4) and (pumpCount >= 2)) {
+        (#Blind).blind_close()
+        (#Curtain).curtain_close()
+        irrigatorToggleCount = 0
+        pumpCount = 0
+        prevIrrigatorState = currentIrrigatorState
+        prevPumpState = currentPumpState
+        break
+      }
+  elapsed_time: 8.436 seconds
+- command: "실시간으로 검사해서 창문이 열렸다 닫힌 횟수가 3번 이상이고, 그 사이 선풍기가 한 번도 꺼지지 않았으면 선풍기를 꺼 주고 블라인드를 닫아 줘."
+  command_translated: "실시간으로 검사해서 창문이 열렸다 닫힌 횟수가 3번 이상이고, 그 사이 선풍기가 한 번도 꺼지지 않았으면 선풍기를 꺼 주고 블라인드를 닫아 줘."
+  devices:
+  - Blind
+  - Dehumidifier
+  - Speaker
+  - Window
+  - Buttonx4
+  - Curtain
+  - Shade
+  - DoorLock
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      windowOpenCloseCount := 0
+      fanNeverOff := true
+      previousWindowState := "unknown"
+      previousFanState := "unknown"
+      if (previousWindowState == "unknown") {
+        previousWindowState = (#Window).windowControl_window
+        previousFanState = (#Fan).switch_switch
+        break
+      }
+      currentWindowState = (#Window).windowControl_window
+      currentFanState = (#Fan).switch_switch
+
+      if (((previousWindowState == "closed") and (currentWindowState == "open")) or
+          ((previousWindowState == "open") and (currentWindowState == "closed"))) {
+        windowOpenCloseCount = windowOpenCloseCount + 1
+      }
+      previousWindowState = currentWindowState
+
+      if ((previousFanState == "on") and (currentFanState == "off")) {
+        fanNeverOff = false
+      }
+      previousFanState = currentFanState
+
+      if ((windowOpenCloseCount >= 3) and (fanNeverOff == true)) {
+        (#Fan).switch_off()
+        (#Blind).blind_close()
+
+        windowOpenCloseCount = 0
+        fanNeverOff = true
+        break
+      }
+  elapsed_time: 7.780 seconds
+- command: "2초마다 체크해서 매일 오전 6시부터 9시 사이에 조명이 켜져 있는 누적 시간이 10분 이상이고, 관개 장치가 세 번 이상 꺼졌다 켜졌으면 스피커로 '관수 완료되었습니다'라고 말해 줘."
+  command_translated: "2초마다 체크해서 매일 오전 6시부터 9시 사이에 조명이 켜져 있는 누적 시간이 10분 이상이고, 관개 장치가 세 번 이상 꺼졌다 켜졌으면 스피커로 '관수 완료되었습니다'라고 말해 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Timer
+  - Clock
+  generated_code: []
+  elapsed_time: 11.519 seconds
+- command: "실시간으로 확인하여 토양 습도 센서 값이 연속으로 3회 15 이하를 기록하고 그 중 두 번째 값이 가장 낮았다면 관개 장치를 켜고 블라인드를 닫아 줘. 단, 3월은 제외하고."
+  command_translated: "실시간으로 확인하여 토양 습도 센서 값이 연속으로 3회 15 이하를 기록하고 그 중 두 번째 값이 가장 낮았다면 관개 장치를 켜고 블라인드를 닫아 줘. 단, 3월은 제외하고."
+  devices:
+  - Clock
+  - HumiditySensor
+  - Speaker
+  - Window
+  - LeakSensor
+  - Buttonx4
+  - Shade
+  - TemperatureSensor
+  - SoilMoistureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      countBelow15 := 0
+      values := [0, 0, 0]
+      if (#Clock).clock_month != 3 {
+        currentValue = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+        if (currentValue <= 15.0) {
+          countBelow15 = countBelow15 + 1
+          values[0] = values[1]
+          values[1] = values[2]
+          values[2] = currentValue
+          if (countBelow15 >= 3) {
+            secondIsLowest = (values[1] < values[0]) and (values[1] < values[2])
+            if (secondIsLowest == true) {
+              all(#Irrigator).switch_on()
+              all(#Shade).windowShade_close()
+              break
+            }
+          }
+        } else {
+          countBelow15 = 0
+          values = [0, 0, 0]
+        }
+      } else {
+        countBelow15 = 0
+        values = [0, 0, 0]
+      }
+  elapsed_time: 9.179 seconds
+- command: "매시간 0분부터 30분까지, 3초마다 확인해서 제습기가 켜졌다 꺼진 횟수가 4번 이상이고, 그 때 습도가 65% 이상이면 사이렌을 1초간, 3초 간격으로 두 번 울리고 그 후 커튼을 닫아 줘."
+  command_translated: "매시간 0분부터 30분까지, 3초마다 확인해서 제습기가 켜졌다 꺼진 횟수가 4번 이상이고, 그 때 습도가 65% 이상이면 사이렌을 1초간, 3초 간격으로 두 번 울리고 그 후 커튼을 닫아 줘."
+  devices:
+  - Clock
+  - HumiditySensor
+  - Speaker
+  - Window
+  - Buttonx4
+  - Curtain
+  - Shade
+  - TemperatureSensor
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 * * * *"
+    period: 3000
+    code: |
+      count_on_off := 0
+      in_alert := false
+      if (((#Clock).clock_minute >= 0) and ((#Clock).clock_minute <= 30)) {
+        if (in_alert == false) {
+          if ((#Dehumidifier).switch_switch == true) {
+            if ((#Dehumidifier).switch_switch == false) {
+              count_on_off = count_on_off + 1
+            }
+          } else {
+            if ((#Dehumidifier).switch_switch == true) {
+              count_on_off = count_on_off + 1
+            }
+          }
+          (#Dehumidifier).switch_switch = (#Dehumidifier).switch_switch
+          if ((count_on_off >= 4) and ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 65.0)) {
+            in_alert = true
+            (#Siren).sirenMode_setSirenMode("siren")
+            (#Clock).clock_delay(1000)
+            (#Clock).clock_delay(3000)
+            (#Siren).sirenMode_setSirenMode("siren")
+            (#Clock).clock_delay(1000)
+            (#Curtain).curtain_close()
+          }
+        }
+      } else {
+        count_on_off = 0
+        in_alert = false
+        (#Dehumidifier).switch_switch = (#Dehumidifier).switch_switch
+        break
+      }
+  elapsed_time: 7.776 seconds
+- command: "10분마다 확인하여 온도가 5도 이상 연속으로 세 번 상승하고 에어컨이 꺼져 있으면 에어컨을 키고 냉방 모드로 설정해줘"
+  command_translated: "10분마다 확인하여 온도가 5도 이상 연속으로 세 번 상승하고 에어컨이 꺼져 있으면 에어컨을 키고 냉방 모드로 설정해줘"
+  devices:
+  - Clock
+  - AirConditioner
+  - Speaker
+  - Window
+  - Refrigerator
+  - Buttonx4
+  - Curtain
+  - TemperatureSensor
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 600000
+    code: |
+      countRise := 0
+      prevTemp := 0.0
+      if (prevTemp == 0.0) {
+        prevTemp = (#TemperatureSensor).temperatureMeasurement_temperature
+        break
+      }
+      currentTemp = (#TemperatureSensor).temperatureMeasurement_temperature
+      if ((currentTemp - prevTemp) >= 5.0) {
+        countRise = countRise + 1
+      } else {
+        countRise = 0
+      }
+      prevTemp = currentTemp
+      if ((countRise >= 3) and ((#AirConditioner).switch_switch == "off")) {
+        (#AirConditioner).switch_on()
+        (#AirConditioner).airConditionerMode_setAirConditionerMode("cool")
+        countRise = 0
+      }
+      break
+  elapsed_time: 3.872 seconds
+- command: "시각 상관없이 항상, 5초마다 체크해서 TV가 10분 동안 꺼져 있었다가 켜지는 이벤트가 두 번 이상 발생했으면, 스피커를 켜고 조명을 60으로 맞춰 줘. 단, 수요일에는 빼고"
+  command_translated: "시각 상관없이 항상, 5초마다 체크해서 TV가 10분 동안 꺼져 있었다가 켜지는 이벤트가 두 번 이상 발생했으면, 스피커를 켜고 조명을 60으로 맞춰 줘. 단, 수요일에는 빼고"
+  devices:
+  - Blind
+  - Speaker
+  - AirQualityDetector
+  - Television
+  - Window
+  - Shade
+  - Clock
+  - Calculator
+  generated_code: []
+  elapsed_time: 6.631 seconds
+- command: "3초마다 확인해서 조명이 꺼진 상태에서 3분 이상 유지되다가 다시 켜지는 일이 2번 연속 발생하면 블라인드를 모두 닫아 줘."
+  command_translated: "3초마다 확인해서 조명이 꺼진 상태에서 3분 이상 유지되다가 다시 켜지는 일이 2번 연속 발생하면 블라인드를 모두 닫아 줘."
+  devices:
+  - Light
+  - Blind
+  - Speaker
+  - Window
+  - Buttonx4
+  - Curtain
+  - Shade
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |
+      off_duration := 0
+      on_count := 0
+      if ((#Light).switch_switch == "off") {
+        off_duration = off_duration + 3
+        break
+      } else {
+        if (off_duration >= 3 * 60) {
+          on_count = on_count + 1
+        }
+        off_duration = 0
+        if (on_count >= 2) {
+          all(#Blind).blind_close()
+          on_count = 0
+        }
+      }
+  elapsed_time: 2.745 seconds
+- command: "월요일 오후에, 1초마다 확인하여 창문이 열렸을 때부터 닫힐 때까지 걸린 시간이 15초 이상인 경우가 3회 연속 발생했으면 알람의 사이렌을 1초간, 3초 간격으로 세 번 울려 줘."
+  command_translated: "월요일 오후에, 1초마다 확인하여 창문이 열렸을 때부터 닫힐 때까지 걸린 시간이 15초 이상인 경우가 3회 연속 발생했으면 알람의 사이렌을 1초간, 3초 간격으로 세 번 울려 줘."
+  devices:
+  - Speaker
+  - Window
+  - Buttonx4
+  - Timer
+  - Shade
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 12 * * 1"
+    period: 1000
+    code: |
+      count := 0
+      start_time := -1
+      is_sounding := false
+      sound_count := 0
+      sound_timer := 0
+
+      if (is_sounding == true) {
+        sound_timer = sound_timer - 1
+        if (sound_timer <= 0) {
+          (#Siren).sirenMode_setSirenMode("siren")
+          sound_timer = 3
+          sound_count = sound_count + 1
+          if (sound_count >= 3) {
+            is_sounding = false
+            sound_count = 0
+            sound_timer = 0
+            (#Siren).sirenMode_setSirenMode("off")
+            break
+          }
+        }
+        break
+      }
+
+      window_state = (#Window).windowControl_window
+      if ((window_state == "open") and (start_time == -1)) {
+        start_time = 0
+      } else if ((window_state == "open") and (start_time >= 0)) {
+        start_time = start_time + 1
+      } else if ((window_state == "closed") and (start_time > 0)) {
+        if (start_time >= 15) {
+          count = count + 1
+        } else {
+          count = 0
+        }
+        start_time = -1
+        if (count >= 3) {
+          is_sounding = true
+          sound_timer = 1
+          sound_count = 0
+        }
+      }
+  elapsed_time: 7.888 seconds
+- command: "실시간으로 확인하여 움직임이 감지됐을 때 창문이 열려 있던 비율이 50%를 넘으면, 이후 조명이 켜질 때마다 창문도 함께 열어 줘."
+  command_translated: "실시간으로 확인하여 움직임이 감지됐을 때 창문이 열려 있던 비율이 50%를 넘으면, 이후 조명이 켜질 때마다 창문도 함께 열어 줘."
+  devices:
+  - Speaker
+  - MotionSensor
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Shade
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#MotionSensor).motionSensor_motion == active) {
+        shadeLevel = (#Shade).windowShadeLevel_shadeLevel
+        if ((shadeLevel > 50) and (triggered == false)) {
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |
+      if (triggered == true) {
+        if ((#SmartPlug).switch_switch == on) {
+          (#Window).windowControl_open()
+        }
+        break
+      } else {
+        break
+      }
+  elapsed_time: 4.125 seconds

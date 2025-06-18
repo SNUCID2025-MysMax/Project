@@ -1,0 +1,716 @@
+{
+    "AirConditioner": {
+        "id": "AirConditioner",
+        "category": "AirConditioner",
+        "tags": [
+            "AirConditioner",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "AirPurifier": {
+        "id": "AirPurifier",
+        "category": "AirPurifier",
+        "tags": [
+            "AirPurifier",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "AirQualityDetector": {
+        "id": "AirQualityDetector",
+        "category": "AirQualityDetector",
+        "tags": [
+            "AirQualityDetector",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Alarm": {
+        "id": "Alarm",
+        "category": "Alarm",
+        "tags": [
+            "Alarm",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Blind": {
+        "id": "Blind",
+        "category": "Blind",
+        "tags": [
+            "Blind",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Button": {
+        "id": "Button",
+        "category": "Button",
+        "tags": [
+            "Button",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Buttonx4": {
+        "id": "Buttonx4",
+        "category": "Buttonx4",
+        "tags": [
+            "Buttonx4",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Calculator": {
+        "id": "Calculator",
+        "category": "Calculator",
+        "tags": [
+            "Calculator",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Camera": {
+        "id": "Camera",
+        "category": "Camera",
+        "tags": [
+            "Camera",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Charger": {
+        "id": "Charger",
+        "category": "Charger",
+        "tags": [
+            "Charger",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Clock": {
+        "id": "Clock",
+        "category": "Clock",
+        "tags": [
+            "Clock",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "ContactSensor": {
+        "id": "ContactSensor",
+        "category": "ContactSensor",
+        "tags": [
+            "ContactSensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Curtain": {
+        "id": "Curtain",
+        "category": "Curtain",
+        "tags": [
+            "Curtain",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Dehumidifier": {
+        "id": "Dehumidifier",
+        "category": "Dehumidifier",
+        "tags": [
+            "Dehumidifier",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Dishwasher": {
+        "id": "Dishwasher",
+        "category": "Dishwasher",
+        "tags": [
+            "Dishwasher",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "DoorLock": {
+        "id": "DoorLock",
+        "category": "DoorLock",
+        "tags": [
+            "DoorLock",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "EmailProvider": {
+        "id": "EmailProvider",
+        "category": "EmailProvider",
+        "tags": [
+            "EmailProvider",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Fan": {
+        "id": "Fan",
+        "category": "Fan",
+        "tags": [
+            "Fan",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Feeder": {
+        "id": "Feeder",
+        "category": "Feeder",
+        "tags": [
+            "Feeder",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "GasMeter": {
+        "id": "GasMeter",
+        "category": "GasMeter",
+        "tags": [
+            "GasMeter",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "GasValve": {
+        "id": "GasValve",
+        "category": "GasValve",
+        "tags": [
+            "GasValve",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Humidifier": {
+        "id": "Humidifier",
+        "category": "Humidifier",
+        "tags": [
+            "Humidifier",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "HumiditySensor": {
+        "id": "HumiditySensor",
+        "category": "HumiditySensor",
+        "tags": [
+            "HumiditySensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Irrigator": {
+        "id": "Irrigator",
+        "category": "Irrigator",
+        "tags": [
+            "Irrigator",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "LeakSensor": {
+        "id": "LeakSensor",
+        "category": "LeakSensor",
+        "tags": [
+            "LeakSensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Light": {
+        "id": "Light",
+        "category": "Light",
+        "tags": [
+            "Light",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "LightSensor": {
+        "id": "LightSensor",
+        "category": "LightSensor",
+        "tags": [
+            "LightSensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "MenuProvider": {
+        "id": "MenuProvider",
+        "category": "MenuProvider",
+        "tags": [
+            "MenuProvider",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "MotionSensor": {
+        "id": "MotionSensor",
+        "category": "MotionSensor",
+        "tags": [
+            "MotionSensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "PresenceSensor": {
+        "id": "PresenceSensor",
+        "category": "PresenceSensor",
+        "tags": [
+            "PresenceSensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Pump": {
+        "id": "Pump",
+        "category": "Pump",
+        "tags": [
+            "Pump",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Refrigerator": {
+        "id": "Refrigerator",
+        "category": "Refrigerator",
+        "tags": [
+            "Refrigerator",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "RobotCleaner": {
+        "id": "RobotCleaner",
+        "category": "RobotCleaner",
+        "tags": [
+            "RobotCleaner",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Shade": {
+        "id": "Shade",
+        "category": "Shade",
+        "tags": [
+            "Shade",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Siren": {
+        "id": "Siren",
+        "category": "Siren",
+        "tags": [
+            "Siren",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "SmartPlug": {
+        "id": "SmartPlug",
+        "category": "SmartPlug",
+        "tags": [
+            "SmartPlug",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "SmokeDetector": {
+        "id": "SmokeDetector",
+        "category": "SmokeDetector",
+        "tags": [
+            "SmokeDetector",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "SoilMoistureSensor": {
+        "id": "SoilMoistureSensor",
+        "category": "SoilMoistureSensor",
+        "tags": [
+            "SoilMoistureSensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "SoundSensor": {
+        "id": "SoundSensor",
+        "category": "SoundSensor",
+        "tags": [
+            "SoundSensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Speaker": {
+        "id": "Speaker",
+        "category": "Speaker",
+        "tags": [
+            "Speaker",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Recorder": {
+        "id": "Recorder",
+        "category": "Recorder",
+        "tags": [
+            "Recorder",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Switch": {
+        "id": "Switch",
+        "category": "Switch",
+        "tags": [
+            "Switch",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Television": {
+        "id": "Television",
+        "category": "Television",
+        "tags": [
+            "Television",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "TemperatureSensor": {
+        "id": "TemperatureSensor",
+        "category": "TemperatureSensor",
+        "tags": [
+            "TemperatureSensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Valve": {
+        "id": "Valve",
+        "category": "Valve",
+        "tags": [
+            "Valve",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "WeatherProvider": {
+        "id": "WeatherProvider",
+        "category": "WeatherProvider",
+        "tags": [
+            "WeatherProvider",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Window": {
+        "id": "Window",
+        "category": "Window",
+        "tags": [
+            "Window",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "FallDetector": {
+        "id": "FallDetector",
+        "category": "FallDetector",
+        "tags": [
+            "FallDetector",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "OccupancySensor": {
+        "id": "OccupancySensor",
+        "category": "OccupancySensor",
+        "tags": [
+            "OccupancySensor",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Relay": {
+        "id": "Relay",
+        "category": "Relay",
+        "tags": [
+            "Relay",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    },
+    "Timer": {
+        "id": "Timer",
+        "category": "Timer",
+        "tags": [
+            "Timer",
+            "Upper",
+            "Lower",
+            "SectorA",
+            "SectorB",
+            "Wall",
+            "Odd",
+            "Even"
+        ]
+    }
+}

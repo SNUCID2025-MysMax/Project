@@ -1,0 +1,3078 @@
+- id: ex0-1
+  score:
+    cron: 100
+    period: 100
+    code: 62
+  diff:
+    code: ast_similarity = 0.621
+- id: ex0-2
+  score:
+    cron: 100
+    period: 100
+    code: 80
+  diff:
+    code: ast_similarity = 0.8
+- id: ex0-3
+  score:
+    cron: 100
+    period: 100
+    code: 78
+  diff:
+    code: ast_similarity = 0.783
+- id: ex0-4
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-5
+  score:
+    cron: 100
+    period: 100
+    code: 62
+  diff:
+    code: ast_similarity = 0.621
+- id: ex0-6
+  score:
+    cron: 100
+    period: 100
+    code: 80
+  diff:
+    code: ast_similarity = 0.8
+- id: ex0-7
+  score:
+    cron: 100
+    period: 100
+    code: 50
+  diff:
+    code: ast_similarity = 0.5
+- id: ex0-8
+  score:
+    cron: 100
+    period: 100
+    code: 64
+  diff:
+    code: ast_similarity = 0.649
+- id: ex0-9
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex0-10
+  score:
+    cron: 100
+    period: 100
+    code: 78
+  diff:
+    code: ast_similarity = 0.783
+- id: ex0-11
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-12
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-13
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-14
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-15
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-16
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-17
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-18
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-19
+  score:
+    cron: 100
+    period: 100
+    code: 91
+  diff:
+    code: ast_similarity = 0.917
+- id: ex0-20
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-21
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-22
+  score:
+    cron: 100
+    period: 100
+    code: 14
+  diff:
+    code: ast_similarity = 0.148
+- id: ex0-23
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-24
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-25
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-26
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-27
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-28
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-29
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-30
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-31
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-32
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-33
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-34
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-35
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-36
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-37
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-38
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-39
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-40
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-41
+  score:
+    cron: 100
+    period: 100
+    code: 87
+  diff:
+    code: ast_similarity = 0.87
+- id: ex0-42
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-43
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-44
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-45
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-46
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-47
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-48
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.611
+- id: ex0-49
+  score:
+    cron: 100
+    period: 100
+    code: 88
+  diff:
+    code: ast_similarity = 0.88
+- id: ex0-50
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-51
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-52
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.611
+- id: ex0-53
+  score:
+    cron: 100
+    period: 100
+    code: 67
+  diff:
+    code: ast_similarity = 0.676
+- id: ex0-54
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.611
+- id: ex0-55
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-56
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-57
+  score:
+    cron: 100
+    period: 100
+    code: 55
+  diff:
+    code: ast_similarity = 0.55
+- id: ex0-58
+  score:
+    cron: 100
+    period: 100
+    code: 45
+  diff:
+    code: ast_similarity = 0.45
+- id: ex0-59
+  score:
+    cron: 100
+    period: 100
+    code: 25
+  diff:
+    code: ast_similarity = 0.25
+- id: ex0-60
+  score:
+    cron: 100
+    period: 100
+    code: 25
+  diff:
+    code: ast_similarity = 0.25
+- id: ex0-61
+  score:
+    cron: 100
+    period: 100
+    code: 48
+  diff:
+    code: ast_similarity = 0.486
+- id: ex0-62
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-63
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-64
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-65
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-66
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-67
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-68
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-69
+  score:
+    cron: 100
+    period: 100
+    code: 25
+  diff:
+    code: ast_similarity = 0.25
+- id: ex0-70
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-71
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-72
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-73
+  score:
+    cron: 100
+    period: 100
+    code: 17
+  diff:
+    code: ast_similarity = 0.174
+- id: ex0-74
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.611
+- id: ex0-75
+  score:
+    cron: 0
+    period: 100
+    code: 87
+  diff:
+    cron: 'model = 15 15 12 5 2025, label = '
+    code: ast_similarity = 0.87
+- id: ex0-76
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.611
+- id: ex0-77
+  score:
+    cron: 0
+    period: 100
+    code: 91
+  diff:
+    cron: 'model = 0 15 * * *, label = '
+    code: ast_similarity = 0.913
+- id: ex0-78
+  score:
+    cron: 100
+    period: 100
+    code: 71
+  diff:
+    code: ast_similarity = 0.718
+- id: ex0-79
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.611
+- id: ex0-80
+  score:
+    cron: 0
+    period: 100
+    code: 100
+  diff:
+    cron: 'model = 0 0 1 5 *"  # Run at midnight on May 1st, label = '
+- id: ex0-81
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.611
+- id: ex0-82
+  score:
+    cron: 0
+    period: 100
+    code: 91
+  diff:
+    cron: 'model = 0 15 * * *, label = '
+    code: ast_similarity = 0.913
+- id: ex0-83
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-84
+  score:
+    cron: 100
+    period: 100
+    code: 71
+  diff:
+    code: ast_similarity = 0.714
+- id: ex0-85
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-86
+  score:
+    cron: 100
+    period: 100
+    code: 78
+  diff:
+    code: ast_similarity = 0.783
+- id: ex0-87
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex0-88
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-89
+  score:
+    cron: 100
+    period: 100
+    code: 17
+  diff:
+    code: ast_similarity = 0.174
+- id: ex0-90
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-91
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-92
+  score:
+    cron: 100
+    period: 100
+    code: 43
+  diff:
+    code: ast_similarity = 0.435
+- id: ex0-93
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-94
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-95
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-96
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-97
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-98
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-99
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-100
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-101
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-102
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-103
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-104
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-105
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-106
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-107
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-108
+  score:
+    cron: 100
+    period: 100
+    code: 23
+  diff:
+    code: ast_similarity = 0.235
+- id: ex0-109
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-110
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-111
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-112
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-113
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-114
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-115
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-116
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-117
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-118
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-119
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-120
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-121
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.923
+- id: ex0-122
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-123
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.611
+- id: ex0-124
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-125
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-126
+  score:
+    cron: 100
+    period: 100
+    code: 73
+  diff:
+    code: ast_similarity = 0.739
+- id: ex0-127
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-128
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-129
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-130
+  score:
+    cron: 100
+    period: 100
+    code: 60
+  diff:
+    code: ast_similarity = 0.609
+- id: ex0-131
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-132
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-133
+  score:
+    cron: 100
+    period: 100
+    code: 60
+  diff:
+    code: ast_similarity = 0.609
+- id: ex0-134
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-135
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-136
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-137
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-138
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-139
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-140
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-141
+  score:
+    cron: 100
+    period: 100
+    code: 55
+  diff:
+    code: ast_similarity = 0.556
+- id: ex0-142
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-143
+  score:
+    cron: 100
+    period: 100
+    code: 55
+  diff:
+    code: ast_similarity = 0.556
+- id: ex0-144
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-145
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-146
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-147
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.923
+- id: ex0-148
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-149
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex0-150
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-151
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-152
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-153
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-154
+  score:
+    cron: 100
+    period: 100
+    code: 91
+  diff:
+    code: ast_similarity = 0.917
+- id: ex0-155
+  score:
+    cron: 100
+    period: 100
+    code: 91
+  diff:
+    code: ast_similarity = 0.917
+- id: ex0-156
+  score:
+    cron: 100
+    period: 100
+    code: 91
+  diff:
+    code: ast_similarity = 0.917
+- id: ex0-157
+  score:
+    cron: 100
+    period: 100
+    code: 25
+  diff:
+    code: ast_similarity = 0.25
+- id: ex0-158
+  score:
+    cron: 100
+    period: 100
+    code: 78
+  diff:
+    code: ast_similarity = 0.783
+- id: ex0-159
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-160
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-161
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-162
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-163
+  score:
+    cron: 100
+    period: 100
+    code: 55
+  diff:
+    code: ast_similarity = 0.55
+- id: ex0-164
+  score:
+    cron: 100
+    period: 100
+    code: 16
+  diff:
+    code: ast_similarity = 0.167
+- id: ex0-165
+  score:
+    cron: 100
+    period: 100
+    code: 16
+  diff:
+    code: ast_similarity = 0.167
+- id: ex0-166
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex0-167
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.611
+- id: ex0-168
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex0-169
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-170
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-171
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-172
+  score:
+    cron: 100
+    period: 100
+    code: 16
+  diff:
+    code: ast_similarity = 0.162
+- id: ex0-173
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-174
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-175
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-176
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-177
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-178
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-179
+  score:
+    cron: 100
+    period: 100
+    code: 90
+  diff:
+    code: ast_similarity = 0.909
+- id: ex0-180
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-181
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-182
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-183
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-184
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-185
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-186
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-187
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-188
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-189
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-190
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-191
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-192
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-193
+  score:
+    cron: 100
+    period: 100
+    code: 75
+  diff:
+    code: ast_similarity = 0.759
+- id: ex0-194
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-195
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-196
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-197
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-198
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-199
+  score:
+    cron: 100
+    period: 100
+    code: 87
+  diff:
+    code: ast_similarity = 0.87
+- id: ex0-200
+  score:
+    cron: 100
+    period: 100
+    code: 87
+  diff:
+    code: ast_similarity = 0.87
+- id: ex0-201
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-202
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex0-203
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-204
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-205
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-206
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-207
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-208
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-209
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-210
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-211
+  score:
+    cron: 100
+    period: 100
+    code: 66
+  diff:
+    code: ast_similarity = 0.667
+- id: ex0-212
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-213
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-214
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-215
+  score:
+    cron: 100
+    period: 100
+    code: 51
+  diff:
+    code: ast_similarity = 0.514
+- id: ex0-216
+  score:
+    cron: 100
+    period: 100
+    code: 78
+  diff:
+    code: ast_similarity = 0.783
+- id: ex0-217
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex0-218
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-219
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-220
+  score:
+    cron: 100
+    period: 100
+    code: 51
+  diff:
+    code: ast_similarity = 0.514
+- id: ex0-221
+  score:
+    cron: 100
+    period: 100
+    code: 26
+  diff:
+    code: ast_similarity = 0.267
+- id: ex0-222
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-223
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-224
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-225
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-226
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-227
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-228
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-229
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-230
+  score:
+    cron: 100
+    period: 100
+    code: 91
+  diff:
+    code: ast_similarity = 0.917
+- id: ex0-231
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-232
+  score:
+    cron: 100
+    period: 100
+    code: 45
+  diff:
+    code: ast_similarity = 0.459
+- id: ex0-233
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-234
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-235
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-236
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.923
+- id: ex0-237
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-238
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-239
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-240
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-241
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-242
+  score:
+    cron: 100
+    period: 100
+    code: 71
+  diff:
+    code: ast_similarity = 0.718
+- id: ex0-243
+  score:
+    cron: 100
+    period: 100
+    code: 48
+  diff:
+    code: ast_similarity = 0.486
+- id: ex0-244
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-245
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-246
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-247
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-248
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-249
+  score:
+    cron: 100
+    period: 100
+    code: 87
+  diff:
+    code: ast_similarity = 0.87
+- id: ex0-250
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-251
+  score:
+    cron: 100
+    period: 100
+    code: 26
+  diff:
+    code: ast_similarity = 0.267
+- id: ex0-252
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-253
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-254
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-255
+  score:
+    cron: 100
+    period: 100
+    code: 87
+  diff:
+    code: ast_similarity = 0.87
+- id: ex0-256
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-257
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-258
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-259
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-260
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-261
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-262
+  score:
+    cron: 100
+    period: 100
+    code: 40
+  diff:
+    code: ast_similarity = 0.405
+- id: ex0-263
+  score:
+    cron: 100
+    period: 100
+    code: 65
+  diff:
+    code: ast_similarity = 0.652
+- id: ex0-264
+  score:
+    cron: 100
+    period: 100
+    code: 37
+  diff:
+    code: ast_similarity = 0.378
+- id: ex0-265
+  score:
+    cron: 100
+    period: 100
+    code: 92
+  diff:
+    code: ast_similarity = 0.92
+- id: ex0-266
+  score:
+    cron: 100
+    period: 100
+    code: 65
+  diff:
+    code: ast_similarity = 0.652
+- id: ex0-267
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-268
+  score:
+    cron: 100
+    period: 100
+    code: 95
+  diff:
+    code: ast_similarity = 0.957
+- id: ex0-269
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-270
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-271
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-272
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex0-273
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex0-274
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-275
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-276
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-277
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-278
+  score:
+    cron: 100
+    period: 100
+    code: 25
+  diff:
+    code: ast_similarity = 0.25
+- id: ex0-279
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex0-280
+  score:
+    cron: 100
+    period: 100
+    code: 88
+  diff:
+    code: ast_similarity = 0.88
+- id: ex0-281
+  score:
+    cron: 100
+    period: 100
+    code: 26
+  diff:
+    code: ast_similarity = 0.267
+- id: ex0-282
+  score:
+    cron: 100
+    period: 100
+    code: 25
+  diff:
+    code: ast_similarity = 0.25
+- id: ex0-283
+  score:
+    cron: 100
+    period: 100
+    code: 26
+  diff:
+    code: ast_similarity = 0.267
+- id: category_0-avg
+  score:
+    cron: 98.6
+    period: 100.0
+    code: 87.5
+- id: ex1-1
+  score:
+    cron: 100
+    period: 100
+    code: 65
+  diff:
+    code: ast_similarity = 0.656
+- id: ex1-2
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.968
+- id: ex1-3
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.613
+- id: ex1-4
+  score:
+    cron: 100
+    period: 100
+    code: 48
+  diff:
+    code: ast_similarity = 0.481
+- id: ex1-5
+  score:
+    cron: 100
+    period: 100
+    code: 65
+  diff:
+    code: ast_similarity = 0.656
+- id: ex1-6
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex1-7
+  score:
+    cron: 100
+    period: 100
+    code: 56
+  diff:
+    code: ast_similarity = 0.563
+- id: ex1-8
+  score:
+    cron: 100
+    period: 100
+    code: 50
+  diff:
+    code: ast_similarity = 0.507
+- id: ex1-9
+  score:
+    cron: 100
+    period: 100
+    code: 65
+  diff:
+    code: ast_similarity = 0.656
+- id: ex1-10
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: category_1-avg
+  score:
+    cron: 100.0
+    period: 100.0
+    code: 70.6
+- id: ex2-1
+  score:
+    cron: 100
+    period: 100
+    code: 39
+  diff:
+    code: ast_similarity = 0.396
+- id: ex2-2
+  score:
+    cron: 100
+    period: 100
+    code: 37
+  diff:
+    code: ast_similarity = 0.374
+- id: ex2-3
+  score:
+    cron: 100
+    period: 100
+    code: 36
+  diff:
+    code: ast_similarity = 0.367
+- id: ex2-4
+  score:
+    cron: 100
+    period: 100
+    code: 37
+  diff:
+    code: ast_similarity = 0.374
+- id: ex2-5
+  score:
+    cron: 100
+    period: 100
+    code: 72
+  diff:
+    code: ast_similarity = 0.725
+- id: ex2-6
+  score:
+    cron: 100
+    period: 100
+    code: 37
+  diff:
+    code: ast_similarity = 0.37
+- id: ex2-7
+  score:
+    cron: 100
+    period: 100
+    code: 36
+  diff:
+    code: ast_similarity = 0.362
+- id: ex2-8
+  score:
+    cron: 100
+    period: 100
+    code: 6
+  diff:
+    code: ast_similarity = 0.062
+- id: ex2-9
+  score:
+    cron: 100
+    period: 100
+    code: 37
+  diff:
+    code: ast_similarity = 0.374
+- id: ex2-10
+  score:
+    cron: 100
+    period: 100
+    code: 73
+  diff:
+    code: ast_similarity = 0.739
+- id: category_2-avg
+  score:
+    cron: 100.0
+    period: 100.0
+    code: 41.0
+- id: ex3-1
+  score:
+    cron: 100
+    period: 100
+    code: 78
+  diff:
+    code: ast_similarity = 0.786
+- id: ex3-2
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex3-3
+  score:
+    cron: 0
+    period: 100
+    code: 12
+  diff:
+    cron: model = , label = 0 18 * * *
+    code: ast_similarity = 0.125
+- id: ex3-4
+  score:
+    cron: 0
+    period: 0
+    code: 100
+  diff:
+    cron: model = , label = 0 22 * * 6,0
+    period: model = -1, label = 180000
+- id: ex3-5
+  score:
+    cron: 0
+    period: 0
+    code: 100
+  diff:
+    cron: model = , label = 0 22 * * 6,0
+    period: model = -1, label = 3000
+- id: ex3-6
+  score:
+    cron: 100
+    period: 100
+    code: 70
+  diff:
+    code: ast_similarity = 0.707
+- id: ex3-7
+  score:
+    cron: 100
+    period: 100
+    code: 58
+  diff:
+    code: ast_similarity = 0.586
+- id: ex3-8
+  score:
+    cron: 100
+    period: 0
+    code: 100
+  diff:
+    period: model = -1, label = 0
+- id: ex3-9
+  score:
+    cron: 100
+    period: 100
+    code: 78
+  diff:
+    code: ast_similarity = 0.786
+- id: ex3-10
+  score:
+    cron: 100
+    period: 100
+    code: 12
+  diff:
+    code: ast_similarity = 0.12
+- id: category_3-avg
+  score:
+    cron: 70.0
+    period: 70.0
+    code: 70.8
+- id: ex4-1
+  score:
+    cron: 100
+    period: 100
+    code: 62
+  diff:
+    code: ast_similarity = 0.625
+- id: ex4-2
+  score:
+    cron: 100
+    period: 100
+    code: 76
+  diff:
+    code: ast_similarity = 0.769
+- id: ex4-3
+  score:
+    cron: 100
+    period: 0
+    code: 34
+  diff:
+    period: model = -1, label = 100
+    code: ast_similarity = 0.343
+- id: ex4-4
+  score:
+    cron: 100
+    period: 100
+    code: 50
+  diff:
+    code: ast_similarity = 0.5
+- id: ex4-5
+  score:
+    cron: 100
+    period: 100
+    code: 78
+  diff:
+    code: ast_similarity = 0.783
+- id: ex4-6
+  score:
+    cron: 100
+    period: 100
+    code: 70
+  diff:
+    code: ast_similarity = 0.706
+- id: ex4-7
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex4-8
+  score:
+    cron: 100
+    period: 0
+    code: 21
+  diff:
+    period: model = -1, label = 100
+    code: ast_similarity = 0.214
+- id: ex4-9
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex4-10
+  score:
+    cron: 100
+    period: 100
+    code: 70
+  diff:
+    code: ast_similarity = 0.706
+- id: category_4-avg
+  score:
+    cron: 100.0
+    period: 80.0
+    code: 64.3
+- id: ex5-1
+  score:
+    cron: 100
+    period: 100
+    code: 17
+  diff:
+    code: ast_similarity = 0.171
+- id: ex5-2
+  score:
+    cron: 100
+    period: 100
+    code: 13
+  diff:
+    code: ast_similarity = 0.133
+- id: ex5-3
+  score:
+    cron: 100
+    period: 100
+    code: 39
+  diff:
+    code: ast_similarity = 0.393
+- id: ex5-4
+  score:
+    cron: 100
+    period: 100
+    code: 17
+  diff:
+    code: ast_similarity = 0.171
+- id: ex5-5
+  score:
+    cron: 100
+    period: 100
+    code: 62
+  diff:
+    code: ast_similarity = 0.629
+- id: ex5-6
+  score:
+    cron: 100
+    period: 100
+    code: 12
+  diff:
+    code: ast_similarity = 0.125
+- id: ex5-7
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex5-8
+  score:
+    cron: 100
+    period: 0
+    code: 40
+  diff:
+    period: model = 10000, label = -1
+    code: ast_similarity = 0.409
+- id: ex5-9
+  score:
+    cron: 100
+    period: 0
+    code: 50
+  diff:
+    period: model = 5000, label = -1
+    code: ast_similarity = 0.508
+- id: ex5-10
+  score:
+    cron: 100
+    period: 100
+    code: 12
+  diff:
+    code: ast_similarity = 0.12
+- id: category_5-avg
+  score:
+    cron: 100.0
+    period: 80.0
+    code: 36.2
+- id: ex6-1
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex6-2
+  score:
+    cron: 100
+    period: 0
+    code: 25
+  diff:
+    period: model = -1, label = 3000
+    code: ast_similarity = 0.25
+- id: ex6-3
+  score:
+    cron: 100
+    period: 100
+    code: 28
+  diff:
+    code: ast_similarity = 0.286
+- id: ex6-4
+  score:
+    cron: 100
+    period: 100
+    code: 17
+  diff:
+    code: ast_similarity = 0.174
+- id: ex6-5
+  score:
+    cron: 100
+    period: 100
+    code: 42
+  diff:
+    code: ast_similarity = 0.423
+- id: ex6-6
+  score:
+    cron: 100
+    period: 100
+    code: 8
+  diff:
+    code: ast_similarity = 0.083
+- id: ex6-7
+  score:
+    cron: 100
+    period: 100
+    code: 57
+  diff:
+    code: ast_similarity = 0.571
+- id: ex6-8
+  score:
+    cron: 100
+    period: 100
+    code: 12
+  diff:
+    code: ast_similarity = 0.129
+- id: ex6-9
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex6-10
+  score:
+    cron: 100
+    period: 100
+    code: 14
+  diff:
+    code: ast_similarity = 0.143
+- id: category_6-avg
+  score:
+    cron: 100.0
+    period: 90.0
+    code: 40.3
+- id: ex7-1
+  score:
+    cron: 100
+    period: 0
+    code: 54
+  diff:
+    period: model = 10000, label = 100
+    code: ast_similarity = 0.545
+- id: ex7-2
+  score:
+    cron: 100
+    period: 100
+    code: 91
+  diff:
+    code: ast_similarity = 0.918
+- id: ex7-3
+  score:
+    cron: 100
+    period: 100
+    code: 64
+  diff:
+    code: ast_similarity = 0.641
+- id: ex7-4
+  score:
+    cron: 100
+    period: 100
+    code: 90
+  diff:
+    code: ast_similarity = 0.901
+- id: ex7-5
+  score:
+    cron: 100
+    period: 100
+    code: 54
+  diff:
+    code: ast_similarity = 0.545
+- id: ex7-6
+  score:
+    cron: 100
+    period: 100
+    code: 67
+  diff:
+    code: ast_similarity = 0.676
+- id: ex7-7
+  score:
+    cron: 100
+    period: 100
+    code: 71
+  diff:
+    code: ast_similarity = 0.717
+- id: ex7-8
+  score:
+    cron: 100
+    period: 100
+    code: 67
+  diff:
+    code: ast_similarity = 0.676
+- id: ex7-9
+  score:
+    cron: 100
+    period: 0
+    code: 67
+  diff:
+    period: model = -1, label = 100
+    code: ast_similarity = 0.676
+- id: ex7-10
+  score:
+    cron: 100
+    period: 100
+    code: 71
+  diff:
+    code: ast_similarity = 0.717
+- id: category_7-avg
+  score:
+    cron: 100.0
+    period: 80.0
+    code: 69.6
+- id: ex8-1
+  score:
+    cron: 100
+    period: 0
+    code: 12
+  diff:
+    period: model = 100, label = 3000
+    code: ast_similarity = 0.129
+- id: ex8-2
+  score:
+    cron: 100
+    period: 0
+    code: 51
+  diff:
+    period: model = -1, label = 5000
+    code: ast_similarity = 0.51
+- id: ex8-3
+  score:
+    cron: 100
+    period: 0
+    code: 10
+  diff:
+    period: model = -1, label = 2000
+    code: ast_similarity = 0.103
+- id: ex8-4
+  score:
+    cron: 100
+    period: 0
+    code: 50
+  diff:
+    period: model = -1, label = 4000
+    code: ast_similarity = 0.506
+- id: ex8-5
+  score:
+    cron: 100
+    period: 0
+    code: 13
+  diff:
+    period: model = -1, label = 3000
+    code: ast_similarity = 0.136
+- id: ex8-6
+  score:
+    cron: 100
+    period: 0
+    code: 47
+  diff:
+    period: model = -1, label = 2000
+    code: ast_similarity = 0.473
+- id: ex8-7
+  score:
+    cron: 0
+    period: 0
+    code: 30
+  diff:
+    cron: 'model = 0 9 * * *, label = '
+    period: model = -1, label = 5000
+    code: ast_similarity = 0.301
+- id: ex8-8
+  score:
+    cron: 100
+    period: 0
+    code: 60
+  diff:
+    period: model = -1, label = 2000
+    code: ast_similarity = 0.6
+- id: ex8-9
+  score:
+    cron: 100
+    period: 0
+    code: 11
+  diff:
+    period: model = -1, label = 1000
+    code: ast_similarity = 0.115
+- id: ex8-10
+  score:
+    cron: 100
+    period: 0
+    code: 54
+  diff:
+    period: model = -1, label = 3000
+    code: ast_similarity = 0.545
+- id: category_8-avg
+  score:
+    cron: 90.0
+    period: 0.0
+    code: 33.8
+- id: ex9-1
+  score:
+    cron: 100
+    period: 0
+    code: 74
+  diff:
+    period: model = -1, label = 100
+    code: ast_similarity = 0.745
+- id: ex9-2
+  score:
+    cron: 100
+    period: 0
+    code: 77
+  diff:
+    period: model = 10000, label = 5000
+    code: ast_similarity = 0.779
+- id: ex9-3
+  score:
+    cron: 100
+    period: 0
+    code: 53
+  diff:
+    period: model = 10000, label = 100
+    code: ast_similarity = 0.538
+- id: ex9-4
+  score:
+    cron: 100
+    period: 100
+    code: 55
+  diff:
+    code: ast_similarity = 0.551
+- id: ex9-5
+  score:
+    cron: 0
+    period: 0
+    code: 19
+  diff:
+    cron: model = , label = 0 0 * * 6,7
+    period: model = -1, label = 5000
+    code: ast_similarity = 0.19
+- id: ex9-6
+  score:
+    cron: 100
+    period: 100
+    code: 10
+  diff:
+    code: ast_similarity = 0.109
+- id: ex9-7
+  score:
+    cron: 100
+    period: 100
+    code: 56
+  diff:
+    code: ast_similarity = 0.561
+- id: ex9-8
+  score:
+    cron: 100
+    period: 100
+    code: 98
+  diff:
+    code: ast_similarity = 0.985
+- id: ex9-9
+  score:
+    cron: 100
+    period: 0
+    code: 59
+  diff:
+    period: model = 100, label = 5000
+    code: ast_similarity = 0.596
+- id: ex9-10
+  score:
+    cron: 100
+    period: 0
+    code: 71
+  diff:
+    period: model = -1, label = 0
+    code: ast_similarity = 0.711
+- id: category_9-avg
+  score:
+    cron: 90.0
+    period: 40.0
+    code: 57.2
+- id: ex10-1
+  score:
+    cron: 100
+    period: 100
+    code: 25
+  diff:
+    code: ast_similarity = 0.25
+- id: ex10-2
+  score:
+    cron: 100
+    period: 100
+    code: 11
+  diff:
+    code: ast_similarity = 0.118
+- id: ex10-3
+  score:
+    cron: 0
+    period: 100
+    code: 100
+  diff:
+    cron: model = , label = 0 6 * * *
+- id: ex10-4
+  score:
+    cron: 100
+    period: 0
+    code: 41
+  diff:
+    period: model = 10000, label = 100
+    code: ast_similarity = 0.418
+- id: ex10-5
+  score:
+    cron: 0
+    period: 0
+    code: 100
+  diff:
+    cron: model = , label = 0 * * * *
+    period: model = 10000, label = 3000
+- id: ex10-6
+  score:
+    cron: 100
+    period: 0
+    code: 21
+  diff:
+    period: model = 10000, label = 600000
+    code: ast_similarity = 0.211
+- id: ex10-7
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex10-8
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: ex10-9
+  score:
+    cron: 0
+    period: 0
+    code: 100
+  diff:
+    cron: model = , label = 0 12 * * 1
+    period: model = -1, label = 1000
+- id: ex10-10
+  score:
+    cron: 100
+    period: 100
+    code: 40
+  diff:
+    code: ast_similarity = 0.4
+- id: category_10-avg
+  score:
+    cron: 70.0
+    period: 60.0
+    code: 63.8
+- id: ex11-1
+  score:
+    cron: 100
+    period: 0
+    code: 100
+  diff:
+    period: model = -1, label = 100
+- id: ex11-2
+  score:
+    cron: 100
+    period: 0
+    code: 28
+  diff:
+    period: model = -1, label = 3000
+    code: ast_similarity = 0.286
+- id: ex11-3
+  score:
+    cron: 100
+    period: 0
+    code: 20
+  diff:
+    period: model = 1000, label = -1
+    code: ast_similarity = 0.2
+- id: ex11-4
+  score:
+    cron: 0
+    period: 0
+    code: 6
+  diff:
+    cron: 'model = 0 0 1 1 *"  # Run on January 1, label = 0 0 1 1 *'
+    period: model = -1, label = 0
+    code: ast_similarity = 0.069
+- id: ex11-5
+  score:
+    cron: 100
+    period: 0
+    code: 23
+  diff:
+    period: model = 10000, label = 100
+    code: ast_similarity = 0.235
+- id: ex11-6
+  score:
+    cron: 100
+    period: 100
+    code: 17
+  diff:
+    code: ast_similarity = 0.171
+- id: ex11-7
+  score:
+    cron: 100
+    period: 0
+    code: 100
+  diff:
+    period: model = -1, label = 100
+- id: ex11-8
+  score:
+    cron: 100
+    period: 100
+    code: 93
+  diff:
+    code: ast_similarity = 0.932
+- id: ex11-9
+  score:
+    cron: 100
+    period: 100
+    code: 26
+  diff:
+    code: ast_similarity = 0.267
+- id: ex11-10
+  score:
+    cron: 100
+    period: 0
+    code: 100
+  diff:
+    period: model = 10000, label = 100
+- id: category_11-avg
+  score:
+    cron: 90.0
+    period: 30.0
+    code: 51.3
+- id: ex12-1
+  score:
+    cron: 100
+    period: 0
+    code: 68
+  diff:
+    period: model = 1000, label = -1
+    code: ast_similarity = 0.686
+- id: ex12-2
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.826
+- id: ex12-3
+  score:
+    cron: 100
+    period: 100
+    code: 81
+  diff:
+    code: ast_similarity = 0.818
+- id: ex12-4
+  score:
+    cron: 100
+    period: 0
+    code: 82
+  diff:
+    period: model = 100, label = -1
+    code: ast_similarity = 0.826
+- id: ex12-5
+  score:
+    cron: 100
+    period: 100
+    code: 82
+  diff:
+    code: ast_similarity = 0.829
+- id: ex12-6
+  score:
+    cron: 100
+    period: 100
+    code: 91
+  diff:
+    code: ast_similarity = 0.918
+- id: ex12-7
+  score:
+    cron: 100
+    period: 100
+    code: 68
+  diff:
+    code: ast_similarity = 0.688
+- id: ex12-8
+  score:
+    cron: 100
+    period: 100
+    code: 68
+  diff:
+    code: ast_similarity = 0.688
+- id: ex12-9
+  score:
+    cron: 100
+    period: 0
+    code: 73
+  diff:
+    period: model = 100, label = -1
+    code: ast_similarity = 0.731
+- id: ex12-10
+  score:
+    cron: 100
+    period: 0
+    code: 81
+  diff:
+    period: model = -1, label = 5000
+    code: ast_similarity = 0.818
+- id: category_12-avg
+  score:
+    cron: 100.0
+    period: 60.0
+    code: 77.6
+- id: ex13-1
+  score:
+    cron: 100
+    period: 100
+    code: 91
+  diff:
+    code: ast_similarity = 0.917
+- id: ex13-2
+  score:
+    cron: 100
+    period: 100
+    code: 14
+  diff:
+    code: ast_similarity = 0.146
+- id: ex13-3
+  score:
+    cron: 100
+    period: 100
+    code: 89
+  diff:
+    code: ast_similarity = 0.897
+- id: ex13-4
+  score:
+    cron: 100
+    period: 100
+    code: 61
+  diff:
+    code: ast_similarity = 0.619
+- id: ex13-5
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.96
+- id: ex13-6
+  score:
+    cron: 100
+    period: 100
+    code: 89
+  diff:
+    code: ast_similarity = 0.893
+- id: ex13-7
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.962
+- id: ex13-8
+  score:
+    cron: 100
+    period: 100
+    code: 96
+  diff:
+    code: ast_similarity = 0.966
+- id: ex13-9
+  score:
+    cron: 100
+    period: 100
+    code: 85
+  diff:
+    code: ast_similarity = 0.852
+- id: ex13-10
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: category_13-avg
+  score:
+    cron: 100.0
+    period: 100.0
+    code: 81.7
+- id: ex14-1
+  score:
+    cron: 100
+    period: 0
+    code: 78
+  diff:
+    period: model = 10000, label = 0
+    code: ast_similarity = 0.786
+- id: ex14-2
+  score:
+    cron: 0
+    period: 0
+    code: 63
+  diff:
+    cron: 'model = 0 0 * * 0,6"  # Every Sunday and Saturday at midnight, label =
+      0 0 * * 6,0'
+    period: model = -1, label = 0
+    code: ast_similarity = 0.636
+- id: ex14-3
+  score:
+    cron: 100
+    period: 100
+    code: 11
+  diff:
+    code: ast_similarity = 0.113
+- id: ex14-4
+  score:
+    cron: 0
+    period: 0
+    code: 60
+  diff:
+    cron: model = , label = 0 0 * * *
+    period: model = 10000, label = 100
+    code: ast_similarity = 0.605
+- id: ex14-5
+  score:
+    cron: 100
+    period: 0
+    code: 4
+  diff:
+    period: model = -1, label = 100
+    code: ast_similarity = 0.045
+- id: ex14-6
+  score:
+    cron: 100
+    period: 100
+    code: 44
+  diff:
+    code: ast_similarity = 0.444
+- id: ex14-7
+  score:
+    cron: 0
+    period: 0
+    code: 100
+  diff:
+    cron: model = , label = 0 0 * * 6,0
+    period: model = -1, label = 100
+- id: ex14-8
+  score:
+    cron: 100
+    period: 0
+    code: 17
+  diff:
+    period: model = 10000, label = 100
+    code: ast_similarity = 0.176
+- id: ex14-9
+  score:
+    cron: 100
+    period: 100
+    code: 12
+  diff:
+    code: ast_similarity = 0.122
+- id: ex14-10
+  score:
+    cron: 0
+    period: 0
+    code: 21
+  diff:
+    cron: model = , label = 0 0 * * 1,3,5
+    period: model = -1, label = 100
+    code: ast_similarity = 0.214
+- id: category_14-avg
+  score:
+    cron: 60.0
+    period: 30.0
+    code: 41.0
+- id: ex15-1
+  score:
+    cron: 0
+    period: 0
+    code: 100
+  diff:
+    cron: model = 0 9 * * 1-5, label = 0 9 * * *
+    period: model = 10000, label = 100
+- id: ex15-2
+  score:
+    cron: 0
+    period: 0
+    code: 3
+  diff:
+    cron: model = , label = 0 9 * * *
+    period: model = -1, label = 100
+    code: ast_similarity = 0.037
+- id: ex15-3
+  score:
+    cron: 100
+    period: 0
+    code: 100
+  diff:
+    period: model = -1, label = 100
+- id: ex15-4
+  score:
+    cron: 100
+    period: 0
+    code: 100
+  diff:
+    period: model = -1, label = 100
+- id: ex15-5
+  score:
+    cron: 100
+    period: 0
+    code: 100
+  diff:
+    period: model = -1, label = 100
+- id: ex15-6
+  score:
+    cron: 100
+    period: 0
+    code: 100
+  diff:
+    period: model = -1, label = 100
+- id: ex15-7
+  score:
+    cron: 100
+    period: 100
+    code: 10
+  diff:
+    code: ast_similarity = 0.103
+- id: ex15-8
+  score:
+    cron: 100
+    period: 0
+    code: 4
+  diff:
+    period: model = 10000, label = 100
+    code: ast_similarity = 0.044
+- id: ex15-9
+  score:
+    cron: 100
+    period: 0
+    code: 64
+  diff:
+    period: model = 10000, label = 3000
+    code: ast_similarity = 0.644
+- id: ex15-10
+  score:
+    cron: 100
+    period: 100
+    code: 100
+  diff: {}
+- id: category_15-avg
+  score:
+    cron: 80.0
+    period: 20.0
+    code: 68.1
+- id: ex16-1
+  score:
+    cron: 0
+    period: 100
+    code: 81
+  diff:
+    cron: 'model = 0 9 * * *"  # Runs daily at 9 AM, label = '
+    code: ast_similarity = 0.815
+- id: ex16-2
+  score:
+    cron: 100
+    period: 100
+    code: 26
+  diff:
+    code: ast_similarity = 0.267
+- id: ex16-3
+  score:
+    cron: 100
+    period: 100
+    code: 26
+  diff:
+    code: ast_similarity = 0.267
+- id: ex16-4
+  score:
+    cron: 100
+    period: 100
+    code: 7
+  diff:
+    code: ast_similarity = 0.074
+- id: ex16-5
+  score:
+    cron: 100
+    period: 100
+    code: 83
+  diff:
+    code: ast_similarity = 0.833
+- id: ex16-6
+  score:
+    cron: 100
+    period: 100
+    code: 28
+  diff:
+    code: ast_similarity = 0.286
+- id: ex16-7
+  score:
+    cron: 100
+    period: 100
+    code: 54
+  diff:
+    code: ast_similarity = 0.545
+- id: ex16-8
+  score:
+    cron: 100
+    period: 100
+    code: 26
+  diff:
+    code: ast_similarity = 0.267
+- id: ex16-9
+  score:
+    cron: 100
+    period: 100
+    code: 18
+  diff:
+    code: ast_similarity = 0.182
+- id: ex16-10
+  score:
+    cron: 100
+    period: 100
+    code: 26
+  diff:
+    code: ast_similarity = 0.267
+- id: category_16-avg
+  score:
+    cron: 90.0
+    period: 100.0
+    code: 37.5
+- id: overall-avg
+  score:
+    cron: 95.5
+    period: 87.4
+    code: 76.3

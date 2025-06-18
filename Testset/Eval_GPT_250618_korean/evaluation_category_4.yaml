@@ -1,0 +1,271 @@
+- command: "창문이 열리면 알람의 사이렌을 울려 줘."
+  command_translated: "창문이 열리면 알람의 사이렌을 울려 줘."
+  devices:
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Timer
+  - Shade
+  - Camera
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+
+      if ((#Window).windowControl_window == "open") {
+        if (triggered == false) {
+          (#Siren).sirenMode_setSirenMode("siren")
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.858 seconds
+- command: "토양 수분이 20% 이상이었다가 이하가 되면 관개 장치를 작동시켜 줘."
+  command_translated: "토양 수분이 20% 이상이었다가 이하가 되면 관개 장치를 작동시켜 줘."
+  devices:
+  - WeatherProvider
+  - Humidifier
+  - Pump
+  - HumiditySensor
+  - Irrigator
+  - Speaker
+  - LeakSensor
+  - Clock
+  - SoilMoistureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity > 20.0) and (triggered == false)) {
+        triggered = true
+      }
+      if (((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0) and (triggered == true)) {
+        all(#Irrigator).switch_on()
+        triggered = false
+        break
+      }
+  elapsed_time: 3.071 seconds
+- command: "움직임이 감지되면 최대 3번까지 조명을 켜 줘."
+  command_translated: "움직임이 감지되면 최대 3번까지 조명을 켜 줘."
+  devices:
+  - Button
+  - Blind
+  - Clock
+  - Speaker
+  - MotionSensor
+  - Buttonx4
+  - Curtain
+  - Shade
+  - Relay
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      count := 0
+      if ((#MotionSensor).motionSensor_motion == active) {
+        if (triggered == false) {
+          if (count < 3) {
+            (#Relay).switch_on()
+            count = count + 1
+          }
+          triggered = true
+        }
+      } else {
+        triggered = false
+      }
+      break
+  elapsed_time: 2.897 seconds
+- command: "온도가 35도 이상이 되면 에어컨을 켜 줘."
+  command_translated: "온도가 35도 이상이 되면 에어컨을 켜 줘."
+  devices:
+  - Dehumidifier
+  - Clock
+  - AirConditioner
+  - Speaker
+  - Window
+  - Refrigerator
+  - AirPurifier
+  - TemperatureSensor
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)
+      (#AirConditioner).switch_on()
+  elapsed_time: 1.754 seconds
+- command: "습도가 80% 이상이 되면 블라인드를 내려 줘."
+  command_translated: "습도가 80% 이상이 되면 블라인드를 내려 줘."
+  devices:
+  - WeatherProvider
+  - Humidifier
+  - Speaker
+  - SmartPlug
+  - LeakSensor
+  - Buttonx4
+  - Refrigerator
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#WeatherProvider).weatherProvider_humidityWeather >= 80.0)
+      (#Shade).windowShade_close()
+  elapsed_time: 1.655 seconds
+- command: "블라인드가 닫히면 ‘블라인드가 닫혔습니다’라고 말해 줘."
+  command_translated: "블라인드가 닫히면 ‘블라인드가 닫혔습니다’라고 말해 줘."
+  devices:
+  - Blind
+  - Pump
+  - Speaker
+  - Valve
+  - Window
+  - Curtain
+  - Shade
+  - DoorLock
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#Blind).blind_blind == closed) {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_speak("블라인드가 닫혔습니다")
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.820 seconds
+- command: "TV가 꺼지면 스피커를 꺼 줘."
+  command_translated: "TV가 꺼지면 스피커를 꺼 줘."
+  devices:
+  - Blind
+  - Speaker
+  - Valve
+  - AirQualityDetector
+  - Television
+  - Timer
+  - Recorder
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#Television).switch_switch == off) {
+        if (triggered == false) {
+          all(#Speaker).switch_off()
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.130 seconds
+- command: "커튼이 3번 열렸다 닫히면 조명을 꺼 줘."
+  command_translated: "커튼이 3번 열렸다 닫히면 조명을 꺼 줘."
+  devices:
+  - Blind
+  - Speaker
+  - Valve
+  - Window
+  - Buttonx4
+  - Curtain
+  - Shade
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      count := 0
+      if ((#Curtain).curtain_curtain == open) {
+        if (count >= 0) {
+          count = count + 1
+          wait until((#Curtain).curtain_curtain == closed)
+        }
+      }
+      if (count >= 3) {
+        count = 0
+        (#Speaker).mediaPlayback_speak("커튼이 세 번 열리고 닫혔습니다. 조명을 끕니다.")
+        if (any(#Light).switch_switch == true) {
+          all(#Light).switch_off()
+        }
+        break
+      }
+  elapsed_time: 6.948 seconds
+- command: "제습기가 꺼지면 다시 켜 줘."
+  command_translated: "제습기가 꺼지면 다시 켜 줘."
+  devices:
+  - Humidifier
+  - Dishwasher
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Timer
+  - RobotCleaner
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#Humidifier).switch_switch == off) {
+        if (triggered == false) {
+          (#Humidifier).switch_on()
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.182 seconds
+- command: "재실 센서에서 더 이상 감지가 안 되면 ‘문이 열렸습니다’라고 말해 줘."
+  command_translated: "재실 센서에서 더 이상 감지가 안 되면 ‘문이 열렸습니다’라고 말해 줘."
+  devices:
+  - Blind
+  - Clock
+  - ContactSensor
+  - Speaker
+  - MotionSensor
+  - Window
+  - PresenceSensor
+  - DoorLock
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#PresenceSensor).presenceSensor_presence == not_present) {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_speak("문이 열렸습니다")
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.990 seconds

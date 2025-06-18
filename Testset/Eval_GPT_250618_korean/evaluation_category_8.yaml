@@ -1,0 +1,373 @@
+- command: "토양 습도가 25% 이하가 되면 급수기를 켜고 이후 3초마다 상태를 확인해서 습도가 30% 이상이 될 때까지 급수기를 껐다 켰다 반복해 줘."
+  command_translated: "토양 습도가 25% 이하가 되면 급수기를 켜고 이후 3초마다 상태를 확인해서 습도가 30% 이상이 될 때까지 급수기를 껐다 켰다 반복해 줘."
+  devices:
+  - Dehumidifier
+  - Irrigator
+  - HumiditySensor
+  - Speaker
+  - AirQualityDetector
+  - Window
+  - Buttonx4
+  - Clock
+  - SoilMoistureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0)
+      all(#Irrigator).switch_on()
+  - name: "Scenario2"
+    cron: ""
+    period: 3000
+    code: |
+      toggle := false
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+        if (toggle == false) {
+          all(#Irrigator).switch_off()
+          toggle = true
+        } else {
+          all(#Irrigator).switch_on()
+          toggle = false
+        }
+      } else {
+        all(#Irrigator).switch_off()
+        break
+      }
+  elapsed_time: 9.016 seconds
+- command: "온도가 30도를 초과하면 블라인드를 닫고, 이후 5초마다 알람의 사이렌을 울려 줘."
+  command_translated: "온도가 30도를 초과하면 블라인드를 닫고, 이후 5초마다 알람의 사이렌을 울려 줘."
+  devices:
+  - Clock
+  - Speaker
+  - Window
+  - Refrigerator
+  - Timer
+  - Siren
+  - SoundSensor
+  - TemperatureSensor
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 30.0) {
+        if (triggered == false) {
+          (#Window).windowControl_close()
+          triggered = true
+          timer_set_name = "siren_alarm_timer"
+          (#Timer).timer_set(timer_set_name, 5)
+          (#Timer).timer_start(timer_set_name)
+        }
+        if ((#Timer).timer_isSet(timer_set_name) == true) {
+          (#Siren).sirenMode_setSirenMode("siren")
+          (#Timer).timer_reset(timer_set_name)
+          (#Timer).timer_start(timer_set_name)
+        }
+      } else {
+        triggered = false
+        (#Siren).switch_off()
+        break
+      }
+  elapsed_time: 14.921 seconds
+- command: "날씨 감지 센서에서 비가 감지되면 관개 장치를 바로 끄고, 이후 2초마다 알람을 꺼 줘."
+  command_translated: "날씨 감지 센서에서 비가 감지되면 관개 장치를 바로 끄고, 이후 2초마다 알람을 꺼 줘."
+  devices:
+  - Clock
+  - Speaker
+  - MotionSensor
+  - SmartPlug
+  - LeakSensor
+  - Buttonx4
+  - Refrigerator
+  - TemperatureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#LeakSensor).leakSensor_leakage == detected)
+      all(#Irrigator).switch_off()
+  - name: "Scenario2"
+    cron: ""
+    period: 2000
+    code: |
+      all(#Alarm).switch_off()
+  elapsed_time: 13.517 seconds
+- command: "일조량이 200룩스 이하가 되면 4초마다 조명을 켜고, 2초 후에 꺼 주는 동작을 반복해 줘."
+  command_translated: "일조량이 200룩스 이하가 되면 4초마다 조명을 켜고, 2초 후에 꺼 주는 동작을 반복해 줘."
+  devices:
+  - Light
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Shade
+  - LightSensor
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 4000
+    code: |
+      triggered := false
+      if ((#LightSensor).lightLevel_light <= 200.0) {
+        if (triggered == false) {
+          triggered = true
+        }
+        all(#Light).switch_on()
+        (#Clock).clock_delay(2000)
+        all(#Light).switch_off()
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 12.258 seconds
+- command: "문이 처음 열릴 때 환풍기를 켜고, 이후 3초마다 습도를 확인해서 70% 이하가 될 때까지 환풍기를 켜고 끄는 동작을 반복해 줘."
+  command_translated: "문이 처음 열릴 때 환풍기를 켜고, 이후 3초마다 습도를 확인해서 70% 이하가 될 때까지 환풍기를 켜고 끄는 동작을 반복해 줘."
+  devices:
+  - Dehumidifier
+  - Blind
+  - HumiditySensor
+  - Speaker
+  - Window
+  - Buttonx4
+  - Curtain
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      fanOn := false
+      lastToggleTime := 0
+
+      if (((#Window).windowControl_window == open) and (triggered == false)) {
+          (#Dehumidifier).switch_on()
+          triggered = true
+          fanOn = true
+          lastToggleTime = (#Clock).clock_timestamp
+      }
+
+      if ((#Window).windowControl_window != open) {
+          (#Dehumidifier).switch_off()
+          triggered = false
+          fanOn = false
+          break
+      }
+
+      if (triggered == true) {
+          currentTime = (#Clock).clock_timestamp
+          elapsed = currentTime - lastToggleTime
+          if (elapsed >= 3000) {
+              lastToggleTime = currentTime
+              humidity = (#HumiditySensor).relativeHumidityMeasurement_humidity
+              if (humidity > 70.0) {
+                  if (fanOn == false) {
+                      (#Dehumidifier).switch_on()
+                      fanOn = true
+                  }
+              } else {
+                  if (fanOn == true) {
+                      (#Dehumidifier).switch_off()
+                      fanOn = false
+                  }
+              }
+          }
+      }
+  elapsed_time: 14.929 seconds
+- command: "조명이 켜지면 블라인드를 닫고, 이후 2초마다 커튼을 열었다 닫았다 반복해 줘."
+  command_translated: "조명이 켜지면 블라인드를 닫고, 이후 2초마다 커튼을 열었다 닫았다 반복해 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Curtain
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      curtainOpen := true
+      lastActionTime := 0
+      if ((#SmartPlug).switch_switch == "on") {
+        if (triggered == false) {
+          (#Blind).blind_close()
+          triggered = true
+          lastActionTime = (#Clock).clock_timestamp
+          curtainOpen = true
+          (#Curtain).curtain_open()
+        } else {
+          elapsed = (#Clock).clock_timestamp - lastActionTime
+          if (elapsed >= 2000) {
+            if (curtainOpen == true) {
+              (#Curtain).curtain_close()
+              curtainOpen = false
+            } else {
+              (#Curtain).curtain_open()
+              curtainOpen = true
+            }
+            lastActionTime = (#Clock).clock_timestamp
+          }
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 7.827 seconds
+- command: "TV가 처음 켜지면 5초마다 스피커를 켜고 3초 후에 끄는 동작을 반복해 줘."
+  command_translated: "TV가 처음 켜지면 5초마다 스피커를 켜고 3초 후에 끄는 동작을 반복해 줘."
+  devices:
+  - Blind
+  - Button
+  - Speaker
+  - AirQualityDetector
+  - Television
+  - Buttonx4
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      timeCounter := 0
+      if ((#Television).switch_switch == on) {
+        if (triggered == false) {
+          triggered = true
+          timeCounter = 0
+        }
+        if (timeCounter == 0) {
+          all(#Speaker).switch_on()
+        }
+        if (timeCounter == 3000) {
+          all(#Speaker).switch_off()
+        }
+        timeCounter = timeCounter + 100
+        if (timeCounter >= 5000) {
+          timeCounter = 0
+        }
+      } else {
+        triggered = false
+        timeCounter = 0
+        all(#Speaker).switch_off()
+        break
+      }
+  elapsed_time: 3.764 seconds
+- command: "공기청정기가 꺼지면 2초마다 ‘공기청정기를 켜 주세요’라고 두 번 반복해서 스피커로 출력해줘."
+  command_translated: "공기청정기가 꺼지면 2초마다 ‘공기청정기를 켜 주세요’라고 두 번 반복해서 스피커로 출력해줘."
+  devices:
+  - Dehumidifier
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - AirPurifier
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |
+      triggered := false
+      repeatCount := 0
+      if ((#AirPurifier).switch_switch == off) {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_speak("공기청정기를 켜 주세요")
+          (#Clock).clock_delay(1000)
+          (#Speaker).mediaPlayback_speak("공기청정기를 켜 주세요")
+          repeatCount = repeatCount + 1
+          triggered = true
+        }
+        if (repeatCount >= 2) {
+          break
+        }
+      } else {
+        triggered = false
+        repeatCount = 0
+        break
+      }
+  elapsed_time: 4.500 seconds
+- command: "창문이 열리면 조명을 꺼 주고, 이후 1초마다 블라인드를 10퍼센트 씩 내려 줘."
+  command_translated: "창문이 열리면 조명을 꺼 주고, 이후 1초마다 블라인드를 10퍼센트 씩 내려 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Curtain
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#Window).windowControl_window == open) {
+        if (triggered == false) {
+          (#Light).switch_off()
+          triggered = true
+          blindLevel := 100
+        }
+        blindLevel = blindLevel - 10
+        if (blindLevel < 0) {
+          blindLevel = 0
+        }
+        all(#Blind).blindLevel_setBlindLevel(blindLevel)
+        (#Clock).clock_delay(1000)
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 3.327 seconds
+- command: "현관 문이 닫히면 즉시 조명을 끄고, 이후 3초마다 경광등을 켜 줘."
+  command_translated: "현관 문이 닫히면 즉시 조명을 끄고, 이후 3초마다 경광등을 켜 줘."
+  devices:
+  - Blind
+  - Speaker
+  - Window
+  - Buttonx4
+  - Timer
+  - Curtain
+  - Shade
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#Window).windowControl_window == closed) {
+        if (triggered == false) {
+          triggered = true
+          (#Light).switch_off()
+        } else {
+          (#Timer).timer_isExist("SirenTimer") == false and (#Timer).timer_set("SirenTimer", 3)
+          if ((#Timer).timer_isSet("SirenTimer") == true) {
+            (#Siren).switch_on()
+            (#Timer).timer_reset("SirenTimer")
+          }
+        }
+      } else {
+        triggered = false
+        (#Timer).timer_reset("SirenTimer")
+        break
+      }
+  elapsed_time: 4.631 seconds

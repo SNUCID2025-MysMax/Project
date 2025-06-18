@@ -1,0 +1,258 @@
+- command: "토양 습도가 30% 미만이면 5초 후 급수기를 작동해 줘."
+  command_translated: "토양 습도가 30% 미만이면 5초 후 급수기를 작동해 줘."
+  devices:
+  - WeatherProvider
+  - Humidifier
+  - HumiditySensor
+  - Irrigator
+  - Speaker
+  - LeakSensor
+  - Clock
+  - Calculator
+  - SoilMoistureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0)
+      (#Clock).clock_delay(5000)
+      (#Irrigator).switch_on()
+  elapsed_time: 1.741 seconds
+- command: "창문이 열려 있고 온도가 35도 이상이면 10초 대기 후 블라인드를 내려 줘."
+  command_translated: "창문이 열려 있고 온도가 35도 이상이면 10초 대기 후 블라인드를 내려 줘."
+  devices:
+  - WeatherProvider
+  - Blind
+  - Clock
+  - Speaker
+  - Window
+  - Curtain
+  - Shade
+  - TemperatureSensor
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if (((#Window).windowControl_window == open) and ((#TemperatureSensor).temperatureMeasurement_temperature >= 35.0)) {
+        if (triggered == false) {
+          (#Clock).clock_delay(10000)
+          all(#Blind).blind_close()
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 4.220 seconds
+- command: "습도가 80% 이상이면 3초 뒤 제습기를 켜고, 7초 더 지난 후 창문을 닫아 줘."
+  command_translated: "습도가 80% 이상이면 3초 뒤 제습기를 켜고, 7초 더 지난 후 창문을 닫아 줘."
+  devices:
+  - Dehumidifier
+  - HumiditySensor
+  - Speaker
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Shade
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity >= 80.0)
+      (#Clock).clock_delay(3000)
+      (#Dehumidifier).switch_on()
+      (#Clock).clock_delay(7000)
+      (#Window).windowControl_close()
+  elapsed_time: 2.934 seconds
+- command: "빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘."
+  command_translated: "빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘."
+  devices:
+  - Light
+  - Blind
+  - HumiditySensor
+  - Speaker
+  - LeakSensor
+  - Shade
+  - LightSensor
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#LightSensor).lightLevel_light <= 100.0) {
+        if (triggered == false) {
+          triggered = true
+          (#Clock).clock_delay(5000)
+          all(#Light).switch_on()
+          break
+        }
+      } else {
+        triggered = false
+      }
+  elapsed_time: 4.478 seconds
+- command: "급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘."
+  command_translated: "급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘."
+  devices:
+  - Humidifier
+  - Dehumidifier
+  - Pump
+  - Dishwasher
+  - Irrigator
+  - Speaker
+  - Valve
+  - Window
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Pump).switch_on()
+      (#Clock).clock_delay(10000)
+      (#Pump).pump_open()
+      (#Pump).switch_on()
+  elapsed_time: 1.806 seconds
+- command: "창문이 열려 있으면 5초 후 커튼을 닫고, 10초 더 지난 뒤 블라인드를 닫아 줘."
+  command_translated: "창문이 열려 있으면 5초 후 커튼을 닫고, 10초 더 지난 뒤 블라인드를 닫아 줘."
+  devices:
+  - Blind
+  - Speaker
+  - Window
+  - Buttonx4
+  - Curtain
+  - Shade
+  - DoorLock
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#Window).windowControl_window == open)
+      (#Clock).clock_delay(5000)
+      (#Curtain).curtain_close()
+      (#Clock).clock_delay(10000)
+      (#Blind).blind_close()
+  elapsed_time: 2.161 seconds
+- command: "조명이 켜져 있으면 3초 대기 후 조명을 껐다가 3초 뒤 다시 켜 줘."
+  command_translated: "조명이 켜져 있으면 3초 대기 후 조명을 껐다가 3초 뒤 다시 켜 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Shade
+  - Clock
+  - Alarm
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#SmartPlug).switch_switch == on) {
+        if (triggered == false) {
+          triggered = true
+          (#Clock).clock_delay(3000)
+          all(#SmartPlug).switch_off()
+          (#Clock).clock_delay(3000)
+          all(#SmartPlug).switch_on()
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 3.220 seconds
+- command: "7초 후에 조명을 끄고 5초 뒤 다시 켜 줘."
+  command_translated: "7초 후에 조명을 끄고 5초 뒤 다시 켜 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Timer
+  - Shade
+  - Siren
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Clock).clock_delay(7000)
+      (#SmartPlug).switch_off()
+      (#Clock).clock_delay(5000)
+      (#SmartPlug).switch_on()
+  elapsed_time: 1.758 seconds
+- command: "문이 닫혀 있는데 5초가 지나도 창문이 열려 있지 않으면 블라인드를 열어 줘."
+  command_translated: "문이 닫혀 있는데 5초가 지나도 창문이 열려 있지 않으면 블라인드를 열어 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - DoorLock
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#DoorLock).doorControl_door == closed) {
+        startTime := 0
+        if (triggered == false) {
+          startTime = (#Clock).clock_timestamp
+          triggered = true
+        } else {
+          elapsed = (#Clock).clock_timestamp - startTime
+          if ((elapsed >= 5000) and ((#Window).windowControl_window != open)) {
+            (#Blind).blind_open()
+            break
+          }
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 4.280 seconds
+- command: "커튼이 열린 상태라면 2초 뒤 조명을 50으로 낮추고, 다시 4초 기다려서 꺼 줘."
+  command_translated: "커튼이 열린 상태라면 2초 뒤 조명을 50으로 낮추고, 다시 4초 기다려서 꺼 줘."
+  devices:
+  - Blind
+  - Button
+  - Speaker
+  - Window
+  - Buttonx4
+  - Timer
+  - Curtain
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Curtain).curtain_curtain == open) {
+        (#Clock).clock_delay(2000)
+        (#Light).switchLevel_setLevel(50)
+        (#Clock).clock_delay(4000)
+        (#Light).switch_off()
+      }
+  elapsed_time: 2.228 seconds

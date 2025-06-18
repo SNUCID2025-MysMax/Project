@@ -1,0 +1,119 @@
+- id: category_1-avg
+  score:
+    cron: 100.0
+    period: 100.0
+    code: 85.0
+    elapsed_time: 6.4
+    elapsed_time_wo_timeout: 6.4
+- id: category_2-avg
+  score:
+    cron: 100.0
+    period: 100.0
+    code: 62.0
+    elapsed_time: 13.8
+    elapsed_time_wo_timeout: 13.8
+- id: category_3-avg
+  score:
+    cron: 80.0
+    period: 100.0
+    code: 58.8
+    elapsed_time: 9.8
+    elapsed_time_wo_timeout: 4.7
+- id: category_4-avg
+  score:
+    cron: 100.0
+    period: 80.0
+    code: 64.0
+    elapsed_time: 4.9
+    elapsed_time_wo_timeout: 4.9
+- id: category_5-avg
+  score:
+    cron: 100.0
+    period: 80.0
+    code: 30.6
+    elapsed_time: 6.4
+    elapsed_time_wo_timeout: 6.4
+- id: category_6-avg
+  score:
+    cron: 100.0
+    period: 100.0
+    code: 83.0
+    elapsed_time: 9.3
+    elapsed_time_wo_timeout: 9.3
+- id: category_7-avg
+  score:
+    cron: 100.0
+    period: 100.0
+    code: 36.0
+    elapsed_time: 6.5
+    elapsed_time_wo_timeout: 6.5
+- id: category_8-avg
+  score:
+    cron: 100.0
+    period: 20.0
+    code: 38.0
+    elapsed_time: 16.3
+    elapsed_time_wo_timeout: 7.7
+- id: category_9-avg
+  score:
+    cron: 100.0
+    period: 80.0
+    code: 54.8
+    elapsed_time: 17.2
+    elapsed_time_wo_timeout: 8.9
+- id: category_10-avg
+  score:
+    cron: 80.0
+    period: 60.0
+    code: 75.2
+    elapsed_time: 19.5
+    elapsed_time_wo_timeout: 11.8
+- id: category_11-avg
+  score:
+    cron: 80.0
+    period: 40.0
+    code: 96.8
+    elapsed_time: 16.2
+    elapsed_time_wo_timeout: 10.4
+- id: category_12-avg
+  score:
+    cron: 100.0
+    period: 40.0
+    code: 52.8
+    elapsed_time: 9.6
+    elapsed_time_wo_timeout: 6.5
+- id: category_13-avg
+  score:
+    cron: 100.0
+    period: 100.0
+    code: 83.4
+    elapsed_time: 5.1
+    elapsed_time_wo_timeout: 5.1
+- id: category_14-avg
+  score:
+    cron: 60.0
+    period: 60.0
+    code: 56.0
+    elapsed_time: 8.3
+    elapsed_time_wo_timeout: 8.3
+- id: category_15-avg
+  score:
+    cron: 100.0
+    period: 40.0
+    code: 50.0
+    elapsed_time: 30.0
+    elapsed_time_wo_timeout: 20
+- id: category_16-avg
+  score:
+    cron: 100.0
+    period: 100.0
+    code: 73.4
+    elapsed_time: 4.9
+    elapsed_time_wo_timeout: 4.9
+- id: overall-avg
+  score:
+    cron: 94.1
+    period: 76.5
+    code: 63.8
+    elapsed_time: 11.2
+    elapsed_time_wo_timeout: 8.4

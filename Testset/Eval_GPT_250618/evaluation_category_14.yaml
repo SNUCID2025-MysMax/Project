@@ -1,0 +1,315 @@
+- command: "매일 자정 선풍기가 꺼져 있으면 선풍기를 꺼 줘. 또한 그 때마다 선풍기를 꺼 줘"
+  command_translated: "Every night at midnight, turn off the fan if it is off. Also, turn off the fan again at that time"
+  devices:
+  - Timer
+  - Speaker
+  - Fan
+  - Camera
+  - GasValve
+  - Irrigator
+  - Clock
+  - Dehumidifier
+  - Window
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 0
+    code: |
+      if ((#Fan).switch_switch == off) {
+        (#Fan).switch_off()
+      }
+  - name: "Scenario2"
+    cron: "0 0 * * *"
+    period: 0
+    code: |
+      (#Fan).switch_off()
+  elapsed_time: 2.725 seconds
+- command: "주말에는 관개 장치가 꺼지면 관개 장치를 꺼 줘."
+  command_translated: "On weekends, turn off the irrigation when it turns off."
+  devices:
+  - Timer
+  - Speaker
+  - Blind
+  - GasValve
+  - Pump
+  - Irrigator
+  - Clock
+  - Dehumidifier
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      weekend := false
+      if (((#Clock).clock_weekday == #Clock.clock_weekday) or ((#Clock).clock_weekday == #Clock.clock_weekday)) {
+        weekend = true
+      } else {
+        weekend = false
+      }
+      if (weekend == true) {
+        if ((#Irrigator).switch_switch == #Irrigator.switch_switch.off) {
+          (#Irrigator).switch_off()
+        }
+      } else {
+        break
+      }
+      break
+  elapsed_time: 3.350 seconds
+- command: "실시간으로 확인하여 블라인드가 닫힌 상태에서 또 닫히면 전등을 켜 줘"
+  command_translated: "Check in real-time, and turn on the light if the blinds are closed again while already closed."
+  devices:
+  - Siren
+  - LightSensor
+  - Speaker
+  - Curtain
+  - Light
+  - Blind
+  - DoorLock
+  - Pump
+  - Clock
+  - Window
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      closedPreviously := false
+      if ((#Blind).blind_blind == "closed") {
+        if (closedPreviously == true) {
+          (#Light).switch_on()
+          break
+        }
+        closedPreviously = true
+      } else {
+        closedPreviously = false
+        break
+      }
+  elapsed_time: 2.453 seconds
+- command: "매일, 실시간으로 확인하여 관개 장치가 꺼질 때마다 10초간 기다리는 것을 반복해 줘"
+  command_translated: "Check daily, in real time, and repeat the 10-second wait each time the irrigation device is turned off."
+  devices:
+  - Timer
+  - Speaker
+  - LeakSensor
+  - GasValve
+  - Pump
+  - Irrigator
+  - Clock
+  - Window
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 10000
+    code: |
+      triggered := false
+      if (any(#Irrigator).switch_switch == off) {
+        if (triggered == false) {
+          (#Clock).clock_delay(10000)
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.113 seconds
+- command: "실시간으로 확인하여 선풍기가 꺼져 있으면서 움직임이 감지되지 않다가 감지되는 순간 그 때부터 10초 간격으로 전등이 꺼져 있으면 끄고, 켜져 있으면 켜 줘"
+  command_translated: "Check in real-time. if the fan is off and motion was not detected but then becomes active, then starting from that moment, every 10 seconds, turn off the light if it's off, or turn it on if it's on."
+  devices:
+  - Speaker
+  - LightSensor
+  - Fan
+  - SmokeDetector
+  - Light
+  - ContactSensor
+  - MotionSensor
+  - Alarm
+  - TemperatureSensor
+  - Clock
+  - FallDetector
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      motionPreviouslyActive := false
+      if (((#Fan).switch_switch == "off") and ((#MotionSensor).motionSensor_motion == "active")) {
+        if (motionPreviouslyActive == false) {
+          motionPreviouslyActive = true
+          triggered := false
+          checkLight := true
+        }
+      } else {
+        motionPreviouslyActive = false
+        checkLight = false
+        triggered = false
+        break
+      }
+
+      if (checkLight == true) {
+        if (triggered == false) {
+          lastActionTime := (#Clock).clock_timestamp
+          triggered = true
+        } else {
+          currentTime := (#Clock).clock_timestamp
+          elapsed := currentTime - lastActionTime
+          if (elapsed >= 10000) {
+            if ((#Light).switch_switch == "off") {
+              (#Light).switch_on()
+            } else {
+              (#Light).switch_off()
+            }
+            lastActionTime = currentTime
+          }
+        }
+      }
+  elapsed_time: 4.206 seconds
+- command: "1초마다 확인하여 온도가 30도 미만이면서 25도 이상일 때마다 에어컨을 켜 줘."
+  command_translated: "Check every second to turn on the air conditioner whenever the temperature is below 30 degrees but above 25 degrees."
+  devices:
+  - Speaker
+  - Fan
+  - AirConditioner
+  - AirQualityDetector
+  - AirPurifier
+  - TemperatureSensor
+  - Clock
+  - Dehumidifier
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      if (((#TemperatureSensor).temperatureMeasurement_temperature < 30.0) and ((#TemperatureSensor).temperatureMeasurement_temperature > 25.0)) {
+        (#AirConditioner).switch_on()
+      } else {
+        (#AirConditioner).switch_off()
+      }
+      break
+  elapsed_time: 2.703 seconds
+- command: "주말 오전에, 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않고 10초가 끝났을 때 조명이 켜져 있으면 조명을 켜 줘."
+  command_translated: "On a weekend morning, check in real-time and turn on the lights if no motion is detected for 10 seconds after the time when the door is opened and the lights are on at the end of the 10 seconds."
+  devices:
+  - Speaker
+  - LightSensor
+  - HumiditySensor
+  - Light
+  - DoorLock
+  - ContactSensor
+  - MotionSensor
+  - Clock
+  - Window
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      doorOpenedTime := 0
+      motionDetected := false
+      doorOpenActive := false
+      if (((#Clock).clock_weekday == #Clock.clock_weekday) or ((#Clock).clock_weekday == #Clock.clock_weekday)) {
+        if ((#DoorLock).doorControl_door == "open" and all(#Light).switch_switch == "on") {
+          if (doorOpenActive == false) {
+            doorOpenedTime = (#Clock).clock_timestamp
+            doorOpenActive = true
+          }
+          if ((#MotionSensor).motionSensor_motion == "active") {
+            motionDetected = true
+          } else {
+            motionDetected = false
+          }
+          timeElapsed = (#Clock).clock_timestamp - doorOpenedTime
+          if ((timeElapsed >= 10000) and (motionDetected == false)) {
+            all(#Light).switch_on()
+            doorOpenActive = false
+            motionDetected = false
+            break
+          }
+        } else {
+          doorOpenActive = false
+          motionDetected = false
+        }
+      } else {
+        break
+      }
+  elapsed_time: 4.957 seconds
+- command: "실시간으로 확인하여 재실 센서가 감지 상태일 때마다 10초 대기 후 조명의 밝기를 현재 밝기로 맞춰줘."
+  command_translated: "Check in real-time to adjust lights to their current brightness after a 10-second wait whenever an occupancy sensor is detected."
+  devices:
+  - Speaker
+  - LightSensor
+  - HumiditySensor
+  - Light
+  - ContactSensor
+  - OccupancySensor
+  - MotionSensor
+  - TemperatureSensor
+  - SoundSensor
+  - Clock
+  - PresenceSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#OccupancySensor).presenceSensor_presence == present) {
+        if (triggered == false) {
+          triggered = true
+          (#Clock).clock_delay(10000)
+          currentLevel = (#Light).switchLevel_level
+          (#Light).switchLevel_setLevel(currentLevel, 1)
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.321 seconds
+- command: "TV가 꺼져 있으면 10초 대기 후 다시 TV를 확인하여 켜져 있으면 TV를 켜 줘."
+  command_translated: "If the TV is off, wait 10 seconds, then check the TV again and turn it on if it's on."
+  devices:
+  - Speaker
+  - HumiditySensor
+  - DoorLock
+  - AirQualityDetector
+  - Television
+  - GasValve
+  - Irrigator
+  - Clock
+  - Window
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Television).switch_switch == "off") {
+        (#Clock).clock_delay(10000)
+        if ((#Television).switch_switch == "off") {
+          (#Television).switch_on()
+        }
+      }
+  elapsed_time: 2.227 seconds
+- command: "월, 수, 금에 실시간으로 확인하여 창문이 열려 있지 않으면 창문을 닫아 줘."
+  command_translated: "Check in real-time on Mon, Wed, Fri and close the window if it's not open."
+  devices:
+  - Speaker
+  - Curtain
+  - DoorLock
+  - Blind
+  - Pump
+  - Clock
+  - Window
+  - Shade
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * 1,3,5"
+    period: 100
+    code: |
+      if ((#Window).windowControl_window != open) {
+        (#Window).windowControl_close()
+      }
+      break
+  elapsed_time: 1.638 seconds

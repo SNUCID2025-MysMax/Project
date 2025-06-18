@@ -1,0 +1,206 @@
+- command: "내 생일이 되면 \"생일 축하합니다\" 노래를 불러 줘."
+  command_translated: "내 생일이 되면 \"생일 축하합니다\" 노래를 불러 줘."
+  devices:
+  - MenuProvider
+  - Dishwasher
+  - Speaker
+  - Timer
+  - Recorder
+  - Charger
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 0 18 6 *"
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("생일 축하합니다")
+  elapsed_time: 2.163 seconds
+- command: "날 우울하게 만드는 뉴스를 감지하면 위로의 말을 해 줘."
+  command_translated: "날 우울하게 만드는 뉴스를 감지하면 위로의 말을 해 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Timer
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("위로의 말을 해 줘")
+  elapsed_time: 1.767 seconds
+- command: "고양이가 기분이 좋을 때마다 박수를 쳐 줘."
+  command_translated: "고양이가 기분이 좋을 때마다 박수를 쳐 줘."
+  devices:
+  - Speaker
+  - SmartPlug
+  - Timer
+  - Buttonx4
+  - Refrigerator
+  - RobotCleaner
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#MotionSensor).mood_good == true) {
+        if (triggered == false) {
+          (#Speaker).mediaPlayback_speak("👏")
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.510 seconds
+- command: "지금 내 기분에 맞춰 조명을 감성적으로 조절해 줘."
+  command_translated: "지금 내 기분에 맞춰 조명을 감성적으로 조절해 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Timer
+  - Shade
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("죄송하지만, 조명 장치나 조명 관련 정보가 없습니다. 조명을 조절하려면 조명 장치가 필요합니다.")
+  elapsed_time: 1.857 seconds
+- command: "집이 외로워 보이면 음악을 틀어 줘."
+  command_translated: "집이 외로워 보이면 음악을 틀어 줘."
+  devices:
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Timer
+  - Recorder
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_play("music")
+  elapsed_time: 1.232 seconds
+- command: "밖이 위험해 보이면 자동으로 경찰에 전화해 줘."
+  command_translated: "밖이 위험해 보이면 자동으로 경찰에 전화해 줘."
+  devices:
+  - Speaker
+  - SmartPlug
+  - FallDetector
+  - LeakSensor
+  - Buttonx4
+  - Refrigerator
+  - Camera
+  - Siren
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#FallDetector).fallDetection_fall == true) {
+        (#Speaker).mediaPlayback_speak("위험 상황 감지됨. 경찰에 자동으로 연락합니다.")
+
+        all(#SmartPlug).switch_on()
+      }
+  elapsed_time: 2.675 seconds
+- command: "스마트폰 배터리가 20% 이하가 되면 커튼을 닫아 줘."
+  command_translated: "스마트폰 배터리가 20% 이하가 되면 커튼을 닫아 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Charger
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      batteryLevel = 0
+      batteryLevel = (#Charger).voltageMeasurement_voltage
+      if (batteryLevel <= 20.0) {
+        if (triggered == false) {
+          all(#Blind).blind_close()
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.393 seconds
+- command: "오늘 중요한 발표가 있으면 행운을 빌어 줘."
+  command_translated: "오늘 중요한 발표가 있으면 행운을 빌어 줘."
+  devices:
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Timer
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("행운을 빕니다. 중요한 발표를 응원합니다.")
+  elapsed_time: 1.577 seconds
+- command: "로봇청소기에게 커피 한 잔 타 달라고 부탁해 줘."
+  command_translated: "로봇청소기에게 커피 한 잔 타 달라고 부탁해 줘."
+  devices:
+  - Dishwasher
+  - Speaker
+  - SmartPlug
+  - Feeder
+  - Timer
+  - RobotCleaner
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("로봇청소기에게 커피 한 잔 타 달라고 부탁해 줘.")
+  elapsed_time: 1.567 seconds
+- command: "기분 좋게 춤춰 줘."
+  command_translated: "기분 좋게 춤춰 줘."
+  devices:
+  - Humidifier
+  - Clock
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Timer
+  - Refrigerator
+  - Camera
+  - Relay
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("기분 좋게 춤춰 줘.")
+  elapsed_time: 1.374 seconds

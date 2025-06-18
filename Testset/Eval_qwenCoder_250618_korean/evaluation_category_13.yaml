@@ -1,0 +1,221 @@
+- command: "섹터 에이에 있는 선풍기를 꺼 줘."
+  command_translated: "Turn off the fan in sector A."
+  devices:
+  - Dehumidifier
+  - ContactSensor
+  - Valve
+  - Relay
+  - Window
+  - Humidifier
+  - Speaker
+  - Fan
+  - GasValve
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Fan #SectorA).switch_off()
+  elapsed_time: 3.787 seconds
+- command: "섹터 비와 섹터 에이에 있는 선풍기가 모두 켜져 있으면 홀수 태그가 붙은 블라인드 중 하나를 닫아 줘."
+  command_translated: "If the fans in Sector B and Sector A are both on, close one of the odd-tagged blinds."
+  devices:
+  - DoorLock
+  - Valve
+  - Curtain
+  - Buttonx4
+  - Window
+  - Pump
+  - Speaker
+  - Fan
+  - Shade
+  - Clock
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Blind #Odd #SectorA)).blind_blind != closed and ((#Blind #Odd #SectorB)).blind_blind != closed) {
+        (#Blind #Odd #SectorA).blind_close()
+      }
+  elapsed_time: 5.812 seconds
+- command: "홀수 태그가 붙은 선풍기 중 하나라도 켜져 있으면, 하단부에 있는 모든 관개 장치를 꺼 줘."
+  command_translated: "If any of the odd-tagged fans are on, turn off all the irrigation at the bottom."
+  devices:
+  - FallDetector
+  - Dehumidifier
+  - Valve
+  - Irrigator
+  - Pump
+  - Speaker
+  - Fan
+  - GasValve
+  - LeakSensor
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#Odd).fanControl_fanSpeed == ON) {
+        all(#Lower).irrigatorOperatingState_startWatering()
+      }
+  elapsed_time: 4.761 seconds
+- command: "짝수 태그가 붙은 창문이 열려 있으면 섹터 에이에 있는 선풍기를 꺼 줘."
+  command_translated: "Turn off the fan in Sector A if an even-tagged window is open."
+  devices:
+  - DoorLock
+  - Valve
+  - Curtain
+  - Window
+  - Pump
+  - Speaker
+  - Fan
+  - GasValve
+  - Shade
+  - Clock
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#Window #Even #SectorA).windowControl_window == open) {
+        all(#Fan #Even #SectorA).switch_off()
+      }
+  elapsed_time: 5.002 seconds
+- command: "섹터 비에 있는 홀수 태그가 붙은 관개 장치를 모두 꺼 줘."
+  command_translated: "Turn off all odd-tagged irrigation devices in the sector rain."
+  devices:
+  - Dehumidifier
+  - Humidifier
+  - Irrigator
+  - Pump
+  - Speaker
+  - GasValve
+  - LeakSensor
+  - Clock
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      all(#Irrigator #Odd #SectorB).switch_off()
+  elapsed_time: 4.417 seconds
+- command: "상단부에 있는 짝수 태그가 붙은 창문이 열려 있으면 커튼을 닫아 줘."
+  command_translated: "If the even-tagged windows at the top are open, close the curtains."
+  devices:
+  - DoorLock
+  - Dehumidifier
+  - Valve
+  - Curtain
+  - Window
+  - Pump
+  - Speaker
+  - GasValve
+  - Shade
+  - Clock
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Window #Even #Upper)).windowControl_window == open) {
+        all(#Curtain #Even #Upper).windowShade_close()
+      }
+  elapsed_time: 5.079 seconds
+- command: "상단부에 있는 조명이 모두 꺼져 있으면, 홀수 태그가 붙은 모든 창문을 열어 줘."
+  command_translated: "If all the lights at the top are off, open all the windows tagged with odd numbers."
+  devices:
+  - Siren
+  - DoorLock
+  - Valve
+  - Curtain
+  - Clock
+  - Window
+  - Pump
+  - Speaker
+  - Shade
+  - Light
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (all(#Light #Odd).switch_switch == "off") {
+        all(#Window #Odd).windowControl_open()
+      }
+  elapsed_time: 5.050 seconds
+- command: "짝수 태그가 붙은 스피커 중 하나라도 켜져 있으면 섹터 비에 있는 조명을 모두 꺼 줘."
+  command_translated: "If any of the even-tagged speakers are on, turn off all lights in the sector b."
+  devices:
+  - Siren
+  - Alarm
+  - GasValve
+  - ContactSensor
+  - Clock
+  - Irrigator
+  - Speaker
+  - LightSensor
+  - Light
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#Even).switch_switch == "on") {
+        all(#Light #SectorB).switch_off()
+      }
+  elapsed_time: 4.878 seconds
+- command: "벽에 있는 홀수 태그가 붙은 모든 블라인드가 열려 있으면 조명을 꺼 줘."
+  command_translated: "If all the odd-tagged blinds on the wall are open, turn off the lights."
+  devices:
+  - Siren
+  - Alarm
+  - DoorLock
+  - Valve
+  - Curtain
+  - Clock
+  - Window
+  - Speaker
+  - Shade
+  - Light
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (all(#Odd #Wall).blind_blind == open) {
+        all(#Light #Wall).switch_off()
+      }
+  elapsed_time: 4.858 seconds
+- command: "상단부에 있거나 섹터 에이에 있는 조명 중 하나가 켜져 있으면 선풍기를 모두 켜 줘."
+  command_translated: "If any of the lights at the top or in sector A are on, turn on all the fans."
+  devices:
+  - Siren
+  - Alarm
+  - Buttonx4
+  - Clock
+  - Irrigator
+  - Speaker
+  - Fan
+  - LightSensor
+  - Light
+  - Blind
+  - WeatherProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Light) OR (#SectorA)).switch_switch == "on") {
+        all(#Fan).fanControl_setFanSpeed(100)
+      }
+  elapsed_time: 5.432 seconds

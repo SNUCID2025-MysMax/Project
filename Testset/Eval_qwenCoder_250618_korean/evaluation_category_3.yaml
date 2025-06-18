@@ -1,0 +1,334 @@
+- command: "지금 바로 관수기를 작동해 줘."
+  command_translated: "Run the irrigator now."
+  devices:
+  - Dehumidifier
+  - Feeder
+  - Refrigerator
+  - Humidifier
+  - Relay
+  - Irrigator
+  - Pump
+  - Speaker
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Irrigator).irrigatorOperatingState_startWatering()
+  elapsed_time: 5.662 seconds
+- command: "매일 아침 8시에 조명을 켜 줘."
+  command_translated: "Turn on the lights at 8am every morning."
+  devices:
+  - Siren
+  - Alarm
+  - MenuProvider
+  - Clock
+  - Buttonx4
+  - Speaker
+  - LightSensor
+  - Light
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8 * * *"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  elapsed_time: 4.032 seconds
+- command: "매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘."
+  command_translated: "I want you to close and open the curtains every 15 seconds between 6pm and 7pm every day."
+  devices:
+  - DoorLock
+  - Valve
+  - Curtain
+  - Window
+  - Pump
+  - Speaker
+  - Shade
+  - Clock
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 18 * * *"
+    period: 0
+    code: |
+      wait until(clockHour == 18)
+      repeat 15 times
+        wait until(clockMinute % 15 == 0)
+        (#Curtain).blind_close()
+        wait until(clockSecond == 10)
+        (#Curtain).blind_open()
+
+      name = "Scenario2"
+      cron = "0 19 * * *"
+      period = 0
+      wait until(clockHour == 19)
+      repeat 15 times
+        wait until(clockMinute % 15 == 0)
+        (#Curtain).blind_open()
+        wait until(clockSecond == 10)
+        (#Curtain).blind_close()
+
+      name = "Scenario3"
+      cron = "0 18 * * *"
+      period = 0
+      wait until(clockHour == 18)
+      repeat 15 times
+        wait until(clockMinute % 15 == 0)
+        (#Curtain).blind_close()
+        wait until(clockSecond == 10)
+        (#Curtain).blind_open()
+
+      name = "Scenario4"
+      cron = "0 19 * * *"
+      period = 0
+      wait until(clockHour == 19)
+      repeat 15 times
+        wait until(clockMinute % 15 == 0)
+        (#Curtain).blind_open()
+        wait until(clockSecond == 10)
+        (#Curtain).blind_close()
+  elapsed_time: 22.421 seconds
+- command: "주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘."
+  command_translated: "Close the blinds every 3 minutes from 10-11pm on weekends."
+  devices:
+  - Timer
+  - Valve
+  - Curtain
+  - Buttonx4
+  - Window
+  - Speaker
+  - Shade
+  - Clock
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 */3 22-23 ? * SAT,SUN"
+    period: 0
+    code: |
+      blind_close()
+  - name: "Scenario2"
+    cron: "0 22,23 ? * SAT,SUN"
+    period: 0
+    code: |
+      blinds_close_all()
+  elapsed_time: 14.002 seconds
+- command: "주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘."
+  command_translated: "Turn on the dehumidifier every 3 seconds from 10-11pm on weekends."
+  devices:
+  - Dehumidifier
+  - Refrigerator
+  - Humidifier
+  - AirPurifier
+  - HumiditySensor
+  - Window
+  - Speaker
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 22 * * 0,6"
+    period: 3000
+    code: |
+      (#Dehumidifier).switch_on()
+
+      name = "Scenario2"
+      cron = "0 23 * * 0,6"
+      period = 3000
+      (#Dehumidifier).switch_on()
+
+      name = "Scenario3"
+      cron = "0 22 * * 0,6"
+      period = 3000
+      (#Dehumidifier).switch_on()
+
+      name = "Scenario4"
+      cron = "0 23 * * 0,6"
+      period = 3000
+      (#Dehumidifier).switch_on()
+  elapsed_time: 17.184 seconds
+- command: "10초마다 알람과 사이렌을 껐다 켰다 반복해 줘."
+  command_translated: "Turn the alarm and siren off and on every 10 seconds."
+  devices:
+  - Timer
+  - Siren
+  - SoundSensor
+  - Alarm
+  - Relay
+  - Button
+  - Speaker
+  - GasValve
+  - Clock
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |
+      (#Alarm).alarm_off()
+      (#Siren).switch_off()
+      (#Alarm).alarm_off()
+      (#Siren).switch_on()
+      break
+  elapsed_time: 4.841 seconds
+- command: "매일 30초마다 선풍기를 껐다 켰다 반복해 줘."
+  command_translated: "Turn the fan off and on every 30 seconds every day."
+  devices:
+  - Timer
+  - Dehumidifier
+  - Calculator
+  - Window
+  - Irrigator
+  - Speaker
+  - Fan
+  - GasValve
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 30000
+    code: |
+      fanStatus := false
+      if (fanStatus == false) {
+        (#Fan).switch_on()
+        fanStatus = true
+      } else {
+        (#Fan).switch_off()
+        fanStatus = false
+        break
+      }
+  elapsed_time: 5.376 seconds
+- command: "매일 자정에 TV를 꺼 줘."
+  command_translated: "Turn off the TV at midnight every night."
+  devices:
+  - Timer
+  - AirQualityDetector
+  - Television
+  - Dehumidifier
+  - Speaker
+  - GasValve
+  - Clock
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 0
+    code: |
+      (#Television).switch_off()
+  elapsed_time: 3.924 seconds
+- command: "5초마다 텔레비전 볼륨을 1씩 높여 줘."
+  command_translated: "Increase the volume of your television by 1 every 5 seconds."
+  devices:
+  - SoundSensor
+  - Television
+  - GasMeter
+  - Calculator
+  - Speaker
+  - Fan
+  - Recorder
+  - Clock
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |
+      currentVolume := (#Television).audioVolume_volume
+      newVolume := currentVolume + 1
+      (#Television).audioVolume_setVolume(newVolume)
+  elapsed_time: 4.831 seconds
+- command: "평일 오전 8시부터 자정까지 한 시간마다 조명을 켜 줘."
+  command_translated: "Turn on the lights every hour on the hour from 8am to midnight on weekdays."
+  devices:
+  - Timer
+  - Siren
+  - Alarm
+  - Clock
+  - Curtain
+  - Speaker
+  - LightSensor
+  - Light
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario2"
+    cron: "0 9 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario3"
+    cron: "0 10 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario4"
+    cron: "0 11 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario5"
+    cron: "0 12 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario6"
+    cron: "0 13 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario7"
+    cron: "0 14 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario8"
+    cron: "0 15 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario9"
+    cron: "0 16 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario10"
+    cron: "0 17 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario11"
+    cron: "0 18 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario12"
+    cron: "0 19 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario13"
+    cron: "0 20 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario14"
+    cron: "0 21 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario15"
+    cron: "0 22 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  - name: "Scenario16"
+    cron: "0 23 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  elapsed_time: 30.137 seconds

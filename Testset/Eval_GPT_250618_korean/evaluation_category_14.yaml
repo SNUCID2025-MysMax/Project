@@ -1,0 +1,273 @@
+- command: "매일 자정 선풍기가 꺼져 있으면 선풍기를 꺼 줘. 또한 그 때마다 선풍기를 꺼 줘"
+  command_translated: "매일 자정 선풍기가 꺼져 있으면 선풍기를 꺼 줘. 또한 그 때마다 선풍기를 꺼 줘"
+  devices:
+  - Dehumidifier
+  - Dishwasher
+  - Speaker
+  - Timer
+  - Buttonx4
+  - Shade
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 0
+    code: |
+      if ((#Fan).switch_switch == off) {
+        (#Fan).switch_off()
+      }
+  elapsed_time: 1.692 seconds
+- command: "주말에는 관개 장치가 꺼지면 관개 장치를 꺼 줘."
+  command_translated: "주말에는 관개 장치가 꺼지면 관개 장치를 꺼 줘."
+  devices:
+  - Dishwasher
+  - Speaker
+  - Valve
+  - LeakSensor
+  - Timer
+  - Shade
+  - Charger
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * 6,0"
+    period: 0
+    code: |
+      if (any(#Irrigator).switch_switch == "off") {
+        all(#Irrigator).switch_off()
+      }
+  elapsed_time: 3.085 seconds
+- command: "실시간으로 확인하여 블라인드가 닫힌 상태에서 또 닫히면 전등을 켜 줘"
+  command_translated: "실시간으로 확인하여 블라인드가 닫힌 상태에서 또 닫히면 전등을 켜 줘"
+  devices:
+  - Blind
+  - Speaker
+  - MotionSensor
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#Blind).blind_blind == closed) {
+        if (triggered == false) {
+          (#Blind).blind_close()
+          (#SmartPlug).switch_on()
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.171 seconds
+- command: "매일, 실시간으로 확인하여 관개 장치가 꺼질 때마다 10초간 기다리는 것을 반복해 줘"
+  command_translated: "매일, 실시간으로 확인하여 관개 장치가 꺼질 때마다 10초간 기다리는 것을 반복해 줘"
+  devices:
+  - Blind
+  - Clock
+  - Pump
+  - Speaker
+  - Valve
+  - Window
+  - Timer
+  - FallDetector
+  - Relay
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 100
+    code: |
+      triggered := false
+      if ((#Pump).switch_switch == off) {
+        if (triggered == false) {
+          (#Clock).clock_delay(10000)
+          triggered = true
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 2.220 seconds
+- command: "실시간으로 확인하여 선풍기가 꺼져 있으면서 움직임이 감지되지 않다가 감지되는 순간 그 때부터 10초 간격으로 전등이 꺼져 있으면 끄고, 켜져 있으면 켜 줘"
+  command_translated: "실시간으로 확인하여 선풍기가 꺼져 있으면서 움직임이 감지되지 않다가 감지되는 순간 그 때부터 10초 간격으로 전등이 꺼져 있으면 끄고, 켜져 있으면 켜 줘"
+  devices:
+  - Speaker
+  - MotionSensor
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      motionPreviouslyDetected := false
+      if (((#Fan).switch_switch == "off") and ((#MotionSensor).motionSensor_motion == "inactive")) {
+        motionPreviouslyDetected = false
+      }
+      if (((#Fan).switch_switch == "off") and ((#MotionSensor).motionSensor_motion == "active")) {
+        if (motionPreviouslyDetected == false) {
+          motionPreviouslyDetected = true
+        }
+        lightState = (#Light).switch_switch
+        if (lightState == "off") {
+          all(#Light).switch_off()
+        }
+        if (lightState == "on") {
+          all(#Light).switch_on()
+        }
+        (#Clock).clock_delay(10000)
+      } else {
+        if ((#MotionSensor).motionSensor_motion == "inactive") {
+          motionPreviouslyDetected = false
+        }
+      }
+      break
+  elapsed_time: 5.843 seconds
+- command: "1초마다 확인하여 온도가 30도 미만이면서 25도 이상일 때마다 에어컨을 켜 줘."
+  command_translated: "1초마다 확인하여 온도가 30도 미만이면서 25도 이상일 때마다 에어컨을 켜 줘."
+  devices:
+  - Fan
+  - Clock
+  - AirConditioner
+  - Speaker
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - TemperatureSensor
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      if (((#TemperatureSensor).temperatureMeasurement_temperature < 30.0) and ((#TemperatureSensor).temperatureMeasurement_temperature >= 25.0)) {
+        (#AirConditioner).switch_on()
+      }
+      break
+  elapsed_time: 2.082 seconds
+- command: "주말 오전에, 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않고 10초가 끝났을 때 조명이 켜져 있으면 조명을 켜 줘."
+  command_translated: "주말 오전에, 실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않고 10초가 끝났을 때 조명이 켜져 있으면 조명을 켜 줘."
+  devices:
+  - Light
+  - Blind
+  - Speaker
+  - Timer
+  - Shade
+  - Camera
+  - DoorLock
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      movementDetected := true
+      movementEndTime := 0
+      previousDoorOpen := false
+      if ((#Clock).clock_weekday == #Clock.clock_weekday or (#Clock).clock_weekday == #Clock.clock_weekday) and ((#Clock).clock_hour >= 0 and (#Clock).clock_hour < 12) {
+          doorOpen = (#DoorLock).doorControl_door == open
+          if (doorOpen == true and previousDoorOpen == false) {
+              movementDetected = true
+              movementEndTime = 0
+          }
+          previousDoorOpen = doorOpen
+
+          if (doorOpen == true) {
+
+
+
+              break
+          } else {
+              previousDoorOpen = false
+              movementDetected = true
+              movementEndTime = 0
+          }
+      } else {
+          previousDoorOpen = false
+          movementDetected = true
+          movementEndTime = 0
+          break
+      }
+  elapsed_time: 8.055 seconds
+- command: "실시간으로 확인하여 재실 센서가 감지 상태일 때마다 10초 대기 후 조명의 밝기를 현재 밝기로 맞춰줘."
+  command_translated: "실시간으로 확인하여 재실 센서가 감지 상태일 때마다 10초 대기 후 조명의 밝기를 현재 밝기로 맞춰줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Shade
+  - Camera
+  - LightSensor
+  - Clock
+  generated_code: []
+  elapsed_time: 3.011 seconds
+- command: "TV가 꺼져 있으면 10초 대기 후 다시 TV를 확인하여 켜져 있으면 TV를 켜 줘."
+  command_translated: "TV가 꺼져 있으면 10초 대기 후 다시 TV를 확인하여 켜져 있으면 TV를 켜 줘."
+  devices:
+  - Blind
+  - Speaker
+  - AirQualityDetector
+  - Television
+  - Window
+  - Timer
+  - Curtain
+  - DoorLock
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      waited := false
+      if ((#Television).switch_switch == off) {
+        if (waited == false) {
+          (#Clock).clock_delay(10000)
+          waited = true
+        } else {
+          if ((#Television).switch_switch == on) {
+            (#Television).switch_on()
+            break
+          }
+        }
+      } else {
+        waited = false
+        break
+      }
+  elapsed_time: 2.893 seconds
+- command: "월, 수, 금에 실시간으로 확인하여 창문이 열려 있지 않으면 창문을 닫아 줘."
+  command_translated: "월, 수, 금에 실시간으로 확인하여 창문이 열려 있지 않으면 창문을 닫아 줘."
+  devices:
+  - Blind
+  - Speaker
+  - Window
+  - LeakSensor
+  - Timer
+  - Shade
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if (((#Clock).clock_weekday == monday) or ((#Clock).clock_weekday == wednesday) or ((#Clock).clock_weekday == friday)) {
+        if ((#Window).windowControl_window != open) {
+          (#Window).windowControl_close()
+        }
+        break
+      } else {
+        break
+      }
+  elapsed_time: 2.332 seconds

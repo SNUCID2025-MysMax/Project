@@ -1,0 +1,190 @@
+- command: "내 생일이 되면 \"생일 축하합니다\" 노래를 불러 줘."
+  command_translated: "Sing \"Happy Birthday\" on my birthday."
+  devices:
+  - Humidifier
+  - Speaker
+  - Irrigator
+  - Timer
+  - Clock
+  - Recorder
+  - Fan
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 $(date +%d) $(date +%m) *"
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("Happy Birthday!")
+  elapsed_time: 3.845 seconds
+- command: "날 우울하게 만드는 뉴스를 감지하면 위로의 말을 해 줘."
+  command_translated: "If you detects news that makes me depressed, say something uplifting."
+  devices:
+  - Speaker
+  - MotionSensor
+  - Buttonx4
+  - Dehumidifier
+  - Clock
+  - SmokeDetector
+  - FallDetector
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until(#Television).newsChannel_latestHeadline_contains("depressed")
+      (#Speaker).mediaPlayback_speak("Remember, there"s always hope! Stay positive!")
+  elapsed_time: 3.887 seconds
+- command: "고양이가 기분이 좋을 때마다 박수를 쳐 줘."
+  command_translated: "Clap whenever your cat is in a good mood."
+  devices:
+  - Window
+  - Speaker
+  - ContactSensor
+  - Timer
+  - Clock
+  - Shade
+  - LightSensor
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until(all(#Button).catMood_mood == "good")
+      (#Speaker).mediaPlayback_speak("Meow~ Your kitty is feeling great!")
+  elapsed_time: 3.629 seconds
+- command: "지금 내 기분에 맞춰 조명을 감성적으로 조절해 줘."
+  command_translated: "Emotionally adjust the light to match my mood right now."
+  devices:
+  - Siren
+  - Light
+  - Curtain
+  - Speaker
+  - Clock
+  - Shade
+  - LightSensor
+  - Alarm
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("Understood! I"ll adjust your light based on your mood.")
+      (#MotionSensor).moodDetection_getMood(mood: STRING) -> VOID
+      if (mood == "happy") {
+        (#Light).colorControl_setColor("WHITE")
+      } else if (mood == "sad") {
+        (#Light).colorControl_setColor("BLUE")
+      } else if (mood == "energetic") {
+        (#Light).colorControl_setColor("YELLOW")
+      } else {
+        (#Light).colorControl_setColor("RED")
+      }
+  elapsed_time: 11.664 seconds
+- command: "집이 외로워 보이면 음악을 틀어 줘."
+  command_translated: "If the house seems lonely, play some music."
+  devices:
+  - Window
+  - Speaker
+  - Dehumidifier
+  - PresenceSensor
+  - OccupancySensor
+  - Clock
+  - FallDetector
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until(any(#MotionSensor).motionSensor_motion == true)
+      (#Speaker).mediaPlayback_play("path/to/music/file.mp3")
+
+      name = "Scenario2"
+      cron = ""
+      period = -1
+      wait until(all(#MotionSensor).motionSensor_motion == false)
+      (#Speaker).mediaPlayback_stop()
+  elapsed_time: 4.999 seconds
+- command: "밖이 위험해 보이면 자동으로 경찰에 전화해 줘."
+  command_translated: "Automatically call the police if it looks dangerous outside."
+  devices:
+  - Siren
+  - WeatherProvider
+  - LeakSensor
+  - DoorLock
+  - Speaker
+  - TemperatureSensor
+  - Clock
+  - FallDetector
+  - Blind
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until(any(#Camera).videoAnalysis_dangerousness_level > 70.0)
+      (#Alarm).alarm_siren("Potential danger detected outside.")
+      (#Speaker).mediaPlayback_speak("Calling emergency services due to potential danger.")
+      (#Alarm).phone_call(number="110", message="Emergency situation outside. Please respond quickly.")
+  elapsed_time: 5.429 seconds
+- command: "스마트폰 배터리가 20% 이하가 되면 커튼을 닫아 줘."
+  command_translated: "Close the curtains when your smartphone's battery drops below 20%."
+  devices:
+  - Window
+  - Curtain
+  - Speaker
+  - TemperatureSensor
+  - Pump
+  - Timer
+  - Clock
+  - Shade
+  - Blind
+  - Charger
+  generated_code: []
+  elapsed_time: 3.757 seconds
+- command: "오늘 중요한 발표가 있으면 행운을 빌어 줘."
+  command_translated: "If there is a big announcement today, wish me luck."
+  devices:
+  - Window
+  - Speaker
+  - Timer
+  - Clock
+  - Relay
+  - Valve
+  - MenuProvider
+  generated_code: []
+  elapsed_time: 3.445 seconds
+- command: "로봇청소기에게 커피 한 잔 타 달라고 부탁해 줘."
+  command_translated: "Ask your robot vacuum cleaner to make you a cup of coffee."
+  devices:
+  - Feeder
+  - AirPurifier
+  - Speaker
+  - Dishwasher
+  - Clock
+  - Refrigerator
+  - Recorder
+  - RobotCleaner
+  - Valve
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode("stop")
+      (#RobotCleaner).coffeeMakerMode_makeACupOfCoffee()
+  elapsed_time: 4.900 seconds
+- command: "기분 좋게 춤춰 줘."
+  command_translated: "Do a happy dance."
+  devices:
+  - Humidifier
+  - WeatherProvider
+  - Speaker
+  - Buttonx4
+  - Timer
+  - Clock
+  - Relay
+  - Camera
+  generated_code: []
+  elapsed_time: 3.022 seconds

@@ -1,0 +1,415 @@
+- command: "3월부터 9월까지, 실시간으로 확인하여 토양 습도 센서의 값이 30% 이하이면 5초 대기 후 관개 장치를 켜고, 추가로 10초 대기 후 알람의 사이렌을 울린 다음, 그 후로부터 15초 동안 습도 값이 계속 30% 이하이면 블라인드를 닫아 줘."
+  command_translated: "3월부터 9월까지, 실시간으로 확인하여 토양 습도 센서의 값이 30% 이하이면 5초 대기 후 관개 장치를 켜고, 추가로 10초 대기 후 알람의 사이렌을 울린 다음, 그 후로부터 15초 동안 습도 값이 계속 30% 이하이면 블라인드를 닫아 줘."
+  devices:
+  - Clock
+  - HumiditySensor
+  - Speaker
+  - LeakSensor
+  - Buttonx4
+  - Shade
+  - TemperatureSensor
+  - Calculator
+  - SoilMoistureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      alerted := false
+      closing := false
+      startCloseTime := 0
+
+      year = (#Clock).clock_year
+      month = (#Clock).clock_month
+      humidity = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+      currentTime = (#Clock).clock_timestamp
+
+      withinPeriod = (month >= 3) and (month <= 9)
+
+      if (withinPeriod == true) {
+        if ((humidity <= 30.0) and (triggered == false)) {
+          triggered = true
+          (#Clock).clock_delay(5000)
+          all(#Irrigator).switch_on()
+          (#Clock).clock_delay(10000)
+          all(#Alarm).alarm_siren()
+          alerted = true
+          startCloseTime = currentTime
+          closing = false
+        } else {
+          if ((alerted == true) and (closing == false)) {
+            elapsed = currentTime - startCloseTime
+            if (elapsed >= 15000) {
+              if (humidity <= 30.0) {
+                all(#Shade).windowShade_close()
+                closing = true
+              } else {
+                closing = true
+              }
+            }
+          }
+        }
+        if (humidity > 30.0) {
+          triggered = false
+          alerted = false
+          closing = false
+          startCloseTime = 0
+        }
+      } else {
+        triggered = false
+        alerted = false
+        closing = false
+        startCloseTime = 0
+        break
+      }
+  elapsed_time: 8.480 seconds
+- command: "토양 습도 센서의 값이 25% 이하로 떨어지면 3초 간격으로 총 다섯 번 알람의 사이렌을 1초간 울리고, 그 후 10초 대기 후 블라인드를 닫아 줘."
+  command_translated: "토양 습도 센서의 값이 25% 이하로 떨어지면 3초 간격으로 총 다섯 번 알람의 사이렌을 1초간 울리고, 그 후 10초 대기 후 블라인드를 닫아 줘."
+  devices:
+  - WeatherProvider
+  - Clock
+  - HumiditySensor
+  - Speaker
+  - LeakSensor
+  - Buttonx4
+  - SoundSensor
+  - TemperatureSensor
+  - SoilMoistureSensor
+  generated_code:
+  - name: "SoilMoistureAlarmAndBlindClose"
+    cron: ""
+    period: 100
+    code: |
+      count := 0
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0) {
+        if (count < 5) {
+          (#Alarm).alarm_siren()
+          (#Clock).clock_delay(1000)
+          count = count + 1
+          (#Clock).clock_delay(2000)
+        } else if (count == 5) {
+          (#Clock).clock_delay(10000)
+          (#Blind).windowControl_close()
+          break
+        }
+      } else {
+        count = 0
+        break
+      }
+  elapsed_time: 3.365 seconds
+- command: "실시간으로 확인하여 움직임이 감지되면 5초 대기 후 조명을 켜고, 10초 후 커튼을 열고, 15초 후 펌프가 꺼져 있으면 펌프를 켜 줘."
+  command_translated: "실시간으로 확인하여 움직임이 감지되면 5초 대기 후 조명을 켜고, 10초 후 커튼을 열고, 15초 후 펌프가 꺼져 있으면 펌프를 켜 줘."
+  devices:
+  - Speaker
+  - MotionSensor
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Camera
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      if ((#MotionSensor).motionSensor_motion == active) {
+        if (triggered == false) {
+          triggered = true
+          (#Clock).clock_delay(5000)
+          (#SmartPlug).switch_on()
+          (#Clock).clock_delay(10000)
+          (#Window).windowControl_open()
+          if ((#SmartPlug).switch_switch == off) {
+            (#SmartPlug).switch_on()
+          }
+          (#Clock).clock_delay(15000)
+          break
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 3.144 seconds
+- command: "1월 1일에, 실시간으로 확인하여 조명이 꺼지면 3초 대기 후 펌프를 끄고, 5초 후 블라인드를 닫으며, 추가로 7초 후 조명을 다시 켠 다음 알람의 사이렌을 울려 줘."
+  command_translated: "1월 1일에, 실시간으로 확인하여 조명이 꺼지면 3초 대기 후 펌프를 끄고, 5초 후 블라인드를 닫으며, 추가로 7초 후 조명을 다시 켠 다음 알람의 사이렌을 울려 줘."
+  devices:
+  - Blind
+  - Calculator
+  - Speaker
+  - Window
+  - Buttonx4
+  - Siren
+  - Clock
+  - Alarm
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 1 1 *"
+    period: 100
+    code: |
+      triggered := false
+      if ((#Light).switch_switch == "off") {
+        if (triggered == false) {
+          triggered = true
+
+          (#Clock).clock_delay(3000)
+          (#Pump).switch_off()
+
+          (#Clock).clock_delay(5000)
+          (#Blind).blind_close()
+
+          (#Clock).clock_delay(7000)
+          (#Light).switch_on()
+          (#Alarm).alarm_siren()
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 3.422 seconds
+- command: "10초마다 확인하여 토양 습도 센서의 값이 두 번 연속으로 30% 이하가 된 다음, 그 상태가 1분 이상 유지되면 블라인드를 닫고 5초 후 ‘알람’이라고 두 번 말해 줘."
+  command_translated: "10초마다 확인하여 토양 습도 센서의 값이 두 번 연속으로 30% 이하가 된 다음, 그 상태가 1분 이상 유지되면 블라인드를 닫고 5초 후 ‘알람’이라고 두 번 말해 줘."
+  devices:
+  - WeatherProvider
+  - Clock
+  - HumiditySensor
+  - Speaker
+  - Window
+  - LeakSensor
+  - TemperatureSensor
+  - Calculator
+  - SoilMoistureSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |
+      countLow := 0
+      lowStartTimestamp := 0
+      alarmCount := 0
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+        countLow = countLow + 1
+        if (countLow == 1) {
+          lowStartTimestamp = (#Clock).clock_timestamp
+        } else if (countLow == 2) {
+          duration = (#Clock).clock_timestamp - lowStartTimestamp
+          if (duration >= 60000) {
+            (#Blind).blind_close()
+            (#Clock).clock_delay(5000)
+            if (alarmCount < 2) {
+              (#Speaker).mediaPlayback_speak("알람")
+              alarmCount = alarmCount + 1
+              break
+            } else {
+              break
+            }
+          } else {
+            break
+          }
+        }
+      } else {
+        countLow = 0
+        lowStartTimestamp = 0
+        alarmCount = 0
+      }
+  elapsed_time: 4.498 seconds
+- command: "실시간으로 확인하여 커튼이 5초 연속 닫혀 있으면 커튼을 열고, 이후 10초 동안 움직임이 감지되지 않으면 조명을 꺼 줘."
+  command_translated: "실시간으로 확인하여 커튼이 5초 연속 닫혀 있으면 커튼을 열고, 이후 10초 동안 움직임이 감지되지 않으면 조명을 꺼 줘."
+  devices:
+  - Blind
+  - Speaker
+  - MotionSensor
+  - Window
+  - Buttonx4
+  - Curtain
+  - Shade
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      closedDuration := 0
+      motionInactiveDuration := 0
+      curtainOpened := false
+      if ((#Curtain).curtain_curtain == closed) {
+        closedDuration = closedDuration + 100
+        if ((closedDuration >= 5000) and (curtainOpened == false)) {
+          (#Curtain).curtain_open()
+          curtainOpened = true
+          motionInactiveDuration = 0
+        }
+      } else {
+        closedDuration = 0
+        curtainOpened = false
+        motionInactiveDuration = 0
+        break
+      }
+      if (curtainOpened == true) {
+        if ((#MotionSensor).motionSensor_motion == inactive) {
+          motionInactiveDuration = motionInactiveDuration + 100
+          if (motionInactiveDuration >= 10000) {
+            all(#Light).switch_off()
+            break
+          }
+        } else {
+          motionInactiveDuration = 0
+        }
+      }
+  elapsed_time: 4.566 seconds
+- command: "조명이 켜지면 1초 간격으로 조명을 3번 깜빡이고, 이후 5초 대기 후 스피커를 켜고, 그 다음부터는 실시간으로 확인하여 에어컨이 꺼지면 10초 후 켜 줘."
+  command_translated: "조명이 켜지면 1초 간격으로 조명을 3번 깜빡이고, 이후 5초 대기 후 스피커를 켜고, 그 다음부터는 실시간으로 확인하여 에어컨이 꺼지면 10초 후 켜 줘."
+  devices:
+  - Blind
+  - Speaker
+  - Window
+  - Buttonx4
+  - Timer
+  - Camera
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario2"
+    cron: ""
+    period: 100
+    code: |
+      airconOffTimestamp := 0
+      if ((#Speaker).switch_switch == on) {
+        if ((#Blind).blind_blind == open) {
+          airconOffTimestamp = 0
+        } else {
+          if (airconOffTimestamp == 0) {
+            airconOffTimestamp = (#Clock).clock_timestamp
+          } else {
+            elapsed = (#Clock).clock_timestamp - airconOffTimestamp
+            if (elapsed >= 10000) {
+              (#Blind).blind_open()
+              airconOffTimestamp = 0
+            }
+          }
+        }
+      } else {
+        airconOffTimestamp = 0
+        break
+      }
+  elapsed_time: 15.183 seconds
+- command: "에어컨이 켜지면 5초 후 블라인드를 닫고, 5초 더 기다린 후 커튼이 열려 있으면 커튼을 닫고, 이후 10초 후 조명 밝기를 10퍼센트로 낮춰 줘."
+  command_translated: "에어컨이 켜지면 5초 후 블라인드를 닫고, 5초 더 기다린 후 커튼이 열려 있으면 커튼을 닫고, 이후 10초 후 조명 밝기를 10퍼센트로 낮춰 줘."
+  devices:
+  - Alarm
+  - Blind
+  - Dehumidifier
+  - Speaker
+  - Window
+  - Curtain
+  - Shade
+  - Clock
+  - Calculator
+  generated_code: []
+  elapsed_time: 6.411 seconds
+- command: "실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않으면 경광등을 켜고, 5초 후 조명을 최대 밝기로 켜 줘."
+  command_translated: "실시간으로 확인하여 문이 열린 후 10초 동안 움직임이 감지되지 않으면 경광등을 켜고, 5초 후 조명을 최대 밝기로 켜 줘."
+  devices:
+  - Blind
+  - Speaker
+  - MotionSensor
+  - Window
+  - Shade
+  - DoorLock
+  - LightSensor
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      triggered := false
+      door_opened_time := 0
+      if ((#DoorLock).doorControl_door == open) {
+        if (triggered == false) {
+          door_opened_time = (#Clock).clock_timestamp
+          triggered = true
+        }
+        no_motion_duration = (#Clock).clock_timestamp - door_opened_time
+        if ((no_motion_duration >= 10000) and (#MotionSensor).motionSensor_motion == inactive) {
+          (#Speaker).mediaPlayback_speak("Triggering alert and lighting sequence.")
+          (#Alarm).alarm_siren()
+          (#Speaker).mediaPlayback_speak("Alert siren activated.")
+          (#Clock).clock_delay(5000)
+          (#LightSensor).lightLevel_light = 100
+          break
+        }
+      } else {
+        triggered = false
+        door_opened_time = 0
+        break
+      }
+  elapsed_time: 7.365 seconds
+- command: "매주 월요일 오전 9시부터 10시까지, 실시간으로 확인하여 창문이 열리고 나서 7초가 지난 시점에도 블라인드가 열려 있으면 블라인드를 닫고, 10초 후 커튼도 닫아 줘. 그리고 그 시간대에 실시간으로 확인하여 조명이 꺼지면 켜 줘."
+  command_translated: "매주 월요일 오전 9시부터 10시까지, 실시간으로 확인하여 창문이 열리고 나서 7초가 지난 시점에도 블라인드가 열려 있으면 블라인드를 닫고, 10초 후 커튼도 닫아 줘. 그리고 그 시간대에 실시간으로 확인하여 조명이 꺼지면 켜 줘."
+  devices:
+  - Blind
+  - Speaker
+  - Window
+  - Curtain
+  - Shade
+  - DoorLock
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 9 * * 1"
+    period: 100
+    code: |
+      timer_started := false
+      timer_blind_close_done := false
+      timer_curtain_close_done := false
+      time_start = 0
+
+      if (timer_started == false) {
+        time_start = (#Clock).clock_timestamp
+        timer_started = true
+        timer_blind_close_done = false
+        timer_curtain_close_done = false
+      }
+
+      delta_time = (#Clock).clock_timestamp - time_start
+
+
+      if ((#Window).windowControl_window == open) and (delta_time >= 7000) and (timer_blind_close_done == false) {
+        if ((#Blind).blind_blind == blindEnum.open) {
+          (#Blind).blind_close()
+        }
+        timer_blind_close_done = true
+      }
+
+
+      if ((#Window).windowControl_window == open) and (delta_time >= 10000) and (timer_curtain_close_done == false) {
+        (#Curtain).curtain_close()
+        timer_curtain_close_done = true
+      }
+
+
+      if ((#Window).windowControl_window != open) {
+        timer_started = false
+        break
+      }
+
+
+      current_hour = (#Clock).clock_hour
+      current_minute = (#Clock).clock_minute
+      if ((current_hour > 10) or ((current_hour == 10) and (current_minute > 0))) {
+        timer_started = false
+        break
+      }
+
+
+      if (any(#Light).colorControl_color == false) {
+        all(#Light).colorControl_setColor()
+      }
+  elapsed_time: 10.950 seconds

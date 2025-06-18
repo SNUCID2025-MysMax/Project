@@ -1,0 +1,226 @@
+- command: "지금 바로 관수기를 작동해 줘."
+  command_translated: "지금 바로 관수기를 작동해 줘."
+  devices:
+  - Humidifier
+  - Pump
+  - Irrigator
+  - Speaker
+  - SmartPlug
+  - LeakSensor
+  - Buttonx4
+  - Refrigerator
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Irrigator).switch_on()
+  elapsed_time: 1.787 seconds
+- command: "매일 아침 8시에 조명을 켜 줘."
+  command_translated: "매일 아침 8시에 조명을 켜 줘."
+  devices:
+  - Humidifier
+  - Speaker
+  - SmartPlug
+  - Timer
+  - Buttonx4
+  - Refrigerator
+  - RobotCleaner
+  - Clock
+  generated_code: []
+  elapsed_time: 2.780 seconds
+- command: "매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘."
+  command_translated: "매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘."
+  devices:
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Curtain
+  - Shade
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 18 * * *"
+    period: 15000
+    code: |
+      triggered := false
+      if (triggered == false) {
+        all(#Curtain).curtain_close()
+        triggered = true
+      } else {
+        all(#Curtain).curtain_open()
+        triggered = false
+      }
+      wait until((#Clock).clock_hour == 19)
+      break
+  elapsed_time: 2.593 seconds
+- command: "주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘."
+  command_translated: "주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘."
+  devices:
+  - Blind
+  - Speaker
+  - SmartPlug
+  - Window
+  - Buttonx4
+  - Refrigerator
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 22 * * 6,7"
+    period: 180000
+    code: |
+      all(#Blind).blind_close()
+  - name: "Scenario2"
+    cron: "0 23 * * 6,7"
+    period: -1
+    code: |
+      all(#Blind).blind_close()
+  elapsed_time: 2.465 seconds
+- command: "주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘."
+  command_translated: "주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘."
+  devices:
+  - Humidifier
+  - Dehumidifier
+  - Dishwasher
+  - Speaker
+  - Window
+  - Buttonx4
+  - Timer
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 22 * * sat,sun"
+    period: 3000
+    code: |
+      (#Dehumidifier).switch_on()
+      if ((#Clock).clock_hour >= 23) {
+        break
+      }
+  elapsed_time: 1.944 seconds
+- command: "10초마다 알람과 사이렌을 껐다 켰다 반복해 줘."
+  command_translated: "10초마다 알람과 사이렌을 껐다 켰다 반복해 줘."
+  devices:
+  - Speaker
+  - MotionSensor
+  - SmartPlug
+  - Timer
+  - Buttonx4
+  - Refrigerator
+  - Camera
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |
+      triggered := false
+      if (triggered == false) {
+        triggered = true
+        if (any(#Alarm).alarm_alarm == true) {
+          all(#Alarm).alarm_off()
+        } else {
+          all(#Alarm).alarm_siren()
+        }
+        if (any(#Siren).sirenMode_sirenMode == "siren") {
+          all(#Siren).sirenMode_setSirenMode("off")
+        } else {
+          all(#Siren).sirenMode_setSirenMode("siren")
+        }
+      } else {
+        triggered = false
+        break
+      }
+  elapsed_time: 4.059 seconds
+- command: "매일 30초마다 선풍기를 껐다 켰다 반복해 줘."
+  command_translated: "매일 30초마다 선풍기를 껐다 켰다 반복해 줘."
+  devices:
+  - Humidifier
+  - Fan
+  - Dehumidifier
+  - Speaker
+  - Valve
+  - Window
+  - AirPurifier
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 30000
+    code: |
+      triggered := false
+      if (triggered == false) {
+        all(#Fan).switch_off()
+        triggered = true
+      } else {
+        all(#Fan).switch_on()
+        triggered = false
+      }
+      break
+  elapsed_time: 2.627 seconds
+- command: "매일 자정에 TV를 꺼 줘."
+  command_translated: "매일 자정에 TV를 꺼 줘."
+  devices:
+  - Speaker
+  - Valve
+  - AirQualityDetector
+  - SmartPlug
+  - Television
+  - Timer
+  - Relay
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: -1
+    code: |
+      (#Television).switch_off()
+  elapsed_time: 1.714 seconds
+- command: "5초마다 텔레비전 볼륨을 1씩 높여 줘."
+  command_translated: "5초마다 텔레비전 볼륨을 1씩 높여 줘."
+  devices:
+  - Speaker
+  - Television
+  - SmartPlug
+  - Buttonx4
+  - Refrigerator
+  - Camera
+  - Clock
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |
+      (#Television).audioVolume_volumeUp()
+      break
+  elapsed_time: 1.444 seconds
+- command: "평일 오전 8시부터 자정까지 한 시간마다 조명을 켜 줘."
+  command_translated: "평일 오전 8시부터 자정까지 한 시간마다 조명을 켜 줘."
+  devices:
+  - Light
+  - Speaker
+  - SmartPlug
+  - Buttonx4
+  - Timer
+  - Refrigerator
+  - Shade
+  - Clock
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8-23 * * 1-5"
+    period: -1
+    code: |
+      all(#Light).switch_on()
+  - name: "Scenario2"
+    cron: "0 0 * * 1-5"
+    period: -1
+    code: |
+      all(#Light).switch_off()
+  elapsed_time: 2.852 seconds

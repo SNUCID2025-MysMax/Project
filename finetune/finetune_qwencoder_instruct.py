@@ -7,7 +7,7 @@ from unsloth import FastLanguageModel, is_bfloat16_supported
 from unsloth.chat_templates import get_chat_template
 from trl import SFTTrainer, SFTConfig
 from datasets import Dataset
-from Grammar.grammar_ver1_1_7 import grammar
+from Grammar.grammar_ver1_1_8 import grammar
 import torch, yaml, re
 from torch.nn.attention import SDPBackend, sdpa_kernel
 
@@ -41,8 +41,8 @@ model = FastLanguageModel.get_peft_model(
     r = 32, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
                       "gate_proj", "up_proj", "down_proj",],
-    lora_alpha = 64,
-    lora_dropout = 0.05, # Supports any, but = 0 is optimized
+    lora_alpha = 32,
+    lora_dropout = 0, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
     random_state = 3407,
@@ -126,7 +126,6 @@ def read_json(data):
     dic["code"] = s
     return dic
 
-
 # 데이터셋 생성 부분 수정
 def load_dataset():
     global classes
@@ -185,14 +184,6 @@ def load_dataset():
                 service_doc = "\n---\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
                     "conversations": [
-                        # {
-                        #     "role": "system",
-                        #     "content": grammar,
-                        # },
-                        # {
-                        #     "role": "system",
-                        #     "content": service_doc,
-                        # },
                         {
                             "role": "system",
                             "content": f"{grammar}\n<DEVICES>\n{service_doc}\n</DEVICES>",
@@ -200,7 +191,6 @@ def load_dataset():
                         {
                             "role": "user",
                             "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
-                            # "content": f"Generate JOI Lang code for \"{result['command']}\"",
                         },
                         {
                             "role": "assistant",
@@ -233,13 +223,13 @@ MY_DATASET = MY_DATASET.map(
 # train_dataset = dataset_split['train']
 # eval_dataset = dataset_split['test']
 
-print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
-# print(MY_DATASET[0]['text'])
-sample_text = MY_DATASET[0]['text']
-tokens = tokenizer.encode(sample_text)
-decoded = tokenizer.decode(tokens)
-# print("Original:", sample_text)
-print("Decoded:", decoded)
+# print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
+# # print(MY_DATASET[0]['text'])
+# sample_text = MY_DATASET[0]['text']
+# tokens = tokenizer.encode(sample_text)
+# decoded = tokenizer.decode(tokens)
+# # print("Original:", sample_text)
+# print("Decoded:", decoded)
 
 # 토큰 길이 측정
 lengths = []
@@ -255,96 +245,96 @@ print(f"Min length: {min(lengths)}")
 print(f"Average length: {sum(lengths) / len(lengths):.2f}")
 ######################################################################################
 
-trainer = SFTTrainer(
-    model = model,
-    tokenizer = tokenizer,
-    train_dataset = MY_DATASET,
-    packing = False,  # Can make training 5x faster for short sequences.
-    args = SFTConfig(
-        use_liger_kernel = True,
-        per_device_train_batch_size = 4,
-        gradient_accumulation_steps = 4,
-        max_seq_length = max_seq_length,
-        # warmup_steps = 20,
-        warmup_ratio = 0.1,
-        num_train_epochs = 3,
-        learning_rate = 3e-5, #1e-6
-        optim = "adamw_8bit",
-        weight_decay = 1.0,
-        lr_scheduler_type = "linear",
-        seed = 3407,
-        dataset_text_field = "text",
-        report_to = "none",
-        max_grad_norm = 0.3,
-        dataset_num_proc = min(8, multiprocessing.cpu_count()),
-        dataloader_num_workers = min(8, multiprocessing.cpu_count()),
-        logging_steps= 25,
-        # auto_find_batch_size = True,
-        fp16 = False,
-        bf16 = True, 
-        remove_unused_columns = True,
-        dataloader_pin_memory = False,
-    ),
-)
+# trainer = SFTTrainer(
+#     model = model,
+#     tokenizer = tokenizer,
+#     train_dataset = MY_DATASET,
+#     packing = False,  # Can make training 5x faster for short sequences.
+#     args = SFTConfig(
+#         use_liger_kernel = True,
+#         per_device_train_batch_size = 4,
+#         gradient_accumulation_steps = 4,
+#         max_seq_length = max_seq_length,
+#         warmup_steps = 20,
+#         # warmup_ratio = 0.1,
+#         num_train_epochs = 2,
+#         learning_rate = 2e-5, #1e-6
+#         optim = "adamw_8bit",
+#         weight_decay = 0.1,
+#         lr_scheduler_type = "linear",
+#         seed = 3407,
+#         dataset_text_field = "text",
+#         report_to = "none",
+#         max_grad_norm = 0.3,
+#         dataset_num_proc = min(8, multiprocessing.cpu_count()),
+#         dataloader_num_workers = min(8, multiprocessing.cpu_count()),
+#         logging_steps= 15,
+#         # auto_find_batch_size = True,
+#         fp16 = False,
+#         bf16 = True, 
+#         remove_unused_columns = True,
+#         dataloader_pin_memory = False,
+#     ),
+# )
 
-with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
-    trainer_stats = trainer.train()
+# with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
+#     trainer_stats = trainer.train()
 
 
-model.save_pretrained("../models/qwenCoder-adapter")
-tokenizer.save_pretrained("../models/qwenCoder-adapter")
+# model.save_pretrained("../models/qwenCoder-adapter")
+# tokenizer.save_pretrained("../models/qwenCoder-adapter")
 
-# 파인튜닝 정보 저장
-import os
-import json
+# # 파인튜닝 정보 저장
+# import os
+# import json
 
-# 저장 경로 생성
-save_dir = "../models/qwenCoder-adapter"
-os.makedirs(save_dir, exist_ok=True)
-json_path = os.path.join(save_dir, "training_info.json")
+# # 저장 경로 생성
+# save_dir = "../models/qwenCoder-adapter"
+# os.makedirs(save_dir, exist_ok=True)
+# json_path = os.path.join(save_dir, "training_info.json")
 
-# LoRA 설정 추출
-peft_filter = ["base_model_name_or_path", "r", "lora_alpha", "lora_dropout", "target_modules"]
-peft_info = {}
+# # LoRA 설정 추출
+# peft_filter = ["base_model_name_or_path", "r", "lora_alpha", "lora_dropout", "target_modules"]
+# peft_info = {}
 
-for adapter_name, config in model.peft_config.items():
-    peft_info[adapter_name] = {
-        k: list(getattr(config, k)) if isinstance(getattr(config, k), (set, tuple)) else getattr(config, k)
-        for k in peft_filter if hasattr(config, k)
-    }
+# for adapter_name, config in model.peft_config.items():
+#     peft_info[adapter_name] = {
+#         k: list(getattr(config, k)) if isinstance(getattr(config, k), (set, tuple)) else getattr(config, k)
+#         for k in peft_filter if hasattr(config, k)
+#     }
 
-# Tokenizer 설정 추출
-tokenizer_info = {
-    "add_bos_token": tokenizer.add_bos_token,
-    "chat_template": getattr(tokenizer, "chat_template", "chatml (set manually)"),
-    "vocab_size": tokenizer.vocab_size,
-    "special_tokens_map": tokenizer.special_tokens_map,
-}
+# # Tokenizer 설정 추출
+# tokenizer_info = {
+#     "add_bos_token": tokenizer.add_bos_token,
+#     "chat_template": getattr(tokenizer, "chat_template", "chatml (set manually)"),
+#     "vocab_size": tokenizer.vocab_size,
+#     "special_tokens_map": tokenizer.special_tokens_map,
+# }
 
-# Trainer 설정 추출
-trainer_filter = [
-    "per_device_train_batch_size", "gradient_accumulation_steps",
-    "warmup_steps", "num_train_epochs", "learning_rate", "weight_decay",
-    "max_grad_norm", "lr_scheduler_type", "bf16", "fp16",
-    "dataloader_num_workers", "dataset_num_proc", "remove_unused_columns", "optim"
-]
+# # Trainer 설정 추출
+# trainer_filter = [
+#     "per_device_train_batch_size", "gradient_accumulation_steps",
+#     "warmup_steps", "num_train_epochs", "learning_rate", "weight_decay",
+#     "max_grad_norm", "lr_scheduler_type", "bf16", "fp16",
+#     "dataloader_num_workers", "dataset_num_proc", "remove_unused_columns", "optim"
+# ]
 
-# 필터링 + max_seq_length 직접 포함
-trainer_info = {
-    k: trainer.args.to_dict()[k] for k in trainer_filter if k in trainer.args.to_dict()
-}
+# # 필터링 + max_seq_length 직접 포함
+# trainer_info = {
+#     k: trainer.args.to_dict()[k] for k in trainer_filter if k in trainer.args.to_dict()
+# }
 
-# 전체 정보 구조화
-training_info = {
-    "model_name": model_name,
-    "max_seq_length": max_seq_length,
-    "lora_config": peft_info,
-    "tokenizer_config": tokenizer_info,
-    "trainer_config": trainer_info,
-}
+# # 전체 정보 구조화
+# training_info = {
+#     "model_name": model_name,
+#     "max_seq_length": max_seq_length,
+#     "lora_config": peft_info,
+#     "tokenizer_config": tokenizer_info,
+#     "trainer_config": trainer_info,
+# }
 
-# JSON 저장
-with open(json_path, "w", encoding="utf-8") as f:
-    json.dump(training_info, f, indent=2, ensure_ascii=False)
+# # JSON 저장
+# with open(json_path, "w", encoding="utf-8") as f:
+#     json.dump(training_info, f, indent=2, ensure_ascii=False)
 
-print(f"🔧 Training info saved to {json_path}")
+# print(f"🔧 Training info saved to {json_path}")

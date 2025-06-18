@@ -9,7 +9,7 @@ def extract_classes_by_name(text: str):
 with open("../ServiceExtraction/integration/service_list_ver1.1.8.txt", "r") as f:
     service_doc = extract_classes_by_name(f.read())
 
-
+extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even",]
 things = {}
 for key, value in service_doc.items():
     things[key] = {
@@ -18,5 +18,14 @@ for key, value in service_doc.items():
         "tags": [key],
     }
 with open("things.json", "w") as f:
-    
+    json.dump(things, f, indent=4, ensure_ascii=False)
+
+things = {}
+for key, value in service_doc.items():
+    things[key] = {
+        "id": key,
+        "category": key,
+        "tags": [key]+extra_tags,
+    }
+with open("things_extra_tags.json", "w") as f:
     json.dump(things, f, indent=4, ensure_ascii=False)
