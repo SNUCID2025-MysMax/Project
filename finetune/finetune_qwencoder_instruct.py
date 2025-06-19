@@ -7,7 +7,7 @@ from unsloth import FastLanguageModel, is_bfloat16_supported
 from unsloth.chat_templates import get_chat_template
 from trl import SFTTrainer, SFTConfig
 from datasets import Dataset
-from Grammar.grammar_ver1_1_8 import grammar
+from Grammar.grammar_ver1_1_10 import grammar
 import torch, yaml, re
 from torch.nn.attention import SDPBackend, sdpa_kernel
 
@@ -77,7 +77,7 @@ def extract_classes_by_name(text: str):
 
     return class_dict
 
-with open("../ServiceExtraction/integration/service_list_ver1.1.8.txt", "r") as f:
+with open("../ServiceExtraction/integration/service_list_ver1.1.9.txt", "r") as f:
     service_doc = f.read()
 classes = extract_classes_by_name(service_doc)
 classes_copy = copy.deepcopy(classes)
@@ -134,7 +134,7 @@ def load_dataset():
 
     for i in range(0, 17):  # 범위를 필요에 따라 조정
         
-        if (i == 13):
+        if (i == 13 or i == 15):
             for key in classes.keys():
                 doc = classes[key]
                 lines = doc.splitlines()
@@ -203,7 +203,7 @@ def load_dataset():
         except Exception as e:
             print(f"데이터 처리 중 오류: {e}")
 
-        if (i == 13):
+        if (i == 13 or i == 15):
             classes = classes_copy     
     
     return ret
@@ -225,9 +225,9 @@ MY_DATASET = MY_DATASET.map(
 
 # print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
 # # print(MY_DATASET[0]['text'])
-# sample_text = MY_DATASET[0]['text']
-# tokens = tokenizer.encode(sample_text)
-# decoded = tokenizer.decode(tokens)
+sample_text = MY_DATASET[0]['text']
+tokens = tokenizer.encode(sample_text)
+decoded = tokenizer.decode(tokens)
 # # print("Original:", sample_text)
 # print("Decoded:", decoded)
 
