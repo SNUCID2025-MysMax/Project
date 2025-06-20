@@ -151,11 +151,10 @@ Generate JOI Lang code for: "<user_command>"
 (optional) Additional context: <optional_info>
 
 [OUTPUT]
-cron=[value], period=[value], break=[Y/N]
-all=[Y/N], any=[Y/N]
+cron = [value], period = [value], break = [Y/N]
+all = [Y/N], any = [Y/N]
 
 ```joi
-name = "Scenario1"
 cron = <cron_expression>
 period = <integer>
 [global_var := <value>]
@@ -171,14 +170,14 @@ Step 1: Command Analysis
 - Identify target devices and their tags
 
 Step 2: Timing Configuration  
-Draft: cron=[value], period=[value], break=[Y/N]
+Draft: cron = [value], period = [value], break = [Y/N]
 - Determine timing requirements (immediate, scheduled, continuous)
 - Set cron: "" for immediate, cron pattern for scheduled
 - Set period: -1 for once, 0 for cron-only, >=100 for continuous
 - Determine if break statement needed
 
 Step 3: Device Mapping
-Draft: all=[Y/N], any=[Y/N]
+Draft: all = [Y/N], any = [Y/N]
 - Match user terms to exact device tags from <DEVICES>
 - Verify method/attribute availability
 - Apply all() or any() only if explicitly mentioned
@@ -191,7 +190,7 @@ Step 4: Control Flow Design
 - Determine execution sequence
 
 Step 5: Code Generation
-- Write name, timing parameters (cron, period)
+- Write timing parameters (cron, period)
 - Declare global variables with `:=`
 - Implement logic with proper syntax
 - Validate against JOI Lang grammar rules
@@ -204,11 +203,10 @@ Current Time: 2025-06-05 18:00:00
 Generate JOI Lang code for: "When soil moisture drops to 20% or below, turn on all the irrigator in SectorA."
 
 [OUTPUT1]
-cron="", period=-1, break=N
-all=Y, any=N
+cron = "", period = -1, break = N
+all = Y, any = N
 
 ```joi
-name = "Scenario1"
 cron = ""
 period = -1
 wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
@@ -220,10 +218,9 @@ Current Time: 2025-04-10 12:00:00
 Generate JOI Lang code for: "Open the window every 6 a.m."
 
 [OUTPUT2]
-cron="0 6 * * *", period=0, break=N
-all=N, any=N
+cron = "0 6 * * *", period = 0, break = N
+all = N, any = N
 ```joi
-name = "Scenario1"
 cron = "0 6 * * *"
 period = 0
 (#Window).windowControl_open()
@@ -234,10 +231,9 @@ Current Time: 2025-03-28 12:50:00
 Generate JOI Lang code for: "Turn the fan on and off every second, but stop if humidity goes above 80%"
 
 [OUTPUT3]
-cron="", period=1000, break=Y
-all=N, any=N
+cron = "", period = 1000, break = Y
+all = N, any = N
 ```joi
-name = "Scenario1"
 cron = ""
 period = 1000
 humidity = (#AirQualityDetector).relativeHumidityMeasurement_humidity
