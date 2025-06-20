@@ -1,0 +1,254 @@
+- command: "토양 습도가 30% 미만이면 5초 후 급수기를 작동해 줘."
+  command_translated: "If the soil humidity is below 30%, wait 5 seconds before activating the waterer."
+  devices:
+  - Clock
+  - WeatherProvider
+  - Speaker
+  - Humidifier
+  - Irrigator
+  - LeakSensor
+  - SoilMoistureSensor
+  - HumiditySensor
+  - Pump
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+        (#Clock).clock_delay(5000)
+        (#Timer).activateWaterer()
+      }
+  elapsed_time: 11.718 seconds
+- command: "창문이 열려 있고 온도가 35도 이상이면 10초 대기 후 블라인드를 내려 줘."
+  command_translated: "If a window is open and the temperature is above 35 degrees, wait 10 seconds before lowering the blinds."
+  devices:
+  - DoorLock
+  - TemperatureSensor
+  - WeatherProvider
+  - Clock
+  - Speaker
+  - Curtain
+  - Shade
+  - Window
+  - Blind
+  - Pump
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Window).windowControl_window == "open")) and ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0)) {
+        (#Clock).clock_delay(10000)
+        (#Blind).blind_close()
+      }
+  elapsed_time: 7.613 seconds
+- command: "습도가 80% 이상이면 3초 뒤 제습기를 켜고, 7초 더 지난 후 창문을 닫아 줘."
+  command_translated: "If the humidity is above 80%, turn on the dehumidifier after 3 seconds and close the window after another 7 seconds."
+  devices:
+  - Clock
+  - WeatherProvider
+  - AirPurifier
+  - Humidifier
+  - Dehumidifier
+  - AirQualityDetector
+  - SoilMoistureSensor
+  - HumiditySensor
+  - Shade
+  - Window
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0)
+      wait until((#Clock).clock_delay(3000))
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode("dehumidifying")
+      wait until((#Clock).clock_delay(7000))
+      (#Window).windowControl_close()
+  elapsed_time: 9.076 seconds
+- command: "빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘."
+  command_translated: "If the light intensity is below 100 lux, wait 5 seconds before turning on the LED light."
+  devices:
+  - Clock
+  - TemperatureSensor
+  - WeatherProvider
+  - Light
+  - Alarm
+  - LightSensor
+  - HumiditySensor
+  - Shade
+  - Siren
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#LightSensor).lightLevel_light < 100.0) {
+        (#Clock).clock_delay(5000)
+        (#Light).switch_on()
+      } else {
+        (#Light).switch_off()
+      }
+  elapsed_time: 7.477 seconds
+- command: "급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘."
+  command_translated: "After running the irrigator, wait 10 seconds before turning on the fan."
+  devices:
+  - Clock
+  - Speaker
+  - AirPurifier
+  - Refrigerator
+  - Fan
+  - Dehumidifier
+  - Humidifier
+  - Irrigator
+  - Feeder
+  - Window
+  - Pump
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      irrigate_and_wait()
+      fan_control()
+
+      def irrigate_and_wait():
+        all(#Irrigator).switch_on()
+        (#Clock).clock_delay(10000)
+
+      def fan_control():
+        wait until(all(#Irrigator).irrigatorOperatingState_irrigatorOperatingState != "watering")
+        all(#Fan).switch_on()
+  elapsed_time: 14.138 seconds
+- command: "창문이 열려 있으면 5초 후 커튼을 닫고, 10초 더 지난 뒤 블라인드를 닫아 줘."
+  command_translated: "If the window is open, close the curtains after 5 seconds, and close the blinds after another 10 seconds."
+  devices:
+  - DoorLock
+  - Buttonx4
+  - Clock
+  - Speaker
+  - GasValve
+  - Valve
+  - Curtain
+  - Shade
+  - Window
+  - Blind
+  - Pump
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Window).windowControl_window == "open") {
+        wait until((#Clock).clock_delay(5000))
+        (#Curtain).curtain_close()
+        wait until((#Clock).clock_delay(10000))
+        (#Blind).blind_close()
+      }
+  elapsed_time: 8.332 seconds
+- command: "조명이 켜져 있으면 3초 대기 후 조명을 껐다가 3초 뒤 다시 켜 줘."
+  command_translated: "If the light is on, wait 3 seconds, turn off the light, and then turn it back on after 3 seconds."
+  devices:
+  - Clock
+  - Buttonx4
+  - GasValve
+  - Light
+  - Irrigator
+  - Alarm
+  - LightSensor
+  - Shade
+  - Siren
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |
+      if ((#Light).switch_switch == "on") {
+        (#Clock).clock_delay(3000)
+        (#Light).switch_off()
+        (#Clock).clock_delay(3000)
+        (#Light).switch_on()
+      }
+  elapsed_time: 8.380 seconds
+- command: "7초 후에 조명을 끄고 5초 뒤 다시 켜 줘."
+  command_translated: "Turn off the light after 7 seconds and turn it back on after 5 seconds."
+  devices:
+  - Clock
+  - GasValve
+  - Light
+  - Irrigator
+  - Alarm
+  - LightSensor
+  - Blind
+  - Siren
+  - Speaker
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      wait until(period == 7000)
+      (#Light).switch_off()
+      break
+      wait until(period == 12000)
+      (#Light).switch_on()
+  elapsed_time: 10.042 seconds
+- command: "문이 닫혀 있는데 5초가 지나도 창문이 열려 있지 않으면 블라인드를 열어 줘."
+  command_translated: "If the door is closed and the window is not open after 5 seconds, open the blinds."
+  devices:
+  - DoorLock
+  - Buttonx4
+  - Clock
+  - Speaker
+  - GasValve
+  - Valve
+  - Curtain
+  - Shade
+  - Window
+  - Blind
+  - Pump
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |
+      if (((#DoorLock).doorControl_door == "closed") and ((#Window).windowControl_window != "open")) {
+        (#Blind).blind_open()
+      } else {
+        break
+      }
+  elapsed_time: 7.350 seconds
+- command: "커튼이 열린 상태라면 2초 뒤 조명을 50으로 낮추고, 다시 4초 기다려서 꺼 줘."
+  command_translated: "If the curtains are open, turn the lights down to 50 after 2 seconds, then wait another 4 seconds to turn them off."
+  devices:
+  - Clock
+  - Buttonx4
+  - Siren
+  - GasValve
+  - Light
+  - Alarm
+  - Curtain
+  - Window
+  - Blind
+  - Shade
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Curtain).curtain_curtain == "open") {
+        wait until(all(#Curtain).curtain_curtain == "open")
+        (#Light).colorControl_setColor(50)
+        wait until(all(#Light).switchLevel_level == 50)
+        wait until((#Clock).clock_delay(4000))
+        (#Light).colorControl_setColor(0)
+      }
+  elapsed_time: 12.891 seconds

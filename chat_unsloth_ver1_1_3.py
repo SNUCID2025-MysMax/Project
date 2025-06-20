@@ -26,17 +26,18 @@ def main():
     # model_name = "GPT"
     model_name = "qwenCoder"
     connected_devices = things
-    for i in range(1,17):
+    lst = list(range(0,12))+[13]
+    for i in lst:
         if (i == 13 or i == 15):
             connected_devices = things_tags
         print(f"Processing category {i}...")
-        with open(f"./Testset/TestsetWithDevices_translated/category_{i}.yaml", "r") as f:
+        with open(f"./Testset/TestsetWithDevices_translated_no_seperation/category_{i}.yaml", "r") as f:
             results = []
             data = yaml.load(f)
 
             for idx, item in tqdm(enumerate(data)):
-                if idx >= 5:
-                    continue
+                # if idx >= 5:
+                #     continue
                 user_command = item["command_translated"]
                 user_command_origin = item["command"]
 
@@ -78,17 +79,17 @@ def main():
         if (i == 13 or i == 15):
             connected_devices = things
 
-        os.makedirs(f"./Testset/Eval_{model_name}_250619_english/", exist_ok=True)
-        with open(f"./Testset/Eval_{model_name}_250619_english/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
+        os.makedirs(f"./Testset/Eval_{model_name}_250621/", exist_ok=True)
+        with open(f"./Testset/Eval_{model_name}_250621/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
             yaml.dump(results, out_file)
 
     gc.collect()
 
 if __name__ == "__main__":
-    main()
+    # main()
     # compare_all("qwenCoder_250616")
     # compare_all("GPT_250618")
     # compare_all_print("qwenCoder_250619_english")
     # compare_all_print("qwenCoder_250618_korean")
     # compare_all_print("GPT_250618")
-    # compare_all_print("GPT_250618_korean")
+    compare_all_print("qwenCoder_250621")

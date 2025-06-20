@@ -238,7 +238,7 @@ def parse_elapsed_time(t):
     return 20.0
 
 def compare_all_print(model_name: str):
-    gold_path = f"./Testset/TestsetWithDevices_translated"
+    gold_path = f"./Testset/TestsetWithDevices_translated_no_seperation"
     pred_path = f"./Testset/Eval_{model_name}"
     
     results_summary = []
@@ -249,7 +249,8 @@ def compare_all_print(model_name: str):
         match = re.search(r'(\d+)', filename)
         return int(match.group(1)) if match else float('inf')
     
-    files = [f"category_{i}.yaml" for i in range(1, 10)]
+    lst = list(range(0,12)) + [13]
+    files = [f"category_{i}.yaml" for i in lst]
     
     for file_idx, file in enumerate(files):
         file_results = []

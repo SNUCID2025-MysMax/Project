@@ -1,0 +1,205 @@
+- command: "지금 바로 관수기를 작동해 줘."
+  command_translated: "Run the irrigator now."
+  devices:
+  - Clock
+  - Speaker
+  - Humidifier
+  - Refrigerator
+  - Dehumidifier
+  - Irrigator
+  - Relay
+  - Feeder
+  - Pump
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Irrigator).irrigatorOperatingState_startWatering()
+  elapsed_time: 5.298 seconds
+- command: "매일 아침 8시에 조명을 켜 줘."
+  command_translated: "Turn on the lights at 8am every morning."
+  devices:
+  - Clock
+  - Buttonx4
+  - Light
+  - Alarm
+  - LightSensor
+  - Blind
+  - Siren
+  - Speaker
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8 * * *"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  elapsed_time: 5.785 seconds
+- command: "매일 오후 6시부터 7시 사이에 15초마다 커튼을 닫았다 열었다 해 줘."
+  command_translated: "Close and open the curtains every 15 seconds between 6pm and 7pm every day."
+  devices:
+  - DoorLock
+  - Clock
+  - Speaker
+  - Valve
+  - Curtain
+  - Shade
+  - Window
+  - Blind
+  - Pump
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 18 * * *"
+    period: 15000
+    code: |
+      if ((#Clock).clock_hour != 18) {
+        break
+      }
+
+      (#Curtain).curtain_close()
+      wait until((#Clock).clock_minute % 2 == 0)
+      (#Curtain).curtain_open()
+  elapsed_time: 7.995 seconds
+- command: "주말 오후 10시부터 11시까지 3분마다 블라인드를 닫아 줘."
+  command_translated: "Close the blinds every 3 minutes from 10-11pm on weekends."
+  devices:
+  - Clock
+  - Buttonx4
+  - Valve
+  - Curtain
+  - Timer
+  - Shade
+  - Window
+  - Blind
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 22 * * sat,sun"
+    period: 180000
+    code: |
+      (#Blind).blind_close()
+  elapsed_time: 12.908 seconds
+- command: "주말 오후 10시부터 11시까지 3초마다 제습기를 켜 줘."
+  command_translated: "Turn on the dehumidifier every 3 seconds from 10-11pm on weekends."
+  devices:
+  - Clock
+  - AirPurifier
+  - Humidifier
+  - Refrigerator
+  - Dehumidifier
+  - HumiditySensor
+  - Window
+  - Shade
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 22 * * sat,sun"
+    period: 3000
+    code: |
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode("continuousDehumidifying")
+  elapsed_time: 13.116 seconds
+- command: "10초마다 알람과 사이렌을 껐다 켰다 반복해 줘."
+  command_translated: "Turn the alarm and siren off and on every 10 seconds."
+  devices:
+  - Clock
+  - SoundSensor
+  - GasValve
+  - Relay
+  - Alarm
+  - Timer
+  - Blind
+  - Siren
+  - Button
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 10000
+    code: |
+      (#Alarm).alarm_off()
+      (#Siren).sirenMode_setSirenMode("off")
+      wait until(period % 2 == 0)
+      (#Alarm).alarm_siren()
+      (#Siren).sirenMode_setSirenMode("siren")
+  elapsed_time: 7.671 seconds
+- command: "매일 30초마다 선풍기를 껐다 켰다 반복해 줘."
+  command_translated: "Turn the fan off and on every 30 seconds every day."
+  devices:
+  - Clock
+  - Fan
+  - Dehumidifier
+  - GasValve
+  - Irrigator
+  - Timer
+  - Window
+  - Speaker
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: "*/30 * * * *"
+    period: 0
+    code: |
+      (#Fan).fanControl_setFanSpeed(switchEnum.switch_off())
+      wait until(period == 15000)
+      (#Fan).fanControl_setFanSpeed(switchEnum.on())
+  elapsed_time: 12.872 seconds
+- command: "매일 자정에 TV를 꺼 줘."
+  command_translated: "Turn off the TV at midnight every night."
+  devices:
+  - Clock
+  - Dehumidifier
+  - GasValve
+  - AirQualityDetector
+  - Timer
+  - Blind
+  - Speaker
+  - Television
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 * * *"
+    period: 0
+    code: |
+      (#Television).switch_off()
+  elapsed_time: 5.526 seconds
+- command: "5초마다 텔레비전 볼륨을 1씩 높여 줘."
+  command_translated: "Increase the volume of the television by 1 every 5 seconds."
+  devices:
+  - Clock
+  - Recorder
+  - Fan
+  - SoundSensor
+  - Timer
+  - Blind
+  - Speaker
+  - Television
+  - GasMeter
+  - Calculator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 5000
+    code: |
+      audioVolume_currentVolume := (#Television).audioVolume_volume
+      newVolume := audioVolume_currentVolume + 1
+      (#Television).audioVolume_setVolume(newVolume)
+  elapsed_time: 6.530 seconds
+- command: "평일 오전 8시부터 자정까지 한 시간마다 조명을 켜 줘."
+  command_translated: "Turn on the lights every hour on the hour from 8am to midnight on weekdays."
+  devices:
+  - Clock
+  - Light
+  - Alarm
+  - LightSensor
+  - Curtain
+  - Timer
+  - Blind
+  - Siren
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 8 * * 1-5"
+    period: 0
+    code: |
+      (#Light).switch_on()
+  elapsed_time: 6.396 seconds

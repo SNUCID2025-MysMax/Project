@@ -40,7 +40,7 @@ model = FastLanguageModel.get_peft_model(
     model,
     r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj"],
-    lora_alpha = 16,
+    lora_alpha = 32,
     lora_dropout = 0, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
@@ -92,12 +92,13 @@ def read_yaml(data):
     has_break = 'Y' if 'break' in code else 'N'
     has_all = 'Y' if 'all(' in code or 'All(' in code else 'N'
     has_any = 'Y' if 'any(' in code or 'Any(' in code else 'N'
-    k = f"""cron = \"{data['cron']}\", period = {data['period']}, break = {has_break}
-    all = {has_all}, any = {has_any}
-    ```joi
-    {code['code'].strip()}
-    ```
-    """
+    k = f"""cron = \"{code['cron']}\", period = {code['period']}, break = {has_break}
+
+all = {has_all}, any = {has_any}
+```joi
+{code['code'].strip()}
+```
+"""
     dic["code"] = k
     return dic
 
@@ -117,21 +118,22 @@ def read_yaml2(data):
     has_break = 'Y' if 'break' in code else 'N'
     has_all = 'Y' if 'all(' in code or 'All(' in code else 'N'
     has_any = 'Y' if 'any(' in code or 'Any(' in code else 'N'
-    k = f"""cron = \"{data['cron']}\", period = {data['period']}, break = {has_break}
-    all = {has_all}, any = {has_any}
-    ```joi
-    {code['code'].strip()}
-    ```
-    """
+    k = f"""cron = \"{code['cron']}\", period = {code['period']}, break = {has_break}
+all = {has_all}, any = {has_any}
+
+```joi
+{code['code'].strip()}
+```
+"""
     dic["code"] = k
-    return dic
+    return dic, len(data['code'])==1
 
 # 데이터셋 생성 부분 수정
 def load_dataset():
     global classes
     extra_tags = ["Upper", "Lower", "SectorA", "SectorB", "Wall", "Odd", "Even"]
     ret = []
-    current_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     lst = list(range(0, 12)) + [13]
     for i in lst:  # 범위를 필요에 따라 조정
@@ -142,7 +144,7 @@ def load_dataset():
                 new_lines = lines[:4] + [f"    #{tag}" for tag in sorted(set(extra_tags))] + lines[4:]
                 classes[key] = "\n".join(new_lines)
         
-        file_name = f"../Testset/TestsetWithDevices_translated/category_{i}.yaml"
+        file_name = f"../Testset/TestsetWithDevices_translated_no_seperation/category_{i}.yaml"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
                 data = yaml.safe_load(file)
@@ -156,11 +158,11 @@ def load_dataset():
                     "conversations": [
                         {
                             "role": "system",
-                            "content": f"{grammar}\n<DEVICES>\n{service_doc}\n</DEVICES>",
+                            "content": f"{grammar}\n<DEVICES>\n{service_doc}\n</DEVICES>\n",
                         },
                         {
                             "role": "user",
-                            "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for: \"{result['command']}\"",
+                            "content": f"Current Time: {current_time}\nGenerate JOI Lang code for: \"{result['command']}\"\n",
                             # "content": f"Generate JOI Lang code for \"{result['command']}\"",
                         },
                         {
@@ -180,18 +182,20 @@ def load_dataset():
                 # data = json.load(file)
                 data = yaml.safe_load(file)
             for item in data:
-                result = read_yaml2(item)
+                result, is_1 = read_yaml2(item)
+                if not is_1:
+                    continue
                 devices = result['devices']
                 service_doc = "\n---\n".join([classes[device] for device in devices if device in classes])
                 ret.append({
                     "conversations": [
                         {
                             "role": "system",
-                            "content": f"{grammar}\n<DEVICES>\n{service_doc}\n</DEVICES>",
+                            "content": f"{grammar}\n<DEVICES>\n{service_doc}\n</DEVICES>\n",
                         },
                         {
                             "role": "user",
-                            "content": f"Current Time: {current_time}\n\nGenerate JOI Lang code for \"{result['command']}\"",
+                            "content": f"Current Time: {current_time}\nGenerate JOI Lang code for \"{result['command']}\"\n",
                         },
                         {
                             "role": "assistant",
@@ -226,10 +230,10 @@ MY_DATASET = MY_DATASET.map(
 
 # print(f"커스텀 데이터셋 크기: {len(MY_DATASET)}")
 # # print(MY_DATASET[0]['text'])
-sample_text = MY_DATASET[0]['text']
-tokens = tokenizer.encode(sample_text)
-decoded = tokenizer.decode(tokens)
-# # print("Original:", sample_text)
+# sample_text = MY_DATASET[0]['text']
+# tokens = tokenizer.encode(sample_text)
+# decoded = tokenizer.decode(tokens)
+# print("Original:", sample_text)
 # print("Decoded:", decoded)
 
 # 토큰 길이 측정
@@ -258,7 +262,7 @@ trainer = SFTTrainer(
         max_seq_length = max_seq_length,
         # warmup_steps = 10,
         warmup_ratio = 0.05,
-        num_train_epochs = 1.5,
+        num_train_epochs = 2,
         learning_rate = 2e-5, #1e-6
         optim = "adamw_8bit",
         weight_decay = 0.01,

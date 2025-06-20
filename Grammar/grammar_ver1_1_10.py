@@ -212,6 +212,7 @@ period = -1
 wait until((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 20.0)
 all(#Irrigator #SectorA).switch_on() 
 ```
+---
 
 [INPUT2]
 Current Time: 2025-04-10 12:00:00
@@ -220,11 +221,13 @@ Generate JOI Lang code for: "Open the window every 6 a.m."
 [OUTPUT2]
 cron = "0 6 * * *", period = 0, break = N
 all = N, any = N
+
 ```joi
 cron = "0 6 * * *"
 period = 0
 (#Window).windowControl_open()
 ```
+---
 
 [INPUT3]
 Current Time: 2025-03-28 12:50:00
@@ -233,6 +236,7 @@ Generate JOI Lang code for: "Turn the fan on and off every second, but stop if h
 [OUTPUT3]
 cron = "", period = 1000, break = Y
 all = N, any = N
+
 ```joi
 cron = ""
 period = 1000
