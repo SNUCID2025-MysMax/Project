@@ -1,0 +1,238 @@
+- command: "창문이 열리면 알람의 사이렌을 울려 줘."
+  command_translated: "Sound the alarm's siren when the window opens."
+  devices:
+  - Siren
+  - Blind
+  - Window
+  - Alarm
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#Window).windowControl_window == "open")
+      (#Alarm).alarm_siren()
+  elapsed_time: 4.157 seconds
+- command: "토양 수분이 20% 이상이었다가 이하가 되면 관개 장치를 작동시켜 줘."
+  command_translated: "Turn on irrigation when soil moisture is above and below 20%."
+  devices:
+  - Irrigator
+  - Clock
+  - Dehumidifier
+  - Humidifier
+  - WeatherProvider
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - Pump
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      moistureLevel = (#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity
+      if (moistureLevel <= 20.0 || moistureLevel >= 80.0) {
+        break
+      }
+      all(#Irrigator).switch_on()
+  elapsed_time: 5.771 seconds
+- command: "움직임이 감지되면 최대 3번까지 조명을 켜 줘."
+  command_translated: "Turn on the light up to 3 times when motion is detected."
+  devices:
+  - Light
+  - Button
+  - Siren
+  - LightSensor
+  - MotionSensor
+  - Buttonx4
+  - SmokeDetector
+  - FallDetector
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      counter := 0
+      if (any(#MotionSensor).motionSensor_motion == "active" and counter < 3) {
+        (#Light).switch_on()
+        counter = counter + 1
+      } else {
+        break
+      }
+  elapsed_time: 5.132 seconds
+- command: "온도가 35도 이상이 되면 에어컨을 켜 줘."
+  command_translated: "Turn on the air conditioner when the temperature is above 35 degrees."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Clock
+  - Dehumidifier
+  - RobotCleaner
+  - WeatherProvider
+  - Fan
+  - TemperatureSensor
+  - Calculator
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        (#AirConditioner).airConditionerMode_setAirConditionerMode("cool")
+        (#AirConditioner).switch_on()
+      } else {
+        (#AirConditioner).switch_off()
+      }
+  elapsed_time: 5.596 seconds
+- command: "습도가 80% 이상이 되면 블라인드를 내려 줘."
+  command_translated: "Lower the blinds when the humidity is above 80%."
+  devices:
+  - AirQualityDetector
+  - Blind
+  - Dehumidifier
+  - Humidifier
+  - WeatherProvider
+  - SoilMoistureSensor
+  - Clock
+  - Speaker
+  - Shade
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0) {
+        (#Blind).blind_close()
+      } else {
+        (#Blind).blind_open()
+      }
+  elapsed_time: 4.794 seconds
+- command: "블라인드가 닫히면 ‘블라인드가 닫혔습니다’라고 말해 줘."
+  command_translated: "When the blinds are closed, say 'Blinds are closed'."
+  devices:
+  - GasValve
+  - Blind
+  - Window
+  - DoorLock
+  - Clock
+  - Pump
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Blind).blind_blind == "closed") {
+        (#Speaker).mediaPlayback_speak("Blinds are closed")
+      }
+  elapsed_time: 4.326 seconds
+- command: "TV가 꺼지면 스피커를 꺼 줘."
+  command_translated: "Turn off the speakers when the TV is turned off."
+  devices:
+  - AirQualityDetector
+  - Blind
+  - Window
+  - Timer
+  - SoundSensor
+  - Clock
+  - GasValve
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Television).switch_switch == "off") {
+        (#Speaker).switch_off()
+      }
+  elapsed_time: 4.031 seconds
+- command: "커튼이 3번 열렸다 닫히면 조명을 꺼 줘."
+  command_translated: "Turn off the light when the curtain opens and closes 3 times."
+  devices:
+  - Light
+  - Siren
+  - Blind
+  - Window
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      counter := 0
+
+      if ((#Curtain).curtain_curtain == "opening" or (#Curtain).curtain_curtain == "closing") {
+        counter = counter + 1
+
+        if (counter % 2 == 0) {
+          (#Light).switch_off()
+        }
+      }
+
+      if (counter >= 3) {
+        break
+      }
+  elapsed_time: 6.824 seconds
+- command: "제습기가 꺼지면 다시 켜 줘."
+  command_translated: "Turn the dehumidifier back on when it turns off."
+  devices:
+  - Irrigator
+  - AirPurifier
+  - GasValve
+  - Dehumidifier
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#Dehumidifier).dehumidifierMode_dehumidifierMode == "off")
+      (#Dehumidifier).switch_on()
+  elapsed_time: 4.597 seconds
+- command: "재실 센서에서 더 이상 감지가 안 되면 ‘문이 열렸습니다’라고 말해 줘."
+  command_translated: "When the occupancy sensor no longer detects it, say 'Door is open'."
+  devices:
+  - Clock
+  - LightSensor
+  - MotionSensor
+  - LeakSensor
+  - TemperatureSensor
+  - PresenceSensor
+  - SoundSensor
+  - OccupancySensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#OccupancySensor).presenceSensor_presence != present)
+      (#Speaker).mediaPlayback_speak("Door is open")
+      break
+  elapsed_time: 3.813 seconds

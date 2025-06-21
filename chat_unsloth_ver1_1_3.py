@@ -79,8 +79,8 @@ def main():
         if (i == 13 or i == 15):
             connected_devices = things
 
-        os.makedirs(f"./Testset/Eval_{model_name}_250621/", exist_ok=True)
-        with open(f"./Testset/Eval_{model_name}_250621/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
+        os.makedirs(f"./Testset/Eval_{model_name}_250621-2/", exist_ok=True)
+        with open(f"./Testset/Eval_{model_name}_250621-2/evaluation_category_{i}.yaml", "w", encoding="utf-8") as out_file:
             yaml.dump(results, out_file)
 
     gc.collect()
@@ -92,4 +92,4 @@ if __name__ == "__main__":
     # compare_all_print("qwenCoder_250619_english")
     # compare_all_print("qwenCoder_250618_korean")
     # compare_all_print("GPT_250618")
-    compare_all_print("qwenCoder_250621")
+    compare_all_print("qwenCoder_250621-2")

@@ -1,0 +1,6055 @@
+- command: "사이렌을 울려줘."
+  command_translated: "Sound the siren."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Relay
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Siren).alarm_siren()
+  elapsed_time: 4.981 seconds
+- command: "사이렌을 울려줘."
+  command_translated: "Sound the siren."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Relay
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Siren).alarm_siren()
+  elapsed_time: 3.145 seconds
+- command: "경광등을 켜 줘."
+  command_translated: "Turn on the strobe."
+  devices:
+  - Light
+  - Speaker
+  - Siren
+  - Blind
+  - Relay
+  - Alarm
+  - Clock
+  - Timer
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Alarm).sirenMode_setSirenMode("strobe")
+  elapsed_time: 3.487 seconds
+- command: "경광등을 켜 줘."
+  command_translated: "Turn on the strobe."
+  devices:
+  - Light
+  - Speaker
+  - Siren
+  - Blind
+  - Relay
+  - Alarm
+  - Clock
+  - Timer
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Alarm).sirenMode_setSirenMode("strobe")
+  elapsed_time: 3.495 seconds
+- command: "사이렌과 경광등을 동시에 켜 줘"
+  command_translated: "Turn on the siren and the strobe at the same time"
+  devices:
+  - Speaker
+  - Siren
+  - Blind
+  - Relay
+  - Alarm
+  - Clock
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Siren).sirenMode_setSirenMode("both")
+  elapsed_time: 3.381 seconds
+- command: "사이렌과 경광등을 동시에 켜 줘"
+  command_translated: "Turn on the siren and the strobe at the same time"
+  devices:
+  - Speaker
+  - Siren
+  - Blind
+  - Relay
+  - Alarm
+  - Clock
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Siren).sirenMode_setSirenMode("both")
+  elapsed_time: 3.371 seconds
+- command: "사이렌과 경광등을 둘 다 꺼 줘"
+  command_translated: "Turn off both the siren and the strobe"
+  devices:
+  - Siren
+  - Relay
+  - Alarm
+  - Timer
+  - SoundSensor
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  generated_code: []
+  elapsed_time: 3.445 seconds
+- command: "사이렌과 경광등을 둘 다 꺼 줘"
+  command_translated: "Turn off both the siren and the strobe"
+  devices:
+  - Siren
+  - Relay
+  - Alarm
+  - Timer
+  - SoundSensor
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  generated_code: []
+  elapsed_time: 3.426 seconds
+- command: "재실 센서가 감지 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the occupancy sensor is detected."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - TemperatureSensor
+  - PresenceSensor
+  - SoundSensor
+  - OccupancySensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#OccupancySensor).presenceSensor_presence == "present") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.719 seconds
+- command: "재실 센서가 감지 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the occupancy sensor is detected."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - TemperatureSensor
+  - PresenceSensor
+  - SoundSensor
+  - OccupancySensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#OccupancySensor).presenceSensor_presence == "present") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.742 seconds
+- command: "에어컨의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the air conditioner is powered on."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Clock
+  - Siren
+  - Dehumidifier
+  - Window
+  - Relay
+  - Alarm
+  - Fan
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#AirConditioner).airConditionerMode_airConditionerMode != "off") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.339 seconds
+- command: "에어컨의 모드가 냉방 모드면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the air conditioner is in cooling mode."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Clock
+  - Siren
+  - Dehumidifier
+  - Feeder
+  - Alarm
+  - Fan
+  - TemperatureSensor
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#AirConditioner).airConditionerMode_airConditionerMode == "cool") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.516 seconds
+- command: "에어컨의 목표 온도가 30도면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the air conditioner's target temperature is 30 degrees."
+  devices:
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Clock
+  - Siren
+  - Dehumidifier
+  - Alarm
+  - WeatherProvider
+  - Fan
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#AirConditioner).airConditionerMode_targetTemperature == 30.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.518 seconds
+- command: "에어컨이 지원하는 모드를 스피커로 출력해줘"
+  command_translated: "Speaker out the modes supported by the air conditioner"
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Clock
+  - Feeder
+  - Dehumidifier
+  - SoundSensor
+  - Fan
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      modes = (#AirConditioner).airConditionerMode_supportedAcModes
+      (#Speaker).mediaPlayback_speak("The AC supports these modes: " & modes)
+  elapsed_time: 4.479 seconds
+- command: "에어컨을 꺼줘."
+  command_translated: "Turn off the air conditioner."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Feeder
+  - Dehumidifier
+  - RobotCleaner
+  - Humidifier
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#AirConditioner).switch_off()
+  elapsed_time: 3.391 seconds
+- command: "에어컨을 켜줘."
+  command_translated: "Turn on the air conditioner."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Feeder
+  - Dehumidifier
+  - RobotCleaner
+  - Humidifier
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#AirConditioner).switch_on()
+  elapsed_time: 3.383 seconds
+- command: "에어컨의 전원을 토글해줘."
+  command_translated: "Toggle the power of the air conditioner."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Feeder
+  - Dehumidifier
+  - Relay
+  - RobotCleaner
+  - SmartPlug
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#AirConditioner).switch_toggle()
+  elapsed_time: 3.382 seconds
+- command: "에어컨을 자동 모드로 설정해줘."
+  command_translated: "Set the air conditioner to auto mode."
+  devices:
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Feeder
+  - Dehumidifier
+  - RobotCleaner
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#AirConditioner).airConditionerMode_setAirConditionerMode("auto")
+  elapsed_time: 3.784 seconds
+- command: "에어컨의 목표 온도를 18도로 설정해줘."
+  command_translated: "Set the target temperature for the air conditioner to 18 degrees."
+  devices:
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Clock
+  - Dehumidifier
+  - RobotCleaner
+  - WeatherProvider
+  - Fan
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#AirConditioner).airConditionerMode_setTemperature(18.0)
+  elapsed_time: 3.830 seconds
+- command: "공기청정기의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the air purifier is powered on."
+  devices:
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Siren
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - Alarm
+  - SmartPlug
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#AirPurifier).airPurifierFanMode_airPurifierFanMode != "off") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.745 seconds
+- command: "공기청정기가 수면 모드면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the air purifier is in sleep mode."
+  devices:
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Siren
+  - Dehumidifier
+  - SoundSensor
+  - Humidifier
+  - Alarm
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#AirPurifier).airPurifierFanMode_airPurifierFanMode == "sleep") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.722 seconds
+- command: "공기청정기가 지원하는 모드를 스피커로 출력해줘"
+  command_translated: "Speaker out the modes the air purifier supports"
+  devices:
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Dehumidifier
+  - SoundSensor
+  - Humidifier
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      modes = (#AirPurifier).airPurifierFanMode_supportedAirPurifierFanModes
+      say("The air purifier supports these modes: " & modes)
+  elapsed_time: 4.632 seconds
+- command: "공기청정기를 꺼줘."
+  command_translated: "Turn off the air purifier."
+  devices:
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Dehumidifier
+  - Pump
+  - Humidifier
+  - Fan
+  - Clock
+  - GasValve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#AirPurifier).switch_off()
+  elapsed_time: 3.492 seconds
+- command: "공기청정기를 켜줘."
+  command_translated: "Turn on the air purifier."
+  devices:
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Dehumidifier
+  - SmokeDetector
+  - Humidifier
+  - WeatherProvider
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode("on")
+  elapsed_time: 3.973 seconds
+- command: "공기청정기의 전원을 토글해줘."
+  command_translated: "Toggle the air purifier's power."
+  devices:
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - SmartPlug
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode()
+  elapsed_time: 3.690 seconds
+- command: "공기청정기의 모드를 자동으로 설정해줘."
+  command_translated: "Set the air purifier's mode to automatic."
+  devices:
+  - Irrigator
+  - AirQualityDetector
+  - AirConditioner
+  - AirPurifier
+  - Dehumidifier
+  - RobotCleaner
+  - Humidifier
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      all(#AirPurifier).airPurifierFanMode_setAirPurifierFanMode("auto")
+  elapsed_time: 4.071 seconds
+- command: "공기질 측정기의 측정 온도가 20도이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren If the temperature measured by the air quality meter is 20 degrees."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Clock
+  - Siren
+  - Dehumidifier
+  - GasMeter
+  - Alarm
+  - WeatherProvider
+  - TemperatureSensor
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#AirQualityDetector).temperatureMeasurement_temperature == 20.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.239 seconds
+- command: "이산화탄소 농도가 800ppm 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the carbon dioxide concentration is above 800 ppm."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Clock
+  - Siren
+  - SmokeDetector
+  - LeakSensor
+  - Alarm
+  - WeatherProvider
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#AirQualityDetector).carbonDioxideMeasurement_carbonDioxide > 800.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 4.798 seconds
+- command: "공기질 측정기의 상대 습도가 70퍼센트 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the relative humidity on the air quality meter is above 70 percent."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Siren
+  - Dehumidifier
+  - Humidifier
+  - Alarm
+  - WeatherProvider
+  - SoilMoistureSensor
+  - Clock
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#AirQualityDetector).relativeHumidityMeasurement_humidity > 70.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.418 seconds
+- command: "실내 황사 농도가 150마이크로그램 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the indoor yellow dust concentration is 150 micrograms or more."
+  devices:
+  - AirQualityDetector
+  - Clock
+  - Siren
+  - SmokeDetector
+  - LeakSensor
+  - Alarm
+  - WeatherProvider
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      dust_level = (#LightSensor).yellowDustConcentration_yellowDustConcentration
+      if (dust_level >= 150.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 5.114 seconds
+- command: "실내 미세먼지 농도가 35마이크로그램 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if indoor particulate matter concentration is 35 micrograms or higher."
+  devices:
+  - AirQualityDetector
+  - Clock
+  - Siren
+  - Window
+  - Alarm
+  - WeatherProvider
+  - SoundSensor
+  - TemperatureSensor
+  - Calculator
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      pm10 = (#AirQualityDetector).dustSensor_dustLevel
+      if (pm10 >= 35) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 4.864 seconds
+- command: "실내 초미세먼지 농도가 15마이크로그램 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the indoor fine particulate matter concentration is 15 micrograms or more."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Siren
+  - Window
+  - Alarm
+  - WeatherProvider
+  - SoundSensor
+  - Clock
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      fineDust = (#AirQualityDetector).dustSensor_fineDustLevel
+      if (fineDust >= 15) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.678 seconds
+- command: "총 휘발성 유기 화합물 농도가 0.5ppm 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the total volatile organic compound concentration is greater than 0.5 ppm."
+  devices:
+  - AirQualityDetector
+  - Siren
+  - SmokeDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      tvoc_level = (#AirQualityDetector).tvocMeasurement_tvocLevel
+      if (tvoc_level > 0.5) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 4.883 seconds
+- command: "알람이 경광등 모드이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the alarm is in strobe mode."
+  devices:
+  - Speaker
+  - Siren
+  - Blind
+  - Window
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Alarm).alarm_alarm == "strobe") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.893 seconds
+- command: "알람의 볼륨이 높음이면 알람의 사이렌을 울려줘."
+  command_translated: "If the volume of the alarm is high, sound the alarm's siren."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Blind
+  - Window
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Alarm).alarm_alarmVolume == "high") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.899 seconds
+- command: "알람 배터리 상태가 20퍼센트 이하이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the alarm battery is below 20 percent."
+  devices:
+  - Speaker
+  - Clock
+  - Siren
+  - Charger
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - Timer
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      battery_level = (#Alarm).battery_battery
+      if (battery_level < 20) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.117 seconds
+- command: "알람의 사이렌과 경광등을 모두 켜줘."
+  command_translated: "Turn on both the alarm's siren and strobe."
+  devices:
+  - Speaker
+  - Siren
+  - Blind
+  - Window
+  - Relay
+  - SmokeDetector
+  - FallDetector
+  - Alarm
+  - Clock
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Alarm).alarm_both()
+  elapsed_time: 3.124 seconds
+- command: "알람을 꺼줘."
+  command_translated: "Turn off the alarm."
+  devices:
+  - Speaker
+  - Siren
+  - Dehumidifier
+  - MotionSensor
+  - Blind
+  - Alarm
+  - Clock
+  - GasValve
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Alarm).alarm_off()
+  elapsed_time: 3.224 seconds
+- command: "알람의 볼륨을 낮음으로 설정해줘."
+  command_translated: "Set the volume of the alarm to low."
+  devices:
+  - Speaker
+  - Siren
+  - Blind
+  - Dehumidifier
+  - GasMeter
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Alarm).alarm_setAlarmVolume(low)
+  elapsed_time: 3.398 seconds
+- command: "알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Blind
+  - Relay
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Alarm).alarm_siren()
+  elapsed_time: 3.334 seconds
+- command: "알람의 경광등을 켜줘."
+  command_translated: "Turn on the alarm's light."
+  devices:
+  - Light
+  - Speaker
+  - Siren
+  - LightSensor
+  - Blind
+  - Relay
+  - FallDetector
+  - Alarm
+  - Clock
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Alarm).alarm_strobe()
+  elapsed_time: 3.359 seconds
+- command: "블라인드가 50 퍼센트 이상 열려있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the blinds are more than 50 percent open."
+  devices:
+  - Siren
+  - Blind
+  - Window
+  - FallDetector
+  - Alarm
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      blinds_level = (#Blind).blindLevel_blindLevel
+      if (blinds_level > 50) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.522 seconds
+- command: "블라인드가 열린 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the blinds are open."
+  devices:
+  - Siren
+  - Blind
+  - Window
+  - FallDetector
+  - Alarm
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Blind).blind_blind == "open") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.040 seconds
+- command: "블라인드를 70 퍼센트로 설정해줘."
+  command_translated: "Set the blinds to 70 percent."
+  devices:
+  - Light
+  - Blind
+  - Buttonx4
+  - Window
+  - FallDetector
+  - Humidifier
+  - Clock
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Blind).blindLevel_setBlindLevel(70)
+  elapsed_time: 3.676 seconds
+- command: "블라인드를 닫아줘."
+  command_translated: "Close the blinds."
+  devices:
+  - Blind
+  - Buttonx4
+  - Window
+  - Dehumidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Blind).blind_close()
+  elapsed_time: 3.376 seconds
+- command: "블라인드를 열어줘."
+  command_translated: "Open the blinds."
+  devices:
+  - Blind
+  - Buttonx4
+  - Window
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Blind).blind_open()
+  elapsed_time: 3.341 seconds
+- command: "블라인드 움직임을 멈춰줘."
+  command_translated: "Stop blind movement."
+  devices:
+  - Speaker
+  - Blind
+  - MotionSensor
+  - Relay
+  - FallDetector
+  - Clock
+  - Timer
+  - Shade
+  - Curtain
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      break
+  elapsed_time: 2.885 seconds
+- command: "버튼이 눌렸으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the button is pressed."
+  devices:
+  - Button
+  - Speaker
+  - Siren
+  - Buttonx4
+  - MotionSensor
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Button).button_button == "pushed" or #Button).button_button == "down" or #Button).button_button == "up" or #Button).button_button == "swipe_up" or #Button).button_button == "swipe_down" or #Button).button_button == "swipe_left" or #Button).button_button == "swipe_right") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 7.027 seconds
+- command: "버튼의 개수가 4개 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "If there are more than four buttons, sound the alarm's siren."
+  devices:
+  - Button
+  - Speaker
+  - Siren
+  - Buttonx4
+  - Blind
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      buttonCount = (#Buttonx4).buttonx4_numberOfButtons
+      if (buttonCount > 4) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.616 seconds
+- command: "버튼이 지원하는 상태를 스피커로 출력해줘."
+  command_translated: "Announce the button's supported states via the speaker."
+  devices:
+  - Button
+  - Recorder
+  - Buttonx4
+  - Window
+  - SoundSensor
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      button_states = (#Button).button_supportedButtonValues.split("|")
+      speaker_text = "The button supports these states: " + button_states.join(", ")
+      (#Speaker).mediaPlayback_speak(speaker_text)
+  elapsed_time: 4.892 seconds
+- command: "버튼1이 눌렸으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if button 1 is pressed."
+  devices:
+  - Button
+  - Siren
+  - Buttonx4
+  - MotionSensor
+  - Window
+  - Alarm
+  - Timer
+  - SoundSensor
+  - Clock
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Buttonx4).buttonx4_button1 == "pushed") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.323 seconds
+- command: "버튼2가 눌린 상태면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if button 2 is pressed."
+  devices:
+  - Button
+  - Speaker
+  - Siren
+  - Buttonx4
+  - MotionSensor
+  - Window
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Buttonx4).buttonx4_button2 == "pushed") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.303 seconds
+- command: "버튼3이 두 번 눌렸으면 알람의 사이렌을 울려줘."
+  command_translated: "if button 3 is pressed twice, sound the alarm's siren."
+  devices:
+  - Button
+  - Recorder
+  - Speaker
+  - Siren
+  - Buttonx4
+  - Relay
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (((#Buttonx4).buttonx4_button3 == "pushed_2x")) {
+        (#Alarm).alarm_siren()
+        break
+      }
+  elapsed_time: 4.635 seconds
+- command: "버튼4가 위로 스와이프되었으면 알람의 사이렌을 울려줘."
+  command_translated: "if button 4 is swiped up, sound the alarm's siren."
+  devices:
+  - Button
+  - Speaker
+  - Siren
+  - Buttonx4
+  - MotionSensor
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 0
+    code: |
+      if ((#Buttonx4).buttonx4_button4) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.188 seconds
+- command: "버튼 개수가 4개면 알람의 사이렌을 울려줘."
+  command_translated: "If the number of buttons is 4, sound the alarm's siren."
+  devices:
+  - Button
+  - Speaker
+  - Siren
+  - Buttonx4
+  - Blind
+  - MotionSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      buttonCount = (#Buttonx4).buttonx4_numberOfButtons
+      if (buttonCount == 4) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.622 seconds
+- command: "4개짜리 버튼이 지원하는 상태를 스피커로 출력해줘."
+  command_translated: "Announce the states supported by the button x4 via the speaker."
+  devices:
+  - Button
+  - Recorder
+  - Siren
+  - Buttonx4
+  - Window
+  - Timer
+  - SoundSensor
+  - Clock
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      supported_values = (#Buttonx4).buttonx4_supportedButtonValues
+      (#Speaker).mediaPlayback_speak("The supported button values are: " + supported_values)
+  elapsed_time: 4.538 seconds
+- command: "5와 3을 더해줘."
+  command_translated: "Add 5 and 3."
+  devices:
+  - Siren
+  - Buttonx4
+  - Feeder
+  - Relay
+  - Alarm
+  - Clock
+  - Calculator
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      result := (#Calculator).calculator_add(5.0, 3.0)
+      mediaPlayback_speak("The result is " & result)
+  elapsed_time: 4.156 seconds
+- command: "10을 2로 나눠줘."
+  command_translated: "Divide 10 by 2."
+  devices:
+  - Feeder
+  - Buttonx4
+  - Relay
+  - Fan
+  - Clock
+  - Calculator
+  - Valve
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      result := (#Calculator).calculator_div(10.0, 2.0)
+      mediaPlayback_speak("The result is " + result)
+  elapsed_time: 4.225 seconds
+- command: "10을 3으로 나눈 나머지를 구해."
+  command_translated: "Find the remainder of 10 divided by 3."
+  devices:
+  - Feeder
+  - Buttonx4
+  - Relay
+  - FallDetector
+  - Clock
+  - Calculator
+  - Valve
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      result = (#Calculator).calculator_mod(10, 3)
+      mediaPlayback_speak("The remainder of 10 divided by 3 is " + result.toString())
+  elapsed_time: 4.386 seconds
+- command: "7과 8을 곱해줘."
+  command_translated: "Multiply 7 and 8."
+  devices:
+  - Siren
+  - Feeder
+  - Relay
+  - Humidifier
+  - Fan
+  - Clock
+  - Calculator
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      result := (#Calculator).calculator_mul(7, 8)
+      mediaPlayback_speak("The result of multiplying seven and eight is " & result)
+  elapsed_time: 4.098 seconds
+- command: "15에서 4를 빼줘."
+  command_translated: "Subtract 4 from 15."
+  devices:
+  - Button
+  - Speaker
+  - Feeder
+  - Buttonx4
+  - Clock
+  - Calculator
+  - Valve
+  - Timer
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      result := (#Calculator).calculator_sub(15, 4)
+      mediaPlayback_speak("The result is " + result.toString())
+  elapsed_time: 4.120 seconds
+- command: "카메라의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the camera is powered on."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - MotionSensor
+  - Charger
+  - Relay
+  - Window
+  - Alarm
+  - SmartPlug
+  - Clock
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Camera).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.994 seconds
+- command: "가장 최근에 찍은 사진을 첨부파일로 이메일을 'test@example.com' 주소, 제목 '사진'과 내용 '사진입니다.'로 보내줘."
+  command_translated: "Send an email with the most recent photo as an attachment to 'test@example.com' with the subject line \"Photo\" and the content \"This is a photo\"."
+  devices:
+  - LightSensor
+  - Window
+  - ContactSensor
+  - EmailProvider
+  - DoorLock
+  - Clock
+  - Speaker
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      image = (#Camera).camera_image
+      (#EmailProvider).emailProvider_sendMailWithFile("test@example.com", "Photo", "This is a photo.", image)
+  elapsed_time: 4.077 seconds
+- command: "가장 최근에 찍은 동영상을 첨부파일로 이메일을 'test@example.com' 주소, 제목 '동영상'과 내용 '동영상입니다.'로 보내줘"
+  command_translated: "Send an email with the most recent video as an attachment to 'test@example.com' with the subject line \"Video\" and the content \"This is a video."
+  devices:
+  - Recorder
+  - Window
+  - EmailProvider
+  - DoorLock
+  - Clock
+  - Speaker
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      video = (#Camera).camera_video
+      emailProvider_sendMailWithFile("test@example.com", "Video", "This is a video.", video)
+  elapsed_time: 3.993 seconds
+- command: "카메라를 꺼줘."
+  command_translated: "Turn off the camera."
+  devices:
+  - Recorder
+  - Speaker
+  - Dehumidifier
+  - Blind
+  - MotionSensor
+  - Clock
+  - GasValve
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Camera).switch_off()
+  elapsed_time: 3.306 seconds
+- command: "카메라를 켜줘."
+  command_translated: "Turn on the camera."
+  devices:
+  - Irrigator
+  - Recorder
+  - Speaker
+  - Blind
+  - Buttonx4
+  - Relay
+  - Clock
+  - Valve
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Camera).switch_on()
+  elapsed_time: 3.298 seconds
+- command: "카메라의 전원을 토글해줘."
+  command_translated: "Toggle the camera's power."
+  devices:
+  - Button
+  - Blind
+  - Buttonx4
+  - Charger
+  - Relay
+  - Switch
+  - SmartPlug
+  - Clock
+  - Speaker
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Camera).switch_toggle()
+  elapsed_time: 3.327 seconds
+- command: "카메라로 사진을 찍어줘."
+  command_translated: "Take a photo with the camera."
+  devices:
+  - Camera
+  - Recorder
+  - Speaker
+  - Blind
+  - Charger
+  - Window
+  - FallDetector
+  - Clock
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Camera).camera_take()
+  elapsed_time: 3.102 seconds
+- command: "카메라로 10초 동안 속도 2로 타임랩스 영상을 촬영해줘."
+  command_translated: "Take a time-lapse video with the camera at speed 2 for 10 seconds."
+  devices:
+  - Recorder
+  - Speaker
+  - Buttonx4
+  - Charger
+  - Fan
+  - Clock
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Camera).camera_takeTimelapse(10.0, 2.0)
+  elapsed_time: 3.834 seconds
+- command: "충전기의 전압이 230볼트 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the charger's voltage is above 230 volts."
+  devices:
+  - Clock
+  - Siren
+  - Charger
+  - Relay
+  - LeakSensor
+  - Alarm
+  - SmartPlug
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      voltage = (#Charger).voltageMeasurement_voltage
+      if (voltage > 230.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 4.899 seconds
+- command: "충전기의 상태가 충전 중이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound an alarm siren if the charger's status is charging."
+  devices:
+  - Clock
+  - Siren
+  - Window
+  - Charger
+  - Relay
+  - FallDetector
+  - Alarm
+  - Timer
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Charger).chargingState_chargingState == "charging") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.077 seconds
+- command: "충전기의 전류가 10암페어 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the charger is drawing more than 10 amps."
+  devices:
+  - Clock
+  - Siren
+  - Charger
+  - Relay
+  - LeakSensor
+  - Alarm
+  - Timer
+  - SoundSensor
+  - TemperatureSensor
+  - Pump
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      currentDraw = (#Charger).currentMeasurement_current
+      if (currentDraw > 10.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 4.901 seconds
+- command: "충전기가 지원하는 상태를 스피커로 출력해줘."
+  command_translated: "Annonce the status supported by the charger via the speaker."
+  devices:
+  - Recorder
+  - Clock
+  - Window
+  - Charger
+  - Relay
+  - SoundSensor
+  - TemperatureSensor
+  - Pump
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      chargerSupportedStates = (#Charger).chargingState_supportedChargingStates
+      (#Speaker).mediaPlayback_speak("The charger supports these states: " + chargerSupportedStates)
+  elapsed_time: 4.390 seconds
+- command: "오늘 날짜가 2025년 5월 12일이면 알람의 사이렌을 울려줘."
+  command_translated: "If today's date is May 12, 2025, sound the alarm's siren."
+  devices:
+  - Speaker
+  - Siren
+  - Relay
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - MenuProvider
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: "12 5 12 6 2025"
+    period: 0
+    code: |
+      if ((#Clock).clock_date == 20250512) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 5.366 seconds
+- command: "현재 시간이 2025년 5월 12일 오후 3시 15분이면 알람의 사이렌을 울려줘."
+  command_translated: "If the current time is 3:15 PM on May 12, 2025, sound the alarm's siren."
+  devices:
+  - Speaker
+  - Siren
+  - Alarm
+  - TemperatureSensor
+  - WeatherProvider
+  - SoundSensor
+  - Clock
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: "15 15 12 5 2025"
+    period: -1
+    code: |
+      (#Alarm).alarm_siren()
+  elapsed_time: 4.744 seconds
+- command: "오늘이 20일이면 알람의 사이렌을 울려줘"
+  command_translated: "If today is the 20th, sound the alarm siren"
+  devices:
+  - Speaker
+  - Siren
+  - Relay
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - MenuProvider
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 3 20 * *"
+    period: 0
+    code: |
+      if (clock_day == 20) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.500 seconds
+- command: "현재 시간이 오후 3시이면 알람의 사이렌을 울려줘."
+  command_translated: "If the current time is 3pm, sound the alarm's siren."
+  devices:
+  - Speaker
+  - Siren
+  - Window
+  - Alarm
+  - TemperatureSensor
+  - SoundSensor
+  - Clock
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 15 * * *"
+    period: 0
+    code: |
+      if ((#Clock).clock_hour == 15) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.534 seconds
+- command: "오늘이 공휴일이면 알람의 사이렌을 울려줘."
+  command_translated: "If today is a holiday, sound the alarm's siren."
+  devices:
+  - Speaker
+  - Siren
+  - Window
+  - FallDetector
+  - Alarm
+  - Timer
+  - SoundSensor
+  - Clock
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Clock).clock_isHoliday == TRUE) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.870 seconds
+- command: "지금이 30분이면 알람의 사이렌을 울려줘."
+  command_translated: "If it's 30 minutes from now, sound the alarm's siren."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Calculator
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until(((#Clock).clock_datetime + 30) == (#Clock).clock_datetime)
+      (#Alarm).alarm_siren()
+  elapsed_time: 4.093 seconds
+- command: "지금이 5월이면 알람의 사이렌을 울려줘."
+  command_translated: "If it's May, sound the alarm siren."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Relay
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 1 5 ?"
+    period: 0
+    code: |
+      if ((#Clock).clock_month == 5) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.579 seconds
+- command: "지금이 40초이면 알람의 사이렌을 울려줘."
+  command_translated: "If it's 40 seconds now, sound the alarm's siren."
+  devices:
+  - Speaker
+  - Siren
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Clock).clock_second == 40) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.914 seconds
+- command: "지금이 오후 3시 15분이면 알람의 사이렌을 울려줘."
+  command_translated: "If it's 3:15pm, blare the siren on the alarm."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Blind
+  - Window
+  - Relay
+  - Alarm
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 15 * * *"
+    period: 0
+    code: |
+      if ((#Clock).clock_time == 1515) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.682 seconds
+- command: "현재 Unix timestamp가 1747031637.23이면 알람의 사이렌을 울려줘."
+  command_translated: "If the current Unix timestamp is 1747031637.23, sound the alarm siren."
+  devices:
+  - Speaker
+  - Siren
+  - Window
+  - Alarm
+  - TemperatureSensor
+  - SoundSensor
+  - Clock
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Clock).clock_timestamp == 1747031637.23) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.379 seconds
+- command: "오늘이 금요일이면 알람의 사이렌을 울려줘."
+  command_translated: "If today is Friday, sound the alarm siren."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Relay
+  - Alarm
+  - Timer
+  - SoundSensor
+  - Clock
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Clock).clock_weekday == "friday") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.999 seconds
+- command: "올해가 2025년이면 알람의 사이렌을 울려줘."
+  command_translated: "If the year is 2025, sound the alarm siren."
+  devices:
+  - Speaker
+  - Siren
+  - SmokeDetector
+  - Relay
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: "0 0 1 1 *"
+    period: 0
+    code: |
+      currentYear = (#Clock).clock_year
+      if (currentYear == 2025) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.881 seconds
+- command: "1시간 20분 30초 뒤에 알람의 사이렌을 울려줘"
+  command_translated: "Sound the alarm's siren in 1 hour, 20 minutes, 30 seconds"
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Relay
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      timer_add("alarm_timer", 3780)
+      wait until(timer_isSet("alarm_timer"))
+      (#Alarm).alarm_siren()
+  elapsed_time: 5.137 seconds
+- command: "접촉 센서가 접촉되어 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the contact sensor is in contact."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - SmokeDetector
+  - LeakSensor
+  - Alarm
+  - TemperatureSensor
+  - PresenceSensor
+  - SoundSensor
+  - OccupancySensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#ContactSensor).contactSensor_contact == "closed") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.781 seconds
+- command: "커튼이 열림 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the curtain is open."
+  devices:
+  - Siren
+  - Blind
+  - Window
+  - Alarm
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Curtain).curtain_curtain == "open") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.315 seconds
+- command: "커튼이 지원하는 상태를 스피커로 출력해줘."
+  command_translated: "Announce the states supported by the curtain via the speaker."
+  devices:
+  - Recorder
+  - Siren
+  - Blind
+  - Window
+  - Relay
+  - Clock
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      supported_commands = (#Curtain).curtain_supportedCurtainCommands
+      (#Speaker).mediaPlayback_speak("The curtains support these commands: " + supported_commands)
+  elapsed_time: 4.569 seconds
+- command: "커튼을 닫아줘."
+  command_translated: "Close the curtain."
+  devices:
+  - Blind
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Curtain).curtain_close()
+  elapsed_time: 3.454 seconds
+- command: "커튼을 열어줘."
+  command_translated: "Open the curtain."
+  devices:
+  - Blind
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Curtain).curtain_open()
+  elapsed_time: 3.467 seconds
+- command: "커튼의 움직임을 멈춰줘."
+  command_translated: "Stop the curtain from moving."
+  devices:
+  - Speaker
+  - Blind
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - Clock
+  - Valve
+  - Timer
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      break
+  elapsed_time: 3.096 seconds
+- command: "제습기의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the dehumidifier is powered on."
+  devices:
+  - AirPurifier
+  - Siren
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Speaker
+  - Refrigerator
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Dehumidifier).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.193 seconds
+- command: "제습기의 모드가 제습 중이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the dehumidifier is in dehumidifying mode."
+  devices:
+  - SoilMoistureSensor
+  - AirPurifier
+  - Siren
+  - Dehumidifier
+  - Humidifier
+  - Alarm
+  - LeakSensor
+  - SoundSensor
+  - Clock
+  - Speaker
+  - Refrigerator
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Dehumidifier).dehumidifierMode_dehumidifierMode == "dehumidifying") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.692 seconds
+- command: "제습기를 꺼줘."
+  command_translated: "Turn off the dehumidifier."
+  devices:
+  - AirPurifier
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Refrigerator
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Dehumidifier).switch_off()
+  elapsed_time: 3.539 seconds
+- command: "제습기를 켜줘."
+  command_translated: "Turn on the dehumidifier."
+  devices:
+  - Irrigator
+  - AirPurifier
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Dehumidifier).switch_on()
+  elapsed_time: 3.555 seconds
+- command: "제습기의 전원을 토글해줘."
+  command_translated: "Toggle the dehumidifier's power."
+  devices:
+  - AirPurifier
+  - Dehumidifier
+  - Blind
+  - Charger
+  - Relay
+  - Humidifier
+  - SmartPlug
+  - Clock
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Dehumidifier).switch_toggle()
+  elapsed_time: 3.544 seconds
+- command: "제습기를 냉각 모드로 설정해줘."
+  command_translated: "Set the dehumidifier to cooling mode."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - LeakSensor
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Dehumidifier).dehumidifierMode_setDehumidifierMode(cooling)
+  elapsed_time: 4.067 seconds
+- command: "식기세척기의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the dishwasher is powered on."
+  devices:
+  - Irrigator
+  - Speaker
+  - Siren
+  - Charger
+  - Relay
+  - Window
+  - Alarm
+  - SmartPlug
+  - Dishwasher
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Dishwasher).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.296 seconds
+- command: "식기세척기의 모드가 에코 모드면 알람의 사이렌을 울려줘."
+  command_translated: "If the dishwasher is in Eco mode, the alarm will sound a siren."
+  devices:
+  - Speaker
+  - Siren
+  - SmokeDetector
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - Dishwasher
+  - SoundSensor
+  - Clock
+  - Timer
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 0
+    code: |
+      if ((#Dishwasher).dishwasherMode_dishwasherMode == "eco") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.459 seconds
+- command: "식기세척기를 꺼줘."
+  command_translated: "Turn off the dishwasher."
+  devices:
+  - Speaker
+  - Dehumidifier
+  - Pump
+  - Humidifier
+  - Dishwasher
+  - Clock
+  - GasValve
+  - Valve
+  - Timer
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Dishwasher).switch_off()
+  elapsed_time: 3.535 seconds
+- command: "식기세척기를 켜줘."
+  command_translated: "Turn on the dishwasher."
+  devices:
+  - Irrigator
+  - Feeder
+  - Dehumidifier
+  - RobotCleaner
+  - Humidifier
+  - Dishwasher
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Dishwasher).dishwasherMode_setDishwasherMode("auto")
+      (#Dishwasher).switch_on()
+  elapsed_time: 4.279 seconds
+- command: "식기세척기의 전원을 토글해줘."
+  command_translated: "Toggle the dishwasher's power."
+  devices:
+  - Blind
+  - Buttonx4
+  - Charger
+  - Relay
+  - Dehumidifier
+  - Switch
+  - SmartPlug
+  - Dishwasher
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Dishwasher).switch_toggle()
+  elapsed_time: 3.484 seconds
+- command: "식기세척기를 자동 모드로 설정해줘."
+  command_translated: "Set the dishwasher to automatic mode."
+  devices:
+  - Irrigator
+  - Feeder
+  - Dehumidifier
+  - Blind
+  - RobotCleaner
+  - Humidifier
+  - Dishwasher
+  - Clock
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Dishwasher).dishwasherMode_setDishwasherMode("auto")
+  elapsed_time: 3.858 seconds
+- command: "도어락이 열려 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the door lock is open."
+  devices:
+  - Siren
+  - Blind
+  - GasValve
+  - Window
+  - Alarm
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#DoorLock).doorControl_door == "open") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.167 seconds
+- command: "도어락을 닫아줘."
+  command_translated: "Close the door lock."
+  devices:
+  - Blind
+  - Dehumidifier
+  - Window
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#DoorLock).doorControl_close()
+  elapsed_time: 3.364 seconds
+- command: "도어락을 열어줘."
+  command_translated: "Open the door lock."
+  devices:
+  - Blind
+  - Window
+  - Relay
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#DoorLock).doorControl_open()
+  elapsed_time: 3.274 seconds
+- command: "이메일을 'test@example.com' 주소로 제목 '알림'과 내용 '긴급 상황입니다.'로 보내줘."
+  command_translated: "Send an email to 'test@example.com' with the subject line \"Alert\" and the content \"This is an emergency\"."
+  devices:
+  - Siren
+  - Window
+  - EmailProvider
+  - DoorLock
+  - Clock
+  - GasValve
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#EmailProvider).emailProvider_sendMail("test@example.com", "Alert", "This is an emergency.")
+  elapsed_time: 3.665 seconds
+- command: "선풍기의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the fan is powered on."
+  devices:
+  - Siren
+  - Window
+  - Relay
+  - Charger
+  - SoundSensor
+  - Alarm
+  - Timer
+  - SmartPlug
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Fan).fanControl_fanSpeed == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.175 seconds
+- command: "선풍기의 속도가 2000RPM 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the fan speed is above 2000 RPM."
+  devices:
+  - AirPurifier
+  - Clock
+  - Siren
+  - Charger
+  - SmokeDetector
+  - SoundSensor
+  - Alarm
+  - Timer
+  - Fan
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      fan_speed = (#Fan).fanControl_fanSpeed
+      if (fan_speed > 2000) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 5.043 seconds
+- command: "선풍기의 속도를 1500RPM으로 설정해줘."
+  command_translated: "Set the speed of the fan to 1500 RPM."
+  devices:
+  - AirPurifier
+  - Dehumidifier
+  - Window
+  - Charger
+  - Humidifier
+  - Fan
+  - Clock
+  - Valve
+  - Speaker
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Fan).fanControl_setFanSpeed(1500)
+  elapsed_time: 3.624 seconds
+- command: "선풍기의 속도를 80퍼센트로 설정해줘."
+  command_translated: "Set the speed of the fan to 80 percent."
+  devices:
+  - AirPurifier
+  - Dehumidifier
+  - Window
+  - Charger
+  - Humidifier
+  - Fan
+  - Clock
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Fan).fanControl_setPercent(80)
+  elapsed_time: 3.590 seconds
+- command: "선풍기를 꺼줘."
+  command_translated: "Turn off the fan."
+  devices:
+  - Speaker
+  - Dehumidifier
+  - Window
+  - Pump
+  - Humidifier
+  - Fan
+  - Clock
+  - GasValve
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Fan).switch_off()
+  elapsed_time: 3.340 seconds
+- command: "선풍기를 켜줘."
+  command_translated: "Turn on the fan."
+  devices:
+  - Irrigator
+  - Speaker
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - Fan
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Fan).switch_on()
+  elapsed_time: 3.469 seconds
+- command: "선풍기의 전원을 토글해줘."
+  command_translated: "Toggle the fan's power."
+  devices:
+  - Blind
+  - Buttonx4
+  - Charger
+  - Relay
+  - Dehumidifier
+  - Switch
+  - SmartPlug
+  - Fan
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Fan).switch_toggle()
+  elapsed_time: 3.372 seconds
+- command: "사료 공급기의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the feeder is powered on."
+  devices:
+  - Irrigator
+  - Recorder
+  - AirPurifier
+  - Siren
+  - Feeder
+  - Charger
+  - Relay
+  - RobotCleaner
+  - Alarm
+  - SmartPlug
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Feeder).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.325 seconds
+- command: "사료 공급기의 상태가 급식 중이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the feeder's status is feeding."
+  devices:
+  - Irrigator
+  - AirConditioner
+  - Recorder
+  - Siren
+  - Feeder
+  - Window
+  - RobotCleaner
+  - LeakSensor
+  - Alarm
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Feeder).feederOperatingState_feederOperatingState == "feeding") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.556 seconds
+- command: "사료 공급기를 꺼줘."
+  command_translated: "Turn off the feeder."
+  devices:
+  - AirPurifier
+  - Recorder
+  - Feeder
+  - GasValve
+  - Dehumidifier
+  - RobotCleaner
+  - Relay
+  - Clock
+  - Pump
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Feeder).switch_off()
+  elapsed_time: 3.474 seconds
+- command: "사료 공급기를 켜줘."
+  command_translated: "Turn on the feeder."
+  devices:
+  - Irrigator
+  - AirPurifier
+  - Recorder
+  - Feeder
+  - RobotCleaner
+  - Relay
+  - Humidifier
+  - Clock
+  - Pump
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Feeder).switch_on()
+  elapsed_time: 3.459 seconds
+- command: "사료 공급기의 전원을 토글해줘."
+  command_translated: "Toggle the power of the feeder."
+  devices:
+  - AirConditioner
+  - Recorder
+  - AirPurifier
+  - Feeder
+  - Charger
+  - RobotCleaner
+  - Relay
+  - SmartPlug
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Feeder).switch_toggle()
+  elapsed_time: 3.559 seconds
+- command: "사료 공급기의 사료 공급량을 100그램으로 설정해줘."
+  command_translated: "Set the feeder's feed amount to 100 grams."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Speaker
+  - Feeder
+  - Blind
+  - RobotCleaner
+  - Humidifier
+  - Clock
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Feeder).feederPortion_setFeedPortion(100.0, grams)
+  elapsed_time: 4.077 seconds
+- command: "사료 공급기의 사료 공급을 시작해줘."
+  command_translated: "Start feeding the feeder."
+  devices:
+  - Irrigator
+  - AirConditioner
+  - Recorder
+  - AirPurifier
+  - Feeder
+  - RobotCleaner
+  - Humidifier
+  - Clock
+  - Pump
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Feeder).feederOperatingState_startFeeding()
+  elapsed_time: 3.732 seconds
+- command: "가스 미터의 가스 사용량이 500kWh 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the gas meter shows gas usage of 500 kWh or more."
+  devices:
+  - Siren
+  - Charger
+  - Pump
+  - GasMeter
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - GasValve
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      gasUsage = (#GasMeter).gasMeter_gasMeter
+      if (gasUsage >= 500.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.675 seconds
+- command: "가스 미터의 가스 발열량이 1000kcal 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the gas meter reads more than 1000 kcal of gas."
+  devices:
+  - Clock
+  - Speaker
+  - Siren
+  - SmokeDetector
+  - GasMeter
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - GasValve
+  - Timer
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      gasUsage = (#GasMeter).gasMeter_gasMeterCalorific
+      if (gasUsage > 1000.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 5.015 seconds
+- command: "가스 미터의 누적 가스 사용 시간이 10000초 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the siren of the alarm if the gas meter has a cumulative gas usage time of 10000 seconds or more."
+  devices:
+  - Speaker
+  - Siren
+  - GasMeter
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - GasValve
+  - Timer
+  - HumiditySensor
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#GasMeter).gasMeter_gasMeterTime >= 10000) {
+        all(#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.347 seconds
+- command: "가스 미터의 가스 사용량이 20세제곱미터 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the gas meter reads more than 20 cubic meters of gas."
+  devices:
+  - Clock
+  - Siren
+  - SmokeDetector
+  - Pump
+  - GasMeter
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - GasValve
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      gasUsage = (#GasMeter).gasMeter_gasMeterVolume
+      if (gasUsage > 20.0) {
+        (#Alarm).alarm_setAlarmVolume("siren")
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_setAlarmVolume("off")
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 5.965 seconds
+- command: "가스 밸브가 열려 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the gas valve is open."
+  devices:
+  - Siren
+  - Blind
+  - Window
+  - Pump
+  - GasMeter
+  - Alarm
+  - DoorLock
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#GasValve).valve_valve == "open") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.368 seconds
+- command: "가스 밸브를 닫아줘."
+  command_translated: "Close the gas valve."
+  devices:
+  - AirPurifier
+  - Dehumidifier
+  - Window
+  - Relay
+  - Pump
+  - GasMeter
+  - Humidifier
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#GasValve).valve_close()
+  elapsed_time: 3.538 seconds
+- command: "가스 밸브를 열어줘."
+  command_translated: "Open the gas valve."
+  devices:
+  - AirPurifier
+  - Dehumidifier
+  - Window
+  - Relay
+  - Pump
+  - GasMeter
+  - Humidifier
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#GasValve).valve_open()
+  elapsed_time: 3.544 seconds
+- command: "가스 밸브의 가스 사용량이 1000kWh 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the gas valve's gas usage is over 1000 kWh."
+  devices:
+  - Siren
+  - Charger
+  - SmokeDetector
+  - Pump
+  - GasMeter
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      gasUsage = (#GasValve).gasMeter_gasMeter
+      if (gasUsage > 1000.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 5.224 seconds
+- command: "가스 밸브의 가스 발열량이 500kcal 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the gas valve has a gas calorific value of 500 kcal or more."
+  devices:
+  - Clock
+  - Speaker
+  - Siren
+  - SmokeDetector
+  - Fan
+  - GasMeter
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - GasValve
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#GasValve).gasMeter_gasMeterCalorific >= 500.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 4.941 seconds
+- command: "가스 밸브의 누적 가스 사용 시간이 5000초 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the gas valve has a cumulative gas usage time of 5000 seconds or more."
+  devices:
+  - Speaker
+  - Siren
+  - GasMeter
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - GasValve
+  - Valve
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#GasValve).gasMeter_gasMeterTime >= 5000.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.552 seconds
+- command: "가스 밸브의 가스 사용량이 34세제곱미터 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the gas valve is using more than 34 cubic meters of gas."
+  devices:
+  - Siren
+  - Window
+  - SmokeDetector
+  - Pump
+  - GasMeter
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      gas_used = (#GasValve).gasMeter_gasMeterVolume
+      if (gas_used > 34.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 5.020 seconds
+- command: "가습기의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound an alarm siren if the humidifier is powered on."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Siren
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - Alarm
+  - WeatherProvider
+  - SoilMoistureSensor
+  - Clock
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Humidifier).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.261 seconds
+- command: "가습기의 모드가 자동이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound an alarm siren if the humidifier's mode is Auto."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Siren
+  - Dehumidifier
+  - Humidifier
+  - Alarm
+  - WeatherProvider
+  - SoilMoistureSensor
+  - Clock
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Humidifier).humidifierMode_humidifierMode == "auto") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.659 seconds
+- command: "가습기를 꺼줘."
+  command_translated: "Turn off the humidifier."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
+  - Humidifier
+  - WeatherProvider
+  - SoilMoistureSensor
+  - Clock
+  - Pump
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Humidifier).switch_off()
+  elapsed_time: 3.487 seconds
+- command: "가습기를 켜줘."
+  command_translated: "Turn on the humidifier."
+  devices:
+  - Irrigator
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
+  - Humidifier
+  - WeatherProvider
+  - SoilMoistureSensor
+  - Clock
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Humidifier).switch_on()
+  elapsed_time: 3.472 seconds
+- command: "가습기의 전원을 토글해줘."
+  command_translated: "Toggle the humidifier's power."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - WeatherProvider
+  - SoilMoistureSensor
+  - Clock
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Humidifier).switch_toggle()
+  elapsed_time: 3.398 seconds
+- command: "가습기를 강 모드로 설정해줘."
+  command_translated: "Set the humidifier to strong mode."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
+  - Blind
+  - Humidifier
+  - WeatherProvider
+  - SoilMoistureSensor
+  - Clock
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Humidifier).humidifierMode_setHumidifierMode("strong")
+  elapsed_time: 3.825 seconds
+- command: "습도 센서의 상대 습도가 70퍼센트 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the humidity sensor reads a relative humidity of 70 percent or higher."
+  devices:
+  - AirQualityDetector
+  - Clock
+  - Siren
+  - SoundSensor
+  - Humidifier
+  - Alarm
+  - LeakSensor
+  - WeatherProvider
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity >= 70.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.465 seconds
+- command: "관개 장치의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the irrigator is powered on."
+  devices:
+  - Irrigator
+  - Siren
+  - Charger
+  - Relay
+  - LeakSensor
+  - Alarm
+  - Humidifier
+  - SmartPlug
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (all(#Irrigator).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.374 seconds
+- command: "관개 장치의 급수량이 3리터이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the irrigator has 3 liters of water."
+  devices:
+  - Irrigator
+  - Siren
+  - Feeder
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - Humidifier
+  - SoilMoistureSensor
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (all(#Irrigator).irrigatorPortion_waterPortion >= 3.0) {
+        all(#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.673 seconds
+- command: "관개 장치의 상태가 급수 중이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the irrigator's status is watering."
+  devices:
+  - Irrigator
+  - Siren
+  - Feeder
+  - Window
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoilMoistureSensor
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (all(#Irrigator).irrigatorOperatingState_irrigatorOperatingState == "watering") {
+        all(#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.677 seconds
+- command: "관개 장치를 꺼줘."
+  command_translated: "Turn off the irrigator."
+  devices:
+  - Irrigator
+  - Feeder
+  - Dehumidifier
+  - Humidifier
+  - LeakSensor
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      all(#Irrigator).switch_off()
+  elapsed_time: 3.585 seconds
+- command: "관개 장치를 켜줘."
+  command_translated: "Turn on the irrigator."
+  devices:
+  - Irrigator
+  - Feeder
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - LeakSensor
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Irrigator).switch_on()
+  elapsed_time: 3.492 seconds
+- command: "관개 장치의 전원을 토글해줘."
+  command_translated: "Toggle the power of the irrigator."
+  devices:
+  - Irrigator
+  - Feeder
+  - Charger
+  - Relay
+  - Humidifier
+  - SmartPlug
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Irrigator).switch_toggle()
+  elapsed_time: 3.512 seconds
+- command: "관개 장치의 급수량을 5리터로 설정해줘."
+  command_translated: "Set the water supply of the irrigator to 5 liters."
+  devices:
+  - Irrigator
+  - AirPurifier
+  - Feeder
+  - Dehumidifier
+  - LeakSensor
+  - Humidifier
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Irrigator).irrigatorPortion_setWaterPortion(5.0, "liters")
+  elapsed_time: 4.243 seconds
+- command: "관개 장치의 급수를 시작해줘."
+  command_translated: "Start watering the irrigator."
+  devices:
+  - Irrigator
+  - AirPurifier
+  - Feeder
+  - Dehumidifier
+  - Humidifier
+  - LeakSensor
+  - Clock
+  - Pump
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      all(#Irrigator).irrigatorOperatingState_startWatering()
+  elapsed_time: 3.870 seconds
+- command: "누수가 감지되면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if a leak is detected."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - SmokeDetector
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#LeakSensor).leakSensor_leakage == "detected") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.985 seconds
+- command: "조명이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the light is on."
+  devices:
+  - Light
+  - Speaker
+  - Siren
+  - LightSensor
+  - Blind
+  - Window
+  - Relay
+  - MotionSensor
+  - FallDetector
+  - Alarm
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Light).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.028 seconds
+- command: "조명의 색조가 30이면 알람의 사이렌을 울려줘."
+  command_translated: "If the light has a hue of 30, sound the alarm's siren."
+  devices:
+  - Light
+  - Speaker
+  - Siren
+  - LightSensor
+  - Blind
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - WeatherProvider
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if ((#Light).colorControl_hue == 30.0) {
+        (#Alarm).alarm_siren()
+        break
+      }
+  elapsed_time: 4.642 seconds
+- command: "조명의 채도가 30이면 알람의 사이렌을 울려줘."
+  command_translated: "If the light has a saturation of 30, sound the alarm's siren."
+  devices:
+  - Light
+  - Speaker
+  - Siren
+  - LightSensor
+  - Blind
+  - Charger
+  - SmokeDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if ((#Light).colorControl_saturation == 30.0) {
+        (#Alarm).alarm_siren()
+        break
+      }
+  elapsed_time: 4.608 seconds
+- command: "조명 밝기가 100이면 알람의 사이렌을 울려줘"
+  command_translated: "Sound the alarm's siren if the light brightness is 100"
+  devices:
+  - Light
+  - Siren
+  - LightSensor
+  - Blind
+  - SmokeDetector
+  - FallDetector
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Light).colorControl_color == "on" && (#Light).switchLevel_level == 100) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.986 seconds
+- command: "조명을 빨간색으로 설정해줘."
+  command_translated: "Set the light to red."
+  devices:
+  - Light
+  - Siren
+  - LightSensor
+  - Blind
+  - Relay
+  - Alarm
+  - WeatherProvider
+  - Clock
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Light).colorControl_setColor("255|0|0")
+  elapsed_time: 3.847 seconds
+- command: "조명의 색조를 70으로 설정해줘."
+  command_translated: "Set the hue of the light to 70."
+  devices:
+  - Light
+  - Siren
+  - LightSensor
+  - Blind
+  - Humidifier
+  - Alarm
+  - WeatherProvider
+  - Clock
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Light).colorControl_setHue(70.0)
+  elapsed_time: 3.809 seconds
+- command: "조명의 채도를 90으로 설정해줘."
+  command_translated: "Set the saturation of the light to 90."
+  devices:
+  - Light
+  - Siren
+  - LightSensor
+  - Blind
+  - Humidifier
+  - Alarm
+  - WeatherProvider
+  - Clock
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Light).colorControl_setSaturation(90.0)
+  elapsed_time: 3.796 seconds
+- command: "5의 속도로 조명의 밝기를 80으로 설정해줘."
+  command_translated: "Set the brightness of the light to 80 with a speed of 5."
+  devices:
+  - Light
+  - Siren
+  - LightSensor
+  - Blind
+  - Charger
+  - Alarm
+  - Fan
+  - Clock
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Light).switchLevel_setLevel(80, 5)
+  elapsed_time: 3.765 seconds
+- command: "조명의 경고 모드를 켜줘."
+  command_translated: "Turn on alert mode for lights."
+  devices:
+  - Light
+  - Siren
+  - LightSensor
+  - Blind
+  - Relay
+  - FallDetector
+  - Alarm
+  - WeatherProvider
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      all(#Light).alarm_both()
+  elapsed_time: 3.441 seconds
+- command: "조명을 꺼줘."
+  command_translated: "Turn off the lights."
+  devices:
+  - Light
+  - Siren
+  - LightSensor
+  - Blind
+  - Dehumidifier
+  - Relay
+  - Alarm
+  - Clock
+  - GasValve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      all(#Light).switch_off()
+  elapsed_time: 3.448 seconds
+- command: "조명을 켜줘."
+  command_translated: "Turn on the lights."
+  devices:
+  - Light
+  - Siren
+  - LightSensor
+  - Blind
+  - Buttonx4
+  - Relay
+  - Alarm
+  - WeatherProvider
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Light).switch_on()
+  elapsed_time: 3.460 seconds
+- command: "조명의 전원을 토글해줘."
+  command_translated: "Toggle the power of the light."
+  devices:
+  - Light
+  - Siren
+  - LightSensor
+  - Charger
+  - Relay
+  - Alarm
+  - Switch
+  - SmartPlug
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Light).switch_toggle()
+  elapsed_time: 3.307 seconds
+- command: "조도 센서의 밝기 값이 500룩스 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the light sensor's brightness value is above 500 lux."
+  devices:
+  - Light
+  - Clock
+  - Siren
+  - LightSensor
+  - MotionSensor
+  - OccupancySensor
+  - LeakSensor
+  - Alarm
+  - PresenceSensor
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#LightSensor).lightLevel_light > 500.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.148 seconds
+- command: "오늘 학생식당 점심 메뉴를 스피커로 출력해줘."
+  command_translated: "Announce today's 학생식당 lunch menu via the speaker."
+  devices:
+  - Recorder
+  - Speaker
+  - Feeder
+  - OccupancySensor
+  - Timer
+  - Dishwasher
+  - Clock
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      menu = (#MenuProvider).menuProvider_todayMenu()
+      (#Speaker).mediaPlayback_speak(menu)
+  elapsed_time: 3.672 seconds
+- command: "오늘의 메뉴를 스피커로 출력해줘."
+  command_translated: "Announce today's menu via the speaker."
+  devices:
+  - Recorder
+  - Speaker
+  - Feeder
+  - Buttonx4
+  - Blind
+  - Timer
+  - Clock
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      menu = (#MenuProvider).menuProvider_todayMenu()
+      (#Speaker).mediaPlayback_speak(menu)
+  elapsed_time: 3.838 seconds
+- command: "오늘의 식당을 스피커로 출력해줘."
+  command_translated: "Announce today's restaurant via the speaker."
+  devices:
+  - Recorder
+  - Speaker
+  - Feeder
+  - Blind
+  - Timer
+  - Clock
+  - Pump
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      restaurantName = (#MenuProvider).menuProvider_todayPlace()
+      (#Speaker).mediaPlayback_speak("Today"s restaurant is " & restaurantName)
+  elapsed_time: 4.271 seconds
+- command: "모션 센서가 활성 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the motion sensor is active."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - TemperatureSensor
+  - PresenceSensor
+  - SoundSensor
+  - OccupancySensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#MotionSensor).motionSensor_motion == "active") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.740 seconds
+- command: "움직임이 감지되고 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if motion is detected."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - SmokeDetector
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#MotionSensor).motionSensor_motion == "active") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.775 seconds
+- command: "존재 감지 센서가 감지 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if a presence sensor is detected."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - TemperatureSensor
+  - PresenceSensor
+  - SoundSensor
+  - OccupancySensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#PresenceSensor).presenceSensor_presence == "present") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.777 seconds
+- command: "펌프의 현재 동작 모드가 최대이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound an alarm siren if the pump's current operating mode is maximum."
+  devices:
+  - Clock
+  - Speaker
+  - Siren
+  - Relay
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Pump).pumpOperationMode_currentOperationMode == "maximum") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.103 seconds
+- command: "펌프의 설정 동작 모드가 기본이면 알람의 사이렌을 울려줘."
+  command_translated: "If the pump's set operation mode is default, sound the alarm's siren."
+  devices:
+  - Irrigator
+  - Speaker
+  - Siren
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 0
+    code: |
+      pump_mode = (#Pump).pumpOperationMode_currentOperationMode
+      if (pump_mode == "localSetting") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.694 seconds
+- command: "펌프의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the pump is powered on."
+  devices:
+  - Irrigator
+  - Speaker
+  - Siren
+  - Charger
+  - Relay
+  - LeakSensor
+  - Alarm
+  - SmartPlug
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Pump).pump_pump == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.235 seconds
+- command: "펌프가 지원하는 모드를 스피커로 출력해줘."
+  command_translated: "Announce the modes supported by the pump via the speaker."
+  devices:
+  - Recorder
+  - Blind
+  - Relay
+  - LeakSensor
+  - SoundSensor
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      pumpSupportedModes = (#Pump).pumpOperationMode_supportedOperationModes
+      (#Speaker).mediaPlayback_speak("The pump supports these modes: " + pumpSupportedModes)
+  elapsed_time: 4.545 seconds
+- command: "펌프가 열려있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the pump is open."
+  devices:
+  - Siren
+  - Blind
+  - GasValve
+  - Window
+  - LeakSensor
+  - Alarm
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Pump).pump_pump == "open") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.184 seconds
+- command: "펌프의 동작 모드를 최대로 설정해줘."
+  command_translated: "Set the pump's operation mode to maximum."
+  devices:
+  - Irrigator
+  - Calculator
+  - Blind
+  - Buttonx4
+  - Relay
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      pumpOperationModeEnum_maximum = "maximum"
+      (#Pump).pumpOperationMode_setOperationMode(pumpOperationModeEnum_maximum)
+  elapsed_time: 4.376 seconds
+- command: "펌프를 꺼줘."
+  command_translated: "Turn off the pump."
+  devices:
+  - Speaker
+  - GasValve
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - LeakSensor
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Pump).switch_off()
+  elapsed_time: 3.333 seconds
+- command: "펌프를 켜줘."
+  command_translated: "Turn on the pump."
+  devices:
+  - Irrigator
+  - Dehumidifier
+  - Charger
+  - Relay
+  - Humidifier
+  - LeakSensor
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Pump).pump_open()
+  elapsed_time: 3.379 seconds
+- command: "펌프의 전원을 토글해줘."
+  command_translated: "Toggle the power of the pump."
+  devices:
+  - Dehumidifier
+  - Charger
+  - Relay
+  - Humidifier
+  - Switch
+  - SmartPlug
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Pump).switch_toggle()
+  elapsed_time: 3.434 seconds
+- command: "펌프를 닫아줘."
+  command_translated: "Close the pump."
+  devices:
+  - Speaker
+  - Blind
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - LeakSensor
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Pump).pump_close()
+  elapsed_time: 3.363 seconds
+- command: "펌프를 열어줘."
+  command_translated: "Open the pump."
+  devices:
+  - Blind
+  - Dehumidifier
+  - Relay
+  - RobotCleaner
+  - Humidifier
+  - LeakSensor
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Pump).pump_open()
+  elapsed_time: 3.355 seconds
+- command: "냉장고의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the refrigerator is powered on."
+  devices:
+  - Irrigator
+  - Clock
+  - Siren
+  - Charger
+  - Relay
+  - Window
+  - Alarm
+  - Switch
+  - SmartPlug
+  - TemperatureSensor
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Refrigerator).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.230 seconds
+- command: "냉장고의 성에 제거 기능이 켜저 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound an alarm siren if the refrigerator's defrost function is on."
+  devices:
+  - Irrigator
+  - Siren
+  - Dehumidifier
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - TemperatureSensor
+  - SoundSensor
+  - Clock
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Refrigerator).refrigeration_defrost == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.241 seconds
+- command: "냉장고의 급속 냉각 기능이 꺼져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound an alarm siren if the refrigerator's rapid cooling function is turned off."
+  devices:
+  - Irrigator
+  - AirConditioner
+  - Speaker
+  - Siren
+  - Feeder
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Refrigerator).refrigeration_rapidCooling == "off") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.447 seconds
+- command: "냉장고의 급속 냉동 기능이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the refrigerator's rapid freezing function is on."
+  devices:
+  - Irrigator
+  - Clock
+  - Speaker
+  - Siren
+  - Window
+  - Relay
+  - FallDetector
+  - Alarm
+  - DoorLock
+  - TemperatureSensor
+  - Timer
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Refrigerator).refrigeration_rapidFreezing == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.294 seconds
+- command: "냉장고를 꺼줘."
+  command_translated: "Turn off the refrigerator."
+  devices:
+  - Irrigator
+  - Feeder
+  - Dehumidifier
+  - Relay
+  - Humidifier
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Refrigerator).switch_off()
+  elapsed_time: 3.444 seconds
+- command: "냉장고의 전원을 토글해줘."
+  command_translated: "Toggle the refrigerator's power."
+  devices:
+  - Irrigator
+  - Feeder
+  - Blind
+  - Charger
+  - Relay
+  - Switch
+  - SmartPlug
+  - Clock
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Refrigerator).switch_toggle()
+  elapsed_time: 3.415 seconds
+- command: "냉장고의 성에 제거 기능을 켜줘."
+  command_translated: "Turn on the refrigerator's defrost function."
+  devices:
+  - Irrigator
+  - Feeder
+  - Dehumidifier
+  - Window
+  - Dishwasher
+  - Clock
+  - Valve
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Refrigerator).refrigeration_setDefrost(switchEnum.on)
+  elapsed_time: 3.673 seconds
+- command: "냉장고의 급속 냉각 기능을 켜줘."
+  command_translated: "Turn on the refrigerator's rapid cooling function."
+  devices:
+  - Irrigator
+  - AirConditioner
+  - Feeder
+  - Dehumidifier
+  - Window
+  - Dishwasher
+  - Fan
+  - Clock
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Refrigerator).refrigeration_setRapidCooling(on)
+  elapsed_time: 3.801 seconds
+- command: "냉장고의 급속 냉동 기능을 꺼줘."
+  command_translated: "Turn off the refrigerator's rapid freezing function."
+  devices:
+  - Irrigator
+  - Dehumidifier
+  - Relay
+  - Dishwasher
+  - Fan
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Refrigerator).refrigeration_setRapidFreezing(off)
+  elapsed_time: 3.720 seconds
+- command: "로봇 청소기의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the robot vacuum is powered on."
+  devices:
+  - Siren
+  - Charger
+  - RobotCleaner
+  - Relay
+  - Alarm
+  - Switch
+  - SmartPlug
+  - SoundSensor
+  - Clock
+  - Pump
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#RobotCleaner).powerMeter_power == "battery" && (#RobotCleaner).robotVacuumStatus_status == "running") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.857 seconds
+- command: "로봇 청소기가 자동 모드이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound an alarm siren if the robot vacuum is in automatic mode."
+  devices:
+  - Irrigator
+  - Siren
+  - RobotCleaner
+  - Alarm
+  - Timer
+  - SoundSensor
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#RobotCleaner).robotCleanerCleaningMode_robotCleanerCleaningMode == "auto") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.438 seconds
+- command: "로봇 청소기를 꺼줘."
+  command_translated: "Turn off the robot vacuum."
+  devices:
+  - GasValve
+  - Dehumidifier
+  - RobotCleaner
+  - Relay
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#RobotCleaner).switch_off()
+  elapsed_time: 3.454 seconds
+- command: "로봇 청소기를 켜줘."
+  command_translated: "Turn on the robot vacuum."
+  devices:
+  - AirPurifier
+  - Dehumidifier
+  - RobotCleaner
+  - Relay
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode("manual")
+      (#RobotCleaner).switch_on()
+  elapsed_time: 4.103 seconds
+- command: "로봇 청소기의 전원을 토글해줘."
+  command_translated: "Toggle the robot vacuum's power."
+  devices:
+  - Button
+  - Blind
+  - RobotCleaner
+  - Relay
+  - Switch
+  - SmartPlug
+  - Clock
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#RobotCleaner).switch_toggle()
+  elapsed_time: 3.266 seconds
+- command: "로봇 청소기의 청소 모드를 수동으로 설정해줘."
+  command_translated: "Set the robot vacuum's cleaning mode to manual."
+  devices:
+  - Dehumidifier
+  - Blind
+  - RobotCleaner
+  - Switch
+  - Dishwasher
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#RobotCleaner).robotCleanerCleaningMode_setRobotCleanerCleaningMode("manual")
+  elapsed_time: 3.732 seconds
+- command: "쉐이드가 40퍼센트 이상 열려 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the shade is more than 40% open."
+  devices:
+  - Siren
+  - Blind
+  - Window
+  - FallDetector
+  - Alarm
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      shade_level = (#Shade).windowShadeLevel_shadeLevel
+      if (shade_level > 40) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.536 seconds
+- command: "쉐이드가 완전히 열려 있는 상태면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the shade is fully open."
+  devices:
+  - Siren
+  - Blind
+  - Window
+  - FallDetector
+  - Alarm
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Shade).windowShadeLevel_shadeLevel == 100) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.233 seconds
+- command: "쉐이드가 지원하는 상태를 스피커로 출력해줘."
+  command_translated: "Announce the states supported by the shade via the speaker."
+  devices:
+  - Recorder
+  - Siren
+  - Blind
+  - Window
+  - FallDetector
+  - Clock
+  - Valve
+  - Speaker
+  - Shade
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      supported_commands = (#Shade).windowShade_supportedWindowShadeCommands
+      (#Speaker).mediaPlayback_speak("The supported commands for the shade are: " + supported_commands)
+  elapsed_time: 4.519 seconds
+- command: "쉐이드를 50퍼 센트로 설정해줘."
+  command_translated: "Set the shade to 50 percent."
+  devices:
+  - Light
+  - Blind
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - Fan
+  - Clock
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Shade).windowShadeLevel_setShadeLevel(50)
+  elapsed_time: 3.829 seconds
+- command: "쉐이드를 닫아줘."
+  command_translated: "Close the shade."
+  devices:
+  - Blind
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Shade).windowShade_close()
+  elapsed_time: 3.432 seconds
+- command: "쉐이드를 열어줘."
+  command_translated: "Open the shade."
+  devices:
+  - Blind
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Shade).windowShade_open()
+  elapsed_time: 3.435 seconds
+- command: "쉐이드 움직임을 일시 중지해줘."
+  command_translated: "Pause the shade movement."
+  devices:
+  - Speaker
+  - Blind
+  - MotionSensor
+  - Dehumidifier
+  - Relay
+  - FallDetector
+  - Clock
+  - Timer
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      break
+      (#Shade).windowShade_pause()
+  elapsed_time: 3.381 seconds
+- command: "사이렌이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the siren is on."
+  devices:
+  - Speaker
+  - Siren
+  - Blind
+  - Window
+  - FallDetector
+  - Alarm
+  - DoorLock
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Alarm).alarm_alarm != "off" && (#Alarm).alarm_alarmVolume != "mute") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.354 seconds
+- command: "사이렌 모드가 사이렌이면 알람의 사이렌을 울려줘."
+  command_translated: "If the siren mode is Siren, sound the alarm's siren."
+  devices:
+  - Speaker
+  - Siren
+  - Blind
+  - MotionSensor
+  - Window
+  - Alarm
+  - PresenceSensor
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 0
+    code: |
+      if ((#Siren).sirenMode_sirenMode == "siren") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.130 seconds
+- command: "사이렌을 꺼줘."
+  command_translated: "Turn off the siren."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Relay
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Siren).switch_off()
+  elapsed_time: 3.292 seconds
+- command: "사이렌을 켜줘."
+  command_translated: "Turn on the siren."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Relay
+  - Alarm
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Siren).switch_on()
+  elapsed_time: 3.383 seconds
+- command: "사이렌 전원을 토글해줘."
+  command_translated: "Toggle the siren power."
+  devices:
+  - Siren
+  - Charger
+  - Relay
+  - Alarm
+  - Timer
+  - Switch
+  - SmartPlug
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Siren).switch_toggle()
+  elapsed_time: 3.336 seconds
+- command: "사이렌 모드를 경광등으로 설정해줘."
+  command_translated: "Set the siren mode to strobe."
+  devices:
+  - Speaker
+  - Siren
+  - Blind
+  - Relay
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Timer
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Siren).sirenMode_setSirenMode("strobe")
+  elapsed_time: 3.729 seconds
+- command: "스마트 플러그의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the smart plug is powered on."
+  devices:
+  - Siren
+  - Charger
+  - Relay
+  - RobotCleaner
+  - Alarm
+  - Timer
+  - SmartPlug
+  - DoorLock
+  - Clock
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#SmartPlug).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.316 seconds
+- command: "스마트 플러그의 전압이 220볼트 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the smart plug is over 220 volts."
+  devices:
+  - Clock
+  - Siren
+  - RobotCleaner
+  - Alarm
+  - Timer
+  - SmartPlug
+  - DoorLock
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      voltage = (#SmartPlug).voltageMeasurement_voltage
+      if (voltage > 220.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.772 seconds
+- command: "스마트 플러그의 전류가 10암페어 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the smart plug is drawing more than 10 amps."
+  devices:
+  - Siren
+  - RobotCleaner
+  - LeakSensor
+  - Alarm
+  - Timer
+  - SmartPlug
+  - DoorLock
+  - SoundSensor
+  - Clock
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      plugPower := (#SmartPlug).powerMeter_power
+      if (plugPower > 10.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 5.100 seconds
+- command: "스마트 플러그의 소비 전력이 1000와트 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if a smart plug draws more than 1000 watts."
+  devices:
+  - Siren
+  - RobotCleaner
+  - Relay
+  - Alarm
+  - Timer
+  - SmartPlug
+  - DoorLock
+  - SoundSensor
+  - Clock
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      powerUsage = (#SmartPlug).powerMeter_power
+      if (powerUsage > 1000.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.741 seconds
+- command: "스마트 플러그를 꺼줘."
+  command_translated: "Turn off the smart plug."
+  devices:
+  - Speaker
+  - RobotCleaner
+  - Relay
+  - SmartPlug
+  - DoorLock
+  - Clock
+  - Television
+  - Timer
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#SmartPlug).switch_off()
+  elapsed_time: 3.453 seconds
+- command: "스마트 플러그를 켜줘."
+  command_translated: "Turn on the smart plug."
+  devices:
+  - Speaker
+  - RobotCleaner
+  - Relay
+  - SmartPlug
+  - DoorLock
+  - Clock
+  - Television
+  - Timer
+  - Refrigerator
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#SmartPlug).switch_on()
+  elapsed_time: 3.469 seconds
+- command: "스마트 플러그의 전원을 토글해줘."
+  command_translated: "Toggle the power of the smart plug."
+  devices:
+  - Speaker
+  - Charger
+  - RobotCleaner
+  - Relay
+  - Switch
+  - SmartPlug
+  - DoorLock
+  - Clock
+  - Television
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#SmartPlug).switch_toggle()
+  elapsed_time: 3.338 seconds
+- command: "연기 감지기에서 연기가 감지되면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if smoke is detected by the smoke detector."
+  devices:
+  - AirQualityDetector
+  - Clock
+  - Siren
+  - MotionSensor
+  - SmokeDetector
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until((#SmokeDetector).smokeDetector_smoke == "detected")
+      (#Alarm).alarm_siren()
+  elapsed_time: 3.955 seconds
+- command: "토양 습도 센서의 토양 습도 측정값이 30퍼센트 이하이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the soil moisture sensor's soil moisture reading is 30 percent or less."
+  devices:
+  - Clock
+  - Siren
+  - Dehumidifier
+  - MotionSensor
+  - SoundSensor
+  - LeakSensor
+  - Alarm
+  - PresenceSensor
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 30.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.437 seconds
+- command: "소리 센서에서 소리가 감지되면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if sound is detected by the sound sensor."
+  devices:
+  - Clock
+  - Siren
+  - LightSensor
+  - MotionSensor
+  - SmokeDetector
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#SoundSensor).soundSensor_sound == "detected") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.829 seconds
+- command: "소리 감지 레벨이 70dB 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the sound detection level is above 70 dB."
+  devices:
+  - Clock
+  - Siren
+  - Blind
+  - LightSensor
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - Shade
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      sound_level = (#SoundSensor).soundPressureLevel_soundPressureLevel
+      if (sound_level > 70.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.421 seconds
+- command: "스피커의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the speaker is powered on."
+  devices:
+  - Recorder
+  - Siren
+  - Charger
+  - Relay
+  - Window
+  - Alarm
+  - Timer
+  - SmartPlug
+  - SoundSensor
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Speaker).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.092 seconds
+- command: "스피커가 재생 중이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the speaker is playing."
+  devices:
+  - Recorder
+  - Clock
+  - Siren
+  - Window
+  - FallDetector
+  - Alarm
+  - Timer
+  - PresenceSensor
+  - SoundSensor
+  - OccupancySensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Speaker).mediaPlayback_playbackStatus == "playing") {
+        (#Alarm).alarm_siren()
+        break
+      }
+  elapsed_time: 4.193 seconds
+- command: "스피커가 지원하는 명령어를 스피커로 출력해줘."
+  command_translated: "Announce commands that the speaker supports via the speaker."
+  devices:
+  - Recorder
+  - Siren
+  - Blind
+  - Buttonx4
+  - Window
+  - SoundSensor
+  - Clock
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      supported_commands = (#Speaker).mediaPlayback_supportedPlaybackCommands
+      (#Speaker).mediaPlayback_speak("The speaker supports these commands: " + supported_commands)
+  elapsed_time: 4.364 seconds
+- command: "스피커를 꺼줘."
+  command_translated: "Turn off the speaker."
+  devices:
+  - Recorder
+  - Dehumidifier
+  - Blind
+  - Timer
+  - SoundSensor
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).switch_off()
+  elapsed_time: 3.342 seconds
+- command: "스피커를 켜줘."
+  command_translated: "Turn on the speaker."
+  devices:
+  - Irrigator
+  - Recorder
+  - Speaker
+  - Blind
+  - Humidifier
+  - SoundSensor
+  - Clock
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).switch_on()
+  elapsed_time: 3.278 seconds
+- command: "스피커의 전원을 토글해줘."
+  command_translated: "Toggle the power of the speaker."
+  devices:
+  - Recorder
+  - Blind
+  - Charger
+  - Relay
+  - Switch
+  - SmartPlug
+  - SoundSensor
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).switch_toggle()
+  elapsed_time: 3.213 seconds
+- command: "스피커의 재생을 빨리 감기 해줘."
+  command_translated: "Fast-forward the playback of the speaker."
+  devices:
+  - Button
+  - Recorder
+  - Speaker
+  - Relay
+  - Fan
+  - Clock
+  - Valve
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_fastForward()
+  elapsed_time: 3.396 seconds
+- command: "스피커의 재생을 일시 정지해줘."
+  command_translated: "Pause playback on the speaker."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Humidifier
+  - SoundSensor
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_pause()
+  elapsed_time: 3.356 seconds
+- command: "스피커의 재생을 되감아줘."
+  command_translated: "Rewind the speaker's playback."
+  devices:
+  - Recorder
+  - Speaker
+  - Blind
+  - Relay
+  - Humidifier
+  - Clock
+  - Valve
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_rewind()
+  elapsed_time: 3.364 seconds
+- command: "스피커의 재생을 멈춰줘."
+  command_translated: "Stop the speaker from playing."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Dehumidifier
+  - SoundSensor
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      break
+      (#Speaker).mediaPlayback_stop()
+  elapsed_time: 3.491 seconds
+- command: "스피커에서 music.mp3를 재생해줘."
+  command_translated: "Play 'music.mp3' on the speaker."
+  devices:
+  - Recorder
+  - Speaker
+  - Dehumidifier
+  - Humidifier
+  - SoundSensor
+  - Clock
+  - Pump
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_play("music.mp3")
+  elapsed_time: 3.517 seconds
+- command: "스피커에서 '지금은 테스트 중입니다.'를 말해줘."
+  command_translated: "Speak \"This is a test\" through the speaker."
+  devices:
+  - Recorder
+  - Window
+  - Timer
+  - SoundSensor
+  - Clock
+  - Calculator
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Speaker).mediaPlayback_speak("This is a test")
+  elapsed_time: 3.460 seconds
+- command: "녹음기의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound an alarm siren if the recorder is powered on."
+  devices:
+  - Recorder
+  - Siren
+  - Charger
+  - Relay
+  - RobotCleaner
+  - Alarm
+  - SmartPlug
+  - SoundSensor
+  - Clock
+  - Speaker
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Recorder).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.131 seconds
+- command: "녹음기가 녹음 중이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm siren if the recorder is recording."
+  devices:
+  - Recorder
+  - Siren
+  - Feeder
+  - Window
+  - RobotCleaner
+  - Alarm
+  - Timer
+  - SoundSensor
+  - Clock
+  - Speaker
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Recorder).audioRecord_recordStatus == "recording") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.323 seconds
+- command: "녹음기를 꺼줘."
+  command_translated: "Turn off the recorder."
+  devices:
+  - Recorder
+  - Speaker
+  - AirPurifier
+  - Feeder
+  - RobotCleaner
+  - Clock
+  - GasValve
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Recorder).switch_off()
+  elapsed_time: 3.430 seconds
+- command: "녹음기를 켜줘."
+  command_translated: "Turn on the recorder."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Speaker
+  - Feeder
+  - RobotCleaner
+  - Clock
+  - Valve
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Recorder).switch_on()
+  elapsed_time: 3.336 seconds
+- command: "녹음기의 전원을 토글해줘."
+  command_translated: "Toggle the recorder's power."
+  devices:
+  - Recorder
+  - Feeder
+  - Buttonx4
+  - Charger
+  - RobotCleaner
+  - Relay
+  - SmartPlug
+  - Clock
+  - Speaker
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Recorder).switch_toggle()
+  elapsed_time: 3.337 seconds
+- command: "녹음기로 10초 동안 녹음해서 test.wav로 저장해줘."
+  command_translated: "Record 10 seconds with a recorder and save it as test.wav."
+  devices:
+  - AirConditioner
+  - AirPurifier
+  - Recorder
+  - Feeder
+  - RobotCleaner
+  - SoundSensor
+  - Clock
+  - Valve
+  - Speaker
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Recorder).audioRecord_record("test.wav", 10.0)
+  elapsed_time: 3.740 seconds
+- command: "스위치의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the switch is powered on."
+  devices:
+  - Button
+  - Siren
+  - Charger
+  - Relay
+  - Alarm
+  - Switch
+  - SmartPlug
+  - DoorLock
+  - Clock
+  - Television
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Switch).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.081 seconds
+- command: "스위치를 꺼줘."
+  command_translated: "Switch off."
+  devices:
+  - Speaker
+  - Blind
+  - Relay
+  - Humidifier
+  - Switch
+  - Clock
+  - GasValve
+  - Valve
+  - Timer
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Switch).switch_off()
+  elapsed_time: 3.099 seconds
+- command: "스위치를 켜줘."
+  command_translated: "Switch on."
+  devices:
+  - Irrigator
+  - Button
+  - Speaker
+  - Buttonx4
+  - Relay
+  - Humidifier
+  - Switch
+  - Clock
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Switch).switch_on()
+  elapsed_time: 3.299 seconds
+- command: "스위치의 전원을 토글해줘."
+  command_translated: "Toggle the power of the switch."
+  devices:
+  - Button
+  - Blind
+  - Charger
+  - Relay
+  - Switch
+  - SmartPlug
+  - Clock
+  - Television
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Switch).switch_toggle()
+  elapsed_time: 3.283 seconds
+- command: "TV의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the TV is powered on."
+  devices:
+  - Speaker
+  - Siren
+  - Window
+  - Relay
+  - Charger
+  - Alarm
+  - SmartPlug
+  - Clock
+  - Television
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Television).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.120 seconds
+- command: "현재 TV 채널 이름이 '9시 뉴스'이면 알람의 사이렌을 울려줘."
+  command_translated: "If the current TV channel is named \"9 o'clock news\" sound the alarm's siren."
+  devices:
+  - Speaker
+  - Siren
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - TemperatureSensor
+  - SoundSensor
+  - Clock
+  - Television
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 0
+    code: |
+      if ((#Television).tvChannel_tvChannelName == "9 o"clock news") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.249 seconds
+- command: "TV의 볼륨이 50 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the volume on the TV is above 50."
+  devices:
+  - AirQualityDetector
+  - Clock
+  - Siren
+  - GasMeter
+  - Alarm
+  - Timer
+  - SoundSensor
+  - TemperatureSensor
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      tvVolume = (#Television).audioVolume_volume
+      if (tvVolume > 50) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 4.882 seconds
+- command: "TV가 음소거 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the TV is muted."
+  devices:
+  - Siren
+  - Blind
+  - MotionSensor
+  - Window
+  - Alarm
+  - Timer
+  - SoundSensor
+  - Clock
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Television).audioMute_muteStatus == "muted") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.364 seconds
+- command: "TV를 꺼줘."
+  command_translated: "Turn off the TV."
+  devices:
+  - AirQualityDetector
+  - Speaker
+  - Dehumidifier
+  - Blind
+  - Clock
+  - GasValve
+  - Valve
+  - Television
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).switch_off()
+  elapsed_time: 3.348 seconds
+- command: "TV를 켜줘."
+  command_translated: "Turn on the TV."
+  devices:
+  - AirQualityDetector
+  - Recorder
+  - Speaker
+  - Blind
+  - Relay
+  - Humidifier
+  - Clock
+  - Television
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).switch_on()
+  elapsed_time: 3.301 seconds
+- command: "TV의 전원을 토글해줘."
+  command_translated: "Toggle the power of the TV."
+  devices:
+  - AirQualityDetector
+  - Blind
+  - Charger
+  - Relay
+  - Switch
+  - SmartPlug
+  - Clock
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).switch_toggle()
+  elapsed_time: 3.292 seconds
+- command: "TV 채널을 하나 내려줘."
+  command_translated: "Turn down a TV channel."
+  devices:
+  - Button
+  - Speaker
+  - Buttonx4
+  - Blind
+  - Clock
+  - Pump
+  - Valve
+  - Television
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).tvChannel_channelDown()
+  elapsed_time: 3.537 seconds
+- command: "TV 채널을 하나 올려줘."
+  command_translated: "Upload a TV channel."
+  devices:
+  - AirQualityDetector
+  - Recorder
+  - Relay
+  - Clock
+  - Pump
+  - Valve
+  - Television
+  - Speaker
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).tvChannel_setTvChannel(123)
+      (#Television).mediaPlayback_play(mediaType: "TV")
+  elapsed_time: 4.776 seconds
+- command: "TV 채널을 7번으로 설정해줘."
+  command_translated: "Set the TV channel to 7."
+  devices:
+  - AirQualityDetector
+  - Blind
+  - Clock
+  - Calculator
+  - Valve
+  - Television
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).tvChannel_setTvChannel(7)
+  elapsed_time: 3.535 seconds
+- command: "TV 채널을 '9시 뉴스'로 설정해줘."
+  command_translated: "Set the TV channel to \"9 o'clock news\"."
+  devices:
+  - AirQualityDetector
+  - Speaker
+  - Blind
+  - Dehumidifier
+  - Window
+  - Clock
+  - Valve
+  - Television
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      tvChannel = (#Television).tvChannel_tvChannel
+      if (tvChannel != 9) {
+        (#Television).tvChannel_setTvChannel(9)
+      }
+      (#Television).mediaPlayback_play("news")
+  elapsed_time: 5.004 seconds
+- command: "TV의 볼륨을 30으로 설정해줘."
+  command_translated: "Set the volume on the TV to 30."
+  devices:
+  - AirQualityDetector
+  - Recorder
+  - Blind
+  - GasMeter
+  - SoundSensor
+  - Clock
+  - Calculator
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).audioVolume_setVolume(30)
+  elapsed_time: 3.507 seconds
+- command: "TV의 볼륨을 낮춰줘."
+  command_translated: "Turn down the volume on the TV."
+  devices:
+  - AirQualityDetector
+  - Button
+  - Speaker
+  - Dehumidifier
+  - SoundSensor
+  - Clock
+  - Television
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).audioVolume_volumeDown()
+  elapsed_time: 3.569 seconds
+- command: "TV의 볼륨을 높여줘."
+  command_translated: "Turn up the volume on the TV."
+  devices:
+  - AirQualityDetector
+  - Button
+  - Recorder
+  - Speaker
+  - GasMeter
+  - SoundSensor
+  - Clock
+  - Television
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).audioVolume_volumeUp()
+  elapsed_time: 3.434 seconds
+- command: "TV를 음소거해줘."
+  command_translated: "Mute the TV."
+  devices:
+  - AirQualityDetector
+  - Recorder
+  - Dehumidifier
+  - Window
+  - Alarm
+  - Clock
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).audioMute_setMute(muted)
+  elapsed_time: 3.705 seconds
+- command: "TV의 음소거 상태를 해제해줘."
+  command_translated: "Unmute the TV."
+  devices:
+  - AirQualityDetector
+  - Speaker
+  - Blind
+  - Dehumidifier
+  - Window
+  - Alarm
+  - Clock
+  - Television
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).audioMute_unmute()
+  elapsed_time: 3.535 seconds
+- command: "TV의 음소거 상태를 음소거로 설정해줘."
+  command_translated: "Set the TV's mute state to Mute."
+  devices:
+  - AirQualityDetector
+  - Blind
+  - Window
+  - Alarm
+  - SoundSensor
+  - Clock
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Television).audioMute_setMute(muted)
+  elapsed_time: 3.623 seconds
+- command: "현재 실내 온도가 25도 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the current room temperature is above 25 degrees."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - Window
+  - OccupancySensor
+  - Alarm
+  - PresenceSensor
+  - WeatherProvider
+  - TemperatureSensor
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      temperature = (#TemperatureSensor).temperatureMeasurement_temperature
+      if (temperature > 25.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.131 seconds
+- command: "밸브가 열린 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the valve is open."
+  devices:
+  - Siren
+  - Blind
+  - Window
+  - Pump
+  - Alarm
+  - DoorLock
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#GasValve).valve_valve == "open") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.256 seconds
+- command: "밸브를 닫아줘."
+  command_translated: "Close the valve."
+  devices:
+  - Dehumidifier
+  - Blind
+  - Window
+  - Relay
+  - Pump
+  - Humidifier
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Valve).valve_close()
+  elapsed_time: 3.342 seconds
+- command: "밸브를 열어줘."
+  command_translated: "Open the valve."
+  devices:
+  - Blind
+  - Dehumidifier
+  - Window
+  - Relay
+  - Pump
+  - Humidifier
+  - Clock
+  - GasValve
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Valve).valve_open()
+  elapsed_time: 3.334 seconds
+- command: "바깥 습도가 80퍼센트 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the humidity outside is above 80 percent."
+  devices:
+  - AirQualityDetector
+  - Clock
+  - Siren
+  - Humidifier
+  - Alarm
+  - LeakSensor
+  - WeatherProvider
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      weatherData = (#WeatherProvider).weatherProvider_getWeatherInfo(37.7749, -122.4194)
+      externalHumidity = parseFloat(weatherData.split(",")[2])
+      if (externalHumidity > 80.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 6.976 seconds
+- command: "바깥의 미세먼지 농도가 100 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the particulate matter concentration outside is above 100."
+  devices:
+  - AirQualityDetector
+  - Clock
+  - Siren
+  - Window
+  - SmokeDetector
+  - LeakSensor
+  - Alarm
+  - WeatherProvider
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      pm10_outside = (#WeatherProvider).weatherProvider_pm10Weather
+      if (pm10_outside > 100.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 5.163 seconds
+- command: "바깥의 초미세먼지 농도가 50 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the outside fine particulate matter concentration is above 50."
+  devices:
+  - AirQualityDetector
+  - AirPurifier
+  - Clock
+  - Siren
+  - Window
+  - LeakSensor
+  - Alarm
+  - WeatherProvider
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      pm25 = (#WeatherProvider).weatherProvider_pm25Weather
+      if (pm25 > 50.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 5.096 seconds
+- command: "기압이 1020hPa 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the barometric pressure is above 1020 hPa."
+  devices:
+  - Clock
+  - Siren
+  - LeakSensor
+  - Alarm
+  - WeatherProvider
+  - SoundSensor
+  - TemperatureSensor
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      pressure = (#WeatherProvider).weatherProvider_pressureWeather
+      if (pressure > 1020.0) {
+        (#Alarm).alarm_siren()
+      } else {
+        (#Alarm).alarm_off()
+      }
+  elapsed_time: 4.900 seconds
+- command: "현재 바깥의 기온이 30도 이상이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if it's currently above 30 degrees outside."
+  devices:
+  - Clock
+  - Siren
+  - Blind
+  - Window
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - WeatherProvider
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      temperature = (#TemperatureSensor).temperatureMeasurement_temperature
+      if (temperature > 30.0) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.214 seconds
+- command: "현재 날씨가 비가 오고 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the current weather is rainy."
+  devices:
+  - Siren
+  - Window
+  - Relay
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - TemperatureSensor
+  - WeatherProvider
+  - Clock
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      weather = (#WeatherProvider).weatherProvider_weather
+      if (weather == "rainy" || weather == "drizzle") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.344 seconds
+- command: "위도 37.5665, 경도 126.9780의 현재 날씨 정보를 스피커로 출력해줘."
+  command_translated: "Announce the current weather information for latitude 37.5665 and longitude 126.9780 via the speaker."
+  devices:
+  - Recorder
+  - Speaker
+  - Siren
+  - Window
+  - TemperatureSensor
+  - WeatherProvider
+  - Clock
+  - MenuProvider
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      weatherInfo = (#WeatherProvider).weatherProvider_getWeatherInfo(37.5665, 126.9780)
+      (#Speaker).mediaPlayback_speak(weatherInfo)
+  elapsed_time: 4.609 seconds
+- command: "창문이 열린 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if a window is open."
+  devices:
+  - Siren
+  - Blind
+  - Window
+  - Alarm
+  - DoorLock
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#Window).windowControl_window == "open") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.195 seconds
+- command: "창문을 닫아줘."
+  command_translated: "Close the window."
+  devices:
+  - Speaker
+  - Blind
+  - Dehumidifier
+  - Window
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Window).windowControl_close()
+  elapsed_time: 3.353 seconds
+- command: "창문을 열어줘."
+  command_translated: "Open a window."
+  devices:
+  - Blind
+  - Buttonx4
+  - Window
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Window).windowControl_open()
+  elapsed_time: 3.410 seconds
+- command: "낙상 감지 센서에서 낙상이 감지된 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if a fall is detected by the fall detection sensor."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - SmokeDetector
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      wait until(all(#FallDetector).fallDetection_fall == "fall")
+      all(#Alarm).alarm_siren()
+  elapsed_time: 3.762 seconds
+- command: "점유 센서가 감지 상태이면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if an occupancy sensor is detected."
+  devices:
+  - Clock
+  - Siren
+  - MotionSensor
+  - FallDetector
+  - LeakSensor
+  - Alarm
+  - TemperatureSensor
+  - PresenceSensor
+  - SoundSensor
+  - OccupancySensor
+  - Speaker
+  - ContactSensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (any(#OccupancySensor).presenceSensor_presence == "present") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 3.843 seconds
+- command: "릴레이의 전원이 켜져 있으면 알람의 사이렌을 울려줘."
+  command_translated: "Sound the alarm's siren if the relay is powered on."
+  devices:
+  - Speaker
+  - Siren
+  - Charger
+  - Relay
+  - LeakSensor
+  - Alarm
+  - Switch
+  - SmartPlug
+  - DoorLock
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Relay).switch_switch == "on") {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.063 seconds
+- command: "릴레이를 꺼줘."
+  command_translated: "Turn off the relay."
+  devices:
+  - Speaker
+  - Blind
+  - Dehumidifier
+  - Relay
+  - Pump
+  - FallDetector
+  - Clock
+  - GasValve
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Relay).switch_off()
+  elapsed_time: 3.335 seconds
+- command: "릴레이를 켜줘."
+  command_translated: "Turn on the relay."
+  devices:
+  - Irrigator
+  - Speaker
+  - Blind
+  - Relay
+  - FallDetector
+  - Humidifier
+  - Clock
+  - Pump
+  - Valve
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Relay).switch_on()
+  elapsed_time: 3.355 seconds
+- command: "릴레이의 전원을 토글해줘."
+  command_translated: "Toggle the power of the relay."
+  devices:
+  - Button
+  - Blind
+  - Charger
+  - Relay
+  - Switch
+  - SmartPlug
+  - Clock
+  - Pump
+  - Valve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Relay).switch_toggle()
+  elapsed_time: 3.341 seconds
+- command: "테스트 타이머라는 이름의 60초 길이의 타이머를 추가해줘."
+  command_translated: "Add a 60-second timer named Test Timer."
+  devices:
+  - AirConditioner
+  - Recorder
+  - AirPurifier
+  - Speaker
+  - Feeder
+  - RobotCleaner
+  - Clock
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Timer).timer_add("Test Timer", 60.0)
+  elapsed_time: 3.730 seconds
+- command: "테스트 타이머라는 이름의 타이머가 존재하면 알람의 사이렌을 울려줘."
+  command_translated: "If a timer named Test Timer exists, sound the alarm siren."
+  devices:
+  - Recorder
+  - AirPurifier
+  - Speaker
+  - Siren
+  - Feeder
+  - RobotCleaner
+  - Alarm
+  - PresenceSensor
+  - SoundSensor
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (timer_isExist("Test Timer")) {
+        (#Alarm).alarm_siren()
+      }
+  elapsed_time: 4.100 seconds
+- command: "테스트 타이머라는 이름의 타이머가 하면 알람의 사이렌을 울려줘."
+  command_translated: "if a timer named Test Timer goes off, sound an alarm siren."
+  devices:
+  - Recorder
+  - Speaker
+  - AirPurifier
+  - Siren
+  - Feeder
+  - Clock
+  - RobotCleaner
+  - Alarm
+  - SoundSensor
+  - TemperatureSensor
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if (timer_isSet("Test Timer")) {
+        (#Alarm).alarm_siren()
+        break
+      }
+  elapsed_time: 4.206 seconds
+- command: "테스트 타이머라는 이름의 타이머를 리셋해줘."
+  command_translated: "Reset a timer named Test Timer."
+  devices:
+  - AirConditioner
+  - Recorder
+  - AirPurifier
+  - Speaker
+  - Feeder
+  - RobotCleaner
+  - Relay
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      timer_reset("Test Timer")
+  elapsed_time: 3.296 seconds
+- command: "테스트 타이머라는 이름의 타이머를 120초로 설정해줘."
+  command_translated: "Set a timer named Test Timer to 120 seconds."
+  devices:
+  - AirConditioner
+  - Recorder
+  - AirPurifier
+  - Speaker
+  - Feeder
+  - RobotCleaner
+  - Clock
+  - Timer
+  - Camera
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Timer).timer_set("Test Timer", 120)
+  elapsed_time: 3.685 seconds
+- command: "테스트 타이머라는 이름의 타이머를 시작해줘."
+  command_translated: "Start a timer named Test Timer."
+  devices:
+  - AirConditioner
+  - Recorder
+  - AirPurifier
+  - Speaker
+  - Feeder
+  - Window
+  - RobotCleaner
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Timer).timer_add("Test Timer", 10.0)
+  elapsed_time: 3.660 seconds

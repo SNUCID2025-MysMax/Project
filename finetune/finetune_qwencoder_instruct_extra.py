@@ -38,9 +38,10 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 
 model = FastLanguageModel.get_peft_model(
     model,
-    r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
-    target_modules = ["q_proj", "k_proj", "v_proj", "o_proj"],
-    lora_alpha = 32,
+    r = 32, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+    target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
+                      "gate_proj", "up_proj", "down_proj",],
+    lora_alpha = 64,
     lora_dropout = 0, # Supports any, but = 0 is optimized
     bias = "none",    # Supports any, but = "none" is optimized
     use_gradient_checkpointing = "unsloth", # True or "unsloth" for very long context
@@ -195,7 +196,7 @@ def load_dataset():
                         },
                         {
                             "role": "user",
-                            "content": f"Current Time: {current_time}\nGenerate JOI Lang code for \"{result['command']}\"\n",
+                            "content": f"Current Time: {current_time}\nGenerate JOI Lang code for: \"{result['command']}\"\n",
                         },
                         {
                             "role": "assistant",
@@ -262,8 +263,8 @@ trainer = SFTTrainer(
         max_seq_length = max_seq_length,
         # warmup_steps = 10,
         warmup_ratio = 0.05,
-        num_train_epochs = 2,
-        learning_rate = 2e-5, #1e-6
+        num_train_epochs = 3,
+        learning_rate = 3e-5, #1e-6
         optim = "adamw_8bit",
         weight_decay = 0.01,
         max_grad_norm = 0.3,

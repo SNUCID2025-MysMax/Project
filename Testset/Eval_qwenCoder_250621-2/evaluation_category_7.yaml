@@ -1,0 +1,244 @@
+- command: "실시간으로 확인해서 토양 습도가 25% 이하로 떨어질 때마다 급수기를 켜고 '급수 시작'이라고 스피커로 출력해줘."
+  command_translated: "Check in real-time and turn on the irrigator whenever the soil humidity drops below 25% and announce \"Start watering\" via the speaker."
+  devices:
+  - Irrigator
+  - Clock
+  - Humidifier
+  - LeakSensor
+  - WeatherProvider
+  - SoilMoistureSensor
+  - TemperatureSensor
+  - Pump
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity <= 25.0) {
+        (#Irrigator).irrigatorOperatingState_startWatering()
+        (#Speaker).mediaPlayback_speak("Start watering")
+        break
+      }
+  elapsed_time: 5.858 seconds
+- command: "1초마다 상태를 확인해서 온도가 35도를 초과할 때마다 환풍기를 켜 줘."
+  command_translated: "Check the status every 1 second and turn on the fan whenever the temperature exceeds 35 degrees."
+  devices:
+  - Irrigator
+  - Clock
+  - Buttonx4
+  - Window
+  - WeatherProvider
+  - Fan
+  - TemperatureSensor
+  - Calculator
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      temperature = (#TemperatureSensor).temperatureMeasurement_temperature
+      if (temperature > 35.0) {
+        (#Fan).switch_on()
+      } else {
+        (#Fan).switch_off()
+      }
+  elapsed_time: 4.934 seconds
+- command: "3초마다 일조량을 확인해서 200룩스 이하로 떨어지면 조명을 켜 줘."
+  command_translated: "Check the sunlight every 3 seconds and turn on the lights if it drops below 200 lux."
+  devices:
+  - Light
+  - Clock
+  - Siren
+  - LightSensor
+  - Blind
+  - Alarm
+  - WeatherProvider
+  - TemperatureSensor
+  - Speaker
+  - Shade
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 3000
+    code: |
+      currentLux = (#LightSensor).lightLevel_light
+      if (currentLux < 200) {
+        (#Light).switch_on()
+      } else {
+        (#Light).switch_off()
+      }
+      break
+  elapsed_time: 5.358 seconds
+- command: "문이 열릴 때마다 경광등과 조명을 켜 줘. 실시간으로 확인해서 상태를 계속 검사해서 반응해 줘."
+  command_translated: "Turn on sirens and lights whenever a door is opened. Check in real time and react by constantly checking the status."
+  devices:
+  - Light
+  - Speaker
+  - Siren
+  - LightSensor
+  - Blind
+  - Window
+  - Alarm
+  - DoorLock
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if ((#DoorLock).doorControl_door == "open") {
+        (#Siren).switch_on()
+        (#Alarm).alarm_siren()
+        (#Light).switch_on()
+        break
+      }
+  elapsed_time: 5.017 seconds
+- command: "현재 날씨에서 비가 감지될 때마다 관개 장치를 꺼 주고 '비가 감지되었습니다'라고 스피커로 출력해줘. 감지는 1분에 한번씩만 하자."
+  command_translated: "Whenever rain is detected in the current weather, turn off the irrigator and announce \"Rain detected\" via the speaker. Let's detect only once a minutae."
+  devices:
+  - Irrigator
+  - Clock
+  - MotionSensor
+  - FallDetector
+  - LeakSensor
+  - WeatherProvider
+  - SoundSensor
+  - TemperatureSensor
+  - Speaker
+  - HumiditySensor
+  generated_code:
+  - name: "Scenario1"
+    cron: "*/1 * * * *"
+    period: 0
+    code: |
+      weather = (#WeatherProvider).weatherProvider_getWeatherInfo(37.7749, -122.4194)
+      if ("rain" in weather.toLowerCase()) {
+        all(#Irrigator).switch_off()
+        (#Speaker).mediaPlayback_speak("Rain detected")
+      }
+  elapsed_time: 6.465 seconds
+- command: "실시간으로 확인해서 거실 창문이 열릴 때마다 블라인드를 닫아 줘."
+  command_translated: "Check in real-time and close the blinds whenever the living room window opens."
+  devices:
+  - Clock
+  - Blind
+  - Window
+  - DoorLock
+  - PresenceSensor
+  - OccupancySensor
+  - Pump
+  - Valve
+  - Speaker
+  - Shade
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if ((#Window).windowControl_window == "open") {
+        (#Blind).blind_close()
+        break
+      }
+  elapsed_time: 4.278 seconds
+- command: "조명이 켜질 때마다 커튼을 동시에 열어 줘. 실시간으로 조명을 체크해야 해."
+  command_translated: "Open the curtains at the same time whenever the lights come on. Check the lights in real time."
+  devices:
+  - Light
+  - Speaker
+  - Siren
+  - LightSensor
+  - Blind
+  - Window
+  - Alarm
+  - Clock
+  - Timer
+  - Curtain
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      break = Y
+      if ((#Light).switch_switch == "off" and (#Curtain).curtain_curtain != "unknown") {
+        wait until((#Light).switch_switch == "on")
+        all(#Curtain).curtain_open()
+      } else if ((#Light).switch_switch == "on" and (#Curtain).curtain_curtain != "unknown") {
+        all(#Curtain).curtain_open()
+      } else {
+        all(#Curtain).curtain_close()
+      }
+  elapsed_time: 8.059 seconds
+- command: "2초마다 상태를 확인해서 TV가 켜질 때마다 스피커도 켜 줘."
+  command_translated: "Check status every 2 seconds and turn on the speakers whenever the TV turns on."
+  devices:
+  - Irrigator
+  - AirQualityDetector
+  - Buttonx4
+  - Blind
+  - Window
+  - Timer
+  - Clock
+  - Television
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 2000
+    code: |
+      if ((#Television).switch_switch == "on") {
+        (#Speaker).switch_on()
+      } else {
+        (#Speaker).switch_off()
+      }
+  elapsed_time: 4.864 seconds
+- command: "현관 문이 열릴 때마다 즉시 알람의 경광등을 켜 줘. 확인은 실시간으로 하구."
+  command_translated: "Instantly turn on the alarm's light whenever the front door is opened. Check in real time."
+  devices:
+  - Light
+  - Speaker
+  - Siren
+  - LightSensor
+  - Blind
+  - Window
+  - Alarm
+  - DoorLock
+  - Clock
+  - Timer
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 100
+    code: |
+      if ((#DoorLock #DoorLock).doorControl_door == "open") {
+        (#Alarm #Alarm).alarm_strobe()
+        break
+      }
+  elapsed_time: 5.124 seconds
+- command: "1초마다 공기청정기 상태를 확인해서 꺼지면 자동 모드로 다시 켜 줘."
+  command_translated: "Check the status of the air purifier every 1 second and turn it back on and set to auto mode if it turns off."
+  devices:
+  - Irrigator
+  - AirQualityDetector
+  - AirPurifier
+  - Dehumidifier
+  - Window
+  - Humidifier
+  - Fan
+  - Clock
+  - GasValve
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: 1000
+    code: |
+      if ((#AirPurifier).airPurifierFanMode_airPurifierFanMode != "auto" and (#AirPurifier).switch_switch == "off") {
+        (#AirPurifier).switch_on()
+        (#AirPurifier).airPurifierFanMode_setAirPurifierFanMode("auto")
+      }
+  elapsed_time: 6.642 seconds
