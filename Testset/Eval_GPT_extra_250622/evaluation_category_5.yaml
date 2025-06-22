@@ -1,0 +1,245 @@
+- command: "토양 습도가 30% 미만이면 5초 후 급수기를 작동해 줘."
+  command_translated: "If the soil humidity is below 30%, wait 5 seconds before activating the waterer."
+  devices:
+  - SoilMoistureSensor
+  - Clock
+  - Humidifier
+  - Irrigator
+  - HumiditySensor
+  - LeakSensor
+  - Pump
+  - WeatherProvider
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#SoilMoistureSensor).soilHumidityMeasurement_soilHumidity < 30.0) {
+        (#Clock).clock_delay(5000)
+      }
+      (#Irrigator).switch_on()
+  elapsed_time: 1.514 seconds
+- command: "창문이 열려 있고 온도가 35도 이상이면 10초 대기 후 블라인드를 내려 줘."
+  command_translated: "If a window is open and the temperature is above 35 degrees, wait 10 seconds before lowering the blinds."
+  devices:
+  - Calculator
+  - Blind
+  - Clock
+  - Shade
+  - Window
+  - DoorLock
+  - Pump
+  - Curtain
+  - WeatherProvider
+  - TemperatureSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Window).windowControl_window == "open") and ((#TemperatureSensor).temperatureMeasurement_temperature > 35.0) {
+        (#Clock).clock_delay(10000)
+        (#Blind).blindLevel_setBlindLevel(0)
+      }
+  elapsed_time: 1.830 seconds
+- command: "습도가 80% 이상이면 3초 뒤 제습기를 켜고, 7초 더 지난 후 창문을 닫아 줘."
+  command_translated: "If the humidity is above 80%, turn on the dehumidifier after 3 seconds and close the window after another 7 seconds."
+  devices:
+  - AirQualityDetector
+  - SoilMoistureSensor
+  - Clock
+  - AirPurifier
+  - Shade
+  - Humidifier
+  - HumiditySensor
+  - WeatherProvider
+  - Dehumidifier
+  - Window
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#HumiditySensor).relativeHumidityMeasurement_humidity > 80.0) {
+        (#Clock).clock_delay(3000)
+        (#Dehumidifier).switch_on()
+        (#Clock).clock_delay(7000)
+        (#Window).windowControl_close()
+      }
+  elapsed_time: 1.841 seconds
+- command: "빛의 세기가 100룩스 이하면 5초 대기 후 LED 조명을 켜 줘."
+  command_translated: "If the light intensity is below 100 lux, wait 5 seconds before turning on the LED light."
+  devices:
+  - Clock
+  - Alarm
+  - Shade
+  - HumiditySensor
+  - Light
+  - Siren
+  - WeatherProvider
+  - TemperatureSensor
+  - LightSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#LightSensor).lightLevel_light < 100) {
+        (#Clock).clock_delay(5000)
+      }
+      (#Light).switch_on()
+  elapsed_time: 1.746 seconds
+- command: "급수기를 작동 후 10초 기다렸다가 환풍기를 켜 줘."
+  command_translated: "After running the irrigator, wait 10 seconds before turning on the fan."
+  devices:
+  - Refrigerator
+  - Clock
+  - AirPurifier
+  - Humidifier
+  - Irrigator
+  - Fan
+  - Pump
+  - Dehumidifier
+  - Window
+  - Feeder
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Irrigator).switch_on()
+      (#Clock).clock_delay(10000)
+      (#Fan).switch_on()
+  elapsed_time: 1.426 seconds
+- command: "창문이 열려 있으면 5초 후 커튼을 닫고, 10초 더 지난 뒤 블라인드를 닫아 줘."
+  command_translated: "If the window is open, close the curtains after 5 seconds, and close the blinds after another 10 seconds."
+  devices:
+  - GasValve
+  - Calculator
+  - Blind
+  - Buttonx4
+  - Clock
+  - Shade
+  - Valve
+  - DoorLock
+  - Pump
+  - Curtain
+  - Window
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Window).windowControl_window == "open") {
+        (#Clock).clock_delay(5000)
+        (#Curtain).curtain_close()
+        (#Clock).clock_delay(10000)
+        (#Blind).blind_close()
+      }
+  elapsed_time: 1.718 seconds
+- command: "조명이 켜져 있으면 3초 대기 후 조명을 껐다가 3초 뒤 다시 켜 줘."
+  command_translated: "If the light is on, wait 3 seconds, turn off the light, and then turn it back on after 3 seconds."
+  devices:
+  - GasValve
+  - Buttonx4
+  - Clock
+  - Alarm
+  - Shade
+  - Irrigator
+  - Light
+  - Siren
+  - LightSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Light).switch_switch == "on") {
+        (#Clock).clock_delay(3000)
+        (#Light).switch_off()
+        (#Clock).clock_delay(3000)
+        (#Light).switch_on()
+      }
+  elapsed_time: 1.596 seconds
+- command: "7초 후에 조명을 끄고 5초 뒤 다시 켜 줘."
+  command_translated: "Turn off the light after 7 seconds and turn it back on after 5 seconds."
+  devices:
+  - GasValve
+  - Calculator
+  - Blind
+  - Clock
+  - Alarm
+  - Irrigator
+  - Light
+  - Siren
+  - LightSensor
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      (#Light).switch_off()
+      (#Clock).clock_delay(7000)
+      (#Light).switch_on()
+      (#Clock).clock_delay(5000)
+  elapsed_time: 1.445 seconds
+- command: "문이 닫혀 있는데 5초가 지나도 창문이 열려 있지 않으면 블라인드를 열어 줘."
+  command_translated: "If the door is closed and the window is not open after 5 seconds, open the blinds."
+  devices:
+  - GasValve
+  - Blind
+  - Buttonx4
+  - Clock
+  - Shade
+  - Valve
+  - DoorLock
+  - Pump
+  - Curtain
+  - Window
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#DoorLock).doorControl_door == "closed") {
+        (#Clock).clock_delay(5000)
+        if ((#Window).windowControl_window != "open") {
+          (#Blind).blind_open()
+        }
+      }
+  elapsed_time: 1.568 seconds
+- command: "커튼이 열린 상태라면 2초 뒤 조명을 50으로 낮추고, 다시 4초 기다려서 꺼 줘."
+  command_translated: "If the curtains are open, turn the lights down to 50 after 2 seconds, then wait another 4 seconds to turn them off."
+  devices:
+  - GasValve
+  - Blind
+  - Buttonx4
+  - Clock
+  - Alarm
+  - Shade
+  - Light
+  - Siren
+  - Curtain
+  - Window
+  - Speaker
+  generated_code:
+  - name: "Scenario1"
+    cron: ""
+    period: -1
+    code: |
+      if ((#Curtain).curtain_curtain == "open") {
+        (#Clock).clock_delay(2000)
+        (#Light).switchLevel_setLevel(50, 0)
+        (#Clock).clock_delay(4000)
+        (#Light).switch_off()
+      }
+  elapsed_time: 2.068 seconds
